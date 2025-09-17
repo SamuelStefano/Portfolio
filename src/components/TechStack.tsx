@@ -1,5 +1,4 @@
 import { Code, Database, Server, Globe, Cpu, GitBranch } from 'lucide-react';
-import ExperienceCarousel from './ExperienceCarousel';
 
 interface TechCategory {
   title: string;
@@ -175,8 +174,86 @@ const TechStack = () => {
           </div>
         </div>
 
-        {/* Experience Carousel */}
-        <ExperienceCarousel />
+        {/* Experience Timeline */}
+        <div className="mt-20">
+          <h3 className="text-2xl font-bold text-center text-foreground mb-12">
+            Experiência Profissional
+          </h3>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-primary" />
+              
+              {/* Experience Items */}
+              <div className="space-y-12">
+                {[
+                  {
+                    company: 'DevFellowship',
+                    role: 'Desenvolvedor Full-Stack',
+                    period: '2023 - Presente',
+                    description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
+                    technologies: ['React', 'TypeScript', 'Node.js', 'Supabase']
+                  },
+                  {
+                    company: 'M&M Informática',
+                    role: 'Suporte Técnico & Desenvolvedor',
+                    period: '2022 - 2023',
+                    description: 'Suporte técnico especializado e desenvolvimento de sistemas para automação de notas fiscais eletrônicas.',
+                    technologies: ['JavaScript', 'Automação', 'APIs', 'Sistemas Fiscais']
+                  },
+                  {
+                    company: 'Freelancer',
+                    role: 'Desenvolvedor Web',
+                    period: '2021 - 2022',
+                    description: 'Desenvolvimento de sites e aplicações web para pequenas empresas e projetos pessoais.',
+                    technologies: ['HTML', 'CSS', 'JavaScript', 'WordPress', 'PHP']
+                  }
+                ].map((job, index) => (
+                  <div
+                    key={index}
+                    className="relative flex items-start gap-6 animate-slide-up hover:scale-105 transition-all duration-300"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    {/* Timeline Dot */}
+                    <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 mt-6 relative z-10 animate-pulse-glow" />
+                    
+                    {/* Content */}
+                    <div className="flex-1 bg-card border border-border rounded-lg p-6 hover-glow hover:border-primary/50">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                        <h4 className="text-lg font-bold text-foreground">
+                          {job.role}
+                        </h4>
+                        <span className="text-sm text-muted-foreground">
+                          {job.period}
+                        </span>
+                      </div>
+                      
+                      <h5 className="text-primary font-semibold mb-3">
+                        {job.company}
+                      </h5>
+                      
+                      <p className="text-muted-foreground mb-4">
+                        {job.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        {job.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md hover:bg-primary/20 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

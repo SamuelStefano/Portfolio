@@ -136,22 +136,23 @@ const ProjectCarousel = () => {
 
         {/* Main Carousel */}
         <div className="relative max-w-6xl mx-auto">
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-8">
             {/* Previous Project (Left) */}
             <div 
-              className="w-64 h-48 rounded-xl overflow-hidden opacity-40 cursor-pointer hover:opacity-60 transition-all duration-300"
+              className="w-64 h-48 rounded-xl overflow-hidden opacity-30 cursor-pointer hover:opacity-50 transition-all duration-500 transform hover:scale-105"
               onClick={() => setCurrentProject((currentProject - 1 + projects.length) % projects.length)}
             >
               <img
                 src={projects[(currentProject - 1 + projects.length) % projects.length].images[0]}
                 alt={projects[(currentProject - 1 + projects.length) % projects.length].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />
+              <div className="absolute inset-0 bg-background/20" />
             </div>
 
             {/* Main Project */}
             <div 
-              className="relative w-96 h-64 md:w-[500px] md:h-80 rounded-2xl overflow-hidden group cursor-pointer hover-glow flex-shrink-0"
+              className="relative w-96 h-64 md:w-[500px] md:h-80 rounded-2xl overflow-hidden group cursor-pointer hover-glow flex-shrink-0 transform transition-all duration-500 hover:scale-105"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               onClick={() => setSelectedProject(project)}
@@ -159,16 +160,16 @@ const ProjectCarousel = () => {
               <img
                 src={project.images[0]}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
               />
               
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent transition-all duration-500 group-hover:from-background/90" />
               
               {/* Project Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
+              <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-all duration-500 group-hover:translate-y-[-4px]">
                 <div className="flex items-center gap-3 mb-2">
-                  <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+                  <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm">
                     {project.role}
                   </Badge>
                   <div className="flex items-center gap-1 text-sm text-muted-foreground">
@@ -176,25 +177,33 @@ const ProjectCarousel = () => {
                     {project.collaborators.length} colaborador{project.collaborators.length > 1 ? 'es' : ''}
                   </div>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground max-w-lg">
+                <p className="text-sm text-muted-foreground max-w-lg opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                   {project.description}
                 </p>
+              </div>
+
+              {/* Hover Indicator */}
+              <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <div className="bg-primary/20 backdrop-blur-sm rounded-full px-3 py-1 border border-primary/30">
+                  <span className="text-xs text-primary font-medium">Clique para ver mais</span>
+                </div>
               </div>
             </div>
 
             {/* Next Project (Right) */}
             <div 
-              className="w-64 h-48 rounded-xl overflow-hidden opacity-40 cursor-pointer hover:opacity-60 transition-all duration-300"
+              className="w-64 h-48 rounded-xl overflow-hidden opacity-30 cursor-pointer hover:opacity-50 transition-all duration-500 transform hover:scale-105"
               onClick={() => setCurrentProject((currentProject + 1) % projects.length)}
             >
               <img
                 src={projects[(currentProject + 1) % projects.length].images[0]}
                 alt={projects[(currentProject + 1) % projects.length].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />
+              <div className="absolute inset-0 bg-background/20" />
             </div>
           </div>
 
