@@ -188,4 +188,35 @@
     background-size: 200% 200%;
     animation: gradient-shift 3s ease infinite;
   }
+
+  /* Custom animations */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes experienceSlide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animate-experience-slide {
+    animation: experienceSlide 15s linear infinite;
+  }
+
+  .animate-experience-slide:hover {
+    animation-play-state: paused;
+  }
 }

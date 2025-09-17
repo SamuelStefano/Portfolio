@@ -1,4 +1,5 @@
 import { Code, Database, Server, Globe, Cpu, GitBranch } from 'lucide-react';
+import ExperienceCarousel from './ExperienceCarousel';
 
 interface TechCategory {
   title: string;
@@ -113,108 +114,69 @@ const TechStack = () => {
           })}
         </div>
 
-        {/* Additional Skills */}
-        <div className="text-center">
+        {/* Additional Skills - Infinite Carousel */}
+        <div className="text-center overflow-hidden">
           <h3 className="text-2xl font-bold text-foreground mb-6">
             Outras Competências
           </h3>
-          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {[
-              'Judge0 API',
-              'REST APIs',
-              'Responsive Design',
-              'UI/UX Design',
-              'Automação',
-              'Notas Fiscais Eletrônicas',
-              'Suporte Técnico',
-              'Inglês B2',
-              'Trabalho em Equipe',
-              'Metodologias Ágeis'
-            ].map((skill, index) => (
-              <div
-                key={index}
-                className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                {skill}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Experience Timeline */}
-        <div className="mt-20">
-          <h3 className="text-2xl font-bold text-center text-foreground mb-12">
-            Experiência Profissional
-          </h3>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-primary" />
-              
-              {/* Experience Items */}
-              <div className="space-y-12">
-                {[
-                  {
-                    company: 'DevFellowship',
-                    role: 'Desenvolvedor Full-Stack',
-                    period: '2023 - Presente',
-                    description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
-                    technologies: ['React', 'TypeScript', 'Node.js', 'Supabase']
-                  },
-                  {
-                    company: 'M&M Informática',
-                    role: 'Suporte Técnico & Desenvolvedor',
-                    period: '2022 - 2023',
-                    description: 'Suporte técnico especializado e desenvolvimento de sistemas para automação de notas fiscais eletrônicas.',
-                    technologies: ['JavaScript', 'Automação', 'APIs', 'Sistemas Fiscais']
-                  }
-                ].map((job, index) => (
-                  <div
-                    key={index}
-                    className="relative flex items-start gap-6 animate-slide-up"
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                  >
-                    {/* Timeline Dot */}
-                    <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 mt-6 relative z-10 animate-pulse-glow" />
-                    
-                    {/* Content */}
-                    <div className="flex-1 bg-card border border-border rounded-lg p-6 hover-glow">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                        <h4 className="text-lg font-bold text-foreground">
-                          {job.role}
-                        </h4>
-                        <span className="text-sm text-muted-foreground">
-                          {job.period}
-                        </span>
-                      </div>
-                      
-                      <h5 className="text-primary font-semibold mb-3">
-                        {job.company}
-                      </h5>
-                      
-                      <p className="text-muted-foreground mb-4">
-                        {job.description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2">
-                        {job.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="relative">
+            <div className="flex animate-scroll gap-4 whitespace-nowrap">
+              {[
+                'Judge0 API',
+                'REST APIs',
+                'Responsive Design',
+                'UI/UX Design',
+                'Automação',
+                'Notas Fiscais Eletrônicas',
+                'Suporte Técnico',
+                'Inglês B2',
+                'Trabalho em Equipe',
+                'Metodologias Ágeis',
+                'Resolução de Problemas',
+                'Comprometimento',
+                'Criatividade',
+                'Frontend',
+                'Backend',
+                'Banco de Dados',
+                'Git & GitHub',
+                'Linux',
+                'DevOps',
+                'API Development'
+              ].concat([
+                'Judge0 API',
+                'REST APIs',
+                'Responsive Design',
+                'UI/UX Design',
+                'Automação',
+                'Notas Fiscais Eletrônicas',
+                'Suporte Técnico',
+                'Inglês B2',
+                'Trabalho em Equipe',
+                'Metodologias Ágeis',
+                'Resolução de Problemas',
+                'Comprometimento',
+                'Criatividade',
+                'Frontend',
+                'Backend',
+                'Banco de Dados',
+                'Git & GitHub',
+                'Linux',
+                'DevOps',
+                'API Development'
+              ]).map((skill, index) => (
+                <div
+                  key={index}
+                  className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
+                >
+                  {skill}
+                </div>
+              ))}
             </div>
           </div>
         </div>
+
+        {/* Experience Carousel */}
+        <ExperienceCarousel />
       </div>
     </section>
   );

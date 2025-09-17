@@ -1,5 +1,6 @@
 import { Github, Linkedin, Instagram, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import profileImage from '@/assets/samuel-profile.jpg';
 
 const Header = () => {
   const socialLinks = [
@@ -84,6 +85,17 @@ const Header = () => {
               </Button>
             );
           })}
+        </div>
+
+        {/* Profile Photo */}
+        <div className="mt-12 animate-slide-up" style={{ animationDelay: '0.6s' }}>
+          <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary/30 hover:border-primary/60 transition-all duration-300 hover-glow">
+            <img 
+              src={profileImage} 
+              alt="Samuel Stefano - Foto de perfil" 
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+            />
+          </div>
         </div>
 
         {/* Scroll Indicator */}

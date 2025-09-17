@@ -103,16 +103,14 @@ const ProjectCarousel = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isHovering, setIsHovering] = useState(false);
 
-  // Auto-advance carousel when hovering
+  // Auto-advance carousel always
   useEffect(() => {
-    if (!isHovering) return;
-    
     const interval = setInterval(() => {
       setCurrentProject((prev) => (prev + 1) % projects.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [isHovering]);
+  }, []);
 
   const nextProject = () => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
@@ -137,47 +135,67 @@ const ProjectCarousel = () => {
         </div>
 
         {/* Main Carousel */}
-        <div className="relative max-w-5xl mx-auto">
-          <div 
-            className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden group cursor-pointer hover-glow"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-            onClick={() => setSelectedProject(project)}
-          >
-            <img
-              src={project.images[0]}
-              alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-            
-            {/* Project Info */}
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <div className="flex items-center gap-3 mb-3">
-                <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
-                  {project.role}
-                </Badge>
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Users className="w-4 h-4" />
-                  {project.collaborators.length} colaborador{project.collaborators.length > 1 ? 'es' : ''}
-                </div>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                {project.title}
-              </h3>
-              <p className="text-lg text-muted-foreground max-w-2xl">
-                {project.description}
-              </p>
+        <div className="relative max-w-6xl mx-auto">
+          <div className="flex items-center justify-center gap-4">
+            {/* Previous Project (Left) */}
+            <div 
+              className="w-64 h-48 rounded-xl overflow-hidden opacity-40 cursor-pointer hover:opacity-60 transition-all duration-300"
+              onClick={() => setCurrentProject((currentProject - 1 + projects.length) % projects.length)}
+            >
+              <img
+                src={projects[(currentProject - 1 + projects.length) % projects.length].images[0]}
+                alt={projects[(currentProject - 1 + projects.length) % projects.length].title}
+                className="w-full h-full object-cover"
+              />
             </div>
 
-            {/* Auto-play indicator */}
-            {isHovering && (
-              <div className="absolute top-4 right-4 bg-card/80 backdrop-blur-sm rounded-full px-3 py-1">
-                <span className="text-sm text-muted-foreground">Auto Preview</span>
+            {/* Main Project */}
+            <div 
+              className="relative w-96 h-64 md:w-[500px] md:h-80 rounded-2xl overflow-hidden group cursor-pointer hover-glow flex-shrink-0"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+              onClick={() => setSelectedProject(project)}
+            >
+              <img
+                src={project.images[0]}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+              
+              {/* Project Info */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+                    {project.role}
+                  </Badge>
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <Users className="w-4 h-4" />
+                    {project.collaborators.length} colaborador{project.collaborators.length > 1 ? 'es' : ''}
+                  </div>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted-foreground max-w-lg">
+                  {project.description}
+                </p>
               </div>
-            )}
+            </div>
+
+            {/* Next Project (Right) */}
+            <div 
+              className="w-64 h-48 rounded-xl overflow-hidden opacity-40 cursor-pointer hover:opacity-60 transition-all duration-300"
+              onClick={() => setCurrentProject((currentProject + 1) % projects.length)}
+            >
+              <img
+                src={projects[(currentProject + 1) % projects.length].images[0]}
+                alt={projects[(currentProject + 1) % projects.length].title}
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
 
           {/* Navigation */}
