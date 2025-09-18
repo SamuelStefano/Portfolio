@@ -16,6 +16,9 @@ interface Project {
   title: string;
   role: string;
   description: string;
+  fullDescription: string;
+  features: string[];
+  challenges: string[];
   collaborators: { name: string; role: string }[];
   technologies: string[];
   images: string[];
@@ -28,11 +31,25 @@ const projects: Project[] = [
     title: 'Skill Evals',
     role: 'Creator',
     description: 'Plataforma completa para avaliação de habilidades técnicas com sistema de desafios de programação, compilação em tempo real e ranking de desenvolvedores.',
+    fullDescription: 'A Skill Evals é uma plataforma inovadora que revoluciona a forma como desenvolvedores são avaliados. Com integração à API Judge0, oferece compilação e execução de código em tempo real, suportando múltiplas linguagens de programação. O sistema inclui desafios progressivos, ranking dinâmico e análise detalhada de performance.',
+    features: [
+      'Sistema de compilação em tempo real com Judge0 API',
+      'Suporte a 40+ linguagens de programação',
+      'Ranking dinâmico baseado em performance',
+      'Dashboard administrativo completo',
+      'Sistema de badges e conquistas',
+      'Análise detalhada de código submetido'
+    ],
+    challenges: [
+      'Otimização de performance para compilação simultânea',
+      'Implementação de sistema de segurança robusto',
+      'Design de interface intuitiva para programadores'
+    ],
     collaborators: [
       { name: 'Samuel Stefano', role: 'Creator' }
     ],
     technologies: ['React', 'TypeScript', 'Node.js', 'Judge0 API', 'Supabase'],
-    images: [skillEvalsImg],
+    images: [skillEvalsImg, skillEvalsImg, skillEvalsImg, skillEvalsImg],
     links: [
       { label: 'Ver Projeto', url: '#' },
       { label: 'GitHub', url: 'https://github.com/SamuelStefano' }
@@ -43,11 +60,25 @@ const projects: Project[] = [
     title: 'Codelibrary Landing Page',
     role: 'Creator',
     description: 'Landing page moderna e responsiva para a plataforma Codelibrary, focada em conversão e experiência do usuário.',
+    fullDescription: 'Uma landing page estrategicamente desenvolvida para maximizar conversões da plataforma Codelibrary. Utilizando as mais modernas técnicas de UX/UI e otimizada para performance, a página apresenta a proposta de valor de forma clara e envolvente.',
+    features: [
+      'Design responsivo otimizado para conversão',
+      'Animações fluidas com Framer Motion',
+      'Otimização de SEO e performance',
+      'Call-to-actions estrategicamente posicionados',
+      'Integração com analytics avançados',
+      'Formulários otimizados para captura de leads'
+    ],
+    challenges: [
+      'Otimização de tempo de carregamento',
+      'Design que converte em diferentes dispositivos',
+      'Integração harmoniosa com a identidade visual'
+    ],
     collaborators: [
       { name: 'Samuel Stefano', role: 'Creator' }
     ],
     technologies: ['Next.js', 'TailwindCSS', 'Framer Motion'],
-    images: [codelibraryLandingImg],
+    images: [codelibraryLandingImg, codelibraryLandingImg, codelibraryLandingImg],
     links: [
       { label: 'Ver Site', url: '#' }
     ]
@@ -57,12 +88,26 @@ const projects: Project[] = [
     title: 'DevFellowship Website',
     role: 'Collaborator',
     description: 'Website institucional para a DevFellowship, comunidade de desenvolvedores focada em educação e networking.',
+    fullDescription: 'Website institucional completo para a DevFellowship, uma comunidade vibrante de desenvolvedores brasileiros. O projeto visa conectar profissionais da área, promover educação continuada e facilitar networking entre membros da comunidade tech.',
+    features: [
+      'Sistema de membros e perfis personalizados',
+      'Área de eventos e workshops',
+      'Blog integrado para artigos técnicos',
+      'Sistema de networking entre desenvolvedores',
+      'Dashboard administrativo para gestão',
+      'Integração com redes sociais'
+    ],
+    challenges: [
+      'Criação de identidade visual consistente',
+      'Implementação de sistema de comunidade escalável',
+      'Otimização para SEO e engajamento'
+    ],
     collaborators: [
       { name: 'Samuel Stefano', role: 'Collaborator' },
       { name: 'Tainan Fidelis', role: 'Lead Developer' }
     ],
     technologies: ['React', 'TypeScript', 'TailwindCSS'],
-    images: [devfellowshipImg],
+    images: [devfellowshipImg, devfellowshipImg, devfellowshipImg],
     links: [
       { label: 'Ver Site', url: '#' }
     ]
@@ -72,12 +117,26 @@ const projects: Project[] = [
     title: 'Codelibrary',
     role: 'Collaborator',
     description: 'Plataforma colaborativa para compartilhamento de snippets de código, bibliotecas e recursos para desenvolvedores.',
+    fullDescription: 'Plataforma colaborativa robusta que permite desenvolvedores compartilharem snippets de código, bibliotecas úteis e recursos educacionais. Com sistema de categorização avançado e busca inteligente, facilita a descoberta e reutilização de código.',
+    features: [
+      'Sistema de upload e categorização de snippets',
+      'Busca avançada com filtros por linguagem',
+      'Sistema de comentários e avaliações',
+      'Perfis de desenvolvedores com portfólio',
+      'API pública para integração',
+      'Sistema de favoritos e coleções'
+    ],
+    challenges: [
+      'Arquitetura de banco de dados escalável',
+      'Sistema de busca eficiente para código',
+      'Interface intuitiva para desenvolvedores'
+    ],
     collaborators: [
       { name: 'Samuel Stefano', role: 'Collaborator' },
       { name: 'Equipe DevFellowship', role: 'Team' }
     ],
     technologies: ['React', 'Node.js', 'Prisma', 'PostgreSQL'],
-    images: [codelibraryImg],
+    images: [codelibraryImg, codelibraryImg, codelibraryImg],
     links: [
       { label: 'Ver Plataforma', url: '#' }
     ]
@@ -87,11 +146,25 @@ const projects: Project[] = [
     title: 'Portfolio',
     role: 'Creator',
     description: 'Portfólio pessoal moderno e interativo, desenvolvido com as mais recentes tecnologias web.',
+    fullDescription: 'Portfólio pessoal desenvolvido com foco em performance, acessibilidade e experiência do usuário. Apresenta projetos de forma envolvente com animações fluidas e design responsivo, servindo como showcase de habilidades técnicas e criativas.',
+    features: [
+      'Design responsivo e moderno',
+      'Animações fluidas e interativas',
+      'Carrossel de projetos automático',
+      'Modal detalhado para cada projeto',
+      'Seção de habilidades animada',
+      'Formulário de contato funcional'
+    ],
+    challenges: [
+      'Otimização de performance com animações',
+      'Design que reflete personalidade profissional',
+      'Implementação de carrosséis suaves'
+    ],
     collaborators: [
       { name: 'Samuel Stefano', role: 'Creator' }
     ],
     technologies: ['React', 'TypeScript', 'TailwindCSS', 'Framer Motion'],
-    images: [portfolioImg],
+    images: [portfolioImg, portfolioImg, portfolioImg],
     links: [
       { label: 'Ver Código', url: 'https://github.com/SamuelStefano' }
     ]
@@ -244,60 +317,23 @@ const ProjectCarousel = () => {
 
         {/* Project Modal */}
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto bg-card border-border">
+          <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden bg-card border-border p-0">
             {selectedProject && (
-              <>
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold gradient-text">
-                    {selectedProject.title}
-                  </DialogTitle>
-                </DialogHeader>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* Project Image */}
-                  <div className="rounded-lg overflow-hidden">
-                    <img
-                      src={selectedProject.images[0]}
-                      alt={selectedProject.title}
-                      className="w-full h-64 object-cover"
-                    />
-                  </div>
-                  
-                  {/* Project Details */}
-                  <div className="space-y-4">
+              <div className="overflow-y-auto max-h-[90vh]">
+                {/* Header */}
+                <div className="sticky top-0 bg-card/95 backdrop-blur-sm border-b border-border p-6 z-10">
+                  <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="font-semibold text-foreground mb-2">Descrição</h4>
-                      <p className="text-muted-foreground">
-                        {selectedProject.description}
-                      </p>
+                      <h2 className="text-3xl font-bold gradient-text mb-2">
+                        {selectedProject.title}
+                      </h2>
+                      <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+                        {selectedProject.role}
+                      </Badge>
                     </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-2">Colaboradores</h4>
-                      <div className="space-y-1">
-                        {selectedProject.collaborators.map((collaborator, index) => (
-                          <div key={index} className="flex items-center justify-between">
-                            <span className="text-muted-foreground">{collaborator.name}</span>
-                            <Badge variant="outline">{collaborator.role}</Badge>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-2">Tecnologias</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProject.technologies.map((tech, index) => (
-                          <Badge key={index} variant="secondary">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-2 pt-4">
+                    <div className="flex gap-2">
                       {selectedProject.links.map((link, index) => (
-                        <Button key={index} asChild className="hover-glow">
+                        <Button key={index} asChild size="sm" className="hover-glow">
                           <a 
                             href={link.url} 
                             target="_blank" 
@@ -311,7 +347,101 @@ const ProjectCarousel = () => {
                     </div>
                   </div>
                 </div>
-              </>
+
+                <div className="p-6 space-y-8">
+                  {/* Hero Image */}
+                  <div className="rounded-xl overflow-hidden">
+                    <img
+                      src={selectedProject.images[0]}
+                      alt={selectedProject.title}
+                      className="w-full h-96 object-cover"
+                    />
+                  </div>
+
+                  {/* Overview Section */}
+                  <section className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">Visão Geral</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.fullDescription}
+                    </p>
+                  </section>
+
+                  {/* Features Section */}
+                  <section className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">Principais Funcionalidades</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {selectedProject.features?.map((feature, index) => (
+                        <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 border border-border/50">
+                          <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          <span className="text-sm text-muted-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* Images Gallery */}
+                  {selectedProject.images.length > 1 && (
+                    <section className="space-y-4">
+                      <h3 className="text-xl font-semibold text-foreground">Galeria do Projeto</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {selectedProject.images.slice(1).map((image, index) => (
+                          <div key={index} className="rounded-lg overflow-hidden">
+                            <img
+                              src={image}
+                              alt={`${selectedProject.title} - Screenshot ${index + 2}`}
+                              className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
+                  {/* Challenges Section */}
+                  {selectedProject.challenges && (
+                    <section className="space-y-4">
+                      <h3 className="text-xl font-semibold text-foreground">Desafios Técnicos</h3>
+                      <div className="space-y-3">
+                        {selectedProject.challenges.map((challenge, index) => (
+                          <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-accent/20 border border-accent/30">
+                            <div className="w-6 h-6 rounded-full bg-accent/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <span className="text-xs font-semibold text-accent">{index + 1}</span>
+                            </div>
+                            <span className="text-sm text-muted-foreground">{challenge}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
+                  {/* Technologies Section */}
+                  <section className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">Stack Tecnológica</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech, index) => (
+                        <Badge key={index} variant="secondary" className="px-3 py-1">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* Team Section */}
+                  <section className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">Equipe do Projeto</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {selectedProject.collaborators.map((collaborator, index) => (
+                        <div key={index} className="p-4 rounded-lg bg-card border border-border hover:border-primary/30 transition-colors">
+                          <div className="flex items-center justify-between">
+                            <span className="font-medium text-foreground">{collaborator.name}</span>
+                            <Badge variant="outline" className="text-xs">{collaborator.role}</Badge>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                </div>
+              </div>
             )}
           </DialogContent>
         </Dialog>
