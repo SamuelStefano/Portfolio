@@ -108,6 +108,7 @@ export default {
         "pulse-glow": {
           "0%, 100%": { boxShadow: "var(--glow-primary)" },
           "50%": { boxShadow: "var(--glow-accent)" },
+          "100%": { boxShadow: "var(--glow-primary)" },
         },
         "gradient-shift": {
           "0%, 100%": { backgroundPosition: "0% 50%" },
@@ -121,6 +122,7 @@ export default {
           "0%": { transform: "scale(0.95)", opacity: "0" },
           "100%": { transform: "scale(1)", opacity: "1" },
         },
+        
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

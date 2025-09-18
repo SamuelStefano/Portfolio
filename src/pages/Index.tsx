@@ -1,22 +1,19 @@
 import { useEffect } from 'react';
-import Header from '@/components/Header';
-import ProjectCarousel from '@/components/ProjectCarousel';
-import ProjectGrid from '@/components/ProjectGrid';
-import TechStack from '@/components/TechStack';
-import About from '@/components/About';
-import Footer from '@/components/Footer';
+import { Header } from '@/components/organisms/Header';
+import { ProjectCarousel } from '@/components/organisms/ProjectCarousel';
+import { ProjectGrid } from '@/components/organisms/ProjectGrid';
+import { TechStack } from '@/components/organisms/TechStack';
+import { About } from '@/components/organisms/About';
+import { Footer } from '@/components/organisms/Footer';
 
 const Index = () => {
   useEffect(() => {
-    // Update document title and meta description for SEO
     document.title = 'Samuel Stefano - Full-Stack Developer | Portfolio';
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Portfolio de Samuel Stefano, desenvolvedor full-stack especializado em React, TypeScript, Node.js. Projetos modernos e soluções digitais inovadoras.');
     }
-
-    // Add structured data for SEO
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -49,28 +46,17 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Header/Hero Section */}
       <Header />
-      
-      {/* Projects Carousel */}
       <section id="projetos">
         <ProjectCarousel />
       </section>
-      
-      {/* Projects Grid */}
       <ProjectGrid />
-      
-      {/* Tech Stack & Experience */}
       <section id="habilidades">
         <TechStack />
       </section>
-      
-      {/* About Section */}
       <section id="sobre">
         <About />
       </section>
-      
-      {/* Footer */}
       <section id="contato">
         <Footer />
       </section>

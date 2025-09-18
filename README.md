@@ -1,73 +1,166 @@
-# Welcome to your Lovable project
+# Portfolio Samuel Stefano
 
-## Project info
+Portfólio pessoal moderno e responsivo desenvolvido com React, TypeScript e TailwindCSS, seguindo a metodologia Atomic Design.
 
-**URL**: https://lovable.dev/projects/b4e30aee-7926-4155-8026-329ccea3a4ae
+## 🚀 Tecnologias
 
-## How can I edit this code?
+- **React 18** - Biblioteca para interfaces de usuário
+- **TypeScript** - Superset do JavaScript com tipagem estática
+- **TailwindCSS** - Framework CSS utilitário
+- **Lucide React** - Biblioteca de ícones
+- **Supabase** - Backend-as-a-Service
+- **Vite** - Build tool e dev server
 
-There are several ways of editing your application.
+## 📁 Estrutura do Projeto
 
-**Use Lovable**
+O projeto segue a metodologia **Atomic Design** para organização dos componentes:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b4e30aee-7926-4155-8026-329ccea3a4ae) and start prompting.
+```
+src/
+├── components/
+│   ├── atoms/           # Componentes básicos e reutilizáveis
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── dialog.tsx
+│   │   ├── badge.tsx
+│   │   ├── tooltip.tsx
+│   │   ├── Icon.tsx
+│   │   ├── Heading.tsx
+│   │   └── Text.tsx
+│   ├── molecules/       # Combinações de atoms
+│   │   ├── SocialLink.tsx
+│   │   ├── ProjectCard.tsx
+│   │   ├── SkillBar.tsx
+│   │   └── ExperienceItem.tsx
+│   └── organisms/       # Componentes complexos
+│       ├── Header.tsx
+│       ├── ProjectCarousel.tsx
+│       ├── ProjectGrid.tsx
+│       ├── TechStack.tsx
+│       ├── About.tsx
+│       └── Footer.tsx
+├── lib/
+│   ├── utils.ts
+│   └── supabase.ts
+├── pages/
+│   ├── Index.tsx
+│   └── NotFound.tsx
+└── hooks/
+    └── use-mobile.tsx
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🎨 Atomic Design
 
-**Use your preferred IDE**
+### Atoms
+Componentes básicos e indivisíveis que formam a base da interface:
+- **Button** - Botões com diferentes variantes
+- **Card** - Containers para conteúdo
+- **Dialog** - Modais e popups
+- **Badge** - Etiquetas e tags
+- **Icon** - Wrapper para ícones do Lucide
+- **Heading** - Títulos com diferentes níveis
+- **Text** - Texto com diferentes variantes
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Molecules
+Combinações de atoms que formam componentes funcionais:
+- **SocialLink** - Links para redes sociais
+- **ProjectCard** - Card para exibir projetos
+- **SkillBar** - Barra de progresso para habilidades
+- **ExperienceItem** - Item de experiência profissional
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Organisms
+Componentes complexos que formam seções completas:
+- **Header** - Cabeçalho com informações pessoais
+- **ProjectCarousel** - Carrossel de projetos em destaque
+- **ProjectGrid** - Grid com todos os projetos
+- **TechStack** - Seção de habilidades e experiência
+- **About** - Seção sobre mim
+- **Footer** - Rodapé com informações de contato
 
-Follow these steps:
+## 🛠️ Instalação e Execução
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone o repositório:
+```bash
+git clone <repository-url>
+cd portfolio-samuel-stefano
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Instale as dependências:
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Configure as variáveis de ambiente:
+```bash
+# Crie um arquivo .env.local na raiz do projeto
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Configure o banco de dados Supabase:
+```sql
+-- Crie o schema portfolio
+CREATE SCHEMA portfolio;
+
+-- Tabela de usuários
+CREATE TABLE portfolio.users (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  email text UNIQUE,
+  role text DEFAULT 'owner'::text,
+  photo_url text,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT users_pkey PRIMARY KEY (id)
+);
+
+-- Tabela de projetos
+CREATE TABLE portfolio.projects (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  description text,
+  stack ARRAY,
+  collaborators jsonb,
+  images ARRAY,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT projects_pkey PRIMARY KEY (id)
+);
+```
+
+5. Execute o projeto em modo de desenvolvimento:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+6. Para build de produção:
+```bash
+npm run build
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Dependências Principais
 
-**Use GitHub Codespaces**
+- `@supabase/supabase-js` - Cliente Supabase
+- `lucide-react` - Ícones
+- `react-router-dom` - Roteamento
+- `@radix-ui/react-*` - Componentes acessíveis
+- `tailwindcss` - Estilização
+- `class-variance-authority` - Variantes de componentes
+- `clsx` - Utilitário para classes CSS
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🎯 Próximos Passos
 
-## What technologies are used for this project?
+- [ ] Integração com Storybook para documentação de componentes
+- [ ] Configuração do Supabase para dados dinâmicos
+- [ ] Implementação de testes unitários
+- [ ] Otimização de performance
+- [ ] PWA (Progressive Web App)
 
-This project is built with:
+## 📄 Licença
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-## How can I deploy this project?
+## 👨‍💻 Autor
 
-Simply open [Lovable](https://lovable.dev/projects/b4e30aee-7926-4155-8026-329ccea3a4ae) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Samuel Stefano Teixeira do Carmo**
+- GitHub: [@SamuelStefano](https://github.com/SamuelStefano)
+- LinkedIn: [samuel-stefano](https://linkedin.com/in/samuel-stefano)
+- Email: samuel@example.com

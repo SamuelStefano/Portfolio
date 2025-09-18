@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Samuel's Portfolio Design System - Modern & Professional */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
@@ -166,6 +166,24 @@
     50% { transform: translateY(-10px); }
   }
   
+  @keyframes gentle-float {
+    0%, 100% { 
+      transform: translateY(0px) scale(1); 
+    }
+    50% { 
+      transform: translateY(-8px) scale(1.02); 
+    }
+  }
+  
+  @keyframes smooth-hover {
+    0% { 
+      transform: scale(1); 
+    }
+    100% { 
+      transform: scale(1.1); 
+    }
+  }
+  
   @keyframes pulse-glow {
     0%, 100% { box-shadow: var(--glow-primary); }
     50% { box-shadow: var(--glow-accent); }
@@ -179,6 +197,20 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+  
+  .animate-gentle-float {
+    animation: gentle-float 4s ease-in-out infinite;
+  }
+  
+  .hover-smooth-scale {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-smooth-scale:hover {
+    transform: scale(1.1);
+    animation-play-state: paused;
+  }
+  
   
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
