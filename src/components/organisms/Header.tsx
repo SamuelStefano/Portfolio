@@ -2,7 +2,6 @@ import { Github, Linkedin, Instagram, Mail, Phone } from 'lucide-react';
 import { SocialLink } from '@/components/molecules/SocialLink';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
-import { useUser } from '@/hooks/useUser';
 
 const socialLinks = [
   {
@@ -33,9 +32,6 @@ const socialLinks = [
 ];
 
 export const Header = () => {
-  const { user, loading, error } = useUser();
-
-  if (loading) return <p>Carregando...</p>;
 
   return (
     <header className="relative w-full py-20 px-6 min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-card overflow-hidden">
@@ -46,7 +42,7 @@ export const Header = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto mt-14">
         <div className="mb-8 animate-slide-up">
           <Heading level={1} className="mb-4 font-inter">
-            <span className="gradient-text">{user?.name || 'Samuel Stefano'}</span>
+            <span className="gradient-text">Samuel Stefano</span>
           </Heading>
           <Text variant="large" className="font-medium tracking-wide">
             Full-Stack Developer
@@ -77,17 +73,11 @@ export const Header = () => {
 
         <div className="mt-32 mb-8 relative z-20 animate-float hover-smooth-scale" style={{ animationDelay: '0.6s' }}>
           <div className="w-[400px] h-[400px] mx-auto rounded-full overflow-hidden border-4 border-primary/30 hover:border-primary/60 transition-all duration-500 hover-glow bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center group">
-            {user?.photo_url ? (
-              <img 
-                src={user.photo_url} 
-                alt={user.name}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="text-4xl font-bold text-primary">
-                {user?.name ? user.name.split(' ').map(n => n[0]).join('') : 'SS'}
-              </span>
-            )}
+            <img 
+              src="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/imagem%20profissional.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9pbWFnZW0gcHJvZmlzc2lvbmFsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.IobSgu4JA84a7JH4l_SRZxkZZ8qCpS7oQ4PfwhlEut0" 
+              alt="Samuel Stefano"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 

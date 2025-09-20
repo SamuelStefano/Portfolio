@@ -7,6 +7,7 @@ import { Badge } from '@/components/atoms/badge';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
+import { ProjectOverlay } from './ProjectOverlay';
 import { useProjects } from '@/hooks/useProjects';
 import { getIconComponent } from '@/utils/iconResolver';
 import { Project } from '@/types/project';
@@ -125,6 +126,9 @@ export const ProjectCarousel = () => {
         <div className="text-center">
           <Text variant="large" className="text-muted-foreground">
             Nenhum projeto encontrado
+          </Text>
+          <Text variant="small" className="text-muted-foreground mt-2">
+            Dica: ative VITE_INCLUDE_AUTO_DISCOVERED=true no .env para mostrar projetos do Storage.
           </Text>
         </div>
       </div>
@@ -417,220 +421,12 @@ export const ProjectCarousel = () => {
           </div>
         </div>
 
-        {/* Enhanced Project Modal */}
-        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-7xl max-h-[95vh] w-[95vw] p-0 overflow-hidden">
-            {selectedProject && (
-              <div className="flex flex-col h-full">
-                {/* Header */}
-                <div className="p-6 border-b border-border bg-gradient-to-r from-primary/5 to-primary/10">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center">
-                        {(() => {
-                          const ModalIconComponent = getIconComponent(selectedProject.icon_name as any);
-                          return <ModalIconComponent className="w-8 h-8 text-primary" />;
-                        })()}
-                      </div>
-                      <div>
-                        <DialogTitle className="text-3xl font-bold mb-2">
-                          {selectedProject.title}
-                        </DialogTitle>
-                        <div className="flex items-center gap-3">
-                          <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
-                            {selectedProject.role}
-                          </Badge>
-                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                            <Icon icon={Users} size="sm" />
-                            {selectedProject.project_collaborators.length} colaborador{selectedProject.project_collaborators.length > 1 ? 'es' : ''}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setSelectedProject(null)}
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      <Icon icon={X} size="sm" />
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 overflow-y-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-                    {/* Main Content */}
-                    <div className="lg:col-span-2 space-y-6">
-                      {/* Description */}
-                      <div>
-                        <Heading level={4} className="mb-3 text-xl">Sobre o Projeto</Heading>
-                        <Text className="text-muted-foreground leading-relaxed">
-                          {selectedProject.long_description || selectedProject.description}
-                        </Text>
-                      </div>
-
-                      {/* Image Gallery */}
-                      {selectedProject.image_categories && Object.keys(selectedProject.image_categories).length > 0 && (
-                        <div className="space-y-6">
-                          <Heading level={4} className="text-xl">Galeria de Imagens</Heading>
-                          {Object.entries(selectedProject.image_categories).map(([category, images]) => (
-                            <div key={category} className="space-y-3">
-                              <Heading level={5} className="text-lg font-semibold capitalize text-primary">
-                                {category === 'thumb' ? 'Thumbnail' : category}
-                              </Heading>
-                              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                {images.map((imageUrl, index) => (
-                                  <div
-                                    key={index}
-                                    className="relative group cursor-pointer rounded-lg overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105"
-                                    onClick={() => {
-                                      const modal = document.createElement('div');
-                                      modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
-                                      modal.innerHTML = `
-                                        <div class="relative max-w-4xl max-h-[90vh] w-full">
-                                          <img src="${imageUrl}" alt="${selectedProject.title} - ${category} ${index + 1}" class="w-full h-full object-contain rounded-lg" />
-                                          <button onclick="this.parentElement.parentElement.remove()" class="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 transition-colors">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                          </button>
-                                        </div>
-                                      `;
-                                      document.body.appendChild(modal);
-                                      modal.onclick = (e) => {
-                                        if (e.target === modal) modal.remove();
-                                      };
-                                    }}
-                                  >
-                                    <img
-                                      src={imageUrl}
-                                      alt={`${selectedProject.title} - ${category} ${index + 1}`}
-                                      className="w-full h-32 object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                                          </svg>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Fallback para thumbnail se não houver categorias */}
-                      {(!selectedProject.image_categories || Object.keys(selectedProject.image_categories).length === 0) && selectedProject.thumbnail_url && (
-                        <div className="space-y-3">
-                          <Heading level={4} className="text-xl">Imagem do Projeto</Heading>
-                          <div className="relative group cursor-pointer rounded-lg overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105"
-                               onClick={() => {
-                                 const modal = document.createElement('div');
-                                 modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
-                                 modal.innerHTML = `
-                                   <div class="relative max-w-4xl max-h-[90vh] w-full">
-                                     <img src="${selectedProject.thumbnail_url}" alt="${selectedProject.title}" class="w-full h-full object-contain rounded-lg" />
-                                     <button onclick="this.parentElement.parentElement.remove()" class="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 transition-colors">
-                                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                       </svg>
-                                     </button>
-                                   </div>
-                                 `;
-                                 document.body.appendChild(modal);
-                                 modal.onclick = (e) => {
-                                   if (e.target === modal) modal.remove();
-                                 };
-                               }}>
-                            <img
-                              src={selectedProject.thumbnail_url}
-                              alt={selectedProject.title}
-                              className="w-full h-64 object-cover"
-                            />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                                  </svg>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Sidebar */}
-                    <div className="space-y-6">
-                      {/* Technologies */}
-                      <div>
-                        <Heading level={4} className="mb-3 text-lg">Tecnologias</Heading>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedProject.stack.map((tech) => (
-                            <Badge key={tech} variant="secondary" className="bg-primary/20 text-primary border-primary/30 hover:bg-primary/30 transition-colors">
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Collaborators */}
-                      {selectedProject.project_collaborators.length > 0 && (
-                        <div>
-                          <Heading level={4} className="mb-3 text-lg">Colaboradores</Heading>
-                          <div className="space-y-2">
-                            {selectedProject.project_collaborators.map((collaborator) => (
-                              <div key={collaborator.id} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border">
-                                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                                  <Icon icon={Users} size="sm" className="text-primary" />
-                                </div>
-                                <div>
-                                  <Text className="font-medium">{collaborator.name}</Text>
-                                  <Text className="text-sm text-muted-foreground">{collaborator.role}</Text>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Links */}
-                      {selectedProject.project_links.length > 0 && (
-                        <div>
-                          <Heading level={4} className="mb-3 text-lg">Links</Heading>
-                          <div className="space-y-2">
-                            {selectedProject.project_links.map((link) => (
-                              <a
-                                key={link.id}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
-                              >
-                                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                                  <Icon icon={ExternalLink} size="sm" className="text-primary" />
-                                </div>
-                                <Text className="font-medium group-hover:text-primary transition-colors">{link.label}</Text>
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+        {/* Project Overlay */}
+        <ProjectOverlay 
+          project={selectedProject} 
+          isOpen={!!selectedProject} 
+          onClose={() => setSelectedProject(null)} 
+        />
       </div>
     </section>
   );

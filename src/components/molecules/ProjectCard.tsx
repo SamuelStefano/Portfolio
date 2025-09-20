@@ -5,18 +5,8 @@ import { Button } from '@/components/atoms/button';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
-
-interface Project {
-  id: number;
-  title: string;
-  role: string;
-  shortDescription: string;
-  collaborators: { name: string; role: string }[];
-  stack: string[];
-  icon: React.ComponentType<any>;
-  links: { label: string; url: string }[];
-  category: string;
-}
+import { Project } from '@/types/project';
+import { getIconComponent } from '@/utils/iconResolver';
 
 interface ProjectCardProps {
   project: Project;
@@ -25,15 +15,31 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ project, onProjectClick, isHovered = false }: ProjectCardProps) => {
+  const IconComponent = getIconComponent(project.icon_name);
+
   return (
     <Card
       className="group bg-card border-border hover:border-primary/50 transition-all duration-300 hover-glow cursor-pointer overflow-hidden"
       onClick={() => onProjectClick(project)}
     >
       <div className="relative h-48 overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
-          <Icon icon={project.icon} className="w-16 h-16 text-primary" />
-        </div>
+        {project.thumbnail_url ? (
+          <div className="w-full h-full relative">
+            <img 
+              src={project.thumbnail_url} 
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/20" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <IconComponent className="w-16 h-16 text-primary/80" />
+            </div>
+          </div>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
+            <IconComponent className="w-16 h-16 text-primary" />
+          </div>
+        )}
         
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -46,11 +52,16 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
           </Button>
         </div>
         
-        {/* Category Badge */}
-        <div className="absolute top-3 left-3">
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex gap-2">
           <Badge variant="secondary" className="bg-card/80 backdrop-blur-sm">
-            {project.category}
+            {project.role}
           </Badge>
+          {project.auto_discovered && (
+            <Badge variant="secondary" className="bg-amber-100 text-amber-700">
+              Auto-descoberto
+            </Badge>
+          )}
         </div>
       </div>
 
@@ -61,7 +72,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
           </Badge>
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
             <Icon icon={Users} size="sm" />
-            {project.collaborators.length}
+            {project.project_collaborators.length}
           </div>
         </div>
 
@@ -70,7 +81,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
         </Heading>
         
         <Text className="mb-4 line-clamp-2">
-          {project.shortDescription}
+          {project.description}
         </Text>
 
         {/* Tech Stack Preview */}
@@ -89,7 +100,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
 
         {/* Quick Actions */}
         <div className="flex gap-2">
-          {project.links.slice(0, 1).map((link, index) => (
+          {project.project_links.slice(0, 1).map((link, index) => (
             <Button
               key={index}
               variant="outline"

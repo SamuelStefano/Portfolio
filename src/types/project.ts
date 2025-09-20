@@ -17,7 +17,25 @@ export interface ProjectImage {
   id: string;
   image_url: string;
   order_index: number;
-  created_at: string;
+  created_at?: string;
+}
+
+export interface ProjectImageFolder {
+  folder_name: string;
+  display_name: string;
+  description: string;
+  icon_name: string;
+  images: ProjectImage[];
+  order_index: number;
+}
+
+export interface ProjectSection {
+  id: string;
+  folder_name: string;
+  display_name: string;
+  description: string | null;
+  order_index: number;
+  project_images: ProjectImage[];
 }
 
 export interface Project {
@@ -29,12 +47,18 @@ export interface Project {
   stack: string[];
   thumbnail_url?: string;
   icon_name: string;
+  // Caminho no Storage que representa este projeto, ex: "challenges/Skill Evals"
+  storage_path?: string;
+  // Categorias de imagens extraídas do Storage: { admin: [urls...], dashboard: [urls...] }
   image_categories?: Record<string, string[]>;
+  project_sections?: ProjectSection[];
+  image_folders?: ProjectImageFolder[];
   created_at: string;
   updated_at: string;
   project_collaborators: ProjectCollaborator[];
   project_links: ProjectLink[];
-  project_images: ProjectImage[];
+  // Marcador para itens vindos apenas do Storage (sem linha no DB)
+  auto_discovered?: boolean;
 }
 
 // Tipo para o ícone Lucide (apenas ícones que existem no Lucide React)

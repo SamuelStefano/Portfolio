@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Project } from '../types/project';
 import { getProjectsFromDB } from '../lib/getProjectsFromDB';
+import { supabase } from '../lib/supabaseclient';
 
 export const useProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Removido: as seções/imagens vêm de getProjectsFromDB (image_categories)
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
         setError(null);
+
         const data = await getProjectsFromDB();
         setProjects(data);
       } catch (err) {
@@ -29,6 +33,7 @@ export const useProjects = () => {
     try {
       setLoading(true);
       setError(null);
+
       const data = await getProjectsFromDB();
       setProjects(data);
     } catch (err) {
