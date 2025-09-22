@@ -40,11 +40,8 @@ export const ProjectGrid = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Heading level={2} className="mb-4 gradient-text">
-            Todos os Projetos
+          Explore todos os meus trabalhos e contribuições
           </Heading>
-          <Text variant="large" className="max-w-2xl mx-auto">
-            Explore todos os meus trabalhos e contribuições
-          </Text>
         </div>
 
         {/* Projects Grid */}

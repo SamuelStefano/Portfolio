@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu } from 'lucide-react';
+import { Code, Database, Server, Globe, Cpu, Brain } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem';
 import { Icon } from '@/components/atoms/Icon';
@@ -17,10 +17,10 @@ const techCategories: TechCategory[] = [
     title: 'Frontend',
     icon: Globe,
     skills: [
-      { name: 'React', level: 90 },
-      { name: 'TypeScript', level: 85 },
+      { name: 'React', level: 80 },
+      { name: 'TypeScript', level: 90 },
       { name: 'Next.js', level: 80 },
-      { name: 'TailwindCSS', level: 95 }
+      { name: 'TailwindCSS', level: 100 }
     ],
     color: 'neon-blue'
   },
@@ -30,8 +30,7 @@ const techCategories: TechCategory[] = [
     skills: [
       { name: 'Node.js', level: 80 },
       { name: 'NestJS', level: 75 },
-      { name: 'Prisma', level: 85 },
-      { name: 'n8n', level: 70 }
+      { name: 'Delphi', level: 40 }
     ],
     color: 'neon-purple'
   },
@@ -40,8 +39,10 @@ const techCategories: TechCategory[] = [
     icon: Database,
     skills: [
       { name: 'Supabase', level: 85 },
-      { name: 'PostgreSQL', level: 75 },
-      { name: 'MySQL', level: 70 }
+      { name: 'PostgreSQL', level: 70 },
+      { name: 'MySQL', level: 70 },
+      { name: 'Prisma', level: 40 },
+      { name: 'Firebird', level: 20 }
     ],
     color: 'neon-cyan'
   },
@@ -49,44 +50,63 @@ const techCategories: TechCategory[] = [
     title: 'DevOps & Tools',
     icon: Cpu,
     skills: [
-      { name: 'Docker', level: 70 },
-      { name: 'Linux/Ubuntu', level: 80 },
-      { name: 'WSL', level: 85 },
+      { name: 'Docker', level: 80 },
+      { name: 'VPS', level: 70 },
+      { name: 'WSL', level: 70 },
       { name: 'Git', level: 90 }
     ],
     color: 'accent'
-  }
+  },
+  {
+    title: 'Engenharia de Software',
+    icon: Brain,
+    skills: [
+      { name: 'Figma', level: 60 },
+      { name: 'Miro', level: 80 },
+      { name: 'Documentação', level: 100 },
+      { name: 'Testes', level: 100 },
+      { name: 'Arquitetura', level: 80 },
+      { name: 'CI/CD', level: 100 },
+      { name: 'MVPs', level: 100 },
+    ],
+    color: 'neon-green'
+  },
+  {
+    title: 'Outros',
+    icon: Code,
+    skills: [
+      { name: 'Linux/Ubuntu', level: 70 },
+      { name: 'Vercel', level: 80 },
+      { name: 'n8n', level: 10 }
+    ],
+    color: 'neon-green'
+  },
 ];
 
 const experienceData = [
   {
+    company: 'Prefeitura de Marialva',
+    role: 'Suporte Técnico',
+    period: 'Fevereiro 2023 - Dezembro 2024',
+    description: 'Suporte Técinico, atendendo órgãos públicos do municipio em relação a informática.',
+    stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais']
+  },
+
+  {
     company: 'DevFellowship',
     role: 'Desenvolvedor Full-Stack',
-    period: '2023 - Presente',
+    period: 'Julho 2024 - Presente',
     description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase']
+    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs',]
   },
   {
     company: 'M&M Informática',
     role: 'Suporte Técnico & Desenvolvedor',
-    period: '2022 - 2023',
+    period: 'Dezembro 2024 - atualmente',
     description: 'Suporte técnico especializado e desenvolvimento de sistemas para automação de notas fiscais eletrônicas.',
-    stack: ['JavaScript', 'Automação', 'APIs', 'Sistemas Fiscais']
+    stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Suporte Técnico']
   },
-  {
-    company: 'Freelancer',
-    role: 'Desenvolvedor Web',
-    period: '2021 - 2022',
-    description: 'Desenvolvimento de sites e aplicações web para pequenas empresas e projetos pessoais.',
-    stack: ['HTML', 'CSS', 'JavaScript', 'WordPress', 'PHP']
-  },
-  {
-    company: 'Prefeitura de Marialva',
-    role: 'Suporte Técnico',
-    period: '2020 - 2021',
-    description: 'Suporte Técinico, atendendo órgãos públicos do municipio em relação a informática.',
-    stack: ['Suporte Técnico', 'Informação']
-  }
+
 ];
 
 const additionalSkills = [
@@ -95,21 +115,29 @@ const additionalSkills = [
   'Responsive Design',
   'UI/UX Design',
   'Automação',
-  'Notas Fiscais Eletrônicas',
+  'Banco de Dados',
   'Suporte Técnico',
-  'Inglês B2',
+  'Frontend',
+  'Backend',
+  'Banco de Dados',
   'Trabalho em Equipe',
   'Metodologias Ágeis',
   'Resolução de Problemas',
   'Comprometimento',
   'Criatividade',
-  'Frontend',
-  'Backend',
-  'Banco de Dados',
   'Git & GitHub',
   'Linux',
   'DevOps',
-  'API Development'
+  'API Development',
+  'Inteligência Artificial',
+  'Arquitetura de Software',
+  'Docker',
+  'VPS',
+  'WSL',
+  'Vercel',
+  'n8n',
+  'Comprometimento'
+
 ];
 
 export const TechStack = () => {
@@ -126,7 +154,7 @@ export const TechStack = () => {
         </div>
 
         {/* Tech Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-3 gap-8 mb-16">
           {techCategories.map((category, categoryIndex) => {
             const IconComponent = category.icon;
             return (

@@ -200,7 +200,7 @@ const ProjectCarousel = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
-            Projetos em Destaque
+            Projetos
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Uma seleção dos meus trabalhos mais recentes e impactantes
