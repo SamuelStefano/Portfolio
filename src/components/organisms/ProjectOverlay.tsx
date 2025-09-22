@@ -25,6 +25,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/atoms/tab
 import { Project } from '@/types/project';
 import { getSectionMetadata } from '@/lib/sectionMetadata';
 import { getIconComponent } from '@/utils/iconResolver';
+import { ImageCarousel } from '@/components/molecules/ImageCarousel';
 
 interface ProjectOverlayProps {
   project: Project | null;
@@ -55,23 +56,61 @@ const getSectionIcon = (name: string) => {
 };
 
 export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen, onClose }) => {
+  const [imageModalOpen, setImageModalOpen] = React.useState(false);
+  const [modalImageUrl, setModalImageUrl] = React.useState('');
+
   // Bloqueia scroll da página principal
   useEffect(() => {
     if (isOpen) {
+      // Bloqueia scroll do body
       document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+      
+      // Previne scroll apenas fora do overlay
+      const preventScroll = (e: Event) => {
+        const target = e.target as Element;
+        const overlayContent = document.querySelector('[data-overlay-content]');
+        
+        // Permite scroll se estiver dentro do overlay
+        if (overlayContent && overlayContent.contains(target)) {
+          return;
+        }
+        
+        // Previne scroll fora do overlay
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      };
+      
+      document.addEventListener('wheel', preventScroll, { passive: false });
+      document.addEventListener('touchmove', preventScroll, { passive: false });
+      
+      return () => {
+        document.body.style.overflow = "unset";
+        document.body.style.position = "unset";
+        document.body.style.width = "unset";
+        document.removeEventListener('wheel', preventScroll);
+        document.removeEventListener('touchmove', preventScroll);
+      };
     } else {
       document.body.style.overflow = "unset";
+      document.body.style.position = "unset";
+      document.body.style.width = "unset";
     }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
   }, [isOpen]);
 
-  // Fecha overlay com ESC
+  // Fecha overlay com ESC (mas prioriza fechar modal de imagem se estiver aberto)
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isOpen) {
-        onClose();
+        // Se modal de imagem estiver aberto, fecha apenas ele
+        if (imageModalOpen) {
+          setImageModalOpen(false);
+        } else {
+          // Senão, fecha o overlay
+          onClose();
+        }
       }
     };
 
@@ -82,7 +121,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, imageModalOpen, onClose]);
 
   if (!isOpen || !project) return null;
 
@@ -97,9 +136,11 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
       }
     ];
 
-    // Adicionar seções baseadas nas image_categories
+    // Adicionar seções baseadas nas image_categories (filtrar thumbnail)
     if (project.image_categories && Object.keys(project.image_categories).length > 0) {
-      Object.keys(project.image_categories).forEach(category => {
+      Object.keys(project.image_categories)
+        .filter(category => !['thumb', 'thumbnail'].includes(category.toLowerCase())) // Filtrar thumbnails
+        .forEach(category => {
         // Mapear nomes das pastas para nomes mais bonitos
         const displayNames: Record<string, string> = {
           'admin': 'Painel Administrativo',
@@ -107,8 +148,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
           'create': 'Criação',
           'dashboard': 'Dashboard',
           'login': 'Autenticação',
-          'others': 'Outros',
-          'thumb': 'Thumbnail'
+          'others': 'Outros'
         };
         
         const displayName = displayNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
@@ -138,38 +178,41 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
       >
         {/* Modal Container */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
-          className="bg-background rounded-2xl border border-border shadow-2xl w-full max-w-6xl h-[90vh] flex flex-col overflow-hidden"
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="bg-background rounded-2xl border border-border shadow-2xl w-full max-w-[90%] h-[95%] flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-border bg-background/95 backdrop-blur-sm">
-            <div>
-              <Heading level={2} className="text-2xl font-bold gradient-text">
-                {project.title}
-              </Heading>
-              <Text variant="small" className="text-muted-foreground">
-                {project.role}
-              </Text>
+          {/* Header - Fixo */}
+          <div className="sticky top-0 z-50 flex-shrink-0 p-6 border-b border-border bg-background shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="flex-1 text-center">
+                <Heading level={2} className="text-2xl font-bold gradient-text">
+                  Projeto: {project.title}
+                </Heading>
+                <Text variant="small" className="text-muted-foreground">
+                  {project.role}
+                </Text>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onClose}
+                className="hover:bg-destructive/10 hover:text-destructive absolute right-6"
+              >
+                <X className="w-5 h-5" />
+              </Button>
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onClose}
-              className="hover:bg-destructive/10 hover:text-destructive"
-            >
-              <X className="w-5 h-5" />
-            </Button>
           </div>
 
           {/* Conteúdo scrollável */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto" data-overlay-content>
+            <div className="p-6">
             {/* Tabs = Seções */}
             <Tabs defaultValue={sections[0]?.id || "overview"} className="w-full">
-              <TabsList className="flex flex-wrap gap-2 mb-6">
+              <TabsList className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border pb-4 mb-6 flex flex-wrap gap-2">
                 {sections.map((section) => (
                   <TabsTrigger key={section.id} value={section.id}>
                     {section.name}
@@ -181,13 +224,30 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
               <TabsContent value="overview">
                 <div className="space-y-6">
                   {project.thumbnail_url && (
-                    <div className="rounded-xl overflow-hidden h-64">
-                      <img
-                        src={project.thumbnail_url}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
+                    <div className="w-full">
+                      <div 
+                        className="relative rounded-xl overflow-hidden bg-card border border-border cursor-pointer hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] group"
+                        onClick={() => {
+                          setModalImageUrl(project.thumbnail_url!);
+                          setImageModalOpen(true);
+                        }}
+                      >
+                        <img 
+                          src={project.thumbnail_url} 
+                          alt={project.title}
+                          className="w-full object-contain"
+                          // 🖼️ TAMANHO IMAGEM VISÃO GERAL: w-full h-[50vh] (100% width, 50% viewport height)
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
                   
@@ -196,7 +256,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
                     {project.long_description || project.description}
                   </Text>
 
-                  {/* Stack de Tecnologias */}
+                  {/* Tecnologias mantidas apenas na Visão Geral (já está aqui) */}
                   {project.stack && project.stack.length > 0 && (
                     <div className="space-y-4">
                       <Heading level={3} className="text-xl">Tecnologias</Heading>
@@ -237,7 +297,9 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
               </TabsContent>
 
         {/* Seções dinâmicas (baseadas nas image_categories do bucket) */}
-        {project.image_categories && Object.entries(project.image_categories).map(([category, images]) => {
+        {project.image_categories && Object.entries(project.image_categories)
+          .filter(([category]) => !['thumb', 'thumbnail'].includes(category.toLowerCase())) // Filtrar thumbnails
+          .map(([category, images]) => {
           const displayNames: Record<string, string> = {
             'admin': 'Painel Administrativo',
             'challenge': 'Desafios',
@@ -255,7 +317,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
             <TabsContent key={category} value={category}>
               <div className="space-y-6">
                 {/* Header da Seção */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-8 px-3">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                     {getSectionIcon(category)}
                   </div>
@@ -267,53 +329,18 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
                   </Text>
                 </div>
 
-                {/* Grid de Imagens */}
+                {/* Carrossel por seção (maior, com autoplay) */}
                 {images && images.length > 0 && (
                   <div className="space-y-6">
-                    <Heading level={3} className="text-2xl font-semibold text-center">
-                      Galeria de Imagens ({images.length})
-                    </Heading>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                      {images.map((imageUrl, index) => (
-                        <div
-                          key={index}
-                          className="relative group cursor-pointer rounded-lg overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105"
-                          onClick={() => {
-                            const modal = document.createElement('div');
-                            modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-4';
-                            modal.innerHTML = `
-                              <div class="relative max-w-4xl max-h-[90vh] w-full">
-                                <img src="${imageUrl}" alt="${displayName} ${index + 1}" class="w-full h-full object-contain rounded-lg" />
-                                <button onclick="this.parentElement.parentElement.remove()" class="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 transition-colors">
-                                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                  </svg>
-                                </button>
-                              </div>
-                            `;
-                            document.body.appendChild(modal);
-                            modal.onclick = (e) => {
-                              if (e.target === modal) modal.remove();
-                            };
-                          }}
-                        >
-                          <img
-                            src={imageUrl}
-                            alt={`${displayName} ${index + 1}`}
-                            className="w-full h-32 object-cover"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                                </svg>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <ImageCarousel 
+                      images={images} 
+                      title={displayName}
+                      onImageClick={(imageUrl) => {
+                        console.log('📸 Callback recebido no ProjectOverlay:', imageUrl);
+                        setModalImageUrl(imageUrl);
+                        setImageModalOpen(true);
+                      }}
+                    />
                   </div>
                 )}
 
@@ -326,19 +353,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
                   <Text className="text-muted-foreground leading-relaxed mb-4">
                     {meta.description}
                   </Text>
-                  {/* Tecnologias */}
-                  {meta.technologies && meta.technologies.length > 0 && (
-                    <div className="mb-4">
-                      <Heading level={4} className="text-lg font-semibold mb-2">Tecnologias</Heading>
-                      <div className="flex flex-wrap gap-2">
-                        {meta.technologies.map((tech, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <Image className="w-4 h-4" />
@@ -355,8 +369,43 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
           );
         })}
             </Tabs>
+            </div>
           </div>
         </motion.div>
+
+        {/* Modal de Imagem */}
+        <AnimatePresence>
+          {imageModalOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
+              onClick={() => setImageModalOpen(false)}
+            >
+              <div
+                className="relative max-w-[90%] max-h-[95%] w-full"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img
+                  src={modalImageUrl}
+                  alt={project?.title || 'Imagem'}
+                  className="w-full h-full object-contain rounded-lg"
+                  loading="lazy"
+                />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setImageModalOpen(false)}
+                  className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </AnimatePresence>
   );

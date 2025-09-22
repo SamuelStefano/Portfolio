@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
@@ -7,16 +7,20 @@ interface ImageCarouselProps {
   images: string[];
   title: string;
   className?: string;
+  onImageClick?: (imageUrl: string) => void;
 }
 
 export const ImageCarousel: React.FC<ImageCarouselProps> = ({ 
   images, 
   title, 
-  className = "" 
+  className = "",
+  onImageClick
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState('');
+  const [isHovering, setIsHovering] = useState(false);
+  const intervalRef = useRef<number | null>(null);
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -25,6 +29,29 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   const prevImage = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
+
+  // Autoplay 5s (pausa no hover e quando não há múltiplas imagens)
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    if (intervalRef.current) {
+      window.clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+
+    if (!isHovering) {
+      intervalRef.current = window.setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % images.length);
+      }, 5000);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [images.length, isHovering, currentIndex]);
 
   const openModal = (imageUrl: string) => {
     setModalImage(imageUrl);
@@ -46,22 +73,31 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 
   return (
     <>
-      <div className={`relative ${className}`}>
+      <div 
+        className={`relative ${className}`}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         {/* Carrossel Container */}
         <div className="relative overflow-hidden rounded-xl bg-card border border-border">
           {/* Imagem Atual */}
-          <div className="relative aspect-video">
+          <div className="relative w-[100%] h-[50%]">
+            {/* 🖼️ TAMANHO CARROSSEL: aspect-video (16:9) - mude para aspect-square, aspect-[4/3], aspect-[3/2], etc. */}
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentIndex}
                 src={images[currentIndex]}
                 alt={`${title} - Imagem ${currentIndex + 1}`}
-                className="w-full h-full object-cover cursor-pointer"
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                className="w-full h-full object-contain cursor-pointer"
                 transition={{ duration: 0.3 }}
-                onClick={() => openModal(images[currentIndex])}
+                onClick={() => {
+                  console.log('🖼️ Clique na imagem:', images[currentIndex], 'onImageClick:', !!onImageClick);
+                  if (onImageClick) {
+                    onImageClick(images[currentIndex]);
+                  } else {
+                    openModal(images[currentIndex]);
+                  }
+                }}
                 loading="lazy"
               />
             </AnimatePresence>
@@ -110,14 +146,15 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
           </div>
 
           {/* Miniaturas */}
-          {images.length > 1 && (
-            <div className="p-4 bg-muted/20">
-              <div className="flex gap-2 overflow-x-auto">
+          {images.length > 0 && (
+            <div className="p-4">
+              <div className="flex gap-2 overflow-x-auto overflow-y-hidden">
                 {images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                    className={`relative flex-shrink-0 h-[10vh] w-[15vh] mx-10 rounded-lg overflow-hidden  transition-all duration-200 ${
+                      // 🖼️ TAMANHO MINIATURAS: w-16 h-12 - mude para w-20 h-14, w-12 h-8, etc.
                       index === currentIndex
                         ? 'border-primary scale-105'
                         : 'border-border hover:border-primary/50'
@@ -126,7 +163,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
                     <img
                       src={image}
                       alt={`Miniatura ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                       loading="lazy"
                     />
                     {index === currentIndex && (

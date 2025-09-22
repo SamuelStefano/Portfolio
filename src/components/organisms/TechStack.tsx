@@ -79,6 +79,13 @@ const experienceData = [
     period: '2021 - 2022',
     description: 'Desenvolvimento de sites e aplicações web para pequenas empresas e projetos pessoais.',
     stack: ['HTML', 'CSS', 'JavaScript', 'WordPress', 'PHP']
+  },
+  {
+    company: 'Prefeitura de Marialva',
+    role: 'Suporte Técnico',
+    period: '2020 - 2021',
+    description: 'Suporte Técinico, atendendo órgãos públicos do municipio em relação a informática.',
+    stack: ['Suporte Técnico', 'Informação']
   }
 ];
 
