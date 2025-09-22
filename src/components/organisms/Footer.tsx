@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, FileText, Brain } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
@@ -19,34 +19,50 @@ const socialLinks = [
     icon: Instagram,
     href: 'https://instagram.com/samuel.stefano',
     label: 'Instagram'
+  },
+  {
+    icon: FileText,
+    href: 'https://drive.google.com/file/d/1-TpoRcofaK4T-rZZFWouQctZhW4Q9kpp/view?usp=sharing',
+    label: 'Currículo'
   }
 ];
 
 const contactInfo = [
   {
     icon: Mail,
-    label: 'samuel@example.com',
-    href: 'mailto:samuel@example.com'
+    label: 'samuelstefanodocarmo@gmail.com',
+    href: 'mailto:samuelstefanodocarmo@gmail.com'
   },
   {
     icon: Phone,
-    label: '+55 (44) 9 9879-5387',
+    label: '+55 (44) 99879-5387',
     href: 'tel:+5544998795387'
   }
 ];
 
 const quickLinks = [
+  { label: 'Início', href: '#inicio' },
   { label: 'Projetos', href: '#projetos' },
   { label: 'Habilidades', href: '#habilidades' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' }
 ];
 
+const smoothScrollTo = (elementId: string) => {
+  const element = document.querySelector(elementId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-card border-t border-border">
+    <footer id="contato" className="relative bg-card border-t border-border">
       {/* Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
       
@@ -55,10 +71,17 @@ export const Footer = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="mb-6">
-              <Heading level={3} className="mb-2 gradient-text">
-                Samuel Stefano
-              </Heading>
+              <div className="mb-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <img 
+                    src="/EuGhibli.png" 
+                    alt="Samuel Stefano" 
+                    className="w-12 h-12 rounded-full object-cover border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105"
+                  />
+                  <Heading level={3} className="gradient-text">
+                    Samuel Stefano Teixeira do Carmo
+                  </Heading>
+                </div>
               <Text className="mb-4">
                 Desenvolvedor Full-Stack apaixonado por criar soluções digitais 
                 inovadoras e funcionais. Sempre em busca de novos desafios e 
@@ -101,12 +124,12 @@ export const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                  <button
+                    onClick={() => smoothScrollTo(link.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -150,14 +173,12 @@ export const Footer = () => {
         <div className="border-t border-border py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <Text variant="small">© {currentYear} Samuel Stefano. Feito com</Text>
-              <Icon icon={Heart} size="sm" className="text-red-500 fill-current" />
-              <Text variant="small">e muito</Text>
+              <Text variant="small">© {currentYear} Samuel Stefano. Feito com muito esforço e com muito</Text>
               <Icon icon={Code} size="sm" className="text-primary" />
             </div>
             
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <Text variant="small">Desenvolvido com React & TypeScript</Text>
+              <Text variant="small">Desenvolvido com React, TypeScript e Supabase</Text>
               <div className="flex gap-2">
                 <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs">
                   Open Source

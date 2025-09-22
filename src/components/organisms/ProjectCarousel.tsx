@@ -167,7 +167,7 @@ export const ProjectCarousel = () => {
   const IconComponent = getIconComponent(project.icon_name as any);
 
   return (
-    <section className="py-20 px-6">
+    <section id="projetos" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Heading level={2} className="mb-4 gradient-text">

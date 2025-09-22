@@ -138,9 +138,15 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
 
     // Adicionar seções baseadas nas image_categories (filtrar thumbnail)
     if (project.image_categories && Object.keys(project.image_categories).length > 0) {
-      Object.keys(project.image_categories)
-        .filter(category => !['thumb', 'thumbnail'].includes(category.toLowerCase())) // Filtrar thumbnails
-        .forEach(category => {
+      const filteredCategories = Object.keys(project.image_categories)
+        .filter(category => !['hero'].includes(category.toLowerCase())); // Filtrar apenas hero
+      
+      // Se há apenas uma categoria além da overview, não criar seções separadas
+      if (filteredCategories.length <= 1) {
+        return sections; // Retorna apenas "Visão Geral"
+      }
+      
+      filteredCategories.forEach(category => {
         // Mapear nomes das pastas para nomes mais bonitos
         const displayNames: Record<string, string> = {
           'admin': 'Painel Administrativo',
@@ -223,33 +229,58 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
               {/* Seção Visão Geral */}
               <TabsContent value="overview">
                 <div className="space-y-6">
-                  {project.thumbnail_url && (
-                    <div className="w-full">
-                      <div 
-                        className="relative rounded-xl overflow-hidden bg-card border border-border cursor-pointer hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] group"
-                        onClick={() => {
-                          setModalImageUrl(project.thumbnail_url!);
-                          setImageModalOpen(true);
-                        }}
-                      >
-                        <img 
-                          src={project.thumbnail_url} 
-                          alt={project.title}
-                          className="w-full object-contain"
-                          // 🖼️ TAMANHO IMAGEM VISÃO GERAL: w-full h-[50vh] (100% width, 50% viewport height)
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
-                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                              </svg>
+                  {/* Imagem principal ou carrossel se há apenas uma categoria */}
+                  {(() => {
+                    const filteredCategories = project.image_categories ? 
+                      Object.keys(project.image_categories).filter(category => 
+                        !['hero'].includes(category.toLowerCase())
+                      ) : [];
+                    
+                    // Se há apenas uma categoria, mostrar carrossel com todas as imagens
+                    if (filteredCategories.length === 1) {
+                      const categoryImages = project.image_categories![filteredCategories[0]];
+                      return (
+                        <div className="w-full">
+                          <ImageCarousel 
+                            images={categoryImages} 
+                            title={project.title}
+                            onImageClick={(imageUrl) => {
+                              setModalImageUrl(imageUrl);
+                              setImageModalOpen(true);
+                            }}
+                          />
+                        </div>
+                      );
+                    }
+                    
+                    // Caso contrário, mostrar thumbnail normal
+                    return project.thumbnail_url && (
+                      <div className="w-full">
+                        <div 
+                          className="relative rounded-xl overflow-hidden bg-card border border-border cursor-pointer hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] group"
+                          onClick={() => {
+                            setModalImageUrl(project.thumbnail_url!);
+                            setImageModalOpen(true);
+                          }}
+                        >
+                          <img 
+                            src={project.thumbnail_url} 
+                            alt={project.title}
+                            className="w-full h-[50vh] object-contain"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                                </svg>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                    );
+                  })()}
                   
                   <Heading level={3} className="text-xl">Descrição</Heading>
                   <Text className="text-muted-foreground">
@@ -336,7 +367,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
                       images={images} 
                       title={displayName}
                       onImageClick={(imageUrl) => {
-                        console.log('📸 Callback recebido no ProjectOverlay:', imageUrl);
                         setModalImageUrl(imageUrl);
                         setImageModalOpen(true);
                       }}

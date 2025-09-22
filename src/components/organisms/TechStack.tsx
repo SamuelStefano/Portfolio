@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu, Brain } from 'lucide-react';
+import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem';
 import { Icon } from '@/components/atoms/Icon';
@@ -20,7 +20,8 @@ const techCategories: TechCategory[] = [
       { name: 'React', level: 80 },
       { name: 'TypeScript', level: 90 },
       { name: 'Next.js', level: 80 },
-      { name: 'TailwindCSS', level: 100 }
+      { name: 'TailwindCSS', level: 100 },
+      { name: 'Storybook', level: 90 },
     ],
     color: 'neon-blue'
   },
@@ -30,7 +31,9 @@ const techCategories: TechCategory[] = [
     skills: [
       { name: 'Node.js', level: 80 },
       { name: 'NestJS', level: 75 },
-      { name: 'Delphi', level: 40 }
+      { name: 'Delphi', level: 40 },
+      { name: 'APIs', level: 90 },
+      { name: 'JWT', level: 80 },
     ],
     color: 'neon-purple'
   },
@@ -53,7 +56,8 @@ const techCategories: TechCategory[] = [
       { name: 'Docker', level: 80 },
       { name: 'VPS', level: 70 },
       { name: 'WSL', level: 70 },
-      { name: 'Git', level: 90 }
+      { name: 'Git', level: 90 },
+      { name: 'Figma', level: 70 }
     ],
     color: 'accent'
   },
@@ -61,13 +65,12 @@ const techCategories: TechCategory[] = [
     title: 'Engenharia de Software',
     icon: Brain,
     skills: [
-      { name: 'Figma', level: 60 },
       { name: 'Miro', level: 80 },
       { name: 'Documentação', level: 100 },
       { name: 'Testes', level: 100 },
       { name: 'Arquitetura', level: 80 },
       { name: 'CI/CD', level: 100 },
-      { name: 'MVPs', level: 100 },
+      { name: 'Componentização', level: 100 },
     ],
     color: 'neon-green'
   },
@@ -76,7 +79,7 @@ const techCategories: TechCategory[] = [
     icon: Code,
     skills: [
       { name: 'Linux/Ubuntu', level: 70 },
-      { name: 'Vercel', level: 80 },
+      { name: 'Deploy', level: 70 },
       { name: 'n8n', level: 10 }
     ],
     color: 'neon-green'
@@ -89,7 +92,9 @@ const experienceData = [
     role: 'Suporte Técnico',
     period: 'Fevereiro 2023 - Dezembro 2024',
     description: 'Suporte Técinico, atendendo órgãos públicos do municipio em relação a informática.',
-    stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais']
+    stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
+    logo: '/prefeitura.png',
+    icon: Building2
   },
 
   {
@@ -97,14 +102,18 @@ const experienceData = [
     role: 'Desenvolvedor Full-Stack',
     period: 'Julho 2024 - Presente',
     description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs',]
+    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs',],
+    logo: '/DevFelloShip.png',
+    icon: Briefcase
   },
   {
     company: 'M&M Informática',
     role: 'Suporte Técnico & Desenvolvedor',
     period: 'Dezembro 2024 - atualmente',
     description: 'Suporte técnico especializado e desenvolvimento de sistemas para automação de notas fiscais eletrônicas.',
-    stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Suporte Técnico']
+    stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Suporte Técnico'],
+    logo: '/MMIcon.png',
+    icon: Laptop
   },
 
 ];
@@ -127,6 +136,10 @@ const additionalSkills = [
   'Criatividade',
   'Git & GitHub',
   'Linux',
+  'Storybook',
+  'Figma',
+  'Miro',
+  'Componentização',
   'DevOps',
   'API Development',
   'Inteligência Artificial',
@@ -142,7 +155,7 @@ const additionalSkills = [
 
 export const TechStack = () => {
   return (
-    <section className="py-20 px-6">
+    <section id="habilidades" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Heading level={2} className="mb-4 gradient-text">
@@ -165,7 +178,7 @@ export const TechStack = () => {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <Icon icon={IconComponent} className="text-primary" />
+                    <IconComponent className="w-6 h-6 text-primary" />
                   </div>
                   <Heading level={3}>
                     {category.title}
@@ -174,15 +187,18 @@ export const TechStack = () => {
 
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
-                    <SkillBar
+                    <div
                       key={skillIndex}
-                      name={skill.name}
-                      level={skill.level}
                       className="animate-scale-in"
                       style={{ 
                         animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s` 
                       }}
-                    />
+                    >
+                      <SkillBar
+                        name={skill.name}
+                        level={skill.level}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -192,7 +208,7 @@ export const TechStack = () => {
 
         {/* Additional Skills - Infinite Carousel */}
         <div className="text-center overflow-hidden">
-          <Heading level={3} className="mb-6">
+          <Heading level={3} className="mb-6 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent">
             Outras Competências
           </Heading>
           <div className="relative">
@@ -211,10 +227,42 @@ export const TechStack = () => {
 
         {/* Experience Timeline */}
         <div className="mt-20">
-          <Heading level={3} className="text-center mb-12">
+          <Heading level={3} className="text-center mb-12 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent">
             Experiência Profissional
           </Heading>
-          
+
+
+          <div className="flex flex-wrap justify-center items-center gap-12 py-8">
+              {/* Devfellowship Logo */}
+              <div className="group">
+                <img 
+                  src="/prefeitura.png" 
+                  alt="Prefeitura" 
+                  className="w-40 h-40 opacity-30 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:-translate-y-4 group-hover:scale-110 rounded-lg object-cover"
+                />
+              </div>  
+              <div className="group">
+                <img 
+                  src="/DevFelloShip.png" 
+                  alt="Devfellowship" 
+                  className="w-48 h-48 opacity-30 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:-translate-y-4 group-hover:scale-110"
+                />
+              </div>
+
+              {/* MM Icon Logo */}
+
+
+              <div className="group">
+                <img 
+                  src="/MMIcon.png" 
+                  alt="MM Icon" 
+                  className="w-48 h-28 opacity-30 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:-translate-y-4 group-hover:scale-110"
+                />
+              </div>
+
+              {/* Prefeitura Logo */}
+             
+            </div>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline Line */}
@@ -239,6 +287,7 @@ export const TechStack = () => {
                         period={job.period}
                         description={job.description}
                         stack={job.stack}
+                        icon={job.icon}
                       />
                     </div>
                   </div>

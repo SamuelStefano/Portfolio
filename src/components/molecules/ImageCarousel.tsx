@@ -91,7 +91,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
                 className="w-full h-full object-contain cursor-pointer"
                 transition={{ duration: 0.3 }}
                 onClick={() => {
-                  console.log('🖼️ Clique na imagem:', images[currentIndex], 'onImageClick:', !!onImageClick);
                   if (onImageClick) {
                     onImageClick(images[currentIndex]);
                   } else {
@@ -153,7 +152,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`relative flex-shrink-0 h-[10vh] w-[15vh] mx-10 rounded-lg overflow-hidden  transition-all duration-200 ${
+                     className={`relative flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                       // 🖼️ TAMANHO MINIATURAS: w-16 h-12 - mude para w-20 h-14, w-12 h-8, etc.
                       index === currentIndex
                         ? 'border-primary scale-105'

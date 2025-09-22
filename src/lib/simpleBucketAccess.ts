@@ -87,12 +87,24 @@ export const discoverProjectsFromBuckets = async (): Promise<Array<{
 }>> => {
   if (!supabase) return [];
 
+  // Teste direto do bucket Devfellowship
+  console.log('🧪 Testando acesso direto ao bucket Devfellowship...');
+  const { data: testData, error: testError } = await supabase.storage
+    .from('Devfellowship')
+    .list('', { limit: 10 });
+  
+  if (testError) {
+    console.log('❌ Erro ao acessar bucket Devfellowship:', testError);
+  } else {
+    console.log('✅ Bucket Devfellowship acessível. Conteúdo:', testData?.map(item => item.name));
+  }
+
   // Configuração por bucket (paths limpos e consistentes)
   const config: Record<string, { mode: 'multi' | 'single'; roots?: string[]; projectPaths?: string[] }> = {
     'challenge-images': { mode: 'multi', roots: ['challenges'] },
     // IDs exatos conforme painel: Codelibrary-website, Devfellowship
     'Codelibrary-website': { mode: 'single', projectPaths: ['codelibrary', 'Codelibrary', 'codelibrary images', 'Codelibrary images'] },
-    'Devfellowship': { mode: 'single', projectPaths: ['devfellowship', 'DevFellowship', 'Devfellowship'] }
+    'Devfellowship': { mode: 'single', projectPaths: ['Devfellowship', 'devfellowship', 'DevFellowship', 'Devfellowship/Devfellowship'] }
   };
 
   const results: Array<{ bucket: string; storage_path: string; title: string; image_categories: Record<string, string[]>; thumbnail_url?: string; }> = [];
@@ -104,35 +116,60 @@ export const discoverProjectsFromBuckets = async (): Promise<Array<{
   };
 
   for (const [bucketName, cfg] of Object.entries(config)) {
+    console.log(`🪣 Processando bucket: ${bucketName}`);
     if (cfg.mode === 'single') {
       for (const projectPath of cfg.projectPaths || []) {
         // O título do projeto será o último segmento do caminho
         let title = preferredTitles[bucketName] || (projectPath.split('/').pop() || projectPath);
 
         // Listar seções
-        const { data: sections } = await supabase.storage
+        console.log(`🔍 Buscando seções em ${bucketName}/${projectPath}`);
+        const { data: sections, error } = await supabase.storage
           .from(bucketName)
           .list(projectPath, { limit: 200 });
+        
+        if (error) {
+          console.log(`❌ Erro ao listar seções em ${bucketName}/${projectPath}:`, error);
+          continue;
+        }
+        
         if (!sections) {
           console.log(`⚠️ Nenhuma seção em ${bucketName}/${projectPath}`);
           continue;
         }
+        console.log(`📁 Seções encontradas:`, sections.map(s => s.name));
 
         const imageCategories: Record<string, string[]> = {};
         for (const section of sections) {
           if (section.name.includes('.')) continue;
           const sectionPath = `${projectPath}/${section.name}`;
-          const { data: files } = await supabase.storage
+          const { data: files, error: filesError } = await supabase.storage
             .from(bucketName)
             .list(sectionPath, { limit: 500 });
+          
+          if (filesError) {
+            console.log(`❌ Erro ao listar arquivos em ${bucketName}/${sectionPath}:`, filesError);
+            continue;
+          }
+          
           if (!files) {
             console.log(`⚠️ Sem arquivos em seção ${bucketName}/${sectionPath}`);
             continue;
           }
+          console.log(`📄 Arquivos encontrados em ${section.name}:`, files.map(f => f.name));
           const imgs = files.filter(f => ['jpg','jpeg','png','gif','webp','svg'].includes((f.name.split('.').pop() || '').toLowerCase()));
-          if (imgs.length === 0) continue;
+          if (imgs.length === 0) {
+            console.log(`⚠️ Nenhuma imagem em ${bucketName}/${sectionPath}`);
+            continue;
+          }
           const key = normalizeSectionKey(section.name);
-          imageCategories[key] = imgs.map(f => supabase.storage.from(bucketName).getPublicUrl(`${sectionPath}/${f.name}`).data.publicUrl);
+          console.log(`🖼️ Encontradas ${imgs.length} imagens na seção ${section.name} (key: ${key})`);
+          const imageUrls = imgs.map(f => {
+            const url = supabase.storage.from(bucketName).getPublicUrl(`${sectionPath}/${f.name}`).data.publicUrl;
+            console.log(`🔗 URL gerado: ${url}`);
+            return url;
+          });
+          imageCategories[key] = imageUrls;
         }
 
         // Thumbnail
@@ -145,9 +182,13 @@ export const discoverProjectsFromBuckets = async (): Promise<Array<{
         }
 
         // Só considerar o primeiro caminho que realmente possui imagens
+        console.log(`📊 Categorias de imagem encontradas para ${title}:`, Object.keys(imageCategories));
         if (Object.keys(imageCategories).length > 0) {
           results.push({ bucket: bucketName, storage_path: projectPath, title, image_categories: imageCategories, thumbnail_url });
+          console.log(`✅ Projeto ${title} adicionado com sucesso!`);
           break; // parar após o primeiro válido para este bucket
+        } else {
+          console.log(`⚠️ Nenhuma imagem encontrada para ${title}`);
         }
       }
     } else {

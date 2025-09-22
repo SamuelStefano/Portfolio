@@ -1,6 +1,8 @@
+import React from 'react';
 import { Badge } from '@/components/atoms/badge';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
+import { Icon } from '@/components/atoms/Icon';
 
 interface ExperienceItemProps {
   company: string;
@@ -8,6 +10,7 @@ interface ExperienceItemProps {
   period: string;
   description: string;
   stack: string[];
+  icon?: React.ComponentType<any>;
   className?: string;
 }
 
@@ -17,6 +20,7 @@ export const ExperienceItem = ({
   period, 
   description, 
   stack,
+  icon,
   className 
 }: ExperienceItemProps) => {
   return (
@@ -30,9 +34,16 @@ export const ExperienceItem = ({
         </Text>
       </div>
       
-      <Heading level={5} className="text-primary font-semibold mb-3">
-        {company}
-      </Heading>
+      <div className="flex items-center gap-2 mb-3">
+        {icon && (
+          <div className="p-1 bg-primary/10 rounded-md">
+            {React.createElement(icon, { className: "w-3 h-3 text-primary" })}
+          </div>
+        )}
+        <Heading level={5} className="text-primary font-semibold">
+          {company}
+        </Heading>
+      </div>
       
       <Text className="mb-4">
         {description}
@@ -43,7 +54,7 @@ export const ExperienceItem = ({
           <Badge
             key={index}
             variant="secondary"
-            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md hover:bg-primary/20 transition-colors"
+            className="px-2 py-1 bg-primary/20  text-sm rounded-md hover:bg-primary/20 transition-colors"
           >
             {tech}
           </Badge>

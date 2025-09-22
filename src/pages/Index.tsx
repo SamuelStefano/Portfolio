@@ -12,14 +12,14 @@ const Index = () => {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Portfolio de Samuel Stefano, desenvolvedor full-stack especializado em React, TypeScript, Node.js. Projetos modernos e soluções digitais inovadoras.');
+      metaDescription.setAttribute('content', 'Portfolio de Samuel Stefano, desenvolvedor full-stack especializado em React, TypeScript, Node.js, Nest, Tailwind. Projetos modernos e soluções digitais inovadoras.');
     }
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Samuel Stefano Teixeira do Carmo",
       "jobTitle": "Full-Stack Developer",
-      "description": "Desenvolvedor Full-Stack especializado em React, TypeScript, Node.js",
+      "description": "Desenvolvedor Full-Stack especializado em React, TypeScript, Node.js, Nest, Tailwind. Projetos modernos e soluções digitais inovadoras.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Marialva",
