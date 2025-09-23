@@ -74,17 +74,7 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       } as Project;
     });
 
-    const includeAutoDiscovered = import.meta.env.VITE_INCLUDE_AUTO_DISCOVERED === 'true' || import.meta.env.VITE_INCLUDE_AUTO_DISCOVERED === undefined;
-    const requireStorageMatch = import.meta.env.VITE_REQUIRE_STORAGE_MATCH === 'true';
-
     if (dbProjects.length === 0) {
-      if (!includeAutoDiscovered) {
-        return [];
-      }
-      if (requireStorageMatch) {
-        const filtered = discoveredAsProjects.filter(p => !!p.storage_path);
-        return filtered;
-      }
       return discoveredAsProjects;
     }
 

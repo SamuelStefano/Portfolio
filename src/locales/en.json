@@ -32,7 +32,7 @@
     "projectGallery": "Project Gallery",
     "noProjects": "No projects found",
     "loading": "Loading projects...",
-    "hint": "Tip: enable VITE_INCLUDE_AUTO_DISCOVERED=true in .env to show Storage projects."
+    "hint": "Check if there are projects configured in Supabase."
   },
   "skills": {
     "title": "Skills & Experience",

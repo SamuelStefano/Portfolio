@@ -121,7 +121,7 @@ export const ProjectCarousel = () => {
             Nenhum projeto encontrado
           </Text>
           <Text variant="small" className="text-muted-foreground mt-2">
-            VITE_INCLUDE_AUTO_DISCOVERED=true .
+            Verifique se há projetos no Supabase.
           </Text>
         </div>
       </div>
