@@ -1,15 +1,14 @@
-import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock } from 'lucide-react';
+import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch } from 'lucide-react';
 import { Card, CardContent } from '@/components/atoms/card';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
+import { useExperienceTime } from '@/hooks/useExperienceTime';
+import { useScrollAnimations } from '@/hooks/useScrollAnimations';
+import { useGitHubStats } from '@/hooks/useGitHubStats';
+import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalendar';
 
-const stats = [
-  { label: 'Tempo de atuação profissional	', value: '1 ano', icon: User },
-  { label: 'Projetos Criados profissionalmente', value: '3+', icon: Heart },
-  { label: 'Tecnologias', value: '15+', icon: Globe },
-  { label: 'Ano ADS', value: '3º', icon: GraduationCap }
-];
+// Stats serão gerados dinamicamente com GitHub API
 
 const highlights = [
   {
@@ -31,6 +30,34 @@ const highlights = [
 ];
 
 export const About = () => {
+  const experienceTime = useExperienceTime();
+  const { addElement } = useScrollAnimations();
+  const gitHubStats = useGitHubStats();
+
+  // Stats dinâmicos com dados reais do GitHub
+  const stats = [
+    { 
+      label: 'Tempo de atuação profissional', 
+      value: experienceTime.formatted, 
+      icon: User 
+    },
+    { 
+      label: 'Repositórios GitHub', 
+      value: gitHubStats.isLoading ? '...' : `${gitHubStats.totalRepos}+`, 
+      icon: GitBranch 
+    },
+    { 
+      label: 'Tecnologias', 
+      value: '15+', 
+      icon: Globe 
+    },
+    { 
+      label: 'Linhas de Código', 
+      value: gitHubStats.isLoading ? '...' : `${Math.round(gitHubStats.linesOfCode / 1000)}K+`, 
+      icon: Code2 
+    }
+  ];
+
   return (
     <section id="sobre" className="py-20 px-8 bg-muted/20">
       <div className="max-w-7xl mx-auto">
@@ -76,7 +103,7 @@ export const About = () => {
             </div>
 
             {/* Location & Contact */}
-            <div className="flex items-center gap-6 animate-slide-up mx-6" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-center gap-6 animate-slide-up mx-6" style={{ animationDelay: '0.2s' }}>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Icon icon={MapPin} size="sm" className="text-primary" />
                 <Text variant="small">Marialva, PR</Text>
@@ -86,12 +113,12 @@ export const About = () => {
                 <Text variant="small">Inglês B2</Text>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Icon icon={Computer} size="sm" className="text-primary" />
-                <Text variant="small">HomeOffice</Text>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
                 <Icon icon={Clock} size="sm" className="text-primary" />
                 <Text variant="small">6:00 A.M - 18:00 P.M</Text>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Icon icon={Calendar} size="sm" className="text-primary" />
+                <Text variant="small">{experienceTime.formatted} de experiência</Text>
               </div>
             </div>
 
@@ -171,22 +198,10 @@ export const About = () => {
               </CardContent>
             </Card>
 
-            {/* Call to Action */}
-            <Card className="bg-gradient-primary border-0 text-primary-foreground animate-slide-up" style={{ animationDelay: '0.6s' }}>
-              <CardContent className="p-6 text-center">
-                <Heading level={4} className="mb-2 font-extrabold ">
-                  Gostaria de mais informações?
-                </Heading>
-                <Text variant="small" className="mb-4 opacity-90 text-base font-bold">
-                  Sempre aberto a novos projetos e oportunidades de colaboração.
-                </Text>
-                <Text variant="small" className="opacity-80 text-lg font-bold">
-                  📧 samuelstefanodocarmo@gmail.com
-                  <br />
-                  📱 +55 (44) 99879-5387
-                </Text>
-              </CardContent>
-            </Card>
+            {/* Availability Calendar */}
+            <div className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
+              <AvailabilityCalendar />
+            </div>
             </div>
           </div>
 
@@ -275,7 +290,7 @@ export const About = () => {
                   <Text variant="small" className="text-muted-foreground">
                     Encontrei na <span className="text-foreground font-semibold">Devfellowship</span> não apenas 
                     <span className="text-foreground font-semibold"> conhecimento técnico</span>, mas uma 
-                    <span className="text-foreground font-semibold"> família de desenvolvedores</span> 
+                    <span className="text-foreground font-semibold"> família de desenvolvedores </span> 
                     que sempre me apoia e me inspira a ser melhor.
                   </Text>
                 </div>

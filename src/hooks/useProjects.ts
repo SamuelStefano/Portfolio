@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Project } from '../types/project';
 import { getProjectsFromDB } from '../lib/getProjectsFromDB';
-import { supabase } from '../lib/supabaseclient';
+
+// Cache simples para melhorar performance
+let cachedProjects: Project[] | null = null;
+let cacheTime: number | null = null;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos
 
 export const useProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Removido: as seções/imagens vêm de getProjectsFromDB (image_categories)
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -16,7 +18,20 @@ export const useProjects = () => {
         setLoading(true);
         setError(null);
 
+        // Verificar cache
+        const now = Date.now();
+        if (cachedProjects && cacheTime && (now - cacheTime < CACHE_DURATION)) {
+          setProjects(cachedProjects);
+          setLoading(false);
+          return;
+        }
+
         const data = await getProjectsFromDB();
+        
+        // Atualizar cache
+        cachedProjects = data;
+        cacheTime = now;
+        
         setProjects(data);
       } catch (err) {
         setError('Erro ao carregar projetos');

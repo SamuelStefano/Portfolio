@@ -94,7 +94,8 @@ const experienceData = [
     description: 'Suporte Técinico, atendendo órgãos públicos do municipio em relação a informática.',
     stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
     logo: '/prefeitura.png',
-    icon: Building2
+    icon: Building2,
+    website: null // Prefeitura não tem link
   },
 
   {
@@ -104,16 +105,18 @@ const experienceData = [
     description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs',],
     logo: '/DevFelloShip.png',
-    icon: Briefcase
+    icon: Briefcase,
+    website: 'https://devfellowship.com'
   },
   {
     company: 'M&M Informática',
     role: 'Suporte Técnico & Desenvolvedor',
     period: 'Dezembro 2024 - atualmente',
-    description: 'Suporte técnico especializado e desenvolvimento de sistemas para automação de notas fiscais eletrônicas.',
+    description: 'Suporte técnico especializado em diversos softwares que a empresa desenvolve.',
     stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Suporte Técnico'],
     logo: '/MMIcon.png',
-    icon: Laptop
+    icon: Laptop,
+    website: 'https://mminfo.me'
   },
 
 ];
@@ -280,16 +283,34 @@ export const TechStack = () => {
                     <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 mt-6 relative z-10 animate-pulse-glow" />
                     
                     {/* Content */}
-                    <div className="flex-1 bg-card border border-border rounded-lg p-6 hover-glow hover:border-primary/50">
-                      <ExperienceItem
-                        company={job.company}
-                        role={job.role}
-                        period={job.period}
-                        description={job.description}
-                        stack={job.stack}
-                        icon={job.icon}
-                      />
-                    </div>
+                    {job.website ? (
+                      <a
+                        href={job.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-card border border-border rounded-lg p-6 hover-glow hover:border-primary/50 transition-all duration-300 hover:shadow-lg cursor-pointer block"
+                      >
+                        <ExperienceItem
+                          company={job.company}
+                          role={job.role}
+                          period={job.period}
+                          description={job.description}
+                          stack={job.stack}
+                          icon={job.icon}
+                        />
+                      </a>
+                    ) : (
+                      <div className="flex-1 bg-card border border-border rounded-lg p-6 hover-glow hover:border-primary/50">
+                        <ExperienceItem
+                          company={job.company}
+                          role={job.role}
+                          period={job.period}
+                          description={job.description}
+                          stack={job.stack}
+                          icon={job.icon}
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

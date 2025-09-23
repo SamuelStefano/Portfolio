@@ -4,12 +4,11 @@ import { getProjectImagesFromBucket, discoverProjectsFromBuckets } from './simpl
 
 export const getProjectsFromDB = async (): Promise<Project[]> => {
   if (!supabase) {
-    console.error('Supabase não está configurado');
+    console.error('❌ Supabase não está configurado');
     return [];
   }
 
   try {
-    console.log("🔍 Buscando projetos...");
 
     // Query simples sem relacionamentos (para evitar erro de permissão)
     const { data, error } = await supabase
@@ -17,25 +16,16 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       .select("*")
       .order("created_at", { ascending: false });
 
-    console.log("📊 Resposta completa do Supabase:", { data, error });
-
     if (error) {
       console.error("❌ Erro ao buscar projetos:", error);
       return [];
     }
 
-    console.log(`📊 Projetos no DB: ${data?.length || 0}`);
-
     // 1) Projetos do DB enriquecidos com imagens do Storage
     const dbProjects: Project[] = await Promise.all(
       (data || []).map(async (project) => {
         try {
-          console.log(`🔍 Buscando imagens para ${project.title}`);
-          
-          // Usar a nova função simplificada
           const imageCategories = await getProjectImagesFromBucket(project.title);
-          
-          console.log(`📸 Categorias encontradas para ${project.title}:`, Object.keys(imageCategories));
 
           return {
             ...project,
@@ -59,7 +49,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
 
     // 2) Descobrir projetos diretamente dos buckets (sem exigir linha no DB)
     const discovered = await discoverProjectsFromBuckets();
-    console.log(`🧭 Projetos descobertos nos buckets: ${discovered.length}`);
 
     // 3) Transformar descobertos para Project e mesclar com DB pelo storage_path
     const storagePathToDb = new Map<string, Project>();
@@ -90,27 +79,22 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
     });
 
     // Estratégia de mesclagem (v2) com flags de config
-    const includeAutoDiscovered = import.meta.env.VITE_INCLUDE_AUTO_DISCOVERED !== 'false';
+    const includeAutoDiscovered = import.meta.env.VITE_INCLUDE_AUTO_DISCOVERED === 'true';
     const requireStorageMatch = import.meta.env.VITE_REQUIRE_STORAGE_MATCH === 'true';
 
     if (dbProjects.length === 0) {
-      console.log('🧪 MERGE_STRATEGY=v2 | DB vazio');
       if (!includeAutoDiscovered) {
-        console.log('🚫 VITE_INCLUDE_AUTO_DISCOVERED=false → retornando []');
         return [];
       }
       if (requireStorageMatch) {
         const filtered = discoveredAsProjects.filter(p => !!p.storage_path);
-        console.log(`🎯 Retornando auto-descobertos com storage_path: ${filtered.length}`, filtered.map(p => p.title));
         return filtered;
       }
-      console.log(`🎯 Retornando auto-descobertos: ${discoveredAsProjects.length}`, discoveredAsProjects.map(p => p.title));
       return discoveredAsProjects;
     }
 
     // - Caso haja projetos no DB, evitar duplicados por título exato OU storage_path exato (quando ambos definidos)
     const merged: Project[] = [...dbProjects];
-    console.log(`📋 Projetos do DB adicionados ao merged: ${merged.length}`, merged.map(p => p.title));
 
     for (const p of discoveredAsProjects) {
       const exists = merged.find(m => {
@@ -121,7 +105,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
         return sameTitle || sameStoragePath;
       });
       if (!exists) {
-        console.log(`➕ Adicionando projeto descoberto: ${p.title}`);
         if (includeAutoDiscovered) {
           if (requireStorageMatch) {
             if (p.storage_path) merged.push(p);
@@ -129,12 +112,9 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
             merged.push(p);
           }
         }
-      } else {
-        console.log(`⚠️ Projeto já existe, não adicionando: ${p.title} (match exato)`);
       }
     }
 
-    console.log(`🎯 Total de projetos finais: ${merged.length}`, merged.map(p => p.title));
     return merged;
   } catch (error) {
     console.error('❌ Erro ao conectar com Supabase:', error);

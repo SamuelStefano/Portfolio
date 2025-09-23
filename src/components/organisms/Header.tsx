@@ -81,7 +81,7 @@ export const Header = () => {
           ))}
         </div>
 
-        <div className="mt-[8vh] mb-[4vh] relative z-20 animate-float hover-smooth-scale" style={{ animationDelay: '0.6s' }}>
+        <div className="mt-[8vh] mb-[4vh] relative z-20 animate-hero-float hover-smooth-scale" style={{ animationDelay: '0.6s' }}>
           <div className="w-[40vh] h-[40vh] min-w-[150px] min-h-[150px] max-w-[50vh] max-h-[50vh] hover:scale-105 mx-auto rounded-full overflow-hidden border-[0.3vh] border-primary/30 hover:border-primary/60 transition-all duration-500 hover-glow bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center group">
             <img 
               src="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/imagem%20profissional.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9pbWFnZW0gcHJvZmlzc2lvbmFsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.IobSgu4JA84a7JH4l_SRZxkZZ8qCpS7oQ4PfwhlEut0" 
@@ -92,7 +92,7 @@ export const Header = () => {
         </div>
 
         <div className="animate-slide-up relative z-10" style={{ animationDelay: '0.8s' }}>
-          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center mx-auto animate-float">
+          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center mx-auto animate-mouse-float">
             <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
           </div>
         </div>

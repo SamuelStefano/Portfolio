@@ -73,11 +73,6 @@ export const Footer = () => {
           <div className="lg:col-span-2">
               <div className="mb-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <img 
-                    src="/EuGhibli.png" 
-                    alt="Samuel Stefano" 
-                    className="w-12 h-12 rounded-full object-cover border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105"
-                  />
                   <Heading level={3} className="gradient-text">
                     Samuel Stefano Teixeira do Carmo
                   </Heading>
@@ -163,7 +158,6 @@ export const Footer = () => {
                 <li>• Projetos freelance</li>
                 <li>• Oportunidades full-time</li>
                 <li>• Colaborações</li>
-                <li>• Mentoria técnica</li>
               </ul>
             </div>
           </div>
@@ -174,7 +168,7 @@ export const Footer = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <Text variant="small">© {currentYear} Samuel Stefano. Feito com muito esforço e com muito</Text>
-              <Icon icon={Code} size="sm" className="text-primary" />
+              <Icon icon={Code} size="md" className="text-primary" />
             </div>
             
             <div className="flex items-center gap-4 text-sm text-muted-foreground">

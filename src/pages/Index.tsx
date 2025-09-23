@@ -5,6 +5,7 @@ import { ProjectGrid } from '@/components/organisms/ProjectGrid';
 import { TechStack } from '@/components/organisms/TechStack';
 import { About } from '@/components/organisms/About';
 import { Footer } from '@/components/organisms/Footer';
+import { AnimatedBackground } from '@/components/atoms/AnimatedBackground';
 
 const Index = () => {
   useEffect(() => {
@@ -39,27 +40,31 @@ const Index = () => {
     script.text = JSON.stringify(structuredData);
     document.head.appendChild(script);
 
+
     return () => {
       document.head.removeChild(script);
     };
   }, []);
 
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
-      <section id="projetos">
-        <ProjectCarousel />
-      </section>
-      <ProjectGrid />
-      <section id="habilidades">
-        <TechStack />
-      </section>
-      <section id="sobre">
-        <About />
-      </section>
-      <section id="contato">
-        <Footer />
-      </section>
+    <main className="min-h-screen relative">
+      <AnimatedBackground />
+      <div className="relative z-10">
+        <Header />
+        <section id="projetos">
+          <ProjectCarousel />
+        </section>
+        <ProjectGrid />
+        <section id="habilidades">
+          <TechStack />
+        </section>
+        <section id="sobre">
+          <About />
+        </section>
+        <section id="contato">
+          <Footer />
+        </section>
+      </div>
     </main>
   );
 };
