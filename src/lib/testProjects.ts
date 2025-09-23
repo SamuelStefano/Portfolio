@@ -1,4 +1,4 @@
-import { supabase } from './supabaseclient';
+﻿import { supabase } from './supabaseclient';
 
 export const testProjectsTable = async () => {
   if (!supabase) {
@@ -8,8 +8,7 @@ export const testProjectsTable = async () => {
 
   try {
     console.log('🔍 Testando tabela projects...');
-    
-    // Teste 1: Verificar se a tabela existe
+
     const { data, error } = await supabase
       .from('projects')
       .select('*')
@@ -22,12 +21,11 @@ export const testProjectsTable = async () => {
 
     console.log('✅ Tabela projects acessível');
     console.log('📊 Dados encontrados:', data?.length || 0, 'projetos');
-    
+
     if (data && data.length > 0) {
       console.log('📋 Primeiro projeto:', data[0]);
     }
 
-    // Teste 2: Verificar estrutura da tabela
     const { data: allProjects, error: allError } = await supabase
       .from('projects')
       .select('id, title, role, description, stack, icon_name, created_at')
@@ -39,7 +37,7 @@ export const testProjectsTable = async () => {
     }
 
     console.log('📊 Total de projetos:', allProjects?.length || 0);
-    
+
     if (allProjects && allProjects.length > 0) {
       console.log('📋 Todos os projetos:');
       allProjects.forEach((project, index) => {

@@ -1,5 +1,4 @@
-// Tipos para projetos do portfólio
-export interface ProjectCollaborator {
+﻿export interface ProjectCollaborator {
   id: string;
   name: string;
   role: string;
@@ -47,9 +46,7 @@ export interface Project {
   stack: string[];
   thumbnail_url?: string;
   icon_name: string;
-  // Caminho no Storage que representa este projeto, ex: "challenges/Skill Evals"
   storage_path?: string;
-  // Categorias de imagens extraídas do Storage: { admin: [urls...], dashboard: [urls...] }
   image_categories?: Record<string, string[]>;
   project_sections?: ProjectSection[];
   image_folders?: ProjectImageFolder[];
@@ -57,16 +54,14 @@ export interface Project {
   updated_at: string;
   project_collaborators: ProjectCollaborator[];
   project_links: ProjectLink[];
-  // Marcador para itens vindos apenas do Storage (sem linha no DB)
   auto_discovered?: boolean;
 }
 
-// Tipo para o ícone Lucide (apenas ícones que existem no Lucide React)
-export type LucideIconName = 
-  | 'Code' 
-  | 'ShoppingCart' 
-  | 'Smartphone' 
-  | 'BarChart3' 
+export type LucideIconName =
+  | 'Code'
+  | 'ShoppingCart'
+  | 'Smartphone'
+  | 'BarChart3'
   | 'Server'
   | 'Globe'
   | 'Database'

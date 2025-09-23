@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "hero": {
+    "greeting": "Samuel Stefano",
+    "role": "Full-Stack Developer",
+    "description": "Junior Developer • 3rd Year ADS • Marialva, PR",
+    "bio": "Specialized in React, TypeScript and Node.js, Nest, Tailwind, APIs.",
+    "bioContinue": "Creating modern and functional digital experiences.",
+    "clickToSeeMore": "Click to see more"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A selection of my most recent and impactful work",
+    "collaborators": "collaborator",
+    "collaborators_plural": "collaborators",
+    "autoDiscovered": "Auto-discovered",
+    "viewProject": "View Project",
+    "github": "GitHub",
+    "overview": "Overview",
+    "gallery": "Gallery",
+    "mainFeatures": "Main Features",
+    "technicalChallenges": "Technical Challenges",
+    "techStack": "Tech Stack",
+    "projectTeam": "Project Team",
+    "projectGallery": "Project Gallery",
+    "noProjects": "No projects found",
+    "loading": "Loading projects...",
+    "hint": "Tip: enable VITE_INCLUDE_AUTO_DISCOVERED=true in .env to show Storage projects."
+  },
+  "skills": {
+    "title": "Skills & Experience",
+    "subtitle": "Technologies I master and my professional journey",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "tools": "Tools",
+    "professionalExperience": "Professional Experience",
+    "currentPosition": "Current Position"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Learn a little more about my journey and passions",
+    "professionalTime": "Professional experience time",
+    "projectsCreated": "GitHub Repositories",
+    "technologies": "Technologies",
+    "linesOfCode": "Lines of Code",
+    "highlights": {
+      "passion": {
+        "title": "Passion for Technology",
+        "description": "Always seeking to learn new technologies and apply best development practices, passionate about AI and after mastering 100% modern full-stack, I will seek more specialization in AI."
+      },
+      "teamwork": {
+        "title": "Teamwork",
+        "description": "Experience in collaborative projects using agile methodologies, Git/GitHub for versioning and communication tools like Discord and Slack."
+      },
+      "learning": {
+        "title": "Continuous Learning",
+        "description": "Always seeking to stay updated with the latest market trends and technologies, participating in communities and online courses."
+      },
+      "evolution": {
+        "title": "Constant Evolution",
+        "description": "Studying ADS and always seeking to specialize in new technologies and frameworks, improving my skills and knowledge."
+      }
+    },
+    "devfellowship": {
+      "title": "DevFellowship",
+      "subtitle": "Developer Community",
+      "description": "A vibrant community of Brazilian developers focused on education, networking and professional growth. We participate in collaborative projects, workshops and events that boost our tech career.",
+      "cards": {
+        "community": {
+          "title": "Active Community",
+          "description": "Over 500 connected developers, sharing knowledge and experiences daily."
+        },
+        "projects": {
+          "title": "Real Projects",
+          "description": "Development of real applications in teams, using agile methodologies and market best practices."
+        },
+        "mentorship": {
+          "title": "Mentorship",
+          "description": "Mentorship program with senior developers, accelerating professional growth."
+        },
+        "networking": {
+          "title": "Networking",
+          "description": "Valuable connections with industry professionals, career opportunities and strategic partnerships."
+        }
+      },
+      "learnMore": "Learn More",
+      "projects": "Projects"
+    },
+    "companies": "Companies where I worked",
+    "availability": {
+      "title": "Let's Talk?",
+      "description": "I'm always available to discuss projects, opportunities or just exchange ideas about technology.",
+      "schedule": "Schedule Meeting",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "status": "Available for new projects",
+      "hours": "Available Hours:",
+      "weekdays": "Monday, Wednesday, Thursday and Friday: 12:30 - 13:30 and 17:10 - 22:00",
+      "tuesday": "Tuesday: 17:10 - 22:00",
+      "saturday": "Saturdays: 12:30 - 17:00",
+      "response": "Response within 24h"
+    }
+  },
+  "footer": {
+    "description": "Full-Stack Developer passionate about creating innovative and functional digital solutions.",
+    "quickLinks": "Quick Links",
+    "social": "Social Media",
+    "contact": "Contact",
+    "madeWith": "Made with",
+    "by": "by",
+    "allRightsReserved": "All rights reserved.",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Marialva, PR - Brazil"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "close": "Close",
+    "open": "Open",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "or": "or",
+    "and": "and",
+    "months": "months",
+    "month": "month",
+    "days": "days",
+    "day": "day"
+  }
+}

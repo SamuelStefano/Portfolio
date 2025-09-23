@@ -1,4 +1,4 @@
-export interface SectionMetadata {
+﻿export interface SectionMetadata {
   displayName: string;
   description: string;
   technologies: string[];
@@ -6,16 +6,14 @@ export interface SectionMetadata {
 
 const DEFAULT_TECHS = ["React", "TypeScript", "Tailwind CSS"];
 
-// Normaliza a chave da pasta: remove acentos, espaços e caracteres especiais
 export const normalizeSectionKey = (name: string): string => {
   return (name || "")
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
-    .replace(/[^a-z0-9]/g, ''); // remove espaços e símbolos
+    .replace(/[^a-z0-9]/g, '');
 };
 
-// Mapa usando chaves normalizadas (sem espaços e acentos)
 const SECTION_MAP: Record<string, SectionMetadata> = {
   admin: {
     displayName: "Painel Administrativo",
@@ -101,7 +99,6 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
 
 export const getSectionMetadata = (folderName: string): SectionMetadata => {
   let key = normalizeSectionKey(folderName);
-  // Alias para variações comuns de nomes
   if (key === 'comunity') key = 'community';
   if (SECTION_MAP[key]) return SECTION_MAP[key];
   return {
@@ -112,5 +109,4 @@ export const getSectionMetadata = (folderName: string): SectionMetadata => {
     technologies: [...DEFAULT_TECHS]
   };
 };
-
 

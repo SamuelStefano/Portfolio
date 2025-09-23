@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ProjectCard } from '@/components/molecules/ProjectCard';
 import { ProjectOverlay } from './ProjectOverlay';
 import { Heading } from '@/components/atoms/Heading';
@@ -44,7 +44,7 @@ export const ProjectGrid = () => {
           </Heading>
         </div>
 
-        {/* Projects Grid */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <ProjectCard
@@ -56,11 +56,11 @@ export const ProjectGrid = () => {
           ))}
         </div>
 
-        {/* Project Overlay */}
-        <ProjectOverlay 
-          project={selectedProject} 
-          isOpen={!!selectedProject} 
-          onClose={() => setSelectedProject(null)} 
+        {}
+        <ProjectOverlay
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
         />
       </div>
     </section>

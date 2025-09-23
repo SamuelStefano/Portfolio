@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+﻿import { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
 import { Icon } from '@/components/atoms/Icon';
 
@@ -10,10 +10,10 @@ interface SocialLinkProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export const SocialLink = ({ 
-  icon, 
-  href, 
-  label, 
+export const SocialLink = ({
+  icon,
+  href,
+  label,
   variant = 'outline',
   size = 'lg'
 }: SocialLinkProps) => {
@@ -24,7 +24,7 @@ export const SocialLink = ({
       asChild
       className="hover-glow border-border bg-card/50 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
     >
-      <a 
+      <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"

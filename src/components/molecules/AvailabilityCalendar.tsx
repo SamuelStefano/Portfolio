@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Calendar, Clock, Mail, Phone } from 'lucide-react';
 import { Card, CardContent } from '@/components/atoms/card';
 import { Button } from '@/components/atoms/button';
@@ -8,7 +8,6 @@ import { Text } from '@/components/atoms/Text';
 
 export const AvailabilityCalendar = () => {
   const handleScheduleMeeting = () => {
-    // Link para Calendly ou Google Calendar
     window.open('https://calendly.com/samuelstefanodocarmo/30min', '_blank');
   };
 
@@ -37,7 +36,7 @@ export const AvailabilityCalendar = () => {
           </Text>
         </div>
 
-        {/* Horários Disponíveis */}
+        {}
         <div className="mb-6 p-4 bg-background/50 rounded-lg">
           <div className="flex items-center gap-2 mb-3">
             <Icon icon={Clock} size="sm" className="text-primary" />
@@ -51,18 +50,18 @@ export const AvailabilityCalendar = () => {
           </div>
         </div>
 
-        {/* Botões de Contato */}
+        {}
         <div className="space-y-3">
-          <Button 
+          <Button
             onClick={handleScheduleMeeting}
             className="w-full bg-primary hover:bg-primary/90"
           >
             <Icon icon={Calendar} size="sm" className="mr-2" />
             Agendar Reunião
           </Button>
-          
+
           <div className="grid grid-cols-2 gap-3">
-            <Button 
+            <Button
               variant="outline"
               onClick={handleEmailContact}
               className="flex-1"
@@ -70,8 +69,8 @@ export const AvailabilityCalendar = () => {
               <Icon icon={Mail} size="sm" className="mr-2" />
               Email
             </Button>
-            
-            <Button 
+
+            <Button
               variant="outline"
               onClick={handleWhatsAppContact}
               className="flex-1"
@@ -82,7 +81,7 @@ export const AvailabilityCalendar = () => {
           </div>
         </div>
 
-        {/* Status */}
+        {}
         <div className="mt-4 pt-4 border-t border-border/50">
           <div className="flex items-center justify-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>

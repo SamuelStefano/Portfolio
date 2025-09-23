@@ -1,4 +1,4 @@
-import { ExternalLink, Users } from 'lucide-react';
+﻿import { ExternalLink, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/atoms/card';
 import { Badge } from '@/components/atoms/badge';
 import { Button } from '@/components/atoms/button';
@@ -25,8 +25,8 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
       <div className="relative h-48 overflow-hidden">
         {project.thumbnail_url ? (
           <div className="w-full h-full relative">
-            <img 
-              src={project.thumbnail_url} 
+            <img
+              src={project.thumbnail_url}
               alt={project.title}
               className="w-full h-full object-cover"
             />
@@ -40,19 +40,19 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
             <IconComponent className="w-16 h-16 text-primary" />
           </div>
         )}
-        
-        {/* Overlay */}
+
+        {}
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        {/* Hover Content */}
+
+        {}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Button variant="secondary" size="sm" className="hover-glow">
             <Icon icon={ExternalLink} className="mr-2" />
             Ver Detalhes
           </Button>
         </div>
-        
-        {/* Badges */}
+
+        {}
         <div className="absolute top-3 left-3 flex gap-2">
           <Badge variant="secondary" className="bg-card/80 backdrop-blur-sm">
             {project.role}
@@ -79,12 +79,12 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
         <Heading level={3} className="mb-2 group-hover:gradient-text transition-all duration-300">
           {project.title}
         </Heading>
-        
+
         <Text className="mb-4 line-clamp-2">
           {project.description}
         </Text>
 
-        {/* Tech Stack Preview */}
+        {}
         <div className="flex flex-wrap gap-1 mb-4">
           {project.stack.slice(0, 3).map((tech, index) => (
             <Badge key={index} variant="secondary" className="text-xs">
@@ -98,7 +98,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
           )}
         </div>
 
-        {/* Quick Actions */}
+        {}
         <div className="flex gap-2">
           {project.project_links.slice(0, 1).map((link, index) => (
             <Button

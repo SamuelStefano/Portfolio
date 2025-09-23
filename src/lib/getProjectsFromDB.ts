@@ -1,4 +1,4 @@
-import { supabase } from './supabaseclient';
+﻿import { supabase } from './supabaseclient';
 import { Project } from '../types/project';
 import { getProjectImagesFromBucket, discoverProjectsFromBuckets } from './simpleBucketAccess';
 
@@ -10,7 +10,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
 
   try {
 
-    // Query simples sem relacionamentos (para evitar erro de permissão)
     const { data, error } = await supabase
       .from("projects")
       .select("*")
@@ -21,7 +20,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       return [];
     }
 
-    // 1) Projetos do DB enriquecidos com imagens do Storage
     const dbProjects: Project[] = await Promise.all(
       (data || []).map(async (project) => {
         try {
@@ -47,10 +45,8 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       })
     );
 
-    // 2) Descobrir projetos diretamente dos buckets (sem exigir linha no DB)
     const discovered = await discoverProjectsFromBuckets();
 
-    // 3) Transformar descobertos para Project e mesclar com DB pelo storage_path
     const storagePathToDb = new Map<string, Project>();
     dbProjects.forEach(p => {
       if (p as any && (p as any).storage_path) storagePathToDb.set((p as any).storage_path as string, p);
@@ -78,7 +74,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       } as Project;
     });
 
-    // Estratégia de mesclagem (v2) com flags de config
     const includeAutoDiscovered = import.meta.env.VITE_INCLUDE_AUTO_DISCOVERED === 'true';
     const requireStorageMatch = import.meta.env.VITE_REQUIRE_STORAGE_MATCH === 'true';
 
@@ -93,7 +88,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       return discoveredAsProjects;
     }
 
-    // - Caso haja projetos no DB, evitar duplicados por título exato OU storage_path exato (quando ambos definidos)
     const merged: Project[] = [...dbProjects];
 
     for (const p of discoveredAsProjects) {

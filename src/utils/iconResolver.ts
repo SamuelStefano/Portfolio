@@ -1,7 +1,6 @@
-import { LucideProps } from 'lucide-react';
+﻿import { LucideProps } from 'lucide-react';
 import { LucideIconName } from '../types/project';
 
-// Importar apenas os ícones que realmente existem no Lucide React
 import {
   Code,
   ShoppingCart,
@@ -143,7 +142,6 @@ import {
   Turtle
 } from 'lucide-react';
 
-// Mapeamento de nomes para componentes
 const iconMap: Record<LucideIconName, React.ComponentType<LucideProps>> = {
   Code,
   ShoppingCart,
@@ -286,5 +284,5 @@ const iconMap: Record<LucideIconName, React.ComponentType<LucideProps>> = {
 };
 
 export const getIconComponent = (iconName: LucideIconName) => {
-  return iconMap[iconName] || Code; // Fallback para Code se não encontrar
+  return iconMap[iconName] || Code;
 };

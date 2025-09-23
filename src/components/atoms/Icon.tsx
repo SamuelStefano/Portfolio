@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+﻿import { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface IconProps {
@@ -16,8 +16,8 @@ const sizeClasses = {
 
 export const Icon = ({ icon: IconComponent, size = 'md', className }: IconProps) => {
   return (
-    <IconComponent 
-      className={cn(sizeClasses[size], className)} 
+    <IconComponent
+      className={cn(sizeClasses[size], className)}
     />
   );
 };

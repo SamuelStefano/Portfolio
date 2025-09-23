@@ -1,13 +1,11 @@
-import { ProjectImageFolder } from '@/types/project';
+﻿import { ProjectImageFolder } from '@/types/project';
 
-// Mapeamento de nomes de pastas para configurações de seção
 const folderConfigMap: Record<string, {
   display_name: string;
   description: string;
   icon_name: string;
   order_index: number;
 }> = {
-  // Seções padrão
   'admin': {
     display_name: 'Painel Administrativo',
     description: 'Interface de administração e controle do sistema',
@@ -112,48 +110,33 @@ const folderConfigMap: Record<string, {
   }
 };
 
-/**
- * Organiza as imagens do projeto por pastas do bucket
- * @param projectImages Array de imagens do projeto
- * @param bucketPath Caminho base do bucket (ex: "Portfolio/challenges/Skill Evals")
- * @returns Array de pastas organizadas
- */
 export function organizeImagesByFolders(
-  projectImages: any[], 
+  projectImages: any[],
   bucketPath: string
 ): ProjectImageFolder[] {
   const folders: Record<string, ProjectImageFolder> = {};
 
-  // Processar cada imagem
   projectImages.forEach((image, index) => {
-    // Extrair o caminho da pasta a partir da URL da imagem
     const imageUrl = image.image_url || image.url;
     if (!imageUrl) return;
 
-    // Extrair o nome da pasta do caminho
-    // Exemplo: "https://bucket.com/Portfolio/challenges/Skill Evals/Admin/image1.jpg"
-    // Resultado: "Admin"
     const urlParts = imageUrl.split('/');
     const bucketIndex = urlParts.findIndex(part => part === bucketPath.split('/')[0]);
-    
+
     if (bucketIndex === -1) return;
 
-    // Encontrar a pasta específica do projeto
     const projectPathParts = bucketPath.split('/');
     let folderName = 'others';
-    
-    // Procurar pela pasta específica do projeto
+
     for (let i = bucketIndex + 1; i < urlParts.length - 1; i++) {
       const part = urlParts[i];
       if (projectPathParts.includes(part)) {
         continue;
       }
-      // Se não é parte do caminho do projeto, é o nome da pasta
       folderName = part.toLowerCase().replace(/[^a-z0-9]/g, '');
       break;
     }
 
-    // Configuração da pasta
     const config = folderConfigMap[folderName] || {
       display_name: folderName.charAt(0).toUpperCase() + folderName.slice(1),
       description: `Imagens da seção ${folderName}`,
@@ -161,7 +144,6 @@ export function organizeImagesByFolders(
       order_index: 50
     };
 
-    // Criar ou atualizar a pasta
     if (!folders[folderName]) {
       folders[folderName] = {
         folder_name: folderName,
@@ -173,7 +155,6 @@ export function organizeImagesByFolders(
       };
     }
 
-    // Adicionar imagem à pasta
     folders[folderName].images.push({
       id: image.id || `img-${index}`,
       image_url: imageUrl,
@@ -182,15 +163,9 @@ export function organizeImagesByFolders(
     });
   });
 
-  // Converter para array e ordenar
   return Object.values(folders).sort((a, b) => a.order_index - b.order_index);
 }
 
-/**
- * Gera seções dinâmicas baseadas nas pastas de imagens
- * @param imageFolders Array de pastas organizadas
- * @returns Array de seções para o overlay
- */
 export function generateSectionsFromFolders(imageFolders: ProjectImageFolder[]) {
   return imageFolders.map(folder => ({
     id: folder.folder_name,
@@ -207,17 +182,11 @@ export function generateSectionsFromFolders(imageFolders: ProjectImageFolder[]) 
   }));
 }
 
-/**
- * Mapeia nomes de pastas para ícones do Lucide
- */
 export function getFolderIcon(folderName: string): string {
   const config = folderConfigMap[folderName.toLowerCase()];
   return config?.icon_name || 'Code';
 }
 
-/**
- * Gera nome de exibição amigável para a pasta
- */
 export function getFolderDisplayName(folderName: string): string {
   const config = folderConfigMap[folderName.toLowerCase()];
   return config?.display_name || folderName.charAt(0).toUpperCase() + folderName.slice(1);

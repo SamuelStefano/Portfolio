@@ -1,15 +1,9 @@
-import { supabase } from './supabaseclient';
+﻿import { supabase } from './supabaseclient';
 import { ProjectImageFolder } from '@/types/project';
 import { organizeImagesByFolders } from './organizeImagesByFolders';
 
-/**
- * Lista arquivos de uma pasta específica no Supabase Storage
- * @param bucket Nome do bucket
- * @param folderPath Caminho da pasta
- * @returns Array de arquivos
- */
 export async function listFilesFromBucket(
-  bucket: string, 
+  bucket: string,
   folderPath: string
 ): Promise<any[]> {
   try {
@@ -33,19 +27,13 @@ export async function listFilesFromBucket(
   }
 }
 
-/**
- * Lista todas as pastas de um projeto no bucket
- * @param bucket Nome do bucket
- * @param projectPath Caminho do projeto (ex: "challenges/Skill Evals")
- * @returns Array de pastas
- */
 export async function listProjectFolders(
-  bucket: string, 
+  bucket: string,
   projectPath: string
 ): Promise<string[]> {
   try {
     console.log(`🔍 Tentando listar: ${bucket}/${projectPath}`);
-    
+
     const { data, error } = await supabase.storage
       .from(bucket)
       .list(projectPath, {
@@ -57,27 +45,25 @@ export async function listProjectFolders(
     if (error) {
       console.error("❌ Erro ao listar pastas:", error);
       console.error("❌ Detalhes do erro:", error.message, error.statusCode);
-      
-      // Tentar listar a raiz do bucket para verificar se existe
+
       const { data: rootData, error: rootError } = await supabase.storage
         .from(bucket)
         .list('', { limit: 100 });
-        
+
       if (rootError) {
         console.error("❌ Erro ao acessar raiz do bucket:", rootError);
         throw new Error(`Bucket '${bucket}' não acessível: ${rootError.message}`);
       }
-      
+
       console.log("📁 Conteúdo da raiz do bucket:", rootData?.map(item => item.name));
       throw new Error(`Caminho '${projectPath}' não encontrado no bucket '${bucket}'`);
     }
 
     console.log("📁 Dados retornados:", data);
-    
-    // Filtrar apenas pastas (não arquivos)
+
     const folders = data?.filter(item => !item.name.includes('.')) || [];
     console.log("📁 Pastas filtradas:", folders.map(f => f.name));
-    
+
     return folders.map(folder => folder.name);
   } catch (error) {
     console.error("❌ Erro ao acessar storage:", error);
@@ -85,26 +71,18 @@ export async function listProjectFolders(
   }
 }
 
-/**
- * Busca imagens de uma pasta específica
- * @param bucket Nome do bucket
- * @param folderPath Caminho da pasta
- * @returns Array de URLs das imagens
- */
 export async function getImagesFromFolder(
-  bucket: string, 
+  bucket: string,
   folderPath: string
 ): Promise<string[]> {
   try {
     const files = await listFilesFromBucket(bucket, folderPath);
-    
-    // Filtrar apenas imagens
+
     const imageFiles = files.filter(file => {
       const extension = file.name.toLowerCase().split('.').pop();
       return ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(extension || '');
     });
 
-    // Gerar URLs públicas
     const imageUrls = imageFiles.map(file => {
       const { data } = supabase.storage
         .from(bucket)
@@ -119,35 +97,26 @@ export async function getImagesFromFolder(
   }
 }
 
-/**
- * Organiza imagens de um projeto por pastas do Supabase Storage
- * @param bucket Nome do bucket
- * @param projectPath Caminho do projeto
- * @returns Array de pastas organizadas
- */
 export async function organizeProjectImagesFromStorage(
-  bucket: string, 
+  bucket: string,
   projectPath: string
 ): Promise<ProjectImageFolder[]> {
   try {
     console.log(`🔍 Buscando pastas em: ${bucket}/${projectPath}`);
-    
-    // Listar todas as pastas do projeto
+
     const folders = await listProjectFolders(bucket, projectPath);
     console.log(`📁 Pastas encontradas:`, folders);
-    
+
     const imageFolders: ProjectImageFolder[] = [];
 
-    // Para cada pasta, buscar as imagens
     for (const folderName of folders) {
       const folderPath = `${projectPath}/${folderName}`;
       console.log(`🖼️ Buscando imagens em: ${folderPath}`);
-      
+
       const imageUrls = await getImagesFromFolder(bucket, folderPath);
       console.log(`📸 Imagens encontradas em ${folderName}:`, imageUrls.length);
-      
+
       if (imageUrls.length > 0) {
-        // Mapear para o formato esperado
         const images = imageUrls.map((url, index) => ({
           id: `${folderName}-${index}`,
           image_url: url,
@@ -155,9 +124,8 @@ export async function organizeProjectImagesFromStorage(
           created_at: new Date().toISOString()
         }));
 
-        // Configuração da pasta baseada no nome
         const folderConfig = getFolderConfig(folderName);
-        
+
         imageFolders.push({
           folder_name: folderName.toLowerCase(),
           display_name: folderConfig.display_name,
@@ -170,7 +138,6 @@ export async function organizeProjectImagesFromStorage(
     }
 
     console.log(`✅ Total de pastas com imagens:`, imageFolders.length);
-    // Ordenar por order_index
     return imageFolders.sort((a, b) => a.order_index - b.order_index);
   } catch (error) {
     console.error("❌ Erro ao organizar imagens:", error);
@@ -178,9 +145,6 @@ export async function organizeProjectImagesFromStorage(
   }
 }
 
-/**
- * Configuração de pastas baseada no nome
- */
 function getFolderConfig(folderName: string) {
   const configs: Record<string, any> = {
     'admin': {

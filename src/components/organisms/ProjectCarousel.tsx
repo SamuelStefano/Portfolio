@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink, Users, Code, X } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
@@ -12,7 +12,6 @@ import { useProjects } from '@/hooks/useProjects';
 import { getIconComponent } from '@/utils/iconResolver';
 import { Project } from '@/types/project';
 
-
 export const ProjectCarousel = () => {
   const { projects, loading, error } = useProjects();
   const [currentProject, setCurrentProject] = useState(0);
@@ -23,7 +22,6 @@ export const ProjectCarousel = () => {
   const [direction, setDirection] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Animation variants
   const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 300 : -300,
@@ -42,7 +40,6 @@ export const ProjectCarousel = () => {
     })
   };
 
-  // Side card variants
   const sideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 50 : -50,
@@ -61,17 +58,16 @@ export const ProjectCarousel = () => {
     })
   };
 
-  // Auto-advance carousel always
   useEffect(() => {
     if (projects.length === 0) return;
-    
+
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentProject((prev) => (prev + 1) % projects.length);
     }, 10000);
 
     return () => clearInterval(interval);
-  }, [currentProject, projects.length]); // Reset timer quando currentProject muda
+  }, [currentProject, projects.length]);
 
   const nextProject = () => {
     setDirection(1);
@@ -89,7 +85,6 @@ export const ProjectCarousel = () => {
     setCurrentProject(index);
   };
 
-  // Loading state
   if (loading) {
     return (
       <div className="py-20">
@@ -103,7 +98,6 @@ export const ProjectCarousel = () => {
     );
   }
 
-  // Error state
   if (error) {
     return (
       <div className="py-20">
@@ -119,7 +113,6 @@ export const ProjectCarousel = () => {
     );
   }
 
-  // Empty state
   if (projects.length === 0) {
     return (
       <div className="py-20">
@@ -128,14 +121,13 @@ export const ProjectCarousel = () => {
             Nenhum projeto encontrado
           </Text>
           <Text variant="small" className="text-muted-foreground mt-2">
-            Dica: ative VITE_INCLUDE_AUTO_DISCOVERED=true no .env para mostrar projetos do Storage.
+            VITE_INCLUDE_AUTO_DISCOVERED=true .
           </Text>
         </div>
       </div>
     );
   }
 
-  // Drag handlers
   const handleDragStart = (e: React.MouseEvent) => {
     setDragStart(e.clientX);
     setDragOffset(0);
@@ -149,7 +141,7 @@ export const ProjectCarousel = () => {
 
   const handleDragEnd = () => {
     if (dragStart === null) return;
-    
+
     const threshold = 100;
     if (Math.abs(dragOffset) > threshold) {
       if (dragOffset > 0) {
@@ -158,7 +150,7 @@ export const ProjectCarousel = () => {
         nextProject();
       }
     }
-    
+
     setDragStart(null);
     setDragOffset(0);
   };
@@ -167,52 +159,51 @@ export const ProjectCarousel = () => {
   const IconComponent = getIconComponent(project.icon_name as any);
 
   return (
-    <section id="projetos" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <Heading level={2} className="mb-4 gradient-text">
-            Projetos 
+    <section id="projetos" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+            Projetos
           </Heading>
-          <Text variant="large" className="max-w-2xl mx-auto">
+          <Text variant="large" className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
             Uma seleção dos meus trabalhos mais recentes e impactantes
           </Text>
         </div>
 
-        {/* Main Carousel */}
-        <div className="relative max-w-7xl mx-auto">
-          {/* Navigation Arrows - Left */}
+        {}
+        <div className="relative">
+          {}
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+            className="hidden xl:flex absolute -left-16 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-lg"
             onClick={prevProject}
           >
             <Icon icon={ChevronLeft} size="sm" />
           </Button>
 
-          {/* Navigation Arrows - Right */}
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+            className="hidden xl:flex absolute -right-16 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-lg"
             onClick={nextProject}
           >
             <Icon icon={ChevronRight} size="sm" />
           </Button>
 
-          <div 
+          <div
             ref={carouselRef}
-            className="flex items-center justify-center gap-10 px-16"
+            className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10 overflow-hidden"
             onMouseDown={handleDragStart}
             onMouseMove={handleDragMove}
             onMouseUp={handleDragEnd}
             onMouseLeave={handleDragEnd}
           >
-            {/* Previous Project (Left) */}
+            {}
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={`prev-${projects[(currentProject - 1 + projects.length) % projects.length].id}`}
-                className="w-80 h-60 rounded-xl overflow-hidden cursor-pointer hover:opacity-50 transition-all duration-500 transform hover:scale-105 bg-card border border-border group relative"
+                className="hidden lg:block w-48 xl:w-64 2xl:w-80 h-36 xl:h-48 2xl:h-60 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 transition-all duration-500 transform hover:scale-105 bg-card border border-border group relative flex-shrink-0"
                 custom={direction}
                 variants={sideVariants}
                 initial="enter"
@@ -231,8 +222,8 @@ export const ProjectCarousel = () => {
                     <>
                       {prevProject.thumbnail_url ? (
                         <div className="w-full h-full relative">
-                          <img 
-                            src={prevProject.thumbnail_url} 
+                          <img
+                            src={prevProject.thumbnail_url}
                             alt={prevProject.title}
                             className="w-full h-full object-cover"
                           />
@@ -246,11 +237,11 @@ export const ProjectCarousel = () => {
                           <PrevIconComponent className="w-16 h-16 text-muted-foreground" />
                         </div>
                       )}
-                      
-                      {/* Overlay */}
+
+                      {}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-                      
-                      {/* Project Info - Container fixo */}
+
+                      {}
                       <div className="absolute bottom-0 left-0 right-0 p-3 max-h-[60%] overflow-hidden">
                         <div className="flex items-center gap-2 mb-1">
                           <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs px-2 py-1">
@@ -270,11 +261,11 @@ export const ProjectCarousel = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Main Project */}
+            {}
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={project.id}
-                className="relative w-[580px] h-[380px] rounded-2xl overflow-hidden group cursor-pointer hover-glow flex-shrink-0 transform transition-all duration-500 hover:scale-105 bg-card border border-border"
+                className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] rounded-xl lg:rounded-2xl overflow-hidden group cursor-pointer hover-glow flex-shrink-0 transform transition-all duration-500 lg:hover:scale-105 bg-card border border-border mx-auto"
                 style={{
                   transform: `translateX(${dragOffset * 0.1}px)`,
                   transition: 'all 0.3s ease-out'
@@ -294,8 +285,8 @@ export const ProjectCarousel = () => {
               >
                 {project.thumbnail_url ? (
                   <div className="w-full h-full relative">
-                    <img 
-                      src={project.thumbnail_url} 
+                    <img
+                      src={project.thumbnail_url}
                       alt={project.title}
                       className="w-full h-full object-cover"
                     />
@@ -309,31 +300,31 @@ export const ProjectCarousel = () => {
                     <IconComponent className="w-32 h-32 text-primary" />
                   </div>
                 )}
-                
-                {/* Overlay */}
+
+                {}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent transition-all duration-500 group-hover:from-background/90" />
-                
-                {/* Project Info */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-all duration-500 group-hover:translate-y-[-4px]">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm">
+
+                {}
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 transform transition-all duration-500 md:group-hover:translate-y-[-4px]">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                    <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs sm:text-sm w-fit">
                       {project.role}
                     </Badge>
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Icon icon={Users} size="sm" />
-                  {project.project_collaborators.length} colaborador{project.project_collaborators.length > 1 ? 'es' : ''}
-                </div>
+                    <div className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
+                      <Icon icon={Users} size="sm" />
+                      {project.project_collaborators.length} colaborador{project.project_collaborators.length > 1 ? 'es' : ''}
+                    </div>
                   </div>
-                  <Heading level={3} className="mb-2 group-hover:text-primary transition-colors duration-300">
+                  <Heading level={3} className="mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300 text-lg sm:text-xl md:text-2xl">
                     {project.title}
                   </Heading>
-                  <Text variant="small" className="max-w-lg opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                  <Text variant="small" className="max-w-lg opacity-90 group-hover:opacity-100 transition-opacity duration-300 text-xs sm:text-sm line-clamp-2 sm:line-clamp-none">
                     {project.description}
                   </Text>
                 </div>
 
-                {/* Hover Indicator */}
-                <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                {}
+                <div className="hidden md:block absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <div className="bg-primary/20 backdrop-blur-sm rounded-full px-3 py-1 border border-primary/30">
                     <Text variant="small" className="text-primary font-medium">Clique para ver mais</Text>
                   </div>
@@ -341,11 +332,11 @@ export const ProjectCarousel = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Next Project (Right) */}
+            {}
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={`next-${projects[(currentProject + 1) % projects.length].id}`}
-                className="w-80 h-60 rounded-xl overflow-hidden cursor-pointer hover:opacity-50 transition-all duration-500 transform hover:scale-105 bg-card border border-border group relative"
+                className="hidden lg:block w-48 xl:w-64 2xl:w-80 h-36 xl:h-48 2xl:h-60 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 transition-all duration-500 transform hover:scale-105 bg-card border border-border group relative flex-shrink-0"
                 custom={direction}
                 variants={sideVariants}
                 initial="enter"
@@ -364,8 +355,8 @@ export const ProjectCarousel = () => {
                     <>
                       {nextProject.thumbnail_url ? (
                         <div className="w-full h-full relative">
-                          <img 
-                            src={nextProject.thumbnail_url} 
+                          <img
+                            src={nextProject.thumbnail_url}
                             alt={nextProject.title}
                             className="w-full h-full object-cover"
                           />
@@ -379,11 +370,11 @@ export const ProjectCarousel = () => {
                           <NextIconComponent className="w-16 h-16 text-muted-foreground" />
                         </div>
                       )}
-                      
-                      {/* Overlay */}
+
+                      {}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-                      
-                      {/* Project Info - Container fixo */}
+
+                      {}
                       <div className="absolute bottom-0 left-0 right-0 p-3 max-h-[60%] overflow-hidden">
                         <div className="flex items-center gap-2 mb-1">
                           <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs px-2 py-1">
@@ -404,28 +395,49 @@ export const ProjectCarousel = () => {
             </AnimatePresence>
           </div>
 
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-8">
+          {}
+          <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
             {projects.map((_, index) => (
               <button
                 key={index}
-                className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                  index === currentProject 
-                    ? 'bg-primary scale-125' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 touch-manipulation ${
+                  index === currentProject
+                    ? 'bg-primary scale-125 shadow-lg'
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50 active:bg-muted-foreground/70 hover:scale-110'
                 }`}
                 onClick={() => goToProject(index)}
               />
             ))}
           </div>
+
+          {}
+          <div className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 xl:hidden">
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-background/90 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-md px-4 sm:px-6"
+              onClick={prevProject}
+            >
+              <Icon icon={ChevronLeft} size="sm" className="mr-1 sm:mr-2" />
+              <span className="text-xs sm:text-sm">Anterior</span>
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-background/90 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-md px-4 sm:px-6"
+              onClick={nextProject}
+            >
+              <span className="text-xs sm:text-sm">Próximo</span>
+              <Icon icon={ChevronRight} size="sm" className="ml-1 sm:ml-2" />
+            </Button>
+          </div>
         </div>
 
-        {/* Project Overlay */}
-        <ProjectOverlay 
-          project={selectedProject} 
-          isOpen={!!selectedProject} 
-          onClose={() => setSelectedProject(null)} 
+        {}
+        <ProjectOverlay
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
         />
       </div>
     </section>

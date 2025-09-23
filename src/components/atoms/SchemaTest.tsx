@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useDatabaseTest } from '../../hooks/useDatabaseTest';
 import { Button } from './button';
 import { Card } from './card';
@@ -9,7 +9,7 @@ export function SchemaTest() {
   return (
     <Card className="p-6 max-w-4xl mx-auto">
       <h3 className="text-xl font-semibold mb-4 text-center">🔧 Teste de Schema Portfolio</h3>
-      
+
       <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
         <h4 className="font-medium text-blue-800 mb-2">📋 Instruções:</h4>
         <ol className="list-decimal list-inside space-y-1 text-sm text-blue-700">
@@ -19,9 +19,9 @@ export function SchemaTest() {
           <li>Teste a conexão abaixo</li>
         </ol>
       </div>
-      
-      <Button 
-        onClick={testConnection} 
+
+      <Button
+        onClick={testConnection}
         disabled={isLoading}
         className="w-full mb-4"
       >
@@ -30,14 +30,14 @@ export function SchemaTest() {
 
       {result && (
         <div className={`p-4 rounded-lg ${
-          result.ok 
-            ? 'bg-green-50 text-green-800 border border-green-200' 
+          result.ok
+            ? 'bg-green-50 text-green-800 border border-green-200'
             : 'bg-red-50 text-red-800 border border-red-200'
         }`}>
           <div className="font-medium text-lg mb-2">
             {result.ok ? '✅ Conexão bem-sucedida!' : '❌ Erro na conexão'}
           </div>
-          
+
           {result.ok && result.data && (
             <div className="space-y-4">
               <div>
@@ -75,7 +75,7 @@ export function SchemaTest() {
               )}
             </div>
           )}
-          
+
           {result.error && (
             <div>
               <div className="font-medium text-sm mb-1">Erro:</div>

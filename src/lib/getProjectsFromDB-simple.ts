@@ -1,4 +1,4 @@
-import { supabase } from './supabaseclient';
+﻿import { supabase } from './supabaseclient';
 import { Project } from '../types/project';
 
 export const getProjectsFromDB = async (): Promise<Project[]> => {
@@ -10,7 +10,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
   try {
     console.log("🔍 Buscando projetos (versão simplificada)...");
 
-    // Query simplificada sem relacionamentos
     const { data, error } = await supabase
       .from("projects")
       .select(`
@@ -39,7 +38,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
 
     console.log(`📊 Projetos encontrados: ${data.length}`);
 
-    // Retornar projetos com arrays vazios para as relações
     const projectsWithEmptyRelations = data.map(project => ({
       ...project,
       project_collaborators: [],
