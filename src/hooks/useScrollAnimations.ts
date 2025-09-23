@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 
-// Hook simplificado sem GSAP para evitar problemas
 export const useScrollAnimations = () => {
   useEffect(() => {
-    // Usar Intersection Observer nativo para performance
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -18,7 +16,6 @@ export const useScrollAnimations = () => {
       }
     );
 
-    // Observar elementos com classe especial
     const elements = document.querySelectorAll('.scroll-animate');
     elements.forEach((el) => observer.observe(el));
 

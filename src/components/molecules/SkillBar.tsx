@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+﻿import { cn } from '@/lib/utils';
 
 interface SkillBarProps {
   name: string;
@@ -19,7 +19,7 @@ export const SkillBar = ({ name, level, className }: SkillBarProps) => {
       </div>
       <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
         <div
-          className="h-full bg-gradient-primary rounded-full transition-all duration-1000 ease-out animate-scale-in"
+          className="h-full bg-gradient-to-r from-neon-blue to-neon-purple rounded-full transition-all duration-1000 ease-out animate-scale-in"
           style={{ width: `${level}%` }}
         />
       </div>

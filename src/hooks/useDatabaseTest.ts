@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+﻿import { useState, useCallback } from 'react';
 import { testDatabase, DatabaseTestResult } from '../lib/testDatabase';
 
 export function useDatabaseTest() {
@@ -8,7 +8,7 @@ export function useDatabaseTest() {
   const testConnection = useCallback(async () => {
     setIsLoading(true);
     setResult(null);
-    
+
     try {
       const testResult = await testDatabase();
       setResult(testResult);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
@@ -10,9 +10,9 @@ interface ImageCarouselProps {
   onImageClick?: (imageUrl: string) => void;
 }
 
-export const ImageCarousel: React.FC<ImageCarouselProps> = ({ 
-  images, 
-  title, 
+export const ImageCarousel: React.FC<ImageCarouselProps> = ({
+  images,
+  title,
   className = "",
   onImageClick
 }) => {
@@ -30,7 +30,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // Autoplay 5s (pausa no hover e quando não há múltiplas imagens)
   useEffect(() => {
     if (images.length <= 1) return;
 
@@ -73,16 +72,16 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 
   return (
     <>
-      <div 
+      <div
         className={`relative ${className}`}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        {/* Carrossel Container */}
+        {}
         <div className="relative overflow-hidden rounded-xl bg-card border border-border">
-          {/* Imagem Atual */}
+          {}
           <div className="relative w-[100%] h-[50%]">
-            {/* 🖼️ TAMANHO CARROSSEL: aspect-video (16:9) - mude para aspect-square, aspect-[4/3], aspect-[3/2], etc. */}
+            {}
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentIndex}
@@ -101,7 +100,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
               />
             </AnimatePresence>
 
-            {/* Overlay com botão de zoom */}
+            {}
             <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
               <div className="opacity-0 hover:opacity-100 transition-opacity duration-300">
                 <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
@@ -110,7 +109,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
               </div>
             </div>
 
-            {/* Botões de navegação */}
+            {}
             {images.length > 1 && (
               <>
                 <Button
@@ -132,7 +131,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
               </>
             )}
 
-            {/* Indicador de posição */}
+            {}
             {images.length > 1 && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
                 <div className="bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
@@ -144,7 +143,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
             )}
           </div>
 
-          {/* Miniaturas */}
+          {}
           {images.length > 0 && (
             <div className="p-4">
               <div className="flex gap-2 overflow-x-auto overflow-y-hidden">
@@ -153,7 +152,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                      className={`relative flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                      // 🖼️ TAMANHO MINIATURAS: w-16 h-12 - mude para w-20 h-14, w-12 h-8, etc.
                       index === currentIndex
                         ? 'border-primary scale-105'
                         : 'border-border hover:border-primary/50'
@@ -176,7 +174,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
         </div>
       </div>
 
-      {/* Modal de visualização */}
+      {}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div

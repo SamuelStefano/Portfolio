@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  X, 
-  ExternalLink, 
-  Github, 
-  Monitor, 
-  Smartphone, 
+import {
+  X,
+  ExternalLink,
+  Github,
+  Monitor,
+  Smartphone,
   Database,
   Code,
   Palette,
@@ -45,7 +45,6 @@ interface ProjectOverlayProps {
   onClose: () => void;
 }
 
-// Mapeamento de ícones para seções dinâmicas
 const sectionIconMap: Record<string, React.ComponentType<any>> = {
   'overview': Monitor,
   'dashboard': BarChart3,
@@ -63,13 +62,12 @@ const sectionIconMap: Record<string, React.ComponentType<any>> = {
   'default': Code
 };
 
-export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ 
-  project, 
-  isOpen, 
-  onClose 
+export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
+  project,
+  isOpen,
+  onClose
 }) => {
 
-  // Bloquear scroll da página principal quando overlay estiver aberto
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -77,13 +75,11 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
       document.body.style.overflow = 'unset';
     }
 
-    // Cleanup ao desmontar
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
-  // Fechar overlay com ESC
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isOpen) {
@@ -104,18 +100,16 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
 
   const IconComponent = getIconComponent(project.icon_name);
 
-  // Gerar seções dinamicamente
   const generateSections = () => {
     const sections = [
-      { 
-        id: 'overview', 
-        name: 'Visão Geral', 
+      {
+        id: 'overview',
+        name: 'Visão Geral',
         icon_name: 'Monitor',
         description: 'Informações gerais do projeto'
       }
     ];
 
-    // Prioridade 1: Seções definidas no banco de dados
     if (project.project_sections && project.project_sections.length > 0) {
       project.project_sections
         .sort((a, b) => a.order_index - b.order_index)
@@ -128,12 +122,10 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
           });
         });
     }
-    // Prioridade 2: Seções baseadas em pastas de imagens
     else if (project.image_folders && project.image_folders.length > 0) {
       const folderSections = generateSectionsFromFolders(project.image_folders);
       sections.push(...folderSections);
     }
-    // Prioridade 3: Seções baseadas em image_categories (sistema antigo)
     else if (project.image_categories && Object.keys(project.image_categories).length > 0) {
       Object.entries(project.image_categories).forEach(([category, images], index) => {
         sections.push({
@@ -144,7 +136,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         });
       });
     }
-    // Prioridade 4: Seções padrão
     else {
       const defaultSections = [
         { id: 'dashboard', name: 'Dashboard', icon_name: 'BarChart3', description: 'Interface e visualizações' },
@@ -161,12 +152,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
 
   const renderOverview = () => (
     <div className="space-y-8">
-      {/* Hero Section */}
+      {}
       <div className="relative">
         {project.thumbnail_url ? (
           <div className="relative h-64 rounded-2xl overflow-hidden mb-6">
-            <img 
-              src={project.thumbnail_url} 
+            <img
+              src={project.thumbnail_url}
               alt={project.title}
               className="w-full h-full object-cover"
             />
@@ -180,7 +171,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             <IconComponent className="w-32 h-32 text-primary" />
           </div>
         )}
-        
+
         <div className="text-center">
           <Heading level={1} className="text-4xl font-bold gradient-text mb-4">
             {project.title}
@@ -191,14 +182,14 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </div>
       </div>
 
-      {/* Description */}
+      {}
       <div className="text-center max-w-3xl mx-auto">
         <Text variant="large" className="text-muted-foreground leading-relaxed">
           {project.long_description || project.description}
         </Text>
       </div>
 
-      {/* Quick Stats */}
+      {}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="text-center p-4 rounded-xl bg-card border border-border">
           <Code className="w-8 h-8 text-primary mx-auto mb-2" />
@@ -236,7 +227,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </Text>
       </div>
 
-      {/* Dashboard Features */}
+      {}
       <div className="grid md:grid-cols-2 gap-6">
         <div className="p-6 rounded-xl bg-card border border-border">
           <div className="flex items-center mb-4">
@@ -247,7 +238,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             Dashboard responsivo com visualizações interativas e métricas em tempo real.
           </Text>
           <div className="flex flex-wrap gap-2">
-            {project.stack.filter(tech => 
+            {project.stack.filter(tech =>
               ['React', 'TypeScript', 'Chart.js', 'D3.js', 'Tailwind CSS'].includes(tech)
             ).map(tech => (
               <Badge key={tech} variant="outline" className="text-xs">
@@ -266,7 +257,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             Sistema robusto para coleta, processamento e armazenamento de informações.
           </Text>
           <div className="flex flex-wrap gap-2">
-            {project.stack.filter(tech => 
+            {project.stack.filter(tech =>
               ['PostgreSQL', 'Supabase', 'Prisma', 'Redis', 'MongoDB'].includes(tech)
             ).map(tech => (
               <Badge key={tech} variant="outline" className="text-xs">
@@ -277,7 +268,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </div>
       </div>
 
-      {/* Tech Stack for Dashboard */}
+      {}
       <div className="p-6 rounded-xl bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20">
         <Heading level={3} className="text-xl font-semibold mb-4 flex items-center">
           <Zap className="w-5 h-5 text-primary mr-2" />
@@ -309,7 +300,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </Text>
       </div>
 
-      {/* Development Process */}
+      {}
       <div className="grid md:grid-cols-3 gap-6">
         <div className="p-6 rounded-xl bg-card border border-border text-center">
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -342,12 +333,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </div>
       </div>
 
-      {/* Tools & Technologies */}
+      {}
       <div className="space-y-6">
         <Heading level={3} className="text-2xl font-semibold text-center">
           Ferramentas & Tecnologias
         </Heading>
-        
+
         <div className="grid md:grid-cols-2 gap-6">
           <div className="p-6 rounded-xl bg-card border border-border">
             <Heading level={4} className="text-lg font-semibold mb-4 flex items-center">
@@ -355,7 +346,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
               Frontend
             </Heading>
             <div className="space-y-2">
-              {project.stack.filter(tech => 
+              {project.stack.filter(tech =>
                 ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Vite', 'Framer Motion'].includes(tech)
               ).map(tech => (
                 <div key={tech} className="flex items-center justify-between p-2 rounded-lg bg-background/50">
@@ -372,7 +363,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
               Backend
             </Heading>
             <div className="space-y-2">
-              {project.stack.filter(tech => 
+              {project.stack.filter(tech =>
                 ['Node.js', 'Express', 'PostgreSQL', 'Supabase', 'Prisma', 'Redis'].includes(tech)
               ).map(tech => (
                 <div key={tech} className="flex items-center justify-between p-2 rounded-lg bg-background/50">
@@ -401,7 +392,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </Text>
       </div>
 
-      {/* Collaborators */}
+      {}
       {project.project_collaborators.length > 0 && (
         <div className="p-6 rounded-xl bg-card border border-border">
           <Heading level={3} className="text-xl font-semibold mb-4 flex items-center">
@@ -424,7 +415,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </div>
       )}
 
-      {/* Links */}
+      {}
       {project.project_links.length > 0 && (
         <div className="p-6 rounded-xl bg-card border border-border">
           <Heading level={3} className="text-xl font-semibold mb-4 flex items-center">
@@ -433,15 +424,15 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
           </Heading>
           <div className="grid md:grid-cols-2 gap-4">
             {project.project_links.map(link => (
-              <Button 
-                key={link.id} 
-                asChild 
-                variant="outline" 
+              <Button
+                key={link.id}
+                asChild
+                variant="outline"
                 className="justify-start hover-glow"
               >
-                <a 
-                  href={link.url} 
-                  target="_blank" 
+                <a
+                  href={link.url}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center"
                 >
@@ -455,7 +446,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </div>
       )}
 
-      {/* Project Images */}
+      {}
       {project.project_images.length > 0 && (
         <div className="p-6 rounded-xl bg-card border border-border">
           <Heading level={3} className="text-xl font-semibold mb-4 flex items-center">
@@ -465,8 +456,8 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {project.project_images.map(image => (
               <div key={image.id} className="relative group cursor-pointer">
-                <img 
-                  src={image.image_url} 
+                <img
+                  src={image.image_url}
                   alt={`${project.title} - Imagem ${image.order_index}`}
                   className="w-full h-32 object-cover rounded-lg transition-transform group-hover:scale-105"
                 />
@@ -486,13 +477,11 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
       return renderOverview();
     }
 
-    // Buscar seção ativa
     const currentSection = sections.find(section => section.id === sectionId);
     if (!currentSection) {
       return renderOverview();
     }
 
-    // Se for uma seção dinâmica do banco de dados
     if (project.project_sections && project.project_sections.length > 0) {
       const projectSection = project.project_sections.find(s => s.id === sectionId);
       if (projectSection) {
@@ -500,7 +489,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
       }
     }
 
-    // Se for uma seção baseada em pastas de imagens
     if (project.image_folders && project.image_folders.length > 0) {
       const imageFolder = project.image_folders.find(f => f.folder_name === sectionId);
       if (imageFolder) {
@@ -508,7 +496,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
       }
     }
 
-    // Se for uma seção baseada em image_categories (sistema antigo)
     if (project.image_categories && Object.keys(project.image_categories).length > 0) {
       const categoryImages = project.image_categories[sectionId];
       if (categoryImages) {
@@ -516,7 +503,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
       }
     }
 
-    // Seções padrão
     switch (sectionId) {
       case 'dashboard':
         return renderDashboard();
@@ -555,7 +541,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                 </Text>
               </div>
             )}
-            
+
             {content.type === 'images' && (
               <div className="space-y-4">
                 <Heading level={3} className="text-xl font-semibold mb-4">
@@ -564,8 +550,8 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {content.data.map((image: string, imgIndex: number) => (
                     <div key={imgIndex} className="relative group cursor-pointer">
-                      <img 
-                        src={image} 
+                      <img
+                        src={image}
                         alt={`${section.name} - Imagem ${imgIndex + 1}`}
                         className="w-full h-32 object-cover rounded-lg transition-transform group-hover:scale-105"
                       />
@@ -601,15 +587,15 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                 </Heading>
                 <div className="grid md:grid-cols-2 gap-4">
                   {content.data.map((link: any, linkIndex: number) => (
-                    <Button 
-                      key={linkIndex} 
-                      asChild 
-                      variant="outline" 
+                    <Button
+                      key={linkIndex}
+                      asChild
+                      variant="outline"
                       className="justify-start hover-glow"
                     >
-                      <a 
-                        href={link.url} 
-                        target="_blank" 
+                      <a
+                        href={link.url}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center"
                       >
@@ -650,10 +636,8 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
   );
 
   const renderImageFolderSection = (folder: any) => {
-    // Extrair URLs das imagens
     const imageUrls = folder.images?.map((img: any) => img.image_url) || [];
-    
-    // Descrições personalizadas para cada seção
+
     const sectionDescriptions: Record<string, string> = {
       'admin': 'Interface administrativa completa com controle total do sistema, gerenciamento de usuários, configurações avançadas e monitoramento em tempo real.',
       'dashboard': 'Dashboard principal com métricas em tempo real, gráficos interativos, KPIs importantes e visualizações de dados para tomada de decisão.',
@@ -671,7 +655,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
 
     return (
       <div className="space-y-8">
-        {/* Header da Seção */}
+        {}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
             {React.createElement(sectionIconMap[folder.icon_name] || sectionIconMap.default, {
@@ -686,13 +670,13 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
           </Text>
         </div>
 
-        {/* Carrossel de Imagens */}
+        {}
         {imageUrls.length > 0 && (
           <div className="space-y-6">
             <Heading level={3} className="text-2xl font-semibold text-center">
               Galeria de Imagens
             </Heading>
-            <ImageCarousel 
+            <ImageCarousel
               images={imageUrls}
               title={folder.display_name}
               className="max-w-4xl mx-auto"
@@ -700,7 +684,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
           </div>
         )}
 
-        {/* Informações da Seção */}
+        {}
         <div className="p-6 rounded-xl bg-card border border-border">
           <Heading level={3} className="text-xl font-semibold mb-4 flex items-center">
             <Info className="w-5 h-5 text-primary mr-2" />
@@ -740,13 +724,13 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
         </Text>
       </div>
 
-      {/* Carrossel de Imagens */}
+      {}
       {images.length > 0 && (
         <div className="space-y-6">
           <Heading level={3} className="text-2xl font-semibold text-center">
             Galeria de Imagens
           </Heading>
-          <ImageCarousel 
+          <ImageCarousel
             images={images}
             title={category === 'thumb' ? 'Thumbnail' : category}
             className="max-w-4xl mx-auto"
@@ -760,7 +744,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -769,7 +753,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             onClick={onClose}
           />
 
-          {/* Modal */}
+          {}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -777,7 +761,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
             className="fixed inset-4 z-50 bg-background rounded-2xl border border-border shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
           >
-            {/* Header */}
+            {}
             <div className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border p-6 z-10">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
@@ -793,7 +777,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                     </Text>
                   </div>
                 </div>
-                
+
                 <Button
                   variant="ghost"
                   size="sm"
@@ -806,7 +790,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
 
             </div>
 
-            {/* Content */}
+            {}
             <div className="flex-1 overflow-y-auto">
               <div className="p-6">
                 <div className="max-w-4xl mx-auto">
@@ -815,8 +799,8 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                       {sections.map((section) => {
                         const Icon = sectionIconMap[section.icon_name] || sectionIconMap.default;
                         return (
-                          <TabsTrigger 
-                            key={section.id} 
+                          <TabsTrigger
+                            key={section.id}
                             value={section.id}
                             className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
                           >

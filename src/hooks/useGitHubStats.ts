@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
 interface GitHubStats {
   totalCommits: number;
@@ -12,7 +12,7 @@ interface GitHubStats {
 }
 
 const GITHUB_USERNAME = 'SamuelStefano';
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN; // Opcional para rate limiting
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 export const useGitHubStats = () => {
   const [stats, setStats] = useState<GitHubStats>({
@@ -37,7 +37,6 @@ export const useGitHubStats = () => {
           'User-Agent': 'Portfolio-App'
         };
 
-        // Adicionar token se disponível
         if (GITHUB_TOKEN) {
           headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
           console.log('✅ Token GitHub encontrado');
@@ -45,18 +44,17 @@ export const useGitHubStats = () => {
           console.log('⚠️ Token GitHub não encontrado - usando limite público');
         }
 
-        // Buscar repositórios do usuário (incluindo privados se token tiver permissão)
-        const endpoint = GITHUB_TOKEN 
+        const endpoint = GITHUB_TOKEN
           ? `https://api.github.com/user/repos?per_page=100&sort=updated&affiliation=owner,collaborator`
           : `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
-        
+
         console.log(`📡 Fazendo requisição para: ${endpoint}`);
         const reposResponse = await fetch(endpoint, {
           headers
         });
 
         console.log('📊 Status da resposta:', reposResponse.status);
-        
+
         if (!reposResponse.ok) {
           const errorText = await reposResponse.text();
           console.error('❌ Erro na resposta:', errorText);
@@ -65,8 +63,7 @@ export const useGitHubStats = () => {
 
         const repos = await reposResponse.json();
         console.log('📚 Repositórios encontrados:', repos.length);
-        
-        // Mostrar todos os repos encontrados
+
         console.log('📚 Todos os repos:', repos.map((r: any) => ({
           name: r.name,
           private: r.private,
@@ -74,7 +71,6 @@ export const useGitHubStats = () => {
           owner: r.owner.login
         })));
 
-        // Filtrar apenas repos próprios (não forks)
         const ownRepos = repos.filter((repo: any) => !repo.fork);
         console.log('🏠 Repositórios próprios:', ownRepos.length);
         console.log('📋 Lista de repos próprios:', ownRepos.map((r: any) => ({
@@ -84,25 +80,21 @@ export const useGitHubStats = () => {
           language: r.language
         })));
 
-        // Calcular estatísticas básicas
         const totalRepos = ownRepos.length;
         const totalStars = ownRepos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
         const totalForks = ownRepos.reduce((sum: number, repo: any) => sum + repo.forks_count, 0);
 
         console.log('📊 Stats básicas:', { totalRepos, totalStars, totalForks });
 
-        // Buscar linguagens dos repositórios principais
         const languages: Record<string, number> = {};
         let totalCommits = 0;
 
-        // Pegar mais repos se tiver token (pode acessar privados)
         const maxRepos = GITHUB_TOKEN ? 20 : 10;
         const recentRepos = ownRepos.slice(0, maxRepos);
         console.log(`🔬 Analisando ${recentRepos.length} repos:`, recentRepos.map((r: any) => r.name));
 
         for (const repo of recentRepos) {
           try {
-            // Buscar linguagens do repositório
             const langResponse = await fetch(repo.languages_url, { headers });
             if (langResponse.ok) {
               const repoLanguages = await langResponse.json();
@@ -111,7 +103,6 @@ export const useGitHubStats = () => {
               });
             }
 
-            // Buscar commits (limitado para evitar rate limiting)
             const commitsResponse = await fetch(`${repo.url}/commits?per_page=100`, { headers });
             if (commitsResponse.ok) {
               const commits = await commitsResponse.json();
@@ -122,9 +113,8 @@ export const useGitHubStats = () => {
           }
         }
 
-        // Estimar linhas de código baseado nas linguagens
         const totalLanguageBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
-        const estimatedLinesOfCode = Math.round(totalLanguageBytes / 50); // Estimativa: ~50 bytes por linha
+        const estimatedLinesOfCode = Math.round(totalLanguageBytes / 50);
 
         console.log('💻 Linguagens encontradas:', Object.keys(languages));
         console.log('📏 Total de bytes:', totalLanguageBytes);
@@ -145,8 +135,7 @@ export const useGitHubStats = () => {
 
       } catch (error) {
         console.error('Erro ao buscar estatísticas do GitHub:', error);
-        
-        // Fallback para dados estimados
+
         setStats({
           totalCommits: 350,
           totalRepos: 15,

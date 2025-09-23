@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured } from './supabaseclient';
+﻿import { supabase, isSupabaseConfigured } from './supabaseclient';
 
 export interface DatabaseTestResult {
   ok: boolean;
@@ -10,9 +10,9 @@ export interface DatabaseTestResult {
 export async function testDatabase(): Promise<DatabaseTestResult> {
   try {
     if (!isSupabaseConfigured() || !supabase) {
-      return { 
-        ok: false, 
-        error: 'Supabase não configurado. Verifique as variáveis VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY' 
+      return {
+        ok: false,
+        error: 'Supabase não configurado. Verifique as variáveis VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY'
       };
     }
     const { data: connectionTest, error: connectionError } = await supabase
@@ -21,13 +21,12 @@ export async function testDatabase(): Promise<DatabaseTestResult> {
       .limit(1);
 
     if (connectionError) {
-      return { 
-        ok: false, 
-        error: `Erro de conexão: ${connectionError.message}` 
+      return {
+        ok: false,
+        error: `Erro de conexão: ${connectionError.message}`
       };
     }
 
-    // Buscar usuário
     const { data: userData, error: userError } = await supabase
       .from('users')
       .select('*')
@@ -35,27 +34,26 @@ export async function testDatabase(): Promise<DatabaseTestResult> {
       .single();
 
     if (userError) {
-      return { 
-        ok: false, 
-        error: `Erro ao buscar usuário: ${userError.message}` 
+      return {
+        ok: false,
+        error: `Erro ao buscar usuário: ${userError.message}`
       };
     }
 
-    // Buscar projetos
     const { data: projectsData, error: projectsError } = await supabase
       .from('projects')
       .select('*')
       .order('created_at', { ascending: false });
 
     if (projectsError) {
-      return { 
-        ok: false, 
-        error: `Erro ao buscar projetos: ${projectsError.message}` 
+      return {
+        ok: false,
+        error: `Erro ao buscar projetos: ${projectsError.message}`
       };
     }
 
-    return { 
-      ok: true, 
+    return {
+      ok: true,
       data: {
         user: userData,
         projects: projectsData,
@@ -63,9 +61,9 @@ export async function testDatabase(): Promise<DatabaseTestResult> {
       }
     };
   } catch (err) {
-    return { 
-      ok: false, 
-      error: err instanceof Error ? err.message : 'Erro desconhecido ao testar o banco de dados' 
+    return {
+      ok: false,
+      error: err instanceof Error ? err.message : 'Erro desconhecido ao testar o banco de dados'
     };
   }
 }

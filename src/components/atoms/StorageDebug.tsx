@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseclient';
 import { discoverProjectsFromBuckets } from '@/lib/simpleBucketAccess';
 
@@ -23,17 +23,14 @@ export const StorageDebug: React.FC = () => {
 
       console.log('🧪 StorageDebug: iniciando testes de descoberta...');
 
-      // Listar buckets conhecidos manualmente (evita RLS no listBuckets)
       const known = ['challenge-images', 'codelibrary-website', 'devfellowship'];
       setBuckets(known);
       console.log('🪣 Buckets conhecidos:', known);
 
-      // Descobrir projetos
       const discovered = await discoverProjectsFromBuckets();
       setProjects(discovered);
       console.log('🧭 Projetos descobertos:', discovered);
 
-      // Logar seções por projeto
       for (const p of discovered) {
         const sectionNames = Object.keys(p.image_categories || {});
         console.log(`📂 Projeto ${p.title} (${p.bucket}) → ${sectionNames.length} seções:`, sectionNames);
@@ -82,6 +79,4 @@ export const StorageDebug: React.FC = () => {
     </div>
   );
 };
-
-
 

@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "resume": "Currículum"
+  },
+  "hero": {
+    "greeting": "Samuel Stefano",
+    "role": "Desarrollador Full-Stack",
+    "description": "Desarrollador Junior • 3er Año ADS • Marialva, PR",
+    "bio": "Especializado en React, TypeScript y Node.js, Nest, Tailwind, APIs.",
+    "bioContinue": "Creando experiencias digitales modernas y funcionales.",
+    "clickToSeeMore": "Haz clic para ver más"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Una selección de mis trabajos más recientes e impactantes",
+    "collaborators": "colaborador",
+    "collaborators_plural": "colaboradores",
+    "autoDiscovered": "Auto-descubierto",
+    "viewProject": "Ver Proyecto",
+    "github": "GitHub",
+    "overview": "Resumen",
+    "gallery": "Galería",
+    "mainFeatures": "Características Principales",
+    "technicalChallenges": "Desafíos Técnicos",
+    "techStack": "Stack Tecnológico",
+    "projectTeam": "Equipo del Proyecto",
+    "projectGallery": "Galería del Proyecto",
+    "noProjects": "No se encontraron proyectos",
+    "loading": "Cargando proyectos...",
+    "hint": "Consejo: activa VITE_INCLUDE_AUTO_DISCOVERED=true en .env para mostrar proyectos del Storage."
+  },
+  "skills": {
+    "title": "Habilidades y Experiencia",
+    "subtitle": "Tecnologías que domino y mi trayectoria profesional",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Base de Datos",
+    "tools": "Herramientas",
+    "professionalExperience": "Experiencia Profesional",
+    "currentPosition": "Posición Actual"
+  },
+  "about": {
+    "title": "Acerca de Mí",
+    "subtitle": "Conoce un poco más sobre mi trayectoria y pasiones",
+    "professionalTime": "Tiempo de experiencia profesional",
+    "projectsCreated": "Repositorios GitHub",
+    "technologies": "Tecnologías",
+    "linesOfCode": "Líneas de Código",
+    "highlights": {
+      "passion": {
+        "title": "Pasión por la Tecnología",
+        "description": "Siempre buscando aprender nuevas tecnologías y aplicar las mejores prácticas de desarrollo, apasionado por la IA y después de dominar al 100% el full-stack moderno, buscaré más especialización en IA."
+      },
+      "teamwork": {
+        "title": "Trabajo en Equipo",
+        "description": "Experiencia en proyectos colaborativos utilizando metodologías ágiles, Git/GitHub para versionado y herramientas de comunicación como Discord y Slack."
+      },
+      "learning": {
+        "title": "Aprendizaje Continuo",
+        "description": "Siempre buscando mantenerme actualizado con las últimas tendencias y tecnologías del mercado, participando en comunidades y cursos en línea."
+      },
+      "evolution": {
+        "title": "Evolución Constante",
+        "description": "Estudiando ADS y siempre buscando especializarme en nuevas tecnologías y frameworks, mejorando mis habilidades y conocimientos."
+      }
+    },
+    "devfellowship": {
+      "title": "DevFellowship",
+      "subtitle": "Comunidad de Desarrolladores",
+      "description": "Una comunidad vibrante de desarrolladores brasileños enfocada en educación, networking y crecimiento profesional. Participamos en proyectos colaborativos, talleres y eventos que impulsan nuestra carrera tech.",
+      "cards": {
+        "community": {
+          "title": "Comunidad Activa",
+          "description": "Más de 500 desarrolladores conectados, compartiendo conocimiento y experiencias diariamente."
+        },
+        "projects": {
+          "title": "Proyectos Reales",
+          "description": "Desarrollo de aplicaciones reales en equipo, usando metodologías ágiles y las mejores prácticas del mercado."
+        },
+        "mentorship": {
+          "title": "Mentoría",
+          "description": "Programa de mentoría con desarrolladores senior, acelerando el crecimiento profesional."
+        },
+        "networking": {
+          "title": "Networking",
+          "description": "Conexiones valiosas con profesionales del sector, oportunidades de carrera y alianzas estratégicas."
+        }
+      },
+      "learnMore": "Saber Más",
+      "projects": "Proyectos"
+    },
+    "companies": "Empresas donde trabajé",
+    "availability": {
+      "title": "¿Hablamos?",
+      "description": "Siempre estoy disponible para discutir proyectos, oportunidades o simplemente intercambiar ideas sobre tecnología.",
+      "schedule": "Programar Reunión",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "status": "Disponible para nuevos proyectos",
+      "hours": "Horarios Disponibles:",
+      "weekdays": "Lunes, Miércoles, Jueves y Viernes: 12:30 - 13:30 y 17:10 - 22:00",
+      "tuesday": "Martes: 17:10 - 22:00",
+      "saturday": "Sábados: 12:30 - 17:00",
+      "response": "Respuesta en 24h"
+    }
+  },
+  "footer": {
+    "description": "Desarrollador Full-Stack apasionado por crear soluciones digitales innovadoras y funcionales.",
+    "quickLinks": "Enlaces Rápidos",
+    "social": "Redes Sociales",
+    "contact": "Contacto",
+    "madeWith": "Hecho con",
+    "by": "por",
+    "allRightsReserved": "Todos los derechos reservados.",
+    "phone": "Teléfono",
+    "email": "Email",
+    "location": "Marialva, PR - Brasil"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "close": "Cerrar",
+    "open": "Abrir",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "or": "o",
+    "and": "y",
+    "months": "meses",
+    "month": "mes",
+    "days": "días",
+    "day": "día"
+  }
+}

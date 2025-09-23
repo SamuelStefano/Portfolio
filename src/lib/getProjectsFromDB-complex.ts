@@ -1,4 +1,4 @@
-import { supabase } from './supabaseclient';
+﻿import { supabase } from './supabaseclient';
 import { Project } from '../types/project';
 
 export const getProjectsFromDB = async (): Promise<Project[]> => {
@@ -37,7 +37,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       )
     `)
     .order("created_at", { ascending: false });
-  
 
     if (error) {
       console.error("❌ Erro ao buscar projetos:", error);
@@ -51,12 +50,10 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
 
     console.log(`📊 Projetos encontrados: ${data.length}`);
 
-    // Adicionar arrays vazios para as relações que não estão sendo buscadas
     const projectsWithRelations = data.map(project => ({
       ...project,
       project_collaborators: [],
       project_links: [],
-      // Ordenar seções e imagens por order_index
       project_sections: project.project_sections?.map(section => ({
         ...section,
         project_images: section.project_images?.sort((a, b) => a.order_index - b.order_index) || []

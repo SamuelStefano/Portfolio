@@ -1,12 +1,10 @@
-import { createClient } from "@supabase/supabase-js";
+﻿import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
 
-// Carregar variáveis de ambiente
 dotenv.config();
 
-// 🔑 Configuração do Supabase
 const supabaseUrl = process.env.VITE_SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!; // precisa ser service role!
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 if (!supabaseUrl || !supabaseKey) {
   console.error("❌ Variáveis de ambiente não encontradas!");
@@ -16,12 +14,10 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// ⚙️ Configuração do projeto
 const bucketName = "Portfolio";
-const projectId = "e2e3e06c-db90-46a3-bd4c-7390cbd3d1e6"; // ID do projeto Skill Evals
-const basePath = "challenges/Skill Evals"; // pasta base no bucket
+const projectId = "e2e3e06c-db90-46a3-bd4c-7390cbd3d1e6";
+const basePath = "challenges/Skill Evals";
 
-// 📝 Descrições personalizadas para cada seção
 const sectionDescriptions: Record<string, string> = {
   'admin': 'Interface administrativa completa com controle total do sistema, gerenciamento de usuários, configurações avançadas e monitoramento em tempo real.',
   'dashboard': 'Dashboard principal com métricas em tempo real, gráficos interativos, KPIs importantes e visualizações de dados para tomada de decisão.',
@@ -35,7 +31,6 @@ const sectionDescriptions: Record<string, string> = {
   'others': 'Funcionalidades adicionais, integrações especiais e recursos complementares que enriquecem a experiência do usuário.'
 };
 
-// 🎨 Nomes de exibição personalizados
 const displayNames: Record<string, string> = {
   'admin': 'Painel Administrativo',
   'dashboard': 'Dashboard',
@@ -56,7 +51,6 @@ async function syncProject() {
   console.log(`🆔 Projeto ID: ${projectId}`);
 
   try {
-    // 1. Verificar se o projeto existe
     const { data: project, error: projectError } = await supabase
       .from("projects")
       .select("id, title")
@@ -70,7 +64,6 @@ async function syncProject() {
 
     console.log(`✅ Projeto encontrado: ${project.title}`);
 
-    // 2. Listar pastas do projeto no bucket
     const { data: folders, error: listError } = await supabase.storage
       .from(bucketName)
       .list(basePath, { limit: 100 });
@@ -85,13 +78,11 @@ async function syncProject() {
       return;
     }
 
-    // Ordenar pastas alfabeticamente para ordem previsível
     const sortedFolders = [...folders].sort((a, b) => a.name.localeCompare(b.name));
 
     console.log(`📂 Encontradas ${sortedFolders.length} pastas:`);
     sortedFolders.forEach(folder => console.log(`  - ${folder.name}`));
 
-    // 3. Processar cada pasta
     for (let index = 0; index < sortedFolders.length; index++) {
       const folder = sortedFolders[index];
       if (!folder.name) continue;
@@ -102,7 +93,6 @@ async function syncProject() {
 
       console.log(`\n📂 Processando pasta: ${folder.name}`);
 
-      // 4. Criar/atualizar seção no banco
       const { data: section, error: sectionError } = await supabase
         .from("project_sections")
         .upsert(
@@ -113,9 +103,9 @@ async function syncProject() {
             description: description,
             order_index: index,
           },
-          { 
+          {
             onConflict: "project_id,folder_name",
-            ignoreDuplicates: false 
+            ignoreDuplicates: false
           }
         )
         .select()
@@ -128,7 +118,6 @@ async function syncProject() {
 
       console.log(`✅ Seção registrada: ${section.display_name}`);
 
-      // 5. Limpar imagens antigas da seção
       const { error: deleteError } = await supabase
         .from("project_images")
         .delete()
@@ -139,7 +128,6 @@ async function syncProject() {
         continue;
       }
 
-      // 6. Listar imagens dentro da pasta
       const { data: files, error: fileError } = await supabase.storage
         .from(bucketName)
         .list(`${basePath}/${folder.name}`, { limit: 100 });
@@ -156,7 +144,6 @@ async function syncProject() {
 
       console.log(`🖼️ Encontradas ${files.length} imagens`);
 
-      // 7. Inserir imagens vinculadas à seção
       const imageInserts = files.map((file, fileIndex) => {
         const publicUrl = supabase.storage
           .from(bucketName)
@@ -190,7 +177,6 @@ async function syncProject() {
   }
 }
 
-// Executar sincronização
 syncProject().catch((err) => {
   console.error("💥 Erro fatal:", err);
   process.exit(1);

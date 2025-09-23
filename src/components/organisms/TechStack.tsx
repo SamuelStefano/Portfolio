@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop } from 'lucide-react';
+﻿import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem';
 import { Icon } from '@/components/atoms/Icon';
@@ -95,7 +95,7 @@ const experienceData = [
     stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
     logo: '/prefeitura.png',
     icon: Building2,
-    website: null // Prefeitura não tem link
+    website: null
   },
 
   {
@@ -158,43 +158,43 @@ const additionalSkills = [
 
 export const TechStack = () => {
   return (
-    <section id="habilidades" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <Heading level={2} className="mb-4 gradient-text">
+    <section id="habilidades" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             Stack Tecnológica
           </Heading>
-          <Text variant="large" className="max-w-2xl mx-auto">
+          <Text variant="large" className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
             Tecnologias e ferramentas que domino para criar soluções completas
           </Text>
         </div>
 
-        {/* Tech Categories Grid */}
-        <div className="grid grid-cols-3 gap-8 mb-16">
+        {}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           {techCategories.map((category, categoryIndex) => {
             const IconComponent = category.icon;
             return (
               <div
                 key={categoryIndex}
-                className="group bg-card border-border rounded-xl p-6 hover-glow transition-all duration-300 animate-slide-up"
+                className="group bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 hover-glow transition-all duration-300 animate-slide-up"
                 style={{ animationDelay: `${categoryIndex * 0.1}s` }}
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5 md:mb-6">
+                  <div className="p-2 sm:p-2.5 md:p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-primary" />
                   </div>
-                  <Heading level={3}>
+                  <Heading level={3} className="text-base sm:text-lg md:text-xl lg:text-2xl leading-tight">
                     {category.title}
                   </Heading>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-2 sm:space-y-3 md:space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div
                       key={skillIndex}
                       className="animate-scale-in"
-                      style={{ 
-                        animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s` 
+                      style={{
+                        animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`
                       }}
                     >
                       <SkillBar
@@ -209,17 +209,17 @@ export const TechStack = () => {
           })}
         </div>
 
-        {/* Additional Skills - Infinite Carousel */}
+        {}
         <div className="text-center overflow-hidden">
-          <Heading level={3} className="mb-6 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent">
+          <Heading level={3} className="mb-4 sm:mb-5 md:mb-6 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl">
             Outras Competências
           </Heading>
           <div className="relative">
-            <div className="flex animate-scroll gap-4 whitespace-nowrap">
+            <div className="flex animate-scroll gap-2 sm:gap-3 md:gap-4 whitespace-nowrap">
               {[...additionalSkills, ...additionalSkills].map((skill, index) => (
                 <div
                   key={index}
-                  className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
+                  className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-card border border-border rounded-full text-xs sm:text-sm font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
                 >
                   {skill}
                 </div>
@@ -228,50 +228,44 @@ export const TechStack = () => {
           </div>
         </div>
 
-        {/* Experience Timeline */}
-        <div className="mt-20">
-          <Heading level={3} className="text-center mb-12 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent">
+        {}
+        <div className="mt-10 sm:mt-12 md:mt-16 lg:mt-20">
+          <Heading level={3} className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl">
             Experiência Profissional
           </Heading>
 
-
-          <div className="flex flex-wrap justify-center items-center gap-12 py-8">
-              {/* Devfellowship Logo */}
+          <div className="md:flex sm:flex xl:flex 2xl:flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 py-4 sm:py-6 md:py-8 grid md:grid-cols-3">
+              {}
               <div className="group">
-                <img 
-                  src="/prefeitura.png" 
-                  alt="Prefeitura" 
-                  className="w-40 h-40 opacity-30 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:-translate-y-4 group-hover:scale-110 rounded-lg object-cover"
+                <img
+                  src="/prefeitura.png"
+                  alt="Prefeitura"
+                  className="w-32 h-32 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 xl:w-40 xl:h-40 opacity-100 sm:opacity-30 grayscale-0 sm:grayscale transition-all duration-500 lg:group-hover:opacity-100 lg:group-hover:grayscale-0 lg:group-hover:-translate-y-4 lg:group-hover:scale-110 rounded-lg object-cover"
                 />
-              </div>  
+              </div>
               <div className="group">
-                <img 
-                  src="/DevFelloShip.png" 
-                  alt="Devfellowship" 
-                  className="w-48 h-48 opacity-30 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:-translate-y-4 group-hover:scale-110"
+                <img
+                  src="/DevFelloShip.png"
+                  alt="Devfellowship"
+                  className="w-36 h-36 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 opacity-100 sm:opacity-30 grayscale-0 sm:grayscale transition-all duration-500 lg:group-hover:opacity-100 lg:group-hover:grayscale-0 lg:group-hover:-translate-y-4 lg:group-hover:scale-110"
                 />
               </div>
 
-              {/* MM Icon Logo */}
-
-
+              {}
               <div className="group">
-                <img 
-                  src="/MMIcon.png" 
-                  alt="MM Icon" 
-                  className="w-48 h-28 opacity-30 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:-translate-y-4 group-hover:scale-110"
+                <img
+                  src="/MMIcon.png"
+                  alt="MM Icon"
+                  className="w-36 h-24 sm:w-28 sm:h-14 md:w-36 md:h-18 lg:w-44 lg:h-22 xl:w-52 xl:h-28 opacity-100 sm:opacity-30 grayscale-0 sm:grayscale transition-all duration-500 lg:group-hover:opacity-100 lg:group-hover:grayscale-0 lg:group-hover:-translate-y-4 lg:group-hover:scale-110"
                 />
               </div>
-
-              {/* Prefeitura Logo */}
-             
             </div>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Timeline Line */}
+              {}
               <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-primary" />
-              
-              {/* Experience Items */}
+
+              {}
               <div className="space-y-12">
                 {experienceData.map((job, index) => (
                   <div
@@ -279,10 +273,10 @@ export const TechStack = () => {
                     className="relative flex items-start gap-6 animate-slide-up hover:scale-105 transition-all duration-300"
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
-                    {/* Timeline Dot */}
+                    {}
                     <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 mt-6 relative z-10 animate-pulse-glow" />
-                    
-                    {/* Content */}
+
+                    {}
                     {job.website ? (
                       <a
                         href={job.website}

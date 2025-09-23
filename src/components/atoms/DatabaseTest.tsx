@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useDatabaseTest } from '../../hooks/useDatabaseTest';
 import { Button } from './button';
 import { Card } from './card';
@@ -9,9 +9,9 @@ export function DatabaseTest() {
   return (
     <Card className="p-6 max-w-2xl mx-auto">
       <h3 className="text-xl font-semibold mb-4 text-center">🔧 Teste de Conexão com Banco de Dados</h3>
-      
-      <Button 
-        onClick={testConnection} 
+
+      <Button
+        onClick={testConnection}
         disabled={isLoading}
         className="w-full mb-4"
       >
@@ -20,14 +20,14 @@ export function DatabaseTest() {
 
       {result && (
         <div className={`p-4 rounded-lg ${
-          result.ok 
-            ? 'bg-green-50 text-green-800 border border-green-200' 
+          result.ok
+            ? 'bg-green-50 text-green-800 border border-green-200'
             : 'bg-red-50 text-red-800 border border-red-200'
         }`}>
           <div className="font-medium text-lg mb-2">
             {result.ok ? '✅ Conexão bem-sucedida!' : '❌ Erro na conexão'}
           </div>
-          
+
           {result.ok && result.data && (
             <div className="space-y-4">
               <div>
@@ -65,7 +65,7 @@ export function DatabaseTest() {
               )}
             </div>
           )}
-          
+
           {result.error && (
             <div>
               <div className="font-medium text-sm mb-1">Erro:</div>

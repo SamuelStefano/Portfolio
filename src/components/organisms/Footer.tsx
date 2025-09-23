@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, FileText, Brain } from 'lucide-react';
+﻿import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, FileText, Brain } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
@@ -63,65 +63,67 @@ export const Footer = () => {
 
   return (
     <footer id="contato" className="relative bg-card border-t border-border">
-      {/* Background Effect */}
+      {}
       <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Main Footer Content */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-              <div className="mb-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <Heading level={3} className="gradient-text">
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {}
+        <div className="py-8 sm:py-10 md:py-12 lg:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 md:gap-8">
+          {}
+          <div className="sm:col-span-2 lg:col-span-2">
+              <div className="mb-4 sm:mb-5 md:mb-6">
+                <div className="mb-3 sm:mb-4">
+                  <Heading level={3} className="gradient-text text-base sm:text-lg md:text-xl lg:text-2xl leading-tight">
                     Samuel Stefano Teixeira do Carmo
                   </Heading>
                 </div>
-              <Text className="mb-4">
-                Desenvolvedor Full-Stack apaixonado por criar soluções digitais 
-                inovadoras e funcionais. Sempre em busca de novos desafios e 
+              <Text className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                Desenvolvedor Full-Stack apaixonado por criar soluções digitais
+                inovadoras e funcionais. Sempre em busca de novos desafios e
                 oportunidades de aprendizado.
               </Text>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-xs sm:text-sm md:text-base text-muted-foreground">
                 <Icon icon={Code} size="sm" className="text-primary" />
                 <Text variant="small">Marialva, PR • Brasil</Text>
               </div>
             </div>
-            
-            {/* Social Links */}
-            <div className="flex gap-3">
+
+            {}
+            <div className="flex flex-wrap gap-2 sm:gap-2.5 md:gap-3">
               {socialLinks.map((link, index) => (
                 <Button
                   key={index}
                   variant="outline"
-                  size="icon"
+                  size="sm"
                   asChild
-                  className="hover-glow border-border bg-background/50 hover:bg-primary hover:text-primary-foreground"
+                  className="hover-glow border-border bg-background/50 hover:bg-primary hover:text-primary-foreground touch-manipulation transition-all duration-300 hover:scale-105"
                 >
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
+                    className="flex items-center gap-2 px-3 py-2"
                   >
-                    <Icon icon={link.icon} size="sm" />
+                    <Icon icon={link.icon} size="sm" className="w-4 h-4" />
+                    <span className="sm:hidden text-xs font-medium">{link.label}</span>
                   </a>
                 </Button>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <Heading level={4} className="mb-4">
+          {}
+          <div className="order-last sm:order-none">
+            <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
               Navegação
             </Heading>
-            <ul className="space-y-2">
+            <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => smoothScrollTo(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-left"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-left text-xs sm:text-sm md:text-base touch-manipulation py-1 sm:py-1.5 md:py-2"
                   >
                     {link.label}
                   </button>
@@ -130,31 +132,31 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <Heading level={4} className="mb-4">
+          {}
+          <div className="order-last sm:order-none">
+            <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
               Contato
             </Heading>
-            <ul className="space-y-3">
+            <ul className="space-y-3 sm:space-y-3.5 md:space-y-4">
               {contactInfo.map((contact, index) => (
                 <li key={index}>
                   <a
                     href={contact.href}
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="flex items-center gap-2 sm:gap-3 text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation py-1 sm:py-1.5 md:py-2"
                   >
-                    <Icon icon={contact.icon} size="sm" />
-                    <Text variant="small">{contact.label}</Text>
+                    <Icon icon={contact.icon} size="sm" className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                    <Text variant="small" className="text-xs sm:text-sm md:text-base whitespace-nowrap">{contact.label}</Text>
                   </a>
                 </li>
               ))}
             </ul>
-            
-            {/* Additional Info */}
-            <div className="mt-6 p-4 bg-muted/20 rounded-lg">
-              <Heading level={5} className="mb-2">
+
+            {}
+            <div className="mt-4 sm:mt-5 md:mt-6 p-3 sm:p-4 md:p-5 bg-muted/20 rounded-lg">
+              <Heading level={5} className="mb-2 sm:mb-2.5 md:mb-3 text-sm sm:text-base md:text-lg">
                 Disponível para
               </Heading>
-              <ul className="text-sm text-muted-foreground space-y-1">
+              <ul className="text-xs sm:text-sm md:text-base text-muted-foreground space-y-1 sm:space-y-1.5">
                 <li>• Projetos freelance</li>
                 <li>• Oportunidades full-time</li>
                 <li>• Colaborações</li>
@@ -163,21 +165,21 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-border py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+        {}
+        <div className="border-t border-border py-4 sm:py-5 md:py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6">
+            <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base text-muted-foreground text-center sm:text-left">
               <Text variant="small">© {currentYear} Samuel Stefano. Feito com muito esforço e com muito</Text>
-              <Icon icon={Code} size="md" className="text-primary" />
+              <Icon icon={Code} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm md:text-base text-muted-foreground text-center sm:text-right">
               <Text variant="small">Desenvolvido com React, TypeScript e Supabase</Text>
-              <div className="flex gap-2">
-                <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs">
+              <div className="flex gap-2 sm:gap-2.5">
+                <span className="px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary rounded text-xs sm:text-sm font-medium">
                   Open Source
                 </span>
-                <span className="px-2 py-1 bg-accent/10 text-accent rounded text-xs">
+                <span className="px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 bg-neon-green/10 text-neon-green rounded text-xs sm:text-sm font-medium">
                   Responsivo
                 </span>
               </div>

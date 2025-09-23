@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
@@ -57,9 +57,9 @@ export const StatsCounter: React.FC<StatsCounterProps> = ({ stats, className = '
               stat.color === 'cyan' ? 'bg-neon-cyan/10' :
               'bg-primary/10'
             }`}>
-              <Icon 
-                icon={stat.icon} 
-                size="lg" 
+              <Icon
+                icon={stat.icon}
+                size="lg"
                 className={
                   stat.color === 'blue' ? 'text-neon-blue' :
                   stat.color === 'purple' ? 'text-neon-purple' :
@@ -70,7 +70,7 @@ export const StatsCounter: React.FC<StatsCounterProps> = ({ stats, className = '
               />
             </div>
           </div>
-          
+
           <div className="mb-2">
             <Heading level={3} className="text-3xl font-bold gradient-text">
               {isVisible ? (
@@ -82,7 +82,7 @@ export const StatsCounter: React.FC<StatsCounterProps> = ({ stats, className = '
               )}
             </Heading>
           </div>
-          
+
           <Text variant="small" className="text-muted-foreground">
             {stat.label}
           </Text>

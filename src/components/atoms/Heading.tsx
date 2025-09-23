@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+﻿import { cn } from '@/lib/utils';
 
 interface HeadingProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;
@@ -17,7 +17,7 @@ const headingClasses = {
 
 export const Heading = ({ level, children, className }: HeadingProps) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-  
+
   return (
     <Tag className={cn(headingClasses[level], className)}>
       {children}

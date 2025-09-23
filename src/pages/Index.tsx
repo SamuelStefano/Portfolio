@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { Header } from '@/components/organisms/Header';
 import { ProjectCarousel } from '@/components/organisms/ProjectCarousel';
 import { ProjectGrid } from '@/components/organisms/ProjectGrid';
@@ -10,7 +10,7 @@ import { AnimatedBackground } from '@/components/atoms/AnimatedBackground';
 const Index = () => {
   useEffect(() => {
     document.title = 'Samuel Stefano - Full-Stack Developer | Portfolio';
-    
+
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Portfolio de Samuel Stefano, desenvolvedor full-stack especializado em React, TypeScript, Node.js, Nest, Tailwind. Projetos modernos e soluções digitais inovadoras.');
@@ -39,7 +39,6 @@ const Index = () => {
     script.type = 'application/ld+json';
     script.text = JSON.stringify(structuredData);
     document.head.appendChild(script);
-
 
     return () => {
       document.head.removeChild(script);

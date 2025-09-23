@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured } from "@/lib/supabaseclient";
+﻿import { supabase, isSupabaseConfigured } from "@/lib/supabaseclient";
 
 export async function getProjects() {
   if (!isSupabaseConfigured() || !supabase) {
