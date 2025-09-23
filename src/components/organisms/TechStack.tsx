@@ -31,7 +31,7 @@ const techCategories: TechCategory[] = [
     skills: [
       { name: 'Node.js', level: 80 },
       { name: 'NestJS', level: 75 },
-      { name: 'Delphi', level: 40 },
+      { name: 'Delphi', level: 15 },
       { name: 'APIs', level: 90 },
       { name: 'JWT', level: 80 },
     ],
