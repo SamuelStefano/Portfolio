@@ -89,13 +89,7 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
         return sameTitle || sameStoragePath;
       });
       if (!exists) {
-        if (includeAutoDiscovered) {
-          if (requireStorageMatch) {
-            if (p.storage_path) merged.push(p);
-          } else {
-            merged.push(p);
-          }
-        }
+        merged.push(p);
       }
     }
 
