@@ -67,6 +67,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
   isOpen,
   onClose
 }) => {
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isOpen) {
@@ -193,15 +194,15 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="text-center p-4 rounded-xl bg-card border border-border">
           <Code className="w-8 h-8 text-primary mx-auto mb-2" />
-          <Text variant="small" className="font-semibold">{project.stack.length} Tecnologias</Text>
+          <Text variant="small" className="font-semibold">{project.stack.length} {t('projectStats.technologies')}</Text>
         </div>
         <div className="text-center p-4 rounded-xl bg-card border border-border">
           <Users className="w-8 h-8 text-primary mx-auto mb-2" />
-          <Text variant="small" className="font-semibold">{project.project_collaborators.length} Colaboradores</Text>
+          <Text variant="small" className="font-semibold">{project.project_collaborators.length} {t('projectStats.collaborators')}</Text>
         </div>
         <div className="text-center p-4 rounded-xl bg-card border border-border">
           <ExternalLink className="w-8 h-8 text-primary mx-auto mb-2" />
-          <Text variant="small" className="font-semibold">{project.project_links.length} Links</Text>
+          <Text variant="small" className="font-semibold">{project.project_links.length} {t('projectStats.links')}</Text>
         </div>
         <div className="text-center p-4 rounded-xl bg-card border border-border">
           <Calendar className="w-8 h-8 text-primary mx-auto mb-2" />
@@ -638,18 +639,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
   const renderImageFolderSection = (folder: any) => {
     const imageUrls = folder.images?.map((img: any) => img.image_url) || [];
 
-    const sectionDescriptions: Record<string, string> = {
-      'admin': 'Interface administrativa completa com controle total do sistema, gerenciamento de usuários, configurações avançadas e monitoramento em tempo real.',
-      'dashboard': 'Dashboard principal com métricas em tempo real, gráficos interativos, KPIs importantes e visualizações de dados para tomada de decisão.',
-      'create': 'Processo de criação e desenvolvimento, mostrando as ferramentas utilizadas, metodologias aplicadas e fluxo de trabalho implementado.',
-      'login': 'Sistema de autenticação seguro com múltiplos métodos de login, recuperação de senha e controle de acesso baseado em permissões.',
-      'mobile': 'Versão mobile otimizada com design responsivo, gestos intuitivos e experiência adaptada para dispositivos móveis.',
-      'desktop': 'Interface desktop com funcionalidades avançadas, atalhos de teclado e layout otimizado para produtividade em telas grandes.',
-      'web': 'Versão web responsiva com compatibilidade cross-browser, performance otimizada e recursos web modernos.',
-      'backend': 'Arquitetura backend robusta com APIs RESTful, microserviços, banco de dados e infraestrutura escalável.',
-      'database': 'Estrutura de banco de dados otimizada com relacionamentos, índices, queries eficientes e backup automático.',
-      'others': 'Funcionalidades adicionais, integrações especiais e recursos complementares que enriquecem a experiência do usuário.'
-    };
+    const sectionDescriptions: Record<string, string> = t('projects.sectionDescriptions', { returnObjects: true });
 
     const customDescription = sectionDescriptions[folder.folder_name] || folder.description;
 

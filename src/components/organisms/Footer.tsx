@@ -1,4 +1,5 @@
 ﻿import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, FileText, Brain } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/atoms/button';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
@@ -40,12 +41,12 @@ const contactInfo = [
   }
 ];
 
-const quickLinks = [
-  { label: 'Início', href: '#inicio' },
-  { label: 'Projetos', href: '#projetos' },
-  { label: 'Habilidades', href: '#habilidades' },
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' }
+const getQuickLinks = (t: any) => [
+  { label: t('nav.home'), href: '#inicio' },
+  { label: t('nav.projects'), href: '#projetos' },
+  { label: t('nav.skills'), href: '#habilidades' },
+  { label: t('nav.about'), href: '#sobre' },
+  { label: t('nav.contact'), href: '#contato' }
 ];
 
 const smoothScrollTo = (elementId: string) => {
@@ -59,6 +60,7 @@ const smoothScrollTo = (elementId: string) => {
 };
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -78,13 +80,11 @@ export const Footer = () => {
                   </Heading>
                 </div>
               <Text className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                Desenvolvedor Full-Stack apaixonado por criar soluções digitais
-                inovadoras e funcionais. Sempre em busca de novos desafios e
-                oportunidades de aprendizado.
+                {t('footer.description')}
               </Text>
               <div className="flex items-center gap-2 text-xs sm:text-sm md:text-base text-muted-foreground">
                 <Icon icon={Code} size="sm" className="text-primary" />
-                <Text variant="small">Marialva, PR • Brasil</Text>
+                <Text variant="small">{t('footer.location')}</Text>
               </div>
             </div>
 
@@ -116,10 +116,10 @@ export const Footer = () => {
           {}
           <div className="order-last sm:order-none">
             <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
-              Navegação
+              {t('footer.quickLinks')}
             </Heading>
             <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
-              {quickLinks.map((link, index) => (
+              {getQuickLinks(t).map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => smoothScrollTo(link.href)}
@@ -135,7 +135,7 @@ export const Footer = () => {
           {}
           <div className="order-last sm:order-none">
             <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
-              Contato
+              {t('footer.contact')}
             </Heading>
             <ul className="space-y-3 sm:space-y-3.5 md:space-y-4">
               {contactInfo.map((contact, index) => (
@@ -154,12 +154,12 @@ export const Footer = () => {
             {}
             <div className="mt-4 sm:mt-5 md:mt-6 p-3 sm:p-4 md:p-5 bg-muted/20 rounded-lg">
               <Heading level={5} className="mb-2 sm:mb-2.5 md:mb-3 text-sm sm:text-base md:text-lg">
-                Disponível para
+                {t('footer.availableFor')}
               </Heading>
               <ul className="text-xs sm:text-sm md:text-base text-muted-foreground space-y-1 sm:space-y-1.5">
-                <li>• Projetos freelance</li>
-                <li>• Oportunidades full-time</li>
-                <li>• Colaborações</li>
+                <li>{t('footer.freelanceProjects')}</li>
+                <li>{t('footer.fulltimeOpportunities')}</li>
+                <li>{t('footer.collaborations')}</li>
               </ul>
             </div>
           </div>
@@ -169,7 +169,7 @@ export const Footer = () => {
         <div className="border-t border-border py-4 sm:py-5 md:py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6">
             <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base text-muted-foreground text-center sm:text-left">
-              <Text variant="small">© {currentYear} Samuel Stefano. Feito com muito esforço e com muito</Text>
+              <Text variant="small">© {currentYear} Samuel Stefano. {t('footer.madeWith')} muito esforço e com muito</Text>
               <Icon icon={Code} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
             </div>
 

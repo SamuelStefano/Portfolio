@@ -1,4 +1,5 @@
 ﻿import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/atoms/card';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
@@ -8,48 +9,49 @@ import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalendar';
 
-const highlights = [
+const getHighlights = (t: any) => [
   {
-    title: 'Paixão por Tecnologia',
-    description: 'Sempre em busca de aprender novas tecnologias e aplicar as melhores práticas de desenvolvimento, apaixonado por IA e após me aprimorar 100% no full-stack moderno, irei buscar mais especialização em IA.'
+    title: t('about.highlights.passion.title'),
+    description: t('about.highlights.passion.description')
   },
   {
-    title: 'Trabalho em Equipe',
-    description: 'Experiência colaborando em projetos com outros desenvolvedores, usando metodologias ágeis, reuniões e comprometimento.'
+    title: t('about.highlights.teamwork.title'),
+    description: t('about.highlights.teamwork.description')
   },
   {
-    title: 'Foco na Qualidade',
-    description: 'Compromisso com código limpo e escalável, performático, abstraível e que atenda às necessidades dos usuários.'
+    title: t('about.highlights.learning.title'),
+    description: t('about.highlights.learning.description')
   },
   {
-    title: 'Evolução Constante',
-    description: 'Cursando ADS e sempre buscando me especializar em novas tecnologias e frameworks, aprimorando minhas habilidades e conhecimentos.'
+    title: t('about.highlights.evolution.title'),
+    description: t('about.highlights.evolution.description')
   }
 ];
 
 export const About = () => {
+  const { t } = useTranslation();
   const experienceTime = useExperienceTime();
   const { addElement } = useScrollAnimations();
   const gitHubStats = useGitHubStats();
 
   const stats = [
     {
-      label: 'Tempo de atuação profissional',
+      label: t('about.professionalTime'),
       value: experienceTime.formatted,
       icon: User
     },
     {
-      label: 'Repositórios GitHub',
+      label: t('about.projectsCreated'),
       value: gitHubStats.isLoading ? '...' : `${gitHubStats.totalRepos}+`,
       icon: GitBranch
     },
     {
-      label: 'Tecnologias',
+      label: t('about.technologies'),
       value: '15+',
       icon: Globe
     },
     {
-      label: 'Linhas de Código',
+      label: t('about.linesOfCode'),
       value: gitHubStats.isLoading ? '...' : `${Math.round(gitHubStats.linesOfCode / 1000)}K+`,
       icon: Code2
     }
@@ -60,10 +62,10 @@ export const About = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            Sobre Mim
+            {t('about.title')}
           </Heading>
           <Text variant="large" className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
-            Conheça um pouco mais sobre minha jornada e paixão pela tecnologia
+            {t('about.subtitle')}
           </Text>
         </div>
 
@@ -73,28 +75,23 @@ export const About = () => {
             <div>
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 md:gap-6 mb-4 sm:mb-5 md:mb-6 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600">
                 <Heading level={3} className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center sm:text-left leading-tight">
-                  Olá! Eu sou o Samuel.
+                  {t('about.greeting')}
                 </Heading>
                 <img
-                  src="/Samuel.jpg"
+                  src="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/imagem%20profissional.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9pbWFnZW0gcHJvZmlzc2lvbmFsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.IobSgu4JA84a7JH4l_SRZxkZZ8qCpS7oQ4PfwhlEut0"
                   alt="Samuel Stefano"
                   className="rounded-full border-2 border-primary/30 object-cover w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-44 xl:h-44 shadow-lg flex-shrink-0"
                 />
               </div>
               <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl border border-primary/20 rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 hover:bg-primary/5 hover:border-primary/30 lg:hover-slide-scale transition-all duration-300">
                 <Text>
-                  Estou me tornando um Desenvolvedor Full-Stack aos 22 anos, apaixonado por criar soluções digitais
-                  que fazem a diferença. Atualmente cursando o 3º ano de Análise e Desenvolvimento
-                  de Sistemas e sempre em busca de novos desafios.
+                  {t('about.bio1')}
                 </Text>
                 <Text>
-                  Minha jornada começou com curiosidade sobre como o mundo digital funciona.
-                  Hoje, transformo ideias em realidade usando React, TypeScript, Node.js e outras
-                  tecnologias modernas, sempre buscando me aprimorar e me tornar um profissional melhor.
+                  {t('about.bio2')}
                 </Text>
                 <Text>
-                  Quando não estou codando, gosto de explorar novas tecnologias, contribuir em
-                  projetos open source e compartilhar conhecimento com a comunidade dev, a que eu mais me encontrei com a Devfellowship.
+                  {t('about.bio3')}
                 </Text>
               </div>
             </div>
@@ -103,25 +100,25 @@ export const About = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 animate-slide-up mx-2 sm:mx-6" style={{ animationDelay: '0.2s' }}>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Icon icon={MapPin} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">Marialva, PR</Text>
+                <Text variant="small" className="text-xs sm:text-sm">{t('about.location')}</Text>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Icon icon={Globe} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">Inglês B2</Text>
+                <Text variant="small" className="text-xs sm:text-sm">{t('about.language')}</Text>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Icon icon={Clock} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">6:00 A.M - 18:00 P.M</Text>
+                <Text variant="small" className="text-xs sm:text-sm">{t('about.schedule')}</Text>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Icon icon={Calendar} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">{experienceTime.formatted} de experiência</Text>
+                <Text variant="small" className="text-xs sm:text-sm">{experienceTime.formatted} {t('about.experience')}</Text>
               </div>
             </div>
 
             {}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-              {highlights.map((highlight, index) => (
+              {getHighlights(t).map((highlight, index) => (
                 <Card
                   key={index}
                   className="bg-card border border-border hover:border-primary/50 lg:hover-slide-up transition-all duration-300"
@@ -175,15 +172,14 @@ export const About = () => {
                     <Icon icon={GraduationCap} size="sm" className="text-primary" />
                   </div>
                   <Heading level={4}>
-                    Foco Atual
+                    {t('about.currentFocus')}
                   </Heading>
                 </div>
                 <Text className="mb-4">
-                  Finalizando o curso de ADS e me especializando em arquiteturas
-                  escaláveis e desenvolvimento full-stack moderno.
+                  {t('about.currentFocusDescription')}
                 </Text>
                 <div className="flex flex-wrap gap-2">
-                  {['TypeScript', 'Next.js', 'banco de dados', 'Segurança'].map((focus, index) => (
+                  {t('about.focusAreas', { returnObjects: true }).map((focus: string, index: number) => (
                     <span
                       key={index}
                       className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"
@@ -222,16 +218,16 @@ export const About = () => {
                       <img src="/DevFelloShip.png" alt="Devfellowship" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 absolute left-0 top-0" />
                       <div className="text-center pl-14 sm:pl-18 md:pl-22 lg:pl-26 xl:pl-32">
                         <Heading level={3} className="mb-3 sm:mb-4 md:mb-5 from-primary to-accent bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-tight">
-                          🚀 Devfellowship - Minha Jornada na Startup
+                          {t('about.devfellowship.journeyTitle')}
                         </Heading>
                         <Text className="text-xs sm:text-sm md:text-base lg:text-lg max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto leading-relaxed">
-                    <span className="text-muted-foreground">A Devfellowship não é apenas uma </span>
-                    <span className="text-foreground font-semibold">startup</span>
-                    <span className="text-muted-foreground">, é o lugar onde encontrei minha </span>
-                    <span className="text-foreground font-semibold">paixão pela programação</span>
-                    <span className="text-muted-foreground"> e onde me aprimoro como </span>
-                    <span className="text-foreground font-semibold">desenvolvedor e profissional</span>
-                    <span className="text-muted-foreground">.</span>
+                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.intro')}</span>
+                    <span className="text-foreground font-semibold">{t('about.devfellowship.journeyDescriptionParts.startup')}</span>
+                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.middle1')}</span>
+                    <span className="text-foreground font-semibold">{t('about.devfellowship.journeyDescriptionParts.passion')}</span>
+                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.middle2')}</span>
+                    <span className="text-foreground font-semibold">{t('about.devfellowship.journeyDescriptionParts.professional')}</span>
+                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.end')}</span>
                         </Text>
                       </div>
                     </div>
@@ -300,7 +296,7 @@ export const About = () => {
                       className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 rounded-lg px-6 py-3 text-primary font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
                     >
                       <Icon icon={Globe} size="sm" />
-                      Saiba Mais
+                      {t('about.devfellowship.learnMore')}
                     </a>
 
                     <a
@@ -310,7 +306,7 @@ export const About = () => {
                       className="inline-flex items-center gap-2 bg-neon-purple/10 hover:bg-neon-purple/20 border border-neon-purple/30 hover:border-neon-purple/50 rounded-lg px-6 py-3 text-neon-purple font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
                     >
                       <Icon icon={Computer} size="sm" />
-                      Projetos
+                      {t('about.devfellowship.projects')}
                     </a>
                   </div>
                 </div>

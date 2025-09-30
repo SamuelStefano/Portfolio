@@ -4,7 +4,9 @@ import { normalizeSectionKey } from './sectionMetadata';
 export const getProjectImagesFromBucket = async (
   projectTitle: string
 ): Promise<Record<string, string[]>> => {
-  if (!supabase) return {};
+  if (!supabase) {
+    return {};
+  }
 
   try {
     const knownBuckets = [

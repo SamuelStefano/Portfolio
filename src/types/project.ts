@@ -2,13 +2,16 @@
   id: string;
   name: string;
   role: string;
+  avatar_url?: string;
   created_at: string;
 }
 
 export interface ProjectLink {
   id: string;
   label: string;
+  title?: string;
   url: string;
+  type?: string;
   created_at: string;
 }
 

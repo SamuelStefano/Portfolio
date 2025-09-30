@@ -32,7 +32,19 @@
     "projectGallery": "Project Gallery",
     "noProjects": "No projects found",
     "loading": "Loading projects...",
-    "hint": "Check if there are projects configured in Supabase."
+    "hint": "Check if there are projects configured in Supabase.",
+    "sectionDescriptions": {
+      "admin": "Complete administrative interface with full system control, user management, advanced settings and real-time monitoring.",
+      "dashboard": "Main dashboard with real-time metrics, interactive charts, important KPIs and data visualizations for decision making.",
+      "create": "Creation and development process, showing the tools used, applied methodologies and implemented workflow.",
+      "login": "Secure authentication system with multiple login methods, password recovery and permission-based access control.",
+      "mobile": "Optimized mobile version with responsive design, intuitive gestures and experience adapted for mobile devices.",
+      "desktop": "Desktop interface with advanced features, keyboard shortcuts and layout optimized for productivity on large screens.",
+      "web": "Responsive web version with cross-browser compatibility, optimized performance and modern web resources.",
+      "backend": "Robust backend architecture with RESTful APIs, microservices, database and scalable infrastructure.",
+      "database": "Optimized database structure with relationships, indexes, efficient queries and automatic backup.",
+      "others": "Additional features, special integrations and complementary resources that enrich the user experience."
+    }
   },
   "skills": {
     "title": "Skills & Experience",
@@ -42,15 +54,80 @@
     "database": "Database",
     "tools": "Tools",
     "professionalExperience": "Professional Experience",
-    "currentPosition": "Current Position"
+    "currentPosition": "Current Position",
+    "otherCompetencies": "Other Competencies",
+    "experienceData": [
+      {
+        "company": "Prefeitura de Marialva",
+        "role": "Technical Support",
+        "period": "February 2023 - December 2024",
+        "description": "Technical Support, serving public agencies in the municipality regarding information technology."
+      },
+      {
+        "company": "DevFellowship",
+        "role": "Full-Stack Developer",
+        "period": "July 2024 - Present",
+        "description": "Development of educational projects and challenge platforms. Teamwork with agile methodologies."
+      },
+      {
+        "company": "M&M Informática",
+        "role": "Technical Support & Developer",
+        "period": "December 2024 - currently",
+        "description": "Specialized technical support for various software that the company develops."
+      }
+    ],
+    "additionalSkills": [
+      "Judge0 API",
+      "REST APIs",
+      "Responsive Design",
+      "UI/UX Design",
+      "Automation",
+      "Database",
+      "Technical Support",
+      "Frontend",
+      "Backend",
+      "Database",
+      "Teamwork",
+      "Agile Methodologies",
+      "Problem Solving",
+      "Commitment",
+      "Creativity",
+      "Git & GitHub",
+      "Linux",
+      "Storybook",
+      "Figma",
+      "Miro",
+      "Componentization",
+      "DevOps",
+      "API Development",
+      "Artificial Intelligence",
+      "Software Architecture",
+      "Docker",
+      "VPS",
+      "WSL",
+      "Vercel",
+      "n8n",
+      "Commitment"
+    ]
   },
   "about": {
     "title": "About Me",
     "subtitle": "Learn a little more about my journey and passions",
+    "greeting": "Hello! I'm Samuel.",
+    "bio1": "I'm becoming a Full-Stack Developer at 22 years old, passionate about creating digital solutions that make a difference. Currently studying the 3rd year of Systems Analysis and Development and always seeking new challenges.",
+    "bio2": "My journey began with curiosity about how the digital world works. Today, I transform ideas into reality using React, TypeScript, Node.js and other modern technologies, always seeking to improve and become a better professional.",
+    "bio3": "When I'm not coding, I like to explore new technologies, contribute to open source projects and share knowledge with the dev community, which I found most connection with Devfellowship.",
+    "location": "Marialva, PR",
+    "language": "English B2",
+    "schedule": "6:00 A.M - 18:00 P.M",
+    "experience": "of experience",
     "professionalTime": "Professional experience time",
     "projectsCreated": "GitHub Repositories",
     "technologies": "Technologies",
     "linesOfCode": "Lines of Code",
+    "currentFocus": "Current Focus",
+    "currentFocusDescription": "Finishing the ADS course and specializing in scalable architectures and modern full-stack development.",
+    "focusAreas": ["TypeScript", "Next.js", "databases", "Security"],
     "highlights": {
       "passion": {
         "title": "Passion for Technology",
@@ -73,6 +150,17 @@
       "title": "DevFellowship",
       "subtitle": "Developer Community",
       "description": "A vibrant community of Brazilian developers focused on education, networking and professional growth. We participate in collaborative projects, workshops and events that boost our tech career.",
+      "journeyTitle": "🚀 Devfellowship - My Journey in the Startup",
+      "journeyDescription": "Devfellowship is not just a startup, it's the place where I found my passion for programming and where I improve as a developer and professional.",
+      "journeyDescriptionParts": {
+        "intro": "Devfellowship is not just a ",
+        "startup": "startup",
+        "middle1": ", it's the place where I found my ",
+        "passion": "passion for programming",
+        "middle2": " and where I improve as a ",
+        "professional": "developer and professional",
+        "end": "."
+      },
       "cards": {
         "community": {
           "title": "Active Community",
@@ -119,7 +207,11 @@
     "allRightsReserved": "All rights reserved.",
     "phone": "Phone",
     "email": "Email",
-    "location": "Marialva, PR - Brazil"
+    "location": "Marialva, PR - Brazil",
+    "availableFor": "Available for",
+    "freelanceProjects": "• Freelance projects",
+    "fulltimeOpportunities": "• Full-time opportunities",
+    "collaborations": "• Collaborations"
   },
   "common": {
     "loading": "Loading...",
@@ -137,5 +229,21 @@
     "month": "month",
     "days": "days",
     "day": "day"
+  },
+  "debug": {
+    "storageDebug": "Storage Debug",
+    "reload": "Reload",
+    "loading": "Loading…",
+    "error": "Error",
+    "unknownError": "Unknown error",
+    "buckets": "Buckets:",
+    "discoveredProjects": "Discovered projects",
+    "sections": "Sections:"
+  },
+  "projectStats": {
+    "technologies": "Technologies",
+    "collaborators": "Collaborators",
+    "links": "Links",
+    "created": "Created"
   }
 }

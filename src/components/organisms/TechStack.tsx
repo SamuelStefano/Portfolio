@@ -1,4 +1,5 @@
 ﻿import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { SkillBar } from '@/components/molecules/SkillBar';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem';
 import { Icon } from '@/components/atoms/Icon';
@@ -12,9 +13,9 @@ interface TechCategory {
   color: string;
 }
 
-const techCategories: TechCategory[] = [
+const getTechCategories = (t: any): TechCategory[] => [
   {
-    title: 'Frontend',
+    title: t('skills.frontend'),
     icon: Globe,
     skills: [
       { name: 'React', level: 80 },
@@ -26,7 +27,7 @@ const techCategories: TechCategory[] = [
     color: 'neon-blue'
   },
   {
-    title: 'Backend',
+    title: t('skills.backend'),
     icon: Server,
     skills: [
       { name: 'Node.js', level: 80 },
@@ -38,7 +39,7 @@ const techCategories: TechCategory[] = [
     color: 'neon-purple'
   },
   {
-    title: 'Database',
+    title: t('skills.database'),
     icon: Database,
     skills: [
       { name: 'Supabase', level: 85 },
@@ -50,7 +51,7 @@ const techCategories: TechCategory[] = [
     color: 'neon-cyan'
   },
   {
-    title: 'DevOps & Tools',
+    title: t('skills.tools'),
     icon: Cpu,
     skills: [
       { name: 'Docker', level: 80 },
@@ -80,98 +81,63 @@ const techCategories: TechCategory[] = [
     skills: [
       { name: 'Linux/Ubuntu', level: 70 },
       { name: 'Deploy', level: 70 },
+      { name: 'Kotlin', level: 20 },
       { name: 'n8n', level: 10 }
     ],
     color: 'neon-green'
   },
 ];
 
-const experienceData = [
-  {
-    company: 'Prefeitura de Marialva',
-    role: 'Suporte Técnico',
-    period: 'Fevereiro 2023 - Dezembro 2024',
-    description: 'Suporte Técinico, atendendo órgãos públicos do municipio em relação a informática.',
-    stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
-    logo: '/prefeitura.png',
-    icon: Building2,
-    website: null
-  },
+const getExperienceData = (t: any) => {
+  const translatedData = t('skills.experienceData', { returnObjects: true });
+  
+  return [
+    {
+      ...translatedData[0],
+      stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
+      logo: '/prefeitura.png',
+      icon: Building2,
+      website: null
+    },
+    {
+      ...translatedData[1],
+      stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs'],
+      logo: '/DevFelloShip.png',
+      icon: Briefcase,
+      website: 'https://devfellowship.com'
+    },
+    {
+      ...translatedData[2],
+      stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Suporte Técnico', 'Javascript', 'Typescript', 'Nest', 'TailwindCSS', 'Next', 'Suporte Técnico'],
+      logo: '/MMIcon.png',
+      icon: Laptop,
+      website: 'https://mminfo.me'
+    }
+  ];
+};
 
-  {
-    company: 'DevFellowship',
-    role: 'Desenvolvedor Full-Stack',
-    period: 'Julho 2024 - Presente',
-    description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs',],
-    logo: '/DevFelloShip.png',
-    icon: Briefcase,
-    website: 'https://devfellowship.com'
-  },
-  {
-    company: 'M&M Informática',
-    role: 'Suporte Técnico & Desenvolvedor',
-    period: 'Dezembro 2024 - atualmente',
-    description: 'Suporte técnico especializado em diversos softwares que a empresa desenvolve.',
-    stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Suporte Técnico'],
-    logo: '/MMIcon.png',
-    icon: Laptop,
-    website: 'https://mminfo.me'
-  },
-
-];
-
-const additionalSkills = [
-  'Judge0 API',
-  'REST APIs',
-  'Responsive Design',
-  'UI/UX Design',
-  'Automação',
-  'Banco de Dados',
-  'Suporte Técnico',
-  'Frontend',
-  'Backend',
-  'Banco de Dados',
-  'Trabalho em Equipe',
-  'Metodologias Ágeis',
-  'Resolução de Problemas',
-  'Comprometimento',
-  'Criatividade',
-  'Git & GitHub',
-  'Linux',
-  'Storybook',
-  'Figma',
-  'Miro',
-  'Componentização',
-  'DevOps',
-  'API Development',
-  'Inteligência Artificial',
-  'Arquitetura de Software',
-  'Docker',
-  'VPS',
-  'WSL',
-  'Vercel',
-  'n8n',
-  'Comprometimento'
-
-];
+const getAdditionalSkills = (t: any): string[] => {
+  return t('skills.additionalSkills', { returnObjects: true });
+};
 
 export const TechStack = () => {
+  const { t } = useTranslation();
+  
   return (
     <section id="habilidades" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            Stack Tecnológica
+            {t('skills.title')}
           </Heading>
           <Text variant="large" className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
-            Tecnologias e ferramentas que domino para criar soluções completas
+            {t('skills.subtitle')}
           </Text>
         </div>
 
         {}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          {techCategories.map((category, categoryIndex) => {
+          {getTechCategories(t).map((category, categoryIndex) => {
             const IconComponent = category.icon;
             return (
               <div
@@ -212,11 +178,11 @@ export const TechStack = () => {
         {}
         <div className="text-center overflow-hidden">
           <Heading level={3} className="mb-4 sm:mb-5 md:mb-6 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl">
-            Outras Competências
+            {t('skills.otherCompetencies')}
           </Heading>
           <div className="relative">
             <div className="flex animate-scroll gap-2 sm:gap-3 md:gap-4 whitespace-nowrap">
-              {[...additionalSkills, ...additionalSkills].map((skill, index) => (
+              {[...getAdditionalSkills(t), ...getAdditionalSkills(t)].map((skill, index) => (
                 <div
                   key={index}
                   className="px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 bg-card border border-border rounded-full text-xs sm:text-sm font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
@@ -231,7 +197,7 @@ export const TechStack = () => {
         {}
         <div className="mt-10 sm:mt-12 md:mt-16 lg:mt-20">
           <Heading level={3} className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl">
-            Experiência Profissional
+            {t('skills.professionalExperience')}
           </Heading>
 
           <div className="md:flex sm:flex xl:flex 2xl:flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 py-4 sm:py-6 md:py-8 grid md:grid-cols-3">
@@ -267,7 +233,7 @@ export const TechStack = () => {
 
               {}
               <div className="space-y-12">
-                {experienceData.map((job, index) => (
+                {getExperienceData(t).map((job, index) => (
                   <div
                     key={index}
                     className="relative flex items-start gap-6 animate-slide-up hover:scale-105 transition-all duration-300"

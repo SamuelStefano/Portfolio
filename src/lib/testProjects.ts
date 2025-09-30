@@ -7,7 +7,6 @@ export const testProjectsTable = async () => {
   }
 
   try {
-    console.log('🔍 Testando tabela projects...');
 
     const { data, error } = await supabase
       .from('projects')
@@ -19,12 +18,6 @@ export const testProjectsTable = async () => {
       return;
     }
 
-    console.log('✅ Tabela projects acessível');
-    console.log('📊 Dados encontrados:', data?.length || 0, 'projetos');
-
-    if (data && data.length > 0) {
-      console.log('📋 Primeiro projeto:', data[0]);
-    }
 
     const { data: allProjects, error: allError } = await supabase
       .from('projects')
@@ -36,14 +29,6 @@ export const testProjectsTable = async () => {
       return;
     }
 
-    console.log('📊 Total de projetos:', allProjects?.length || 0);
-
-    if (allProjects && allProjects.length > 0) {
-      console.log('📋 Todos os projetos:');
-      allProjects.forEach((project, index) => {
-        console.log(`${index + 1}. ${project.title} (${project.role}) - ${project.icon_name}`);
-      });
-    }
 
   } catch (error) {
     console.error('❌ Erro geral:', error);

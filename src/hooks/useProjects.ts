@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from 'react';
 import { Project } from '../types/project';
 import { getProjectsFromDB } from '../lib/getProjectsFromDB';
+import { mockProjects } from '../lib/mockProjects';
 
 let cachedProjects: Project[] | null = null;
 let cacheTime: number | null = null;
@@ -33,6 +34,9 @@ export const useProjects = () => {
       } catch (err) {
         setError('Erro ao carregar projetos');
         console.error('Erro ao carregar projetos:', err);
+        
+        // Em caso de erro, usa os dados mockados como fallback
+        setProjects(mockProjects);
       } finally {
         setLoading(false);
       }
@@ -51,6 +55,9 @@ export const useProjects = () => {
     } catch (err) {
       setError('Erro ao recarregar projetos');
       console.error('Erro ao recarregar projetos:', err);
+      
+      // Em caso de erro, usa os dados mockados como fallback
+      setProjects(mockProjects);
     } finally {
       setLoading(false);
     }

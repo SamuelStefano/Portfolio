@@ -2,7 +2,7 @@
 import { testProjectsTable } from '@/lib/testProjects';
 import { getProjectsFromDB } from '@/lib/getProjectsFromDB';
 import { testSupabaseConnection } from '@/lib/testSupabaseConnection';
-import { Button } from './Button';
+import { Button } from '../atoms/button';
 import { Text } from './Text';
 
 export const ProjectsTest = () => {
@@ -14,7 +14,6 @@ export const ProjectsTest = () => {
     setResult('');
 
     try {
-      console.log('🧪 Iniciando teste de projetos...');
 
       await testSupabaseConnection();
 
@@ -25,7 +24,6 @@ export const ProjectsTest = () => {
       setResult(`✅ Teste concluído! Encontrados ${projects.length} projetos.`);
 
       if (projects.length > 0) {
-        console.log('📋 Projetos encontrados:', projects);
         setResult(prev => prev + `\n\nProjetos:\n${projects.map(p => `- ${p.title} (${p.role})`).join('\n')}`);
       }
 

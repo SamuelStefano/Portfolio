@@ -29,8 +29,11 @@ export const useGitHubStats = () => {
   useEffect(() => {
     const fetchGitHubStats = async () => {
       try {
-        console.log('🔍 Buscando estatísticas do GitHub...');
         setStats(prev => ({ ...prev, isLoading: true, error: null }));
+
+        console.log('🔍 GitHub Stats - Iniciando busca...');
+        console.log('Token configurado:', !!GITHUB_TOKEN);
+        console.log('Username:', GITHUB_USERNAME);
 
         const headers: HeadersInit = {
           'Accept': 'application/vnd.github.v3+json',
@@ -39,21 +42,19 @@ export const useGitHubStats = () => {
 
         if (GITHUB_TOKEN) {
           headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
-          console.log('✅ Token GitHub encontrado');
-        } else {
-          console.log('⚠️ Token GitHub não encontrado - usando limite público');
         }
 
         const endpoint = GITHUB_TOKEN
           ? `https://api.github.com/user/repos?per_page=100&sort=updated&affiliation=owner,collaborator`
           : `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
 
-        console.log(`📡 Fazendo requisição para: ${endpoint}`);
+        console.log('📡 Endpoint:', endpoint);
+
         const reposResponse = await fetch(endpoint, {
           headers
         });
 
-        console.log('📊 Status da resposta:', reposResponse.status);
+        console.log('📥 Response status:', reposResponse.status);
 
         if (!reposResponse.ok) {
           const errorText = await reposResponse.text();
@@ -62,36 +63,19 @@ export const useGitHubStats = () => {
         }
 
         const repos = await reposResponse.json();
-        console.log('📚 Repositórios encontrados:', repos.length);
-
-        console.log('📚 Todos os repos:', repos.map((r: any) => ({
-          name: r.name,
-          private: r.private,
-          fork: r.fork,
-          owner: r.owner.login
-        })));
 
         const ownRepos = repos.filter((repo: any) => !repo.fork);
-        console.log('🏠 Repositórios próprios:', ownRepos.length);
-        console.log('📋 Lista de repos próprios:', ownRepos.map((r: any) => ({
-          name: r.name,
-          private: r.private,
-          size: r.size,
-          language: r.language
-        })));
 
         const totalRepos = ownRepos.length;
         const totalStars = ownRepos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
         const totalForks = ownRepos.reduce((sum: number, repo: any) => sum + repo.forks_count, 0);
 
-        console.log('📊 Stats básicas:', { totalRepos, totalStars, totalForks });
 
         const languages: Record<string, number> = {};
         let totalCommits = 0;
 
         const maxRepos = GITHUB_TOKEN ? 20 : 10;
         const recentRepos = ownRepos.slice(0, maxRepos);
-        console.log(`🔬 Analisando ${recentRepos.length} repos:`, recentRepos.map((r: any) => r.name));
 
         for (const repo of recentRepos) {
           try {
@@ -116,9 +100,6 @@ export const useGitHubStats = () => {
         const totalLanguageBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
         const estimatedLinesOfCode = Math.round(totalLanguageBytes / 50);
 
-        console.log('💻 Linguagens encontradas:', Object.keys(languages));
-        console.log('📏 Total de bytes:', totalLanguageBytes);
-        console.log('🔢 Linhas estimadas:', estimatedLinesOfCode);
 
         setStats({
           totalCommits,
@@ -131,7 +112,6 @@ export const useGitHubStats = () => {
           error: null
         });
 
-        console.log('✅ GitHub stats atualizadas com sucesso!');
 
       } catch (error) {
         console.error('Erro ao buscar estatísticas do GitHub:', error);

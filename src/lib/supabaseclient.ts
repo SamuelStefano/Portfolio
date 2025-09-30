@@ -3,11 +3,10 @@
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-console.log('🔍 DEBUG SUPABASE:');
-console.log('URL:', supabaseUrl);
-console.log('KEY exists:', !!supabaseAnonKey);
-console.log('KEY length:', supabaseAnonKey?.length);
-console.log('KEY starts with eyJ:', supabaseAnonKey?.startsWith('eyJ'));
+// Verificação de configuração do Supabase
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('⚠️ Variáveis de ambiente do Supabase não configuradas. Usando dados mock.');
+}
 
 export const isSupabaseConfigured = () => {
   return supabaseUrl && supabaseAnonKey;

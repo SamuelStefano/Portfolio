@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Calendar, Clock, Mail, Phone } from 'lucide-react';
 import { Card, CardContent } from '@/components/atoms/card';
 import { Button } from '@/components/atoms/button';
@@ -7,6 +8,8 @@ import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
 
 export const AvailabilityCalendar = () => {
+  const { t } = useTranslation();
+  
   const handleScheduleMeeting = () => {
     window.open('https://calendly.com/samuelstefanodocarmo/30min', '_blank');
   };
@@ -29,10 +32,10 @@ export const AvailabilityCalendar = () => {
             </div>
           </div>
           <Heading level={4} className="mb-2">
-            Vamos Conversar?
+            {t('about.availability.title')}
           </Heading>
           <Text className="text-muted-foreground">
-            Estou sempre disponível para discutir projetos, oportunidades ou apenas trocar ideias sobre tecnologia.
+            {t('about.availability.description')}
           </Text>
         </div>
 
@@ -40,13 +43,13 @@ export const AvailabilityCalendar = () => {
         <div className="mb-6 p-4 bg-background/50 rounded-lg">
           <div className="flex items-center gap-2 mb-3">
             <Icon icon={Clock} size="sm" className="text-primary" />
-            <Text className="font-medium">Horários Disponíveis:</Text>
+            <Text className="font-medium">{t('about.availability.hours')}</Text>
           </div>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <Text variant="small">• Segunda, Quarta, Quinta e Sexta: 12:30 - 13:30 e 17:10 - 22:00</Text>
-            <Text variant="small">• Terça: 17:10 - 22:00</Text>
-            <Text variant="small">• Sábados: 12:30 - 17:00</Text>
-            <Text variant="small">• Resposta em até 24h</Text>
+            <Text variant="small">• {t('about.availability.weekdays')}</Text>
+            <Text variant="small">• {t('about.availability.tuesday')}</Text>
+            <Text variant="small">• {t('about.availability.saturday')}</Text>
+            <Text variant="small">• {t('about.availability.response')}</Text>
           </div>
         </div>
 
@@ -57,7 +60,7 @@ export const AvailabilityCalendar = () => {
             className="w-full bg-primary hover:bg-primary/90"
           >
             <Icon icon={Calendar} size="sm" className="mr-2" />
-            Agendar Reunião
+            {t('about.availability.schedule')}
           </Button>
 
           <div className="grid grid-cols-2 gap-3">
@@ -67,7 +70,7 @@ export const AvailabilityCalendar = () => {
               className="flex-1"
             >
               <Icon icon={Mail} size="sm" className="mr-2" />
-              Email
+              {t('about.availability.email')}
             </Button>
 
             <Button
@@ -76,7 +79,7 @@ export const AvailabilityCalendar = () => {
               className="flex-1"
             >
               <Icon icon={Phone} size="sm" className="mr-2" />
-              WhatsApp
+              {t('about.availability.whatsapp')}
             </Button>
           </div>
         </div>
@@ -86,7 +89,7 @@ export const AvailabilityCalendar = () => {
           <div className="flex items-center justify-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <Text variant="small" className="text-green-600 font-medium">
-              Disponível para novos projetos
+              {t('about.availability.status')}
             </Text>
           </div>
         </div>

@@ -59,8 +59,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
 
   useEffect(() => {
     if (isOpen) {
+      // Salva a posição atual do scroll
+      const scrollY = window.scrollY;
+      
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
       document.body.style.width = "100%";
 
       const preventScroll = (e: Event) => {
@@ -82,13 +86,18 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, isOpen,
       return () => {
         document.body.style.overflow = "unset";
         document.body.style.position = "unset";
+        document.body.style.top = "unset";
         document.body.style.width = "unset";
         document.removeEventListener('wheel', preventScroll);
         document.removeEventListener('touchmove', preventScroll);
+        
+        // Restaura a posição do scroll
+        window.scrollTo(0, scrollY);
       };
     } else {
       document.body.style.overflow = "unset";
       document.body.style.position = "unset";
+      document.body.style.top = "unset";
       document.body.style.width = "unset";
     }
   }, [isOpen]);

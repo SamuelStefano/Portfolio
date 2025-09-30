@@ -32,7 +32,19 @@
     "projectGallery": "Galeria do Projeto",
     "noProjects": "Nenhum projeto encontrado",
     "loading": "Carregando projetos...",
-    "hint": "Verifique se há projetos configurados no Supabase."
+    "hint": "Verifique se há projetos configurados no Supabase.",
+    "sectionDescriptions": {
+      "admin": "Interface administrativa completa com controle total do sistema, gerenciamento de usuários, configurações avançadas e monitoramento em tempo real.",
+      "dashboard": "Dashboard principal com métricas em tempo real, gráficos interativos, KPIs importantes e visualizações de dados para tomada de decisão.",
+      "create": "Processo de criação e desenvolvimento, mostrando as ferramentas utilizadas, metodologias aplicadas e fluxo de trabalho implementado.",
+      "login": "Sistema de autenticação seguro com múltiplos métodos de login, recuperação de senha e controle de acesso baseado em permissões.",
+      "mobile": "Versão mobile otimizada com design responsivo, gestos intuitivos e experiência adaptada para dispositivos móveis.",
+      "desktop": "Interface desktop com funcionalidades avançadas, atalhos de teclado e layout otimizado para produtividade em telas grandes.",
+      "web": "Versão web responsiva com compatibilidade cross-browser, performance otimizada e recursos web modernos.",
+      "backend": "Arquitetura backend robusta com APIs RESTful, microserviços, banco de dados e infraestrutura escalável.",
+      "database": "Estrutura de banco de dados otimizada com relacionamentos, índices, queries eficientes e backup automático.",
+      "others": "Funcionalidades adicionais, integrações especiais e recursos complementares que enriquecem a experiência do usuário."
+    }
   },
   "skills": {
     "title": "Habilidades & Experiência",
@@ -42,15 +54,80 @@
     "database": "Banco de Dados",
     "tools": "Ferramentas",
     "professionalExperience": "Experiência Profissional",
-    "currentPosition": "Cargo Atual"
+    "currentPosition": "Cargo Atual",
+    "otherCompetencies": "Outras Competências",
+    "experienceData": [
+      {
+        "company": "Prefeitura de Marialva",
+        "role": "Suporte Técnico",
+        "period": "Fevereiro 2023 - Dezembro 2024",
+        "description": "Suporte Técnico, atendendo órgãos públicos do município em relação a informática."
+      },
+      {
+        "company": "DevFellowship",
+        "role": "Desenvolvedor Full-Stack",
+        "period": "Julho 2024 - Presente",
+        "description": "Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis."
+      },
+      {
+        "company": "M&M Informática",
+        "role": "Suporte Técnico & Desenvolvedor",
+        "period": "Dezembro 2024 - atualmente",
+        "description": "Suporte técnico especializado em diversos softwares que a empresa desenvolve."
+      }
+    ],
+    "additionalSkills": [
+      "Judge0 API",
+      "REST APIs",
+      "Design Responsivo",
+      "UI/UX Design",
+      "Automação",
+      "Banco de Dados",
+      "Suporte Técnico",
+      "Frontend",
+      "Backend",
+      "Banco de Dados",
+      "Trabalho em Equipe",
+      "Metodologias Ágeis",
+      "Resolução de Problemas",
+      "Comprometimento",
+      "Criatividade",
+      "Git & GitHub",
+      "Linux",
+      "Storybook",
+      "Figma",
+      "Miro",
+      "Componentização",
+      "DevOps",
+      "Desenvolvimento de API",
+      "Inteligência Artificial",
+      "Arquitetura de Software",
+      "Docker",
+      "VPS",
+      "WSL",
+      "Vercel",
+      "n8n",
+      "Comprometimento"
+    ]
   },
   "about": {
     "title": "Sobre Mim",
     "subtitle": "Conheça um pouco mais sobre minha trajetória e paixões",
+    "greeting": "Olá! Eu sou o Samuel.",
+    "bio1": "Estou me tornando um Desenvolvedor Full-Stack aos 22 anos, apaixonado por criar soluções digitais que fazem a diferença. Atualmente cursando o 3º ano de Análise e Desenvolvimento de Sistemas e sempre em busca de novos desafios.",
+    "bio2": "Minha jornada começou com curiosidade sobre como o mundo digital funciona. Hoje, transformo ideias em realidade usando React, TypeScript, Node.js e outras tecnologias modernas, sempre buscando me aprimorar e me tornar um profissional melhor.",
+    "bio3": "Quando não estou codando, gosto de explorar novas tecnologias, contribuir em projetos open source e compartilhar conhecimento com a comunidade dev, a que eu mais me encontrei com a Devfellowship.",
+    "location": "Marialva, PR",
+    "language": "Inglês B2",
+    "schedule": "6:00 A.M - 18:00 P.M",
+    "experience": "de experiência",
     "professionalTime": "Tempo de atuação profissional",
     "projectsCreated": "Repositórios GitHub",
     "technologies": "Tecnologias",
     "linesOfCode": "Linhas de Código",
+    "currentFocus": "Foco Atual",
+    "currentFocusDescription": "Finalizando o curso de ADS e me especializando em arquiteturas escaláveis e desenvolvimento full-stack moderno.",
+    "focusAreas": ["TypeScript", "Next.js", "banco de dados", "Segurança"],
     "highlights": {
       "passion": {
         "title": "Paixão por Tecnologia",
@@ -73,6 +150,17 @@
       "title": "DevFellowship",
       "subtitle": "Comunidade de Desenvolvedores",
       "description": "Uma comunidade vibrante de desenvolvedores brasileiros focada em educação, networking e crescimento profissional. Participamos de projetos colaborativos, workshops e eventos que impulsionam nossa carreira tech.",
+      "journeyTitle": "🚀 Devfellowship - Minha Jornada na Startup",
+      "journeyDescription": "A Devfellowship não é apenas uma startup, é o lugar onde encontrei minha paixão pela programação e onde me aprimoro como desenvolvedor e profissional.",
+      "journeyDescriptionParts": {
+        "intro": "A Devfellowship não é apenas uma ",
+        "startup": "startup",
+        "middle1": ", é o lugar onde encontrei minha ",
+        "passion": "paixão pela programação",
+        "middle2": " e onde me aprimoro como ",
+        "professional": "desenvolvedor e profissional",
+        "end": "."
+      },
       "cards": {
         "community": {
           "title": "Comunidade Ativa",
@@ -119,7 +207,11 @@
     "allRightsReserved": "Todos os direitos reservados.",
     "phone": "Telefone",
     "email": "Email",
-    "location": "Marialva, PR - Brasil"
+    "location": "Marialva, PR - Brasil",
+    "availableFor": "Disponível para",
+    "freelanceProjects": "• Projetos freelance",
+    "fulltimeOpportunities": "• Oportunidades full-time",
+    "collaborations": "• Colaborações"
   },
   "common": {
     "loading": "Carregando...",
@@ -137,5 +229,21 @@
     "month": "mês",
     "days": "dias",
     "day": "dia"
+  },
+  "debug": {
+    "storageDebug": "Debug de Storage",
+    "reload": "Recarregar",
+    "loading": "Carregando…",
+    "error": "Erro",
+    "unknownError": "Erro desconhecido",
+    "buckets": "Buckets:",
+    "discoveredProjects": "Projetos descobertos",
+    "sections": "Seções:"
+  },
+  "projectStats": {
+    "technologies": "Tecnologias",
+    "collaborators": "Colaboradores",
+    "links": "Links",
+    "created": "Criado"
   }
 }

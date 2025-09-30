@@ -90,7 +90,7 @@ export const Header = () => {
           <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 relative z-20 animate-hero-float" style={{ animationDelay: '0.6s' }}>
             <div className="w-44 h-44 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-60 lg:h-60 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 hover:scale-105 mx-auto rounded-full overflow-hidden border-2 sm:border-3 md:border-4 border-primary/30 hover:border-primary/60 transition-all duration-500 hover-glow bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center group">
               <img
-                src="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/imagem%20profissional.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9pbWFnZW0gcHJvZmlzc2lvbmFsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.IobSgu4JA84a7JH4l_SRZxkZZ8qCpS7oQ4PfwhlEut0"
+                src="/Samuel.jpg"
                 alt="Samuel Stefano"
                 className="w-full h-full object-cover"
               />

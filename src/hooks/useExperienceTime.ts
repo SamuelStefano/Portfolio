@@ -1,6 +1,8 @@
 ﻿import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const useExperienceTime = () => {
+  const { t } = useTranslation();
   const [experienceTime, setExperienceTime] = useState({
     years: 0,
     months: 0,
@@ -39,9 +41,9 @@ export const useExperienceTime = () => {
   const getFormattedTime = () => {
     const totalMonths = experienceTime.totalMonths;
     if (totalMonths > 0) {
-      return `${totalMonths} ${totalMonths > 1 ? 'meses' : 'mês'}`;
+      return `${totalMonths} ${totalMonths > 1 ? t('common.months') : t('common.month')}`;
     } else {
-      return `${experienceTime.days} dia${experienceTime.days > 1 ? 's' : ''}`;
+      return `${experienceTime.days} ${experienceTime.days > 1 ? t('common.days') : t('common.day')}`;
     }
   };
 

@@ -8,7 +8,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
   }
 
   try {
-    console.log("🔍 Buscando projetos com seções e imagens...");
 
     const { data, error } = await supabase
       .from("projects")
@@ -44,11 +43,8 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
     }
 
     if (!data || data.length === 0) {
-      console.log("⚠️ Nenhum projeto encontrado");
       return [];
     }
-
-    console.log(`📊 Projetos encontrados: ${data.length}`);
 
     const projectsWithRelations = data.map(project => ({
       ...project,

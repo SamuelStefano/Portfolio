@@ -9,93 +9,33 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
   }
 
   try {
-
-    const { data, error } = await supabase
-      .from("projects")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (error) {
-      console.error("❌ Erro ao buscar projetos:", error);
-      return [];
-    }
-
-    const dbProjects: Project[] = await Promise.all(
-      (data || []).map(async (project) => {
-        try {
-          const imageCategories = await getProjectImagesFromBucket(project.title);
-
-          return {
-            ...project,
-            image_categories: imageCategories,
-            project_collaborators: [],
-            project_links: [],
-            project_images: []
-          };
-        } catch (error) {
-          console.error(`❌ Erro ao buscar imagens para ${project.title}:`, error);
-          return {
-            ...project,
-            image_categories: project.image_categories || {},
-            project_collaborators: [],
-            project_links: [],
-            project_images: []
-          };
-        }
-      })
-    );
-
+    // Como a tabela projects não existe, vamos usar apenas o discovery do storage
     const discovered = await discoverProjectsFromBuckets();
 
-    const storagePathToDb = new Map<string, Project>();
-    dbProjects.forEach(p => {
-      if (p as any && (p as any).storage_path) storagePathToDb.set((p as any).storage_path as string, p);
-    });
-
     const discoveredAsProjects: Project[] = discovered.map(d => {
-      const db = storagePathToDb.get(d.storage_path);
       return {
-        id: db?.id || d.storage_path,
-        title: db?.title || d.title,
-        role: db?.role || 'Project',
-        description: db?.description || '',
-        long_description: db?.long_description || undefined,
-        stack: db?.stack || [],
-        thumbnail_url: db?.thumbnail_url || d.thumbnail_url,
-        icon_name: db?.icon_name || 'Code',
+        id: d.storage_path,
+        title: d.title,
+        role: 'Project',
+        description: `Projeto ${d.title} descoberto automaticamente do storage.`,
+        long_description: undefined,
+        stack: [],
+        thumbnail_url: d.thumbnail_url,
+        icon_name: 'Code',
         image_categories: d.image_categories,
-        created_at: db?.created_at || new Date().toISOString(),
-        updated_at: db?.updated_at || new Date().toISOString(),
-        project_collaborators: db?.project_collaborators || [],
-        project_links: db?.project_links || [],
-        project_sections: db?.project_sections || [],
-        storage_path: db?.storage_path || d.storage_path,
-        auto_discovered: !db
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        project_collaborators: [],
+        project_links: [],
+        project_sections: [],
+        storage_path: d.storage_path,
+        auto_discovered: true
       } as Project;
     });
 
-    if (dbProjects.length === 0) {
-      return discoveredAsProjects;
-    }
-
-    const merged: Project[] = [...dbProjects];
-
-    for (const p of discoveredAsProjects) {
-      const exists = merged.find(m => {
-        const sameTitle = m.title === p.title;
-        const spM = (m as any).storage_path as string | undefined;
-        const spP = (p as any).storage_path as string | undefined;
-        const sameStoragePath = spM && spP ? spM === spP : false;
-        return sameTitle || sameStoragePath;
-      });
-      if (!exists) {
-        merged.push(p);
-      }
-    }
-
-    return merged;
+    return discoveredAsProjects;
   } catch (error) {
-    console.error('❌ Erro ao conectar com Supabase:', error);
+    console.error('❌ Erro ao buscar projetos do storage:', error);
     return [];
   }
 };
