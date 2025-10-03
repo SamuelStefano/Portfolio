@@ -222,11 +222,13 @@ export const ProjectCarousel = () => {
                     <>
                       {prevProject.thumbnail_url ? (
                         <div className="w-full h-full relative">
-                          <img
-                            src={prevProject.thumbnail_url}
-                            alt={prevProject.title}
-                            className="w-full h-full object-cover"
-                          />
+                           <img
+                              src={prevProject.thumbnail_url}
+                              alt={prevProject.title}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                              decoding="async"
+                            />
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10" />
                           <div className="absolute inset-0 flex items-center justify-center">
                             <PrevIconComponent className="w-12 h-12 text-muted-foreground/80" />
@@ -285,11 +287,13 @@ export const ProjectCarousel = () => {
               >
                 {project.thumbnail_url ? (
                   <div className="w-full h-full relative">
-                    <img
-                      src={project.thumbnail_url}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
+                     <img
+                        src={project.thumbnail_url}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/20" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <IconComponent className="w-16 h-16 text-primary/80" />
@@ -355,11 +359,13 @@ export const ProjectCarousel = () => {
                     <>
                       {nextProject.thumbnail_url ? (
                         <div className="w-full h-full relative">
-                          <img
-                            src={nextProject.thumbnail_url}
-                            alt={nextProject.title}
-                            className="w-full h-full object-cover"
-                          />
+                           <img
+                              src={nextProject.thumbnail_url}
+                              alt={nextProject.title}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                              decoding="async"
+                            />
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10" />
                           <div className="absolute inset-0 flex items-center justify-center">
                             <NextIconComponent className="w-12 h-12 text-muted-foreground/80" />

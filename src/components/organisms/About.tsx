@@ -5,9 +5,9 @@ import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
 import { useExperienceTime } from '@/hooks/useExperienceTime';
-import { useSimpleGSAPAnimations } from '@/hooks/useSimpleGSAPAnimations';
 import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalendar';
+import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 
 const getHighlights = (t: any) => [
   {
@@ -31,8 +31,8 @@ const getHighlights = (t: any) => [
 export const About = () => {
   const { t } = useTranslation();
   const experienceTime = useExperienceTime();
-  const { containerRef, addElement } = useSimpleGSAPAnimations();
   const gitHubStats = useGitHubStats();
+  const { containerRef } = useScrollAnimations();
 
   const stats = [
     {
@@ -60,7 +60,7 @@ export const About = () => {
   return (
     <section id="sobre" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 bg-muted/20" ref={containerRef}>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 gsap-fade-up">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 animate-fade-up">
           <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             {t('about.title')}
           </Heading>
@@ -70,7 +70,6 @@ export const About = () => {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-start xl:items-center">
-          {}
           <div className="space-y-6 sm:space-y-7 md:space-y-8">
             <div>
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 md:gap-6 mb-4 sm:mb-5 md:mb-6 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600">
@@ -95,9 +94,7 @@ export const About = () => {
                 </Text>
               </div>
             </div>
-
-            {}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 animate-slide-up mx-2 sm:mx-6" style={{ animationDelay: '0.2s' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 animate-slide-left mx-2 sm:mx-6">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Icon icon={MapPin} size="sm" className="text-primary" />
                 <Text variant="small" className="text-xs sm:text-sm">{t('about.location')}</Text>
@@ -115,13 +112,12 @@ export const About = () => {
                 <Text variant="small" className="text-xs sm:text-sm">{experienceTime.formatted} {t('about.experience')}</Text>
               </div>
             </div>
-
-            {}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
               {getHighlights(t).map((highlight, index) => (
                 <Card
                   key={index}
-                  className="bg-card border border-border hover:border-primary/50 lg:hover-slide-up transition-all duration-300"
+                  className="bg-card border border-border hover:border-primary/50 lg:hover-slide-up transition-all duration-300 animate-scale-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardContent className="p-3 sm:p-4 md:p-5 lg:p-6">
                     <Heading level={4} className="mb-2 sm:mb-3 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent text-sm sm:text-base md:text-lg font-semibold">
@@ -143,7 +139,7 @@ export const About = () => {
                 return (
                   <Card
                     key={index}
-                    className="bg-card border border-border hover-glow transition-all duration-300 gsap-card hover:border-primary/30 hover:shadow-lg"
+                    className="bg-card border border-border hover-glow transition-all duration-300 hover:border-primary/30 hover:shadow-lg animate-fade-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CardContent className="p-4 sm:p-5 md:p-6 text-center">
@@ -163,9 +159,7 @@ export const About = () => {
                 );
               })}
             </div>
-
-            {}
-            <Card className="bg-gradient-card border-border hover-glow animate-slide-up" style={{ animationDelay: '0.5s' }}>
+            <Card className="bg-gradient-card border-border hover-glow animate-slide-right">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-primary/10 rounded-lg">
@@ -190,15 +184,11 @@ export const About = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {}
-            <div className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
+            <div className="animate-fade-up">
               <AvailabilityCalendar />
             </div>
             </div>
           </div>
-
-          {}
           <div className="mt-16 w-full">
             <div className="text-center mb-8">
               <Heading level={3} className="mb-4 text-foreground">
@@ -209,8 +199,6 @@ export const About = () => {
               </Text>
             </div>
           </div>
-
-          {}
           <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 w-full">
             <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 border border-primary/20 lg:hover-slide-scale transition-all duration-300">
                 <div className="mb-6 sm:mb-7 md:mb-8">

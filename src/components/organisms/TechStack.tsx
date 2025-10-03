@@ -5,6 +5,7 @@ import { ExperienceItem } from '@/components/molecules/ExperienceItem';
 import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
+import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 
 interface TechCategory {
   title: string;
@@ -122,11 +123,12 @@ const getAdditionalSkills = (t: any): string[] => {
 
 export const TechStack = () => {
   const { t } = useTranslation();
+  const { containerRef } = useScrollAnimations();
   
   return (
-    <section id="habilidades" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+    <section id="habilidades" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 animate-fade-up">
           <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             {t('skills.title')}
           </Heading>
@@ -135,14 +137,13 @@ export const TechStack = () => {
           </Text>
         </div>
 
-        {}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           {getTechCategories(t).map((category, categoryIndex) => {
             const IconComponent = category.icon;
             return (
               <div
                 key={categoryIndex}
-                className="group bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 hover-glow transition-all duration-300 animate-slide-up"
+                className="group bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 hover-glow transition-all duration-300 animate-fade-up"
                 style={{ animationDelay: `${categoryIndex * 0.1}s` }}
               >
                 <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5 md:mb-6">
@@ -158,7 +159,7 @@ export const TechStack = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <div
                       key={skillIndex}
-                      className="animate-scale-in"
+                      className="animate-slide-left"
                       style={{
                         animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`
                       }}
@@ -175,8 +176,7 @@ export const TechStack = () => {
           })}
         </div>
 
-        {}
-        <div className="text-center overflow-hidden">
+        <div className="text-center overflow-hidden animate-slide-left">
           <Heading level={3} className="mb-4 sm:mb-5 md:mb-6 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl">
             {t('skills.otherCompetencies')}
           </Heading>
@@ -194,14 +194,12 @@ export const TechStack = () => {
           </div>
         </div>
 
-        {}
-        <div className="mt-10 sm:mt-12 md:mt-16 lg:mt-20">
+        <div className="mt-10 sm:mt-12 md:mt-16 lg:mt-20 animate-fade-up">
           <Heading level={3} className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl">
             {t('skills.professionalExperience')}
           </Heading>
 
           <div className="md:flex sm:flex xl:flex 2xl:flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 py-4 sm:py-6 md:py-8 grid md:grid-cols-3">
-              {}
               <div className="group">
                 <img
                   src="/prefeitura.png"
@@ -216,8 +214,6 @@ export const TechStack = () => {
                   className="w-36 h-36 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 opacity-100 sm:opacity-30 grayscale-0 sm:grayscale transition-all duration-500 lg:group-hover:opacity-100 lg:group-hover:grayscale-0 lg:group-hover:-translate-y-4 lg:group-hover:scale-110"
                 />
               </div>
-
-              {}
               <div className="group">
                 <img
                   src="/MMIcon.png"
@@ -228,21 +224,15 @@ export const TechStack = () => {
             </div>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {}
               <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-primary" />
-
-              {}
               <div className="space-y-12">
                 {getExperienceData(t).map((job, index) => (
                   <div
                     key={index}
-                    className="relative flex items-start gap-6 animate-slide-up hover:scale-105 transition-all duration-300"
+                    className="relative flex items-start gap-6 animate-slide-right hover:scale-105 transition-all duration-300"
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
-                    {}
                     <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 mt-6 relative z-10 animate-pulse-glow" />
-
-                    {}
                     {job.website ? (
                       <a
                         href={job.website}
