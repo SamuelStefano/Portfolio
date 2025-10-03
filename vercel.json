@@ -7,7 +7,7 @@
   ],
   "headers": [
     {
-      "source": "/og-image.png",
+      "source": "/og-image-v6.png",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
