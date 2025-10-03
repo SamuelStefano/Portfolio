@@ -13,7 +13,7 @@ interface SEOHeadProps {
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title = 'Samuel Stefano - Full-Stack Developer | Portfolio',
   description = 'Meu portfólio como desenvolvedor Full-Stack 🚀 Especializado em React, TypeScript, Node.js, Nest, Tailwind. Projetos modernos e soluções digitais inovadoras.',
-  image = 'https://samuelstefano.dev/ahead principal.png',
+  image = 'https://samuelstefano.dev/ahead%20principal.png',
   url = 'https://samuelstefano.dev',
   type = 'website'
 }) => {
