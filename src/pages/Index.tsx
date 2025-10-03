@@ -13,8 +13,8 @@ const Index = () => {
       <SEOHead 
         title="Samuel Stefano - Full-Stack Developer | Portfolio"
         description="Meu portfólio como desenvolvedor Full-Stack 🚀 Especializado em React, TypeScript, Node.js, Nest, Tailwind. Projetos modernos e soluções digitais inovadoras."
-        image="https://samuelsteffano.dev/ahead principal.png"
-        url="https://samuelsteffano.dev"
+        image="https://samuelstefano.dev/ahead principal.png"
+        url="https://samuelstefano.dev"
       />
       <main className="min-h-screen relative">
         <AnimatedBackground />
