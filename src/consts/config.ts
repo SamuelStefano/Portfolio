@@ -11,8 +11,6 @@ export const CACHE_CONFIG = {
   PROJECTS_CACHE_DURATION: 5 * 60 * 1000, // 5 minutes
   GITHUB_STATS_CACHE_DURATION: 10 * 60 * 1000, // 10 minutes
 };
-
-// Storage Configuration
 export const STORAGE_CONFIG = {
   KNOWN_BUCKETS: [
     'challenge-images',

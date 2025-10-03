@@ -9,34 +9,50 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
   }
 
   try {
-    // Como a tabela projects não existe, vamos usar apenas o discovery do storage
+
+    const { mockProjects } = await import('./mockProjects');
+    
+    // Buscar imagens do storage
     const discovered = await discoverProjectsFromBuckets();
-
-    const discoveredAsProjects: Project[] = discovered.map(d => {
-      return {
-        id: d.storage_path,
-        title: d.title,
-        role: 'Project',
-        description: `Projeto ${d.title} descoberto automaticamente do storage.`,
-        long_description: undefined,
-        stack: [],
-        thumbnail_url: d.thumbnail_url,
-        icon_name: 'Code',
-        image_categories: d.image_categories,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        project_collaborators: [],
-        project_links: [],
-        project_sections: [],
-        storage_path: d.storage_path,
-        auto_discovered: true
-      } as Project;
+    
+    // Combinar dados mockados com imagens do storage
+    const projectsWithImages: Project[] = mockProjects.map(mockProject => {
+      // Encontrar projeto correspondente no storage pelo título
+      const storageProject = discovered.find(d => 
+        d.title.toLowerCase().includes(mockProject.title.toLowerCase()) ||
+        mockProject.title.toLowerCase().includes(d.title.toLowerCase())
+      );
+      
+      if (storageProject) {
+        return {
+          ...mockProject,
+          image_categories: storageProject.image_categories,
+          thumbnail_url: storageProject.thumbnail_url || mockProject.thumbnail_url,
+          project_sections: Object.entries(storageProject.image_categories).map(([folder_name, images], index) => ({
+            id: `${mockProject.id}-${index + 1}`,
+            folder_name,
+            display_name: folder_name.charAt(0).toUpperCase() + folder_name.slice(1),
+            description: `Imagens da seção ${folder_name}`,
+            order_index: index + 1,
+            project_images: images.map((image_url, imgIndex) => ({
+              id: `${mockProject.id}-${index + 1}-${imgIndex + 1}`,
+              image_url,
+              order_index: imgIndex + 1
+            }))
+          }))
+        };
+      }
+      
+      return mockProject;
     });
-
-    return discoveredAsProjects;
+    
+    console.log('📝 Combinando dados mockados com imagens do storage');
+    return projectsWithImages;
   } catch (error) {
-    console.error('❌ Erro ao buscar projetos do storage:', error);
-    return [];
+    console.error('❌ Erro ao combinar dados:', error);
+    // Fallback para dados mockados apenas
+    const { mockProjects } = await import('./mockProjects');
+    return mockProjects;
   }
 };
 

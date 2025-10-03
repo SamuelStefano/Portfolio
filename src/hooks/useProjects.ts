@@ -25,6 +25,15 @@ export const useProjects = () => {
           return;
         }
 
+        // Se o Supabase não estiver configurado, usa dados mockados diretamente
+        const { isSupabaseConfigured } = await import('../lib/supabaseclient');
+        if (!isSupabaseConfigured()) {
+          console.log('📝 Usando dados mockados (Supabase não configurado)');
+          setProjects(mockProjects);
+          setLoading(false);
+          return;
+        }
+
         const data = await getProjectsFromDB();
 
         cachedProjects = data;

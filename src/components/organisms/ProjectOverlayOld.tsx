@@ -197,8 +197,31 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
           <Text variant="small" className="font-semibold">{project.stack.length} {t('projectStats.technologies')}</Text>
         </div>
         <div className="text-center p-4 rounded-xl bg-card border border-border">
-          <Users className="w-8 h-8 text-primary mx-auto mb-2" />
-          <Text variant="small" className="font-semibold">{project.project_collaborators.length} {t('projectStats.collaborators')}</Text>
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Users className="w-8 h-8 text-primary" />
+            <Text variant="small" className="font-semibold">{project.project_collaborators.length} {t('projectStats.collaborators')}</Text>
+          </div>
+          {project.project_collaborators.length > 0 && (
+            <div className="flex justify-center gap-1">
+              {project.project_collaborators.slice(0, 3).map((collaborator, index) => (
+                <div key={index} className="relative">
+                  <img
+                    src={collaborator.avatar_url || '/placeholder.svg'}
+                    alt={collaborator.name}
+                    className="w-6 h-6 rounded-full border border-primary/30 object-cover"
+                    title={collaborator.name}
+                  />
+                </div>
+              ))}
+              {project.project_collaborators.length > 3 && (
+                <div className="w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+                  <Text variant="small" className="text-xs text-primary">
+                    +{project.project_collaborators.length - 3}
+                  </Text>
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <div className="text-center p-4 rounded-xl bg-card border border-border">
           <ExternalLink className="w-8 h-8 text-primary mx-auto mb-2" />
@@ -403,12 +426,18 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
           <div className="grid md:grid-cols-2 gap-4">
             {project.project_collaborators.map(collaborator => (
               <div key={collaborator.id} className="flex items-center p-3 rounded-lg bg-background/50 border border-border/50">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                  <Users className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-full mr-3 overflow-hidden border border-primary/30">
+                  <img
+                    src={collaborator.avatar_url || '/placeholder.svg'}
+                    alt={collaborator.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <Text variant="small" className="font-semibold">{collaborator.name}</Text>
-                  <Text variant="small" className="text-muted-foreground">{collaborator.role}</Text>
+                  <Text variant="small" className="text-muted-foreground">
+                    {collaborator.role === 'Creator' ? 'Creator:' : 'Collaborator:'} {collaborator.name}
+                  </Text>
                 </div>
               </div>
             ))}
@@ -623,7 +652,9 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                       </div>
                       <div>
                         <Text variant="small" className="font-semibold">{collaborator.name}</Text>
-                        <Text variant="small" className="text-muted-foreground">{collaborator.role}</Text>
+                        <Text variant="small" className="text-muted-foreground">
+                    {collaborator.role === 'Creator' ? 'Creator:' : 'Collaborator:'} {collaborator.name}
+                  </Text>
                       </div>
                     </div>
                   ))}
@@ -748,7 +779,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
+            transition={{ duration: 0.2, ease: [0.25, 0.8, 0.25, 1] }}
             className="fixed inset-4 z-50 bg-background rounded-2xl border border-border shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
           >
             {}
@@ -809,7 +840,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.2 }}
                           >
                             {renderSectionContent(section.id)}
                           </motion.div>

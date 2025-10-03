@@ -1,5 +1,4 @@
-﻿import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+﻿import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
 
@@ -10,7 +9,7 @@ interface ImageCarouselProps {
   onImageClick?: (imageUrl: string) => void;
 }
 
-export const ImageCarousel: React.FC<ImageCarouselProps> = ({
+export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
   images,
   title,
   className = "",
@@ -22,13 +21,13 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   const [isHovering, setIsHovering] = useState(false);
   const intervalRef = useRef<number | null>(null);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  }, [images.length]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  }, [images.length]);
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -41,7 +40,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
     if (!isHovering) {
       intervalRef.current = window.setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, 5000);
+      }, 5000); // Aumentado para 5000ms para reduzir mudanças frequentes
     }
 
     return () => {
@@ -52,15 +51,15 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
     };
   }, [images.length, isHovering, currentIndex]);
 
-  const openModal = (imageUrl: string) => {
+  const openModal = useCallback((imageUrl: string) => {
     setModalImage(imageUrl);
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setModalImage('');
-  };
+  }, []);
 
   if (images.length === 0) {
     return (
@@ -78,32 +77,29 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
         onMouseLeave={() => setIsHovering(false)}
       >
         {}
-        <div className="relative overflow-hidden rounded-xl bg-card border border-border">
+        <div className="relative overflow-hidden rounded-xl bg-card border border-border" style={{ willChange: 'transform' }}>
           {}
           <div className="relative w-[100%] h-[50%]">
             {}
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentIndex}
-                src={images[currentIndex]}
-                alt={`${title} - Imagem ${currentIndex + 1}`}
-                className="w-full h-full object-contain cursor-pointer"
-                transition={{ duration: 0.3 }}
-                onClick={() => {
-                  if (onImageClick) {
-                    onImageClick(images[currentIndex]);
-                  } else {
-                    openModal(images[currentIndex]);
-                  }
-                }}
-                loading="lazy"
-              />
-            </AnimatePresence>
+            <img
+              key={currentIndex}
+              src={images[currentIndex]}
+              alt={`${title} - Imagem ${currentIndex + 1}`}
+              className="w-full h-full object-contain cursor-pointer transition-opacity duration-100"
+              onClick={() => {
+                if (onImageClick) {
+                  onImageClick(images[currentIndex]);
+                } else {
+                  openModal(images[currentIndex]);
+                }
+              }}
+              loading="lazy"
+            />
 
             {}
-            <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-              <div className="opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+            <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors duration-150 flex items-center justify-center">
+              <div className="opacity-0 hover:opacity-100 transition-opacity duration-150">
+                <div className="bg-white/20 rounded-full p-3">
                   <ZoomIn className="w-6 h-6 text-white" />
                 </div>
               </div>
@@ -134,7 +130,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
             {}
             {images.length > 1 && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-                <div className="bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
+                <div className="bg-black/50 rounded-full px-3 py-1">
                   <span className="text-white text-sm font-medium">
                     {currentIndex + 1} / {images.length}
                   </span>
@@ -151,9 +147,9 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                     className={`relative flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                     className={`relative flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-colors duration-100 ${
                       index === currentIndex
-                        ? 'border-primary scale-105'
+                        ? 'border-primary'
                         : 'border-border hover:border-primary/50'
                     }`}
                   >
@@ -175,40 +171,32 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
       </div>
 
       {}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={closeModal}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={closeModal}
+        >
+          <div
+            className="relative max-w-4xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-4xl max-h-[90vh] w-full"
-              onClick={(e) => e.stopPropagation()}
+            <img
+              src={modalImage}
+              alt="Imagem em tela cheia"
+              className="w-full h-full object-contain rounded-lg"
+              loading="lazy"
+            />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={closeModal}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white"
             >
-              <img
-                src={modalImage}
-                alt="Imagem em tela cheia"
-                className="w-full h-full object-contain rounded-lg"
-                loading="lazy"
-              />
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={closeModal}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white"
-              >
-                <X className="w-4 h-4" />
-              </Button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <X className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+      )}
     </>
   );
-};
+});

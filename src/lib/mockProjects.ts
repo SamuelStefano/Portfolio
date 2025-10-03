@@ -3,10 +3,10 @@ import { Project } from '../types/project';
 export const mockProjects: Project[] = [
   {
     id: '1',
-    title: 'DevSharper',
+    title: 'Skill Evals',
     role: 'Creator',
-    description: 'Plataforma educacional de desafios de programação com sistema de avaliação automática',
-    long_description: 'DevSharper é uma plataforma completa de desafios de programação que permite aos desenvolvedores praticar suas habilidades através de problemas reais. O sistema inclui avaliação automática de código, ranking de usuários, e suporte a múltiplas linguagens de programação.',
+    description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy.',
+    long_description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy. Com telas para Mentoria, Administradores, tudo bem organizado. Utiliza-se Judge0 como API de compilação.',
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Judge0 API', 'TailwindCSS'],
     thumbnail_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/devsharper-thumbnail.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9kZXZzaGFycGVyLXRodW1ibmFpbC5qcGciLCJpYXQiOjE3NTgzMTAwNDIsImV4cCI6MTc4OTg0NjA0Mn0.example',
     icon_name: 'code',
@@ -17,14 +17,14 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/samuel-profile.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9zYW11ZWwtcHJvZmlsZS5qcGciLCJpYXQiOjE3NTgzMTAwNDIsImV4cCI6MTc4OTg0NjA0Mn0.example',
+        avatar_url: '/Samuel.jpg',
         created_at: '2024-01-15T00:00:00Z'
       },
       {
         id: '2',
         name: 'Tainan Fidelis',
         role: 'Collaborator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/tainan-profile.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy90YWluYW4tcHJvZmlsZS5qcGciLCJpYXQiOjE3NTgzMTAwNDIsImV4cCI6MTc4OTg0NjA0Mn0.example',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-01-15T00:00:00Z'
       }
     ],
@@ -85,8 +85,8 @@ export const mockProjects: Project[] = [
     id: '2',
     title: 'DevFellowship',
     role: 'Collaborator',
-    description: 'Comunidade de desenvolvedores brasileiros focada em educação e networking',
-    long_description: 'DevFellowship é uma comunidade vibrante de desenvolvedores brasileiros que se dedica ao crescimento profissional através de projetos colaborativos, workshops e eventos. Como colaborador, contribuo com desenvolvimento de plataformas educacionais e organização de eventos.',
+    description: 'Site da devfellowship em que colaborei, minha task era trabalhar apenas no hero.',
+    long_description: 'Site da devfellowship em que colaborei, minha task era trabalhar apenas no hero. Projeto focado no desenvolvimento do hero da página principal da comunidade DevFellowship.',
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'TailwindCSS', 'Discord API'],
     thumbnail_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/devfellowship-thumbnail.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9kZXZlbGxvd3NoaXAtdGh1bWJuYWlsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.example',
     icon_name: 'users',
@@ -97,14 +97,21 @@ export const mockProjects: Project[] = [
         id: '3',
         name: 'Tainan Fidelis',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/tainan-profile.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy90YWluYW4tcHJvZmlsZS5qcGciLCJpYXQiOjE3NTgzMTAwNDIsImV4cCI6MTc4OTg0NjA0Mn0.example',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-03-01T00:00:00Z'
       },
       {
         id: '1',
         name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/samuel-profile.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9zYW11ZWwtcHJvZmlsZS5qcGciLCJpYXQiOjE3NTgzMTAwNDIsImV4cCI6MTc4OTg0NjA0Mn0.example',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2024-03-01T00:00:00Z'
+      },
+      {
+        id: '4',
+        name: 'Fellows',
+        role: 'Collaborator',
+        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
         created_at: '2024-03-01T00:00:00Z'
       }
     ],
@@ -149,9 +156,9 @@ export const mockProjects: Project[] = [
   {
     id: '3',
     title: 'CodeLibrary',
-    role: 'Creator',
-    description: 'Biblioteca de código com exemplos práticos e documentação interativa',
-    long_description: 'CodeLibrary é uma plataforma que reúne exemplos de código organizados por categoria, com documentação interativa e sistema de busca avançada. Permite aos desenvolvedores encontrar rapidamente soluções para problemas comuns.',
+    role: 'Collaborator',
+    description: 'Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship',
+    long_description: 'Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship. Projeto focado no desenvolvimento da página inicial da nova plataforma de cursos da comunidade.',
     stack: ['React', 'TypeScript', 'Next.js', 'Supabase', 'TailwindCSS', 'Prisma'],
     thumbnail_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/codelibrary-thumbnail.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9jb2RlbGlicmFyeS10aHVtYm5haWwuanBnIiwiaWF0IjoxNzU4MzEwMDQyLCJleHAiOjE3ODk4NDYwNDJ9.example',
     icon_name: 'library',
@@ -161,8 +168,15 @@ export const mockProjects: Project[] = [
       {
         id: '1',
         name: 'Samuel Stefano',
+        role: 'Collaborator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2024-06-01T00:00:00Z'
+      },
+      {
+        id: '2',
+        name: 'Tainan Fidelis',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/samuel-profile.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9zYW11ZWwtcHJvZmlsZS5qcGciLCJpYXQiOjE3NTgzMTAwNDIsImV4cCI6MTc4OTg0NjA0Mn0.example',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-06-01T00:00:00Z'
       }
     ],

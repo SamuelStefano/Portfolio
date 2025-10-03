@@ -45,11 +45,6 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
     description: "Seções auxiliares e elementos diversos do projeto.",
     technologies: [...DEFAULT_TECHS]
   },
-  thumb: {
-    displayName: "Thumbnail",
-    description: "Imagens de destaque e miniaturas do projeto.",
-    technologies: [...DEFAULT_TECHS]
-  },
   aboutus: {
     displayName: "Sobre Nós",
     description: "Seção institucional com informações da equipe e proposta.",

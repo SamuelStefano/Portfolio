@@ -5,7 +5,7 @@ import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
 import { useExperienceTime } from '@/hooks/useExperienceTime';
-import { useScrollAnimations } from '@/hooks/useScrollAnimations';
+import { useSimpleGSAPAnimations } from '@/hooks/useSimpleGSAPAnimations';
 import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalendar';
 
@@ -31,7 +31,7 @@ const getHighlights = (t: any) => [
 export const About = () => {
   const { t } = useTranslation();
   const experienceTime = useExperienceTime();
-  const { addElement } = useScrollAnimations();
+  const { containerRef, addElement } = useSimpleGSAPAnimations();
   const gitHubStats = useGitHubStats();
 
   const stats = [
@@ -58,9 +58,9 @@ export const About = () => {
   ];
 
   return (
-    <section id="sobre" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
+    <section id="sobre" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 bg-muted/20" ref={containerRef}>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 gsap-fade-up">
           <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             {t('about.title')}
           </Heading>
@@ -143,7 +143,7 @@ export const About = () => {
                 return (
                   <Card
                     key={index}
-                    className="bg-card border border-border hover-glow transition-all duration-300 animate-scale-in hover:border-primary/30 hover:shadow-lg"
+                    className="bg-card border border-border hover-glow transition-all duration-300 gsap-card hover:border-primary/30 hover:shadow-lg"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CardContent className="p-4 sm:p-5 md:p-6 text-center">
@@ -179,7 +179,7 @@ export const About = () => {
                   {t('about.currentFocusDescription')}
                 </Text>
                 <div className="flex flex-wrap gap-2">
-                  {t('about.focusAreas', { returnObjects: true }).map((focus: string, index: number) => (
+                  {(t('about.focusAreas', { returnObjects: true }) as string[]).map((focus: string, index: number) => (
                     <span
                       key={index}
                       className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"

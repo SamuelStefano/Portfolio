@@ -15,11 +15,11 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ project, onProjectClick, isHovered = false }: ProjectCardProps) => {
-  const IconComponent = getIconComponent(project.icon_name);
+  const IconComponent = getIconComponent(project.icon_name as any);
 
   return (
     <Card
-      className="group bg-card border-border hover:border-primary/50 transition-all duration-300 hover-glow cursor-pointer overflow-hidden"
+      className="group bg-card border-border hover:border-primary/50 transition-all duration-200 hover-glow cursor-pointer overflow-hidden"
       onClick={() => onProjectClick(project)}
     >
       <div className="relative h-48 overflow-hidden">
@@ -42,10 +42,10 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
         )}
 
         {}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
         {}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <Button variant="secondary" size="sm" className="hover-glow">
             <Icon icon={ExternalLink} className="mr-2" />
             Ver Detalhes
@@ -70,13 +70,40 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
           <Badge variant="outline" className="border-primary/30 text-primary">
             {project.role}
           </Badge>
-          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Icon icon={Users} size="sm" />
-            {project.project_collaborators.length}
+            <span>{project.project_collaborators.length}</span>
+            {project.project_collaborators.length > 0 && (
+              <div className="flex -space-x-1">
+                {project.project_collaborators.slice(0, 3).map((collaborator, index) => (
+                  <div key={index} className="relative">
+                    {collaborator.avatar_url ? (
+                      <img
+                        src={collaborator.avatar_url}
+                        alt={collaborator.name}
+                        className="w-6 h-6 rounded-full border-2 border-background object-cover"
+                        title={collaborator.name}
+                      />
+                    ) : (
+                      <div className="w-6 h-6 rounded-full border-2 border-background bg-primary/20 flex items-center justify-center" title={collaborator.name}>
+                        <Icon icon={Users} size="sm" className="w-3 h-3 text-primary" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {project.project_collaborators.length > 3 && (
+                  <div className="w-6 h-6 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center">
+                    <span className="text-xs text-primary font-medium">
+                      +{project.project_collaborators.length - 3}
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
-        <Heading level={3} className="mb-2 group-hover:gradient-text transition-all duration-300">
+        <Heading level={3} className="mb-2 group-hover:gradient-text transition-all duration-200">
           {project.title}
         </Heading>
 
