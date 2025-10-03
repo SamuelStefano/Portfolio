@@ -143,7 +143,7 @@ export const TechStack = () => {
             return (
               <div
                 key={categoryIndex}
-                className="group bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 hover-glow transition-all duration-300 animate-fade-up"
+                className="group bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-7 hover-card animate-fade-up"
                 style={{ animationDelay: `${categoryIndex * 0.1}s` }}
               >
                 <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5 md:mb-6">
@@ -238,7 +238,7 @@ export const TechStack = () => {
                         href={job.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-card border border-border rounded-lg p-6 hover-glow hover:border-primary/50 transition-all duration-300 hover:shadow-lg cursor-pointer block"
+                        className="flex-1 bg-card border border-border rounded-lg p-6 hover-card cursor-pointer block"
                       >
                         <ExperienceItem
                           company={job.company}
@@ -250,7 +250,7 @@ export const TechStack = () => {
                         />
                       </a>
                     ) : (
-                      <div className="flex-1 bg-card border border-border rounded-lg p-6 hover-glow hover:border-primary/50">
+                      <div className="flex-1 bg-card border border-border rounded-lg p-6 hover-card">
                         <ExperienceItem
                           company={job.company}
                           role={job.role}

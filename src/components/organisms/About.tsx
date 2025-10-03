@@ -79,7 +79,7 @@ export const About = () => {
                 <img
                   src="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/imagem%20profissional.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9pbWFnZW0gcHJvZmlzc2lvbmFsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.IobSgu4JA84a7JH4l_SRZxkZZ8qCpS7oQ4PfwhlEut0"
                   alt="Samuel Stefano"
-                  className="rounded-full border-2 border-primary/30 object-cover w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-44 xl:h-44 shadow-lg flex-shrink-0"
+                  className="rounded-full border-2 border-primary/30 object-cover w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-44 xl:h-44 shadow-lg flex-shrink-0 hover-photo cursor-pointer"
                 />
               </div>
               <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl border border-primary/20 rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 hover:bg-primary/5 hover:border-primary/30 lg:hover-slide-scale transition-all duration-300">
@@ -116,7 +116,7 @@ export const About = () => {
               {getHighlights(t).map((highlight, index) => (
                 <Card
                   key={index}
-                  className="bg-card border border-border hover:border-primary/50 lg:hover-slide-up transition-all duration-300 animate-scale-in"
+                  className="bg-card border border-border hover-card animate-scale-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardContent className="p-3 sm:p-4 md:p-5 lg:p-6">
@@ -139,7 +139,7 @@ export const About = () => {
                 return (
                   <Card
                     key={index}
-                    className="bg-card border border-border hover-glow transition-all duration-300 hover:border-primary/30 hover:shadow-lg animate-fade-up"
+                    className="bg-card border border-border hover-card animate-fade-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CardContent className="p-4 sm:p-5 md:p-6 text-center">
@@ -159,7 +159,7 @@ export const About = () => {
                 );
               })}
             </div>
-            <Card className="bg-gradient-card border-border hover-glow animate-slide-right">
+            <Card className="bg-gradient-card border-border hover-card animate-slide-right">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-primary/10 rounded-lg">
