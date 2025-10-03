@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <!-- codificação primeiro para evitar mojibake -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Samuel Stefano - Full-Stack Developer | Portfolio</title>
+    <title>Samuel Stefano - Full-Stack Developer | Portfólio</title>
 
     <!-- SEO base -->
     <meta name="description" content="Meu portfolio como desenvolvedor Full-Stack. Especializado em React, TypeScript, Node.js, Nest e Tailwind. Projetos modernos e soluções digitais." />
@@ -17,26 +18,28 @@
     <link rel="apple-touch-icon" href="/EuGhibli.png" />
     <meta name="theme-color" content="#0EA5E9" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph (Facebook/LinkedIn) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://samuelstefano.dev" />
-    <meta property="og:title" content="Samuel Stefano - Full-Stack Developer | Portfolio" />
+    <meta property="og:title" content="Samuel Stefano - Full-Stack Developer | Portfólio" />
     <meta property="og:description" content="Meu portfolio como desenvolvedor Full-Stack. Especializado em React, TypeScript, Node.js, Nest e Tailwind." />
-    <meta property="og:image" content="https://samuelstefano.dev/og-image.png?v=5" />
+    <!-- USE UMA IMAGEM JPG SEM QUERYSTRING (coloque em /public/og-image-v6.jpg) -->
+    <meta property="og:image" content="https://samuelstefano.dev/og-image-v6.jpg" />
+    <meta property="og:image:secure_url" content="https://samuelstefano.dev/og-image-v6.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Samuel Stefano" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@samuel_stefano" />
-    <meta name="twitter:creator" content="@samuel_stefano" />
-    <meta name="twitter:url" content="https://samuelstefano.dev" />
     <meta name="twitter:title" content="Samuel Stefano - Full-Stack Developer" />
     <meta name="twitter:description" content="Meu portfolio como desenvolvedor Full-Stack. Especializado em React, TypeScript, Node.js, Nest e Tailwind." />
-    <meta name="twitter:image" content="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/og-image.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9vZy1pbWFnZS5wbmciLCJpYXQiOjE3NTk1MzE4MDgsImV4cCI6MTc5MTA2NzgwOH0.Hnr8vh_W2pRpIBfg1WKo9Sd8rvYsoLULn-uQ4fdyMDc" />
-    <meta name="twitter:image:alt" content="Samuel Stefano - Full-Stack Developer Portfolio" />
-    <meta name="twitter:domain" content="samuelstefano.dev" />
+    <meta name="twitter:image" content="https://samuelstefano.dev/og-image-v6.jpg" />
+    <!-- se quiser, depois reative:
+    <meta name="twitter:site" content="@samuel_stefano" />
+    <meta name="twitter:creator" content="@samuel_stefano" />
+    -->
 
     <!-- JSON-LD (schema.org) -->
     <script type="application/ld+json">
@@ -47,7 +50,7 @@
       "jobTitle": "Full-Stack Developer",
       "description": "Meu portfolio como desenvolvedor Full-Stack. Especializado em React, TypeScript, Node.js, Nest e Tailwind.",
       "url": "https://samuelstefano.dev",
-      "image": "https://samuelstefano.dev/og-image.png",
+      "image": "https://samuelstefano.dev/og-image-v6.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Marialva",
@@ -58,12 +61,23 @@
         "https://github.com/SamuelStefano",
         "https://linkedin.com/in/samuel-stefano",
         "https://instagram.com/samuel.stefano"
+      ],
+      "knowsAbout": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "NestJS",
+        "Tailwind CSS",
+        "Full-Stack Development",
+        "Web Development"
       ]
     }
     </script>
   </head>
+
   <body>
     <div id="root"></div>
+    <!-- Vite/React -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
