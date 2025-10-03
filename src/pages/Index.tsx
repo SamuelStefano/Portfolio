@@ -5,18 +5,10 @@ import { TechStack } from '@/components/organisms/TechStack';
 import { About } from '@/components/organisms/About';
 import { Footer } from '@/components/organisms/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground';
-import { SEOHead } from '@/components/atoms/SEOHead';
 
 const Index = () => {
   return (
-    <>
-      <SEOHead 
-        title="Samuel Stefano - Full-Stack Developer | Portfolio"
-        description="Meu portfólio como desenvolvedor Full-Stack 🚀 Especializado em React, TypeScript, Node.js, Nest, Tailwind. Projetos modernos e soluções digitais inovadoras."
-        image="https://samuelstefano.dev/og-image.png?v=1"
-        url="https://samuelstefano.dev"
-      />
-      <main className="min-h-screen relative">
+    <main className="min-h-screen relative">
         <AnimatedBackground />
         <div className="relative z-10">
           <Header />
@@ -35,7 +27,6 @@ const Index = () => {
           </section>
         </div>
       </main>
-    </>
   );
 };
 
