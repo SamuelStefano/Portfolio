@@ -13,11 +13,21 @@
     "description": "Desenvolvedor Júnior • ADS 3º ano • Marialva, PR",
     "bio": "Especializado em React, TypeScript e Node.js, Nest, Tailwind, APIs.",
     "bioContinue": "Criando experiências digitais modernas e funcionais.",
-    "clickToSeeMore": "Clique para ver mais"
+    "clickToSeeMore": "Clique para ver mais",
+    "socialLinks": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram",
+      "resume": "Currículo",
+      "email": "Email",
+      "phone": "Telefone"
+    }
   },
   "projects": {
     "title": "Projetos",
     "subtitle": "Uma seleção dos meus trabalhos mais recentes e impactantes",
+    "exploreAll": "Explore todos os meus trabalhos e contribuições",
+    "viewDetails": "Ver Detalhes",
     "collaborators": "colaborador",
     "collaborators_plural": "colaboradores",
     "autoDiscovered": "Auto-descoberto",
@@ -33,6 +43,10 @@
     "noProjects": "Nenhum projeto encontrado",
     "loading": "Carregando projetos...",
     "hint": "Verifique se há projetos configurados no Supabase.",
+    "collaboratorsSection": "Colaboradores",
+    "clickToSeeMore": "Clique para ver mais",
+    "creator": "Criador:",
+    "collaborator": "Colaborador:",
     "sectionDescriptions": {
       "admin": "Interface administrativa completa com controle total do sistema, gerenciamento de usuários, configurações avançadas e monitoramento em tempo real.",
       "dashboard": "Dashboard principal com métricas em tempo real, gráficos interativos, KPIs importantes e visualizações de dados para tomada de decisão.",
@@ -56,6 +70,21 @@
     "professionalExperience": "Experiência Profissional",
     "currentPosition": "Cargo Atual",
     "otherCompetencies": "Outras Competências",
+    "softwareEngineering": "Engenharia de Software",
+    "others": "Outros",
+    "documentation": "Documentação",
+    "testing": "Testes",
+    "architecture": "Arquitetura",
+    "componentization": "Componentização",
+    "deploy": "Deploy",
+    "technicalSupport": "Suporte Técnico",
+    "information": "Informação",
+    "networkConfiguration": "Configurações de Rede",
+    "printerConfiguration": "Configurações de Impressoras",
+    "serverConfiguration": "Configurações de Servidores",
+    "computerConfiguration": "Configurações de Computadores",
+    "operatingSystemConfiguration": "Configurações de Sistemas Operacionais",
+    "fiscalSystems": "Sistemas Fiscais",
     "experienceData": [
       {
         "company": "Prefeitura de Marialva",
@@ -177,10 +206,23 @@
         "networking": {
           "title": "Networking",
           "description": "Conexões valiosas com profissionais da área, oportunidades de carreira e parcerias estratégicas."
+        },
+        "passion": {
+          "title": "Paixão pela Programação",
+          "description": "Foi na Devfellowship que descobri minha verdadeira paixão pela programação. A comunidade me mostrou que programar vai além de código - é sobre resolver problemas reais."
+        },
+        "learning": {
+          "title": "Aprendizado Contínuo",
+          "description": "A cada projeto, desafio e mentoria, cresço como desenvolvedor. A Devfellowship me ensinou que o aprendizado nunca para na tecnologia."
+        },
+        "communityWelcoming": {
+          "title": "Comunidade Acolhedora",
+          "description": "Encontrei na Devfellowship não apenas conhecimento técnico, mas uma família de desenvolvedores que sempre me apoia e me inspira a ser melhor."
         }
       },
       "learnMore": "Saiba Mais",
-      "projects": "Projetos"
+      "projects": "Projetos",
+      "companyDescription": "A Devfellowship desenvolve soluções e softwares para grandes empresas. Especializados em IA, webapps e arquiteturas escaláveis, a Devfellowship é uma startup que transforma ideias em realidade, caso queira saber mais, clique no botão abaixo."
     },
     "companies": "Empresas onde trabalhei",
     "availability": {
@@ -244,6 +286,46 @@
     "technologies": "Tecnologias",
     "collaborators": "Colaboradores",
     "links": "Links",
-    "created": "Criado"
+    "created": "Criado",
+    "project": "Projeto",
+    "technologiesCount": "Tecnologias",
+    "collaboratorsCount": "Colaboradores",
+    "linksCount": "Links"
+  },
+  "projectDescriptions": {
+    "skillEvals": {
+      "description": "Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy.",
+      "longDescription": "Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy. Com telas para Mentoria, Administradores, tudo bem organizado. Utiliza-se Judge0 como API de compilação."
+    },
+    "devfellowship": {
+      "description": "Plataforma principal da comunidade DevFellowship, onde desenvolvedores se conectam, compartilham conhecimento e participam de projetos colaborativos.",
+      "longDescription": "Plataforma principal da comunidade DevFellowship, onde desenvolvedores se conectam, compartilham conhecimento e participam de projetos colaborativos. Interface moderna com fóruns, eventos e sistema de mentoria integrado."
+    },
+    "codeLibrary": {
+      "description": "Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship",
+      "longDescription": "Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship. Projeto focado no desenvolvimento da página inicial da nova plataforma de cursos da comunidade."
+    }
+  },
+  "projectSections": {
+    "overview": "Visão Geral",
+    "admin": "Painel Administrativo",
+    "challenge": "Desafios",
+    "create": "Criação",
+    "dashboard": "Dashboard",
+    "login": "Autenticação",
+    "others": "Outros",
+    "community": "Plataforma da Comunidade",
+    "landing": "Landing Page",
+    "library": "Biblioteca de Código",
+    "mainDashboard": "Dashboard Principal",
+    "challengeSystem": "Sistema de Desafios",
+    "sectionImages": "Imagens da seção",
+    "descriptions": {
+      "mainDashboard": "Interface principal com estatísticas e desafios em destaque",
+      "challengeSystem": "Interface para criação e resolução de desafios de programação",
+      "community": "Interface principal da comunidade com fóruns e eventos",
+      "landing": "Página inicial com apresentação da plataforma",
+      "library": "Interface principal com busca e categorização de exemplos"
+    }
   }
 }

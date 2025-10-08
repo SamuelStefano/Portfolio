@@ -71,7 +71,6 @@ export const Navigation = () => {
         : 'bg-transparent backdrop-blur-none border-b-0 shadow-none'
     }`}>
       <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-6 lg:px-8">
-          {}
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <div className="relative">
               <img
@@ -94,7 +93,6 @@ export const Navigation = () => {
             </div>
           </div>
 
-          {}
           <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             {navigationItems.map((item) => (
               <button
@@ -112,13 +110,11 @@ export const Navigation = () => {
               </button>
             ))}
 
-            {}
             <div className="ml-4 xl:ml-6">
               <LanguageSelector />
             </div>
           </div>
 
-          {}
           <div className="flex items-center gap-2 lg:hidden">
             <LanguageSelector />
             <Button
@@ -136,7 +132,6 @@ export const Navigation = () => {
           </div>
         </div>
 
-        {}
         {isOpen && (
           <div className={`lg:hidden transition-all duration-300 ${
             isScrolled

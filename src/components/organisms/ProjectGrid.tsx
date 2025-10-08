@@ -1,4 +1,5 @@
 ﻿import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ProjectCard } from '@/components/molecules/ProjectCard';
 import { ProjectOverlay } from './ProjectOverlay';
 import { Heading } from '@/components/atoms/Heading';
@@ -9,6 +10,7 @@ import { useProjects } from '@/hooks/useProjects';
 import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
 
 export const ProjectGrid = () => {
+  const { t } = useTranslation();
   const { projects, loading, error } = useProjects();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
@@ -19,7 +21,7 @@ export const ProjectGrid = () => {
       <section className="py-20 px-6 bg-muted/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <Text variant="large">Carregando projetos...</Text>
+            <Text variant="large">{t('projects.loading')}</Text>
           </div>
         </div>
       </section>
@@ -31,7 +33,7 @@ export const ProjectGrid = () => {
       <section className="py-20 px-6 bg-muted/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <Text variant="large" className="text-destructive">Erro ao carregar projetos: {error}</Text>
+            <Text variant="large" className="text-destructive">{t('projects.hint')}: {error}</Text>
           </div>
         </div>
       </section>
@@ -48,7 +50,7 @@ export const ProjectGrid = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Heading level={2} className="mb-4 gradient-text">
-            Explore todos os meus trabalhos e contribuições
+              {t('projects.exploreAll')}
             </Heading>
           </div>
 

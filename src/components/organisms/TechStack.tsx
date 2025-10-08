@@ -64,24 +64,24 @@ const getTechCategories = (t: any): TechCategory[] => [
     color: 'accent'
   },
   {
-    title: 'Engenharia de Software',
+    title: t('skills.softwareEngineering'),
     icon: Brain,
     skills: [
       { name: 'Miro', level: 80 },
-      { name: 'Documentação', level: 100 },
-      { name: 'Testes', level: 100 },
-      { name: 'Arquitetura', level: 80 },
+      { name: t('skills.documentation'), level: 100 },
+      { name: t('skills.testing'), level: 100 },
+      { name: t('skills.architecture'), level: 80 },
       { name: 'CI/CD', level: 100 },
-      { name: 'Componentização', level: 100 },
+      { name: t('skills.componentization'), level: 100 },
     ],
     color: 'neon-green'
   },
   {
-    title: 'Outros',
+    title: t('skills.others'),
     icon: Code,
     skills: [
       { name: 'Linux/Ubuntu', level: 70 },
-      { name: 'Deploy', level: 70 },
+      { name: t('skills.deploy'), level: 70 },
       { name: 'Kotlin', level: 20 },
       { name: 'n8n', level: 10 }
     ],
@@ -95,7 +95,15 @@ const getExperienceData = (t: any) => {
   return [
     {
       ...translatedData[0],
-      stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
+      stack: [
+        t('skills.technicalSupport'), 
+        t('skills.information'), 
+        t('skills.networkConfiguration'), 
+        t('skills.printerConfiguration'), 
+        t('skills.serverConfiguration'), 
+        t('skills.computerConfiguration'), 
+        t('skills.operatingSystemConfiguration')
+      ],
       logo: '/prefeitura.png',
       icon: Building2,
       website: null
@@ -109,7 +117,7 @@ const getExperienceData = (t: any) => {
     },
     {
       ...translatedData[2],
-      stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Suporte Técnico', 'Javascript', 'Typescript', 'Nest', 'TailwindCSS', 'Next', 'Suporte Técnico'],
+      stack: ['Firebird', 'Delphi', 'APIs', t('skills.fiscalSystems'), t('skills.technicalSupport'), 'Javascript', 'Typescript', 'Nest', 'TailwindCSS', 'Next', t('skills.technicalSupport')],
       logo: '/MMIcon.png',
       icon: Laptop,
       website: 'https://mminfo.me'

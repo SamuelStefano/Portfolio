@@ -5,26 +5,26 @@ import { Icon } from '@/components/atoms/Icon';
 import { Heading } from '@/components/atoms/Heading';
 import { Text } from '@/components/atoms/Text';
 
-const socialLinks = [
+const getSocialLinks = (t: any) => [
   {
     icon: Github,
     href: 'https://github.com/SamuelStefano',
-    label: 'GitHub'
+    label: t('hero.socialLinks.github')
   },
   {
     icon: Linkedin,
     href: 'https://linkedin.com/in/samuel-stefano',
-    label: 'LinkedIn'
+    label: t('hero.socialLinks.linkedin')
   },
   {
     icon: Instagram,
     href: 'https://instagram.com/samuel.stefano',
-    label: 'Instagram'
+    label: t('hero.socialLinks.instagram')
   },
   {
     icon: FileText,
     href: 'https://drive.google.com/file/d/1-TpoRcofaK4T-rZZFWouQctZhW4Q9kpp/view?usp=sharing',
-    label: 'Currículo'
+    label: t('hero.socialLinks.resume')
   }
 ];
 
@@ -62,16 +62,14 @@ const smoothScrollTo = (elementId: string) => {
 export const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
+  const socialLinks = getSocialLinks(t);
 
   return (
     <footer id="contato" className="relative bg-card border-t border-border">
-      {}
       <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {}
         <div className="py-8 sm:py-10 md:py-12 lg:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 md:gap-8">
-          {}
           <div className="sm:col-span-2 lg:col-span-2">
               <div className="mb-4 sm:mb-5 md:mb-6">
                 <div className="mb-3 sm:mb-4">
@@ -88,7 +86,6 @@ export const Footer = () => {
               </div>
             </div>
 
-            {}
             <div className="flex flex-wrap gap-2 sm:gap-2.5 md:gap-3">
               {socialLinks.map((link, index) => (
                 <Button
@@ -113,7 +110,6 @@ export const Footer = () => {
             </div>
           </div>
 
-          {}
           <div className="order-last sm:order-none">
             <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
               {t('footer.quickLinks')}
@@ -132,7 +128,6 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {}
           <div className="order-last sm:order-none">
             <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
               {t('footer.contact')}
@@ -151,7 +146,6 @@ export const Footer = () => {
               ))}
             </ul>
 
-            {}
             <div className="mt-4 sm:mt-5 md:mt-6 p-3 sm:p-4 md:p-5 bg-muted/20 rounded-lg">
               <Heading level={5} className="mb-2 sm:mb-2.5 md:mb-3 text-sm sm:text-base md:text-lg">
                 {t('footer.availableFor')}
@@ -165,7 +159,6 @@ export const Footer = () => {
           </div>
         </div>
 
-        {}
         <div className="border-t border-border py-4 sm:py-5 md:py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6">
             <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base text-muted-foreground text-center sm:text-left">

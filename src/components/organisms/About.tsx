@@ -132,11 +132,9 @@ export const About = () => {
             </div>
           </div>
 
-          {}
           <div className="space-y-4 sm:space-y-5 md:space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
-              {stats.map((stat, index) => {
-                return (
+              {stats.map((stat, index) => (
                   <Card
                     key={index}
                     className="bg-card border border-border hover-card animate-fade-up"
@@ -156,8 +154,7 @@ export const About = () => {
                       </Text>
                     </CardContent>
                   </Card>
-                );
-              })}
+                ))}
             </div>
             <Card className="bg-gradient-card border-border hover-card animate-slide-right">
               <CardContent className="p-6">
@@ -223,10 +220,7 @@ export const About = () => {
               <div className="text-center mb-4 sm:mb-5 md:mb-6">
                 <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-2.5 md:py-3 border border-primary/20">
                   <Text className="text-foreground font-semibold text-xs sm:text-sm md:text-base text-center">
-                    A Devfellowship desenvolve <span className="text-muted-foreground">soluções e softwares</span> para grandes empresas.
-                    Especializados em <span className="text-foreground">IA, webapps e arquiteturas escaláveis</span>,
-                    a Devfellowship é uma startup que <span className="text-muted-foreground">transforma ideias em realidade</span>,
-                    caso queira saber mais, clique no botão abaixo.
+                    {t('about.devfellowship.companyDescription')}
                   </Text>
                 </div>
               </div>
@@ -236,13 +230,10 @@ export const About = () => {
                     <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon icon={Heart} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">Paixão pela Programação</Heading>
+                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.passion.title')}</Heading>
                   </div>
                   <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
-                    Foi na <span className="text-foreground font-semibold">Devfellowship</span> que descobri minha verdadeira
-                    <span className="text-foreground font-semibold"> paixão pela programação</span>.
-                    A comunidade me mostrou que programar vai além de código - é sobre
-                    <span className="text-foreground font-semibold"> resolver problemas reais</span>.
+                    {t('about.devfellowship.cards.passion.description')}
                   </Text>
                 </div>
 
@@ -251,12 +242,10 @@ export const About = () => {
                     <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-neon-cyan/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon icon={Globe} size="sm" className="text-neon-cyan w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">Aprendizado Contínuo</Heading>
+                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.learning.title')}</Heading>
                   </div>
                   <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
-                    A cada <span className="text-foreground font-semibold">projeto, desafio e mentoria</span>, cresço como desenvolvedor.
-                    A <span className="text-foreground font-semibold">Devfellowship</span> me ensinou que o
-                    <span className="text-foreground font-semibold"> aprendizado nunca para</span> na tecnologia.
+                    {t('about.devfellowship.cards.learning.description')}
                   </Text>
                 </div>
 
@@ -265,13 +254,10 @@ export const About = () => {
                     <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon icon={User} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">Comunidade Acolhedora</Heading>
+                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.communityWelcoming.title')}</Heading>
                   </div>
                   <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
-                    Encontrei na <span className="text-foreground font-semibold">Devfellowship</span> não apenas
-                    <span className="text-foreground font-semibold"> conhecimento técnico</span>, mas uma
-                    <span className="text-foreground font-semibold"> família de desenvolvedores </span>
-                    que sempre me apoia e me inspira a ser melhor.
+                    {t('about.devfellowship.cards.communityWelcoming.description')}
                   </Text>
                 </div>
               </div>

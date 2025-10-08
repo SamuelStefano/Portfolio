@@ -1,4 +1,5 @@
 ﻿import { ExternalLink, Users } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/atoms/card';
 import { Badge } from '@/components/atoms/badge';
 import { Button } from '@/components/atoms/button';
@@ -15,6 +16,7 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ project, onProjectClick, isHovered = false }: ProjectCardProps) => {
+  const { t } = useTranslation();
   const IconComponent = getIconComponent(project.icon_name as any);
 
   return (
@@ -47,7 +49,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <Button variant="secondary" size="sm" className="hover-glow">
             <Icon icon={ExternalLink} className="mr-2" />
-            Ver Detalhes
+            {t('projects.viewDetails')}
           </Button>
         </div>
         <div className="absolute top-3 left-3 flex gap-2">
@@ -56,7 +58,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
           </Badge>
           {project.auto_discovered && (
             <Badge variant="secondary" className="bg-amber-100 text-amber-700">
-              Auto-descoberto
+              {t('projects.autoDiscovered')}
             </Badge>
           )}
         </div>

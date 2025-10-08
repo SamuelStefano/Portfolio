@@ -13,11 +13,21 @@
     "description": "Junior Developer • 3rd Year ADS • Marialva, PR",
     "bio": "Specialized in React, TypeScript and Node.js, Nest, Tailwind, APIs.",
     "bioContinue": "Creating modern and functional digital experiences.",
-    "clickToSeeMore": "Click to see more"
+    "clickToSeeMore": "Click to see more",
+    "socialLinks": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram",
+      "resume": "Resume",
+      "email": "Email",
+      "phone": "Phone"
+    }
   },
   "projects": {
     "title": "Projects",
     "subtitle": "A selection of my most recent and impactful work",
+    "exploreAll": "Explore all my work and contributions",
+    "viewDetails": "View Details",
     "collaborators": "collaborator",
     "collaborators_plural": "collaborators",
     "autoDiscovered": "Auto-discovered",
@@ -33,6 +43,10 @@
     "noProjects": "No projects found",
     "loading": "Loading projects...",
     "hint": "Check if there are projects configured in Supabase.",
+    "collaboratorsSection": "Collaborators",
+    "clickToSeeMore": "Click to see more",
+    "creator": "Creator:",
+    "collaborator": "Collaborator:",
     "sectionDescriptions": {
       "admin": "Complete administrative interface with full system control, user management, advanced settings and real-time monitoring.",
       "dashboard": "Main dashboard with real-time metrics, interactive charts, important KPIs and data visualizations for decision making.",
@@ -56,6 +70,21 @@
     "professionalExperience": "Professional Experience",
     "currentPosition": "Current Position",
     "otherCompetencies": "Other Competencies",
+    "softwareEngineering": "Software Engineering",
+    "others": "Others",
+    "documentation": "Documentation",
+    "testing": "Testing",
+    "architecture": "Architecture",
+    "componentization": "Componentization",
+    "deploy": "Deploy",
+    "technicalSupport": "Technical Support",
+    "information": "Information",
+    "networkConfiguration": "Network Configuration",
+    "printerConfiguration": "Printer Configuration",
+    "serverConfiguration": "Server Configuration",
+    "computerConfiguration": "Computer Configuration",
+    "operatingSystemConfiguration": "Operating System Configuration",
+    "fiscalSystems": "Fiscal Systems",
     "experienceData": [
       {
         "company": "Prefeitura de Marialva",
@@ -177,10 +206,23 @@
         "networking": {
           "title": "Networking",
           "description": "Valuable connections with industry professionals, career opportunities and strategic partnerships."
+        },
+        "passion": {
+          "title": "Passion for Programming",
+          "description": "It was at Devfellowship that I discovered my true passion for programming. The community showed me that programming goes beyond code - it's about solving real problems."
+        },
+        "learning": {
+          "title": "Continuous Learning",
+          "description": "With each project, challenge and mentorship, I grow as a developer. Devfellowship taught me that learning never stops in technology."
+        },
+        "communityWelcoming": {
+          "title": "Welcoming Community",
+          "description": "I found at Devfellowship not only technical knowledge, but a family of developers who always support me and inspire me to be better."
         }
       },
       "learnMore": "Learn More",
-      "projects": "Projects"
+      "projects": "Projects",
+      "companyDescription": "Devfellowship develops solutions and software for large companies. Specialized in AI, webapps and scalable architectures, Devfellowship is a startup that transforms ideas into reality, if you want to know more, click the button below."
     },
     "companies": "Companies where I worked",
     "availability": {
@@ -244,6 +286,46 @@
     "technologies": "Technologies",
     "collaborators": "Collaborators",
     "links": "Links",
-    "created": "Created"
+    "created": "Created",
+    "project": "Project",
+    "technologiesCount": "Technologies",
+    "collaboratorsCount": "Collaborators",
+    "linksCount": "Links"
+  },
+  "projectDescriptions": {
+    "skillEvals": {
+      "description": "Developer challenges platform, where devs must challenge themselves regarding courses linked to the DevfellowshipAcademy course platform.",
+      "longDescription": "Developer challenges platform, where devs must challenge themselves regarding courses linked to the DevfellowshipAcademy course platform. With screens for Mentorship, Administrators, everything well organized. Uses Judge0 as compilation API."
+    },
+    "devfellowship": {
+      "description": "Main platform of the DevFellowship community, where developers connect, share knowledge and participate in collaborative projects.",
+      "longDescription": "Main platform of the DevFellowship community, where developers connect, share knowledge and participate in collaborative projects. Modern interface with forums, events and integrated mentorship system."
+    },
+    "codeLibrary": {
+      "description": "A landing page for a course platform called CodeLibrary that will be Devfellowship's next launch",
+      "longDescription": "A landing page for a course platform called CodeLibrary that will be Devfellowship's next launch. Project focused on developing the homepage of the community's new course platform."
+    }
+  },
+  "projectSections": {
+    "overview": "Overview",
+    "admin": "Administrative Panel",
+    "challenge": "Challenges",
+    "create": "Creation",
+    "dashboard": "Dashboard",
+    "login": "Authentication",
+    "others": "Others",
+    "community": "Community Platform",
+    "landing": "Landing Page",
+    "library": "Code Library",
+    "mainDashboard": "Main Dashboard",
+    "challengeSystem": "Challenge System",
+    "sectionImages": "Section images",
+    "descriptions": {
+      "mainDashboard": "Main interface with statistics and featured challenges",
+      "challengeSystem": "Interface for creating and solving programming challenges",
+      "community": "Main community interface with forums and events",
+      "landing": "Homepage with platform presentation",
+      "library": "Main interface with search and categorization of examples"
+    }
   }
 }

@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink, Users, Code, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/atoms/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/atoms/dialog';
 import { Badge } from '@/components/atoms/badge';
@@ -13,6 +14,7 @@ import { getIconComponent } from '@/utils/iconResolver';
 import { Project } from '@/types/project';
 
 export const ProjectCarousel = () => {
+  const { t } = useTranslation();
   const { projects, loading, error } = useProjects();
   const [currentProject, setCurrentProject] = useState(0);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -163,16 +165,14 @@ export const ProjectCarousel = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            Projetos
+            {t('projects.title')}
           </Heading>
           <Text variant="large" className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
-            Uma seleção dos meus trabalhos mais recentes e impactantes
+            {t('projects.subtitle')}
           </Text>
         </div>
 
-        {}
         <div className="relative">
-          {}
           <Button
             variant="outline"
             size="icon"
@@ -199,7 +199,6 @@ export const ProjectCarousel = () => {
             onMouseUp={handleDragEnd}
             onMouseLeave={handleDragEnd}
           >
-            {}
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={`prev-${projects[(currentProject - 1 + projects.length) % projects.length].id}`}
@@ -240,10 +239,8 @@ export const ProjectCarousel = () => {
                         </div>
                       )}
 
-                      {}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
 
-                      {}
                       <div className="absolute bottom-0 left-0 right-0 p-3 max-h-[60%] overflow-hidden">
                         <div className="flex items-center gap-2 mb-1">
                           <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs px-2 py-1">
@@ -263,7 +260,6 @@ export const ProjectCarousel = () => {
               </motion.div>
             </AnimatePresence>
 
-            {}
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={project.id}
@@ -305,10 +301,8 @@ export const ProjectCarousel = () => {
                   </div>
                 )}
 
-                {}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent transition-all duration-500 group-hover:from-background/90" />
 
-                {}
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 transform transition-all duration-500 md:group-hover:translate-y-[-4px]">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                     <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs sm:text-sm w-fit">
@@ -316,7 +310,7 @@ export const ProjectCarousel = () => {
                     </Badge>
                     <div className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
                       <Icon icon={Users} size="sm" />
-                      {project.project_collaborators.length} colaborador{project.project_collaborators.length > 1 ? 'es' : ''}
+                      {project.project_collaborators.length} {project.project_collaborators.length > 1 ? t('projects.collaborators_plural') : t('projects.collaborators')}
                     </div>
                   </div>
                   <Heading level={3} className="mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300 text-lg sm:text-xl md:text-2xl">
@@ -327,16 +321,14 @@ export const ProjectCarousel = () => {
                   </Text>
                 </div>
 
-                {}
                 <div className="hidden md:block absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <div className="bg-primary/20 backdrop-blur-sm rounded-full px-3 py-1 border border-primary/30">
-                    <Text variant="small" className="text-primary font-medium">Clique para ver mais</Text>
+                    <Text variant="small" className="text-primary font-medium">{t('projects.clickToSeeMore')}</Text>
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {}
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={`next-${projects[(currentProject + 1) % projects.length].id}`}
@@ -377,10 +369,8 @@ export const ProjectCarousel = () => {
                         </div>
                       )}
 
-                      {}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
 
-                      {}
                       <div className="absolute bottom-0 left-0 right-0 p-3 max-h-[60%] overflow-hidden">
                         <div className="flex items-center gap-2 mb-1">
                           <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs px-2 py-1">
@@ -401,7 +391,6 @@ export const ProjectCarousel = () => {
             </AnimatePresence>
           </div>
 
-          {}
           <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
             {projects.map((_, index) => (
               <button
@@ -416,7 +405,6 @@ export const ProjectCarousel = () => {
             ))}
           </div>
 
-          {}
           <div className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 xl:hidden">
             <Button
               variant="outline"
@@ -439,7 +427,6 @@ export const ProjectCarousel = () => {
           </div>
         </div>
 
-        {}
         <ProjectOverlay
           project={selectedProject}
           isOpen={!!selectedProject}

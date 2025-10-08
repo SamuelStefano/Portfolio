@@ -1,5 +1,6 @@
 ﻿import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import {
   X,
   ExternalLink,
@@ -54,20 +55,19 @@ const getSectionIcon = (name: string) => {
 };
 
 export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ project, isOpen, onClose }) => {
+  const { t } = useTranslation();
   const [imageModalOpen, setImageModalOpen] = React.useState(false);
   const [modalImageUrl, setModalImageUrl] = React.useState('');
 
   useEffect(() => {
     if (isOpen) {
-      // Salva a posição atual do scroll
       const scrollY = window.scrollY;
       
-      // Usar CSS para melhor performance
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY}px`;
       document.body.style.width = "100%";
-      document.body.style.touchAction = "none"; // Previne scroll em mobile
+      document.body.style.touchAction = "none";
 
       const preventScroll = (e: Event) => {
         const target = e.target as Element;
@@ -82,7 +82,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
         return false;
       };
 
-      // Usar passive: false apenas quando necessário
       document.addEventListener('wheel', preventScroll, { passive: false });
       document.addEventListener('touchmove', preventScroll, { passive: false });
 
@@ -95,7 +94,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
         document.removeEventListener('wheel', preventScroll);
         document.removeEventListener('touchmove', preventScroll);
         
-        // Restaura a posição do scroll
         window.scrollTo(0, scrollY);
       };
     } else {
@@ -133,9 +131,9 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
     const sections = [
       {
         id: 'overview',
-        name: 'Visão Geral',
+        name: t('projects.overview'),
         icon_name: 'overview',
-        description: 'Informações gerais do projeto'
+        description: t('projects.overview')
       }
     ];
 
@@ -149,21 +147,28 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
 
       filteredCategories.forEach(category => {
         const displayNames: Record<string, string> = {
-          'admin': 'Painel Administrativo',
-          'challenge': 'Desafios',
-          'create': 'Criação',
-          'dashboard': 'Dashboard',
-          'login': 'Autenticação',
-          'others': 'Outros'
+          'admin': t('projectSections.admin'),
+          'challenge': t('projectSections.challenge'),
+          'create': t('projectSections.create'),
+          'dashboard': t('projectSections.dashboard'),
+          'login': t('projectSections.login'),
+          'others': t('projectSections.others'),
+          'community': t('projectSections.community'),
+          'landing': t('projectSections.landing'),
+          'library': t('projectSections.library'),
+          'maindashboard': t('projectSections.mainDashboard'),
+          'challengesystem': t('projectSections.challengeSystem')
         };
 
         const displayName = displayNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
 
+        const sectionDescription = t(`projectSections.descriptions.${category}`) || `${t('projectSections.sectionImages')} ${displayName}`;
+        
         sections.push({
           id: category,
           name: displayName,
           icon_name: category,
-          description: `Imagens da seção ${displayName}`
+          description: sectionDescription
         });
       });
     }
@@ -192,7 +197,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
             <div className="flex items-center justify-between">
               <div className="flex-1 text-center pr-8 sm:pr-10">
                 <Heading level={2} className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold gradient-text leading-tight">
-                  Projeto: {project.title}
+                  {t('projectStats.project')}: {project.title}
                 </Heading>
                 <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base mt-1">
                   {project.role}
@@ -209,10 +214,8 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
             </div>
           </div>
 
-          {}
           <div className="flex-1 overflow-y-auto" data-overlay-content>
             <div className="p-3 sm:p-4 md:p-6">
-            {}
             <Tabs defaultValue={sections[0]?.id || "overview"} className="w-full">
               <TabsList className="sticky top-0 z-40 2xl:overflow-y-hidden xl:overflow-y-hidden bg-background/95 border-b border-border pb-2 sm:pb-3 md:pb-4 mb-4 sm:mb-5 md:mb-6 w-full justify-start overflow-x-auto scrollbar-none"
                 style={{ display: 'flex', flexWrap: 'nowrap', gap: '0.25rem' }}>
@@ -227,10 +230,8 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                 ))}
               </TabsList>
 
-              {}
               <TabsContent value="overview">
                 <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                  {}
                   {(() => {
                     const filteredCategories = project.image_categories ?
                       Object.keys(project.image_categories).filter(category =>
@@ -287,10 +288,9 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     {project.long_description || project.description}
                   </Text>
 
-                  {/* Colaboradores */}
                   {project.project_collaborators && project.project_collaborators.length > 0 && (
                     <div className="space-y-4">
-                      <Heading level={3} className="text-base sm:text-lg md:text-xl">Colaboradores</Heading>
+                      <Heading level={3} className="text-base sm:text-lg md:text-xl">{t('projects.collaboratorsSection')}</Heading>
                       <div className="space-y-3">
                         {project.project_collaborators.map((collaborator, index) => (
                           <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border">
@@ -310,7 +310,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                             <div className="flex-1">
                               <Text className="font-medium">{collaborator.name}</Text>
                               <Text variant="small" className="text-muted-foreground">
-                                {collaborator.role === 'Creator' ? 'Creator:' : 'Collaborator:'} {collaborator.name}
+                                {collaborator.role === 'Creator' ? t('projects.creator') : t('projects.collaborator')} {collaborator.name}
                               </Text>
                             </div>
                           </div>
@@ -319,10 +319,9 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     </div>
                   )}
 
-                  {}
                   {project.stack && project.stack.length > 0 && (
                     <div className="space-y-4">
-                      <Heading level={3} className="text-xl">Tecnologias</Heading>
+                      <Heading level={3} className="text-xl">{t('projectStats.technologies')}</Heading>
                       <div className="flex flex-wrap gap-2">
                         {project.stack.map((tech, index) => (
                           <span
@@ -336,17 +335,16 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     </div>
                   )}
 
-                  {}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                     <div className="p-4 rounded-lg bg-card border border-border text-center">
                       <Text variant="small" className="font-semibold">
-                        {project.stack?.length || 0} Tecnologias
+                        {project.stack?.length || 0} {t('projectStats.technologiesCount')}
                       </Text>
                     </div>
                     <div className="p-4 rounded-lg bg-card border border-border text-center">
                       <div className="flex items-center justify-center gap-2 mb-2">
                         <Users className="w-4 h-4 text-primary" />
-                        <Text variant="small">{project.project_collaborators?.length || 0} Colaboradores</Text>
+                        <Text variant="small">{project.project_collaborators?.length || 0} {t('projectStats.collaboratorsCount')}</Text>
                       </div>
                       {project.project_collaborators && project.project_collaborators.length > 0 && (
                         <div className="flex justify-center gap-1">
@@ -372,7 +370,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     </div>
                     <div className="p-4 rounded-lg bg-card border border-border text-center">
                       <ExternalLink className="w-4 h-4 inline mr-1 text-primary" />
-                      <Text variant="small">{project.project_links?.length || 0} Links</Text>
+                      <Text variant="small">{project.project_links?.length || 0} {t('projectStats.linksCount')}</Text>
                     </div>
                     <div className="p-4 rounded-lg bg-card border border-border text-center">
                       <Calendar className="w-4 h-4 inline mr-1 text-primary" />
@@ -382,7 +380,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                 </div>
               </TabsContent>
 
-        {}
         {project.image_categories && Object.entries(project.image_categories)
           .filter(([category]) => !['thumb', 'thumbnail'].includes(category.toLowerCase()))
           .map(([category, images]) => {
@@ -402,7 +399,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
           return (
             <TabsContent key={category} value={category}>
               <div className="space-y-6">
-                {}
                 <div className="text-center mb-8 px-3">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 overflow-y-hidden">
                     {getSectionIcon(category)}
@@ -415,7 +411,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                   </Text>
                 </div>
 
-                {}
                 {images && images.length > 0 && (
                   <div className="space-y-6">
                     <ImageCarousel

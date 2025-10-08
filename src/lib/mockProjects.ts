@@ -50,7 +50,7 @@ export const mockProjects: Project[] = [
       {
         id: '1',
         folder_name: 'dashboard',
-        display_name: 'Dashboard Principal',
+        display_name: 'mainDashboard',
         description: 'Interface principal com estatísticas e desafios em destaque',
         order_index: 1,
         project_images: [
@@ -64,7 +64,7 @@ export const mockProjects: Project[] = [
       {
         id: '2',
         folder_name: 'challenges',
-        display_name: 'Sistema de Desafios',
+        display_name: 'challengeSystem',
         description: 'Interface para criação e resolução de desafios de programação',
         order_index: 2,
         project_images: [
@@ -137,7 +137,7 @@ export const mockProjects: Project[] = [
       {
         id: '3',
         folder_name: 'community',
-        display_name: 'Plataforma da Comunidade',
+        display_name: 'community',
         description: 'Interface principal da comunidade com fóruns e eventos',
         order_index: 1,
         project_images: [
@@ -202,7 +202,7 @@ export const mockProjects: Project[] = [
       {
         id: '4',
         folder_name: 'landing',
-        display_name: 'Landing Page',
+        display_name: 'landing',
         description: 'Página inicial com apresentação da plataforma',
         order_index: 1,
         project_images: [
@@ -216,7 +216,7 @@ export const mockProjects: Project[] = [
       {
         id: '5',
         folder_name: 'library',
-        display_name: 'Biblioteca de Código',
+        display_name: 'library',
         description: 'Interface principal com busca e categorização de exemplos',
         order_index: 2,
         project_images: [

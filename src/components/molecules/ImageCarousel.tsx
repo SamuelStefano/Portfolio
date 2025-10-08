@@ -76,11 +76,8 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        {}
         <div className="relative overflow-hidden rounded-xl bg-card border border-border" style={{ willChange: 'transform' }}>
-          {}
           <div className="relative w-[100%] h-[50%]">
-            {}
             <img
               key={currentIndex}
               src={images[currentIndex]}
@@ -96,7 +93,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
               loading="lazy"
             />
 
-            {}
             <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors duration-150 flex items-center justify-center">
               <div className="opacity-0 hover:opacity-100 transition-opacity duration-150">
                 <div className="bg-white/20 rounded-full p-3">
@@ -105,7 +101,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
               </div>
             </div>
 
-            {}
             {images.length > 1 && (
               <>
                 <Button
@@ -127,7 +122,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
               </>
             )}
 
-            {}
             {images.length > 1 && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
                 <div className="bg-black/50 rounded-full px-3 py-1">
@@ -139,7 +133,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
             )}
           </div>
 
-          {}
           {images.length > 0 && (
             <div className="p-4">
               <div className="flex gap-2 overflow-x-auto overflow-y-hidden">
@@ -170,7 +163,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
         </div>
       </div>
 
-      {}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
