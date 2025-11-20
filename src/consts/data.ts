@@ -22,6 +22,7 @@ export const TECH_CATEGORIES = [
       { name: 'Delphi', level: 15 },
       { name: 'APIs', level: 90 },
       { name: 'JWT', level: 80 },
+      { name: 'Web3 Integration', level: 70 },
     ],
     color: 'neon-purple'
   },
@@ -63,13 +64,14 @@ export const TECH_CATEGORIES = [
     color: 'neon-green'
   },
   {
-    title: 'Outros',
+    title: 'Web3 & Blockchain',
     icon: Code,
     skills: [
-      { name: 'Linux/Ubuntu', level: 70 },
-      { name: 'Deploy', level: 70 },
-      { name: 'Kotlin', level: 20 },
-      { name: 'n8n', level: 10 }
+      { name: 'Solidity', level: 65 },
+      { name: 'Smart Contracts', level: 65 },
+      { name: 'ERC-20 / ERC-721', level: 70 },
+      { name: 'Base / Scroll', level: 60 },
+      { name: 'Wagmi / Viem', level: 55 }
     ],
     color: 'neon-green'
   },
@@ -88,10 +90,10 @@ export const EXPERIENCE_DATA = [
   },
   {
     company: 'DevFellowship',
-    role: 'Desenvolvedor Full-Stack',
+    role: 'Desenvolvedor Full-Stack & Mentor',
     period: 'Julho 2024 - Presente',
-    description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs',],
+    description: 'Desenvolvimento de projetos educacionais, plataformas de desafios e sistemas Web3. Atuação como mentor, realizando revisões de código, auxiliando em arquitetura de software e orientando novos fellows. Participação em hackathons premiados.',
+    stack: ['React', 'TypeScript', 'Node.js', 'NestJS', 'Next.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'Solidity', 'Web3', 'Judge0', 'TailwindCSS', 'Git'],
     logo: '/DevFelloShip.png',
     icon: Briefcase,
     website: 'https://devfellowship.com'
@@ -118,7 +120,10 @@ export const ADDITIONAL_SKILLS = [
   'Suporte Técnico',
   'Frontend',
   'Backend',
-  'Banco de Dados',
+  'Web3 & Blockchain',
+  'Smart Contracts',
+  'Solidity',
+  'ERC-20 / ERC-721',
   'Trabalho em Equipe',
   'Metodologias Ágeis',
   'Resolução de Problemas',
@@ -138,8 +143,8 @@ export const ADDITIONAL_SKILLS = [
   'VPS',
   'WSL',
   'Vercel',
-  'n8n',
-  'Comprometimento'
+  'Mentoria',
+  'Code Review'
 ];
 
 // Stats Template
@@ -165,6 +170,7 @@ export const STATS_TEMPLATE = [
     icon: Code2
   }
 ];
+
 
 
 

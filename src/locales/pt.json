@@ -10,9 +10,9 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Desenvolvedor Full-Stack",
-    "description": "Desenvolvedor Júnior • ADS 3º ano • Marialva, PR",
-    "bio": "Especializado em React, TypeScript e Node.js, Nest, Tailwind, APIs.",
-    "bioContinue": "Criando experiências digitais modernas e funcionais.",
+    "description": "2 anos de experiência • Web3 & Blockchain • ADS 3º ano • Marialva, PR",
+    "bio": "Especializado em React, TypeScript, Node.js, NestJS, Web3 e Solidity.",
+    "bioContinue": "Criando soluções modernas e impactantes, do desenvolvimento tradicional ao ecossistema blockchain.",
     "clickToSeeMore": "Clique para ver mais",
     "socialLinks": {
       "github": "GitHub",
@@ -25,7 +25,7 @@
   },
   "projects": {
     "title": "Projetos",
-    "subtitle": "Uma seleção dos meus trabalhos mais recentes e impactantes",
+    "subtitle": "Trabalhos que incluem hackathons premiados, plataformas Web3, sistemas de desafios e ferramentas educacionais, todos documentados com detalhes e contexto",
     "exploreAll": "Explore todos os meus trabalhos e contribuições",
     "viewDetails": "Ver Detalhes",
     "collaborators": "colaborador",
@@ -94,9 +94,9 @@
       },
       {
         "company": "DevFellowship",
-        "role": "Desenvolvedor Full-Stack",
+        "role": "Desenvolvedor Full-Stack & Mentor",
         "period": "Julho 2024 - Presente",
-        "description": "Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis."
+        "description": "Desenvolvimento de projetos educacionais, plataformas de desafios e sistemas Web3. Atuação como mentor, realizando revisões de código, auxiliando em arquitetura de software e orientando novos fellows. Participação em hackathons premiados."
       },
       {
         "company": "M&M Informática",
@@ -135,17 +135,21 @@
       "VPS",
       "WSL",
       "Vercel",
-      "n8n",
-      "Comprometimento"
+      "Web3 & Blockchain",
+      "Smart Contracts",
+      "Solidity",
+      "ERC-20 / ERC-721",
+      "Mentoria",
+      "Code Review"
     ]
   },
   "about": {
     "title": "Sobre Mim",
     "subtitle": "Conheça um pouco mais sobre minha trajetória e paixões",
     "greeting": "Olá! Eu sou o Samuel.",
-    "bio1": "Estou me tornando um Desenvolvedor Full-Stack aos 22 anos, apaixonado por criar soluções digitais que fazem a diferença. Atualmente cursando o 3º ano de Análise e Desenvolvimento de Sistemas e sempre em busca de novos desafios.",
-    "bio2": "Minha jornada começou com curiosidade sobre como o mundo digital funciona. Hoje, transformo ideias em realidade usando React, TypeScript, Node.js e outras tecnologias modernas, sempre buscando me aprimorar e me tornar um profissional melhor.",
-    "bio3": "Quando não estou codando, gosto de explorar novas tecnologias, contribuir em projetos open source e compartilhar conhecimento com a comunidade dev, a que eu mais me encontrei com a Devfellowship.",
+    "bio1": "Desenvolvedor Full-Stack com 2 anos de experiência, especializado em criar soluções digitais impactantes usando tecnologias modernas e Web3. Atualmente cursando o 3º ano de ADS, com foco em arquiteturas escaláveis e desenvolvimento blockchain.",
+    "bio2": "Minha trajetória inclui projetos com Node.js, NestJS, Next.js, React, TypeScript e Solidity. Participei de hackathons como o ETH Latam 2025, conquistando o 4º lugar com o projeto GreenLoop, uma plataforma de reciclagem on-chain. Também atuei como mentor na DevFellowship, auxiliando outros devs em revisões de código, arquitetura e boas práticas.",
+    "bio3": "Experiência com contratos inteligentes (ERC-20, ERC-721), integração Web3, infraestrutura (Docker, VPS, Judge0), e desenvolvimento de plataformas educacionais. Sempre buscando evoluir e contribuir com a comunidade dev.",
     "location": "Marialva, PR",
     "language": "Inglês B2",
     "schedule": "6:00 A.M - 18:00 P.M",
@@ -302,8 +306,24 @@
       "longDescription": "Plataforma principal da comunidade DevFellowship, onde desenvolvedores se conectam, compartilham conhecimento e participam de projetos colaborativos. Interface moderna com fóruns, eventos e sistema de mentoria integrado."
     },
     "codeLibrary": {
-      "description": "Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship",
-      "longDescription": "Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship. Projeto focado no desenvolvimento da página inicial da nova plataforma de cursos da comunidade."
+      "description": "Landing page moderna da plataforma de cursos CodeLibrary, apresentando os cursos disponíveis e funcionalidades da plataforma.",
+      "longDescription": "Landing page criada para a plataforma CodeLibrary da DevFellowship. Design moderno e responsivo, mostrando os cursos disponíveis, trilhas de aprendizado e benefícios da plataforma."
+    },
+    "learnDevfellowship": {
+      "description": "Plataforma completa de cursos e trilhas educacionais da DevFellowship, evoluída do projeto CodeLibrary.",
+      "longDescription": "Learn.devfellowship é a plataforma educacional oficial da DevFellowship, que evoluiu do projeto CodeLibrary. Sistema completo de cursos com trilhas de aprendizado, vídeo aulas, exercícios práticos, acompanhamento de progresso e emissão de certificados."
+    },
+    "greenloop": {
+      "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain. 4º lugar no ETH Latam 2025.",
+      "longDescription": "GreenLoop é uma plataforma criada durante o ETH Latam 2025 que registra recicláveis entregues em pontos de coleta e converte essas entregas em tokens on-chain, usando tecnologia da rede Base. Conquistamos o 4º lugar no hackathon."
+    },
+    "mintwork": {
+      "description": "Marketplace Web3 onde empresas criam jobs, pagam em USDC e geram NFTs como credenciais de trabalho concluído.",
+      "longDescription": "MintWork (DevConnect/Talent DAO) é um marketplace Web3 que conecta empresas e talentos. Os jobs são armazenados em smart contracts, com escrow em USDC. Quando aprovado, emite NFTs ERC-721 como credenciais permanentes."
+    },
+    "reviewRequests": {
+      "description": "Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests.",
+      "longDescription": "Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Com ciclos completos de revisão, aprovação/rejeição, reavaliação e histórico detalhado."
     }
   },
   "projectSections": {

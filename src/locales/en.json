@@ -10,9 +10,9 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Full-Stack Developer",
-    "description": "Junior Developer • 3rd Year ADS • Marialva, PR",
-    "bio": "Specialized in React, TypeScript and Node.js, Nest, Tailwind, APIs.",
-    "bioContinue": "Creating modern and functional digital experiences.",
+    "description": "2 years of experience • Web3 & Blockchain • 3rd Year ADS • Marialva, PR",
+    "bio": "Specialized in React, TypeScript, Node.js, NestJS, Web3 and Solidity.",
+    "bioContinue": "Creating modern and impactful solutions, from traditional development to the blockchain ecosystem.",
     "clickToSeeMore": "Click to see more",
     "socialLinks": {
       "github": "GitHub",
@@ -25,7 +25,7 @@
   },
   "projects": {
     "title": "Projects",
-    "subtitle": "A selection of my most recent and impactful work",
+    "subtitle": "Work including award-winning hackathons, Web3 platforms, challenge systems and educational tools, all documented with details and context",
     "exploreAll": "Explore all my work and contributions",
     "viewDetails": "View Details",
     "collaborators": "collaborator",
@@ -94,9 +94,9 @@
       },
       {
         "company": "DevFellowship",
-        "role": "Full-Stack Developer",
+        "role": "Full-Stack Developer & Mentor",
         "period": "July 2024 - Present",
-        "description": "Development of educational projects and challenge platforms. Teamwork with agile methodologies."
+        "description": "Development of educational projects, challenge platforms and Web3 systems. Acting as a mentor, performing code reviews, assisting with software architecture and guiding new fellows. Participation in award-winning hackathons."
       },
       {
         "company": "M&M Informática",
@@ -135,17 +135,21 @@
       "VPS",
       "WSL",
       "Vercel",
-      "n8n",
-      "Commitment"
+      "Web3 & Blockchain",
+      "Smart Contracts",
+      "Solidity",
+      "ERC-20 / ERC-721",
+      "Mentoring",
+      "Code Review"
     ]
   },
   "about": {
     "title": "About Me",
     "subtitle": "Learn a little more about my journey and passions",
     "greeting": "Hello! I'm Samuel.",
-    "bio1": "I'm becoming a Full-Stack Developer at 22 years old, passionate about creating digital solutions that make a difference. Currently studying the 3rd year of Systems Analysis and Development and always seeking new challenges.",
-    "bio2": "My journey began with curiosity about how the digital world works. Today, I transform ideas into reality using React, TypeScript, Node.js and other modern technologies, always seeking to improve and become a better professional.",
-    "bio3": "When I'm not coding, I like to explore new technologies, contribute to open source projects and share knowledge with the dev community, which I found most connection with Devfellowship.",
+    "bio1": "Full-Stack Developer with 2 years of experience, specialized in creating impactful digital solutions using modern technologies and Web3. Currently studying the 3rd year of ADS, focused on scalable architectures and blockchain development.",
+    "bio2": "My journey includes projects with Node.js, NestJS, Next.js, React, TypeScript and Solidity. I participated in hackathons like ETH Latam 2025, achieving 4th place with the GreenLoop project, an on-chain recycling platform. I also acted as a mentor at DevFellowship, helping other devs with code reviews, architecture and best practices.",
+    "bio3": "Experience with smart contracts (ERC-20, ERC-721), Web3 integration, infrastructure (Docker, VPS, Judge0), and development of educational platforms. Always seeking to evolve and contribute to the dev community.",
     "location": "Marialva, PR",
     "language": "English B2",
     "schedule": "6:00 A.M - 18:00 P.M",
@@ -304,6 +308,22 @@
     "codeLibrary": {
       "description": "A landing page for a course platform called CodeLibrary that will be Devfellowship's next launch",
       "longDescription": "A landing page for a course platform called CodeLibrary that will be Devfellowship's next launch. Project focused on developing the homepage of the community's new course platform."
+    },
+    "greenloop": {
+      "description": "Web3 platform that transforms recyclable material deliveries into on-chain tokens. 4th place at ETH Latam 2025.",
+      "longDescription": "GreenLoop is a platform created during ETH Latam 2025 that records recyclables delivered to collection points and converts these deliveries into on-chain tokens, using Base network technology. We achieved 4th place in the hackathon."
+    },
+    "mintwork": {
+      "description": "Web3 marketplace where companies create jobs, pay in USDC and generate NFTs as completed work credentials.",
+      "longDescription": "MintWork (DevConnect/Talent DAO) is a Web3 marketplace that connects companies and talents. Jobs are stored in smart contracts, with USDC escrow. When approved, it issues ERC-721 NFTs as permanent credentials."
+    },
+    "reviewRequests": {
+      "description": "DevFellowship's internal task review system, similar to Pull Requests.",
+      "longDescription": "Review Requests is an internal system developed for DevFellowship that allows creating, reviewing and evaluating tasks in a structured way. With complete review cycles, approval/rejection, reassessment and detailed history."
+    },
+    "learnDevfellowship": {
+      "description": "Complete platform of courses and educational tracks from DevFellowship.",
+      "longDescription": "Learn.devfellowship is DevFellowship's official educational platform. Complete course system with learning tracks, video lessons, practical exercises, progress tracking and certificate issuance."
     }
   },
   "projectSections": {

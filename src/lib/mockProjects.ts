@@ -161,10 +161,17 @@ export const mockProjects: Project[] = [
     long_description: 'Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship. Projeto focado no desenvolvimento da página inicial da nova plataforma de cursos da comunidade.',
     stack: ['React', 'TypeScript', 'Next.js', 'Supabase', 'TailwindCSS', 'Prisma'],
     thumbnail_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/codelibrary-thumbnail.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9jb2RlbGlicmFyeS10aHVtYm5haWwuanBnIiwiaWF0IjoxNzU4MzEwMDQyLCJleHAiOjE3ODk4NDYwNDJ9.example',
-    icon_name: 'library',
+    icon_name: 'Book',
     created_at: '2024-06-01T00:00:00Z',
     updated_at: '2024-12-01T00:00:00Z',
     project_collaborators: [
+      {
+        id: '2',
+        name: 'Tainan Fidelis',
+        role: 'Creator',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        created_at: '2024-06-01T00:00:00Z'
+      },
       {
         id: '1',
         name: 'Samuel Stefano',
@@ -173,10 +180,10 @@ export const mockProjects: Project[] = [
         created_at: '2024-06-01T00:00:00Z'
       },
       {
-        id: '2',
-        name: 'Tainan Fidelis',
-        role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        id: '4',
+        name: 'Fellows',
+        role: 'Collaborator',
+        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
         created_at: '2024-06-01T00:00:00Z'
       }
     ],
@@ -185,16 +192,8 @@ export const mockProjects: Project[] = [
         id: '5',
         label: 'GitHub Repository',
         title: 'GitHub Repository',
-        url: 'https://github.com/SamuelStefano/CodeLibrary',
+        url: 'https://github.com/DevFellowship/CodeLibrary',
         type: 'github',
-        created_at: '2024-06-01T00:00:00Z'
-      },
-      {
-        id: '6',
-        label: 'Live Demo',
-        title: 'Live Demo',
-        url: 'https://codelibrary.dev',
-        type: 'website',
         created_at: '2024-06-01T00:00:00Z'
       }
     ],
@@ -232,6 +231,173 @@ export const mockProjects: Project[] = [
       'landing': ['https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/codelibrary-landing.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9jb2RlbGlicmFyeS1sYW5kaW5nLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.example'],
       'library': ['https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/codelibrary-library.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9jb2RlbGlicmFyeS1saWJyYXJ5LmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.example']
     }
+  },
+  {
+    id: '4',
+    title: 'GreenLoop',
+    role: 'Creator',
+    description: 'Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. 4º lugar no ETH Latam 2025.',
+    long_description: 'GreenLoop é uma plataforma criada durante o ETH Latam 2025 que registra recicláveis entregues em pontos de coleta e converte essas entregas em tokens on-chain, usando tecnologia da rede Base. O projeto conquistou o 4º lugar no hackathon. Participei da parte de backend com Node.js e integração com contratos inteligentes, garantindo rastreabilidade e transparência no registro das entregas. A solução combina impacto social com tecnologia blockchain para incentivar práticas sustentáveis.',
+    stack: ['Node.js', 'Solidity', 'Base', 'Smart Contracts', 'TypeScript', 'Web3', 'ERC-20', 'TailwindCSS'],
+    thumbnail_url: undefined,
+    icon_name: 'Leaf',
+    created_at: '2025-01-15T00:00:00Z',
+    updated_at: '2025-01-20T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2025-01-15T00:00:00Z'
+      },
+      {
+        id: '5',
+        name: 'Time GreenLoop',
+        role: 'Collaborator',
+        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        created_at: '2025-01-15T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '7',
+        label: 'Website',
+        title: 'Website',
+        url: 'https://greenloop-zeta.vercel.app/',
+        type: 'website',
+        created_at: '2025-01-15T00:00:00Z'
+      }
+    ],
+    project_sections: [],
+    image_categories: {}
+  },
+  {
+    id: '5',
+    title: 'MintWork',
+    role: 'Creator',
+    description: 'Marketplace Web3 onde empresas criam jobs, pagam em USDC e geram NFTs como credenciais de trabalho concluído. Sistema de escrow em smart contracts.',
+    long_description: 'MintWork (também conhecido como DevConnect/Talent DAO) é um marketplace Web3 que conecta empresas e talentos de forma descentralizada. Os jobs são armazenados em smart contracts como structs, com um contrato de marketplace que atua como escrow em USDC. Quando o trabalho é aprovado, um contrato ERC-721 emite uma NFT como credencial permanente do job realizado. Participei da arquitetura dos contratos, fluxo de estados (aplicação, execução, revisão, conclusão), e integração do frontend com a blockchain usando Wagmi/Viem.',
+    stack: ['Solidity', 'ERC-721', 'USDC', 'Next.js', 'React', 'TypeScript', 'Wagmi', 'Viem', 'Smart Contracts', 'TailwindCSS'],
+    thumbnail_url: undefined,
+    icon_name: 'Briefcase',
+    created_at: '2024-11-01T00:00:00Z',
+    updated_at: '2025-01-10T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2024-11-01T00:00:00Z'
+      },
+      {
+        id: '2',
+        name: 'Tainan Fidelis',
+        role: 'Collaborator',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        created_at: '2024-11-01T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '8',
+        label: 'Website',
+        title: 'Website',
+        url: 'https://devconnect-talent-dao.vercel.app/',
+        type: 'website',
+        created_at: '2024-11-01T00:00:00Z'
+      }
+    ],
+    project_sections: [],
+    image_categories: {}
+  },
+  {
+    id: '6',
+    title: 'Review Requests',
+    role: 'Creator',
+    description: 'Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests, com ciclos de revisão, rejeições, reavaliações e histórico completo.',
+    long_description: 'Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Inspirado no sistema de Pull Requests do GitHub, possui ciclos de revisão completos: submissão, análise, aprovação/rejeição, reavaliação e histórico detalhado. Implementado com Supabase (RLS e RPCs), SQL avançado para queries complexas e frontend em Next.js com foco em UX intuitiva. O sistema permite que mentores revisem trabalhos de fellows de forma organizada, com comentários, notas e feedback estruturado.',
+    stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'RLS', 'SQL', 'TailwindCSS'],
+    thumbnail_url: undefined,
+    icon_name: 'FileText',
+    created_at: '2024-09-01T00:00:00Z',
+    updated_at: '2024-12-15T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2024-09-01T00:00:00Z'
+      },
+      {
+        id: '2',
+        name: 'Tainan Fidelis',
+        role: 'Collaborator',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        created_at: '2024-09-01T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '9',
+        label: 'Website',
+        title: 'Website',
+        url: 'https://reviews.devfellowship.com/',
+        type: 'website',
+        created_at: '2024-09-01T00:00:00Z'
+      }
+    ],
+    project_sections: [],
+    image_categories: {}
+  },
+  {
+    id: '7',
+    title: 'Learn.devfellowship',
+    role: 'Collaborator',
+    description: 'Plataforma completa de cursos e trilhas educacionais da DevFellowship, com sistema de aulas, progresso, certificados e exercícios práticos.',
+    long_description: 'Learn.devfellowship é a plataforma educacional oficial da DevFellowship. Sistema completo de cursos com trilhas de aprendizado estruturadas, vídeo aulas, exercícios práticos integrados, acompanhamento de progresso em tempo real e emissão de certificados. Desenvolvida com NestJS no backend para escalabilidade, Next.js no frontend com SSR, Prisma como ORM para consultas otimizadas e Supabase para storage de vídeos e materiais. Arquitetura focada em performance e experiência do usuário, com sistema de cache inteligente e CDN para distribuição de conteúdo.',
+    stack: ['React', 'TypeScript', 'Next.js', 'NestJS', 'Supabase', 'TailwindCSS', 'Prisma', 'PostgreSQL', 'Redis'],
+    thumbnail_url: undefined,
+    icon_name: 'GraduationCap',
+    created_at: '2024-08-01T00:00:00Z',
+    updated_at: '2025-01-15T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '2',
+        name: 'Tainan Fidelis',
+        role: 'Creator',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        created_at: '2024-08-01T00:00:00Z'
+      },
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Collaborator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2024-08-01T00:00:00Z'
+      },
+      {
+        id: '4',
+        name: 'Fellows',
+        role: 'Collaborator',
+        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        created_at: '2024-08-01T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '10',
+        label: 'Website',
+        title: 'Website',
+        url: 'https://learn.devfellowship.com',
+        type: 'website',
+        created_at: '2024-08-01T00:00:00Z'
+      }
+    ],
+    project_sections: [],
+    image_categories: {}
   }
 ];
 

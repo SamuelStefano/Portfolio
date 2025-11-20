@@ -77,6 +77,8 @@ export type LucideIconName =
   | 'Lock'
   | 'Users'
   | 'Settings'
+  | 'Briefcase'
+  | 'GraduationCap'
   | 'Monitor'
   | 'Laptop'
   | 'Tablet'

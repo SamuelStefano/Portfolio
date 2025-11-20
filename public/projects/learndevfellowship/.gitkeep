@@ -1,0 +1,23 @@
+# Learn.devfellowship - Imagens do Projeto
+
+Esta pasta é destinada às imagens da plataforma Learn.devfellowship.
+
+## Instruções:
+- Adicione aqui as capturas de tela e imagens da plataforma Learn.devfellowship
+- Formatos recomendados: .jpg, .png, .webp
+- Organize as imagens em subpastas se necessário (ex: courses/, dashboard/, certificates/, etc.)
+
+## Exemplo de estrutura:
+```
+learndevfellowship/
+├── thumbnail.jpg (imagem principal do card)
+├── courses/
+│   └── course-listing.jpg
+├── dashboard/
+│   └── student-dashboard.jpg
+├── certificates/
+│   └── certificate-preview.jpg
+└── exercises/
+    └── code-editor.jpg
+```
+

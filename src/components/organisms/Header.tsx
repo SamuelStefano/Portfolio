@@ -16,7 +16,7 @@ const getSocialLinks = (t: any) => [
   },
   {
     icon: Linkedin,
-    href: 'https://linkedin.com/in/samuel-stefano',
+    href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',
     label: t('hero.socialLinks.linkedin')
   },
   {
@@ -26,7 +26,7 @@ const getSocialLinks = (t: any) => [
   },
   {
     icon: FileText,
-    href: 'https://drive.google.com/file/d/1-TpoRcofaK4T-rZZFWouQctZhW4Q9kpp/view?usp=sharing',
+    href: 'https://drive.google.com/file/d/1ixNSMlmGtkIedhV8-FUnzbDOE4-GvYel/view?usp=sharing',
     label: t('hero.socialLinks.resume')
   },
   {
