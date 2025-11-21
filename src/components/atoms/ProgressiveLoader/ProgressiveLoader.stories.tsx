@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Loading: Story = {
   args: {
-    src: 'https://via.placeholder.com/400x300',
+    src: '/projects/Skill Evals/Thumb.png',
     alt: 'Loading image',
     className: 'rounded-lg',
   },
@@ -23,7 +23,7 @@ export const Loading: Story = {
 
 export const WithDimensions: Story = {
   args: {
-    src: 'https://via.placeholder.com/800x600',
+    src: '/projects/Skill Evals/Dashboard principal.png',
     alt: 'Large image',
     className: 'w-96 h-64 object-cover rounded-lg',
   },
@@ -31,7 +31,7 @@ export const WithDimensions: Story = {
 
 export const Small: Story = {
   args: {
-    src: 'https://via.placeholder.com/200x200',
+    src: '/projects/Skill Evals/Thumb.png',
     alt: 'Small image',
     className: 'w-32 h-32 object-cover rounded-full',
   },
@@ -39,7 +39,7 @@ export const Small: Story = {
 
 export const ProjectThumbnail: Story = {
   args: {
-    src: 'https://via.placeholder.com/600x400/4F46E5/ffffff?text=Project+Preview',
+    src: '/projects/greenloop/GreenLoop - Dashboard.png',
     alt: 'Project thumbnail',
     className: 'w-full h-64 object-cover rounded-xl',
   },

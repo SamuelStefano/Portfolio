@@ -13,7 +13,7 @@ const mockProject: Project = {
   description: 'Plataforma de desafios para desenvolvedores com execução de código e avaliação automática.',
   long_description: 'Plataforma completa de desafios para desenvolvedores, desenvolvida com React, TypeScript, Next.js no frontend e NestJS no backend. Utiliza Judge0 API para compilação e execução de código em múltiplas linguagens. Possui painéis administrativos completos, sistema de mentoria, gestão de desafios e acompanhamento de progresso. A plataforma permite que mentores criem desafios customizados, definam casos de teste e avaliem automaticamente as submissões dos desenvolvedores.',
   stack: ['React', 'TypeScript', 'Next.js', 'NestJS', 'Judge0', 'Supabase', 'PostgreSQL', 'Docker', 'TailwindCSS'],
-  thumbnail_url: 'https://via.placeholder.com/1200x800/4F46E5/ffffff?text=Skill+Evals',
+  thumbnail_url: '/projects/Skill Evals/Thumb.png',
   icon_name: 'Code',
   created_at: '2024-01-01T00:00:00Z',
   updated_at: '2024-01-01T00:00:00Z',
@@ -23,14 +23,14 @@ const mockProject: Project = {
       id: '1',
       name: 'Samuel Stefano',
       role: 'Creator',
-      avatar_url: 'https://github.com/SamuelStefano.png',
+      avatar_url: '/Samuel.jpg',
       created_at: '2024-01-01T00:00:00Z'
     },
     {
       id: '2',
       name: 'Tainan Fidelis',
       role: 'Collaborator',
-      avatar_url: 'https://github.com/taigfs.png',
+      avatar_url: '/Tainan Fidelis.jpeg',
       created_at: '2024-01-01T00:00:00Z'
     }
   ],
@@ -47,16 +47,16 @@ const mockProject: Project = {
   project_sections: [],
   image_categories: {
     'dashboard': [
-      'https://via.placeholder.com/1200x800/4F46E5/ffffff?text=Dashboard',
-      'https://via.placeholder.com/1200x800/4F46E5/ffffff?text=Challenge+List',
+      '/projects/Skill Evals/Dashboard principal.png',
+      '/projects/Skill Evals/Dashboard de admin.png',
     ],
     'admin': [
-      'https://via.placeholder.com/1200x800/10B981/ffffff?text=Admin+Panel',
-      'https://via.placeholder.com/1200x800/10B981/ffffff?text=User+Management',
+      '/projects/Skill Evals/Dashboard de admin.png',
+      '/projects/Skill Evals/Challenge arquivada.png',
     ],
     'challenge': [
-      'https://via.placeholder.com/1200x800/F59E0B/ffffff?text=Challenge+View',
-      'https://via.placeholder.com/1200x800/F59E0B/ffffff?text=Code+Editor',
+      '/projects/Skill Evals/Challenge tela.png',
+      '/projects/Skill Evals/Code.png',
     ],
   }
 };
