@@ -222,9 +222,9 @@ export const mockProjects: Project[] = [
     project_links: [
       {
         id: '5',
-        label: 'GitHub Repository',
+        label: 'GitHub',
         title: 'GitHub Repository',
-        url: 'https://github.com/DevFellowship/CodeLibrary',
+        url: 'https://github.com/SamuelStefano/codelibrary-website',
         type: 'github',
         created_at: '2024-06-01T00:00:00Z'
       }

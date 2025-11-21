@@ -330,10 +330,10 @@
     "technologies": "Technologies",
     "viewProject": "View Project",
     "greenloop": {
-      "description": "Web3 platform that transforms deliveries of recyclable materials into on-chain tokens, encouraging sustainability through economic incentives. I participated in the backend and integration with smart contracts on the Base network."
+      "description": "Web3 platform that transforms deliveries of recyclable materials into on-chain tokens, encouraging sustainability through economic incentives. I participated in the frontend, backend and integration with smart contracts on the Base network."
     },
     "talentdao": {
-      "description": "Web3 marketplace where companies can create jobs, pay in USDC and generate NFTs as credentials for completed work. I participated in the architecture of the contracts, state flow and frontend integration with blockchain."
+      "description": "Web3 marketplace where companies can create jobs, pay in WETH and generate NFTs as credentials for completed work. I participated in contract integration, state flow and frontend integration with blockchain."
     }
   },
   "projectSections": {
@@ -350,6 +350,9 @@
     "mainDashboard": "Main Dashboard",
     "challengeSystem": "Challenge System",
     "sectionImages": "Section images",
+    "sectionDetails": "Section Details",
+    "image": "image",
+    "images": "images",
     "descriptions": {
       "mainDashboard": "Main interface with statistics and featured challenges",
       "challengeSystem": "Interface for creating and solving programming challenges",
@@ -357,5 +360,12 @@
       "landing": "Homepage with platform presentation",
       "library": "Main interface with search and categorization of examples"
     }
+  },
+  "projectStats": {
+    "project": "Project",
+    "technologies": "Technologies",
+    "technologiesCount": "technologies",
+    "collaboratorsCount": "collaborators",
+    "linksCount": "links"
   }
 }
