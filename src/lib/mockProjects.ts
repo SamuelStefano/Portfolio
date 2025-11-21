@@ -255,7 +255,7 @@ export const mockProjects: Project[] = [
   {
     id: '4',
     title: 'GreenLoop',
-    role: 'Creator',
+    role: 'Collaborator',
     description: 'Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. 4º lugar no ETH Latam 2025.',
     long_description: 'GreenLoop é uma plataforma criada durante o ETH Latam 2025 que registra recicláveis entregues em pontos de coleta e converte essas entregas em tokens on-chain, usando tecnologia da rede Base. O projeto conquistou o 4º lugar no hackathon. Participei da parte de backend com Node.js e integração com contratos inteligentes, garantindo rastreabilidade e transparência no registro das entregas. A solução combina impacto social com tecnologia blockchain para incentivar práticas sustentáveis.',
     stack: ['Node.js', 'Solidity', 'Base', 'Smart Contracts', 'TypeScript', 'Web3', 'ERC-20', 'TailwindCSS'],
@@ -265,17 +265,17 @@ export const mockProjects: Project[] = [
     updated_at: '2025-01-20T00:00:00Z',
     project_collaborators: [
       {
-        id: '1',
-        name: 'Samuel Stefano',
+        id: '5',
+        name: 'Raul Alencar',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
         created_at: '2025-01-15T00:00:00Z'
       },
       {
-        id: '5',
-        name: 'Time GreenLoop',
+        id: '1',
+        name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        avatar_url: '/Samuel.jpg',
         created_at: '2025-01-15T00:00:00Z'
       }
     ],
@@ -504,7 +504,7 @@ export const mockProjects: Project[] = [
   {
     id: '6',
     title: 'Review Requests',
-    role: 'Creator',
+    role: 'Collaborator',
     description: 'Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests, com ciclos de revisão, rejeições, reavaliações e histórico completo.',
     long_description: 'Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Inspirado no sistema de Pull Requests do GitHub, possui ciclos de revisão completos: submissão, análise, aprovação/rejeição, reavaliação e histórico detalhado. Implementado com Supabase (RLS e RPCs), SQL avançado para queries complexas e frontend em Next.js com foco em UX intuitiva. O sistema permite que mentores revisem trabalhos de fellows de forma organizada, com comentários, notas e feedback estruturado.',
     stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'RLS', 'SQL', 'TailwindCSS'],
@@ -514,17 +514,17 @@ export const mockProjects: Project[] = [
     updated_at: '2024-12-15T00:00:00Z',
     project_collaborators: [
       {
-        id: '1',
-        name: 'Samuel Stefano',
+        id: '2',
+        name: 'Tainan Fidelis',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-09-01T00:00:00Z'
       },
       {
-        id: '2',
-        name: 'Tainan Fidelis',
+        id: '1',
+        name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Samuel.jpg',
         created_at: '2024-09-01T00:00:00Z'
       }
     ],
