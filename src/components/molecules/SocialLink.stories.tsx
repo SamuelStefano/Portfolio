@@ -14,7 +14,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const GitHub: Story = {
+export const GitHubLink: Story = {
   args: {
     href: 'https://github.com/SamuelStefano',
     icon: Github,
@@ -22,7 +22,7 @@ export const GitHub: Story = {
   },
 };
 
-export const LinkedIn: Story = {
+export const LinkedInLink: Story = {
   args: {
     href: 'https://linkedin.com/in/samuel-stefano',
     icon: Linkedin,
@@ -30,7 +30,7 @@ export const LinkedIn: Story = {
   },
 };
 
-export const Email: Story = {
+export const EmailLink: Story = {
   args: {
     href: 'mailto:samuelstefanodocarmo@gmail.com',
     icon: Mail,
@@ -38,7 +38,7 @@ export const Email: Story = {
   },
 };
 
-export const Twitter: Story = {
+export const TwitterLink: Story = {
   args: {
     href: 'https://twitter.com',
     icon: Twitter,
@@ -46,7 +46,7 @@ export const Twitter: Story = {
   },
 };
 
-export const Instagram: Story = {
+export const InstagramLink: Story = {
   args: {
     href: 'https://instagram.com',
     icon: Instagram,
