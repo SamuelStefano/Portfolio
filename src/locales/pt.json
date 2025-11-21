@@ -313,9 +313,9 @@
       "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain. 4º lugar no ETH Latam 2025.",
       "longDescription": "GreenLoop é uma plataforma criada durante o ETH Latam 2025 que registra recicláveis entregues em pontos de coleta e converte essas entregas em tokens on-chain, usando tecnologia da rede Base. Conquistamos o 4º lugar no hackathon."
     },
-    "mintwork": {
+    "talentdao": {
       "description": "Marketplace Web3 onde empresas criam jobs, pagam em USDC e geram NFTs como credenciais de trabalho concluído.",
-      "longDescription": "MintWork (DevConnect/Talent DAO) é um marketplace Web3 que conecta empresas e talentos. Os jobs são armazenados em smart contracts, com escrow em USDC. Quando aprovado, emite NFTs ERC-721 como credenciais permanentes."
+      "longDescription": "TalentDAO (DevConnect/MintWork) é um marketplace Web3 que conecta empresas e talentos. Os jobs são armazenados em smart contracts, com escrow em USDC. Quando aprovado, emite NFTs ERC-721 como credenciais permanentes."
     },
     "reviewRequests": {
       "description": "Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests.",
