@@ -31,10 +31,6 @@ export const useGitHubStats = () => {
       try {
         setStats(prev => ({ ...prev, isLoading: true, error: null }));
 
-        console.log('🔍 GitHub Stats - Iniciando busca...');
-        console.log('Token configurado:', !!GITHUB_TOKEN);
-        console.log('Username:', GITHUB_USERNAME);
-
         const headers: HeadersInit = {
           'Accept': 'application/vnd.github.v3+json',
           'User-Agent': 'Portfolio-App'
@@ -48,13 +44,9 @@ export const useGitHubStats = () => {
           ? `https://api.github.com/user/repos?per_page=100&sort=updated&affiliation=owner,collaborator`
           : `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
 
-        console.log('📡 Endpoint:', endpoint);
-
         const reposResponse = await fetch(endpoint, {
           headers
         });
-
-        console.log('📥 Response status:', reposResponse.status);
 
         if (!reposResponse.ok) {
           const errorText = await reposResponse.text();
