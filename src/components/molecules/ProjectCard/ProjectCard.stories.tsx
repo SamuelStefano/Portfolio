@@ -59,7 +59,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     project: mockProject,
-    onProjectClick: () => console.log('Project clicked'),
+    onProjectClick: () => {},
   },
 };
 
@@ -69,7 +69,7 @@ export const WithImage: Story = {
       ...mockProject,
       thumbnail_url: '/projects/Skill Evals/Dashboard principal.png',
     },
-    onProjectClick: () => console.log('Project clicked'),
+    onProjectClick: () => {},
   },
 };
 
@@ -101,7 +101,7 @@ export const Web3Project: Story = {
         }
       ],
     },
-    onProjectClick: () => console.log('Project clicked'),
+    onProjectClick: () => {},
   },
 };
 
@@ -114,7 +114,7 @@ export const CollaboratorRole: Story = {
       description: 'Sistema interno de revisões de tarefas similar a Pull Requests.',
       stack: ['Next.js', 'Supabase', 'PostgreSQL', 'RLS'],
     },
-    onProjectClick: () => console.log('Project clicked'),
+    onProjectClick: () => {},
   },
 };
 

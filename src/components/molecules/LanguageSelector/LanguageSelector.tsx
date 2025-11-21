@@ -1,9 +1,10 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const languages = [
   {
     code: 'pt',
-    name: 'Português',
+    name: 'Portuguï¿½s',
     flag: 'https://flagicons.lipis.dev/flags/4x3/br.svg'
   },
   {
@@ -13,7 +14,7 @@ const languages = [
   },
   {
     code: 'es',
-    name: 'Español',
+    name: 'Espaï¿½ol',
     flag: 'https://flagicons.lipis.dev/flags/4x3/es.svg'
   }
 ];

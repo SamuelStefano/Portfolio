@@ -24,7 +24,7 @@ export const Default: Story = {
   args: {
     images: sampleImages,
     title: 'Project Gallery',
-    onImageClick: (imageUrl) => console.log('Image clicked:', imageUrl),
+    onImageClick: () => {},
   },
 };
 
@@ -32,7 +32,7 @@ export const SingleImage: Story = {
   args: {
     images: [sampleImages[0]],
     title: 'Single Image',
-    onImageClick: (imageUrl) => console.log('Image clicked:', imageUrl),
+    onImageClick: () => {},
   },
 };
 
@@ -40,7 +40,7 @@ export const TwoImages: Story = {
   args: {
     images: sampleImages.slice(0, 2),
     title: 'Two Images',
-    onImageClick: (imageUrl) => console.log('Image clicked:', imageUrl),
+    onImageClick: () => {},
   },
 };
 
@@ -52,7 +52,7 @@ export const ManyImages: Story = {
       '/projects/Skill Evals/Pre Challenge.png',
     ],
     title: 'Project Screenshots',
-    onImageClick: (imageUrl) => console.log('Image clicked:', imageUrl),
+    onImageClick: () => {},
   },
 };
 
@@ -65,7 +65,7 @@ export const ProjectGallery: Story = {
       '/projects/Skill Evals/Code.png',
     ],
     title: 'Skill Evals Gallery',
-    onImageClick: (imageUrl) => console.log('Image clicked:', imageUrl),
+    onImageClick: () => {},
   },
 };
 
