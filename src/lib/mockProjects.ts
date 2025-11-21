@@ -8,7 +8,7 @@ export const mockProjects: Project[] = [
     description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy.',
     long_description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy. Com telas para Mentoria, Administradores, tudo bem organizado. Utiliza-se Judge0 como API de compilação.',
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Judge0 API', 'TailwindCSS'],
-    thumbnail_url: undefined,
+    thumbnail_url: '/projects/Skill Evals/Thumb.png',
     icon_name: 'code',
     created_at: '2024-01-15T00:00:00Z',
     updated_at: '2024-12-01T00:00:00Z',
@@ -24,30 +24,98 @@ export const mockProjects: Project[] = [
         id: '2',
         name: 'Tainan Fidelis',
         role: 'Collaborator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-01-15T00:00:00Z'
       }
     ],
     project_links: [
       {
-        id: '1',
-        label: 'GitHub Repository',
-        title: 'GitHub Repository',
-        url: 'https://github.com/SamuelStefano/DevSharper',
-        type: 'github',
-        created_at: '2024-01-15T00:00:00Z'
-      },
-      {
         id: '2',
-        label: 'Live Demo',
-        title: 'Live Demo',
-        url: 'https://devsharper.com',
+        label: 'Website',
+        title: 'Website',
+        url: 'https://skillevals.devfellowship.com/',
         type: 'website',
         created_at: '2024-01-15T00:00:00Z'
       }
     ],
-    project_sections: [],
-    image_categories: {}
+    project_sections: [
+      {
+        id: '1-1',
+        folder_name: 'admin',
+        display_name: 'Admin',
+        description: 'Painel administrativo',
+        order_index: 1,
+        project_images: [
+          { id: '1-1-1', image_url: '/projects/Skill Evals/Challenge arquivada.png', order_index: 1 },
+          { id: '1-1-2', image_url: '/projects/Skill Evals/Dashboard de admin.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '1-2',
+        folder_name: 'challenges',
+        display_name: 'Challenges',
+        description: 'Sistema de desafios',
+        order_index: 2,
+        project_images: [
+          { id: '1-2-1', image_url: '/projects/Skill Evals/Challenge tela.png', order_index: 1 },
+          { id: '1-2-2', image_url: '/projects/Skill Evals/Challenge test passed.png', order_index: 2 },
+          { id: '1-2-3', image_url: '/projects/Skill Evals/Pre Challenge.png', order_index: 3 },
+          { id: '1-2-4', image_url: '/projects/Skill Evals/Tela challenge error.png', order_index: 4 }
+        ]
+      },
+      {
+        id: '1-3',
+        folder_name: 'create',
+        display_name: 'Create',
+        description: 'Criação de challenges',
+        order_index: 3,
+        project_images: [
+          { id: '1-3-1', image_url: '/projects/Skill Evals/Tela 1 criar challenge.png', order_index: 1 },
+          { id: '1-3-2', image_url: '/projects/Skill Evals/Tela 2 criar challenge.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '1-4',
+        folder_name: 'dashboard',
+        display_name: 'Dashboard',
+        description: 'Dashboard principal',
+        order_index: 4,
+        project_images: [
+          { id: '1-4-1', image_url: '/projects/Skill Evals/Dashboard principal.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '1-5',
+        folder_name: 'login',
+        display_name: 'Login',
+        description: 'Perfil e autenticação',
+        order_index: 5,
+        project_images: [
+          { id: '1-5-1', image_url: '/projects/Skill Evals/Meu perfil alterando.png', order_index: 1 },
+          { id: '1-5-2', image_url: '/projects/Skill Evals/Meu Perfil.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '1-6',
+        folder_name: 'others',
+        display_name: 'Others',
+        description: 'Outras funcionalidades',
+        order_index: 6,
+        project_images: [
+          { id: '1-6-1', image_url: '/projects/Skill Evals/Code.png', order_index: 1 },
+          { id: '1-6-2', image_url: '/projects/Skill Evals/Inpect.png', order_index: 2 },
+          { id: '1-6-3', image_url: '/projects/Skill Evals/inspect 2.png', order_index: 3 }
+        ]
+      }
+    ],
+    image_categories: {
+      'admin': ['/projects/Skill Evals/Challenge arquivada.png', '/projects/Skill Evals/Dashboard de admin.png'],
+      'challenges': ['/projects/Skill Evals/Challenge tela.png', '/projects/Skill Evals/Challenge test passed.png', '/projects/Skill Evals/Pre Challenge.png', '/projects/Skill Evals/Tela challenge error.png'],
+      'create': ['/projects/Skill Evals/Tela 1 criar challenge.png', '/projects/Skill Evals/Tela 2 criar challenge.png'],
+      'dashboard': ['/projects/Skill Evals/Dashboard principal.png'],
+      'login': ['/projects/Skill Evals/Meu perfil alterando.png', '/projects/Skill Evals/Meu Perfil.png'],
+      'others': ['/projects/Skill Evals/Code.png', '/projects/Skill Evals/Inpect.png', '/projects/Skill Evals/inspect 2.png']
+    }
   },
   {
     id: '2',
@@ -56,7 +124,7 @@ export const mockProjects: Project[] = [
     description: 'Site da devfellowship em que colaborei, minha task era trabalhar apenas no hero.',
     long_description: 'Site da devfellowship em que colaborei, minha task era trabalhar apenas no hero. Projeto focado no desenvolvimento do hero da página principal da comunidade DevFellowship.',
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'TailwindCSS', 'Discord API'],
-    thumbnail_url: undefined,
+    thumbnail_url: '/projects/Devfellowship/Thumb devfellowship.png',
     icon_name: 'users',
     created_at: '2024-03-01T00:00:00Z',
     updated_at: '2024-12-01T00:00:00Z',
@@ -65,7 +133,7 @@ export const mockProjects: Project[] = [
         id: '3',
         name: 'Tainan Fidelis',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-03-01T00:00:00Z'
       },
       {
@@ -101,8 +169,21 @@ export const mockProjects: Project[] = [
         created_at: '2024-03-01T00:00:00Z'
       }
     ],
-    project_sections: [],
-    image_categories: {}
+    project_sections: [
+      {
+        id: '2-1',
+        folder_name: 'hero',
+        display_name: 'Hero',
+        description: 'Hero section do site',
+        order_index: 1,
+        project_images: [
+          { id: '2-1-1', image_url: '/projects/Devfellowship/Hero devfellowship.png', order_index: 1 }
+        ]
+      }
+    ],
+    image_categories: {
+      'hero': ['/projects/Devfellowship/Hero devfellowship.png']
+    }
   },
   {
     id: '3',
@@ -111,7 +192,7 @@ export const mockProjects: Project[] = [
     description: 'Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship',
     long_description: 'Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship. Projeto focado no desenvolvimento da página inicial da nova plataforma de cursos da comunidade.',
     stack: ['React', 'TypeScript', 'Next.js', 'Supabase', 'TailwindCSS', 'Prisma'],
-    thumbnail_url: undefined,
+    thumbnail_url: '/projects/Codelibrary/Hero.png',
     icon_name: 'Book',
     created_at: '2024-06-01T00:00:00Z',
     updated_at: '2024-12-01T00:00:00Z',
@@ -120,7 +201,7 @@ export const mockProjects: Project[] = [
         id: '2',
         name: 'Tainan Fidelis',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-06-01T00:00:00Z'
       },
       {
@@ -148,8 +229,28 @@ export const mockProjects: Project[] = [
         created_at: '2024-06-01T00:00:00Z'
       }
     ],
-    project_sections: [],
-    image_categories: {}
+    project_sections: [
+      { id: '3-1', folder_name: 'hero', display_name: 'Hero', description: 'Hero section', order_index: 1, project_images: [{ id: '3-1-1', image_url: '/projects/Codelibrary/Hero.png', order_index: 1 }] },
+      { id: '3-2', folder_name: 'about', display_name: 'About Us', description: 'Sobre nós', order_index: 2, project_images: [{ id: '3-2-1', image_url: '/projects/Codelibrary/AboutUs.png', order_index: 1 }] },
+      { id: '3-3', folder_name: 'courses', display_name: 'Courses', description: 'Card de cursos', order_index: 3, project_images: [{ id: '3-3-1', image_url: '/projects/Codelibrary/Courses.png', order_index: 1 }] },
+      { id: '3-4', folder_name: 'community', display_name: 'Community', description: 'Comunidade', order_index: 4, project_images: [{ id: '3-4-1', image_url: '/projects/Codelibrary/Community.png', order_index: 1 }] },
+      { id: '3-5', folder_name: 'methodologies', display_name: 'Methodologies', description: 'Metodologias', order_index: 5, project_images: [{ id: '3-5-1', image_url: '/projects/Codelibrary/Methodologies.png', order_index: 1 }] },
+      { id: '3-6', folder_name: 'pricing', display_name: 'Plans and Prices', description: 'Planos e preços', order_index: 6, project_images: [{ id: '3-6-1', image_url: '/projects/Codelibrary/Plan and Prices.png', order_index: 1 }] },
+      { id: '3-7', folder_name: 'table', display_name: 'Table', description: 'Tabela comparativa', order_index: 7, project_images: [{ id: '3-7-1', image_url: '/projects/Codelibrary/table.png', order_index: 1 }] },
+      { id: '3-8', folder_name: 'footer', display_name: 'Footer', description: 'Rodapé', order_index: 8, project_images: [{ id: '3-8-1', image_url: '/projects/Codelibrary/Footer.png', order_index: 1 }] },
+      { id: '3-9', folder_name: 'others', display_name: 'Others', description: 'Logos', order_index: 9, project_images: [{ id: '3-9-1', image_url: '/projects/Codelibrary/Logo-codelibrary.png', order_index: 1 }, { id: '3-9-2', image_url: '/projects/Codelibrary/Logo (1).png', order_index: 2 }] }
+    ],
+    image_categories: {
+      'hero': ['/projects/Codelibrary/Hero.png'],
+      'about': ['/projects/Codelibrary/AboutUs.png'],
+      'courses': ['/projects/Codelibrary/Courses.png'],
+      'community': ['/projects/Codelibrary/Community.png'],
+      'methodologies': ['/projects/Codelibrary/Methodologies.png'],
+      'pricing': ['/projects/Codelibrary/Plan and Prices.png'],
+      'table': ['/projects/Codelibrary/table.png'],
+      'footer': ['/projects/Codelibrary/Footer.png'],
+      'others': ['/projects/Codelibrary/Logo-codelibrary.png', '/projects/Codelibrary/Logo (1).png']
+    }
   },
   {
     id: '4',
@@ -185,6 +286,14 @@ export const mockProjects: Project[] = [
         title: 'Website',
         url: 'https://greenloop-zeta.vercel.app/',
         type: 'website',
+        created_at: '2025-01-15T00:00:00Z'
+      },
+      {
+        id: '7-1',
+        label: 'GitHub Repository',
+        title: 'GitHub Repository',
+        url: 'https://github.com/RaulAl3n/GreenLoop',
+        type: 'github',
         created_at: '2025-01-15T00:00:00Z'
       }
     ],
@@ -234,10 +343,10 @@ export const mockProjects: Project[] = [
   },
   {
     id: '5',
-    title: 'MintWork',
-    role: 'Creator',
+    title: 'TalentDAO',
+    role: 'Collaborator',
     description: 'Marketplace Web3 onde empresas criam jobs, pagam em USDC e geram NFTs como credenciais de trabalho concluído. Sistema de escrow em smart contracts.',
-    long_description: 'MintWork (também conhecido como DevConnect/Talent DAO) é um marketplace Web3 que conecta empresas e talentos de forma descentralizada. Os jobs são armazenados em smart contracts como structs, com um contrato de marketplace que atua como escrow em USDC. Quando o trabalho é aprovado, um contrato ERC-721 emite uma NFT como credencial permanente do job realizado. Participei da arquitetura dos contratos, fluxo de estados (aplicação, execução, revisão, conclusão), e integração do frontend com a blockchain usando Wagmi/Viem.',
+    long_description: 'TalentDAO (também conhecido como DevConnect/MintWork) é um marketplace Web3 que conecta empresas e talentos de forma descentralizada. Os jobs são armazenados em smart contracts como structs, com um contrato de marketplace que atua como escrow em USDC. Quando o trabalho é aprovado, um contrato ERC-721 emite uma NFT como credencial permanente do job realizado. Participei da arquitetura dos contratos, fluxo de estados (aplicação, execução, revisão, conclusão), e integração do frontend com a blockchain usando Wagmi/Viem.',
     stack: ['Solidity', 'ERC-721', 'USDC', 'Next.js', 'React', 'TypeScript', 'Wagmi', 'Viem', 'Smart Contracts', 'TailwindCSS'],
     thumbnail_url: '/projects/mintwork/Dashboard - mintwork.png',
     icon_name: 'Briefcase',
@@ -266,6 +375,14 @@ export const mockProjects: Project[] = [
         title: 'Website',
         url: 'https://devconnect-talent-dao.vercel.app/',
         type: 'website',
+        created_at: '2024-11-01T00:00:00Z'
+      },
+      {
+        id: '8-1',
+        label: 'GitHub Repository',
+        title: 'GitHub Repository',
+        url: 'https://github.com/taigfs/devconnect-talent-dao',
+        type: 'github',
         created_at: '2024-11-01T00:00:00Z'
       }
     ],
