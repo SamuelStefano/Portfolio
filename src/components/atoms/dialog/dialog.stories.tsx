@@ -8,7 +8,7 @@ import {
   DialogTrigger,
   DialogFooter,
 } from './dialog';
-import { Button } from './button';
+import { Button } from '@/components/atoms/button/button';
 
 const meta = {
   title: 'Atoms/Dialog',

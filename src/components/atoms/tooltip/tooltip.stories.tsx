@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip';
-import { Button } from './button';
+import { Button } from '@/components/atoms/button/button';
 import { Info, HelpCircle, AlertCircle } from 'lucide-react';
 
 const meta = {
