@@ -3,6 +3,7 @@
     "home": "Início",
     "projects": "Projetos",
     "skills": "Habilidades",
+    "hackathons": "Hackathons",
     "about": "Sobre",
     "contact": "Contato",
     "resume": "Currículo"
@@ -71,6 +72,7 @@
     "currentPosition": "Cargo Atual",
     "otherCompetencies": "Outras Competências",
     "softwareEngineering": "Engenharia de Software",
+    "web3Blockchain": "Web3 & Blockchain",
     "others": "Outros",
     "documentation": "Documentação",
     "testing": "Testes",
@@ -320,6 +322,18 @@
     "reviewRequests": {
       "description": "Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests.",
       "longDescription": "Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Com ciclos completos de revisão, aprovação/rejeição, reavaliação e histórico detalhado."
+    }
+  },
+  "hackathons": {
+    "title": "Hackathons & Eventos",
+    "subtitle": "Participações em hackathons de blockchain e Web3, com projetos premiados e experiências enriquecedoras",
+    "technologies": "Tecnologias",
+    "viewProject": "Ver Projeto",
+    "greenloop": {
+      "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. Participei do backend e integração com contratos inteligentes na rede Base."
+    },
+    "talentdao": {
+      "description": "Marketplace Web3 onde empresas podem criar jobs, pagar em USDC e gerar NFTs como credenciais de trabalho concluído. Participei da arquitetura dos contratos, fluxo de estados e integração do frontend com a blockchain."
     }
   },
   "projectSections": {

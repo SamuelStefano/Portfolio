@@ -25,6 +25,7 @@ export const Navigation = () => {
     { label: t('nav.home'), href: '#inicio' },
     { label: t('nav.projects'), href: '#projetos' },
     { label: t('nav.skills'), href: '#habilidades' },
+    { label: t('nav.hackathons'), href: '#hackathons' },
     { label: t('nav.about'), href: '#sobre' },
     { label: t('nav.contact'), href: '#contato' },
     { label: t('nav.resume'), href: 'https://drive.google.com/file/d/1-TpoRcofaK4T-rZZFWouQctZhW4Q9kpp/view?usp=sharing' }

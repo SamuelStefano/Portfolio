@@ -30,7 +30,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
             <img
               src={project.thumbnail_url}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               loading="lazy"
               decoding="async"
             />
@@ -41,14 +41,46 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
           </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <Button variant="secondary" size="sm" className="hover-glow">
-            <Icon icon={ExternalLink} className="mr-2" />
-            {t('projects.viewDetails')}
-          </Button>
+        {/* Overlay com informações detalhadas */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+          <div className="space-y-2">
+            {/* Título do projeto */}
+            <Heading level={4} className="text-white text-sm font-bold">
+              {project.title}
+            </Heading>
+            
+            {/* Descrição curta */}
+            <Text className="text-white/80 text-xs line-clamp-2">
+              {project.description}
+            </Text>
+            
+            {/* Stack tags */}
+            <div className="flex flex-wrap gap-1">
+              {project.stack.slice(0, 4).map((tech, index) => (
+                <span
+                  key={index}
+                  className="px-2 py-0.5 bg-primary/20 border border-primary/40 backdrop-blur-sm rounded text-xs text-primary font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+              {project.stack.length > 4 && (
+                <span className="px-2 py-0.5 bg-primary/20 border border-primary/40 backdrop-blur-sm rounded text-xs text-primary font-medium">
+                  +{project.stack.length - 4}
+                </span>
+              )}
+            </div>
+            
+            {/* Botão de ver detalhes */}
+            <Button variant="secondary" size="sm" className="w-full hover-glow mt-2">
+              <Icon icon={ExternalLink} className="mr-2" />
+              {t('projects.viewDetails')}
+            </Button>
+          </div>
         </div>
-        <div className="absolute top-3 left-3 flex gap-2">
+
+        {/* Badges no topo */}
+        <div className="absolute top-3 left-3 flex gap-2 z-10">
           <Badge variant="secondary" className="bg-card/80 backdrop-blur-sm">
             {project.role}
           </Badge>

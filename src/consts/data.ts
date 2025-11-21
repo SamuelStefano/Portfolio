@@ -153,7 +153,7 @@ export const ADDITIONAL_SKILLS = [
   'Code Review'
 ];
 
-// Stats Template
+
 export const STATS_TEMPLATE = [
   {
     label: 'Tempo de atuação profissional',

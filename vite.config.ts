@@ -6,11 +6,20 @@ export default defineConfig({
   server: {
     host: "::",
     port: 8080,
+    hmr: {
+      overlay: true,
+    },
   },
   plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  optimizeDeps: {
+    force: true,
+  },
+  build: {
+    sourcemap: false,
   },
 });

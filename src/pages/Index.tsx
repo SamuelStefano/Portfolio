@@ -2,6 +2,7 @@
 import { ProjectCarousel } from '@/components/organisms/ProjectCarousel';
 import { ProjectGrid } from '@/components/organisms/ProjectGrid';
 import { TechStack } from '@/components/organisms/TechStack';
+import { HackathonsSection } from '@/components/organisms/HackathonsSection';
 import { About } from '@/components/organisms/About';
 import { Footer } from '@/components/organisms/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground';
@@ -18,6 +19,9 @@ const Index = () => {
           <ProjectGrid />
           <section id="habilidades">
             <TechStack />
+          </section>
+          <section id="hackathons">
+            <HackathonsSection />
           </section>
           <section id="sobre">
             <About />
