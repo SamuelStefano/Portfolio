@@ -1,4 +1,4 @@
-ï»¿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 interface GitHubStats {
   totalCommits: number;
@@ -50,8 +50,8 @@ export const useGitHubStats = () => {
 
         if (!reposResponse.ok) {
           const errorText = await reposResponse.text();
-          console.error('âŒ Erro na resposta:', errorText);
-          throw new Error(`Erro ao buscar repositÃ³rios: ${reposResponse.status}`);
+          console.error('? Erro na resposta:', errorText);
+          throw new Error(`Erro ao buscar repositórios: ${reposResponse.status}`);
         }
 
         const repos = await reposResponse.json();
@@ -106,7 +106,7 @@ export const useGitHubStats = () => {
 
 
       } catch (error) {
-        console.error('Erro ao buscar estatÃ­sticas do GitHub:', error);
+        console.error('Erro ao buscar estatísticas do GitHub:', error);
 
         setStats({
           totalCommits: 350,
@@ -122,7 +122,7 @@ export const useGitHubStats = () => {
             'Python': 5000
           },
           isLoading: false,
-          error: 'Usando dados estimados (GitHub API indisponÃ­vel)'
+          error: 'Usando dados estimados (GitHub API indisponível)'
         });
       }
     };
@@ -132,3 +132,6 @@ export const useGitHubStats = () => {
 
   return stats;
 };
+
+
+

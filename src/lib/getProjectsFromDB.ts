@@ -1,10 +1,10 @@
-Ôªøimport { supabase } from './supabaseclient';
+import { supabase } from './supabaseclient';
 import { Project } from '../types/project';
 import { getProjectImagesFromBucket, discoverProjectsFromBuckets } from './simpleBucketAccess';
 
 export const getProjectsFromDB = async (): Promise<Project[]> => {
   if (!supabase) {
-    console.error('‚ùå Supabase n√£o est√° configurado');
+    console.error('? Supabase n„o est· configurado');
     return [];
   }
 
@@ -17,7 +17,7 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
     
     // Combinar dados mockados com imagens do storage
     const projectsWithImages: Project[] = mockProjects.map(mockProject => {
-      // Encontrar projeto correspondente no storage pelo t√≠tulo
+      // Encontrar projeto correspondente no storage pelo tÌtulo
       const storageProject = discovered.find(d => 
         d.title.toLowerCase().includes(mockProject.title.toLowerCase()) ||
         mockProject.title.toLowerCase().includes(d.title.toLowerCase())
@@ -32,7 +32,7 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
             id: `${mockProject.id}-${index + 1}`,
             folder_name,
             display_name: folder_name.charAt(0).toUpperCase() + folder_name.slice(1),
-            description: `Imagens da se√ß√£o ${folder_name}`,
+            description: `Imagens da seÁ„o ${folder_name}`,
             order_index: index + 1,
             project_images: images.map((image_url, imgIndex) => ({
               id: `${mockProject.id}-${index + 1}-${imgIndex + 1}`,
@@ -48,7 +48,7 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
     
     return projectsWithImages;
   } catch (error) {
-    console.error('‚ùå Erro ao combinar dados:', error);
+    console.error('? Erro ao combinar dados:', error);
     // Fallback para dados mockados apenas
     const { mockProjects } = await import('./mockProjects');
     return mockProjects;
@@ -57,7 +57,7 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
 
 export const getProjectById = async (id: string): Promise<Project | null> => {
   if (!supabase) {
-    console.error('Supabase n√£o est√° configurado');
+    console.error('Supabase n„o est· configurado');
     return null;
   }
 
@@ -95,3 +95,6 @@ export const getProjectById = async (id: string): Promise<Project | null> => {
     return null;
   }
 };
+
+
+

@@ -1,4 +1,4 @@
-Ôªøimport { supabase } from './supabaseclient';
+import { supabase } from './supabaseclient';
 import { ProjectImageFolder } from '@/types/project';
 import { organizeImagesByFolders } from './organizeImagesByFolders';
 
@@ -16,13 +16,13 @@ export async function listFilesFromBucket(
       });
 
     if (error) {
-      console.error("‚ùå Erro ao listar arquivos:", error);
+      console.error("? Erro ao listar arquivos:", error);
       throw error;
     }
 
     return data || [];
   } catch (error) {
-    console.error("‚ùå Erro ao acessar storage:", error);
+    console.error("? Erro ao acessar storage:", error);
     throw error;
   }
 }
@@ -42,26 +42,26 @@ export async function listProjectFolders(
       });
 
     if (error) {
-      console.error("‚ùå Erro ao listar pastas:", error);
-      console.error("‚ùå Detalhes do erro:", error.message, error.statusCode);
+      console.error("? Erro ao listar pastas:", error);
+      console.error("? Detalhes do erro:", error.message, error.statusCode);
 
       const { data: rootData, error: rootError } = await supabase.storage
         .from(bucket)
         .list('', { limit: 100 });
 
       if (rootError) {
-        console.error("‚ùå Erro ao acessar raiz do bucket:", rootError);
-        throw new Error(`Bucket '${bucket}' n√£o acess√≠vel: ${rootError.message}`);
+        console.error("? Erro ao acessar raiz do bucket:", rootError);
+        throw new Error(`Bucket '${bucket}' n„o acessÌvel: ${rootError.message}`);
       }
 
-      throw new Error(`Caminho '${projectPath}' n√£o encontrado no bucket '${bucket}'`);
+      throw new Error(`Caminho '${projectPath}' n„o encontrado no bucket '${bucket}'`);
     }
 
     const folders = data?.filter(item => !item.name.includes('.')) || [];
 
     return folders.map(folder => folder.name);
   } catch (error) {
-    console.error("‚ùå Erro ao acessar storage:", error);
+    console.error("? Erro ao acessar storage:", error);
     throw error;
   }
 }
@@ -87,7 +87,7 @@ export async function getImagesFromFolder(
 
     return imageUrls;
   } catch (error) {
-    console.error("‚ùå Erro ao buscar imagens:", error);
+    console.error("? Erro ao buscar imagens:", error);
     return [];
   }
 }
@@ -128,7 +128,7 @@ export async function organizeProjectImagesFromStorage(
 
     return imageFolders.sort((a, b) => a.order_index - b.order_index);
   } catch (error) {
-    console.error("‚ùå Erro ao organizar imagens:", error);
+    console.error("? Erro ao organizar imagens:", error);
     return [];
   }
 }
@@ -137,61 +137,61 @@ function getFolderConfig(folderName: string) {
   const configs: Record<string, any> = {
     'admin': {
       display_name: 'Painel Administrativo',
-      description: 'Interface de administra√ß√£o e controle do sistema',
+      description: 'Interface de administraÁ„o e controle do sistema',
       icon_name: 'Settings',
       order_index: 1
     },
     'dashboard': {
       display_name: 'Dashboard',
-      description: 'Interface principal com m√©tricas e visualiza√ß√µes',
+      description: 'Interface principal com mÈtricas e visualizaÁıes',
       icon_name: 'BarChart3',
       order_index: 2
     },
     'create': {
-      display_name: 'Cria√ß√£o',
-      description: 'Processo de desenvolvimento e cria√ß√£o',
+      display_name: 'CriaÁ„o',
+      description: 'Processo de desenvolvimento e criaÁ„o',
       icon_name: 'Code',
       order_index: 3
     },
     'login': {
-      display_name: 'Autentica√ß√£o',
-      description: 'Sistema de login e autentica√ß√£o',
+      display_name: 'AutenticaÁ„o',
+      description: 'Sistema de login e autenticaÁ„o',
       icon_name: 'Shield',
       order_index: 4
     },
     'mobile': {
-      display_name: 'Vers√£o Mobile',
-      description: 'Interface otimizada para dispositivos m√≥veis',
+      display_name: 'Vers„o Mobile',
+      description: 'Interface otimizada para dispositivos mÛveis',
       icon_name: 'Smartphone',
       order_index: 5
     },
     'desktop': {
-      display_name: 'Vers√£o Desktop',
+      display_name: 'Vers„o Desktop',
       description: 'Interface para computadores desktop',
       icon_name: 'Laptop',
       order_index: 6
     },
     'web': {
-      display_name: 'Vers√£o Web',
+      display_name: 'Vers„o Web',
       description: 'Interface web responsiva',
       icon_name: 'Globe',
       order_index: 7
     },
     'backend': {
       display_name: 'Backend',
-      description: 'Arquitetura e servi√ßos do backend',
+      description: 'Arquitetura e serviÁos do backend',
       icon_name: 'Server',
       order_index: 8
     },
     'database': {
       display_name: 'Banco de Dados',
-      description: 'Estrutura e gest√£o de dados',
+      description: 'Estrutura e gest„o de dados',
       icon_name: 'Database',
       order_index: 9
     },
     'others': {
       display_name: 'Outros',
-      description: 'Informa√ß√µes adicionais e detalhes',
+      description: 'InformaÁıes adicionais e detalhes',
       icon_name: 'Rocket',
       order_index: 99
     }
@@ -200,8 +200,11 @@ function getFolderConfig(folderName: string) {
   const key = folderName.toLowerCase();
   return configs[key] || {
     display_name: folderName.charAt(0).toUpperCase() + folderName.slice(1),
-    description: `Imagens da se√ß√£o ${folderName}`,
+    description: `Imagens da seÁ„o ${folderName}`,
     icon_name: 'Code',
     order_index: 50
   };
 }
+
+
+

@@ -1,4 +1,4 @@
-﻿export interface ProjectCollaborator {
+export interface ProjectCollaborator {
   id: string;
   name: string;
   role: string;
@@ -201,3 +201,5 @@ export type LucideIconName =
   | 'Dog'
   | 'Rabbit'
   | 'Turtle';
+
+

@@ -54,3 +54,6 @@ export const optimizeImage = (src: string, width?: number, quality = 80): string
   }
   return src;
 };
+
+
+

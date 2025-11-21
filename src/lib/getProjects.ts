@@ -1,8 +1,8 @@
-﻿import { supabase, isSupabaseConfigured } from "@/lib/supabaseclient";
+import { supabase, isSupabaseConfigured } from "@/lib/supabaseclient";
 
 export async function getProjects() {
   if (!isSupabaseConfigured() || !supabase) {
-    throw new Error('Supabase não configurado');
+    throw new Error('Supabase n�o configurado');
   }
 
   const { data, error } = await supabase
@@ -13,3 +13,6 @@ export async function getProjects() {
   if (error) throw error;
   return data;
 }
+
+
+

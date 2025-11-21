@@ -1,4 +1,4 @@
-Ôªøimport { ProjectImageFolder } from '@/types/project';
+import { ProjectImageFolder } from '@/types/project';
 
 const folderConfigMap: Record<string, {
   display_name: string;
@@ -8,61 +8,61 @@ const folderConfigMap: Record<string, {
 }> = {
   'admin': {
     display_name: 'Painel Administrativo',
-    description: 'Interface de administra√ß√£o e controle do sistema',
+    description: 'Interface de administraÁ„o e controle do sistema',
     icon_name: 'Settings',
     order_index: 1
   },
   'dashboard': {
     display_name: 'Dashboard',
-    description: 'Interface principal com m√©tricas e visualiza√ß√µes',
+    description: 'Interface principal com mÈtricas e visualizaÁıes',
     icon_name: 'BarChart3',
     order_index: 2
   },
   'create': {
-    display_name: 'Cria√ß√£o',
-    description: 'Processo de desenvolvimento e cria√ß√£o',
+    display_name: 'CriaÁ„o',
+    description: 'Processo de desenvolvimento e criaÁ„o',
     icon_name: 'Code',
     order_index: 3
   },
   'login': {
-    display_name: 'Autentica√ß√£o',
-    description: 'Sistema de login e autentica√ß√£o',
+    display_name: 'AutenticaÁ„o',
+    description: 'Sistema de login e autenticaÁ„o',
     icon_name: 'Shield',
     order_index: 4
   },
   'mobile': {
-    display_name: 'Vers√£o Mobile',
-    description: 'Interface otimizada para dispositivos m√≥veis',
+    display_name: 'Vers„o Mobile',
+    description: 'Interface otimizada para dispositivos mÛveis',
     icon_name: 'Smartphone',
     order_index: 5
   },
   'desktop': {
-    display_name: 'Vers√£o Desktop',
+    display_name: 'Vers„o Desktop',
     description: 'Interface para computadores desktop',
     icon_name: 'Laptop',
     order_index: 6
   },
   'web': {
-    display_name: 'Vers√£o Web',
+    display_name: 'Vers„o Web',
     description: 'Interface web responsiva',
     icon_name: 'Globe',
     order_index: 7
   },
   'backend': {
     display_name: 'Backend',
-    description: 'Arquitetura e servi√ßos do backend',
+    description: 'Arquitetura e serviÁos do backend',
     icon_name: 'Server',
     order_index: 8
   },
   'database': {
     display_name: 'Banco de Dados',
-    description: 'Estrutura e gest√£o de dados',
+    description: 'Estrutura e gest„o de dados',
     icon_name: 'Database',
     order_index: 9
   },
   'api': {
     display_name: 'API',
-    description: 'Documenta√ß√£o e endpoints da API',
+    description: 'DocumentaÁ„o e endpoints da API',
     icon_name: 'Zap',
     order_index: 10
   },
@@ -74,37 +74,37 @@ const folderConfigMap: Record<string, {
   },
   'testing': {
     display_name: 'Testes',
-    description: 'Estrat√©gias e implementa√ß√£o de testes',
+    description: 'EstratÈgias e implementaÁ„o de testes',
     icon_name: 'CheckCircle',
     order_index: 12
   },
   'security': {
-    display_name: 'Seguran√ßa',
-    description: 'Medidas de seguran√ßa e prote√ß√£o',
+    display_name: 'SeguranÁa',
+    description: 'Medidas de seguranÁa e proteÁ„o',
     icon_name: 'Shield',
     order_index: 13
   },
   'performance': {
     display_name: 'Performance',
-    description: 'Otimiza√ß√µes e m√©tricas de performance',
+    description: 'OtimizaÁıes e mÈtricas de performance',
     icon_name: 'Zap',
     order_index: 14
   },
   'ui': {
     display_name: 'Interface',
-    description: 'Design e experi√™ncia do usu√°rio',
+    description: 'Design e experiÍncia do usu·rio',
     icon_name: 'Palette',
     order_index: 15
   },
   'ux': {
-    display_name: 'Experi√™ncia',
-    description: 'Fluxos e jornada do usu√°rio',
+    display_name: 'ExperiÍncia',
+    description: 'Fluxos e jornada do usu·rio',
     icon_name: 'Users',
     order_index: 16
   },
   'others': {
     display_name: 'Outros',
-    description: 'Informa√ß√µes adicionais e detalhes',
+    description: 'InformaÁıes adicionais e detalhes',
     icon_name: 'Rocket',
     order_index: 99
   }
@@ -139,7 +139,7 @@ export function organizeImagesByFolders(
 
     const config = folderConfigMap[folderName] || {
       display_name: folderName.charAt(0).toUpperCase() + folderName.slice(1),
-      description: `Imagens da se√ß√£o ${folderName}`,
+      description: `Imagens da seÁ„o ${folderName}`,
       icon_name: 'Code',
       order_index: 50
     };
@@ -191,3 +191,6 @@ export function getFolderDisplayName(folderName: string): string {
   const config = folderConfigMap[folderName.toLowerCase()];
   return config?.display_name || folderName.charAt(0).toUpperCase() + folderName.slice(1);
 }
+
+
+

@@ -1,4 +1,4 @@
-Ôªøexport interface SectionMetadata {
+export interface SectionMetadata {
   displayName: string;
   description: string;
   technologies: string[];
@@ -17,37 +17,37 @@ export const normalizeSectionKey = (name: string): string => {
 const SECTION_MAP: Record<string, SectionMetadata> = {
   admin: {
     displayName: "Painel Administrativo",
-    description: "√Årea de administra√ß√£o com telas de gest√£o, controle e configura√ß√µes.",
+    description: "¡rea de administraÁ„o com telas de gest„o, controle e configuraÁıes.",
     technologies: [...DEFAULT_TECHS]
   },
   challenge: {
     displayName: "Desafios",
-    description: "Fluxos relacionados a desafios, submiss√µes e ranking.",
+    description: "Fluxos relacionados a desafios, submissıes e ranking.",
     technologies: [...DEFAULT_TECHS]
   },
   create: {
-    displayName: "Cria√ß√£o",
-    description: "Telas de cria√ß√£o/edi√ß√£o de conte√∫do e formul√°rios.",
+    displayName: "CriaÁ„o",
+    description: "Telas de criaÁ„o/ediÁ„o de conte˙do e formul·rios.",
     technologies: [...DEFAULT_TECHS]
   },
   dashboard: {
     displayName: "Dashboard",
-    description: "Vis√£o geral com gr√°ficos, m√©tricas e indicadores.",
+    description: "Vis„o geral com gr·ficos, mÈtricas e indicadores.",
     technologies: [...DEFAULT_TECHS, "Charts"]
   },
   login: {
-    displayName: "Autentica√ß√£o",
-    description: "Fluxos de login, cadastro e recupera√ß√£o de senha.",
+    displayName: "AutenticaÁ„o",
+    description: "Fluxos de login, cadastro e recuperaÁ„o de senha.",
     technologies: [...DEFAULT_TECHS]
   },
   others: {
     displayName: "Outros",
-    description: "Se√ß√µes auxiliares e elementos diversos do projeto.",
+    description: "SeÁıes auxiliares e elementos diversos do projeto.",
     technologies: [...DEFAULT_TECHS]
   },
   aboutus: {
-    displayName: "Sobre N√≥s",
-    description: "Se√ß√£o institucional com informa√ß√µes da equipe e proposta.",
+    displayName: "Sobre NÛs",
+    description: "SeÁ„o institucional com informaÁıes da equipe e proposta.",
     technologies: [...DEFAULT_TECHS]
   },
   cardcourses: {
@@ -57,27 +57,27 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
   },
   community: {
     displayName: "Comunidade",
-    description: "P√°ginas e componentes voltados √† comunidade.",
+    description: "P·ginas e componentes voltados ‡ comunidade.",
     technologies: [...DEFAULT_TECHS]
   },
   footer: {
-    displayName: "Rodap√©",
-    description: "Estrutura e links do rodap√© do site.",
+    displayName: "RodapÈ",
+    description: "Estrutura e links do rodapÈ do site.",
     technologies: [...DEFAULT_TECHS]
   },
   hero: {
-    displayName: "Se√ß√£o Principal",
-    description: "√Årea hero com t√≠tulo, subt√≠tulo e chamada principal.",
+    displayName: "SeÁ„o Principal",
+    description: "¡rea hero com tÌtulo, subtÌtulo e chamada principal.",
     technologies: [...DEFAULT_TECHS]
   },
   methodologies: {
     displayName: "Metodologias",
-    description: "Apresenta√ß√£o de metodologias, processos e boas pr√°ticas.",
+    description: "ApresentaÁ„o de metodologias, processos e boas pr·ticas.",
     technologies: [...DEFAULT_TECHS]
   },
   plansandprices: {
-    displayName: "Planos e Pre√ßos",
-    description: "Tabela de planos, pre√ßos e benef√≠cios.",
+    displayName: "Planos e PreÁos",
+    description: "Tabela de planos, preÁos e benefÌcios.",
     technologies: [...DEFAULT_TECHS]
   },
   tablecodelibrary: {
@@ -87,7 +87,7 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
   },
   devfellowship: {
     displayName: "DevFellowship",
-    description: "Se√ß√µes e componentes do projeto DevFellowship.",
+    description: "SeÁıes e componentes do projeto DevFellowship.",
     technologies: [...DEFAULT_TECHS]
   }
 };
@@ -99,9 +99,12 @@ export const getSectionMetadata = (folderName: string): SectionMetadata => {
   return {
     displayName: folderName && folderName.trim().length
       ? folderName
-      : "Se√ß√£o",
-    description: `Imagens e componentes da se√ß√£o ${folderName}`,
+      : "SeÁ„o",
+    description: `Imagens e componentes da seÁ„o ${folderName}`,
     technologies: [...DEFAULT_TECHS]
   };
 };
+
+
+
 
