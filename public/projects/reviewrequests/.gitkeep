@@ -1,0 +1,21 @@
+# Review Requests - Imagens do Projeto
+
+Esta pasta é destinada às imagens do projeto Review Requests.
+
+## Instruções:
+- Adicione aqui as capturas de tela e imagens do projeto Review Requests
+- Formatos recomendados: .jpg, .png, .webp
+- Organize as imagens em subpastas se necessário (ex: dashboard/, reviews/, admin/, etc.)
+
+## Exemplo de estrutura:
+```
+reviewrequests/
+├── thumbnail.jpg (imagem principal do card)
+├── dashboard/
+│   └── overview.jpg
+├── reviews/
+│   └── review-flow.jpg
+└── admin/
+    └── management.jpg
+```
+

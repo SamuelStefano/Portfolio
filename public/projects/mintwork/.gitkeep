@@ -1,0 +1,21 @@
+# MintWork (DevConnect / Talent DAO) - Imagens do Projeto
+
+Esta pasta é destinada às imagens do projeto MintWork.
+
+## Instruções:
+- Adicione aqui as capturas de tela e imagens do projeto MintWork/DevConnect
+- Formatos recomendados: .jpg, .png, .webp
+- Organize as imagens em subpastas se necessário (ex: jobs/, nft/, marketplace/, etc.)
+
+## Exemplo de estrutura:
+```
+mintwork/
+├── thumbnail.jpg (imagem principal do card)
+├── jobs/
+│   └── job-listing.jpg
+├── marketplace/
+│   └── escrow-flow.jpg
+└── nft/
+    └── credentials.jpg
+```
+

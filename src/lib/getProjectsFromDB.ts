@@ -46,7 +46,6 @@ export const getProjectsFromDB = async (): Promise<Project[]> => {
       return mockProject;
     });
     
-    console.log('📝 Combinando dados mockados com imagens do storage');
     return projectsWithImages;
   } catch (error) {
     console.error('❌ Erro ao combinar dados:', error);

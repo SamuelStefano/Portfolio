@@ -5,9 +5,9 @@ export const TECH_CATEGORIES = [
     title: 'Frontend',
     icon: Globe,
     skills: [
-      { name: 'React', level: 80 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Next.js', level: 80 },
+      { name: 'React', level: 100 },
+      { name: 'TypeScript', level: 100 },
+      { name: 'Next.js', level: 100 },
       { name: 'TailwindCSS', level: 100 },
       { name: 'Storybook', level: 90 },
     ],
@@ -19,9 +19,9 @@ export const TECH_CATEGORIES = [
     skills: [
       { name: 'Node.js', level: 80 },
       { name: 'NestJS', level: 75 },
-      { name: 'Delphi', level: 15 },
       { name: 'APIs', level: 90 },
       { name: 'JWT', level: 80 },
+      { name: 'Web3 Integration', level: 70 },
     ],
     color: 'neon-purple'
   },
@@ -29,7 +29,7 @@ export const TECH_CATEGORIES = [
     title: 'Database',
     icon: Database,
     skills: [
-      { name: 'Supabase', level: 85 },
+      { name: 'Supabase', level: 90 },
       { name: 'PostgreSQL', level: 70 },
       { name: 'MySQL', level: 70 },
       { name: 'Prisma', level: 40 },
@@ -42,10 +42,13 @@ export const TECH_CATEGORIES = [
     icon: Cpu,
     skills: [
       { name: 'Docker', level: 80 },
-      { name: 'VPS', level: 70 },
-      { name: 'WSL', level: 70 },
-      { name: 'Git', level: 90 },
-      { name: 'Figma', level: 70 }
+      { name: 'VPS', level: 60 },
+      { name: 'WSL', level: 80 },
+      { name: 'Git', level: 100 },
+      { name: 'Figma', level: 50 },
+      { name: 'Vercel', level: 100 },
+      { name: 'n8n', level: 5 },
+      { name: 'AWS', level: 50 }
     ],
     color: 'accent'
   },
@@ -53,23 +56,24 @@ export const TECH_CATEGORIES = [
     title: 'Engenharia de Software',
     icon: Brain,
     skills: [
-      { name: 'Miro', level: 80 },
+      { name: 'Miro', level: 90 },
       { name: 'Documentação', level: 100 },
       { name: 'Testes', level: 100 },
-      { name: 'Arquitetura', level: 80 },
+      { name: 'Arquitetura', level: 90 },
       { name: 'CI/CD', level: 100 },
       { name: 'Componentização', level: 100 },
     ],
     color: 'neon-green'
   },
   {
-    title: 'Outros',
+    title: 'Web3 & Blockchain',
     icon: Code,
     skills: [
-      { name: 'Linux/Ubuntu', level: 70 },
-      { name: 'Deploy', level: 70 },
-      { name: 'Kotlin', level: 20 },
-      { name: 'n8n', level: 10 }
+      { name: 'Solidity', level: 20 },
+      { name: 'Smart Contracts', level: 65 },
+      { name: 'ERC-20 / ERC-721', level: 70 },
+      { name: 'Base / Scroll', level: 60 },
+      { name: 'Viem', level: 20 }
     ],
     color: 'neon-green'
   },
@@ -88,10 +92,10 @@ export const EXPERIENCE_DATA = [
   },
   {
     company: 'DevFellowship',
-    role: 'Desenvolvedor Full-Stack',
+    role: 'Desenvolvedor Full-Stack & Mentor',
     period: 'Julho 2024 - Presente',
-    description: 'Desenvolvimento de projetos educacionais e plataformas de desafios. Trabalho em equipe com metodologias ágeis.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs',],
+    description: 'Desenvolvimento de projetos educacionais, plataformas de desafios e sistemas Web3. Atuação como mentor, realizando revisões de código, auxiliando em arquitetura de software e orientando novos fellows. Participação em hackathons premiados.',
+    stack: ['React', 'TypeScript', 'Node.js', 'NestJS', 'Next.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'Solidity', 'Web3', 'Judge0', 'TailwindCSS', 'Git'],
     logo: '/DevFelloShip.png',
     icon: Briefcase,
     website: 'https://devfellowship.com'
@@ -118,7 +122,12 @@ export const ADDITIONAL_SKILLS = [
   'Suporte Técnico',
   'Frontend',
   'Backend',
-  'Banco de Dados',
+  'Web3 & Blockchain',
+  'Smart Contracts',
+  'Solidity',
+  'ERC-20 / ERC-721',
+  'Base',
+  'WEB3',
   'Trabalho em Equipe',
   'Metodologias Ágeis',
   'Resolução de Problemas',
@@ -138,11 +147,13 @@ export const ADDITIONAL_SKILLS = [
   'VPS',
   'WSL',
   'Vercel',
-  'n8n',
-  'Comprometimento'
+  'AWS',
+  'Supabase',
+  'Mentoria',
+  'Code Review'
 ];
 
-// Stats Template
+
 export const STATS_TEMPLATE = [
   {
     label: 'Tempo de atuação profissional',
@@ -165,6 +176,7 @@ export const STATS_TEMPLATE = [
     icon: Code2
   }
 ];
+
 
 
 

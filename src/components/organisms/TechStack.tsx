@@ -19,9 +19,9 @@ const getTechCategories = (t: any): TechCategory[] => [
     title: t('skills.frontend'),
     icon: Globe,
     skills: [
-      { name: 'React', level: 80 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Next.js', level: 80 },
+      { name: 'React', level: 100 },
+      { name: 'TypeScript', level: 100 },
+      { name: 'Next.js', level: 100 },
       { name: 'TailwindCSS', level: 100 },
       { name: 'Storybook', level: 90 },
     ],
@@ -32,10 +32,10 @@ const getTechCategories = (t: any): TechCategory[] => [
     icon: Server,
     skills: [
       { name: 'Node.js', level: 80 },
-      { name: 'NestJS', level: 75 },
-      { name: 'Delphi', level: 15 },
       { name: 'APIs', level: 90 },
       { name: 'JWT', level: 80 },
+      { name: 'NestJS', level: 75 },
+      { name: 'Web3 Integration', level: 60 },
     ],
     color: 'neon-purple'
   },
@@ -43,9 +43,9 @@ const getTechCategories = (t: any): TechCategory[] => [
     title: t('skills.database'),
     icon: Database,
     skills: [
-      { name: 'Supabase', level: 85 },
+      { name: 'Supabase', level: 90 },
       { name: 'PostgreSQL', level: 70 },
-      { name: 'MySQL', level: 70 },
+      { name: 'MongoDB', level: 70 },
       { name: 'Prisma', level: 40 },
       { name: 'Firebird', level: 20 }
     ],
@@ -55,11 +55,14 @@ const getTechCategories = (t: any): TechCategory[] => [
     title: t('skills.tools'),
     icon: Cpu,
     skills: [
+      { name: 'Git', level: 100 },
+      { name: 'Vercel', level: 100 },
       { name: 'Docker', level: 80 },
-      { name: 'VPS', level: 70 },
-      { name: 'WSL', level: 70 },
-      { name: 'Git', level: 90 },
-      { name: 'Figma', level: 70 }
+      { name: 'Judge0', level: 80 },
+      { name: 'WSL', level: 80 },
+      { name: 'Linux/Ubuntu', level: 70 },
+      { name: 'VPS', level: 60 },
+      { name: 'AWS', level: 50 },
     ],
     color: 'accent'
   },
@@ -67,25 +70,31 @@ const getTechCategories = (t: any): TechCategory[] => [
     title: t('skills.softwareEngineering'),
     icon: Brain,
     skills: [
-      { name: 'Miro', level: 80 },
+    
       { name: t('skills.documentation'), level: 100 },
       { name: t('skills.testing'), level: 100 },
-      { name: t('skills.architecture'), level: 80 },
-      { name: 'CI/CD', level: 100 },
       { name: t('skills.componentization'), level: 100 },
+      { name: t('skills.SOLID'), level: 100 },
+      { name: 'CI/CD', level: 100 },
+      { name: t('skills.architecture'), level: 90 },
+      { name: 'Miro', level: 90 },
+
+
     ],
     color: 'neon-green'
   },
   {
-    title: t('skills.others'),
+    title: t('skills.web3Blockchain'),
     icon: Code,
     skills: [
-      { name: 'Linux/Ubuntu', level: 70 },
-      { name: t('skills.deploy'), level: 70 },
-      { name: 'Kotlin', level: 20 },
-      { name: 'n8n', level: 10 }
+      { name: 'Base / Scroll', level: 90 },
+      { name: 'Viem', level: 40 },
+      { name: 'Solidity', level: 20 },
+      { name: 'Smart Contracts', level: 20 },
+      { name: 'ERC-20 / ERC-721', level: 20 }
+
     ],
-    color: 'neon-green'
+    color: 'neon-purple'
   },
 ];
 
@@ -110,7 +119,7 @@ const getExperienceData = (t: any) => {
     },
     {
       ...translatedData[1],
-      stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'WSL', 'Vercel', 'n8n', 'Linux/Ubuntu', 'Git', 'TailwindCSS', 'NestJS', 'Nextjs'],
+      stack: ['React', 'TypeScript', 'Node.js', 'NestJS', 'Next.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'Solidity', 'Web3', 'Judge0', 'TailwindCSS', 'Git'],
       logo: '/DevFelloShip.png',
       icon: Briefcase,
       website: 'https://devfellowship.com'

@@ -1,0 +1,21 @@
+# GreenLoop - Imagens do Projeto
+
+Esta pasta é destinada às imagens do projeto GreenLoop.
+
+## Instruções:
+- Adicione aqui as capturas de tela e imagens do projeto GreenLoop
+- Formatos recomendados: .jpg, .png, .webp
+- Organize as imagens em subpastas se necessário (ex: dashboard/, mobile/, etc.)
+
+## Exemplo de estrutura:
+```
+greenloop/
+├── thumbnail.jpg (imagem principal do card)
+├── dashboard/
+│   └── main-view.jpg
+├── mobile/
+│   └── app-screen.jpg
+└── features/
+    └── token-rewards.jpg
+```
+

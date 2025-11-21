@@ -23,7 +23,10 @@ const getProjectKey = (title: string): string | null => {
   const titleMap: Record<string, string> = {
     'Skill Evals': 'skillEvals',
     'DevFellowship': 'devfellowship',
-    'CodeLibrary': 'codeLibrary'
+    'CodeLibrary': 'codeLibrary',
+    'GreenLoop': 'greenloop',
+    'TalentDAO': 'talentdao',
+    'Review Requests': 'reviewRequests'
   };
   
   return titleMap[title] || null;

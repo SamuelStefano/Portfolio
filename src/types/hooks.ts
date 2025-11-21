@@ -37,10 +37,3 @@ export interface UseProjectsReturn {
   refetch: () => Promise<void>;
 }
 
-// Database Test Types
-export interface DatabaseTestResult {
-  success: boolean;
-  message: string;
-  data?: any;
-  error?: string;
-}
