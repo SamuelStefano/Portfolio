@@ -309,10 +309,6 @@
       "description": "Landing page moderna da plataforma de cursos CodeLibrary, apresentando os cursos disponíveis e funcionalidades da plataforma.",
       "longDescription": "Landing page criada para a plataforma CodeLibrary da DevFellowship. Design moderno e responsivo, mostrando os cursos disponíveis, trilhas de aprendizado e benefícios da plataforma."
     },
-    "learnDevfellowship": {
-      "description": "Plataforma completa de cursos e trilhas educacionais da DevFellowship, evoluída do projeto CodeLibrary.",
-      "longDescription": "Learn.devfellowship é a plataforma educacional oficial da DevFellowship, que evoluiu do projeto CodeLibrary. Sistema completo de cursos com trilhas de aprendizado, vídeo aulas, exercícios práticos, acompanhamento de progresso e emissão de certificados."
-    },
     "greenloop": {
       "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain. 4º lugar no ETH Latam 2025.",
       "longDescription": "GreenLoop é uma plataforma criada durante o ETH Latam 2025 que registra recicláveis entregues em pontos de coleta e converte essas entregas em tokens on-chain, usando tecnologia da rede Base. Conquistamos o 4º lugar no hackathon."

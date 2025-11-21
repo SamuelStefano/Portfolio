@@ -320,10 +320,6 @@
     "reviewRequests": {
       "description": "Sistema interno de revisiones de tareas de DevFellowship, similar a Pull Requests.",
       "longDescription": "Review Requests es un sistema interno desarrollado para DevFellowship que permite crear, revisar y evaluar tareas de forma estructurada. Con ciclos completos de revisión, aprobación/rechazo, reevaluación e historial detallado."
-    },
-    "learnDevfellowship": {
-      "description": "Plataforma completa de cursos y trilhas educativas de DevFellowship.",
-      "longDescription": "Learn.devfellowship es la plataforma educativa oficial de DevFellowship. Sistema completo de cursos con trilhas de aprendizaje, video clases, ejercicios prácticos, seguimiento de progreso y emisión de certificados."
     }
   },
   "projectSections": {

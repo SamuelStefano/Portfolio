@@ -320,10 +320,6 @@
     "reviewRequests": {
       "description": "DevFellowship's internal task review system, similar to Pull Requests.",
       "longDescription": "Review Requests is an internal system developed for DevFellowship that allows creating, reviewing and evaluating tasks in a structured way. With complete review cycles, approval/rejection, reassessment and detailed history."
-    },
-    "learnDevfellowship": {
-      "description": "Complete platform of courses and educational tracks from DevFellowship.",
-      "longDescription": "Learn.devfellowship is DevFellowship's official educational platform. Complete course system with learning tracks, video lessons, practical exercises, progress tracking and certificate issuance."
     }
   },
   "projectSections": {
