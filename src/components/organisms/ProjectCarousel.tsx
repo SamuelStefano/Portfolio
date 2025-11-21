@@ -290,10 +290,6 @@ export const ProjectCarousel = () => {
                         loading="lazy"
                         decoding="async"
                       />
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <IconComponent className="w-16 h-16 text-primary/80" />
-                    </div>
                   </div>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">

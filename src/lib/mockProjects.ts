@@ -328,14 +328,14 @@ export const mockProjects: Project[] = [
       {
         id: '1',
         name: 'Samuel Stefano',
-        role: 'Creator',
+        role: 'Collaborator',
         avatar_url: '/Samuel.jpg',
         created_at: '2024-11-01T00:00:00Z'
       },
       {
         id: '2',
         name: 'Tainan Fidelis',
-        role: 'Collaborator',
+        role: 'Creator',
         avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-11-01T00:00:00Z'
       }
