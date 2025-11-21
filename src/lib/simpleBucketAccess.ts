@@ -1,4 +1,4 @@
-﻿import { supabase } from './supabaseclient';
+import { supabase } from './supabaseclient';
 import { normalizeSectionKey } from './sectionMetadata';
 
 export const getProjectImagesFromBucket = async (
@@ -67,7 +67,7 @@ export const getProjectImagesFromBucket = async (
 
     return {};
   } catch (e) {
-    console.error('❌ Erro ao acessar storage:', e);
+    console.error('? Erro ao acessar storage:', e);
     return {};
   }
 };
@@ -197,4 +197,7 @@ export const discoverProjectsFromBuckets = async (): Promise<Array<{
 
   return results;
 };
+
+
+
 

@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const useExperienceTime = () => {
@@ -52,3 +52,6 @@ export const useExperienceTime = () => {
     formatted: getFormattedTime()
   };
 };
+
+
+

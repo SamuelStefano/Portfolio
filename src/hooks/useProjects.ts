@@ -1,4 +1,4 @@
-Ôªøimport { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Project } from '../types/project';
 import { getProjectsFromDB } from '../lib/getProjectsFromDB';
 import { mockProjects } from '../lib/mockProjects';
@@ -15,7 +15,7 @@ export const useProjects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Efeito para carregar dados do banco (s√≥ uma vez)
+  // Efeito para carregar dados do banco (sÛ uma vez)
   useEffect(() => {
     const fetchRawProjects = async () => {
       try {
@@ -24,7 +24,7 @@ export const useProjects = () => {
 
         const now = Date.now();
         
-        // Se j√° temos dados em cache, n√£o precisa buscar novamente
+        // Se j· temos dados em cache, n„o precisa buscar novamente
         if (cachedRawProjects && cacheTime && (now - cacheTime < CACHE_DURATION)) {
           const translatedData = translateProjectDescriptions(cachedRawProjects, t);
           setProjects(translatedData);
@@ -32,10 +32,10 @@ export const useProjects = () => {
           return;
         }
 
-        // Se o Supabase n√£o estiver configurado, usa dados mockados diretamente
+        // Se o Supabase n„o estiver configurado, usa dados mockados diretamente
         const { isSupabaseConfigured } = await import('../lib/supabaseclient');
         if (!isSupabaseConfigured()) {
-          console.log('üìù Usando dados mockados (Supabase n√£o configurado)');
+          console.log('?? Usando dados mockados (Supabase n„o configurado)');
           cachedRawProjects = mockProjects;
           const translatedMockProjects = translateProjectDescriptions(mockProjects, t);
           setProjects(translatedMockProjects);
@@ -63,7 +63,7 @@ export const useProjects = () => {
     };
 
     fetchRawProjects();
-  }, []); // S√≥ executa uma vez
+  }, []); // SÛ executa uma vez
 
   // Efeito separado para traduzir quando o idioma muda
   useEffect(() => {
@@ -71,7 +71,7 @@ export const useProjects = () => {
       const translatedData = translateProjectDescriptions(cachedRawProjects, t);
       setProjects(translatedData);
     }
-  }, [t, i18n.language]); // S√≥ traduz, n√£o busca do banco
+  }, [t, i18n.language]); // SÛ traduz, n„o busca do banco
 
   const refetch = async () => {
     try {
@@ -100,3 +100,5 @@ export const useProjects = () => {
     refetch
   };
 };
+
+

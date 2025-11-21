@@ -1,4 +1,4 @@
-﻿import { LucideProps } from 'lucide-react';
+import { LucideProps } from 'lucide-react';
 import { LucideIconName } from '../types/project';
 
 import {
@@ -290,3 +290,5 @@ const iconMap: Record<LucideIconName, React.ComponentType<LucideProps>> = {
 export const getIconComponent = (iconName: LucideIconName) => {
   return iconMap[iconName] || Code;
 };
+
+

@@ -1,4 +1,4 @@
-﻿import { Project, ProjectImageFolder } from '@/types/project';
+import { Project, ProjectImageFolder } from '@/types/project';
 import { organizeImagesByFolders } from './organizeImagesByFolders';
 
 export function processProjectImages(project: Project, bucketPath: string): Project {
@@ -47,4 +47,7 @@ export function detectBucketPath(project: Project): string | null {
 
   return extractBucketPathFromUrl(imageUrl);
 }
+
+
+
 

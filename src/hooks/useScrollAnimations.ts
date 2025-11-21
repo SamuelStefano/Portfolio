@@ -1,4 +1,4 @@
-ï»¿'use client';
+'use client';
 
 import { useEffect, useRef } from 'react';
 
@@ -15,13 +15,13 @@ export const useScrollAnimations = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
-          // Parar de observar apÃ³s animar para melhor performance
+          // Parar de observar após animar para melhor performance
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    // Aguardar um pouco para garantir que o DOM estÃ¡ pronto
+    // Aguardar um pouco para garantir que o DOM está pronto
     const timeoutId = setTimeout(() => {
       const animatedElements = document.querySelectorAll(
         '.animate-fade-up, .animate-slide-left, .animate-slide-right, .animate-scale-in, .animate-rotate, .animate-fade-in'
@@ -40,3 +40,5 @@ export const useScrollAnimations = () => {
 
   return { containerRef };
 };
+
+
