@@ -184,6 +184,3 @@ export const STATS_TEMPLATE = [
 
 
 
-
-
-

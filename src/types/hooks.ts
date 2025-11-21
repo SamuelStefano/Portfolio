@@ -37,6 +37,3 @@ export interface UseProjectsReturn {
   refetch: () => Promise<void>;
 }
 
-
-
-

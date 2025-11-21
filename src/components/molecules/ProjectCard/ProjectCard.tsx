@@ -41,15 +41,15 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
           </div>
         )}
 
-        {/* Overlay com informações detalhadas */}
+        {/* Overlay com informaÃ§Ãµes detalhadas */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
           <div className="space-y-2">
-            {/* Título do projeto */}
+            {/* TÃ­tulo do projeto */}
             <Heading level={4} className="text-white text-sm font-bold">
               {project.title}
             </Heading>
             
-            {/* Descrição curta */}
+            {/* DescriÃ§Ã£o curta */}
             <Text className="text-white/80 text-xs line-clamp-2">
               {project.description}
             </Text>
@@ -71,7 +71,7 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
               )}
             </div>
             
-            {/* Botão de ver detalhes */}
+            {/* BotÃ£o de ver detalhes */}
             <Button variant="secondary" size="sm" className="w-full hover-glow mt-2">
               <Icon icon={ExternalLink} className="mr-2" />
               {t('projects.viewDetails')}
@@ -172,5 +172,3 @@ export const ProjectCard = ({ project, onProjectClick, isHovered = false }: Proj
 };
 
 export default ProjectCard;
-
-
