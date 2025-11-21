@@ -288,16 +288,6 @@
     "discoveredProjects": "Projetos descobertos",
     "sections": "Seções:"
   },
-  "projectStats": {
-    "technologies": "Tecnologias",
-    "collaborators": "Colaboradores",
-    "links": "Links",
-    "created": "Criado",
-    "project": "Projeto",
-    "technologiesCount": "Tecnologias",
-    "collaboratorsCount": "Colaboradores",
-    "linksCount": "Links"
-  },
   "projectDescriptions": {
     "skillEvals": {
       "description": "Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy.",
@@ -330,10 +320,10 @@
     "technologies": "Tecnologias",
     "viewProject": "Ver Projeto",
     "greenloop": {
-      "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. Participei do backend e integração com contratos inteligentes na rede Base."
+      "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. Participei do frontend, backend e integração com contratos inteligentes na rede Base."
     },
     "talentdao": {
-      "description": "Marketplace Web3 onde empresas podem criar jobs, pagar em USDC e gerar NFTs como credenciais de trabalho concluído. Participei da arquitetura dos contratos, fluxo de estados e integração do frontend com a blockchain."
+      "description": "Marketplace Web3 onde empresas podem criar jobs, pagar em USDC e gerar NFTs como credenciais de trabalho concluído. Participei da integração dos contratos, fluxo de estados e integração do frontend com a blockchain."
     }
   },
   "projectSections": {
@@ -350,6 +340,9 @@
     "mainDashboard": "Dashboard Principal",
     "challengeSystem": "Sistema de Desafios",
     "sectionImages": "Imagens da seção",
+    "sectionDetails": "Detalhes da Seção",
+    "image": "imagem",
+    "images": "imagens",
     "descriptions": {
       "mainDashboard": "Interface principal com estatísticas e desafios em destaque",
       "challengeSystem": "Interface para criação e resolução de desafios de programação",
@@ -357,5 +350,12 @@
       "landing": "Página inicial com apresentação da plataforma",
       "library": "Interface principal com busca e categorização de exemplos"
     }
+  },
+  "projectStats": {
+    "project": "Projeto",
+    "technologies": "Tecnologias",
+    "technologiesCount": "tecnologias",
+    "collaboratorsCount": "colaboradores",
+    "linksCount": "links"
   }
 }

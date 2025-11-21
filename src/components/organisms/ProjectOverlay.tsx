@@ -17,7 +17,9 @@ import {
   Laptop,
   Globe,
   Server,
-  Database
+  Database,
+  Github,
+  Link2
 } from 'lucide-react';
 import { Button } from '@/components/atoms/button';
 import { Heading } from '@/components/atoms/Heading';
@@ -321,12 +323,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
 
                   {project.stack && project.stack.length > 0 && (
                     <div className="space-y-4">
-                      <Heading level={3} className="text-xl">{t('projectStats.technologies')}</Heading>
+                      <Heading level={3} className="text-base sm:text-lg md:text-xl">{t('projects.techStack')}</Heading>
                       <div className="flex flex-wrap gap-2">
                         {project.stack.map((tech, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                            className="px-3 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20"
                           >
                             {tech}
                           </span>
@@ -335,47 +337,44 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     </div>
                   )}
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                    <div className="p-4 rounded-lg bg-card border border-border text-center">
-                      <Text variant="small" className="font-semibold">
-                        {project.stack?.length || 0} {t('projectStats.technologiesCount')}
-                      </Text>
-                    </div>
-                    <div className="p-4 rounded-lg bg-card border border-border text-center">
-                      <div className="flex items-center justify-center gap-2 mb-2">
-                        <Users className="w-4 h-4 text-primary" />
-                        <Text variant="small">{project.project_collaborators?.length || 0} {t('projectStats.collaboratorsCount')}</Text>
+                  {project.project_links && project.project_links.length > 0 && (
+                    <div className="space-y-4">
+                      <Heading level={3} className="text-base sm:text-lg md:text-xl flex items-center gap-2">
+                        <Link2 className="w-5 h-5 text-primary" />
+                        Links do Projeto
+                      </Heading>
+                      <div className="flex flex-wrap gap-3">
+                        {project.project_links.map((link, index) => (
+                          <a
+                            key={index}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 text-sm font-medium group"
+                          >
+                            {link.label.toLowerCase().includes('github') ? (
+                              <Github className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                            ) : (
+                              <ExternalLink className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                            )}
+                            <span>{link.label}</span>
+                          </a>
+                        ))}
                       </div>
-                      {project.project_collaborators && project.project_collaborators.length > 0 && (
-                        <div className="flex justify-center gap-1">
-                          {project.project_collaborators.slice(0, 3).map((collaborator, index) => (
-                            <div key={index} className="relative">
-                              <img
-                                src={collaborator.avatar_url || '/placeholder.svg'}
-                                alt={collaborator.name}
-                                className="w-6 h-6 rounded-full border border-primary/30 object-cover"
-                                title={collaborator.name}
-                              />
-                            </div>
-                          ))}
-                          {project.project_collaborators.length > 3 && (
-                            <div className="w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-                              <Text variant="small" className="text-xs text-primary">
-                                +{project.project_collaborators.length - 3}
-                              </Text>
-                            </div>
-                          )}
-                        </div>
-                      )}
                     </div>
-                    <div className="p-4 rounded-lg bg-card border border-border text-center">
-                      <ExternalLink className="w-4 h-4 inline mr-1 text-primary" />
-                      <Text variant="small">{project.project_links?.length || 0} {t('projectStats.linksCount')}</Text>
+                  )}
+
+                  <div className="flex items-center gap-4 pt-4 border-t border-border text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-primary" />
+                      <Text variant="small">{new Date(project.created_at).toLocaleDateString()}</Text>
                     </div>
-                    <div className="p-4 rounded-lg bg-card border border-border text-center">
-                      <Calendar className="w-4 h-4 inline mr-1 text-primary" />
-                      <Text variant="small">{new Date(project.created_at).toLocaleDateString("pt-BR")}</Text>
-                    </div>
+                    {project.project_collaborators && project.project_collaborators.length > 0 && (
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4 text-primary" />
+                        <Text variant="small">{project.project_collaborators.length} {project.project_collaborators.length === 1 ? t('projects.collaborator') : t('projects.collaborators_plural')}</Text>
+                      </div>
+                    )}
                   </div>
                 </div>
               </TabsContent>
@@ -383,16 +382,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
         {project.image_categories && Object.entries(project.image_categories)
           .filter(([category]) => !['thumb', 'thumbnail'].includes(category.toLowerCase()))
           .map(([category, images]) => {
-          const displayNames: Record<string, string> = {
-            'admin': 'Painel Administrativo',
-            'challenge': 'Desafios',
-            'create': 'Criação',
-            'dashboard': 'Dashboard',
-            'login': 'Autenticação',
-            'others': 'Outros',
-            'thumb': 'Thumbnail'
-          };
-
           const meta = getSectionMetadata(category);
           const displayName = meta.displayName;
 
@@ -424,23 +413,22 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                   </div>
                 )}
 
-                {}
-                <div className="p-6 rounded-xl bg-card border border-border">
-                  <Heading level={3} className="text-xl font-semibold mb-4 flex items-center">
-                    <Info className="w-5 h-5 text-primary mr-2" />
-                    Detalhes da Seção
+                <div className="p-4 sm:p-5 md:p-6 rounded-xl bg-card border border-border">
+                  <Heading level={3} className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 flex items-center">
+                    <Info className="w-4 h-4 sm:w-5 sm:h-5 text-primary mr-2" />
+                    {t('projectSections.sectionDetails')}
                   </Heading>
-                  <Text className="text-muted-foreground leading-relaxed mb-4">
+                  <Text className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
                     {meta.description}
                   </Text>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Image className="w-4 h-4" />
-                      {images.length} imagens
+                  <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1.5">
+                      <Image className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                      <span>{images.length} {images.length === 1 ? t('projectSections.image') : t('projectSections.images')}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Folder className="w-4 h-4" />
-                      Pasta: {category}
+                    <div className="flex items-center gap-1.5">
+                      <Folder className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                      <span>{displayName}</span>
                     </div>
                   </div>
                 </div>
