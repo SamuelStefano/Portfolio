@@ -17,37 +17,37 @@ export const normalizeSectionKey = (name: string): string => {
 const SECTION_MAP: Record<string, SectionMetadata> = {
   admin: {
     displayName: "Painel Administrativo",
-    description: "Área de administração com telas de gestão, controle e configurações.",
+    description: "ï¿½rea de administraï¿½ï¿½o com telas de gestï¿½o, controle e configuraï¿½ï¿½es.",
     technologies: [...DEFAULT_TECHS]
   },
   challenge: {
     displayName: "Desafios",
-    description: "Fluxos relacionados a desafios, submissões e ranking.",
+    description: "Fluxos relacionados a desafios, submissï¿½es e ranking.",
     technologies: [...DEFAULT_TECHS]
   },
   create: {
-    displayName: "Criação",
-    description: "Telas de criação/edição de conteúdo e formulários.",
+    displayName: "Criaï¿½ï¿½o",
+    description: "Telas de criaï¿½ï¿½o/ediï¿½ï¿½o de conteï¿½do e formulï¿½rios.",
     technologies: [...DEFAULT_TECHS]
   },
   dashboard: {
     displayName: "Dashboard",
-    description: "Visão geral com gráficos, métricas e indicadores.",
+    description: "Visï¿½o geral com grï¿½ficos, mï¿½tricas e indicadores.",
     technologies: [...DEFAULT_TECHS, "Charts"]
   },
   login: {
-    displayName: "Autenticação",
-    description: "Fluxos de login, cadastro e recuperação de senha.",
+    displayName: "Autenticaï¿½ï¿½o",
+    description: "Fluxos de login, cadastro e recuperaï¿½ï¿½o de senha.",
     technologies: [...DEFAULT_TECHS]
   },
   others: {
     displayName: "Outros",
-    description: "Seções auxiliares e elementos diversos do projeto.",
+    description: "Seï¿½ï¿½es auxiliares e elementos diversos do projeto.",
     technologies: [...DEFAULT_TECHS]
   },
   aboutus: {
-    displayName: "Sobre Nós",
-    description: "Seção institucional com informações da equipe e proposta.",
+    displayName: "Sobre Nï¿½s",
+    description: "Seï¿½ï¿½o institucional com informaï¿½ï¿½es da equipe e proposta.",
     technologies: [...DEFAULT_TECHS]
   },
   cardcourses: {
@@ -57,27 +57,27 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
   },
   community: {
     displayName: "Comunidade",
-    description: "Páginas e componentes voltados à comunidade.",
+    description: "Pï¿½ginas e componentes voltados ï¿½ comunidade.",
     technologies: [...DEFAULT_TECHS]
   },
   footer: {
-    displayName: "Rodapé",
-    description: "Estrutura e links do rodapé do site.",
+    displayName: "Rodapï¿½",
+    description: "Estrutura e links do rodapï¿½ do site.",
     technologies: [...DEFAULT_TECHS]
   },
   hero: {
-    displayName: "Seção Principal",
-    description: "Área hero com título, subtítulo e chamada principal.",
+    displayName: "Seï¿½ï¿½o Principal",
+    description: "ï¿½rea hero com tï¿½tulo, subtï¿½tulo e chamada principal.",
     technologies: [...DEFAULT_TECHS]
   },
   methodologies: {
     displayName: "Metodologias",
-    description: "Apresentação de metodologias, processos e boas práticas.",
+    description: "Apresentaï¿½ï¿½o de metodologias, processos e boas prï¿½ticas.",
     technologies: [...DEFAULT_TECHS]
   },
   plansandprices: {
-    displayName: "Planos e Preços",
-    description: "Tabela de planos, preços e benefícios.",
+    displayName: "Planos e Preï¿½os",
+    description: "Tabela de planos, preï¿½os e benefï¿½cios.",
     technologies: [...DEFAULT_TECHS]
   },
   tablecodelibrary: {
@@ -87,7 +87,7 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
   },
   devfellowship: {
     displayName: "DevFellowship",
-    description: "Seções e componentes do projeto DevFellowship.",
+    description: "Seï¿½ï¿½es e componentes do projeto DevFellowship.",
     technologies: [...DEFAULT_TECHS]
   }
 };
@@ -99,8 +99,8 @@ export const getSectionMetadata = (folderName: string): SectionMetadata => {
   return {
     displayName: folderName && folderName.trim().length
       ? folderName
-      : "Seção",
-    description: `Imagens e componentes da seção ${folderName}`,
+      : "Seï¿½ï¿½o",
+    description: `Imagens e componentes da seï¿½ï¿½o ${folderName}`,
     technologies: [...DEFAULT_TECHS]
   };
 };
