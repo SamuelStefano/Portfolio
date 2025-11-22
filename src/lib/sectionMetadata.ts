@@ -17,37 +17,37 @@ export const normalizeSectionKey = (name: string): string => {
 const SECTION_MAP: Record<string, SectionMetadata> = {
   admin: {
     displayName: "Painel Administrativo",
-    description: "�rea de administra��o com telas de gest�o, controle e configura��es.",
+    description: "Área de administração com telas de gestão, controle e configurações.",
     technologies: [...DEFAULT_TECHS]
   },
   challenge: {
     displayName: "Desafios",
-    description: "Fluxos relacionados a desafios, submiss�es e ranking.",
+    description: "Fluxos relacionados a desafios, submissões e ranking.",
     technologies: [...DEFAULT_TECHS]
   },
   create: {
-    displayName: "Cria��o",
-    description: "Telas de cria��o/edi��o de conte�do e formul�rios.",
+    displayName: "Criação",
+    description: "Telas de criação/edição de conteúdo e formulários.",
     technologies: [...DEFAULT_TECHS]
   },
   dashboard: {
     displayName: "Dashboard",
-    description: "Vis�o geral com gr�ficos, m�tricas e indicadores.",
+    description: "Visão geral com gráficos, métricas e indicadores.",
     technologies: [...DEFAULT_TECHS, "Charts"]
   },
   login: {
-    displayName: "Autentica��o",
-    description: "Fluxos de login, cadastro e recupera��o de senha.",
+    displayName: "Autenticação",
+    description: "Fluxos de login, cadastro e recuperação de senha.",
     technologies: [...DEFAULT_TECHS]
   },
   others: {
     displayName: "Outros",
-    description: "Se��es auxiliares e elementos diversos do projeto.",
+    description: "Seções auxiliares e elementos diversos do projeto.",
     technologies: [...DEFAULT_TECHS]
   },
   aboutus: {
-    displayName: "Sobre N�s",
-    description: "Se��o institucional com informa��es da equipe e proposta.",
+    displayName: "Sobre Nós",
+    description: "Seção institucional com informações da equipe e proposta.",
     technologies: [...DEFAULT_TECHS]
   },
   cardcourses: {
@@ -57,27 +57,27 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
   },
   community: {
     displayName: "Comunidade",
-    description: "P�ginas e componentes voltados � comunidade.",
+    description: "Páginas e componentes voltados à comunidade.",
     technologies: [...DEFAULT_TECHS]
   },
   footer: {
-    displayName: "Rodap�",
-    description: "Estrutura e links do rodap� do site.",
+    displayName: "Rodapé",
+    description: "Estrutura e links do rodapé do site.",
     technologies: [...DEFAULT_TECHS]
   },
   hero: {
-    displayName: "Se��o Principal",
-    description: "�rea hero com t�tulo, subt�tulo e chamada principal.",
+    displayName: "Seção Principal",
+    description: "Área hero com título, subtítulo e chamada principal.",
     technologies: [...DEFAULT_TECHS]
   },
   methodologies: {
     displayName: "Metodologias",
-    description: "Apresenta��o de metodologias, processos e boas pr�ticas.",
+    description: "Apresentação de metodologias, processos e boas práticas.",
     technologies: [...DEFAULT_TECHS]
   },
   plansandprices: {
-    displayName: "Planos e Pre�os",
-    description: "Tabela de planos, pre�os e benef�cios.",
+    displayName: "Planos e Preços",
+    description: "Tabela de planos, preços e benefícios.",
     technologies: [...DEFAULT_TECHS]
   },
   tablecodelibrary: {
@@ -87,7 +87,7 @@ const SECTION_MAP: Record<string, SectionMetadata> = {
   },
   devfellowship: {
     displayName: "DevFellowship",
-    description: "Se��es e componentes do projeto DevFellowship.",
+    description: "Seções e componentes do projeto DevFellowship.",
     technologies: [...DEFAULT_TECHS]
   }
 };
@@ -99,12 +99,8 @@ export const getSectionMetadata = (folderName: string): SectionMetadata => {
   return {
     displayName: folderName && folderName.trim().length
       ? folderName
-      : "Se��o",
-    description: `Imagens e componentes da se��o ${folderName}`,
+      : "Seção",
+    description: `Imagens e componentes da seção ${folderName}`,
     technologies: [...DEFAULT_TECHS]
   };
 };
-
-
-
-
