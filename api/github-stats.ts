@@ -13,6 +13,7 @@ export default async function handler(
     const githubToken = process.env.GITHUB_TOKEN;
 
     if (!githubToken) {
+      console.error('GITHUB_TOKEN not found in environment variables');
       return response.status(500).json({ 
         error: 'GitHub token not configured' 
       });
@@ -26,18 +27,22 @@ export default async function handler(
 
     const endpoint = `https://api.github.com/user/repos?per_page=100&sort=updated&affiliation=owner,collaborator`;
 
+    console.log('Fetching repos from GitHub API...');
     const reposResponse = await fetch(endpoint, { headers });
 
     if (!reposResponse.ok) {
       const errorText = await reposResponse.text();
-      console.error('GitHub API error:', errorText);
+      console.error('GitHub API error:', reposResponse.status, errorText);
       return response.status(reposResponse.status).json({ 
-        error: `GitHub API error: ${reposResponse.status}` 
+        error: `GitHub API error: ${reposResponse.status}`,
+        details: errorText.substring(0, 200)
       });
     }
 
     const repos = await reposResponse.json();
+    console.log(`Found ${repos.length} total repos`);
     const ownRepos = repos.filter((repo: any) => !repo.fork);
+    console.log(`Found ${ownRepos.length} own repos (non-fork)`);
 
     const totalRepos = ownRepos.length;
     const totalStars = ownRepos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
@@ -46,10 +51,11 @@ export default async function handler(
     const languages: Record<string, number> = {};
     let totalCommits = 0;
 
-    const maxRepos = 10;
+    const maxRepos = 5;
     const recentRepos = ownRepos.slice(0, maxRepos);
+    console.log(`Processing ${recentRepos.length} repos for detailed stats...`);
 
-    const fetchWithTimeout = async (url: string, options: RequestInit, timeout = 5000) => {
+    const fetchWithTimeout = async (url: string, options: RequestInit, timeout = 3000) => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), timeout);
       
@@ -63,14 +69,16 @@ export default async function handler(
       }
     };
 
-    for (const repo of recentRepos) {
+    for (let i = 0; i < recentRepos.length; i++) {
+      const repo = recentRepos[i];
+      
       if (Date.now() - startTime > MAX_EXECUTION_TIME) {
         console.warn('Max execution time reached, stopping repo processing');
         break;
       }
 
       try {
-        const langResponse = await fetchWithTimeout(repo.languages_url, { headers }, 3000);
+        const langResponse = await fetchWithTimeout(repo.languages_url, { headers }, 2000);
         if (langResponse.ok) {
           const repoLanguages = await langResponse.json();
           Object.entries(repoLanguages).forEach(([lang, bytes]) => {
@@ -78,7 +86,7 @@ export default async function handler(
           });
         }
 
-        const commitsResponse = await fetchWithTimeout(`${repo.url}/commits?per_page=100`, { headers }, 3000);
+        const commitsResponse = await fetchWithTimeout(`${repo.url}/commits?per_page=100`, { headers }, 2000);
         if (commitsResponse.ok) {
           const commits = await commitsResponse.json();
           totalCommits += commits.length;
@@ -91,6 +99,8 @@ export default async function handler(
         }
       }
     }
+
+    console.log(`Processed ${recentRepos.length} repos. Total commits: ${totalCommits}`);
 
     const totalLanguageBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
     const estimatedLinesOfCode = Math.round(totalLanguageBytes / 50);
