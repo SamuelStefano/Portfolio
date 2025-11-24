@@ -77,10 +77,11 @@ export default async function handler(
       linesOfCode: estimatedLinesOfCode,
       languages
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error in /api/github-stats:', error);
     return response.status(500).json({ 
-      error: 'Internal server error' 
+      error: 'Internal server error',
+      message: error?.message || 'Unknown error'
     });
   }
 }

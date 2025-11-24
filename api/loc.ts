@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { supabaseServer, isSupabaseServerConfigured } from '../lib/supabaseServer';
+import { supabaseServer, isSupabaseServerConfigured } from './lib/supabaseServer';
 
 export default async function handler(
   request: VercelRequest,
@@ -164,8 +164,11 @@ export default async function handler(
       },
       source: location?.source || 'ip'
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error in /api/loc:', error);
-    return response.status(500).json({ error: 'Internal server error' });
+    return response.status(500).json({ 
+      error: 'Internal server error',
+      message: error?.message || 'Unknown error'
+    });
   }
 }

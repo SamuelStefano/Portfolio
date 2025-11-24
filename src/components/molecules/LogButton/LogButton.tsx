@@ -20,7 +20,9 @@ export const LogButton = () => {
     setIsLoadingLogs(true);
     try {
       const response = await fetch('/api/log');
-      if (response.ok) {
+      const contentType = response.headers.get('content-type');
+      
+      if (response.ok && contentType?.includes('application/json')) {
         const data = await response.json();
         const logsText = JSON.stringify(data, null, 2);
         const blob = new Blob([logsText], { type: 'application/json' });
@@ -33,12 +35,23 @@ export const LogButton = () => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
       } else {
-        const error = await response.json();
-        alert(`Erro ao buscar logs: ${error.error || 'Erro desconhecido'}`);
+        let errorMessage = 'Erro desconhecido';
+        try {
+          if (contentType?.includes('application/json')) {
+            const error = await response.json();
+            errorMessage = error.error || error.message || 'Erro ao buscar logs';
+          } else {
+            const text = await response.text();
+            errorMessage = `Erro ${response.status}: ${text.substring(0, 100)}`;
+          }
+        } catch (e) {
+          errorMessage = `Erro ${response.status}: Não foi possível ler a resposta do servidor`;
+        }
+        alert(`Erro ao buscar logs: ${errorMessage}`);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error fetching logs:', error);
-      alert('Erro ao buscar logs. Verifique o console para mais detalhes.');
+      alert(`Erro ao buscar logs: ${error?.message || 'Verifique o console para mais detalhes.'}`);
     } finally {
       setIsLoadingLogs(false);
     }

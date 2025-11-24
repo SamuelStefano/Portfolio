@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { supabaseServer, isSupabaseServerConfigured } from '../lib/supabaseServer';
+import { supabaseServer, isSupabaseServerConfigured } from './lib/supabaseServer';
 
 const ALLOWED_IP = '201.55.183.70';
 
@@ -51,10 +51,11 @@ export default async function handler(
       total: visitsWithNames.length,
       visits: visitsWithNames
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error in /api/log:', error);
     return res.status(500).json({ 
-      error: 'Internal server error' 
+      error: 'Internal server error',
+      message: error?.message || 'Unknown error'
     });
   }
 }
