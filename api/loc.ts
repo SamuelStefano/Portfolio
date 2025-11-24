@@ -138,13 +138,16 @@ export default async function handler(
     
     if (supabaseUrl && supabaseKey) {
       try {
-        let supabase = createClient(supabaseUrl, supabaseKey, {
+        // A tabela está no schema 'portfolio', usar diretamente
+        const supabase = createClient(supabaseUrl, supabaseKey, {
+          db: { schema: 'portfolio' },
           auth: {
             autoRefreshToken: false,
             persistSession: false
           }
         });
-        let { error: insertError } = await supabase
+        
+        const { error: insertError } = await supabase
           .from('visits')
           .insert({
             timestamp: timestamp,
@@ -158,45 +161,14 @@ export default async function handler(
             accuracy: locationData.accuracy === 'N/A' ? null : parseFloat(String(locationData.accuracy).replace('m', ''))
           });
 
-        if (insertError && insertError.code === '42501') {
-          console.log('Trying with portfolio schema...');
-          const supabasePortfolio = createClient(supabaseUrl, supabaseKey, {
-            db: { schema: 'portfolio' },
-            auth: {
-              autoRefreshToken: false,
-              persistSession: false
-            }
-          });
-          
-          const { error: portfolioError } = await supabasePortfolio
-            .from('visits')
-            .insert({
-              timestamp: timestamp,
-              ip: ip,
-              source: locationData.source,
-              city: locationData.city === 'UNKNOWN_LOCATION' || locationData.city === 'GPS_LOCATION' ? null : locationData.city,
-              region: locationData.region === 'UNKNOWN_LOCATION' || locationData.region === 'GPS_LOCATION' ? null : locationData.region,
-              country: locationData.country === 'UNKNOWN_LOCATION' || locationData.country === 'GPS_LOCATION' ? null : locationData.country,
-              lat: locationData.lat === 'UNKNOWN_LOCATION' ? null : parseFloat(String(locationData.lat)),
-              lon: locationData.lon === 'UNKNOWN_LOCATION' ? null : parseFloat(String(locationData.lon)),
-              accuracy: locationData.accuracy === 'N/A' ? null : parseFloat(String(locationData.accuracy).replace('m', ''))
-            });
-          
-          if (portfolioError) {
-            console.error('Error saving to Supabase (portfolio schema):', portfolioError);
-            console.error('Supabase URL:', supabaseUrl ? 'configured' : 'missing');
-            console.error('Using key type:', serviceRoleKey ? 'SERVICE_ROLE_KEY' : 'ANON_KEY');
-            console.error('Key length:', supabaseKey ? supabaseKey.length : 0);
-          } else {
-            console.log('Visit saved to Supabase successfully (portfolio schema)');
-          }
-        } else if (insertError) {
+        if (insertError) {
           console.error('Error saving to Supabase:', insertError);
           console.error('Supabase URL:', supabaseUrl ? 'configured' : 'missing');
           console.error('Using key type:', serviceRoleKey ? 'SERVICE_ROLE_KEY' : 'ANON_KEY');
           console.error('Key length:', supabaseKey ? supabaseKey.length : 0);
+          console.error('Schema: portfolio');
         } else {
-          console.log('Visit saved to Supabase successfully (public schema)');
+          console.log('Visit saved to Supabase successfully (portfolio schema)');
         }
       } catch (supabaseError) {
         console.error('Error connecting to Supabase:', supabaseError);
