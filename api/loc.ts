@@ -121,20 +121,30 @@ export default async function handler(
     const logLine = `${timestamp} | ${ip} | ${locationData.source.toUpperCase()} | ${locationData.city} | ${locationData.region} | ${locationData.country} | ${locationData.lat} | ${locationData.lon} | Accuracy: ${locationData.accuracy}`;
     
     console.log('VISIT_LOG:', logLine);
-    const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+    
+    // Priorizar SERVICE_ROLE_KEY para bypassar RLS
+    // No Vercel, variáveis sem VITE_ são para serverless functions
+    const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const anonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
+    const supabaseKey = serviceRoleKey || anonKey;
+    
+    // Debug: verificar qual key está sendo usada (sem mostrar o valor completo)
+    if (serviceRoleKey) {
+      console.log('Using SERVICE_ROLE_KEY for Supabase (bypasses RLS)');
+    } else if (anonKey) {
+      console.log('Using ANON_KEY for Supabase (requires RLS policies)');
+    }
     
     if (supabaseUrl && supabaseKey) {
       try {
-        const supabase = createClient(supabaseUrl, supabaseKey, {
-          db: { schema: 'portfolio' },
+        let supabase = createClient(supabaseUrl, supabaseKey, {
           auth: {
             autoRefreshToken: false,
             persistSession: false
           }
         });
-        
-        const { error: insertError } = await supabase
+        let { error: insertError } = await supabase
           .from('visits')
           .insert({
             timestamp: timestamp,
@@ -148,16 +158,56 @@ export default async function handler(
             accuracy: locationData.accuracy === 'N/A' ? null : parseFloat(String(locationData.accuracy).replace('m', ''))
           });
 
-        if (insertError) {
+        if (insertError && insertError.code === '42501') {
+          console.log('Trying with portfolio schema...');
+          const supabasePortfolio = createClient(supabaseUrl, supabaseKey, {
+            db: { schema: 'portfolio' },
+            auth: {
+              autoRefreshToken: false,
+              persistSession: false
+            }
+          });
+          
+          const { error: portfolioError } = await supabasePortfolio
+            .from('visits')
+            .insert({
+              timestamp: timestamp,
+              ip: ip,
+              source: locationData.source,
+              city: locationData.city === 'UNKNOWN_LOCATION' || locationData.city === 'GPS_LOCATION' ? null : locationData.city,
+              region: locationData.region === 'UNKNOWN_LOCATION' || locationData.region === 'GPS_LOCATION' ? null : locationData.region,
+              country: locationData.country === 'UNKNOWN_LOCATION' || locationData.country === 'GPS_LOCATION' ? null : locationData.country,
+              lat: locationData.lat === 'UNKNOWN_LOCATION' ? null : parseFloat(String(locationData.lat)),
+              lon: locationData.lon === 'UNKNOWN_LOCATION' ? null : parseFloat(String(locationData.lon)),
+              accuracy: locationData.accuracy === 'N/A' ? null : parseFloat(String(locationData.accuracy).replace('m', ''))
+            });
+          
+          if (portfolioError) {
+            console.error('Error saving to Supabase (portfolio schema):', portfolioError);
+            console.error('Supabase URL:', supabaseUrl ? 'configured' : 'missing');
+            console.error('Using key type:', serviceRoleKey ? 'SERVICE_ROLE_KEY' : 'ANON_KEY');
+            console.error('Key length:', supabaseKey ? supabaseKey.length : 0);
+          } else {
+            console.log('Visit saved to Supabase successfully (portfolio schema)');
+          }
+        } else if (insertError) {
           console.error('Error saving to Supabase:', insertError);
+          console.error('Supabase URL:', supabaseUrl ? 'configured' : 'missing');
+          console.error('Using key type:', serviceRoleKey ? 'SERVICE_ROLE_KEY' : 'ANON_KEY');
+          console.error('Key length:', supabaseKey ? supabaseKey.length : 0);
         } else {
-          console.log('Visit saved to Supabase successfully');
+          console.log('Visit saved to Supabase successfully (public schema)');
         }
       } catch (supabaseError) {
         console.error('Error connecting to Supabase:', supabaseError);
       }
     } else {
       console.warn('Supabase credentials not found in environment variables');
+      console.warn('Looking for:', {
+        url: supabaseUrl ? 'found' : 'missing',
+        serviceRoleKey: serviceRoleKey ? 'found' : 'missing',
+        anonKey: anonKey ? 'found' : 'missing'
+      });
     }
 
     return response.status(200).json({
