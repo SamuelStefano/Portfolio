@@ -55,11 +55,11 @@ export default async function handler(
     const languages: Record<string, number> = {};
     let totalCommits = 0;
 
-    const maxRepos = 5;
+    const maxRepos = Math.min(ownRepos.length, 50);
     const recentRepos = ownRepos.slice(0, maxRepos);
-    console.log(`Processing ${recentRepos.length} repos for detailed stats...`);
+    console.log(`Processing ${recentRepos.length} repos for detailed stats (out of ${ownRepos.length} total)...`);
 
-    const fetchWithTimeout = async (url: string, options: RequestInit, timeout = 3000) => {
+    const fetchWithTimeout = async (url: string, options: RequestInit, timeout = 4000) => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), timeout);
       
@@ -73,6 +73,8 @@ export default async function handler(
       }
     };
 
+    const languagePromises: Promise<void>[] = [];
+    
     for (let i = 0; i < recentRepos.length; i++) {
       const repo = recentRepos[i];
       
@@ -81,33 +83,53 @@ export default async function handler(
         break;
       }
 
-      try {
-        const langResponse = await fetchWithTimeout(repo.languages_url, { headers }, 2000);
-        if (langResponse.ok) {
-          const repoLanguages = await langResponse.json();
-          Object.entries(repoLanguages).forEach(([lang, bytes]) => {
-            languages[lang] = (languages[lang] || 0) + (bytes as number);
-          });
-        }
+      languagePromises.push(
+        (async () => {
+          try {
+            const langResponse = await fetchWithTimeout(repo.languages_url, { headers }, 3000);
+            if (langResponse.ok) {
+              const repoLanguages = await langResponse.json();
+              Object.entries(repoLanguages).forEach(([lang, bytes]) => {
+                languages[lang] = (languages[lang] || 0) + (bytes as number);
+              });
+            }
+          } catch (error: any) {
+            if (error.name !== 'AbortError') {
+              console.warn(`Error fetching languages for repo ${repo.name}:`, error?.message || error);
+            }
+          }
+        })()
+      );
 
-        const commitsResponse = await fetchWithTimeout(`${repo.url}/commits?per_page=100`, { headers }, 2000);
+      try {
+        const commitsResponse = await fetchWithTimeout(`${repo.url}/commits?per_page=100`, { headers }, 3000);
         if (commitsResponse.ok) {
           const commits = await commitsResponse.json();
           totalCommits += commits.length;
         }
       } catch (error: any) {
-        if (error.name === 'AbortError') {
-          console.warn(`Timeout fetching data for repo ${repo.name}`);
-        } else {
-          console.warn(`Error fetching data for repo ${repo.name}:`, error?.message || error);
+        if (error.name !== 'AbortError') {
+          console.warn(`Error fetching commits for repo ${repo.name}:`, error?.message || error);
         }
       }
     }
 
-    console.log(`Processed ${recentRepos.length} repos. Total commits: ${totalCommits}`);
+    await Promise.allSettled(languagePromises);
 
+    console.log(`Processed ${recentRepos.length} repos. Total commits: ${totalCommits}`);
+    
     const totalLanguageBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
-    const estimatedLinesOfCode = Math.round(totalLanguageBytes / 50);
+    console.log(`Total language bytes from ${recentRepos.length} repos: ${totalLanguageBytes}`);
+    
+    const averageBytesPerLine = 35;
+    const baseLinesOfCode = Math.round(totalLanguageBytes / averageBytesPerLine);
+    
+    const scaleFactor = ownRepos.length > recentRepos.length 
+      ? Math.min(1.5, ownRepos.length / recentRepos.length * 0.8)
+      : 1;
+    
+    const estimatedLinesOfCode = Math.round(baseLinesOfCode * scaleFactor);
+    console.log(`Estimated lines of code: ${estimatedLinesOfCode} (base: ${baseLinesOfCode}, scale: ${scaleFactor.toFixed(2)})`);
 
     return response.status(200).json({
       totalCommits,
