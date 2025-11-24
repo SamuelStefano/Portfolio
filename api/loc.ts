@@ -1,5 +1,19 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { supabaseServer, isSupabaseServerConfigured } from './lib/supabaseServer';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+const supabaseServer = supabaseUrl && supabaseServiceRoleKey
+  ? createClient(supabaseUrl, supabaseServiceRoleKey, {
+      db: { schema: 'portfolio' },
+      auth: { autoRefreshToken: false, persistSession: false }
+    })
+  : null;
+
+const isSupabaseServerConfigured = () => {
+  return !!supabaseUrl && !!supabaseServiceRoleKey;
+};
 
 export default async function handler(
   request: VercelRequest,

@@ -1,7 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { supabaseServer, isSupabaseServerConfigured } from './lib/supabaseServer';
+import { createClient } from '@supabase/supabase-js';
 
 const ALLOWED_IP = '201.55.183.70';
+
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+const supabaseServer = supabaseUrl && supabaseServiceRoleKey
+  ? createClient(supabaseUrl, supabaseServiceRoleKey, {
+      db: { schema: 'portfolio' },
+      auth: { autoRefreshToken: false, persistSession: false }
+    })
+  : null;
+
+const isSupabaseServerConfigured = () => {
+  return !!supabaseUrl && !!supabaseServiceRoleKey;
+};
 
 const IP_NAMES: Record<string, string> = {
   "201.55.183.70": "Samuel",
