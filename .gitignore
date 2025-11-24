@@ -25,5 +25,10 @@ dist-ssr
 *.sw?
 
 *.env
+*.env.local
+*.env.*.local
+.env.local
+.env.*.local
+GITHUB_TOKEN
 *storybook.log
 storybook-static

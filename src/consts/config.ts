@@ -1,7 +1,6 @@
 // API Configuration
 export const API_CONFIG = {
   GITHUB_USERNAME: 'SamuelStefano',
-  GITHUB_TOKEN: import.meta.env.VITE_GITHUB_TOKEN,
   SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL,
   SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_ANON_KEY,
 };

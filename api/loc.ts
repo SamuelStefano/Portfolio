@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { createClient } from '@supabase/supabase-js';
+import { supabaseServer, isSupabaseServerConfigured } from '../lib/supabaseServer';
 
 export default async function handler(
   request: VercelRequest,
@@ -122,28 +122,11 @@ export default async function handler(
     
     console.log('VISIT_LOG:', logLine);
     
-    const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    const anonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
-    const supabaseKey = serviceRoleKey || anonKey;
-    
-    if (serviceRoleKey) {
+    if (isSupabaseServerConfigured() && supabaseServer) {
       console.log('Using SERVICE_ROLE_KEY for Supabase (bypasses RLS)');
-    } else if (anonKey) {
-      console.log('Using ANON_KEY for Supabase (requires RLS policies)');
-    }
-    
-    if (supabaseUrl && supabaseKey) {
+      
       try {
-        const supabase = createClient(supabaseUrl, supabaseKey, {
-          db: { schema: 'portfolio' },
-          auth: {
-            autoRefreshToken: false,
-            persistSession: false
-          }
-        });
-        
-        const { error: insertError } = await supabase
+        const { error: insertError } = await supabaseServer
           .from('visits')
           .insert({
             timestamp: timestamp,
@@ -166,7 +149,7 @@ export default async function handler(
         console.error('Error connecting to Supabase:', supabaseError);
       }
     } else {
-      console.warn('Supabase credentials not found in environment variables');
+      console.warn('Supabase server credentials not configured. SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required.');
     }
 
     return response.status(200).json({

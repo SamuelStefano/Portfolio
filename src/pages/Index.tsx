@@ -7,6 +7,7 @@ import { HackathonsSection } from '@/components/organisms/HackathonsSection/Hack
 import { About } from '@/components/organisms/About/About';
 import { Footer } from '@/components/organisms/Footer/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
+import { LogButton } from '@/components/molecules/LogButton/LogButton';
 
 const Index = () => {
   useEffect(() => {
@@ -87,6 +88,7 @@ const Index = () => {
             <Footer />
           </section>
         </div>
+        <LogButton />
       </main>
   );
 };
