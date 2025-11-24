@@ -10,12 +10,35 @@ export default async function handler(
       ? (Array.isArray(forwardedFor) ? forwardedFor[0] : String(forwardedFor).split(',')[0].trim())
       : (request.headers['x-real-ip'] ? String(request.headers['x-real-ip']) : 'unknown');
 
+    let gpsLocation: { lat: number; lon: number; accuracy?: number } | null = null;
+    if (request.method === 'POST') {
+      try {
+        let body: any = {};
+        if (typeof request.body === 'string') {
+          body = JSON.parse(request.body);
+        } else if (request.body) {
+          body = request.body;
+        }
+        
+        if (body.lat && body.lon && body.source === 'gps') {
+          gpsLocation = {
+            lat: parseFloat(String(body.lat)),
+            lon: parseFloat(String(body.lon)),
+            accuracy: body.accuracy ? parseFloat(String(body.accuracy)) : undefined
+          };
+        }
+      } catch (e) {
+      }
+    }
+
     let location: {
       lat: string | number;
       lon: string | number;
       city: string;
       region: string;
       country: string;
+      accuracy?: number;
+      source: 'gps' | 'ip';
     } | null = null;
     
     let locationData = {
@@ -23,52 +46,78 @@ export default async function handler(
       region: 'UNKNOWN_LOCATION',
       country: 'UNKNOWN_LOCATION',
       lat: 'UNKNOWN_LOCATION',
-      lon: 'UNKNOWN_LOCATION'
+      lon: 'UNKNOWN_LOCATION',
+      accuracy: 'N/A',
+      source: 'ip'
     };
+    if (gpsLocation) {
+      locationData = {
+        lat: String(gpsLocation.lat),
+        lon: String(gpsLocation.lon),
+        city: 'GPS_LOCATION',
+        region: 'GPS_LOCATION',
+        country: 'GPS_LOCATION',
+        accuracy: gpsLocation.accuracy ? `${gpsLocation.accuracy.toFixed(2)}m` : 'N/A',
+        source: 'gps'
+      };
+      
+      location = {
+        lat: gpsLocation.lat,
+        lon: gpsLocation.lon,
+        city: 'GPS_LOCATION',
+        region: 'GPS_LOCATION',
+        country: 'GPS_LOCATION',
+        accuracy: gpsLocation.accuracy,
+        source: 'gps'
+      };
+    } else {
+      try {
+        const apiResponse = await fetch(
+          `http://ip-api.com/json/${ip}?fields=status,message,lat,lon,city,region,country`,
+          {
+            headers: {
+              'User-Agent': 'Mozilla/5.0'
+            }
+          }
+        );
 
-    try {
-      const apiResponse = await fetch(
-        `http://ip-api.com/json/${ip}?fields=status,message,lat,lon,city,region,country`,
-        {
-          headers: {
-            'User-Agent': 'Mozilla/5.0'
+        if (apiResponse.ok) {
+          const data = await apiResponse.json() as {
+            status: string;
+            lat?: number;
+            lon?: number;
+            city?: string;
+            region?: string;
+            country?: string;
+          };
+          
+          if (data.status === 'success') {
+            location = {
+              lat: data.lat ?? 'UNKNOWN_LOCATION',
+              lon: data.lon ?? 'UNKNOWN_LOCATION',
+              city: data.city ?? 'UNKNOWN_LOCATION',
+              region: data.region ?? 'UNKNOWN_LOCATION',
+              country: data.country ?? 'UNKNOWN_LOCATION',
+              source: 'ip'
+            };
+            locationData = {
+              city: String(location.city),
+              region: String(location.region),
+              country: String(location.country),
+              lat: String(location.lat),
+              lon: String(location.lon),
+              accuracy: 'N/A',
+              source: 'ip'
+            };
           }
         }
-      );
-
-      if (apiResponse.ok) {
-        const data = await apiResponse.json() as {
-          status: string;
-          lat?: number;
-          lon?: number;
-          city?: string;
-          region?: string;
-          country?: string;
-        };
-        
-        if (data.status === 'success') {
-          location = {
-            lat: data.lat ?? 'UNKNOWN_LOCATION',
-            lon: data.lon ?? 'UNKNOWN_LOCATION',
-            city: data.city ?? 'UNKNOWN_LOCATION',
-            region: data.region ?? 'UNKNOWN_LOCATION',
-            country: data.country ?? 'UNKNOWN_LOCATION'
-          };
-          locationData = {
-            city: String(location.city),
-            region: String(location.region),
-            country: String(location.country),
-            lat: String(location.lat),
-            lon: String(location.lon)
-          };
-        }
+      } catch (error) {
+        console.error('Error fetching location from ip-api.com:', error);
       }
-    } catch (error) {
-      console.error('Error fetching location from ip-api.com:', error);
     }
     
     const timestamp = new Date().toISOString();
-    const logLine = `${timestamp} | ${ip} | ${locationData.city} | ${locationData.region} | ${locationData.country} | ${locationData.lat} | ${locationData.lon}`;
+    const logLine = `${timestamp} | ${ip} | ${locationData.source.toUpperCase()} | ${locationData.city} | ${locationData.region} | ${locationData.country} | ${locationData.lat} | ${locationData.lon} | Accuracy: ${locationData.accuracy}`;
     
     console.log('VISIT_LOG:', logLine);
 
@@ -79,8 +128,10 @@ export default async function handler(
         lon: null,
         city: null,
         region: null,
-        country: null
-      }
+        country: null,
+        source: 'ip'
+      },
+      source: location?.source || 'ip'
     });
   } catch (error) {
     console.error('Error in /api/loc:', error);
