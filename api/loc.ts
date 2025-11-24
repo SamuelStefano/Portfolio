@@ -122,14 +122,11 @@ export default async function handler(
     
     console.log('VISIT_LOG:', logLine);
     
-    // Priorizar SERVICE_ROLE_KEY para bypassar RLS
-    // No Vercel, variáveis sem VITE_ são para serverless functions
     const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
     const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     const anonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
     const supabaseKey = serviceRoleKey || anonKey;
     
-    // Debug: verificar qual key está sendo usada (sem mostrar o valor completo)
     if (serviceRoleKey) {
       console.log('Using SERVICE_ROLE_KEY for Supabase (bypasses RLS)');
     } else if (anonKey) {
@@ -138,7 +135,6 @@ export default async function handler(
     
     if (supabaseUrl && supabaseKey) {
       try {
-        // A tabela está no schema 'portfolio', usar diretamente
         const supabase = createClient(supabaseUrl, supabaseKey, {
           db: { schema: 'portfolio' },
           auth: {
@@ -163,23 +159,14 @@ export default async function handler(
 
         if (insertError) {
           console.error('Error saving to Supabase:', insertError);
-          console.error('Supabase URL:', supabaseUrl ? 'configured' : 'missing');
-          console.error('Using key type:', serviceRoleKey ? 'SERVICE_ROLE_KEY' : 'ANON_KEY');
-          console.error('Key length:', supabaseKey ? supabaseKey.length : 0);
-          console.error('Schema: portfolio');
         } else {
-          console.log('Visit saved to Supabase successfully (portfolio schema)');
+          console.log('Visit saved to Supabase successfully (portfolio.visits)');
         }
       } catch (supabaseError) {
         console.error('Error connecting to Supabase:', supabaseError);
       }
     } else {
       console.warn('Supabase credentials not found in environment variables');
-      console.warn('Looking for:', {
-        url: supabaseUrl ? 'found' : 'missing',
-        serviceRoleKey: serviceRoleKey ? 'found' : 'missing',
-        anonKey: anonKey ? 'found' : 'missing'
-      });
     }
 
     return response.status(200).json({
