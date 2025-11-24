@@ -28,7 +28,7 @@ export const Navigation = () => {
     { label: t('nav.hackathons'), href: '#hackathons' },
     { label: t('nav.about'), href: '#sobre' },
     { label: t('nav.contact'), href: '#contato' },
-    { label: t('nav.resume'), href: 'https://drive.google.com/file/d/1ixNSMlmGtkIedhV8-FUnzbDOE4-GvYel/view?usp=sharing' }
+    { label: t('nav.resume'), href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing' }
   ];
 
   useEffect(() => {

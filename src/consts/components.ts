@@ -19,7 +19,7 @@ export const SOCIAL_LINKS = [
   },
   {
     icon: FileText,
-    href: 'https://drive.google.com/file/d/1-TpoRcofaK4T-rZZFWouQctZhW4Q9kpp/view?usp=sharing',
+    href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing',
     label: 'Currículo'
   },
   {
