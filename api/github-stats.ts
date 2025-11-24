@@ -10,14 +10,18 @@ export default async function handler(
   const MAX_EXECUTION_TIME = 25000;
 
   try {
-    const githubToken = process.env.GITHUB_TOKEN;
+    const githubToken = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN;
 
     if (!githubToken) {
       console.error('GITHUB_TOKEN not found in environment variables');
+      console.error('Available env vars:', Object.keys(process.env).filter(key => key.includes('GITHUB')));
       return response.status(500).json({ 
-        error: 'GitHub token not configured' 
+        error: 'GitHub token not configured',
+        hint: 'Please set GITHUB_TOKEN (without VITE_ prefix) in Vercel environment variables'
       });
     }
+
+    console.log('GitHub token found, length:', githubToken.length);
 
     const headers: HeadersInit = {
       'Accept': 'application/vnd.github.v3+json',
