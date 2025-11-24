@@ -6,6 +6,9 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse,
 ) {
+  const startTime = Date.now();
+  const MAX_EXECUTION_TIME = 25000;
+
   try {
     const githubToken = process.env.GITHUB_TOKEN;
 
@@ -43,12 +46,31 @@ export default async function handler(
     const languages: Record<string, number> = {};
     let totalCommits = 0;
 
-    const maxRepos = 20;
+    const maxRepos = 10;
     const recentRepos = ownRepos.slice(0, maxRepos);
 
-    for (const repo of recentRepos) {
+    const fetchWithTimeout = async (url: string, options: RequestInit, timeout = 5000) => {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+      
       try {
-        const langResponse = await fetch(repo.languages_url, { headers });
+        const response = await fetch(url, { ...options, signal: controller.signal });
+        clearTimeout(timeoutId);
+        return response;
+      } catch (error) {
+        clearTimeout(timeoutId);
+        throw error;
+      }
+    };
+
+    for (const repo of recentRepos) {
+      if (Date.now() - startTime > MAX_EXECUTION_TIME) {
+        console.warn('Max execution time reached, stopping repo processing');
+        break;
+      }
+
+      try {
+        const langResponse = await fetchWithTimeout(repo.languages_url, { headers }, 3000);
         if (langResponse.ok) {
           const repoLanguages = await langResponse.json();
           Object.entries(repoLanguages).forEach(([lang, bytes]) => {
@@ -56,13 +78,17 @@ export default async function handler(
           });
         }
 
-        const commitsResponse = await fetch(`${repo.url}/commits?per_page=100`, { headers });
+        const commitsResponse = await fetchWithTimeout(`${repo.url}/commits?per_page=100`, { headers }, 3000);
         if (commitsResponse.ok) {
           const commits = await commitsResponse.json();
           totalCommits += commits.length;
         }
-      } catch (error) {
-        console.warn(`Error fetching data for repo ${repo.name}:`, error);
+      } catch (error: any) {
+        if (error.name === 'AbortError') {
+          console.warn(`Timeout fetching data for repo ${repo.name}`);
+        } else {
+          console.warn(`Error fetching data for repo ${repo.name}:`, error?.message || error);
+        }
       }
     }
 
