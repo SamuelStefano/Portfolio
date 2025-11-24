@@ -121,16 +121,17 @@ export default async function handler(
     const logLine = `${timestamp} | ${ip} | ${locationData.source.toUpperCase()} | ${locationData.city} | ${locationData.region} | ${locationData.country} | ${locationData.lat} | ${locationData.lon} | Accuracy: ${locationData.accuracy}`;
     
     console.log('VISIT_LOG:', logLine);
-
-    // Salvar no Supabase - TODOS os dados são salvos permanentemente
-    // Sem limitação de tempo: 1 dia, 15 dias, 30 dias, +30 dias - tudo é salvo
     const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-    const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
     
     if (supabaseUrl && supabaseKey) {
       try {
         const supabase = createClient(supabaseUrl, supabaseKey, {
-          db: { schema: 'portfolio' }
+          db: { schema: 'portfolio' },
+          auth: {
+            autoRefreshToken: false,
+            persistSession: false
+          }
         });
         
         const { error: insertError } = await supabase
