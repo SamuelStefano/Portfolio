@@ -12,7 +12,7 @@
     "greeting": "Samuel Stefano",
     "role": "Desenvolvedor Full-Stack",
     "description": "2 anos de experiência • Web3 & Blockchain • ADS 3º ano • Marialva, PR",
-    "bio": "Especializado em React, TypeScript, Node.js, NestJS, Web3 e Solidity.",
+    "bio": "Especializado em React, TypeScript, Node.js, NestJS, Supabase, Web3 e Solidity.",
     "bioContinue": "Criando soluções modernas e impactantes, do desenvolvimento tradicional ao ecossistema blockchain.",
     "clickToSeeMore": "Clique para ver mais",
     "socialLinks": {
@@ -108,6 +108,10 @@
       }
     ],
     "additionalSkills": [
+      "Supabase",
+      "Supabase Edge Functions",
+      "PostgreSQL",
+      "RabbitMQ",
       "Judge0 API",
       "REST APIs",
       "Design Responsivo",
@@ -117,7 +121,6 @@
       "Suporte Técnico",
       "Frontend",
       "Backend",
-      "Banco de Dados",
       "Trabalho em Equipe",
       "Metodologias Ágeis",
       "Resolução de Problemas",

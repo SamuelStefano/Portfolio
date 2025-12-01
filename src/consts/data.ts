@@ -21,6 +21,7 @@ export const TECH_CATEGORIES = [
       { name: 'NestJS', level: 75 },
       { name: 'APIs', level: 90 },
       { name: 'JWT', level: 80 },
+      { name: 'RabbitMQ', level: 75 },
       { name: 'Web3 Integration', level: 70 },
     ],
     color: 'neon-purple'
@@ -29,8 +30,9 @@ export const TECH_CATEGORIES = [
     title: 'Database',
     icon: Database,
     skills: [
-      { name: 'Supabase', level: 90 },
-      { name: 'PostgreSQL', level: 70 },
+      { name: 'Supabase', level: 100 },
+      { name: 'PostgreSQL', level: 85 },
+      { name: 'Supabase Edge Functions', level: 90 },
       { name: 'MySQL', level: 70 },
       { name: 'Prisma', level: 40 },
       { name: 'Firebird', level: 20 }
@@ -95,7 +97,7 @@ export const EXPERIENCE_DATA = [
     role: 'Desenvolvedor Full-Stack & Mentor',
     period: 'Julho 2024 - Presente',
     description: 'Desenvolvimento de projetos educacionais, plataformas de desafios e sistemas Web3. Atuação como mentor, realizando revisões de código, auxiliando em arquitetura de software e orientando novos fellows. Participação em hackathons premiados.',
-    stack: ['React', 'TypeScript', 'Node.js', 'NestJS', 'Next.js', 'Supabase', 'Prisma', 'Docker', 'VPS', 'Solidity', 'Web3', 'Judge0', 'TailwindCSS', 'Git'],
+    stack: ['React', 'TypeScript', 'Node.js', 'NestJS', 'Next.js', 'Supabase', 'Supabase Edge Functions', 'PostgreSQL', 'RabbitMQ', 'Prisma', 'Docker', 'VPS', 'Solidity', 'Web3', 'Judge0', 'TailwindCSS', 'Git'],
     logo: '/DevFelloShip.png',
     icon: Briefcase,
     website: 'https://devfellowship.com'
@@ -113,6 +115,10 @@ export const EXPERIENCE_DATA = [
 ];
 
 export const ADDITIONAL_SKILLS = [
+  'Supabase',
+  'Supabase Edge Functions',
+  'PostgreSQL',
+  'RabbitMQ',
   'Judge0 API',
   'REST APIs',
   'Responsive Design',
@@ -148,7 +154,6 @@ export const ADDITIONAL_SKILLS = [
   'WSL',
   'Vercel',
   'AWS',
-  'Supabase',
   'Mentoria',
   'Code Review'
 ];

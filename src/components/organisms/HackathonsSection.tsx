@@ -25,7 +25,7 @@ const getHackathonsData = (t: any): Hackathon[] => [
     event: 'ETH Latam 2025',
     location: 'São Paulo, Brasil',
     date: 'Março 2025',
-    achievement: '4º Lugar Geral',
+    achievement: '4º Lugar trilha da base',
     project: 'GreenLoop',
     projectLink: 'https://greenloop-zeta.vercel.app/',
     githubLink: 'https://github.com/RaulAl3n/GreenLoop',
