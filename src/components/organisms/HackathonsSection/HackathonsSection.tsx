@@ -39,12 +39,12 @@ const getHackathonsData = (t: any): Hackathon[] => [
     event: 'DevConnect ETH 2025',
     location: 'Buenos Aires, Argentina',
     date: 'Fevereiro 2025',
-    achievement: 'Participação',
+    achievement: t('hackathons.talentdao.achievement'),
     project: 'TalentDAO',
     projectLink: 'https://devconnect-talent-dao.vercel.app/',
     githubLink: 'https://github.com/taigfs/devconnect-talent-dao',
     description: t('hackathons.talentdao.description'),
-    technologies: ['TypeScript', 'Next.js', 'Solidity', 'ERC-20', 'ERC-721', 'WETH', 'Web3', 'Smart Contracts'],
+    technologies: ['TypeScript', 'Next.js', 'Solidity', 'ERC-20', 'ERC-721', 'Scroll', 'WETH', 'Web3', 'Smart Contracts'],
     team: ['Tainan Fidelis', 'Samuel Stefano']
   }
 ];

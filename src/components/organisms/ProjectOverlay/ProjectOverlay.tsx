@@ -159,7 +159,14 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
           'landing': t('projectSections.landing'),
           'library': t('projectSections.library'),
           'maindashboard': t('projectSections.mainDashboard'),
-          'challengesystem': t('projectSections.challengeSystem')
+          'challengesystem': t('projectSections.challengeSystem'),
+          'view': t('projectSections.view'),
+          'autoavaliacao': t('projectSections.autoavaliacao'),
+          'avaliacaoMentor': t('projectSections.avaliacaoMentor'),
+          'reviewMentor': t('projectSections.reviewMentor'),
+          'reprovacaoReview': t('projectSections.reprovacaoReview'),
+          'comments': t('projectSections.comments'),
+          'templates': t('projectSections.templates')
         };
 
         const displayName = displayNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
@@ -285,7 +292,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     );
                   })()}
 
-                  <Heading level={3} className="text-base sm:text-lg md:text-xl">Descrição</Heading>
+                  <Heading level={3} className="text-base sm:text-lg md:text-xl">Descriï¿½ï¿½o</Heading>
                   <Text className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                     {project.long_description || project.description}
                   </Text>

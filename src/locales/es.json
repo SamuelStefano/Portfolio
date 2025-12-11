@@ -294,7 +294,7 @@
   "projectDescriptions": {
     "skillEvals": {
       "description": "Plataforma de desafíos para desarrolladores, challenges donde los devs deben desafiarse referente a los cursos vinculados en la plataforma de cursos DevfellowshipAcademy.",
-      "longDescription": "Plataforma de desafíos para desarrolladores, challenges donde los devs deben desafiarse referente a los cursos vinculados en la plataforma de cursos DevfellowshipAcademy. Con pantallas para Mentoría, Administradores, todo bien organizado. Utiliza Judge0 como API de compilación."
+      "longDescription": "Plataforma de desafíos para desarrolladores, challenges donde los devs deben desafiarse referente a los cursos vinculados en la plataforma de cursos DevfellowshipAcademy. Con pantallas para Mentoría, Administradores, todo bien organizado. Utiliza Judge0 como API de compilación. Integrado como mini app usando Module Federation para integración modular con la plataforma principal."
     },
     "devfellowship": {
       "description": "Plataforma principal de la comunidad DevFellowship, donde los desarrolladores se conectan, comparten conocimiento y participan en proyectos colaborativos.",
@@ -310,11 +310,11 @@
     },
     "talentdao": {
       "description": "Marketplace Web3 donde empresas crean jobs, pagan en USDC y generan NFTs como credenciales de trabajo completado.",
-      "longDescription": "TalentDAO (DevConnect/MintWork) es un marketplace Web3 que conecta empresas y talentos. Los jobs se almacenan en smart contracts, con escrow en USDC. Cuando se aprueba, emite NFTs ERC-721 como credenciales permanentes."
+      "longDescription": "TalentDAO (DevConnect/MintWork) es un marketplace Web3 que conecta empresas y talentos. Los jobs se almacenan en smart contracts, con escrow en USDC. Cuando se aprueba, emite NFTs ERC-721 como credenciales permanentes. Conquistamos el 2º lugar en la pista de Scroll del DevConnect ETH 2025."
     },
     "reviewRequests": {
       "description": "Sistema interno de revisiones de tareas de DevFellowship, similar a Pull Requests.",
-      "longDescription": "Review Requests es un sistema interno desarrollado para DevFellowship que permite crear, revisar y evaluar tareas de forma estructurada. Con ciclos completos de revisión, aprobación/rechazo, reevaluación e historial detallado."
+      "longDescription": "Review Requests es un sistema interno desarrollado para DevFellowship que permite crear, revisar y evaluar tareas de forma estructurada. Con ciclos completos de revisión, aprobación/rechazo, reevaluación e historial detallado. Integrado como mini app usando Module Federation para integración modular con la plataforma principal."
     }
   },
   "hackathons": {
@@ -326,7 +326,8 @@
       "description": "Plataforma Web3 que transforma entregas de materiales reciclables en tokens on-chain, incentivando la sostenibilidad a través de incentivos económicos. Participé en el frontend, backend e integración con contratos inteligentes en la red Base."
     },
     "talentdao": {
-      "description": "Marketplace Web3 donde las empresas pueden crear trabajos, pagar en WETH y generar NFTs como credenciales de trabajo completado. Participé en la integración de contratos, flujo de estados e integración del frontend con blockchain."
+      "achievement": "2º Lugar pista de Scroll",
+      "description": "Marketplace Web3 donde las empresas pueden crear trabajos, pagar en WETH y generar NFTs como credenciales de trabajo completado. Participé en la integración de contratos, flujo de estados e integración del frontend con blockchain. Conquistamos el 2º lugar en la pista de Scroll del DevConnect."
     }
   },
   "projectSections": {
@@ -340,9 +341,16 @@
     "community": "Plataforma de la Comunidad",
     "landing": "Página de Aterrizaje",
     "library": "Biblioteca de Código",
-    "mainDashboard": "Dashboard Principal",
-    "challengeSystem": "Sistema de Desafíos",
-    "sectionImages": "Imágenes de la sección",
+      "mainDashboard": "Dashboard Principal",
+      "challengeSystem": "Sistema de Desafíos",
+      "view": "Ver Review",
+      "autoavaliacao": "Auto evaluación",
+      "avaliacaoMentor": "Evaluación del Mentor",
+      "reviewMentor": "Review del Mentor",
+      "reprovacaoReview": "Reprobación de la Review",
+      "comments": "Comentarios",
+      "templates": "Plantillas",
+      "sectionImages": "Imágenes de la sección",
     "sectionDetails": "Detalles de la Sección",
     "image": "imagen",
     "images": "imágenes",

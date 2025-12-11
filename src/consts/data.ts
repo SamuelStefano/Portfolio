@@ -9,6 +9,7 @@ export const TECH_CATEGORIES = [
       { name: 'TypeScript', level: 100 },
       { name: 'Next.js', level: 100 },
       { name: 'TailwindCSS', level: 100 },
+      { name: 'Module Federation', level: 85 },
       { name: 'Storybook', level: 90 },
     ],
     color: 'neon-blue'
@@ -119,6 +120,7 @@ export const ADDITIONAL_SKILLS = [
   'Supabase Edge Functions',
   'PostgreSQL',
   'RabbitMQ',
+  'Module Federation',
   'Judge0 API',
   'REST APIs',
   'Responsive Design',

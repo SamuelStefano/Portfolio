@@ -7,7 +7,7 @@ export const mockProjects: Project[] = [
     role: 'Creator',
     description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy.',
     long_description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy. Com telas para Mentoria, Administradores, tudo bem organizado. Utiliza-se Judge0 como API de compilação.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Judge0 API', 'TailwindCSS'],
+    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Judge0 API', 'Module Federation', 'TailwindCSS'],
     thumbnail_url: '/projects/Skill Evals/Thumb.png',
     icon_name: 'code',
     created_at: '2024-01-15T00:00:00Z',
@@ -507,7 +507,7 @@ export const mockProjects: Project[] = [
     role: 'Collaborator',
     description: 'Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests, com ciclos de revisão, rejeições, reavaliações e histórico completo.',
     long_description: 'Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Inspirado no sistema de Pull Requests do GitHub, possui ciclos de revisão completos: submissão, análise, aprovação/rejeição, reavaliação e histórico detalhado. Implementado com Supabase (RLS e RPCs), SQL avançado para queries complexas e frontend em Next.js com foco em UX intuitiva. O sistema permite que mentores revisem trabalhos de fellows de forma organizada, com comentários, notas e feedback estruturado.',
-    stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'RLS', 'SQL', 'TailwindCSS'],
+    stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'RLS', 'SQL', 'Module Federation', 'TailwindCSS'],
     thumbnail_url: '/projects/reviewrequests/Reviews  - dashboard.png',
     icon_name: 'FileText',
     created_at: '2024-09-01T00:00:00Z',
@@ -543,7 +543,7 @@ export const mockProjects: Project[] = [
         id: '6-1',
         folder_name: 'dashboard',
         display_name: 'Dashboard',
-        description: 'Interface principal de revisões',
+        description: 'Dashboard principal de revisões',
         order_index: 1,
         project_images: [
           {
@@ -557,7 +557,7 @@ export const mockProjects: Project[] = [
         id: '6-2',
         folder_name: 'create',
         display_name: 'Criar Review',
-        description: 'Processo de criação de review request',
+        description: 'Criação de review request',
         order_index: 2,
         project_images: [
           {
@@ -566,11 +566,116 @@ export const mockProjects: Project[] = [
             order_index: 1
           }
         ]
+      },
+      {
+        id: '6-3',
+        folder_name: 'view',
+        display_name: 'Visualizar Review',
+        description: 'Visualização detalhada de review',
+        order_index: 3,
+        project_images: [
+          {
+            id: '6-3-1',
+            image_url: '/projects/reviewrequests/Reviews - View.png',
+            order_index: 1
+          }
+        ]
+      },
+      {
+        id: '6-4',
+        folder_name: 'autoavaliacao',
+        display_name: 'Autoavaliação',
+        description: 'Sistema de autoavaliação',
+        order_index: 4,
+        project_images: [
+          {
+            id: '6-4-1',
+            image_url: '/projects/reviewrequests/Reviews - autoavaliação.png',
+            order_index: 1
+          }
+        ]
+      },
+      {
+        id: '6-5',
+        folder_name: 'avaliacaoMentor',
+        display_name: 'Avaliação do Mentor',
+        description: 'Avaliação realizada pelo mentor',
+        order_index: 5,
+        project_images: [
+          {
+            id: '6-5-1',
+            image_url: '/projects/reviewrequests/Reviews - avaliação do mentor.png',
+            order_index: 1
+          }
+        ]
+      },
+      {
+        id: '6-6',
+        folder_name: 'reviewMentor',
+        display_name: 'Review do Mentor',
+        description: 'Review completa do mentor',
+        order_index: 6,
+        project_images: [
+          {
+            id: '6-6-1',
+            image_url: '/projects/reviewrequests/Reviews - review do mentor.png',
+            order_index: 1
+          }
+        ]
+      },
+      {
+        id: '6-7',
+        folder_name: 'reprovacaoReview',
+        display_name: 'Reprovação da Review',
+        description: 'Processo de reprovação de review',
+        order_index: 7,
+        project_images: [
+          {
+            id: '6-7-1',
+            image_url: '/projects/reviewrequests/Reviews - reprovação da review.png',
+            order_index: 1
+          }
+        ]
+      },
+      {
+        id: '6-8',
+        folder_name: 'comments',
+        display_name: 'Comentários',
+        description: 'Sistema de comentários nas reviews',
+        order_index: 8,
+        project_images: [
+          {
+            id: '6-8-1',
+            image_url: '/projects/reviewrequests/Reviews - comments.png',
+            order_index: 1
+          }
+        ]
+      },
+      {
+        id: '6-9',
+        folder_name: 'templates',
+        display_name: 'Templates',
+        description: 'Templates de reviews',
+        order_index: 9,
+        project_images: [
+          {
+            id: '6-9-1',
+            image_url: '/projects/reviewrequests/Reviews - templates.png',
+            order_index: 1
+          }
+        ]
       }
     ],
     image_categories: {
       'dashboard': ['/projects/reviewrequests/Reviews  - dashboard.png'],
-      'create': ['/projects/reviewrequests/reviews - create.png']
+      'create': ['/projects/reviewrequests/reviews - create.png'],
+      'view': ['/projects/reviewrequests/Reviews - View.png'],
+      'autoavaliacao': ['/projects/reviewrequests/Reviews - autoavaliação.png'],
+      'avaliacaoMentor': ['/projects/reviewrequests/Reviews - avaliação do mentor.png'],
+      'reviewMentor': ['/projects/reviewrequests/Reviews - review do mentor.png'],
+      'reprovacaoReview': ['/projects/reviewrequests/Reviews - reprovação da review.png'],
+      'comments': ['/projects/reviewrequests/Reviews - comments.png'],
+      'templates': ['/projects/reviewrequests/Reviews - templates.png']
     }
   }
 ];

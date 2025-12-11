@@ -304,7 +304,7 @@
   "projectDescriptions": {
     "skillEvals": {
       "description": "Developer challenges platform, where devs must challenge themselves regarding courses linked to the DevfellowshipAcademy course platform.",
-      "longDescription": "Developer challenges platform, where devs must challenge themselves regarding courses linked to the DevfellowshipAcademy course platform. With screens for Mentorship, Administrators, everything well organized. Uses Judge0 as compilation API."
+      "longDescription": "Developer challenges platform, where devs must challenge themselves regarding courses linked to the DevfellowshipAcademy course platform. With screens for Mentorship, Administrators, everything well organized. Uses Judge0 as compilation API. Integrated as a mini app using Module Federation for modular integration with the main platform."
     },
     "devfellowship": {
       "description": "Main platform of the DevFellowship community, where developers connect, share knowledge and participate in collaborative projects.",
@@ -320,11 +320,11 @@
     },
     "talentdao": {
       "description": "Web3 marketplace where companies create jobs, pay in USDC and generate NFTs as completed work credentials.",
-      "longDescription": "TalentDAO (DevConnect/MintWork) is a Web3 marketplace that connects companies and talents. Jobs are stored in smart contracts, with USDC escrow. When approved, it issues ERC-721 NFTs as permanent credentials."
+      "longDescription": "TalentDAO (DevConnect/MintWork) is a Web3 marketplace that connects companies and talents. Jobs are stored in smart contracts, with USDC escrow. When approved, it issues ERC-721 NFTs as permanent credentials. We achieved 2nd place in the Scroll track at DevConnect ETH 2025."
     },
     "reviewRequests": {
       "description": "DevFellowship's internal task review system, similar to Pull Requests.",
-      "longDescription": "Review Requests is an internal system developed for DevFellowship that allows creating, reviewing and evaluating tasks in a structured way. With complete review cycles, approval/rejection, reassessment and detailed history."
+      "longDescription": "Review Requests is an internal system developed for DevFellowship that allows creating, reviewing and evaluating tasks in a structured way. With complete review cycles, approval/rejection, reassessment and detailed history. Integrated as a mini app using Module Federation for modular integration with the main platform."
     }
   },
   "hackathons": {
@@ -336,7 +336,8 @@
       "description": "Web3 platform that transforms deliveries of recyclable materials into on-chain tokens, encouraging sustainability through economic incentives. I participated in the frontend, backend and integration with smart contracts on the Base network."
     },
     "talentdao": {
-      "description": "Web3 marketplace where companies can create jobs, pay in WETH and generate NFTs as credentials for completed work. I participated in contract integration, state flow and frontend integration with blockchain."
+      "achievement": "2nd Place Scroll Track",
+      "description": "Web3 marketplace where companies can create jobs, pay in WETH and generate NFTs as credentials for completed work. I participated in contract integration, state flow and frontend integration with blockchain. We achieved 2nd place in the Scroll track at DevConnect."
     }
   },
   "projectSections": {
@@ -350,9 +351,16 @@
     "community": "Community Platform",
     "landing": "Landing Page",
     "library": "Code Library",
-    "mainDashboard": "Main Dashboard",
-    "challengeSystem": "Challenge System",
-    "sectionImages": "Section images",
+      "mainDashboard": "Main Dashboard",
+      "challengeSystem": "Challenge System",
+      "view": "View Review",
+      "autoavaliacao": "Self-Assessment",
+      "avaliacaoMentor": "Mentor Evaluation",
+      "reviewMentor": "Mentor Review",
+      "reprovacaoReview": "Review Rejection",
+      "comments": "Comments",
+      "templates": "Templates",
+      "sectionImages": "Section images",
     "sectionDetails": "Section Details",
     "image": "image",
     "images": "images",

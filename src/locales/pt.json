@@ -294,7 +294,7 @@
   "projectDescriptions": {
     "skillEvals": {
       "description": "Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy.",
-      "longDescription": "Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy. Com telas para Mentoria, Administradores, tudo bem organizado. Utiliza-se Judge0 como API de compilação."
+      "longDescription": "Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy. Com telas para Mentoria, Administradores, tudo bem organizado. Utiliza-se Judge0 como API de compilação. Integrado como mini app usando Module Federation para integração modular com a plataforma principal."
     },
     "devfellowship": {
       "description": "Plataforma principal da comunidade DevFellowship, onde desenvolvedores se conectam, compartilham conhecimento e participam de projetos colaborativos.",
@@ -310,11 +310,11 @@
     },
     "talentdao": {
       "description": "Marketplace Web3 onde empresas criam jobs, pagam em USDC e geram NFTs como credenciais de trabalho concluído.",
-      "longDescription": "TalentDAO (DevConnect/MintWork) é um marketplace Web3 que conecta empresas e talentos. Os jobs são armazenados em smart contracts, com escrow em USDC. Quando aprovado, emite NFTs ERC-721 como credenciais permanentes."
+      "longDescription": "TalentDAO (DevConnect/MintWork) é um marketplace Web3 que conecta empresas e talentos. Os jobs são armazenados em smart contracts, com escrow em USDC. Quando aprovado, emite NFTs ERC-721 como credenciais permanentes. Conquistamos o 2º lugar na trilha da Scroll do DevConnect ETH 2025."
     },
     "reviewRequests": {
       "description": "Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests.",
-      "longDescription": "Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Com ciclos completos de revisão, aprovação/rejeição, reavaliação e histórico detalhado."
+      "longDescription": "Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Com ciclos completos de revisão, aprovação/rejeição, reavaliação e histórico detalhado. Integrado como mini app usando Module Federation para integração modular com a plataforma principal."
     }
   },
   "hackathons": {
@@ -326,22 +326,30 @@
       "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. Participei do frontend, backend e integração com contratos inteligentes na rede Base."
     },
     "talentdao": {
-      "description": "Marketplace Web3 onde empresas podem criar jobs, pagar em USDC e gerar NFTs como credenciais de trabalho concluído. Participei da integração dos contratos, fluxo de estados e integração do frontend com a blockchain."
+      "achievement": "2º Lugar trilha da Scroll",
+      "description": "Marketplace Web3 onde empresas podem criar jobs, pagar em USDC e gerar NFTs como credenciais de trabalho concluído. Participei da integração dos contratos, fluxo de estados e integração do frontend com a blockchain. Conquistamos o 2º lugar na trilha da Scroll do DevConnect."
     }
   },
-  "projectSections": {
-    "overview": "Visão Geral",
-    "admin": "Painel Administrativo",
-    "challenge": "Desafios",
-    "create": "Criação",
-    "dashboard": "Dashboard",
-    "login": "Autenticação",
-    "others": "Outros",
-    "community": "Plataforma da Comunidade",
-    "landing": "Landing Page",
-    "library": "Biblioteca de Código",
-    "mainDashboard": "Dashboard Principal",
-    "challengeSystem": "Sistema de Desafios",
+    "projectSections": {
+      "overview": "Visão Geral",
+      "admin": "Painel Administrativo",
+      "challenge": "Desafios",
+      "create": "Criação",
+      "dashboard": "Dashboard",
+      "login": "Autenticação",
+      "others": "Outros",
+      "community": "Plataforma da Comunidade",
+      "landing": "Landing Page",
+      "library": "Biblioteca de Código",
+      "mainDashboard": "Dashboard Principal",
+      "challengeSystem": "Sistema de Desafios",
+      "view": "Visualizar Review",
+      "autoavaliacao": "Autoavaliação",
+      "avaliacaoMentor": "Avaliação do Mentor",
+      "reviewMentor": "Review do Mentor",
+      "reprovacaoReview": "Reprovação da Review",
+      "comments": "Comentários",
+      "templates": "Templates",
     "sectionImages": "Imagens da seção",
     "sectionDetails": "Detalhes da Seção",
     "image": "imagem",

@@ -31,10 +31,11 @@ const getTechCategories = (t: any): TechCategory[] => [
     title: t('skills.backend'),
     icon: Server,
     skills: [
-      { name: 'Node.js', level: 80 },
-      { name: 'APIs', level: 90 },
-      { name: 'JWT', level: 80 },
-      { name: 'NestJS', level: 75 },
+      { name: 'Node.js', level: 100 },
+      { name: 'APIs', level: 100 },
+      { name: 'JWT', level: 100 },
+      { name: 'NestJS', level: 100 },
+      { name: 'swagger', level: 100 },
       { name: 'Web3 Integration', level: 60 },
     ],
     color: 'neon-purple'
@@ -74,10 +75,12 @@ const getTechCategories = (t: any): TechCategory[] => [
       { name: t('skills.documentation'), level: 100 },
       { name: t('skills.testing'), level: 100 },
       { name: t('skills.componentization'), level: 100 },
-      { name: t('skills.SOLID'), level: 100 },
+      { name: t('SOLID'), level: 100 },
       { name: 'CI/CD', level: 100 },
       { name: t('skills.architecture'), level: 90 },
       { name: 'Miro', level: 90 },
+      { name: 'Module Federation', level: 80 },
+      
 
 
     ],
