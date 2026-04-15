@@ -10,10 +10,10 @@
   },
   "hero": {
     "greeting": "Samuel Stefano",
-    "role": "Desenvolvedor Full-Stack",
-    "description": "2 anos de experiência • Web3 & Blockchain • ADS 3º ano • Marialva, PR",
-    "bio": "Especializado em React, TypeScript, Node.js, NestJS, Supabase, Web3 e Solidity.",
-    "bioContinue": "Criando soluções modernas e impactantes, do desenvolvimento tradicional ao ecossistema blockchain.",
+    "role": "Desenvolvedor Full-Stack & Arquiteto de Software",
+    "description": "2 anos de experiência • Module Federation • IA & Automação • ADS 3º ano • Marialva, PR",
+    "bio": "Especializado em React, TypeScript, Node.js, Supabase, Module Federation e Integrações com IA.",
+    "bioContinue": "Arquitetando micro-frontends, automatizando pipelines com n8n e integrando LLMs para criar plataformas escaláveis e inteligentes.",
     "clickToSeeMore": "Clique para ver mais",
     "socialLinks": {
       "github": "GitHub",
@@ -96,15 +96,15 @@
       },
       {
         "company": "DevFellowship",
-        "role": "Desenvolvedor Full-Stack & Mentor",
+        "role": "Líder Técnico & Desenvolvedor Full-Stack",
         "period": "Julho 2024 - Presente",
-        "description": "Desenvolvimento de projetos educacionais, plataformas de desafios e sistemas Web3. Atuação como mentor, realizando revisões de código, auxiliando em arquitetura de software e orientando novos fellows. Participação em hackathons premiados."
+        "description": "Liderança técnica do ecossistema de micro-frontends com Module Federation. Arquitetura e desenvolvimento do super-app DFL Learn, Reviews App, Payments App e CI Revisor Bot com IA. Mentoria de fellows, definição de padrões técnicos, revisões de código e participação em hackathons premiados."
       },
       {
         "company": "M&M Informática",
-        "role": "Suporte Técnico & Desenvolvedor",
-        "period": "Dezembro 2024 - atualmente",
-        "description": "Suporte técnico especializado em diversos softwares que a empresa desenvolve."
+        "role": "Líder de Arquitetura & Desenvolvimento de Projetos Internos",
+        "period": "Dezembro 2024 - Fevereiro 2026",
+        "description": "Liderança da arquitetura e desenvolvimento de projetos internos. Definição de padrões técnicos, stack e boas práticas para a equipe. Desenvolvimento fullstack de novos sistemas com TypeScript, Next.js e NestJS. Integração com sistemas fiscais, Firebird e automação de processos internos."
       }
     ],
     "additionalSkills": [
@@ -112,6 +112,8 @@
       "Supabase Edge Functions",
       "PostgreSQL",
       "RabbitMQ",
+      "Module Federation",
+      "Micro-frontends",
       "Judge0 API",
       "REST APIs",
       "Design Responsivo",
@@ -127,6 +129,7 @@
       "Comprometimento",
       "Criatividade",
       "Git & GitHub",
+      "GitHub Actions",
       "Linux",
       "Storybook",
       "Figma",
@@ -135,7 +138,14 @@
       "DevOps",
       "Desenvolvimento de API",
       "Inteligência Artificial",
+      "Claude API",
+      "OpenAI API",
+      "AI Agents",
+      "Prompt Engineering",
+      "n8n",
+      "LLM Integration",
       "Arquitetura de Software",
+      "Liderança Técnica",
       "Docker",
       "VPS",
       "WSL",
@@ -152,9 +162,9 @@
     "title": "Sobre Mim",
     "subtitle": "Conheça um pouco mais sobre minha trajetória e paixões",
     "greeting": "Olá! Eu sou o Samuel.",
-    "bio1": "Desenvolvedor Full-Stack com 2 anos de experiência, especializado em criar soluções digitais impactantes usando tecnologias modernas e Web3. Atualmente cursando o 3º ano de ADS, com foco em arquiteturas escaláveis e desenvolvimento blockchain.",
-    "bio2": "Minha trajetória inclui projetos com Node.js, NestJS, Next.js, React, TypeScript e Solidity. Participei de hackathons como o ETH Latam 2025, conquistando o 4º lugar com o projeto GreenLoop, uma plataforma de reciclagem on-chain. Também atuei como mentor na DevFellowship, auxiliando outros devs em revisões de código, arquitetura e boas práticas.",
-    "bio3": "Experiência com contratos inteligentes (ERC-20, ERC-721), integração Web3, infraestrutura (Docker, VPS, Judge0), e desenvolvimento de plataformas educacionais. Sempre buscando evoluir e contribuir com a comunidade dev.",
+    "bio1": "Desenvolvedor Full-Stack com 2 anos de experiência, especializado em arquiteturas de micro-frontends com Module Federation, integrações com IA (Claude API, OpenAI) e automação de processos com n8n. Atualmente cursando o 3º ano de ADS e liderando arquitetura de projetos internos na M&M Informática.",
+    "bio2": "Na DevFellowship, construí o ecossistema completo de Module Federation: DFL Learn (super-app host), Reviews App, Payments App e CI Revisor Bot com IA. Participei de hackathons premiados como ETH Latam 2025 (4º lugar - GreenLoop) e DevConnect ETH 2025 (2º lugar trilha Scroll - TalentDAO).",
+    "bio3": "Experiência sólida em React, TypeScript, Supabase, PostgreSQL, NestJS, Docker e pipelines CI/CD. Apaixonado por resolver problemas complexos de arquitetura e criar automações inteligentes que eliminam trabalho repetitivo.",
     "location": "Marialva, PR",
     "language": "Inglês B2",
     "schedule": "6:00 A.M - 18:00 P.M",
@@ -315,6 +325,18 @@
     "reviewRequests": {
       "description": "Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests.",
       "longDescription": "Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Com ciclos completos de revisão, aprovação/rejeição, reavaliação e histórico detalhado. Integrado como mini app usando Module Federation para integração modular com a plataforma principal."
+    },
+    "dflLearn": {
+      "description": "Super-app LMS da DevFellowship: host do ecossistema Module Federation com cursos, kanban, finanças, reuniões, CMDB e AI Chat.",
+      "longDescription": "DFL Learn é a plataforma principal da DevFellowship — super-app host do ecossistema de micro-frontends. Integra LMS completo, Kanban, gestão financeira com Stripe, calendário de reuniões, CMDB, notificações em tempo real e HookChat (assistente de IA via Claude API). Arquitetado com múltiplos schemas Supabase e edge functions para automações críticas."
+    },
+    "paymentsApp": {
+      "description": "Micro-frontend de pagamentos integrado via Module Federation. Gerencia assinaturas e cobranças com Stripe.",
+      "longDescription": "Payments App é um micro-frontend remote do ecossistema Module Federation da DevFellowship. Responsável por toda a camada de pagamentos: checkout com Stripe, assinaturas, histórico de transações e webhooks para sincronização de estado. Deploy independente com isolamento total do domínio financeiro."
+    },
+    "ciRevisorBot": {
+      "description": "Bot de revisão automática de PRs com IA. Integrado ao GitHub Actions e n8n, usa Claude API para analisar código e postar comentários detalhados.",
+      "longDescription": "CI Revisor Bot automatiza revisões de código no ecossistema DevFellowship. Integrado ao GitHub Actions via webhooks, aciona workflows n8n que orquestram chamadas à Claude API para análise inteligente de diffs. Identifica problemas de arquitetura, bugs potenciais e oportunidades de melhoria, postando comentários estruturados diretamente na PR."
     }
   },
   "hackathons": {
