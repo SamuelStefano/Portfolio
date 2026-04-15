@@ -110,10 +110,10 @@ export const EXPERIENCE_DATA = [
   },
   {
     company: 'DevFellowship',
-    role: 'Desenvolvedor Full-Stack & Mentor',
+    role: 'Líder Técnico & Desenvolvedor Full-Stack',
     period: 'Julho 2024 - Presente',
-    description: 'Desenvolvimento de projetos educacionais, plataformas de desafios e sistemas Web3. Atuação como mentor, realizando revisões de código, auxiliando em arquitetura de software e orientando novos fellows. Participação em hackathons premiados.',
-    stack: ['React', 'TypeScript', 'Node.js', 'NestJS', 'Next.js', 'Supabase', 'Supabase Edge Functions', 'PostgreSQL', 'RabbitMQ', 'Prisma', 'Docker', 'VPS', 'Solidity', 'Web3', 'Judge0', 'TailwindCSS', 'Git'],
+    description: 'Liderança técnica do ecossistema de micro-frontends com Module Federation. Arquitetura e desenvolvimento do super-app DFL Learn, Reviews App, Payments App e CI Revisor Bot com IA. Mentoria de fellows, definição de padrões técnicos, revisões de código e participação em hackathons premiados (ETH Latam 2025 e DevConnect ETH 2025).',
+    stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'Supabase', 'PostgreSQL', 'NestJS', 'Node.js', 'Stripe', 'Claude API', 'n8n', 'GitHub Actions', 'Docker', 'TailwindCSS', 'Playwright'],
     logo: '/DevFelloShip.png',
     icon: Briefcase,
     website: 'https://devfellowship.com'
@@ -121,8 +121,8 @@ export const EXPERIENCE_DATA = [
   {
     company: 'M&M Informática',
     role: 'Líder de Arquitetura & Desenvolvimento de Projetos Internos',
-    period: 'Dezembro 2024 - atualmente',
-    description: 'Liderança da arquitetura e desenvolvimento de projetos internos da empresa. Definição de padrões técnicos, stack tecnológica e boas práticas para a equipe de desenvolvimento. Atuação desde o suporte técnico especializado até o desenvolvimento fullstack de novos sistemas com TypeScript, Next.js e NestJS. Integração com sistemas fiscais, bancos de dados Firebird e automação de processos internos.',
+    period: 'Dezembro 2024 - Fevereiro 2026',
+    description: 'Liderança da arquitetura e desenvolvimento de projetos internos da empresa. Definição de padrões técnicos, stack tecnológica e boas práticas para a equipe de desenvolvimento. Desenvolvimento fullstack de novos sistemas com TypeScript, Next.js e NestJS. Integração com sistemas fiscais, bancos de dados Firebird e automação de processos internos.',
     stack: ['TypeScript', 'Next.js', 'NestJS', 'TailwindCSS', 'Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Arquitetura de Software', 'Liderança Técnica', 'Suporte Técnico'],
     logo: '/MMIcon.png',
     icon: Laptop,

@@ -162,6 +162,7 @@ export type LucideIconName =
   | 'UserCircle'
   | 'UserSquare'
   | 'Bot'
+  | 'CreditCard'
   | 'Crown'
   | 'Award'
   | 'Trophy'

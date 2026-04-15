@@ -96,14 +96,14 @@
       },
       {
         "company": "DevFellowship",
-        "role": "Desarrollador Full-Stack & Mentor",
+        "role": "Líder Técnico & Desarrollador Full-Stack",
         "period": "Julio 2024 - Presente",
-        "description": "Desarrollo de proyectos educativos, plataformas de desafíos y sistemas Web3. Actuación como mentor, realizando revisiones de código, asistiendo en arquitectura de software y orientando nuevos fellows. Participación en hackathons premiados."
+        "description": "Liderazgo técnico del ecosistema de micro-frontends con Module Federation. Arquitectura y desarrollo del super-app DFL Learn, Reviews App, Payments App y CI Reviewer Bot con IA. Mentoría de fellows, definición de estándares técnicos, revisiones de código y participación en hackathons premiados."
       },
       {
         "company": "M&M Informática",
         "role": "Líder de Arquitectura & Desarrollo de Proyectos Internos",
-        "period": "Diciembre 2024 - actualmente",
+        "period": "Diciembre 2024 - Febrero 2026",
         "description": "Liderazgo de la arquitectura y desarrollo de proyectos internos. Definición de estándares técnicos, stack y buenas prácticas para el equipo. Desarrollo fullstack de nuevos sistemas con TypeScript, Next.js y NestJS. Integración con sistemas fiscales, Firebird y automatización de procesos internos."
       }
     ],
