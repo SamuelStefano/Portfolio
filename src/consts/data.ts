@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2 } from 'lucide-react';
+import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles } from 'lucide-react';
 
 export const TECH_CATEGORIES = [
   {
@@ -9,7 +9,7 @@ export const TECH_CATEGORIES = [
       { name: 'TypeScript', level: 100 },
       { name: 'Next.js', level: 100 },
       { name: 'TailwindCSS', level: 100 },
-      { name: 'Module Federation', level: 85 },
+      { name: 'Module Federation', level: 90 },
       { name: 'Storybook', level: 90 },
     ],
     color: 'neon-blue'
@@ -45,15 +45,29 @@ export const TECH_CATEGORIES = [
     icon: Cpu,
     skills: [
       { name: 'Docker', level: 80 },
-      { name: 'VPS', level: 60 },
+      { name: 'VPS', level: 65 },
       { name: 'WSL', level: 80 },
       { name: 'Git', level: 100 },
       { name: 'Figma', level: 50 },
       { name: 'Vercel', level: 100 },
-      { name: 'n8n', level: 5 },
+      { name: 'n8n', level: 75 },
+      { name: 'GitHub Actions', level: 85 },
       { name: 'AWS', level: 50 }
     ],
     color: 'accent'
+  },
+  {
+    title: 'Inteligência Artificial',
+    icon: Sparkles,
+    skills: [
+      { name: 'Claude API (Anthropic)', level: 85 },
+      { name: 'OpenAI API', level: 70 },
+      { name: 'AI Agents', level: 80 },
+      { name: 'Prompt Engineering', level: 85 },
+      { name: 'n8n AI Workflows', level: 75 },
+      { name: 'LLM Integration', level: 80 },
+    ],
+    color: 'neon-purple'
   },
   {
     title: 'Engenharia de Software',
@@ -62,9 +76,10 @@ export const TECH_CATEGORIES = [
       { name: 'Miro', level: 90 },
       { name: 'Documentação', level: 100 },
       { name: 'Testes', level: 100 },
-      { name: 'Arquitetura', level: 90 },
+      { name: 'Arquitetura', level: 95 },
       { name: 'CI/CD', level: 100 },
       { name: 'Componentização', level: 100 },
+      { name: 'Micro-frontends', level: 90 },
     ],
     color: 'neon-green'
   },
@@ -105,10 +120,10 @@ export const EXPERIENCE_DATA = [
   },
   {
     company: 'M&M Informática',
-    role: 'Suporte Técnico & Desenvolvedor a',
+    role: 'Líder de Arquitetura & Desenvolvimento de Projetos Internos',
     period: 'Dezembro 2024 - atualmente',
-    description: 'Suporte técnico especializado em diversos softwares que a empresa desenvolve.',
-    stack: ['Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Javascript', 'Typescript', 'Nest', 'TailwindCSS', 'Next', 'Suporte Técnico'],
+    description: 'Liderança da arquitetura e desenvolvimento de projetos internos da empresa. Definição de padrões técnicos, stack tecnológica e boas práticas para a equipe de desenvolvimento. Atuação desde o suporte técnico especializado até o desenvolvimento fullstack de novos sistemas com TypeScript, Next.js e NestJS. Integração com sistemas fiscais, bancos de dados Firebird e automação de processos internos.',
+    stack: ['TypeScript', 'Next.js', 'NestJS', 'TailwindCSS', 'Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Arquitetura de Software', 'Liderança Técnica', 'Suporte Técnico'],
     logo: '/MMIcon.png',
     icon: Laptop,
     website: null
@@ -121,6 +136,7 @@ export const ADDITIONAL_SKILLS = [
   'PostgreSQL',
   'RabbitMQ',
   'Module Federation',
+  'Micro-frontends',
   'Judge0 API',
   'REST APIs',
   'Responsive Design',
@@ -142,6 +158,7 @@ export const ADDITIONAL_SKILLS = [
   'Comprometimento',
   'Criatividade',
   'Git & GitHub',
+  'GitHub Actions',
   'Linux',
   'Storybook',
   'Figma',
@@ -150,7 +167,14 @@ export const ADDITIONAL_SKILLS = [
   'DevOps',
   'API Development',
   'Inteligência Artificial',
+  'Claude API',
+  'OpenAI API',
+  'AI Agents',
+  'Prompt Engineering',
+  'n8n',
+  'LLM Integration',
   'Arquitetura de Software',
+  'Liderança Técnica',
   'Docker',
   'VPS',
   'WSL',

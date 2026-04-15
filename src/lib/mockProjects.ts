@@ -677,6 +677,108 @@ export const mockProjects: Project[] = [
       'comments': ['/projects/reviewrequests/Reviews - comments.png'],
       'templates': ['/projects/reviewrequests/Reviews - templates.png']
     }
+  },
+  {
+    id: '7',
+    title: 'DFL Learn',
+    role: 'Creator',
+    description: 'Super-app LMS da DevFellowship: plataforma educacional com cursos, kanban, finanças, reuniões, CMDB, notificações e AI Chat. Host do ecossistema de micro-frontends via Module Federation.',
+    long_description: 'DFL Learn é a plataforma principal da DevFellowship — um super-app que centraliza toda a operação da comunidade. Desenvolvido como host do ecossistema de Module Federation, integra múltiplos micro-frontends (reviews, pagamentos, skill evals) em uma única interface coesa. Conta com LMS completo para cursos e progresso, sistema Kanban para tarefas e entregas, gestão financeira com Stripe, calendário de reuniões, CMDB de configuração, sistema de notificações em tempo real, e HookChat — um assistente de IA integrado via Claude API. Arquitetado com múltiplos schemas Supabase (lms, work, event_management, public) e edge functions para automações críticas.',
+    stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'TanStack Query', 'Module Federation', 'TailwindCSS', 'Stripe', 'n8n', 'PostgreSQL', 'Claude API', 'Framer Motion', 'Playwright'],
+    thumbnail_url: '/DevFelloShip.png',
+    icon_name: 'Layout',
+    created_at: '2024-07-01T00:00:00Z',
+    updated_at: '2025-04-01T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2024-07-01T00:00:00Z'
+      },
+      {
+        id: '2',
+        name: 'Tainan Fidelis',
+        role: 'Creator',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        created_at: '2024-07-01T00:00:00Z'
+      },
+      {
+        id: '4',
+        name: 'Fellows',
+        role: 'Collaborator',
+        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        created_at: '2024-07-01T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '10',
+        label: 'Website',
+        title: 'Website',
+        url: 'https://devfellowship.com',
+        type: 'website',
+        created_at: '2024-07-01T00:00:00Z'
+      }
+    ],
+    project_sections: [],
+    image_categories: {}
+  },
+  {
+    id: '8',
+    title: 'Payments App',
+    role: 'Creator',
+    description: 'Micro-frontend de pagamentos integrado via Module Federation no super-app DFL Learn. Gerencia assinaturas, cobranças e histórico financeiro com Stripe e Supabase.',
+    long_description: 'Payments App é um micro-frontend desenvolvido como remote do ecossistema Module Federation da DevFellowship. Responsável por toda a camada de pagamentos da plataforma: fluxos de checkout com Stripe, gerenciamento de assinaturas, histórico de transações e webhooks para sincronização de estado de pagamento. Integrado ao DFL Learn como mini-app independente, com seu próprio ciclo de build e deploy via Vercel. A arquitetura garante isolamento total do domínio financeiro, com comunicação via eventos e shared scope de React/React-Query entre host e remote.',
+    stack: ['React', 'TypeScript', 'Vite', 'Stripe', 'Module Federation', 'TailwindCSS', 'Supabase', 'Supabase Edge Functions', 'Webhooks'],
+    thumbnail_url: '/DevFelloShip.png',
+    icon_name: 'CreditCard',
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: '2025-04-01T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2025-01-01T00:00:00Z'
+      },
+      {
+        id: '2',
+        name: 'Tainan Fidelis',
+        role: 'Collaborator',
+        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        created_at: '2025-01-01T00:00:00Z'
+      }
+    ],
+    project_links: [],
+    project_sections: [],
+    image_categories: {}
+  },
+  {
+    id: '9',
+    title: 'CI Revisor Bot',
+    role: 'Creator',
+    description: 'Bot de revisão automática de PRs integrado ao GitHub Actions e n8n. Usa Claude API para analisar código, identificar problemas e postar comentários detalhados diretamente na PR.',
+    long_description: 'CI Revisor Bot é uma solução de automação de revisão de código desenvolvida para o ecossistema DevFellowship. Integrado ao pipeline GitHub Actions via webhooks, aciona workflows n8n que orquestram chamadas à Claude API (Anthropic) para análise inteligente de diffs de PR. O bot identifica problemas de arquitetura, violações de padrões, bugs potenciais e oportunidades de melhoria, postando comentários estruturados diretamente na Pull Request. Reduz o tempo de revisão manual e garante consistência nos padrões de código entre múltiplos repositórios do ecossistema DFL.',
+    stack: ['GitHub Actions', 'n8n', 'Claude API', 'Anthropic', 'Node.js', 'TypeScript', 'Webhooks', 'REST APIs', 'CI/CD'],
+    thumbnail_url: '/DevFelloShip.png',
+    icon_name: 'Bot',
+    created_at: '2025-02-01T00:00:00Z',
+    updated_at: '2025-04-01T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2025-02-01T00:00:00Z'
+      }
+    ],
+    project_links: [],
+    project_sections: [],
+    image_categories: {}
   }
 ];
 

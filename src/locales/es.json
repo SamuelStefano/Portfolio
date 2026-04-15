@@ -10,10 +10,10 @@
   },
   "hero": {
     "greeting": "Samuel Stefano",
-    "role": "Desarrollador Full-Stack",
-    "description": "2 años de experiencia • Web3 & Blockchain • 3er Año ADS • Marialva, PR",
-    "bio": "Especializado en React, TypeScript, Node.js, NestJS, Supabase, Web3 y Solidity.",
-    "bioContinue": "Creando soluciones modernas e impactantes, desde el desarrollo tradicional hasta el ecosistema blockchain.",
+    "role": "Desarrollador Full-Stack & Arquitecto de Software",
+    "description": "2 años de experiencia • Module Federation • IA & Automatización • 3er Año ADS • Marialva, PR",
+    "bio": "Especializado en React, TypeScript, Node.js, Supabase, Module Federation e Integraciones con IA.",
+    "bioContinue": "Arquitectando micro-frontends, automatizando pipelines con n8n e integrando LLMs para construir plataformas escalables e inteligentes.",
     "clickToSeeMore": "Haz clic para ver más",
     "socialLinks": {
       "github": "GitHub",
@@ -102,9 +102,9 @@
       },
       {
         "company": "M&M Informática",
-        "role": "Soporte Técnico & Desarrollador",
+        "role": "Líder de Arquitectura & Desarrollo de Proyectos Internos",
         "period": "Diciembre 2024 - actualmente",
-        "description": "Soporte técnico especializado en diversos software que la empresa desarrolla."
+        "description": "Liderazgo de la arquitectura y desarrollo de proyectos internos. Definición de estándares técnicos, stack y buenas prácticas para el equipo. Desarrollo fullstack de nuevos sistemas con TypeScript, Next.js y NestJS. Integración con sistemas fiscales, Firebird y automatización de procesos internos."
       }
     ],
     "additionalSkills": [
@@ -134,8 +134,18 @@
       "Componentización",
       "DevOps",
       "Desarrollo de API",
+      "Module Federation",
+      "Micro-frontends",
+      "GitHub Actions",
       "Inteligencia Artificial",
+      "Claude API",
+      "OpenAI API",
+      "AI Agents",
+      "Prompt Engineering",
+      "n8n",
+      "Integración LLM",
       "Arquitectura de Software",
+      "Liderazgo Técnico",
       "Docker",
       "VPS",
       "WSL",
@@ -152,9 +162,9 @@
     "title": "Acerca de Mí",
     "subtitle": "Conoce un poco más sobre mi trayectoria y pasiones",
     "greeting": "¡Hola! Soy Samuel.",
-    "bio1": "Desarrollador Full-Stack con 2 años de experiencia, especializado en crear soluciones digitales impactantes usando tecnologías modernas y Web3. Actualmente cursando el 3er año de ADS, enfocado en arquitecturas escalables y desarrollo blockchain.",
-    "bio2": "Mi trayectoria incluye proyectos con Node.js, NestJS, Next.js, React, TypeScript y Solidity. Participé en hackathons como ETH Latam 2025, conquistando el 4º lugar con el proyecto GreenLoop, una plataforma de reciclaje on-chain. También actué como mentor en DevFellowship, ayudando a otros devs con revisiones de código, arquitectura y buenas prácticas.",
-    "bio3": "Experiencia con contratos inteligentes (ERC-20, ERC-721), integración Web3, infraestructura (Docker, VPS, Judge0), y desarrollo de plataformas educativas. Siempre buscando evolucionar y contribuir con la comunidad dev.",
+    "bio1": "Desarrollador Full-Stack con 2 años de experiencia, especializado en arquitecturas de micro-frontends con Module Federation, integraciones con IA (Claude API, OpenAI) y automatización de procesos con n8n. Cursando el 3er año de ADS y liderando arquitectura de proyectos internos en M&M Informática.",
+    "bio2": "En DevFellowship, construí el ecosistema completo de Module Federation: DFL Learn (super-app host), Reviews App, Payments App y CI Reviewer Bot con IA. Participé en hackathons premiados: ETH Latam 2025 (4º lugar - GreenLoop) y DevConnect ETH 2025 (2º lugar pista Scroll - TalentDAO).",
+    "bio3": "Experiencia sólida en React, TypeScript, Supabase, PostgreSQL, NestJS, Docker y pipelines CI/CD. Apasionado por resolver problemas complejos de arquitectura y crear automatizaciones inteligentes que eliminan trabajo repetitivo.",
     "location": "Marialva, PR",
     "language": "Inglés B2",
     "schedule": "6:00 A.M - 18:00 P.M",
@@ -315,6 +325,18 @@
     "reviewRequests": {
       "description": "Sistema interno de revisiones de tareas de DevFellowship, similar a Pull Requests.",
       "longDescription": "Review Requests es un sistema interno desarrollado para DevFellowship que permite crear, revisar y evaluar tareas de forma estructurada. Con ciclos completos de revisión, aprobación/rechazo, reevaluación e historial detallado. Integrado como mini app usando Module Federation para integración modular con la plataforma principal."
+    },
+    "dflLearn": {
+      "description": "Super-app LMS de DevFellowship: host del ecosistema Module Federation con cursos, kanban, finanzas, reuniones, CMDB y AI Chat.",
+      "longDescription": "DFL Learn es la plataforma principal de DevFellowship — super-app host del ecosistema de micro-frontends. Integra LMS completo, Kanban, gestión financiera con Stripe, calendario de reuniones, CMDB, notificaciones en tiempo real y HookChat (asistente de IA vía Claude API). Arquitectado con múltiples schemas Supabase y edge functions para automatizaciones críticas."
+    },
+    "paymentsApp": {
+      "description": "Micro-frontend de pagos integrado vía Module Federation. Gestiona suscripciones y cobros con Stripe.",
+      "longDescription": "Payments App es un micro-frontend remote del ecosistema Module Federation de DevFellowship. Responsable de toda la capa de pagos: checkout con Stripe, suscripciones, historial de transacciones y webhooks para sincronización de estado. Despliegue independiente con aislamiento total del dominio financiero."
+    },
+    "ciRevisorBot": {
+      "description": "Bot de revisión automática de PRs con IA. Integrado con GitHub Actions y n8n, usa Claude API para analizar código y publicar comentarios detallados.",
+      "longDescription": "CI Reviewer Bot automatiza revisiones de código en el ecosistema DevFellowship. Integrado con GitHub Actions vía webhooks, activa workflows n8n que orquestan llamadas a Claude API para análisis inteligente de diffs. Identifica problemas de arquitectura, bugs potenciales y oportunidades de mejora, publicando comentarios estructurados directamente en el PR."
     }
   },
   "hackathons": {
