@@ -86,13 +86,20 @@ export const TechStack = () => {
           {/* company logos */}
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 py-6 mb-12">
             {[
-              { src: '/prefeitura.png',  alt: 'Prefeitura de Marialva', cls: 'w-24 h-24' },
-              { src: '/DevFelloShip.png',alt: 'DevFellowship',           cls: 'w-28 h-28' },
-              { src: '/MMIcon.png',      alt: 'M&M Informática',         cls: 'w-32 h-16' },
+              { src: '/prefeitura.png',  alt: 'Prefeitura de Marialva', cls: 'w-24 h-24', href: 'https://www.marialva.pr.gov.br' },
+              { src: '/DevFelloShip.png',alt: 'DevFellowship',           cls: 'w-28 h-28', href: 'https://devfellowship.com' },
+              { src: '/MMIcon.png',      alt: 'M&M Informática',         cls: 'w-32 h-16', href: 'https://mminfo.me' },
             ].map(logo => (
-              <div key={logo.alt} className="group opacity-40 grayscale hover:opacity-100 hover:grayscale-0 hover:-translate-y-2 hover:scale-110 transition-all duration-400">
+              <a
+                key={logo.alt}
+                href={logo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Visitar ${logo.alt}`}
+                className="group opacity-40 grayscale hover:opacity-100 hover:grayscale-0 hover:-translate-y-2 hover:scale-110 transition-all duration-300 cursor-pointer"
+              >
                 <img src={logo.src} alt={logo.alt} className={`${logo.cls} object-contain`} />
-              </div>
+              </a>
             ))}
           </div>
 

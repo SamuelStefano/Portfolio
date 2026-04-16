@@ -193,14 +193,20 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.05 }}
-        className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+        transition={{ duration: 0.25 }}
+        className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4"
         onClick={onClose}
       >
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 32 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.92, y: 32 }}
+          transition={{ type: 'spring', damping: 28, stiffness: 320, mass: 0.8 }}
           className="bg-background rounded-lg sm:rounded-xl md:rounded-2xl border border-border shadow-2xl w-full max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] xl:max-w-[75%] h-[95%] sm:h-[90%] md:h-[85%] flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
+        {/* Gradient top bar */}
+        <div className="h-1 w-full bg-gradient-to-r from-primary via-neon-purple to-neon-cyan flex-shrink-0" />
           {}
           <div className="sticky top-0 z-50 flex-shrink-0 p-3 sm:p-4 md:p-6 border-b border-border bg-background shadow-sm ">
             <div className="flex items-center justify-between">
@@ -446,7 +452,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
             </Tabs>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {}
         <AnimatePresence>
@@ -455,18 +461,22 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.08 }}
-              className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[9999] bg-black/92 backdrop-blur-md flex items-center justify-center p-4"
               onClick={() => setImageModalOpen(false)}
             >
-              <div
+              <motion.div
+                initial={{ opacity: 0, scale: 0.88, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.88, y: 20 }}
+                transition={{ type: 'spring', damping: 26, stiffness: 300 }}
                 className="relative max-w-[90%] max-h-[95%] w-full"
                 onClick={(e) => e.stopPropagation()}
               >
                 <img
                   src={modalImageUrl}
                   alt={project?.title || 'Imagem'}
-                  className="w-full h-full object-contain rounded-lg"
+                  className="w-full h-full object-contain rounded-xl shadow-2xl"
                   loading="lazy"
                 />
                 <Button
@@ -477,7 +487,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                 >
                   <X className="w-4 h-4" />
                 </Button>
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
