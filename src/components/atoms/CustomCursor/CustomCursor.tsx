@@ -4,7 +4,6 @@ export const CustomCursor = () => {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
-  // Use refs so state changes never trigger effect re-runs
   const pos = useRef({ x: -100, y: -100 });
   const ring = useRef({ x: -100, y: -100 });
   const visible = useRef(false);
@@ -30,7 +29,8 @@ export const CustomCursor = () => {
       ringEl.style.boxShadow = p
         ? '0 0 12px 2px hsl(var(--neon-purple) / 0.4)'
         : '0 0 8px 1px hsl(var(--primary) / 0.3)';
-      ringEl.style.scale = p ? '1.5' : '1';
+      // use transform scale instead of CSS scale property
+      ringEl.dataset.pointer = p ? '1' : '0';
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -38,7 +38,6 @@ export const CustomCursor = () => {
 
       if (!visible.current) {
         visible.current = true;
-        // Snap ring to cursor on first move to avoid sliding from corner
         ring.current = { x: e.clientX, y: e.clientY };
         setOpacity(true);
       }
@@ -60,13 +59,15 @@ export const CustomCursor = () => {
     document.addEventListener('mouseenter', onMouseEnter);
 
     const animate = () => {
-      // Dot snaps to cursor
+      // Dot snaps to cursor exactly
       dot.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
 
-      // Ring lerps toward cursor
-      ring.current.x += (pos.current.x - ring.current.x) * 0.12;
-      ring.current.y += (pos.current.y - ring.current.y) * 0.12;
-      ringEl.style.transform = `translate(${ring.current.x - 16}px, ${ring.current.y - 16}px)`;
+      // Ring trails with a faster lerp (0.28 = snappy but still smooth)
+      ring.current.x += (pos.current.x - ring.current.x) * 0.28;
+      ring.current.y += (pos.current.y - ring.current.y) * 0.28;
+
+      const scale = ringEl.dataset.pointer === '1' ? 1.5 : 1;
+      ringEl.style.transform = `translate(${ring.current.x - 16}px, ${ring.current.y - 16}px) scale(${scale})`;
 
       rafId.current = requestAnimationFrame(animate);
     };
@@ -78,7 +79,7 @@ export const CustomCursor = () => {
       document.removeEventListener('mouseenter', onMouseEnter);
       cancelAnimationFrame(rafId.current);
     };
-  }, []); // empty — effect never re-runs
+  }, []);
 
   if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) {
     return null;
@@ -106,7 +107,7 @@ export const CustomCursor = () => {
           borderColor: 'hsl(var(--primary) / 0.5)',
           boxShadow: '0 0 8px 1px hsl(var(--primary) / 0.3)',
           willChange: 'transform',
-          transition: 'opacity 0.2s, border-color 0.15s, box-shadow 0.15s, scale 0.15s',
+          transition: 'opacity 0.2s, border-color 0.15s, box-shadow 0.15s',
         }}
       />
     </>
