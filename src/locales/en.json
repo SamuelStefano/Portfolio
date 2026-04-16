@@ -175,7 +175,12 @@
     "linesOfCode": "Lines of Code",
     "currentFocus": "Current Focus",
     "currentFocusDescription": "Finishing the ADS course and specializing in scalable architectures and modern full-stack development.",
-    "focusAreas": ["TypeScript", "Next.js", "databases", "Security"],
+    "focusAreas": [
+      "TypeScript",
+      "Next.js",
+      "databases",
+      "Security"
+    ],
     "highlights": {
       "passion": {
         "title": "Passion for Technology",
@@ -252,9 +257,9 @@
       "whatsapp": "WhatsApp",
       "status": "Available for new projects",
       "hours": "Available Hours:",
-      "weekdays": "Monday, Wednesday, Thursday and Friday: 12:30 - 13:30 and 17:10 - 22:00",
-      "tuesday": "Tuesday: 17:10 - 22:00",
-      "saturday": "Saturdays: 12:30 - 17:00",
+      "weekdays": "Monday to Friday: 08:00 – 12:00",
+      "tuesday": "Monday to Friday: 14:30 – 17:00",
+      "saturday": "Saturday and Sunday: Unavailable",
       "response": "Response within 24h"
     }
   },
@@ -302,14 +307,11 @@
     "sections": "Sections:"
   },
   "projectStats": {
-    "technologies": "Technologies",
-    "collaborators": "Collaborators",
-    "links": "Links",
-    "created": "Created",
     "project": "Project",
-    "technologiesCount": "Technologies",
-    "collaboratorsCount": "Collaborators",
-    "linksCount": "Links"
+    "technologies": "Technologies",
+    "technologiesCount": "technologies",
+    "collaboratorsCount": "collaborators",
+    "linksCount": "links"
   },
   "projectDescriptions": {
     "skillEvals": {
@@ -373,16 +375,16 @@
     "community": "Community Platform",
     "landing": "Landing Page",
     "library": "Code Library",
-      "mainDashboard": "Main Dashboard",
-      "challengeSystem": "Challenge System",
-      "view": "View Review",
-      "autoavaliacao": "Self-Assessment",
-      "avaliacaoMentor": "Mentor Evaluation",
-      "reviewMentor": "Mentor Review",
-      "reprovacaoReview": "Review Rejection",
-      "comments": "Comments",
-      "templates": "Templates",
-      "sectionImages": "Section images",
+    "mainDashboard": "Main Dashboard",
+    "challengeSystem": "Challenge System",
+    "view": "View Review",
+    "autoavaliacao": "Self-Assessment",
+    "avaliacaoMentor": "Mentor Evaluation",
+    "reviewMentor": "Mentor Review",
+    "reprovacaoReview": "Review Rejection",
+    "comments": "Comments",
+    "templates": "Templates",
+    "sectionImages": "Section images",
     "sectionDetails": "Section Details",
     "image": "image",
     "images": "images",
@@ -393,12 +395,5 @@
       "landing": "Homepage with platform presentation",
       "library": "Main interface with search and categorization of examples"
     }
-  },
-  "projectStats": {
-    "project": "Project",
-    "technologies": "Technologies",
-    "technologiesCount": "technologies",
-    "collaboratorsCount": "collaborators",
-    "linksCount": "links"
   }
 }

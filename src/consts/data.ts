@@ -106,7 +106,7 @@ export const EXPERIENCE_DATA = [
     stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
     logo: '/prefeitura.png',
     icon: Building2,
-    website: null
+    website: 'https://www.marialva.pr.gov.br'
   },
   {
     company: 'DevFellowship',
@@ -126,7 +126,7 @@ export const EXPERIENCE_DATA = [
     stack: ['TypeScript', 'Next.js', 'NestJS', 'TailwindCSS', 'Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Arquitetura de Software', 'Liderança Técnica', 'Suporte Técnico'],
     logo: '/MMIcon.png',
     icon: Laptop,
-    website: null
+    website: 'https://mminfo.me'
   }
 ];
 
