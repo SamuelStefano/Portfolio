@@ -10,6 +10,7 @@ import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/Animat
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress/ScrollProgress';
 import { CustomCursor } from '@/components/atoms/CustomCursor/CustomCursor';
+import { BackToTop } from '@/components/atoms/BackToTop/BackToTop';
 
 const Index = () => {
   useEffect(() => {
@@ -93,6 +94,7 @@ const Index = () => {
           </section>
         </div>
         <LogButton />
+        <BackToTop />
       </main>
   );
 };
