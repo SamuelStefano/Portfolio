@@ -682,13 +682,13 @@ export const mockProjects: Project[] = [
     id: '7',
     title: 'DFL Learn',
     role: 'Creator',
-    description: 'Super-app LMS da DevFellowship: plataforma educacional com cursos, kanban, finanças, reuniões, CMDB, notificações e AI Chat. Host do ecossistema de micro-frontends via Module Federation.',
-    long_description: 'DFL Learn é a plataforma principal da DevFellowship — um super-app que centraliza toda a operação da comunidade. Desenvolvido como host do ecossistema de Module Federation, integra múltiplos micro-frontends (reviews, pagamentos, skill evals) em uma única interface coesa. Conta com LMS completo para cursos e progresso, sistema Kanban para tarefas e entregas, gestão financeira com Stripe, calendário de reuniões, CMDB de configuração, sistema de notificações em tempo real, e HookChat — um assistente de IA integrado via Claude API. Arquitetado com múltiplos schemas Supabase (lms, work, event_management, public) e edge functions para automações críticas.',
+    description: 'Super-app da DevFellowship e host do ecossistema Module Federation. Centraliza projetos, tarefas em Kanban, pagamentos, reuniões, cursos LMS, CMDB e AI Chat numa única plataforma.',
+    long_description: 'DFL Learn é a plataforma operacional completa da DevFellowship — host do ecossistema de micro-frontends via Module Federation. O dashboard principal exibe um Kanban board com tasks organizadas por status (To Do, In Progress, Dev Completed, Done), filtros por projeto, epic e entrega, e métricas em tempo real. A barra lateral navega entre módulos: Dashboard, Projects, Tasks, Skills, Business Units, Design Templates, Epics, Deliveries, Meetings, Reviews (micro-frontend), Payments (micro-frontend), Diagrams, Members e Plans. Arquitetado com múltiplos schemas Supabase (lms, work, event_management, public), edge functions para automações e HookChat — assistente de IA via Claude API.',
     stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'TanStack Query', 'Module Federation', 'TailwindCSS', 'Stripe', 'n8n', 'PostgreSQL', 'Claude API', 'Framer Motion', 'Playwright'],
-    thumbnail_url: '/DevFelloShip.png',
+    thumbnail_url: '/projects/dfllearn/Dashboard.png',
     icon_name: 'Layout',
     created_at: '2024-07-01T00:00:00Z',
-    updated_at: '2025-04-01T00:00:00Z',
+    updated_at: '2026-04-01T00:00:00Z',
     project_collaborators: [
       {
         id: '1',
@@ -722,20 +722,33 @@ export const mockProjects: Project[] = [
         created_at: '2024-07-01T00:00:00Z'
       }
     ],
-    project_sections: [],
-    image_categories: {}
+    project_sections: [
+      {
+        id: '7-1',
+        folder_name: 'dashboard',
+        display_name: 'Dashboard',
+        description: 'Kanban board com tasks por status, filtros por projeto/epic/entrega e métricas em tempo real',
+        order_index: 1,
+        project_images: [
+          { id: '7-1-1', image_url: '/projects/dfllearn/Dashboard.png', order_index: 1 }
+        ]
+      }
+    ],
+    image_categories: {
+      'dashboard': ['/projects/dfllearn/Dashboard.png']
+    }
   },
   {
     id: '8',
-    title: 'Payments App',
+    title: 'DFL Payments',
     role: 'Creator',
-    description: 'Micro-frontend de pagamentos integrado via Module Federation no super-app DFL Learn. Gerencia assinaturas, cobranças e histórico financeiro com Stripe e Supabase.',
-    long_description: 'Payments App é um micro-frontend desenvolvido como remote do ecossistema Module Federation da DevFellowship. Responsável por toda a camada de pagamentos da plataforma: fluxos de checkout com Stripe, gerenciamento de assinaturas, histórico de transações e webhooks para sincronização de estado de pagamento. Integrado ao DFL Learn como mini-app independente, com seu próprio ciclo de build e deploy via Vercel. A arquitetura garante isolamento total do domínio financeiro, com comunicação via eventos e shared scope de React/React-Query entre host e remote.',
-    stack: ['React', 'TypeScript', 'Vite', 'Stripe', 'Module Federation', 'TailwindCSS', 'Supabase', 'Supabase Edge Functions', 'Webhooks'],
-    thumbnail_url: '/DevFelloShip.png',
+    description: 'Micro-frontend de pagamentos integrado via Module Federation. Fellows geram invoices mensais selecionando deliveries concluídas — o sistema calcula automaticamente pontos × taxa e gera a cobrança.',
+    long_description: 'DFL Payments é um micro-frontend remote do ecossistema Module Federation. O fluxo de invoice funciona assim: o fellow seleciona o mês de referência e a organização responsável, e o sistema lista todas as "available deliveries" — entregas cujas tasks estão todas em `dev_completed`. Cada delivery exibe o nome, organização, pontuação total e taxa (ex: R$ 75,00/pt), calculando o valor final automaticamente. Uma entrega por invoice. O sistema também rastreia "open invoices" (invoices em andamento). Integrado ao DFL Learn como mini-app independente com deploy próprio via Vercel, compartilhando React e React-Query via shared scope do Module Federation.',
+    stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'TailwindCSS', 'Supabase', 'Supabase Edge Functions', 'Webhooks', 'PostgreSQL'],
+    thumbnail_url: '/projects/payments/New Invoice.png',
     icon_name: 'CreditCard',
     created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-04-01T00:00:00Z',
+    updated_at: '2026-04-01T00:00:00Z',
     project_collaborators: [
       {
         id: '1',
@@ -752,21 +765,43 @@ export const mockProjects: Project[] = [
         created_at: '2025-01-01T00:00:00Z'
       }
     ],
-    project_links: [],
-    project_sections: [],
-    image_categories: {}
+    project_links: [
+      {
+        id: '11',
+        label: 'Website',
+        title: 'Website',
+        url: 'https://dfl-payments.devfellowship.com/invoices',
+        type: 'website',
+        created_at: '2025-01-01T00:00:00Z'
+      }
+    ],
+    project_sections: [
+      {
+        id: '8-1',
+        folder_name: 'invoice',
+        display_name: 'New Invoice',
+        description: 'Geração de invoice: mês de referência, organização e seleção de deliveries com cálculo automático pontos × taxa',
+        order_index: 1,
+        project_images: [
+          { id: '8-1-1', image_url: '/projects/payments/New Invoice.png', order_index: 1 }
+        ]
+      }
+    ],
+    image_categories: {
+      'invoice': ['/projects/payments/New Invoice.png']
+    }
   },
   {
     id: '9',
-    title: 'CI Revisor Bot',
+    title: 'DFL-Bot Reviewer',
     role: 'Creator',
-    description: 'Bot de revisão automática de PRs integrado ao GitHub Actions e n8n. Usa Claude API para analisar código, identificar problemas e postar comentários detalhados diretamente na PR.',
-    long_description: 'CI Revisor Bot é uma solução de automação de revisão de código desenvolvida para o ecossistema DevFellowship. Integrado ao pipeline GitHub Actions via webhooks, aciona workflows n8n que orquestram chamadas à Claude API (Anthropic) para análise inteligente de diffs de PR. O bot identifica problemas de arquitetura, violações de padrões, bugs potenciais e oportunidades de melhoria, postando comentários estruturados diretamente na Pull Request. Reduz o tempo de revisão manual e garante consistência nos padrões de código entre múltiplos repositórios do ecossistema DFL.',
-    stack: ['GitHub Actions', 'n8n', 'Claude API', 'Anthropic', 'Node.js', 'TypeScript', 'Webhooks', 'REST APIs', 'CI/CD'],
-    thumbnail_url: '/DevFelloShip.png',
+    description: 'Bot de revisão automática de PRs integrado ao pipeline GitHub Actions. Roda build, testes, lint, typecheck e architecture checks — depois posta inline comments e summary diretamente na PR via Claude API.',
+    long_description: 'DFL-Bot Reviewer (DFL-Bot_Reviewer no GitHub) é o sistema de CI da DevFellowship. Cada PR dispara um job `review / ci` que executa: checkout do DFL CI core (composite action reutilizável), setup de Node, install, build, smoke tests com Vitest, verify docs, lint com geração de relatório, architecture checks e typecheck. Por último, dois steps exclusivos do bot: "Inline review (Files changed)" — que analisa o diff via Claude API e posta comentários inline nas linhas alteradas — e "Summary comment" — que consolida o resultado na PR. Exemplo real: "Review submitted: 3 new inline comment(s), 0 file-level item(s)". Compartilhado entre todos os repositórios do ecossistema DFL via DFL CI core.',
+    stack: ['GitHub Actions', 'Claude API', 'Anthropic', 'Node.js', 'TypeScript', 'Vitest', 'ESLint', 'CI/CD', 'Composite Actions'],
+    thumbnail_url: '/projects/cibot/GitHub Actions CI.png',
     icon_name: 'Bot',
     created_at: '2025-02-01T00:00:00Z',
-    updated_at: '2025-04-01T00:00:00Z',
+    updated_at: '2026-04-01T00:00:00Z',
     project_collaborators: [
       {
         id: '1',
@@ -777,8 +812,21 @@ export const mockProjects: Project[] = [
       }
     ],
     project_links: [],
-    project_sections: [],
-    image_categories: {}
+    project_sections: [
+      {
+        id: '9-1',
+        folder_name: 'pipeline',
+        display_name: 'CI Pipeline',
+        description: 'Pipeline completo: build, testes, lint, architecture checks e DFL-Bot_Reviewer postando inline comments na PR',
+        order_index: 1,
+        project_images: [
+          { id: '9-1-1', image_url: '/projects/cibot/GitHub Actions CI.png', order_index: 1 }
+        ]
+      }
+    ],
+    image_categories: {
+      'pipeline': ['/projects/cibot/GitHub Actions CI.png']
+    }
   }
 ];
 

@@ -337,16 +337,16 @@
       "longDescription": "Review Requests is an internal system developed for DevFellowship that allows creating, reviewing and evaluating tasks in a structured way. With complete review cycles, approval/rejection, reassessment and detailed history. Integrated as a mini app using Module Federation for modular integration with the main platform."
     },
     "dflLearn": {
-      "description": "DevFellowship's LMS super-app: Module Federation ecosystem host with courses, kanban, finances, meetings, CMDB and AI Chat.",
-      "longDescription": "DFL Learn is DevFellowship's main platform — the host super-app of the micro-frontends ecosystem. Integrates a complete LMS, Kanban, financial management with Stripe, meetings calendar, CMDB, real-time notifications and HookChat (AI assistant via Claude API). Architected with multiple Supabase schemas and edge functions for critical automations."
+      "description": "DevFellowship's super-app and Module Federation ecosystem host. Centralizes projects, Kanban, payments, meetings, LMS courses, CMDB and AI Chat in a single platform.",
+      "longDescription": "DFL Learn is DevFellowship's complete operational platform — Module Federation host. Dashboard with Kanban board for tasks by status (To Do, In Progress, Dev Completed, Done), filters by project/epic/delivery and real-time metrics. Sidebar with modules: Projects, Tasks, Skills, Epics, Deliveries, Meetings, Reviews, Payments, Diagrams, Members and Plans. Multiple Supabase schemas and HookChat (AI via Claude API)."
     },
     "paymentsApp": {
-      "description": "Payments micro-frontend integrated via Module Federation. Manages subscriptions and billing with Stripe.",
-      "longDescription": "Payments App is a Module Federation remote micro-frontend in DevFellowship's ecosystem. Responsible for the entire payment layer: Stripe checkout, subscriptions, transaction history and webhooks for state synchronization. Independent deployment with total financial domain isolation."
+      "description": "Payments micro-frontend via Module Federation. Fellows generate invoices by selecting completed deliveries — the system calculates points × rate automatically.",
+      "longDescription": "DFL Payments manages fellow payments per delivery. The flow: select reference month + organization, the system lists available deliveries (all tasks in `dev_completed`), each with point value and rate (e.g., R$ 75.00/pt) calculating the total. One delivery per invoice. Tracks open invoices and history. Independent micro-frontend integrated via Module Federation into DFL Learn."
     },
     "ciRevisorBot": {
-      "description": "Automated PR review bot with AI. Integrated with GitHub Actions and n8n, uses Claude API to analyze code and post detailed comments.",
-      "longDescription": "CI Reviewer Bot automates code reviews in the DevFellowship ecosystem. Integrated with GitHub Actions via webhooks, it triggers n8n workflows that orchestrate calls to Claude API for intelligent diff analysis. Identifies architecture issues, potential bugs and improvement opportunities, posting structured comments directly on the PR."
+      "description": "CI bot running on GitHub Actions. Executes build, tests, lint and architecture checks — then posts inline comments and summary on the PR via Claude API.",
+      "longDescription": "DFL-Bot Reviewer is the shared CI system across all DevFellowship repos. Each PR triggers: build, Vitest, verify docs, lint, architecture checks, typecheck. Then the bot runs two steps: Inline review (analyzes the diff via Claude API and posts comments on changed lines) and Summary comment (consolidates the result on the PR). Example: 'Review submitted: 3 new inline comment(s), 0 file-level item(s)'. Based on DFL CI core, a reusable composite action."
     }
   },
   "hackathons": {
