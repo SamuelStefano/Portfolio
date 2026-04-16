@@ -23,6 +23,7 @@ export const mockProjects: Project[] = [
       {
         id: '2',
         name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
         role: 'Collaborator',
         avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-01-15T00:00:00Z'
@@ -132,6 +133,7 @@ export const mockProjects: Project[] = [
       {
         id: '3',
         name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
         avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-03-01T00:00:00Z'
@@ -200,6 +202,7 @@ export const mockProjects: Project[] = [
       {
         id: '2',
         name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
         avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-06-01T00:00:00Z'
@@ -363,6 +366,7 @@ export const mockProjects: Project[] = [
       {
         id: '2',
         name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
         avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-11-01T00:00:00Z'
@@ -516,6 +520,7 @@ export const mockProjects: Project[] = [
       {
         id: '2',
         name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
         avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-09-01T00:00:00Z'
@@ -700,6 +705,7 @@ export const mockProjects: Project[] = [
       {
         id: '2',
         name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
         avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2024-07-01T00:00:00Z'
@@ -760,6 +766,7 @@ export const mockProjects: Project[] = [
       {
         id: '2',
         name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
         role: 'Collaborator',
         avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
         created_at: '2025-01-01T00:00:00Z'
