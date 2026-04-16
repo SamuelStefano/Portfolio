@@ -205,7 +205,6 @@ export const Footer = () => {
               </Heading>
               <ul className="text-xs sm:text-sm md:text-base text-muted-foreground space-y-1 sm:space-y-1.5">
                 <li>{t('footer.freelanceProjects')}</li>
-                <li>{t('footer.fulltimeOpportunities')}</li>
                 <li>{t('footer.collaborations')}</li>
               </ul>
             </div>
