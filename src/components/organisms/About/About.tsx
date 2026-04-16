@@ -1,4 +1,5 @@
 import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch } from 'lucide-react';
+import { CountUp } from '@/components/atoms/CountUp/CountUp';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/atoms/card/card';
 import { Icon } from '@/components/atoms/Icon/Icon';
@@ -38,21 +39,29 @@ export const About = () => {
     {
       label: t('about.professionalTime'),
       value: experienceTime.formatted,
+      numericValue: null as number | null,
+      suffix: '',
       icon: User
     },
     {
       label: t('about.projectsCreated'),
       value: gitHubStats.isLoading ? '...' : `${gitHubStats.totalRepos}+`,
+      numericValue: gitHubStats.isLoading ? null : gitHubStats.totalRepos,
+      suffix: '+',
       icon: GitBranch
     },
     {
       label: t('about.technologies'),
       value: '15+',
+      numericValue: 15,
+      suffix: '+',
       icon: Globe
     },
     {
       label: t('about.linesOfCode'),
       value: gitHubStats.isLoading ? '...' : `${Math.round(gitHubStats.linesOfCode / 1000)}K+`,
+      numericValue: gitHubStats.isLoading ? null : Math.round(gitHubStats.linesOfCode / 1000),
+      suffix: 'K+',
       icon: Code2
     }
   ];
@@ -147,7 +156,11 @@ export const About = () => {
                         </div>
                       </div>
                       <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold gradient-text mb-1 sm:mb-2">
-                        {stat.value}
+                        {stat.numericValue !== null ? (
+                          <CountUp value={stat.numericValue} suffix={stat.suffix} />
+                        ) : (
+                          stat.value
+                        )}
                       </div>
                       <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base">
                         {stat.label}
@@ -192,7 +205,7 @@ export const About = () => {
                 Empresas e Projetos
               </Heading>
               <Text className="text-muted-foreground max-w-2xl mx-auto">
-                Algumas das organizações e projetos com os quais tive o prazer de trabalhar
+                Algumas das organizaï¿½ï¿½es e projetos com os quais tive o prazer de trabalhar
               </Text>
             </div>
           </div>
