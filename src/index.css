@@ -36,29 +36,35 @@ html {
 
   /* Light mode */
   html.light {
-    --background: 0 0% 98%;
+    /* Page background: soft blue-gray so cards pop */
+    --background: 214 32% 91%;
     --foreground: 222.2 84% 4.9%;
+    /* Cards/surfaces: white with clear separation */
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
+    /* Primary: same vivid blue */
     --primary: 217.2 91.2% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 92%;
+    /* Secondary/muted: mid-tone blue-gray */
+    --secondary: 214 20% 82%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 93%;
-    --muted-foreground: 215.4 16.3% 40%;
-    --accent: 210 40% 93%;
+    --muted: 214 20% 84%;
+    --muted-foreground: 215.4 16.3% 35%;
+    --accent: 214 20% 82%;
     --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84.2% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214.3 31.8% 85%;
-    --input: 214.3 31.8% 85%;
+    /* Borders: clearly visible against white cards */
+    --border: 214.3 31.8% 72%;
+    --input: 214.3 31.8% 78%;
     --ring: 217.2 91.2% 59.8%;
-    --neon-blue: 200 90% 45%;
-    --neon-purple: 280 80% 55%;
-    --neon-cyan: 180 80% 40%;
-    --neon-green: 120 60% 35%;
+    /* Neon palette: saturated but darker for light bg */
+    --neon-blue: 200 90% 38%;
+    --neon-purple: 280 75% 48%;
+    --neon-cyan: 180 75% 34%;
+    --neon-green: 120 55% 30%;
   }
 }
 
