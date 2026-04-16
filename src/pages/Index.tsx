@@ -8,6 +8,7 @@ import { About } from '@/components/organisms/About/About';
 import { Footer } from '@/components/organisms/Footer/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
+import { ScrollProgress } from '@/components/atoms/ScrollProgress/ScrollProgress';
 
 const Index = () => {
   useEffect(() => {
@@ -68,6 +69,7 @@ const Index = () => {
 
   return (
     <main className="min-h-screen relative">
+        <ScrollProgress />
         <AnimatedBackground />
         <div className="relative z-10">
           <Header />
