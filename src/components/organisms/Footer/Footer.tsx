@@ -1,5 +1,7 @@
-import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, FileText, Brain } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, FileText, Brain, Check, Copy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useState, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/atoms/button/button';
 import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
@@ -60,13 +62,42 @@ const smoothScrollTo = (elementId: string) => {
   }
 };
 
+const EMAIL = 'samuelstefanodocarmo@gmail.com';
+
 export const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   const socialLinks = getSocialLinks(t);
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(EMAIL).then(() => {
+      setCopied(true);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2500);
+    });
+  };
 
   return (
     <footer id="contato" className="relative bg-card border-t border-border">
+      {/* Toast */}
+      <AnimatePresence>
+        {copied && (
+          <motion.div
+            key="toast"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ type: 'spring', damping: 30, stiffness: 340, mass: 0.7 }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-green-500/10 border border-green-500/40 text-green-400 rounded-full px-4 py-2 shadow-lg backdrop-blur-sm pointer-events-none"
+          >
+            <Check className="w-4 h-4" />
+            <span className="text-sm font-medium">Email copiado!</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,17 +165,38 @@ export const Footer = () => {
               {t('footer.contact')}
             </Heading>
             <ul className="space-y-3 sm:space-y-3.5 md:space-y-4">
-              {contactInfo.map((contact, index) => (
-                <li key={index}>
-                  <a
-                    href={contact.href}
-                    className="flex items-center gap-2 sm:gap-3 text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation py-1 sm:py-1.5 md:py-2"
-                  >
-                    <Icon icon={contact.icon} size="sm" className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                    <Text variant="small" className="text-xs sm:text-sm md:text-base whitespace-nowrap">{contact.label}</Text>
-                  </a>
-                </li>
-              ))}
+              {/* Email — click to copy */}
+              <li>
+                <button
+                  onClick={handleCopyEmail}
+                  className="relative flex items-center gap-2 sm:gap-3 text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation py-1 sm:py-1.5 md:py-2 group w-full text-left"
+                  title="Clique para copiar"
+                >
+                  <Icon
+                    icon={copied ? Check : Mail}
+                    size="sm"
+                    className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 transition-colors duration-200 ${copied ? 'text-green-400' : ''}`}
+                  />
+                  <Text variant="small" className={`text-xs sm:text-sm md:text-base whitespace-nowrap transition-colors duration-200 ${copied ? 'text-green-400' : ''}`}>
+                    {copied ? 'Email copiado!' : EMAIL}
+                  </Text>
+                  <Icon
+                    icon={Copy}
+                    size="sm"
+                    className="w-3 h-3 opacity-0 group-hover:opacity-60 transition-opacity duration-200 ml-auto flex-shrink-0"
+                  />
+                </button>
+              </li>
+              {/* Phone */}
+              <li>
+                <a
+                  href="tel:+5544998795387"
+                  className="flex items-center gap-2 sm:gap-3 text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation py-1 sm:py-1.5 md:py-2"
+                >
+                  <Icon icon={Phone} size="sm" className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                  <Text variant="small" className="text-xs sm:text-sm md:text-base whitespace-nowrap">+55 (44) 99879-5387</Text>
+                </a>
+              </li>
             </ul>
 
             <div className="mt-4 sm:mt-5 md:mt-6 p-3 sm:p-4 md:p-5 bg-muted/20 rounded-lg">
