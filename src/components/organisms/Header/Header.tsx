@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, Mail, Phone, FileText } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Phone, FileText, MapPin, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SocialLink } from '@/components/molecules/SocialLink/SocialLink';
 import { Navigation } from '@/components/molecules/Navigation/Navigation';
@@ -9,36 +9,12 @@ import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
 
 const getSocialLinks = (t: any) => [
-  {
-    icon: Github,
-    href: 'https://github.com/SamuelStefano',
-    label: t('hero.socialLinks.github')
-  },
-  {
-    icon: Linkedin,
-    href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',
-    label: t('hero.socialLinks.linkedin')
-  },
-  {
-    icon: Instagram,
-    href: 'https://instagram.com/samuel.stefano',
-    label: t('hero.socialLinks.instagram')
-  },
-  {
-    icon: FileText,
-    href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing',
-    label: t('hero.socialLinks.resume')
-  },
-  {
-    icon: Mail,
-    href: 'mailto:samuel@example.com',
-    label: t('hero.socialLinks.email')
-  },
-  {
-    icon: Phone,
-    href: 'tel:+5544998795387',
-    label: t('hero.socialLinks.phone')
-  }
+  { icon: Github,   href: 'https://github.com/SamuelStefano',                                                                label: t('hero.socialLinks.github')   },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',                                           label: t('hero.socialLinks.linkedin')  },
+  { icon: Instagram,href: 'https://instagram.com/samuel.stefano',                                                            label: t('hero.socialLinks.instagram') },
+  { icon: FileText, href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing',            label: t('hero.socialLinks.resume')    },
+  { icon: Mail,     href: 'mailto:samuel@example.com',                                                                       label: t('hero.socialLinks.email')     },
+  { icon: Phone,    href: 'tel:+5544998795387',                                                                              label: t('hero.socialLinks.phone')     },
 ];
 
 export const Header = () => {
@@ -50,65 +26,88 @@ export const Header = () => {
   return (
     <>
       <Navigation />
-      <header id="inicio" className="relative w-full h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-card overflow-hidden pt-16 sm:pt-18 md:pt-20" ref={containerRef}>
+      <header
+        id="inicio"
+        ref={containerRef}
+        className="relative w-full min-h-screen flex items-center bg-background overflow-hidden pt-16"
+      >
+        {/* dot-grid background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle,hsl(var(--muted-foreground)/0.15)_1px,transparent_1px)] bg-[size:28px_28px]" />
         <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
 
-        <div className="absolute top-[15%] left-[8%] w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-neon-blue/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-[10%] right-[10%] w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] bg-neon-purple/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
-
-        <ProgressiveLoader 
-          isVisible={isPhaseLoaded('header')} 
-          phase="header" 
+        <ProgressiveLoader
+          isVisible={isPhaseLoaded('header')}
+          phase="header"
           delay={getPhaseDelay('header')}
         >
-          <div className="relative z-10 text-center w-full px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-fade-up">
-            <Heading level={1} className="mb-3 sm:mb-4 md:mb-6 font-inter text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">
-              <span className="gradient-text">{t('hero.greeting')}</span>
-            </Heading>
-            <Text variant="large" className="font-medium tracking-wide text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl text-primary">
-              {t('hero.role')}
-            </Text>
-            <Text className="mt-2 sm:mt-3 md:mt-4 opacity-80 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl text-muted-foreground">
-              {t('hero.description')}
-            </Text>
-          </div>
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 lg:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-slide-left">
-            <Text variant="large" className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto leading-relaxed text-xs sm:text-sm md:text-base lg:text-base xl:text-lg">
-              {t('hero.bio')}
-              <br className="hidden sm:block" />
-              {t('hero.bioContinue')}
-            </Text>
-          </div>
+              {/* ── Left: text ── */}
+              <div className="order-2 lg:order-1 animate-fade-up">
+                <div className="flex flex-wrap items-center gap-2 mb-6">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    DevFellowship · Tech Lead
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs">
+                    <MapPin className="w-3 h-3" />
+                    Marialva, PR
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs">
+                    <GraduationCap className="w-3 h-3" />
+                    ADS 3º ano
+                  </span>
+                </div>
 
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 animate-scale-in mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-            {socialLinks.map((link, index) => (
-              <SocialLink
-                key={index}
-                icon={link.icon}
-                href={link.href}
-                label={link.label}
-              />
-            ))}
-          </div>
+                <Heading level={1} className="mb-3 font-inter text-4xl sm:text-5xl xl:text-6xl leading-tight">
+                  <span className="gradient-text">{t('hero.greeting')}</span>
+                </Heading>
 
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 relative z-20 animate-hero-float animate-rotate">
-            <div className="w-44 h-44 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-60 lg:h-60 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 hover:scale-105 mx-auto rounded-full overflow-hidden border-2 sm:border-3 md:border-4 border-primary/30 hover:border-primary/60 transition-all duration-500 hover-glow bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center group">
-              <img
-                src="/Samuel.jpg"
-                alt="Samuel Stefano"
-                className="w-full h-full object-cover"
-              />
+                <Text variant="large" className="font-semibold tracking-wide text-xl sm:text-2xl text-primary mb-4">
+                  {t('hero.role')}
+                </Text>
+
+                <Text className="text-muted-foreground text-sm sm:text-base mb-6 max-w-lg leading-relaxed">
+                  {t('hero.bio')}
+                  {' '}
+                  {t('hero.bioContinue')}
+                </Text>
+
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {socialLinks.map((link, i) => (
+                    <SocialLink key={i} icon={link.icon} href={link.href} label={link.label} />
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+                  {['React', 'TypeScript', 'Module Federation', 'Supabase', 'Claude API', 'n8n'].map(tech => (
+                    <span key={tech} className="px-2.5 py-1 rounded-md border border-border bg-card font-mono">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── Right: photo ── */}
+              <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in">
+                <div className="relative">
+                  <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 blur-2xl" />
+                  <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-2xl overflow-hidden border border-primary/20 hover:border-primary/50 transition-all duration-500 hover-glow">
+                    <img
+                      src="/Samuel.jpg"
+                      alt="Samuel Stefano"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {/* decorative corner accent */}
+                  <div className="absolute -bottom-3 -right-3 w-16 h-16 border-r-2 border-b-2 border-primary/40 rounded-br-xl" />
+                  <div className="absolute -top-3 -left-3 w-16 h-16 border-l-2 border-t-2 border-neon-purple/40 rounded-tl-xl" />
+                </div>
+              </div>
+
             </div>
           </div>
-
-          <div className="animate-fade-up relative z-10">
-            <div className="w-5 h-8 sm:w-6 sm:h-10 md:w-7 md:h-12 border-2 border-muted-foreground/30 rounded-full flex justify-center mx-auto animate-mouse-float">
-              <div className="w-1 h-2 sm:h-3 bg-primary rounded-full mt-2 animate-pulse" />
-            </div>
-          </div>
-        </div>
         </ProgressiveLoader>
       </header>
     </>
@@ -116,6 +115,3 @@ export const Header = () => {
 };
 
 export default Header;
-
-
-
