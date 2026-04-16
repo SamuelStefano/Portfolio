@@ -9,6 +9,7 @@ import { Footer } from '@/components/organisms/Footer/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress/ScrollProgress';
+import { CustomCursor } from '@/components/atoms/CustomCursor/CustomCursor';
 
 const Index = () => {
   useEffect(() => {
@@ -68,7 +69,8 @@ const Index = () => {
   }, []); // Array vazio = executa apenas uma vez na montagem
 
   return (
-    <main className="min-h-screen relative">
+    <main className="min-h-screen relative cursor-none">
+        <CustomCursor />
         <ScrollProgress />
         <AnimatedBackground />
         <div className="relative z-10">
