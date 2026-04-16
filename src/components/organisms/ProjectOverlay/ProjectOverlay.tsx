@@ -382,7 +382,19 @@ const OverviewSection: React.FC<{ project: Project }> = ({ project }) => {
                   )} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-foreground truncate">{collab.name}</p>
+                  {collab.website ? (
+                    <a
+                      href={collab.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1 truncate group/link"
+                    >
+                      {collab.name}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity flex-shrink-0" />
+                    </a>
+                  ) : (
+                    <p className="text-sm font-medium text-foreground truncate">{collab.name}</p>
+                  )}
                   <p className="text-xs text-muted-foreground">
                     {collab.role === 'Creator' ? '✦ Criador' : '· Colaborador'}
                   </p>
@@ -640,7 +652,19 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                               </div>
                             )}
                             <div className="flex-1 min-w-0">
-                              <p className="text-xs font-medium text-foreground truncate">{collab.name}</p>
+                              {collab.website ? (
+                                <a
+                                  href={collab.website}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs font-medium text-foreground hover:text-primary transition-colors flex items-center gap-0.5 truncate group/link"
+                                >
+                                  {collab.name}
+                                  <ArrowUpRight className="w-2.5 h-2.5 opacity-0 group-hover/link:opacity-100 transition-opacity flex-shrink-0" />
+                                </a>
+                              ) : (
+                                <p className="text-xs font-medium text-foreground truncate">{collab.name}</p>
+                              )}
                               <p className="text-xs text-muted-foreground/70">
                                 {collab.role === 'Creator' ? '✦ Criador' : '· Colaborador'}
                               </p>

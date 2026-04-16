@@ -3,6 +3,7 @@ export interface ProjectCollaborator {
   name: string;
   role: string;
   avatar_url?: string;
+  website?: string;
   created_at: string;
 }
 
