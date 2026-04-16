@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/atoms/button/button';
 import { Text } from '@/components/atoms/Text/Text';
 import { LanguageSelector } from '@/components/molecules/LanguageSelector/LanguageSelector';
+import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
 
 const smoothScrollTo = (elementId: string) => {
   const element = document.querySelector(elementId);
@@ -111,12 +112,14 @@ export const Navigation = () => {
               </button>
             ))}
 
-            <div className="ml-4 xl:ml-6">
+            <div className="ml-4 xl:ml-6 flex items-center gap-2">
+              <ThemeToggle />
               <LanguageSelector />
             </div>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
             <LanguageSelector />
             <Button
               variant="ghost"
