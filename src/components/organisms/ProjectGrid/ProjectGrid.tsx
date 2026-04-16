@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ProjectCard } from '@/components/molecules/ProjectCard/ProjectCard';
+import { ProjectCardSkeleton } from '@/components/molecules/ProjectCardSkeleton/ProjectCardSkeleton';
 import { ProjectOverlay } from '@/components/organisms/ProjectOverlay/ProjectOverlay';
 import { Heading } from '@/components/atoms/Heading/Heading';
-import { Text } from '@/components/atoms/Text/Text';
 import { ProgressiveLoader } from '@/components/atoms/ProgressiveLoader/ProgressiveLoader';
 import { Project } from '@/types/project';
 import { useProjects } from '@/hooks/useProjects';
@@ -20,8 +20,15 @@ export const ProjectGrid = () => {
     return (
       <section className="py-20 px-6 bg-muted/20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <Text variant="large">{t('projects.loading')}</Text>
+          <div className="text-center mb-16">
+            <Heading level={2} className="mb-4 gradient-text">
+              {t('projects.exploreAll')}
+            </Heading>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <ProjectCardSkeleton key={i} />
+            ))}
           </div>
         </div>
       </section>
