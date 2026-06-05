@@ -142,6 +142,13 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
         className="pointer-events-none absolute h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 transition-opacity duration-300"
         style={{ background: 'radial-gradient(circle, rgba(var(--net), 0.12), transparent 70%)' }}
       />
+      <button
+        type="button"
+        aria-label="Easter egg"
+        onClick={() => onEgg?.()}
+        className="absolute z-20 h-12 w-12 -translate-x-1/2 translate-y-1/2 cursor-pointer rounded-full"
+        style={{ left: GAP * 2.5, bottom: GAP * 2.5 }}
+      />
     </>
   );
 };

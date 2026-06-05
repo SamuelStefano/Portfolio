@@ -33,9 +33,10 @@ export const SecondBrain = () => {
       const r = brain.getBoundingClientRect();
       const BW = r.width, BH = r.height, cx = BW / 2, cy = BH / 2;
       const narrow = BW < 480;
-      // floors keep every node outside the centre photo so labels never cover the face
-      const rx = Math.max(narrow ? 150 : 158, Math.min(BW * (narrow ? 0.38 : 0.44), 290));
-      const ry = Math.max(narrow ? 186 : 178, Math.min(BH * (narrow ? 0.42 : 0.42), 236));
+      // wide horizontal radius pulls the near-top/bottom pairs apart and keeps the
+      // side nodes off the centre photo; vertical radius spreads the stacked pairs
+      const rx = Math.max(narrow ? 165 : 180, Math.min(BW * 0.42, 205));
+      const ry = Math.max(narrow ? 195 : 205, Math.min(BH * 0.43, 235));
 
       NODES.forEach((n, i) => {
         const ang = (n.a * Math.PI) / 180;
@@ -88,12 +89,14 @@ export const SecondBrain = () => {
         <div
           key={n.label}
           ref={(el) => { if (el) nodeRefs.current[i] = el; }}
-          className="node absolute z-[5] flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap rounded-xl border border-border bg-card/85 px-3 py-2 font-mono text-[12.5px] font-semibold text-foreground shadow-[0_12px_30px_rgba(5,10,30,0.55)] backdrop-blur-sm transition-[box-shadow,border-color] duration-200 hover:border-[rgba(var(--net),0.6)] hover:shadow-[0_0_24px_rgba(var(--net),0.35)]"
+          className="node absolute z-[5] flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap rounded-xl border border-border bg-card/85 px-2.5 py-1.5 font-mono text-[12px] font-semibold text-foreground shadow-[0_12px_30px_rgba(5,10,30,0.55)] backdrop-blur-sm transition-[box-shadow,border-color] duration-200 hover:border-[rgba(var(--net),0.6)] hover:shadow-[0_0_24px_rgba(var(--net),0.35)]"
           style={{ left: '50%', top: '50%' }}
         >
           <i className="block h-2.5 w-2.5 flex-shrink-0 rounded" style={{ background: n.color }} />
-          {n.label}
-          <small className="font-medium text-muted-foreground">· {n.sub}</small>
+          <span className="flex flex-col leading-tight">
+            <span>{n.label}</span>
+            <small className="text-[10px] font-medium text-muted-foreground">{n.sub}</small>
+          </span>
         </div>
       ))}
     </div>

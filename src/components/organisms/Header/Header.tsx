@@ -85,7 +85,7 @@ export const Header = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
-                  {['React', 'Next.js', 'TypeScript', 'Solidity', 'Solana', 'Module Federation', 'Supabase', 'Claude API', 'n8n'].map(tech => (
+                  {['React', 'Next.js', 'TypeScript', 'Node.js', 'Solidity', 'Solana', 'Rust', 'Anchor', 'Chainlink', 'Module Federation', 'Supabase', 'PostgreSQL', 'Claude API', 'n8n', 'Docker', 'Tailwind', 'Web3', 'Vite'].map(tech => (
                     <span key={tech} className="px-2.5 py-1 rounded-md border border-border bg-card font-mono hover:border-primary/50 hover:text-primary transition-colors duration-200 cursor-default">
                       {tech}
                     </span>
