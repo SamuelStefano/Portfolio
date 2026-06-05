@@ -55,6 +55,12 @@ export const SnakeGame = ({ onClose }: SnakeGameProps) => {
   };
 
   useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+
+  useEffect(() => {
     const turn = (d: Dir) => {
       const st = stateRef.current;
       if (d !== OPPOSITE[st.dir]) st.nextDir = d;
@@ -184,7 +190,10 @@ export const SnakeGame = ({ onClose }: SnakeGameProps) => {
   }, [started, over]);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm animate-fade-up">
+    <div
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 p-4 backdrop-blur-sm animate-fade-up"
+    >
       <div className="relative w-full max-w-sm rounded-2xl border border-primary/30 bg-card p-5 shadow-[0_30px_90px_-20px_hsl(var(--primary))]">
         <button
           onClick={onClose}

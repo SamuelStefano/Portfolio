@@ -43,24 +43,16 @@ const contactInfo = [
   }
 ];
 
-const getQuickLinks = (t: any) => [
-  { label: t('nav.home'), href: '#inicio' },
-  { label: t('nav.projects'), href: '#projetos' },
-  { label: t('nav.skills'), href: '#habilidades' },
-  { label: t('nav.hackathons'), href: '#hackathons' },
-  { label: t('nav.about'), href: '#sobre' },
-  { label: t('nav.contact'), href: '#contato' }
+const stack = [
+  { label: 'React', color: 'text-neon-blue' },
+  { label: 'TypeScript', color: 'text-primary' },
+  { label: 'Supabase', color: 'text-neon-green' },
+  { label: 'Solana', color: 'text-neon-purple' },
+  { label: 'Web3', color: 'text-neon-cyan' },
+  { label: 'Node.js', color: 'text-neon-green' },
+  { label: 'Tailwind', color: 'text-neon-blue' },
+  { label: 'Vite', color: 'text-primary' },
 ];
-
-const smoothScrollTo = (elementId: string) => {
-  const element = document.querySelector(elementId);
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
-};
 
 const EMAIL = 'samuelstefanodocarmo@gmail.com';
 
@@ -144,20 +136,18 @@ export const Footer = () => {
 
           <div className="order-last sm:order-none">
             <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
-              {t('footer.quickLinks')}
+              Stack principal
             </Heading>
-            <ul className="space-y-2 sm:space-y-2.5 md:space-y-3">
-              {getQuickLinks(t).map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => smoothScrollTo(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-left text-xs sm:text-sm md:text-base touch-manipulation py-1 sm:py-1.5 md:py-2"
-                  >
-                    {link.label}
-                  </button>
-                </li>
+            <div className="flex flex-wrap gap-2">
+              {stack.map((tech) => (
+                <span
+                  key={tech.label}
+                  className={`px-2.5 py-1 rounded-full border border-border bg-background/50 text-xs font-medium ${tech.color}`}
+                >
+                  {tech.label}
+                </span>
               ))}
-            </ul>
+            </div>
           </div>
 
           <div className="order-last sm:order-none">

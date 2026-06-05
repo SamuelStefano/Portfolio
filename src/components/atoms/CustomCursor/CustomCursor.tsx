@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 export const CustomCursor = () => {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -85,7 +86,7 @@ export const CustomCursor = () => {
     return null;
   }
 
-  return (
+  return createPortal(
     <>
       {/* Inner dot */}
       <div
@@ -110,7 +111,8 @@ export const CustomCursor = () => {
           transition: 'opacity 0.2s, border-color 0.15s, box-shadow 0.15s',
         }}
       />
-    </>
+    </>,
+    document.body
   );
 };
 

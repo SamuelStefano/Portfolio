@@ -27,6 +27,9 @@ export const SecondBrain = () => {
   const nodeRefs = useRef<HTMLDivElement[]>([]);
   const linkRefs = useRef<SVGLineElement[]>([]);
   const flowRefs = useRef<SVGLineElement[]>([]);
+  const pinnedRef = useRef<({ x: number; y: number } | null)[]>(NODES.map(() => null));
+  const draggingRef = useRef<number | null>(null);
+  const offsetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const brain = brainRef.current;
@@ -43,6 +46,58 @@ export const SecondBrain = () => {
     brain.addEventListener('mousemove', onMove);
     brain.addEventListener('mouseleave', onLeave);
 
+    const applyPinned = (i: number, x: number, y: number, drawLink = true) => {
+      const el = nodeRefs.current[i];
+      if (el) {
+        el.style.left = `${x.toFixed(1)}px`;
+        el.style.top = `${y.toFixed(1)}px`;
+        el.style.transform = 'translate(-50%,-50%) scale(1)';
+        el.style.opacity = '1';
+        el.style.zIndex = draggingRef.current === i ? '8' : '6';
+      }
+      if (!drawLink) return;
+      const r = brain.getBoundingClientRect();
+      const ccx = r.width / 2 + (cmx - 0.5) * 10, ccy = r.height / 2 + (cmy - 0.5) * 10;
+      const line = linkRefs.current[i], flow = flowRefs.current[i];
+      if (line) { line.setAttribute('x1', `${ccx.toFixed(1)}`); line.setAttribute('y1', `${ccy.toFixed(1)}`); line.setAttribute('x2', `${x.toFixed(1)}`); line.setAttribute('y2', `${y.toFixed(1)}`); line.style.opacity = '0.55'; }
+      if (flow) { flow.setAttribute('x1', `${ccx.toFixed(1)}`); flow.setAttribute('y1', `${ccy.toFixed(1)}`); flow.setAttribute('x2', `${x.toFixed(1)}`); flow.setAttribute('y2', `${y.toFixed(1)}`); }
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      const i = draggingRef.current;
+      if (i === null) return;
+      const r = brain.getBoundingClientRect();
+      const x = Math.max(0, Math.min(r.width, e.clientX - r.left - offsetRef.current.x));
+      const y = Math.max(0, Math.min(r.height, e.clientY - r.top - offsetRef.current.y));
+      pinnedRef.current[i] = { x, y };
+      if (reduce) applyPinned(i, x, y);
+    };
+    const onPointerUp = (e: PointerEvent) => {
+      const i = draggingRef.current;
+      if (i === null) return;
+      const el = nodeRefs.current[i];
+      el?.releasePointerCapture?.(e.pointerId);
+      if (el) el.style.cursor = 'grab';
+      draggingRef.current = null;
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', onPointerUp);
+    };
+    const onPointerDown = (i: number) => (e: PointerEvent) => {
+      const el = nodeRefs.current[i];
+      if (!el) return;
+      draggingRef.current = i;
+      el.setPointerCapture?.(e.pointerId);
+      el.style.cursor = 'grabbing';
+      const r = el.getBoundingClientRect();
+      offsetRef.current = { x: e.clientX - (r.left + r.width / 2), y: e.clientY - (r.top + r.height / 2) };
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointercancel', onPointerUp);
+    };
+    const downHandlers = NODES.map((_, i) => onPointerDown(i));
+    nodeRefs.current.forEach((el, i) => el?.addEventListener('pointerdown', downHandlers[i]));
+
     const render = (t: number) => {
       const r = brain.getBoundingClientRect();
       const BW = r.width, BH = r.height, cx = BW / 2, cy = BH / 2;
@@ -56,6 +111,8 @@ export const SecondBrain = () => {
       const ccx = cx + (cmx - 0.5) * 10, ccy = cy + (cmy - 0.5) * 10;
 
       NODES.forEach((n, i) => {
+        const pin = pinnedRef.current[i];
+        if (pin) { applyPinned(i, pin.x, pin.y); return; }
         const ang = (n.a * Math.PI) / 180 + Math.sin(tm * 0.3 + n.phase) * 0.06;
         const z = Math.sin(tm * 0.45 + n.phase);
         const scale = 0.82 + (z + 1) * 0.16;
@@ -92,6 +149,10 @@ export const SecondBrain = () => {
       cancelAnimationFrame(raf);
       brain.removeEventListener('mousemove', onMove);
       brain.removeEventListener('mouseleave', onLeave);
+      nodeRefs.current.forEach((el, i) => el?.removeEventListener('pointerdown', downHandlers[i]));
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', onPointerUp);
     };
   }, []);
 
@@ -126,7 +187,7 @@ export const SecondBrain = () => {
           key={n.label}
           ref={(el) => { if (el) nodeRefs.current[i] = el; }}
           className="node absolute z-[4] flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap rounded-xl border border-border bg-card/85 px-3 py-2 font-mono text-[12.5px] font-semibold text-foreground shadow-[0_12px_30px_rgba(5,10,30,0.55)] backdrop-blur-sm transition-[box-shadow,border-color] duration-200 hover:border-[rgba(var(--net),0.6)] hover:shadow-[0_0_24px_rgba(var(--net),0.35)]"
-          style={{ left: '50%', top: '50%', willChange: 'left, top, transform, opacity' }}
+          style={{ left: '50%', top: '50%', cursor: 'grab', touchAction: 'none', willChange: 'left, top, transform, opacity' }}
         >
           <i className="block h-2.5 w-2.5 flex-shrink-0 rounded" style={{ background: n.color }} />
           {n.label}

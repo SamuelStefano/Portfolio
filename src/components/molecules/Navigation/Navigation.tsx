@@ -154,7 +154,8 @@ export const Navigation = () => {
         ? 'bg-background/95 backdrop-blur-md border-b border-border/50 shadow-lg'
         : 'bg-transparent backdrop-blur-none border-b-0 shadow-none'
     }`}>
-      <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-6 lg:px-8">
+      <div className="relative flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-6 lg:px-8">
+          {/* LEFT: logo + SkinToggle */}
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <div className="relative">
               <img
@@ -175,14 +176,18 @@ export const Navigation = () => {
                 Full-Stack Developer
               </Text>
             </div>
+            <div className="hidden lg:flex ml-2">
+              <SkinToggle />
+            </div>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+          {/* CENTER: nav links — absolutely centered at xl, static flex at lg */}
+          <div className="hidden lg:flex xl:absolute xl:left-1/2 xl:-translate-x-1/2 items-center space-x-1 xl:space-x-2">
             {navigationItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className={`text-sm xl:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-lg ${
+                className={`text-sm xl:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-lg whitespace-nowrap ${
                   activeSection === item.href
                     ? 'text-primary bg-primary/10'
                     : isScrolled
@@ -193,15 +198,16 @@ export const Navigation = () => {
                 {item.label}
               </button>
             ))}
-
-            <div className="ml-4 xl:ml-6 flex items-center gap-2">
-              <SkinToggle />
-              <ColorSchemeSelector />
-              <ThemeToggle />
-              <LanguageSelector />
-            </div>
           </div>
 
+          {/* RIGHT: remaining controls (desktop) */}
+          <div className="hidden lg:flex items-center gap-2">
+            <ColorSchemeSelector />
+            <ThemeToggle />
+            <LanguageSelector />
+          </div>
+
+          {/* Mobile: controls + hamburger */}
           <div className="flex items-center gap-2 lg:hidden">
             <SkinToggle />
             <ColorSchemeSelector />

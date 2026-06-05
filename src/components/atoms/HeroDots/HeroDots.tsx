@@ -8,7 +8,7 @@ const readNet = (): [number, number, number] => {
 
 const GAP = 30;
 const RADIUS = 150;
-const EGG_HIT = 22;
+const EGG_HIT = 32;
 
 interface HeroDotsProps {
   onEgg?: () => void;
@@ -67,13 +67,13 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
 
       const pulse = 0.5 + 0.5 * Math.sin(performance.now() / 420);
       ctx.beginPath();
-      ctx.arc(egg.x, egg.y, 2.6 + pulse * 1.2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,184,84,${0.55 + pulse * 0.4})`;
+      ctx.arc(egg.x, egg.y, 3.4 + pulse * 1.6, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,184,84,${0.6 + pulse * 0.4})`;
       ctx.fill();
       ctx.beginPath();
-      ctx.arc(egg.x, egg.y, 7 + pulse * 3, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(255,184,84,${0.18 + pulse * 0.22})`;
-      ctx.lineWidth = 1.2;
+      ctx.arc(egg.x, egg.y, 9 + pulse * 4, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(255,184,84,${0.22 + pulse * 0.26})`;
+      ctx.lineWidth = 1.4;
       ctx.stroke();
     };
 

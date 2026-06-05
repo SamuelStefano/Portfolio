@@ -141,9 +141,9 @@ export const EXPERIENCE_DATA = [
     period: '2025 - Presente',
     description: 'Professor de programação e desenvolvimento no Instituto Educar+, instituto de ensino profissionalizante em tecnologia. Ensino lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes, com mentoria de projetos práticos — alunos chegaram a apresentar projetos em hackathons.',
     stack: ['Ensino', 'Lógica de Programação', 'JavaScript', 'HTML', 'CSS', 'Desenvolvimento Web', 'Mentoria'],
-    logo: '',
+    logo: '/EducarMais.webp',
     icon: GraduationCap,
-    website: ''
+    website: 'https://institutoeducarmais.org/'
   },
   {
     company: 'M&M Informática',

@@ -394,10 +394,6 @@ html {
   animation: spin-up 2s linear infinite;
 }
 
-.animate-scale-in {
-  animation: slideUp 0.4s ease-out forwards;
-}
-
 .animate-pulse-glow {
   animation: pulse 2s ease-in-out infinite;
 }
