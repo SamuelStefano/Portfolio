@@ -189,6 +189,47 @@ html {
 .cli-scanlines { background: repeating-linear-gradient(0deg,
   transparent 0 2px, var(--cli-scanline, rgba(0,0,0,.16)) 2px 4px); mix-blend-mode: multiply; }
 
+.cli-card {
+  position: relative;
+  border: 1px solid var(--cli-border);
+  background:
+    linear-gradient(180deg, var(--cli-surface), transparent 70%),
+    var(--cli-panel);
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  overflow: hidden;
+}
+.cli-card::before,
+.cli-card::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--cli-green);
+  opacity: .35;
+  transition: opacity .25s ease, width .25s ease, height .25s ease;
+  pointer-events: none;
+}
+.cli-card::before { top: 7px; left: 7px; border-right: 0; border-bottom: 0; }
+.cli-card::after { bottom: 7px; right: 7px; border-left: 0; border-top: 0; }
+.cli-card:hover {
+  border-color: var(--cli-border-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px -12px var(--cli-green);
+}
+.cli-card:hover::before,
+.cli-card:hover::after { opacity: .9; width: 16px; height: 16px; }
+.cli-card > .cli-sweep {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, var(--cli-surface-hover), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+.cli-card:hover > .cli-sweep { animation: cli-sweep 0.9s ease forwards; }
+@keyframes cli-sweep { to { left: 130%; } }
+
 .gradient-primary {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neon-purple)) 100%);
 }

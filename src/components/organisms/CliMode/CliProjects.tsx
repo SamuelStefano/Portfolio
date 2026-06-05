@@ -18,10 +18,8 @@ export const CliProjects = () => {
       {projects.map((p) => {
         const link = p.project_links.find((l) => l.url)?.url;
         return (
-          <div
-            key={p.id}
-            className="flex flex-col rounded-lg border border-[var(--cli-border)] bg-[var(--cli-surface)] p-4 transition-colors duration-200 hover:border-[var(--cli-border-strong)]"
-          >
+          <div key={p.id} className="cli-card flex flex-col rounded-lg p-4">
+            <span className="cli-sweep" />
             <div className="flex flex-wrap items-baseline gap-2">
               <span className="text-[var(--cli-amber)]">▸</span>
               <span className="text-[15px] font-bold text-[var(--cli-text-bright)]">{p.title}</span>
