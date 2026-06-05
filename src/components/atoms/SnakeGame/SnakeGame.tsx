@@ -130,7 +130,7 @@ export const SnakeGame = ({ onClose }: SnakeGameProps) => {
       ) {
         gameOver = true;
         setOver(true);
-        setScore((s) => { setBest((b) => Math.max(b, s)); return s; });
+        setBest((b) => Math.max(b, st.snake.length - 1));
         return;
       }
       st.snake.unshift(nh);

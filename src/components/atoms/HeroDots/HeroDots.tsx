@@ -100,13 +100,6 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
       host.style.cursor = '';
       if (glowRef.current) glowRef.current.style.opacity = '0';
     };
-    const onClick = (e: MouseEvent) => {
-      const r = host.getBoundingClientRect();
-      const cx = e.clientX - r.left;
-      const cy = e.clientY - r.top;
-      if (Math.hypot(cx - egg.x, cy - egg.y) < EGG_HIT) onEgg?.();
-    };
-
     const obs = new MutationObserver(() => { net = readNet(); if (reduce) draw(); });
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-color', 'class'] });
 
@@ -114,7 +107,6 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
     window.addEventListener('resize', size);
     host.addEventListener('mousemove', onMove);
     host.addEventListener('mouseleave', onLeave);
-    host.addEventListener('click', onClick);
 
     if (reduce) {
       draw();
@@ -128,7 +120,6 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
       window.removeEventListener('resize', size);
       host.removeEventListener('mousemove', onMove);
       host.removeEventListener('mouseleave', onLeave);
-      host.removeEventListener('click', onClick);
       host.style.cursor = '';
     };
   }, [onEgg]);
@@ -144,7 +135,8 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
       />
       <button
         type="button"
-        aria-label="Easter egg"
+        aria-hidden
+        tabIndex={-1}
         onClick={() => onEgg?.()}
         className="absolute z-20 h-12 w-12 -translate-x-1/2 translate-y-1/2 cursor-pointer rounded-full"
         style={{ left: GAP * 2.5, bottom: GAP * 2.5 }}
