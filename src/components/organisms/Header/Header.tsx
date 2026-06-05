@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Github, Linkedin, Instagram, Mail, Phone, MapPin, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { SnakeGame } from '@/components/atoms/SnakeGame/SnakeGame';
 import { SocialLink } from '@/components/molecules/SocialLink/SocialLink';
 import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { Heading } from '@/components/atoms/Heading/Heading';
@@ -25,7 +23,6 @@ export const Header = () => {
   const { containerRef } = useScrollAnimations();
   const { isPhaseLoaded, getPhaseDelay } = useProgressiveLoading();
   const socialLinks = getSocialLinks(t);
-  const [gameOpen, setGameOpen] = useState(false);
 
   return (
     <>
@@ -109,18 +106,6 @@ export const Header = () => {
         </ProgressiveLoader>
 
       </header>
-
-      <button
-        type="button"
-        onClick={() => setGameOpen(true)}
-        title="🐍 Snake"
-        aria-label="Easter egg: Snake game"
-        className="group fixed bottom-4 left-4 z-50 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#ffb854]/30 bg-background/80 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-[#ffb854]/60"
-      >
-        <span className="absolute h-7 w-7 rounded-full bg-[#ffb854]/20 blur-[3px] transition-all duration-300 group-hover:bg-[#ffb854]/40" />
-        <span className="relative h-2.5 w-2.5 animate-pulse rounded-full bg-[#ffb854] shadow-[0_0_10px_3px_rgba(255,184,84,0.6)]" />
-      </button>
-      {gameOpen && <SnakeGame onClose={() => setGameOpen(false)} />}
     </>
   );
 };

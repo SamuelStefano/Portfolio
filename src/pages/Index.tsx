@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from '@/components/organisms/Header/Header';
+import { SnakeGame } from '@/components/atoms/SnakeGame/SnakeGame';
 import { ProjectCarousel } from '@/components/organisms/ProjectCarousel/ProjectCarousel';
 import { ProjectGrid } from '@/components/organisms/ProjectGrid/ProjectGrid';
 import { TechStack } from '@/components/organisms/TechStack/TechStack';
@@ -20,6 +21,7 @@ import { useSkin } from '@/hooks/useSkin';
 const Index = () => {
   const { skin } = useSkin();
   const isCli = skin === 'cli';
+  const [gameOpen, setGameOpen] = useState(false);
 
   useEffect(() => {
     // Tentar obter localização GPS exata primeiro
@@ -114,6 +116,21 @@ const Index = () => {
         )}
         <LogButton />
         <BackToTop />
+
+        <button
+          type="button"
+          onClick={() => setGameOpen(true)}
+          title="🐍 Snake"
+          aria-label="Easter egg: Snake game"
+          className="group fixed bottom-4 left-4 z-50 flex h-11 items-center gap-2 rounded-full border border-[#ffb854]/40 bg-background/90 px-3 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffb854]/70"
+        >
+          <span className="relative flex h-3 w-3 items-center justify-center">
+            <span className="absolute h-3 w-3 animate-ping rounded-full bg-[#ffb854]/50" />
+            <span className="relative h-2 w-2 rounded-full bg-[#ffb854] shadow-[0_0_8px_2px_rgba(255,184,84,0.6)]" />
+          </span>
+          <span className="font-mono text-xs text-[#ffb854]">snake</span>
+        </button>
+        {gameOpen && <SnakeGame onClose={() => setGameOpen(false)} />}
       </main>
   );
 };
