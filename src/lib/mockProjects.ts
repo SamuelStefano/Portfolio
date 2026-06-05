@@ -834,6 +834,85 @@ export const mockProjects: Project[] = [
     image_categories: {
       'pipeline': ['/projects/cibot/GitHub Actions CI.png']
     }
+  },
+  {
+    id: '10',
+    title: 'AltPay',
+    role: 'Creator',
+    description: 'Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. Projeto de hackathon Web3 (Solana + Chainlink CRE/CCIP).',
+    long_description: 'AltPay (Uber Money) é uma plataforma de microcrédito para quem roda — motoristas de aplicativo. O motorista conecta a carteira, declara seu perfil num onboarding sem consulta a bureau ("você declara, a gente ajusta") e o sistema calcula um score próprio que decide aprovação, limite e juros. O crédito cai no Pix em segundos e as cobranças são geradas e acompanhadas via Woovi. A decisão de crédito roda on-chain: o score é decidido no DON via Chainlink CRE e escrito on-chain por CCIP, com o desembolso e o repagamento liquidados no programa Solana (Anchor). Atuei no front-end, backend (Supabase Edge Functions) e na integração on-chain (Solana + Chainlink).',
+    stack: ['React', 'TypeScript', 'Vite', 'Solana', 'Anchor', 'Rust', 'Chainlink CRE', 'CCIP', 'Supabase Edge Functions', 'Woovi', 'Pix', 'Web3', 'TailwindCSS'],
+    thumbnail_url: '/projects/altpay/Landing.png',
+    icon_name: 'CreditCard',
+    created_at: '2026-05-29T00:00:00Z',
+    updated_at: '2026-05-31T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2026-05-29T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '12',
+        label: 'GitHub Repository',
+        title: 'GitHub Repository',
+        url: 'https://github.com/SamuelStefano/AltPay',
+        type: 'github',
+        created_at: '2026-05-29T00:00:00Z'
+      }
+    ],
+    project_sections: [
+      {
+        id: '10-1',
+        folder_name: 'landing',
+        display_name: 'Landing',
+        description: 'Crédito na hora, pra quem roda — microcrédito para motoristas com score próprio e sem consulta a SPC',
+        order_index: 1,
+        project_images: [
+          { id: '10-1-1', image_url: '/projects/altpay/Landing.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '10-2',
+        folder_name: 'dashboard',
+        display_name: 'Dashboard',
+        description: 'Painel do motorista: saldo disponível, solicitar crédito e acompanhar limite e score',
+        order_index: 2,
+        project_images: [
+          { id: '10-2-1', image_url: '/projects/altpay/Dashboard.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '10-3',
+        folder_name: 'score',
+        display_name: 'Score Onboarding',
+        description: 'Onboarding sem bureau: o motorista declara o perfil e o sistema calcula o score próprio',
+        order_index: 3,
+        project_images: [
+          { id: '10-3-1', image_url: '/projects/altpay/Onboarding Score.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '10-4',
+        folder_name: 'cobrancas',
+        display_name: 'Cobranças Pix',
+        description: 'Cobranças geradas e acompanhadas via Woovi: empréstimos com status pendente, pago e expirado',
+        order_index: 4,
+        project_images: [
+          { id: '10-4-1', image_url: '/projects/altpay/Cobrancas Pix.png', order_index: 1 }
+        ]
+      }
+    ],
+    image_categories: {
+      'landing': ['/projects/altpay/Landing.png'],
+      'dashboard': ['/projects/altpay/Dashboard.png'],
+      'score': ['/projects/altpay/Onboarding Score.png'],
+      'cobrancas': ['/projects/altpay/Cobrancas Pix.png']
+    }
   }
 ];
 

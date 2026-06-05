@@ -66,11 +66,12 @@ export const SecondBrain = () => {
     const onPointerMove = (e: PointerEvent) => {
       const i = draggingRef.current;
       if (i === null) return;
+      e.preventDefault();
       const r = brain.getBoundingClientRect();
       const x = Math.max(0, Math.min(r.width, e.clientX - r.left - offsetRef.current.x));
       const y = Math.max(0, Math.min(r.height, e.clientY - r.top - offsetRef.current.y));
       pinnedRef.current[i] = { x, y };
-      if (reduce) applyPinned(i, x, y);
+      applyPinned(i, x, y);
     };
     const onPointerUp = (e: PointerEvent) => {
       const i = draggingRef.current;
@@ -79,6 +80,7 @@ export const SecondBrain = () => {
       el?.releasePointerCapture?.(e.pointerId);
       if (el) el.style.cursor = 'grab';
       draggingRef.current = null;
+      document.body.style.userSelect = '';
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
       window.removeEventListener('pointercancel', onPointerUp);
@@ -86,9 +88,11 @@ export const SecondBrain = () => {
     const onPointerDown = (i: number) => (e: PointerEvent) => {
       const el = nodeRefs.current[i];
       if (!el) return;
+      e.preventDefault();
       draggingRef.current = i;
       el.setPointerCapture?.(e.pointerId);
       el.style.cursor = 'grabbing';
+      document.body.style.userSelect = 'none';
       const r = el.getBoundingClientRect();
       offsetRef.current = { x: e.clientX - (r.left + r.width / 2), y: e.clientY - (r.top + r.height / 2) };
       window.addEventListener('pointermove', onPointerMove);
