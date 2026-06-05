@@ -97,7 +97,7 @@ export const Footer = () => {
               <div className="mb-4 sm:mb-5 md:mb-6">
                 <div className="mb-3 sm:mb-4">
                   <Heading level={3} className="gradient-text text-base sm:text-lg md:text-xl lg:text-2xl leading-tight">
-                    Samuel Stefano Teixeira do Carmo
+                    Samuel Stefano
                   </Heading>
                 </div>
               <Text className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
