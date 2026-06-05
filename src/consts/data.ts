@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles, GraduationCap } from 'lucide-react';
+import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles, GraduationCap, Users } from 'lucide-react';
 
 export const TECH_CATEGORIES = [
   {
@@ -98,6 +98,19 @@ export const TECH_CATEGORIES = [
       { name: 'Viem', level: 20 }
     ],
     color: 'neon-green'
+  },
+  {
+    title: 'Colaboração & Processos',
+    icon: Users,
+    skills: [
+      { name: 'Daily / Scrum', level: 100 },
+      { name: 'Code & PR Reviews', level: 95 },
+      { name: 'Pair Programming', level: 90 },
+      { name: 'UI/UX Design', level: 80 },
+      { name: 'Mentoring', level: 90 },
+      { name: 'Documentation', level: 95 },
+    ],
+    color: 'neon-blue'
   },
 ];
 
