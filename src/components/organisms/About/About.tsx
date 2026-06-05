@@ -91,7 +91,7 @@ export const About = () => {
                 <img
                   src="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/imagem%20profissional.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9pbWFnZW0gcHJvZmlzc2lvbmFsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.IobSgu4JA84a7JH4l_SRZxkZZ8qCpS7oQ4PfwhlEut0"
                   alt="Samuel Stefano"
-                  className="rounded-full border-2 border-primary/30 object-cover w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-44 xl:h-44 shadow-lg flex-shrink-0 hover-photo cursor-pointer"
+                  className="rounded-full border-2 border-primary/30 object-cover w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 shadow-lg flex-shrink-0 hover-photo cursor-pointer"
                 />
               </div>
               <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl border border-primary/20 rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 hover:bg-primary/5 hover:border-primary/30 lg:hover-slide-scale transition-all duration-300">
@@ -233,6 +233,23 @@ export const About = () => {
                       </div>
                     </div>
                 </div>
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-7 md:mb-8">
+                {['/dfl/dfl-1.jpg', '/dfl/dfl-2.jpg', '/dfl/dfl-3.jpg'].map((src, i) => (
+                  <div
+                    key={src}
+                    className="group relative overflow-hidden rounded-lg sm:rounded-xl border border-primary/20 aspect-[4/3] animate-fade-up"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
+                    <img
+                      src={src}
+                      alt={`Samuel na DevFellowship ${i + 1}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
               <div className="text-center mb-4 sm:mb-5 md:mb-6">
                 <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-2.5 md:py-3 border border-primary/20">
                   <Text className="text-foreground font-semibold text-xs sm:text-sm md:text-base text-center">
