@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles } from 'lucide-react';
+import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles, GraduationCap } from 'lucide-react';
 
 export const TECH_CATEGORIES = [
   {
@@ -121,6 +121,16 @@ export const EXPERIENCE_DATA = [
     logo: '/DevFelloShip.png',
     icon: Briefcase,
     website: 'https://devfellowship.com'
+  },
+  {
+    company: 'Instituto Educar+',
+    role: 'Professor de Programação',
+    period: '2025 - Presente',
+    description: 'Professor de programação e desenvolvimento no Instituto Educar+, instituto de ensino profissionalizante em tecnologia. Ensino lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes, com mentoria de projetos práticos — alunos chegaram a apresentar projetos em hackathons.',
+    stack: ['Ensino', 'Lógica de Programação', 'JavaScript', 'HTML', 'CSS', 'Desenvolvimento Web', 'Mentoria'],
+    logo: '',
+    icon: GraduationCap,
+    website: ''
   },
   {
     company: 'M&M Informática',

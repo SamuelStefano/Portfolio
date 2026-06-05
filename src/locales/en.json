@@ -22,7 +22,8 @@
       "resume": "Resume",
       "email": "Email",
       "phone": "Phone"
-    }
+    },
+    "web3Signal": "building the on-chain web · open to web3 opportunities"
   },
   "projects": {
     "title": "Projects",
@@ -366,7 +367,8 @@
     "talentdao": {
       "achievement": "2nd Place Scroll Track",
       "description": "Web3 marketplace where companies can create jobs, pay in WETH and generate NFTs as credentials for completed work. I participated in contract integration, state flow and frontend integration with blockchain. We achieved 2nd place in the Scroll track at DevConnect."
-    }
+    },
+    "viewDetails": "View details"
   },
   "projectSections": {
     "overview": "Overview",
@@ -418,5 +420,28 @@
     "uptimeValue": "2+ years · Tech Lead @ DevFellowship",
     "locationValue": "Marialva, PR · Brazil",
     "caption": "samuel.jpg — render @ 0.92"
+  },
+  "focus": {
+    "title": "Currently in focus",
+    "subtitle": "Building the bridge between traditional finance and on-chain.",
+    "open": "Exploring new opportunities across the Web3 ecosystem.",
+    "items": [
+      {
+        "title": "Web3 & Smart Contracts",
+        "desc": "Solidity, Anchor and auditable contracts in production."
+      },
+      {
+        "title": "On-chain payments",
+        "desc": "PIX ↔ crypto integrations with verifiable settlement."
+      },
+      {
+        "title": "Oracles & Interop",
+        "desc": "Chainlink Data Feeds and cross-chain CCIP."
+      },
+      {
+        "title": "AI-assisted dev",
+        "desc": "Automation and agents speeding up delivery."
+      }
+    ]
   }
 }

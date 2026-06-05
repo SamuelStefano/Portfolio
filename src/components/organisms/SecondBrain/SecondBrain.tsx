@@ -5,21 +5,20 @@ type Node = {
   sub: string;
   color: string;
   a: number;
-  radius: number;
-  speed: number;
   phase: number;
   parallax: number;
 };
 
+// fixed angular slots 45° apart so nodes never cross or overlap each other
 const NODES: Node[] = [
-  { label: 'React',      sub: 'Frontend',   color: '#61dafb', a: -90, radius: 0.92, speed: 0.05,  phase: 0.0, parallax: 1.5 },
-  { label: 'TypeScript', sub: 'Language',   color: '#3178c6', a: -40, radius: 1.04, speed: -0.04, phase: 1.1, parallax: 1.0 },
-  { label: 'Supabase',   sub: 'Backend',    color: '#3ecf8e', a: 8,   radius: 0.94, speed: 0.06,  phase: 2.3, parallax: 1.8 },
-  { label: 'Web3',       sub: 'Solidity',   color: '#a855f7', a: 52,  radius: 1.06, speed: -0.05, phase: 0.7, parallax: 1.2 },
-  { label: 'Claude AI',  sub: 'LLM',        color: '#d97757', a: 128, radius: 0.92, speed: 0.045, phase: 3.4, parallax: 2.0 },
-  { label: 'n8n',        sub: 'Automation', color: '#ea4b71', a: 172, radius: 1.04, speed: -0.06, phase: 1.8, parallax: 1.1 },
-  { label: 'Next.js',    sub: 'Framework',  color: '#e8eaf0', a: 224, radius: 0.94, speed: 0.05,  phase: 4.2, parallax: 1.7 },
-  { label: 'Docker',     sub: 'DevOps',     color: '#2496ed', a: 300, radius: 1.06, speed: -0.045,phase: 2.9, parallax: 1.0 },
+  { label: 'React',      sub: 'Frontend',   color: '#61dafb', a: -67.5, phase: 0.0, parallax: 1.5 },
+  { label: 'TypeScript', sub: 'Language',   color: '#3178c6', a: -22.5, phase: 1.1, parallax: 1.0 },
+  { label: 'Supabase',   sub: 'Backend',    color: '#3ecf8e', a: 22.5,  phase: 2.3, parallax: 1.8 },
+  { label: 'Web3',       sub: 'Solidity',   color: '#a855f7', a: 67.5,  phase: 0.7, parallax: 1.2 },
+  { label: 'Claude AI',  sub: 'LLM',        color: '#d97757', a: 112.5, phase: 3.4, parallax: 2.0 },
+  { label: 'n8n',        sub: 'Automation', color: '#ea4b71', a: 157.5, phase: 1.8, parallax: 1.1 },
+  { label: 'Next.js',    sub: 'Framework',  color: '#e8eaf0', a: 202.5, phase: 4.2, parallax: 1.7 },
+  { label: 'Docker',     sub: 'DevOps',     color: '#2496ed', a: 247.5, phase: 2.9, parallax: 1.0 },
 ];
 
 export const SecondBrain = () => {
@@ -57,16 +56,16 @@ export const SecondBrain = () => {
       const ccx = cx + (cmx - 0.5) * 10, ccy = cy + (cmy - 0.5) * 10;
 
       NODES.forEach((n, i) => {
-        const ang = (n.a * Math.PI) / 180 + tm * n.speed;
+        const ang = (n.a * Math.PI) / 180 + Math.sin(tm * 0.3 + n.phase) * 0.06;
         const z = Math.sin(tm * 0.45 + n.phase);
         const scale = 0.82 + (z + 1) * 0.16;
         const opacity = 0.55 + (z + 1) * 0.225;
-        const fx = Math.sin(tm * 0.6 + i) * 4;
-        const fy = Math.cos(tm * 0.5 + i * 1.3) * 4;
+        const fx = Math.sin(tm * 0.6 + i) * 3;
+        const fy = Math.cos(tm * 0.5 + i * 1.3) * 3;
         const px = (cmx - 0.5) * n.parallax * 22;
         const py = (cmy - 0.5) * n.parallax * 22;
-        const x = cx + Math.cos(ang) * rx * n.radius + fx + px;
-        const y = cy + Math.sin(ang) * ry * n.radius + fy + py;
+        const x = cx + Math.cos(ang) * rx + fx + px;
+        const y = cy + Math.sin(ang) * ry + fy + py;
         const el = nodeRefs.current[i];
         if (el) {
           el.style.left = `${x.toFixed(1)}px`;
@@ -83,16 +82,11 @@ export const SecondBrain = () => {
       if (coreRef.current) {
         coreRef.current.style.transform = `translate(-50%,-50%) translate(${(cmx - 0.5) * 12}px,${(cmy - 0.5) * 12}px)`;
       }
-      raf = requestAnimationFrame(render);
+      if (!reduce) raf = requestAnimationFrame(render);
     };
 
     let raf = 0;
-    if (reduce) {
-      render(0);
-      cancelAnimationFrame(raf);
-    } else {
-      raf = requestAnimationFrame(render);
-    }
+    render(0);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -124,7 +118,7 @@ export const SecondBrain = () => {
         ref={coreRef}
         className="absolute left-1/2 top-1/2 z-[3] h-[188px] w-[188px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-card shadow-[0_0_0_1px_rgba(var(--net),0.3),0_30px_80px_rgba(5,12,40,0.7)] sm:h-[248px] sm:w-[248px] lg:h-[280px] lg:w-[280px]"
       >
-        <img src="/Samuel.jpg" alt="Samuel Stefano" className="h-full w-full object-cover object-[center_36%]" />
+        <img src="/Samuel.jpg" alt="Samuel Stefano" className="h-full w-full object-cover object-[center_44%]" />
       </div>
 
       {NODES.map((n, i) => (

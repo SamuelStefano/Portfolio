@@ -14,12 +14,13 @@ export const CliProjects = () => {
       <div className="text-xs text-[var(--cli-text-dim)]">
         total {projects.length} · drwxr-xr-x
       </div>
+      <div className="grid gap-4 sm:grid-cols-2">
       {projects.map((p) => {
         const link = p.project_links.find((l) => l.url)?.url;
         return (
           <div
             key={p.id}
-            className="rounded-lg border border-[var(--cli-border)] bg-[var(--cli-surface)] p-4 transition-colors duration-200 hover:border-[var(--cli-border-strong)]"
+            className="flex flex-col rounded-lg border border-[var(--cli-border)] bg-[var(--cli-surface)] p-4 transition-colors duration-200 hover:border-[var(--cli-border-strong)]"
           >
             <div className="flex flex-wrap items-baseline gap-2">
               <span className="text-[var(--cli-amber)]">▸</span>
@@ -37,7 +38,7 @@ export const CliProjects = () => {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-[var(--cli-cyan)] hover:underline"
+                className="mt-auto inline-flex items-center gap-1.5 pt-3 text-xs font-medium text-[var(--cli-cyan)] hover:underline"
               >
                 → {t('hackathons.viewProject')}
               </a>
@@ -45,6 +46,7 @@ export const CliProjects = () => {
           </div>
         );
       })}
+      </div>
     </div>
   );
 };

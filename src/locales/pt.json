@@ -22,7 +22,8 @@
       "resume": "Currículo",
       "email": "Email",
       "phone": "Telefone"
-    }
+    },
+    "web3Signal": "building the on-chain web · aberto a oportunidades web3"
   },
   "projects": {
     "title": "Projetos",
@@ -359,7 +360,8 @@
     "talentdao": {
       "achievement": "2º Lugar trilha da Scroll",
       "description": "Marketplace Web3 onde empresas podem criar jobs, pagar em USDC e gerar NFTs como credenciais de trabalho concluído. Participei da integração dos contratos, fluxo de estados e integração do frontend com a blockchain. Conquistamos o 2º lugar na trilha da Scroll do DevConnect."
-    }
+    },
+    "viewDetails": "Ver detalhes"
   },
   "projectSections": {
     "overview": "Visão Geral",
@@ -418,5 +420,28 @@
     "uptimeValue": "2+ anos · Tech Lead @ DevFellowship",
     "locationValue": "Marialva, PR · Brasil",
     "caption": "samuel.jpg — render @ 0.92"
+  },
+  "focus": {
+    "title": "Em foco agora",
+    "subtitle": "Construindo a ponte entre as finanças tradicionais e o on-chain.",
+    "open": "Explorando novas oportunidades no ecossistema Web3.",
+    "items": [
+      {
+        "title": "Web3 & Smart Contracts",
+        "desc": "Solidity, Anchor e contratos auditáveis em produção."
+      },
+      {
+        "title": "Pagamentos on-chain",
+        "desc": "Integrações PIX ↔ cripto com liquidação verificável."
+      },
+      {
+        "title": "Oráculos & Interop",
+        "desc": "Chainlink Data Feeds e CCIP cross-chain."
+      },
+      {
+        "title": "Dev com IA",
+        "desc": "Automação e agentes acelerando entregas."
+      }
+    ]
   }
 }

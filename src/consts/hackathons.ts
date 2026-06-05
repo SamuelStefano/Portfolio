@@ -22,7 +22,7 @@ export const HACKATHONS: Hackathon[] = [
     projectLink: 'https://github.com/SamuelStefano',
     githubLink: 'https://github.com/SamuelStefano',
     technologies: ['Solana', 'Anchor', 'Rust', 'Chainlink', 'CCIP', 'Data Feeds', 'Solidity', 'Foundry', 'USDC', 'PIX', 'TypeScript', 'Web3'],
-    team: ['Samuel Stefano'],
+    team: ['Samuel Stefano (dev)', 'Alunos Educar+ (apresentação)'],
   },
   {
     name: 'GreenLoop',

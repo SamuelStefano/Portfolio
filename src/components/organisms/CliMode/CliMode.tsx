@@ -4,9 +4,11 @@ import { CliBlock } from '@/components/atoms/CliBlock/CliBlock';
 import { CliHero } from './CliHero';
 import { CliProjects } from './CliProjects';
 import { CliSkills } from './CliSkills';
+import { CliExperience } from './CliExperience';
 import { CliAwards } from './CliAwards';
 import { CliAbout } from './CliAbout';
 import { CliContact } from './CliContact';
+import { CliFooter } from './CliFooter';
 
 export const CliMode = () => {
   const rainRef = useRef<HTMLCanvasElement>(null);
@@ -41,6 +43,10 @@ export const CliMode = () => {
               <CliBlock command="cat skills.json"><CliSkills /></CliBlock>
             </div>
 
+            <div id="experiencia" className="scroll-mt-24">
+              <CliBlock command="git log --oneline ~/career"><CliExperience /></CliBlock>
+            </div>
+
             <div id="hackathons" className="scroll-mt-24">
               <CliBlock command="cat awards.log"><CliAwards /></CliBlock>
             </div>
@@ -52,6 +58,8 @@ export const CliMode = () => {
             <div id="contato" className="scroll-mt-24">
               <CliBlock command="./contact.sh"><CliContact /></CliBlock>
             </div>
+
+            <CliFooter />
           </div>
         </div>
       </div>

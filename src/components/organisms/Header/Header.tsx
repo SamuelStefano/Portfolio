@@ -15,7 +15,7 @@ const getSocialLinks = (t: any) => [
   { icon: Linkedin, href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',                                           label: t('hero.socialLinks.linkedin')  },
   { icon: Instagram,href: 'https://instagram.com/samuel.stefano',                                                            label: t('hero.socialLinks.instagram') },
   { icon: FileText, href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing',            label: t('hero.socialLinks.resume')    },
-  { icon: Mail,     href: 'mailto:samuel@example.com',                                                                       label: t('hero.socialLinks.email')     },
+  { icon: Mail,     href: 'mailto:samuelstefanodocarmo@gmail.com',                                                            label: t('hero.socialLinks.email')     },
   { icon: Phone,    href: 'tel:+5544998795387',                                                                              label: t('hero.socialLinks.phone')     },
 ];
 
@@ -82,7 +82,7 @@ export const Header = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
-                  {['React', 'Next.js', 'TypeScript', 'Module Federation', 'Supabase', 'Claude API', 'n8n'].map(tech => (
+                  {['React', 'Next.js', 'TypeScript', 'Solidity', 'Solana', 'Module Federation', 'Supabase', 'Claude API', 'n8n'].map(tech => (
                     <span key={tech} className="px-2.5 py-1 rounded-md border border-border bg-card font-mono hover:border-primary/50 hover:text-primary transition-colors duration-200 cursor-default">
                       {tech}
                     </span>

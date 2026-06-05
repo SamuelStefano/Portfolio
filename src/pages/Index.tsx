@@ -4,6 +4,7 @@ import { ProjectCarousel } from '@/components/organisms/ProjectCarousel/ProjectC
 import { ProjectGrid } from '@/components/organisms/ProjectGrid/ProjectGrid';
 import { TechStack } from '@/components/organisms/TechStack/TechStack';
 import { HackathonsSection } from '@/components/organisms/HackathonsSection/HackathonsSection';
+import { FocusSection } from '@/components/organisms/FocusSection/FocusSection';
 import { About } from '@/components/organisms/About/About';
 import { Footer } from '@/components/organisms/Footer/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
@@ -90,6 +91,7 @@ const Index = () => {
         ) : (
           <div className="relative z-10">
             <Header />
+            <FocusSection />
             <section id="projetos">
               <ProjectCarousel />
             </section>
