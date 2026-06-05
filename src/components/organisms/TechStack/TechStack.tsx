@@ -109,19 +109,26 @@ export const TechStack = () => {
             ))}
           </div>
 
-          {/* Educar+ Instagram */}
-          <div className="flex justify-center mb-6 -mt-6">
-            <a
-              href="https://www.instagram.com/instituto.educarmais/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram Educar+"
-              title="Instagram Educar+"
-              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-200 opacity-60 hover:opacity-100"
-            >
-              <Instagram className="w-3.5 h-3.5" />
-              <span>instituto.educarmais</span>
-            </a>
+          {/* Instagrams */}
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-6 -mt-6">
+            {[
+              { href: 'https://www.instagram.com/instituto.educarmais/', handle: 'instituto.educarmais' },
+              { href: 'https://www.instagram.com/devfellowship/', handle: 'devfellowship' },
+              { href: 'https://www.instagram.com/mm.informatica.marialva/', handle: 'mm.informatica.marialva' },
+            ].map(ig => (
+              <a
+                key={ig.handle}
+                href={ig.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Instagram ${ig.handle}`}
+                title={`Instagram ${ig.handle}`}
+                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-200 opacity-60 hover:opacity-100"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+                <span>{ig.handle}</span>
+              </a>
+            ))}
           </div>
 
           {/* timeline */}
