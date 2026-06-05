@@ -225,7 +225,7 @@ export const SnakeGame = ({ onClose }: SnakeGameProps) => {
   return (
     <div
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 p-4 backdrop-blur-sm animate-fade-up"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 p-4 backdrop-blur-sm"
     >
       <div className="relative w-full max-w-sm rounded-2xl border border-primary/30 bg-card p-5 shadow-[0_30px_90px_-20px_hsl(var(--primary))]">
         <button
