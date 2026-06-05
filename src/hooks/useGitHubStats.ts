@@ -50,17 +50,19 @@ export const useGitHubStats = () => {
         console.error('Error fetching GitHub stats:', error);
 
         setStats({
-          totalCommits: 350,
-          totalRepos: 15,
+          totalCommits: 2800,
+          totalRepos: 38,
           totalStars: 5,
           totalForks: 2,
-          linesOfCode: 50000,
+          linesOfCode: 420000,
           languages: {
-            'TypeScript': 40000,
-            'JavaScript': 25000,
-            'CSS': 15000,
-            'HTML': 10000,
-            'Python': 5000
+            'TypeScript': 210000,
+            'JavaScript': 84000,
+            'Solidity': 42000,
+            'CSS': 38000,
+            'HTML': 25000,
+            'Rust': 13000,
+            'Python': 8000
           },
           isLoading: false,
           error: 'Using estimated data (GitHub API unavailable)'

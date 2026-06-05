@@ -11,8 +11,8 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Full-Stack Developer & Software Architect",
-    "description": "2 years of experience • Module Federation • AI & Automation • 3rd Year ADS • Marialva, PR",
-    "bio": "Specialized in React, TypeScript, Node.js, Supabase, Module Federation and AI Integrations.",
+    "description": "2 years of experience • Web3 • AI & Automation • 3rd Year ADS • Marialva, PR",
+    "bio": "Specialized in React, TypeScript, Node.js, Supabase, Web3 and AI Integrations.",
     "bioContinue": "Architecting micro-frontends, automating pipelines with n8n and integrating LLMs to build scalable, intelligent platforms.",
     "clickToSeeMore": "Click to see more",
     "socialLinks": {
@@ -22,7 +22,8 @@
       "resume": "Resume",
       "email": "Email",
       "phone": "Phone"
-    }
+    },
+    "web3Signal": "building the on-chain web · open to web3 opportunities"
   },
   "projects": {
     "title": "Projects",
@@ -59,7 +60,9 @@
       "backend": "Robust backend architecture with RESTful APIs, microservices, database and scalable infrastructure.",
       "database": "Optimized database structure with relationships, indexes, efficient queries and automatic backup.",
       "others": "Additional features, special integrations and complementary resources that enrich the user experience."
-    }
+    },
+    "showMore": "See more projects",
+    "showLess": "See less"
   },
   "skills": {
     "title": "Skills & Experience",
@@ -99,6 +102,12 @@
         "role": "Tech Lead & Full-Stack Developer",
         "period": "July 2024 - Present",
         "description": "Technical leadership of the micro-frontends ecosystem with Module Federation. Architecture and development of DFL Learn super-app, Reviews App, Payments App and CI Reviewer Bot with AI. Mentoring fellows, defining technical standards, code reviews and participation in award-winning hackathons."
+      },
+      {
+        "company": "Instituto Educar+",
+        "role": "Programming Teacher",
+        "period": "2025 - Present",
+        "description": "Programming and development teacher at Instituto Educar+, a vocational technology school. I teach programming logic, web development and best practices to beginner students, mentoring hands-on projects — students have presented projects at hackathons."
       },
       {
         "company": "M&M Informática",
@@ -156,6 +165,16 @@
       "ERC-20 / ERC-721",
       "Mentoring",
       "Code Review"
+    ],
+    "categories": [
+      "Frontend",
+      "Backend",
+      "Database",
+      "DevOps & Tools",
+      "Artificial Intelligence",
+      "Software Engineering",
+      "Web3 & Blockchain",
+      "Collaboration & Process"
     ]
   },
   "about": {
@@ -355,13 +374,19 @@
     "subtitle": "Participation in blockchain and Web3 hackathons, with award-winning projects and enriching experiences",
     "technologies": "Technologies",
     "viewProject": "View Project",
+    "altpay": {
+      "achievement": "Winner · Chainlink Track",
+      "description": "A PIX↔crypto payments solution where a credit score is decided on-chain. Chainlink CRE runs the risk logic on the DON and writes the result to contracts via CCIP, while Data Feeds provide a trusted price. Fund release is verifiable on Solana (Anchor/Rust) with a PIX payment proof. I worked on the frontend, backend and the full Chainlink and on-chain integration."
+    },
     "greenloop": {
+      "achievement": "4th Place Base Track",
       "description": "Web3 platform that transforms deliveries of recyclable materials into on-chain tokens, encouraging sustainability through economic incentives. I participated in the frontend, backend and integration with smart contracts on the Base network."
     },
     "talentdao": {
       "achievement": "2nd Place Scroll Track",
       "description": "Web3 marketplace where companies can create jobs, pay in WETH and generate NFTs as credentials for completed work. I participated in contract integration, state flow and frontend integration with blockchain. We achieved 2nd place in the Scroll track at DevConnect."
-    }
+    },
+    "viewDetails": "View details"
   },
   "projectSections": {
     "overview": "Overview",
@@ -394,5 +419,58 @@
       "landing": "Homepage with platform presentation",
       "library": "Main interface with search and categorization of examples"
     }
+  },
+  "controls": {
+    "colorScheme": "Color scheme",
+    "cliMode": "CLI Mode",
+    "visualMode": "Visual Mode",
+    "openToWork": "Open to work"
+  },
+  "cli": {
+    "role": "Role",
+    "stack": "Stack",
+    "focus": "Focus",
+    "uptime": "Uptime",
+    "awards": "Awards",
+    "location": "Location",
+    "roleValue": "Tech Lead @ DevFellowship",
+    "focusValue": "Micro-frontends · AI · Web3",
+    "uptimeValue": "2+ years · Tech Lead @ DevFellowship",
+    "locationValue": "Marialva, PR · Brazil",
+    "caption": "samuel.jpg — render @ 0.92"
+  },
+  "focus": {
+    "title": "Currently in focus",
+    "subtitle": "Building the bridge between traditional finance and on-chain.",
+    "open": "Exploring new opportunities across the Web3 ecosystem.",
+    "items": [
+      {
+        "title": "Web3 & Smart Contracts",
+        "desc": "Solidity, Anchor and auditable contracts in production."
+      },
+      {
+        "title": "On-chain payments",
+        "desc": "PIX ↔ crypto integrations with verifiable settlement."
+      },
+      {
+        "title": "Oracles & Interop",
+        "desc": "Chainlink Data Feeds and cross-chain CCIP."
+      },
+      {
+        "title": "Chainlink CRE",
+        "desc": "Verifiable logic computed on the DON with the Chainlink Runtime Environment."
+      }
+    ]
+  },
+  "game": {
+    "title": "Snake.exe",
+    "score": "Score",
+    "best": "Best",
+    "gameOver": "Game Over",
+    "restart": "Restart",
+    "close": "Close",
+    "hint": "Arrows or WASD · swipe on mobile",
+    "start": "Press an arrow to start",
+    "found": "Easter egg found!"
   }
 }

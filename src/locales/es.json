@@ -11,8 +11,8 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Desarrollador Full-Stack & Arquitecto de Software",
-    "description": "2 años de experiencia • Module Federation • IA & Automatización • 3er Año ADS • Marialva, PR",
-    "bio": "Especializado en React, TypeScript, Node.js, Supabase, Module Federation e Integraciones con IA.",
+    "description": "2 años de experiencia • Web3 • IA & Automatización • 3er Año ADS • Marialva, PR",
+    "bio": "Especializado en React, TypeScript, Node.js, Supabase, Web3 e Integraciones con IA.",
     "bioContinue": "Arquitectando micro-frontends, automatizando pipelines con n8n e integrando LLMs para construir plataformas escalables e inteligentes.",
     "clickToSeeMore": "Haz clic para ver más",
     "socialLinks": {
@@ -22,7 +22,8 @@
       "resume": "Currículum",
       "email": "Email",
       "phone": "Teléfono"
-    }
+    },
+    "web3Signal": "building the on-chain web · abierto a oportunidades web3"
   },
   "projects": {
     "title": "Proyectos",
@@ -59,7 +60,9 @@
       "backend": "Arquitectura backend robusta con APIs RESTful, microservicios, base de datos e infraestructura escalable.",
       "database": "Estructura de base de datos optimizada con relaciones, índices, consultas eficientes y respaldo automático.",
       "others": "Funcionalidades adicionales, integraciones especiales y recursos complementarios que enriquecen la experiencia del usuario."
-    }
+    },
+    "showMore": "Ver más proyectos",
+    "showLess": "Ver menos"
   },
   "skills": {
     "title": "Habilidades y Experiencia",
@@ -99,6 +102,12 @@
         "role": "Líder Técnico & Desarrollador Full-Stack",
         "period": "Julio 2024 - Presente",
         "description": "Liderazgo técnico del ecosistema de micro-frontends con Module Federation. Arquitectura y desarrollo del super-app DFL Learn, Reviews App, Payments App y CI Reviewer Bot con IA. Mentoría de fellows, definición de estándares técnicos, revisiones de código y participación en hackathons premiados."
+      },
+      {
+        "company": "Instituto Educar+",
+        "role": "Profesor de Programación",
+        "period": "2025 - Presente",
+        "description": "Profesor de programación y desarrollo en el Instituto Educar+, instituto de enseñanza profesional en tecnología. Enseño lógica de programación, desarrollo web y buenas prácticas a estudiantes principiantes, con mentoría de proyectos prácticos — los estudiantes han presentado proyectos en hackathons."
       },
       {
         "company": "M&M Informática",
@@ -156,6 +165,16 @@
       "ERC-20 / ERC-721",
       "Mentoría",
       "Revisión de Código"
+    ],
+    "categories": [
+      "Frontend",
+      "Backend",
+      "Base de Datos",
+      "DevOps & Herramientas",
+      "Inteligencia Artificial",
+      "Ingeniería de Software",
+      "Web3 & Blockchain",
+      "Colaboración & Procesos"
     ]
   },
   "about": {
@@ -348,13 +367,19 @@
     "subtitle": "Participaciones en hackathons de blockchain y Web3, con proyectos premiados y experiencias enriquecedoras",
     "technologies": "Tecnologías",
     "viewProject": "Ver Proyecto",
+    "altpay": {
+      "achievement": "Ganador · Pista Chainlink",
+      "description": "Solución de pagos PIX↔cripto donde un score de crédito se decide on-chain. Chainlink CRE ejecuta la lógica de riesgo en el DON y escribe el resultado en contratos vía CCIP, mientras los Data Feeds garantizan una cotización confiable. La liberación de fondos es verificable en Solana (Anchor/Rust) con prueba de pago PIX. Trabajé en el frontend, backend y en toda la integración de Chainlink y on-chain."
+    },
     "greenloop": {
+      "achievement": "4º Lugar pista de Base",
       "description": "Plataforma Web3 que transforma entregas de materiales reciclables en tokens on-chain, incentivando la sostenibilidad a través de incentivos económicos. Participé en el frontend, backend e integración con contratos inteligentes en la red Base."
     },
     "talentdao": {
       "achievement": "2º Lugar pista de Scroll",
       "description": "Marketplace Web3 donde las empresas pueden crear trabajos, pagar en WETH y generar NFTs como credenciales de trabajo completado. Participé en la integración de contratos, flujo de estados e integración del frontend con blockchain. Conquistamos el 2º lugar en la pista de Scroll del DevConnect."
-    }
+    },
+    "viewDetails": "Ver detalles"
   },
   "projectSections": {
     "overview": "Resumen General",
@@ -394,5 +419,58 @@
     "technologiesCount": "tecnologías",
     "collaboratorsCount": "colaboradores",
     "linksCount": "enlaces"
+  },
+  "controls": {
+    "colorScheme": "Esquema de color",
+    "cliMode": "Modo CLI",
+    "visualMode": "Modo Visual",
+    "openToWork": "Disponible"
+  },
+  "cli": {
+    "role": "Rol",
+    "stack": "Stack",
+    "focus": "Enfoque",
+    "uptime": "Uptime",
+    "awards": "Premios",
+    "location": "Ubicación",
+    "roleValue": "Tech Lead @ DevFellowship",
+    "focusValue": "Micro-frontends · IA · Web3",
+    "uptimeValue": "2+ años · Tech Lead @ DevFellowship",
+    "locationValue": "Marialva, PR · Brasil",
+    "caption": "samuel.jpg — render @ 0.92"
+  },
+  "focus": {
+    "title": "En foco ahora",
+    "subtitle": "Construyendo el puente entre las finanzas tradicionales y on-chain.",
+    "open": "Explorando nuevas oportunidades en el ecosistema Web3.",
+    "items": [
+      {
+        "title": "Web3 & Smart Contracts",
+        "desc": "Solidity, Anchor y contratos auditables en producción."
+      },
+      {
+        "title": "Pagos on-chain",
+        "desc": "Integraciones PIX ↔ cripto con liquidación verificable."
+      },
+      {
+        "title": "Oráculos & Interop",
+        "desc": "Chainlink Data Feeds y CCIP cross-chain."
+      },
+      {
+        "title": "Chainlink CRE",
+        "desc": "Lógica verificable computada en el DON con el Chainlink Runtime Environment."
+      }
+    ]
+  },
+  "game": {
+    "title": "Snake.exe",
+    "score": "Puntos",
+    "best": "Récord",
+    "gameOver": "Game Over",
+    "restart": "Reiniciar",
+    "close": "Cerrar",
+    "hint": "Flechas o WASD · desliza en móvil",
+    "start": "Pulsa una flecha para empezar",
+    "found": "¡Easter egg encontrado!"
   }
 }

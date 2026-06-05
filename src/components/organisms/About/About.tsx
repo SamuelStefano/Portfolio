@@ -9,6 +9,9 @@ import { useExperienceTime } from '@/hooks/useExperienceTime';
 import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalendar/AvailabilityCalendar';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
+import { TECH_CATEGORIES } from '@/consts/data';
+
+const TECH_COUNT = Math.floor(TECH_CATEGORIES.reduce((sum, c) => sum + c.skills.length, 0) / 5) * 5;
 
 const getHighlights = (t: any) => [
   {
@@ -52,8 +55,8 @@ export const About = () => {
     },
     {
       label: t('about.technologies'),
-      value: '15+',
-      numericValue: 15,
+      value: `${TECH_COUNT}+`,
+      numericValue: TECH_COUNT,
       suffix: '+',
       icon: Globe
     },
@@ -205,7 +208,7 @@ export const About = () => {
                 Empresas e Projetos
               </Heading>
               <Text className="text-muted-foreground max-w-2xl mx-auto">
-                Algumas das organiza��es e projetos com os quais tive o prazer de trabalhar
+                Algumas das organizações e projetos com os quais tive o prazer de trabalhar
               </Text>
             </div>
           </div>

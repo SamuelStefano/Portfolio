@@ -11,8 +11,8 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Desenvolvedor Full-Stack & Arquiteto de Software",
-    "description": "2 anos de experiência • Module Federation • IA & Automação • ADS 3º ano • Marialva, PR",
-    "bio": "Especializado em React, TypeScript, Node.js, Supabase, Module Federation e Integrações com IA.",
+    "description": "2 anos de experiência • Web3 • IA & Automação • ADS 3º ano • Marialva, PR",
+    "bio": "Especializado em React, TypeScript, Node.js, Supabase, Web3 e Integrações com IA.",
     "bioContinue": "Arquitetando micro-frontends, automatizando pipelines com n8n e integrando LLMs para criar plataformas escaláveis e inteligentes.",
     "clickToSeeMore": "Clique para ver mais",
     "socialLinks": {
@@ -22,7 +22,8 @@
       "resume": "Currículo",
       "email": "Email",
       "phone": "Telefone"
-    }
+    },
+    "web3Signal": "building the on-chain web · aberto a oportunidades web3"
   },
   "projects": {
     "title": "Projetos",
@@ -59,7 +60,9 @@
       "backend": "Arquitetura backend robusta com APIs RESTful, microserviços, banco de dados e infraestrutura escalável.",
       "database": "Estrutura de banco de dados otimizada com relacionamentos, índices, queries eficientes e backup automático.",
       "others": "Funcionalidades adicionais, integrações especiais e recursos complementares que enriquecem a experiência do usuário."
-    }
+    },
+    "showMore": "Ver mais projetos",
+    "showLess": "Ver menos"
   },
   "skills": {
     "title": "Habilidades & Experiência",
@@ -99,6 +102,12 @@
         "role": "Líder Técnico & Desenvolvedor Full-Stack",
         "period": "Julho 2024 - Presente",
         "description": "Liderança técnica do ecossistema de micro-frontends com Module Federation. Arquitetura e desenvolvimento do super-app DFL Learn, Reviews App, Payments App e CI Revisor Bot com IA. Mentoria de fellows, definição de padrões técnicos, revisões de código e participação em hackathons premiados."
+      },
+      {
+        "company": "Instituto Educar+",
+        "role": "Professor de Programação",
+        "period": "2025 - Presente",
+        "description": "Professor de programação e desenvolvimento no Instituto Educar+, instituto de ensino profissionalizante em tecnologia. Ensino lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes, com mentoria de projetos práticos — alunos chegaram a apresentar projetos em hackathons."
       },
       {
         "company": "M&M Informática",
@@ -156,6 +165,16 @@
       "ERC-20 / ERC-721",
       "Mentoria",
       "Code Review"
+    ],
+    "categories": [
+      "Frontend",
+      "Backend",
+      "Banco de Dados",
+      "DevOps & Ferramentas",
+      "Inteligência Artificial",
+      "Engenharia de Software",
+      "Web3 & Blockchain",
+      "Colaboração & Processos"
     ]
   },
   "about": {
@@ -348,13 +367,19 @@
     "subtitle": "Participações em hackathons de blockchain e Web3, com projetos premiados e experiências enriquecedoras",
     "technologies": "Tecnologias",
     "viewProject": "Ver Projeto",
+    "altpay": {
+      "achievement": "Vencedor · Trilha Chainlink",
+      "description": "Solução de pagamentos PIX↔cripto onde um score de crédito é decidido on-chain. A Chainlink CRE roda a lógica de risco no DON e escreve o resultado em contratos via CCIP, enquanto Data Feeds garantem cotação confiável. Liberação de fundos verificável em Solana (Anchor/Rust) com prova de pagamento PIX. Atuei no frontend, backend e em toda a integração Chainlink e on-chain."
+    },
     "greenloop": {
+      "achievement": "4º Lugar trilha da Base",
       "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. Participei do frontend, backend e integração com contratos inteligentes na rede Base."
     },
     "talentdao": {
       "achievement": "2º Lugar trilha da Scroll",
       "description": "Marketplace Web3 onde empresas podem criar jobs, pagar em USDC e gerar NFTs como credenciais de trabalho concluído. Participei da integração dos contratos, fluxo de estados e integração do frontend com a blockchain. Conquistamos o 2º lugar na trilha da Scroll do DevConnect."
-    }
+    },
+    "viewDetails": "Ver detalhes"
   },
   "projectSections": {
     "overview": "Visão Geral",
@@ -394,5 +419,58 @@
     "technologiesCount": "tecnologias",
     "collaboratorsCount": "colaboradores",
     "linksCount": "links"
+  },
+  "controls": {
+    "colorScheme": "Esquema de cor",
+    "cliMode": "Modo CLI",
+    "visualMode": "Modo Visual",
+    "openToWork": "Aberto a propostas"
+  },
+  "cli": {
+    "role": "Cargo",
+    "stack": "Stack",
+    "focus": "Foco",
+    "uptime": "Uptime",
+    "awards": "Prêmios",
+    "location": "Local",
+    "roleValue": "Tech Lead @ DevFellowship",
+    "focusValue": "Micro-frontends · IA · Web3",
+    "uptimeValue": "2+ anos · Tech Lead @ DevFellowship",
+    "locationValue": "Marialva, PR · Brasil",
+    "caption": "samuel.jpg — render @ 0.92"
+  },
+  "focus": {
+    "title": "Em foco agora",
+    "subtitle": "Construindo a ponte entre as finanças tradicionais e o on-chain.",
+    "open": "Explorando novas oportunidades no ecossistema Web3.",
+    "items": [
+      {
+        "title": "Web3 & Smart Contracts",
+        "desc": "Solidity, Anchor e contratos auditáveis em produção."
+      },
+      {
+        "title": "Pagamentos on-chain",
+        "desc": "Integrações PIX ↔ cripto com liquidação verificável."
+      },
+      {
+        "title": "Oráculos & Interop",
+        "desc": "Chainlink Data Feeds e CCIP cross-chain."
+      },
+      {
+        "title": "Chainlink CRE",
+        "desc": "Lógica verificável computada no DON com o Chainlink Runtime Environment."
+      }
+    ]
+  },
+  "game": {
+    "title": "Snake.exe",
+    "score": "Pontos",
+    "best": "Recorde",
+    "gameOver": "Game Over",
+    "restart": "Reiniciar",
+    "close": "Fechar",
+    "hint": "Setas ou WASD · deslize no mobile",
+    "start": "Pressione uma seta para começar",
+    "found": "Easter egg encontrado!"
   }
 }

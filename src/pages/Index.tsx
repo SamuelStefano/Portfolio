@@ -4,15 +4,23 @@ import { ProjectCarousel } from '@/components/organisms/ProjectCarousel/ProjectC
 import { ProjectGrid } from '@/components/organisms/ProjectGrid/ProjectGrid';
 import { TechStack } from '@/components/organisms/TechStack/TechStack';
 import { HackathonsSection } from '@/components/organisms/HackathonsSection/HackathonsSection';
+import { FocusSection } from '@/components/organisms/FocusSection/FocusSection';
 import { About } from '@/components/organisms/About/About';
 import { Footer } from '@/components/organisms/Footer/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
+import { ConstellationBackground } from '@/components/atoms/ConstellationBackground/ConstellationBackground';
+import { CliMode } from '@/components/organisms/CliMode/CliMode';
+import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
 import { ScrollProgress } from '@/components/atoms/ScrollProgress/ScrollProgress';
 import { CustomCursor } from '@/components/atoms/CustomCursor/CustomCursor';
 import { BackToTop } from '@/components/atoms/BackToTop/BackToTop';
+import { useSkin } from '@/hooks/useSkin';
 
 const Index = () => {
+  const { skin } = useSkin();
+  const isCli = skin === 'cli';
+
   useEffect(() => {
     // Tentar obter localização GPS exata primeiro
     if ('geolocation' in navigator) {
@@ -73,26 +81,35 @@ const Index = () => {
     <main className="min-h-screen relative cursor-none">
         <CustomCursor />
         <ScrollProgress />
-        <AnimatedBackground />
-        <div className="relative z-10">
-          <Header />
-          <section id="projetos">
-            <ProjectCarousel />
-          </section>
-          <ProjectGrid />
-          <section id="habilidades">
-            <TechStack />
-          </section>
-          <section id="hackathons">
-            <HackathonsSection />
-          </section>
-          <section id="sobre">
-            <About />
-          </section>
-          <section id="contato">
-            <Footer />
-          </section>
-        </div>
+        {!isCli && <AnimatedBackground />}
+        {!isCli && <ConstellationBackground />}
+        {isCli ? (
+          <div className="relative z-10">
+            <Navigation />
+            <CliMode />
+          </div>
+        ) : (
+          <div className="relative z-10">
+            <Header />
+            <FocusSection />
+            <section id="projetos">
+              <ProjectCarousel />
+            </section>
+            <ProjectGrid />
+            <section id="habilidades">
+              <TechStack />
+            </section>
+            <section id="hackathons">
+              <HackathonsSection />
+            </section>
+            <section id="sobre">
+              <About />
+            </section>
+            <section id="contato">
+              <Footer />
+            </section>
+          </div>
+        )}
         <LogButton />
         <BackToTop />
       </main>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 const languages = [
   {
     code: 'pt',
-    name: 'Portugu�s',
+    name: 'Português',
     flag: 'https://flagicons.lipis.dev/flags/4x3/br.svg'
   },
   {
@@ -14,7 +14,7 @@ const languages = [
   },
   {
     code: 'es',
-    name: 'Espa�ol',
+    name: 'Español',
     flag: 'https://flagicons.lipis.dev/flags/4x3/es.svg'
   }
 ];

@@ -454,7 +454,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
+      // bypass global scroll-behavior:smooth so restoring position doesn't animate from the top
+      const root = document.documentElement;
+      const prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
       window.scrollTo(0, scrollY);
+      root.style.scrollBehavior = prev;
     };
   }, [isOpen]);
 

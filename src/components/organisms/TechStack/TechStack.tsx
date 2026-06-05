@@ -1,14 +1,19 @@
 import { useTranslation } from 'react-i18next';
+import { Instagram } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar/SkillBar';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem/ExperienceItem';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
-import { TECH_CATEGORIES, EXPERIENCE_DATA, ADDITIONAL_SKILLS } from '@/consts/data';
+import { TECH_CATEGORIES, EXPERIENCE_DATA } from '@/consts/data';
 
 export const TechStack = () => {
   const { t } = useTranslation();
   const { containerRef } = useScrollAnimations();
+
+  const additionalSkills = Array.from({ length: 64 }, (_, i) => t(`skills.additionalSkills.${i}`)).filter(
+    (s) => !s.startsWith('skills.additionalSkills.')
+  );
 
   return (
     <section id="habilidades" className="py-16 sm:py-20 lg:py-24" ref={containerRef}>
@@ -39,7 +44,7 @@ export const TechStack = () => {
                     <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <Heading level={3} className="text-base sm:text-lg leading-tight">
-                    {category.title}
+                    {t(`skills.categories.${ci}`)}
                   </Heading>
                 </div>
                 <div className="space-y-3">
@@ -65,7 +70,7 @@ export const TechStack = () => {
           </Heading>
           <div className="relative">
             <div className="flex animate-scroll gap-2 sm:gap-3 whitespace-nowrap">
-              {[...ADDITIONAL_SKILLS, ...ADDITIONAL_SKILLS].map((skill, i) => (
+              {[...additionalSkills, ...additionalSkills].map((skill, i) => (
                 <div
                   key={i}
                   className="px-3 py-1.5 bg-card border border-border rounded-full text-xs font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
@@ -87,8 +92,9 @@ export const TechStack = () => {
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 py-6 mb-12">
             {[
               { src: '/prefeitura.png',  alt: 'Prefeitura de Marialva', cls: 'w-24 h-24', href: 'https://www.marialva.pr.gov.br' },
-              { src: '/DevFelloShip.png',alt: 'DevFellowship',           cls: 'w-28 h-28', href: 'https://devfellowship.com' },
-              { src: '/MMIcon.png',      alt: 'M&M Informática',         cls: 'w-32 h-16', href: 'https://mminfo.me' },
+              { src: '/DevFelloShip.png',  alt: 'DevFellowship',    cls: 'w-28 h-28', href: 'https://devfellowship.com' },
+              { src: '/EducarMais.webp',   alt: 'Instituto Educar+', cls: 'w-32 h-16', href: 'https://institutoeducarmais.org/' },
+              { src: '/MMIcon.png',        alt: 'M&M Informática',   cls: 'w-32 h-16', href: 'https://mminfo.me' },
             ].map(logo => (
               <a
                 key={logo.alt}
@@ -101,6 +107,21 @@ export const TechStack = () => {
                 <img src={logo.src} alt={logo.alt} className={`${logo.cls} object-contain`} />
               </a>
             ))}
+          </div>
+
+          {/* Educar+ Instagram */}
+          <div className="flex justify-center mb-6 -mt-6">
+            <a
+              href="https://www.instagram.com/instituto.educarmais/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram Educar+"
+              title="Instagram Educar+"
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-200 opacity-60 hover:opacity-100"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+              <span>instituto.educarmais</span>
+            </a>
           </div>
 
           {/* timeline */}
@@ -122,10 +143,10 @@ export const TechStack = () => {
                       className="flex-1 bg-card border border-border rounded-xl p-5 hover-card transition-all duration-300 block"
                     >
                       <ExperienceItem
-                        company={job.company}
-                        role={job.role}
-                        period={job.period}
-                        description={job.description}
+                        company={t(`skills.experienceData.${i}.company`)}
+                        role={t(`skills.experienceData.${i}.role`)}
+                        period={t(`skills.experienceData.${i}.period`)}
+                        description={t(`skills.experienceData.${i}.description`)}
                         stack={job.stack}
                         icon={job.icon}
                       />
@@ -133,10 +154,10 @@ export const TechStack = () => {
                   ) : (
                     <div className="flex-1 bg-card border border-border rounded-xl p-5 hover-card">
                       <ExperienceItem
-                        company={job.company}
-                        role={job.role}
-                        period={job.period}
-                        description={job.description}
+                        company={t(`skills.experienceData.${i}.company`)}
+                        role={t(`skills.experienceData.${i}.role`)}
+                        period={t(`skills.experienceData.${i}.period`)}
+                        description={t(`skills.experienceData.${i}.description`)}
                         stack={job.stack}
                         icon={job.icon}
                       />

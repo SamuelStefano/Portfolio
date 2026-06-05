@@ -4,7 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/atoms/button/button';
 import { Text } from '@/components/atoms/Text/Text';
 import { LanguageSelector } from '@/components/molecules/LanguageSelector/LanguageSelector';
+import { ColorSchemeSelector } from '@/components/molecules/ColorSchemeSelector/ColorSchemeSelector';
+import { SkinToggle } from '@/components/molecules/SkinToggle/SkinToggle';
 import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
+import { useSkin } from '@/hooks/useSkin';
 
 const smoothScrollTo = (elementId: string) => {
   const element = document.querySelector(elementId);
@@ -18,10 +21,13 @@ const smoothScrollTo = (elementId: string) => {
 
 export const Navigation = () => {
   const { t } = useTranslation();
+  const { skin } = useSkin();
+  const isCli = skin === 'cli';
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const resumeHref = 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing';
   const navigationItems = [
     { label: t('nav.home'), href: '#inicio' },
     { label: t('nav.projects'), href: '#projetos' },
@@ -29,7 +35,7 @@ export const Navigation = () => {
     { label: t('nav.hackathons'), href: '#hackathons' },
     { label: t('nav.about'), href: '#sobre' },
     { label: t('nav.contact'), href: '#contato' },
-    { label: t('nav.resume'), href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing' }
+    { label: t('nav.resume'), href: resumeHref },
   ];
 
   useEffect(() => {
@@ -66,13 +72,90 @@ export const Navigation = () => {
     setIsOpen(false);
   };
 
+  if (isCli) {
+    return (
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--cli-border)] bg-[var(--cli-panel)]/90 font-mono backdrop-blur-md">
+        <div className="flex items-center justify-between h-14 sm:h-16 px-4 sm:px-6 lg:px-8">
+          <button
+            onClick={() => handleNavClick('#inicio')}
+            className="flex items-center gap-2 text-sm sm:text-[15px]"
+          >
+            <span className="text-[var(--cli-green)]">samuel@stefano</span>
+            <span className="text-[var(--cli-text-dim)]">:</span>
+            <span className="text-[var(--cli-cyan)]">~</span>
+            <span className="text-[var(--cli-text-dim)]">$</span>
+          </button>
+
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+            {navigationItems.map((item) => (
+              <button
+                key={item.href}
+                onClick={() => handleNavClick(item.href)}
+                className={`px-2.5 py-1.5 text-[13px] xl:text-sm transition-colors duration-200 ${
+                  activeSection === item.href
+                    ? 'text-[var(--cli-cyan)]'
+                    : 'text-[var(--cli-text-soft)] hover:text-[var(--cli-green)]'
+                }`}
+              >
+                <span className="text-[var(--cli-text-dim)]">./</span>{item.label}
+              </button>
+            ))}
+
+            <div className="ml-3 xl:ml-4 flex items-center gap-2">
+              <SkinToggle />
+              <ColorSchemeSelector />
+              <ThemeToggle />
+              <LanguageSelector />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 lg:hidden">
+            <SkinToggle />
+            <ColorSchemeSelector />
+            <ThemeToggle />
+            <LanguageSelector />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-[var(--cli-text-soft)] hover:text-[var(--cli-green)]"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </Button>
+          </div>
+        </div>
+
+        {isOpen && (
+          <div className="lg:hidden border-t border-[var(--cli-border)] bg-[var(--cli-panel)]/98 backdrop-blur-md">
+            <div className="px-4 py-4 space-y-1">
+              {navigationItems.map((item) => (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`block w-full text-left px-3 py-2.5 text-sm transition-colors duration-200 ${
+                    activeSection === item.href
+                      ? 'text-[var(--cli-cyan)]'
+                      : 'text-[var(--cli-text-soft)] hover:text-[var(--cli-green)]'
+                  }`}
+                >
+                  <span className="text-[var(--cli-text-dim)]">./</span>{item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    );
+  }
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled
         ? 'bg-background/95 backdrop-blur-md border-b border-border/50 shadow-lg'
         : 'bg-transparent backdrop-blur-none border-b-0 shadow-none'
     }`}>
-      <div className="flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-6 lg:px-8">
+      <div className="relative flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-6 lg:px-8">
+          {/* LEFT: logo + SkinToggle */}
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <div className="relative">
               <img
@@ -93,14 +176,18 @@ export const Navigation = () => {
                 Full-Stack Developer
               </Text>
             </div>
+            <div className="hidden lg:flex ml-2">
+              <SkinToggle />
+            </div>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+          {/* CENTER: nav links — absolutely centered at xl, static flex at lg */}
+          <div className="hidden lg:flex xl:absolute xl:left-1/2 xl:-translate-x-1/2 items-center space-x-1 xl:space-x-2">
             {navigationItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className={`text-sm xl:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-lg ${
+                className={`text-sm xl:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-lg whitespace-nowrap ${
                   activeSection === item.href
                     ? 'text-primary bg-primary/10'
                     : isScrolled
@@ -111,14 +198,19 @@ export const Navigation = () => {
                 {item.label}
               </button>
             ))}
-
-            <div className="ml-4 xl:ml-6 flex items-center gap-2">
-              <ThemeToggle />
-              <LanguageSelector />
-            </div>
           </div>
 
+          {/* RIGHT: remaining controls (desktop) */}
+          <div className="hidden lg:flex items-center gap-2">
+            <ColorSchemeSelector />
+            <ThemeToggle />
+            <LanguageSelector />
+          </div>
+
+          {/* Mobile: controls + hamburger */}
           <div className="flex items-center gap-2 lg:hidden">
+            <SkinToggle />
+            <ColorSchemeSelector />
             <ThemeToggle />
             <LanguageSelector />
             <Button

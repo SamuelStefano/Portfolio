@@ -32,6 +32,8 @@ html {
     --neon-purple: 280 100% 70%;
     --neon-cyan: 180 100% 50%;
     --neon-green: 120 100% 50%;
+    /* constellation rgb (mouse-reactive background) */
+    --net: 140, 170, 255;
   }
 
   /* Light mode */
@@ -65,6 +67,81 @@ html {
     --neon-purple: 280 75% 48%;
     --neon-cyan: 180 75% 34%;
     --neon-green: 120 55% 30%;
+    --net: 70, 110, 200;
+  }
+
+  /* ── Color schemes (accent ramp only; works on top of dark/light) ── */
+  html[data-color="onchain"] {
+    --primary: 270 90% 66%;
+    --neon-blue: 188 95% 55%;
+    --neon-purple: 312 95% 65%;
+    --neon-cyan: 188 95% 60%;
+    --neon-green: 270 80% 65%;
+    --ring: 270 90% 66%;
+    --net: 200, 150, 255;
+  }
+  html[data-color="emerald"] {
+    --primary: 158 84% 45%;
+    --neon-blue: 168 80% 48%;
+    --neon-purple: 92 80% 60%;
+    --neon-cyan: 174 80% 50%;
+    --neon-green: 145 75% 50%;
+    --ring: 158 84% 45%;
+    --net: 90, 230, 170;
+  }
+  html[data-color="sunset"] {
+    --primary: 18 95% 60%;
+    --neon-blue: 28 95% 58%;
+    --neon-purple: 346 90% 62%;
+    --neon-cyan: 40 95% 60%;
+    --neon-green: 8 90% 60%;
+    --ring: 18 95% 60%;
+    --net: 255, 170, 110;
+  }
+  html.light[data-color="onchain"] { --primary: 270 75% 50%; --net: 150, 90, 220; }
+  html.light[data-color="emerald"] { --primary: 158 75% 34%; --net: 40, 160, 110; }
+  html.light[data-color="sunset"]  { --primary: 18 88% 48%;  --net: 210, 110, 60; }
+
+  /* ── CLI skin palette (dark default + light override) ── */
+  html[data-skin="cli"] {
+    --cli-bg: #05080c;
+    --cli-panel: rgba(10, 16, 21, 0.92);
+    --cli-panel-2: rgba(6, 10, 14, 0.96);
+    --cli-border: rgba(61, 220, 132, 0.14);
+    --cli-border-strong: rgba(61, 220, 132, 0.3);
+    --cli-surface: rgba(61, 220, 132, 0.04);
+    --cli-surface-hover: rgba(61, 220, 132, 0.12);
+    --cli-text: #cde7d8;
+    --cli-text-dim: #5e7867;
+    --cli-text-soft: #bcd6c8;
+    --cli-text-bright: #eafff4;
+    --cli-green: #3ddc84;
+    --cli-cyan: #36e2d0;
+    --cli-amber: #ffb454;
+    --cli-rain-bg: 5, 8, 12;
+    --cli-rain-dim: 61, 220, 132;
+    --cli-rain-bright: 54, 226, 208;
+    --cli-scanline: rgba(0, 0, 0, 0.16);
+  }
+  html.light[data-skin="cli"] {
+    --cli-bg: #e6efe9;
+    --cli-panel: rgba(255, 255, 255, 0.94);
+    --cli-panel-2: rgba(238, 246, 240, 0.97);
+    --cli-border: rgba(16, 130, 76, 0.22);
+    --cli-border-strong: rgba(16, 130, 76, 0.4);
+    --cli-surface: rgba(16, 130, 76, 0.06);
+    --cli-surface-hover: rgba(16, 130, 76, 0.14);
+    --cli-text: #15361f;
+    --cli-text-dim: #5a7a64;
+    --cli-text-soft: #2c5238;
+    --cli-text-bright: #0a1f12;
+    --cli-green: #0f9d58;
+    --cli-cyan: #0a8f86;
+    --cli-amber: #b46a00;
+    --cli-rain-bg: 230, 239, 233;
+    --cli-rain-dim: 16, 130, 76;
+    --cli-rain-bright: 10, 143, 134;
+    --cli-scanline: rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -74,12 +151,84 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.5s ease;
   }
+}
+
+/* animated gradient text (shine) */
+@keyframes gradient-shine {
+  to { background-position: 200% center; }
 }
 
 .gradient-text {
   @apply bg-gradient-to-r from-primary via-neon-purple to-neon-cyan bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradient-shine 6s linear infinite;
 }
+
+/* ── Second brain ── */
+@keyframes brain-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes brain-flow { to { stroke-dashoffset: -34; } }
+.brain-ring {
+  background: conic-gradient(from 0deg,
+    hsl(var(--neon-blue)), hsl(var(--neon-purple)),
+    hsl(var(--neon-cyan)), hsl(var(--neon-blue)));
+  animation: brain-spin 9s linear infinite;
+}
+.brain-orbit { animation: brain-spin 40s linear infinite; }
+.brain-orbit.reverse { animation: brain-spin 60s linear infinite reverse; }
+.brain-link  { stroke: rgba(var(--net), .45); stroke-width: 1.4; fill: none; }
+.brain-flow  { stroke: hsl(var(--neon-blue)); stroke-width: 2; fill: none;
+  stroke-dasharray: 3 14; animation: brain-flow 1.6s linear infinite;
+  filter: drop-shadow(0 0 4px hsl(var(--neon-blue))); }
+
+/* ── CLI skin ── */
+@keyframes cli-blink { 50% { opacity: 0; } }
+.cli-cursor { display: inline-block; width: 9px; height: 1.05em; background: var(--cli-green, #3ddc84);
+  vertical-align: -3px; margin-left: 2px; animation: cli-blink 1s steps(1) infinite; }
+.cli-scanlines { background: repeating-linear-gradient(0deg,
+  transparent 0 2px, var(--cli-scanline, rgba(0,0,0,.16)) 2px 4px); mix-blend-mode: multiply; }
+
+.cli-card {
+  position: relative;
+  border: 1px solid var(--cli-border);
+  background:
+    linear-gradient(180deg, var(--cli-surface), transparent 70%),
+    var(--cli-panel);
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  overflow: hidden;
+}
+.cli-card::before,
+.cli-card::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--cli-green);
+  opacity: .35;
+  transition: opacity .25s ease, width .25s ease, height .25s ease;
+  pointer-events: none;
+}
+.cli-card::before { top: 7px; left: 7px; border-right: 0; border-bottom: 0; }
+.cli-card::after { bottom: 7px; right: 7px; border-left: 0; border-top: 0; }
+.cli-card:hover {
+  border-color: var(--cli-border-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px -12px var(--cli-green);
+}
+.cli-card:hover::before,
+.cli-card:hover::after { opacity: .9; width: 16px; height: 16px; }
+.cli-card > .cli-sweep {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, var(--cli-surface-hover), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+.cli-card:hover > .cli-sweep { animation: cli-sweep 0.9s ease forwards; }
+@keyframes cli-sweep { to { left: 130%; } }
 
 .gradient-primary {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neon-purple)) 100%);
@@ -243,10 +392,6 @@ html {
 
 .animate-spin-up {
   animation: spin-up 2s linear infinite;
-}
-
-.animate-scale-in {
-  animation: slideUp 0.4s ease-out forwards;
 }
 
 .animate-pulse-glow {
@@ -429,5 +574,15 @@ img {
   .animate-in {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .brain-ring,
+  .brain-orbit,
+  .brain-flow,
+  .gradient-text,
+  .cli-cursor,
+  .animate-float,
+  .animate-pulse {
+    animation: none !important;
   }
 }

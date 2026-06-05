@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles } from 'lucide-react';
+import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles, GraduationCap, Users } from 'lucide-react';
 
 export const TECH_CATEGORIES = [
   {
@@ -87,13 +87,30 @@ export const TECH_CATEGORIES = [
     title: 'Web3 & Blockchain',
     icon: Code,
     skills: [
-      { name: 'Solidity', level: 20 },
+      { name: 'Solidity', level: 35 },
       { name: 'Smart Contracts', level: 65 },
       { name: 'ERC-20 / ERC-721', level: 70 },
+      { name: 'Solana / Anchor', level: 45 },
+      { name: 'Rust', level: 30 },
+      { name: 'Chainlink (CRE / CCIP)', level: 50 },
+      { name: 'Foundry', level: 35 },
       { name: 'Base / Scroll', level: 60 },
       { name: 'Viem', level: 20 }
     ],
     color: 'neon-green'
+  },
+  {
+    title: 'Colaboração & Processos',
+    icon: Users,
+    skills: [
+      { name: 'Daily / Scrum', level: 100 },
+      { name: 'Code & PR Reviews', level: 95 },
+      { name: 'Pair Programming', level: 90 },
+      { name: 'UI/UX Design', level: 80 },
+      { name: 'Mentoring', level: 90 },
+      { name: 'Documentation', level: 95 },
+    ],
+    color: 'neon-blue'
   },
 ];
 
@@ -117,6 +134,16 @@ export const EXPERIENCE_DATA = [
     logo: '/DevFelloShip.png',
     icon: Briefcase,
     website: 'https://devfellowship.com'
+  },
+  {
+    company: 'Instituto Educar+',
+    role: 'Professor de Programação',
+    period: '2025 - Presente',
+    description: 'Professor de programação e desenvolvimento no Instituto Educar+, instituto de ensino profissionalizante em tecnologia. Ensino lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes, com mentoria de projetos práticos — alunos chegaram a apresentar projetos em hackathons.',
+    stack: ['Ensino', 'Lógica de Programação', 'JavaScript', 'HTML', 'CSS', 'Desenvolvimento Web', 'Mentoria'],
+    logo: '/EducarMais.webp',
+    icon: GraduationCap,
+    website: 'https://institutoeducarmais.org/'
   },
   {
     company: 'M&M Informática',
