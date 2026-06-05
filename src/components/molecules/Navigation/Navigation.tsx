@@ -29,8 +29,8 @@ export const Navigation = () => {
 
   const navigationItems = [
     { label: t('nav.home'), href: '#inicio' },
-    { label: t('nav.projects'), href: '#projetos' },
     { label: t('nav.focus'), href: '#foco' },
+    { label: t('nav.projects'), href: '#projetos' },
     { label: t('nav.skills'), href: '#habilidades' },
     { label: t('nav.experience'), href: '#experiencia' },
     { label: t('nav.companies'), href: '#empresas' },

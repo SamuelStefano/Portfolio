@@ -65,16 +65,6 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
         ctx.fill();
       }
 
-      const pulse = 0.5 + 0.5 * Math.sin(performance.now() / 420);
-      ctx.beginPath();
-      ctx.arc(egg.x, egg.y, 3.4 + pulse * 1.6, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,184,84,${0.6 + pulse * 0.4})`;
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(egg.x, egg.y, 9 + pulse * 4, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(255,184,84,${0.22 + pulse * 0.26})`;
-      ctx.lineWidth = 1.4;
-      ctx.stroke();
     };
 
     let raf = 0;
@@ -135,12 +125,15 @@ export const HeroDots = ({ onEgg }: HeroDotsProps) => {
       />
       <button
         type="button"
-        aria-hidden
-        tabIndex={-1}
         onClick={() => onEgg?.()}
-        className="absolute z-20 h-12 w-12 -translate-x-1/2 translate-y-1/2 cursor-pointer rounded-full"
+        title="🐍 Snake"
+        aria-label="Easter egg: Snake game"
+        className="group absolute z-20 flex h-12 w-12 -translate-x-1/2 translate-y-1/2 cursor-pointer items-center justify-center rounded-full"
         style={{ left: GAP * 2.5, bottom: GAP * 2.5 }}
-      />
+      >
+        <span className="absolute h-6 w-6 rounded-full bg-[#ffb854]/25 blur-[2px] transition-all duration-300 group-hover:h-9 group-hover:w-9 group-hover:bg-[#ffb854]/40" />
+        <span className="relative h-2.5 w-2.5 animate-pulse rounded-full bg-[#ffb854] shadow-[0_0_10px_3px_rgba(255,184,84,0.6)] transition-transform duration-300 group-hover:scale-125" />
+      </button>
     </>
   );
 };

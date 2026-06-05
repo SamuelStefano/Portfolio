@@ -110,7 +110,6 @@ export const SnakeGame = ({ onClose }: SnakeGameProps) => {
 
     const css = getComputedStyle(document.documentElement);
     const primary = `hsl(${css.getPropertyValue('--primary').trim()})`;
-    const muted = `hsl(${css.getPropertyValue('--muted-foreground').trim()})`;
     const border = `hsl(${css.getPropertyValue('--border').trim()})`;
 
     const cell = cv.width / CELLS;
@@ -163,14 +162,48 @@ export const SnakeGame = ({ onClose }: SnakeGameProps) => {
       ctx.fill();
       ctx.globalAlpha = 1;
 
-      st.snake.forEach((s, i) => {
-        ctx.fillStyle = i === 0 ? primary : muted;
-        ctx.globalAlpha = i === 0 ? 1 : Math.max(0.35, 1 - i / (st.snake.length + 4));
-        const pad = i === 0 ? 1.5 : 2.5;
-        const r = 3;
-        const x = s.x * cell + pad, y = s.y * cell + pad, w = cell - pad * 2;
+      const centers = st.snake.map((s) => ({ x: s.x * cell + cell / 2, y: s.y * cell + cell / 2 }));
+      const bodyW = cell * 0.74;
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+
+      if (centers.length > 1) {
+        ctx.strokeStyle = primary;
+        ctx.globalAlpha = 0.35;
+        ctx.lineWidth = bodyW + 6;
         ctx.beginPath();
-        ctx.roundRect(x, y, w, w, r);
+        centers.forEach((c, i) => (i === 0 ? ctx.moveTo(c.x, c.y) : ctx.lineTo(c.x, c.y)));
+        ctx.stroke();
+
+        ctx.strokeStyle = primary;
+        ctx.globalAlpha = 0.9;
+        ctx.lineWidth = bodyW;
+        ctx.beginPath();
+        centers.forEach((c, i) => (i === 0 ? ctx.moveTo(c.x, c.y) : ctx.lineTo(c.x, c.y)));
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      const head = centers[0];
+      const dir = DIRS[st.dir];
+      ctx.fillStyle = primary;
+      ctx.beginPath();
+      ctx.arc(head.x, head.y, bodyW / 2 + 1.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      const eyeOff = bodyW * 0.18;
+      const eyeFwd = bodyW * 0.12;
+      const perp = { x: -dir.y, y: dir.x };
+      ctx.fillStyle = '#0b1020';
+      [1, -1].forEach((sgn) => {
+        ctx.beginPath();
+        ctx.arc(
+          head.x + dir.x * eyeFwd + perp.x * eyeOff * sgn,
+          head.y + dir.y * eyeFwd + perp.y * eyeOff * sgn,
+          Math.max(1.4, bodyW * 0.1),
+          0,
+          Math.PI * 2
+        );
         ctx.fill();
       });
       ctx.globalAlpha = 1;
