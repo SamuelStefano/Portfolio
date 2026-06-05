@@ -11,7 +11,19 @@ export const FocusSection = () => {
   const { containerRef } = useScrollAnimations();
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-background" ref={containerRef}>
+    <section className="relative overflow-hidden py-12 sm:py-16 lg:py-20" ref={containerRef}>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/[0.07] via-background to-background" />
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.4]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(var(--net),0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--net),0.06) 1px, transparent 1px)',
+          backgroundSize: '38px 38px',
+          maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
+        }}
+      />
+      <div className="absolute left-1/2 top-0 -z-10 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 lg:mb-14 animate-fade-up">
           <Heading level={2} className="mb-3 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl">
@@ -26,7 +38,7 @@ export const FocusSection = () => {
           {ICONS.map((Icon, i) => (
             <div
               key={i}
-              className="group rounded-xl border border-border bg-card p-5 hover-card animate-fade-up"
+              className="group rounded-xl border border-border bg-card/70 backdrop-blur-sm p-5 hover-card animate-fade-up"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">

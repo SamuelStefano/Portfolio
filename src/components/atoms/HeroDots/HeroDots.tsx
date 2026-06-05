@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-type Pt = { x: number; y: number; vx: number; vy: number; r: number };
-
 const readNet = (): [number, number, number] => {
   const v = getComputedStyle(document.documentElement).getPropertyValue('--net').trim();
   const p = v.split(',').map((n) => parseInt(n, 10));
   return p.length === 3 && p.every((n) => !isNaN(n)) ? (p as [number, number, number]) : [140, 170, 255];
 };
+
+const GAP = 30;
+const RADIUS = 150;
 
 export const HeroDots = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -20,22 +21,47 @@ export const HeroDots = () => {
     if (!ctx) return;
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let W = 0, H = 0, pts: Pt[] = [];
-    const mouse = { x: -999, y: -999 };
+    let W = 0, H = 0;
+    let dots: { bx: number; by: number }[] = [];
+    const mouse = { x: -9999, y: -9999 };
     let net = readNet();
 
     const size = () => {
       const r = host.getBoundingClientRect();
       W = cv.width = r.width;
       H = cv.height = r.height;
-      const N = Math.min(70, Math.round((W * H) / 18000));
-      pts = Array.from({ length: N }, () => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() * 1.6 + 0.4,
-      }));
+      dots = [];
+      for (let x = GAP / 2; x < W; x += GAP) {
+        for (let y = GAP / 2; y < H; y += GAP) {
+          dots.push({ bx: x, by: y });
+        }
+      }
+    };
+
+    const draw = () => {
+      const [r, g, b] = net;
+      ctx.clearRect(0, 0, W, H);
+      for (const d of dots) {
+        const dx = d.bx - mouse.x;
+        const dy = d.by - mouse.y;
+        const dist = Math.hypot(dx, dy) || 0.001;
+        const inf = Math.max(0, 1 - dist / RADIUS);
+        const push = inf * 16;
+        const x = d.bx + (dx / dist) * push;
+        const y = d.by + (dy / dist) * push;
+        const rad = 1.1 + inf * 2.4;
+        const alpha = 0.12 + inf * 0.6;
+        ctx.beginPath();
+        ctx.arc(x, y, rad, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+        ctx.fill();
+      }
+    };
+
+    let raf = 0;
+    const tick = () => {
+      draw();
+      raf = requestAnimationFrame(tick);
     };
 
     const onMove = (e: MouseEvent) => {
@@ -49,11 +75,11 @@ export const HeroDots = () => {
       }
     };
     const onLeave = () => {
-      mouse.x = -999; mouse.y = -999;
+      mouse.x = -9999; mouse.y = -9999;
       if (glowRef.current) glowRef.current.style.opacity = '0';
     };
 
-    const obs = new MutationObserver(() => { net = readNet(); });
+    const obs = new MutationObserver(() => { net = readNet(); if (reduce) draw(); });
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-color', 'class'] });
 
     size();
@@ -61,47 +87,8 @@ export const HeroDots = () => {
     host.addEventListener('mousemove', onMove);
     host.addEventListener('mouseleave', onLeave);
 
-    let raf = 0;
-    const tick = () => {
-      const [r, g, b] = net;
-      ctx.clearRect(0, 0, W, H);
-      for (const p of pts) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, 7);
-        ctx.fillStyle = `rgba(${r},${g},${b},.5)`;
-        ctx.fill();
-      }
-      for (let i = 0; i < pts.length; i++) {
-        for (let j = i + 1; j < pts.length; j++) {
-          const a = pts[i], c = pts[j];
-          const d = Math.hypot(a.x - c.x, a.y - c.y);
-          if (d < 130) {
-            ctx.strokeStyle = `rgba(${r},${g},${b},${0.14 * (1 - d / 130)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
-          }
-        }
-      }
-      for (const p of pts) {
-        const d = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-        if (d < 180) {
-          ctx.strokeStyle = `rgba(${r},${g},${b},${0.5 * (1 - d / 180)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
-        }
-      }
-      raf = requestAnimationFrame(tick);
-    };
-
     if (reduce) {
-      const [r, g, b] = net;
-      for (const p of pts) {
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7);
-        ctx.fillStyle = `rgba(${r},${g},${b},.5)`; ctx.fill();
-      }
+      draw();
     } else {
       raf = requestAnimationFrame(tick);
     }
