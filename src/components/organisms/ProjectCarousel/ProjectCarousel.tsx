@@ -123,7 +123,7 @@ export const ProjectCarousel = () => {
             Nenhum projeto encontrado
           </Text>
           <Text variant="small" className="text-muted-foreground mt-2">
-            Verifique se h� projetos no Supabase.
+            Verifique se há projetos no Supabase.
           </Text>
         </div>
       </div>
@@ -417,7 +417,7 @@ export const ProjectCarousel = () => {
               className="bg-background/90 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-md px-4 sm:px-6"
               onClick={nextProject}
             >
-              <span className="text-xs sm:text-sm">Pr�ximo</span>
+              <span className="text-xs sm:text-sm">Próximo</span>
               <Icon icon={ChevronRight} size="sm" className="ml-1 sm:ml-2" />
             </Button>
           </div>

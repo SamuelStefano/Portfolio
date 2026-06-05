@@ -214,7 +214,7 @@ export const Footer = () => {
         <div className="border-t border-border py-4 sm:py-5 md:py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6">
             <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base text-muted-foreground text-center sm:text-left">
-              <Text variant="small">� {currentYear} Samuel Stefano. {t('footer.madeWith')} muito esfor�o e com muito</Text>
+              <Text variant="small">© {currentYear} Samuel Stefano. {t('footer.madeWith')} muito esforço e com muito</Text>
               <Icon icon={Code} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
             </div>
 

@@ -208,7 +208,7 @@ export const About = () => {
                 Empresas e Projetos
               </Heading>
               <Text className="text-muted-foreground max-w-2xl mx-auto">
-                Algumas das organiza��es e projetos com os quais tive o prazer de trabalhar
+                Algumas das organizações e projetos com os quais tive o prazer de trabalhar
               </Text>
             </div>
           </div>
