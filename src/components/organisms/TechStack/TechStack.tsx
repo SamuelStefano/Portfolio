@@ -4,11 +4,15 @@ import { ExperienceItem } from '@/components/molecules/ExperienceItem/Experience
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
-import { TECH_CATEGORIES, EXPERIENCE_DATA, ADDITIONAL_SKILLS } from '@/consts/data';
+import { TECH_CATEGORIES, EXPERIENCE_DATA } from '@/consts/data';
 
 export const TechStack = () => {
   const { t } = useTranslation();
   const { containerRef } = useScrollAnimations();
+
+  const additionalSkills = Array.from({ length: 64 }, (_, i) => t(`skills.additionalSkills.${i}`)).filter(
+    (s) => !s.startsWith('skills.additionalSkills.')
+  );
 
   return (
     <section id="habilidades" className="py-16 sm:py-20 lg:py-24" ref={containerRef}>
@@ -39,7 +43,7 @@ export const TechStack = () => {
                     <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <Heading level={3} className="text-base sm:text-lg leading-tight">
-                    {category.title}
+                    {t(`skills.categories.${ci}`)}
                   </Heading>
                 </div>
                 <div className="space-y-3">
@@ -65,7 +69,7 @@ export const TechStack = () => {
           </Heading>
           <div className="relative">
             <div className="flex animate-scroll gap-2 sm:gap-3 whitespace-nowrap">
-              {[...ADDITIONAL_SKILLS, ...ADDITIONAL_SKILLS].map((skill, i) => (
+              {[...additionalSkills, ...additionalSkills].map((skill, i) => (
                 <div
                   key={i}
                   className="px-3 py-1.5 bg-card border border-border rounded-full text-xs font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
@@ -122,10 +126,10 @@ export const TechStack = () => {
                       className="flex-1 bg-card border border-border rounded-xl p-5 hover-card transition-all duration-300 block"
                     >
                       <ExperienceItem
-                        company={job.company}
-                        role={job.role}
-                        period={job.period}
-                        description={job.description}
+                        company={t(`skills.experienceData.${i}.company`)}
+                        role={t(`skills.experienceData.${i}.role`)}
+                        period={t(`skills.experienceData.${i}.period`)}
+                        description={t(`skills.experienceData.${i}.description`)}
                         stack={job.stack}
                         icon={job.icon}
                       />
@@ -133,10 +137,10 @@ export const TechStack = () => {
                   ) : (
                     <div className="flex-1 bg-card border border-border rounded-xl p-5 hover-card">
                       <ExperienceItem
-                        company={job.company}
-                        role={job.role}
-                        period={job.period}
-                        description={job.description}
+                        company={t(`skills.experienceData.${i}.company`)}
+                        role={t(`skills.experienceData.${i}.role`)}
+                        period={t(`skills.experienceData.${i}.period`)}
+                        description={t(`skills.experienceData.${i}.description`)}
                         stack={job.stack}
                         icon={job.icon}
                       />

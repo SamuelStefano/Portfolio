@@ -102,6 +102,12 @@
         "description": "Liderazgo técnico del ecosistema de micro-frontends con Module Federation. Arquitectura y desarrollo del super-app DFL Learn, Reviews App, Payments App y CI Reviewer Bot con IA. Mentoría de fellows, definición de estándares técnicos, revisiones de código y participación en hackathons premiados."
       },
       {
+        "company": "Instituto Educar+",
+        "role": "Profesor de Programación",
+        "period": "2025 - Presente",
+        "description": "Profesor de programación y desarrollo en el Instituto Educar+, instituto de enseñanza profesional en tecnología. Enseño lógica de programación, desarrollo web y buenas prácticas a estudiantes principiantes, con mentoría de proyectos prácticos — los estudiantes han presentado proyectos en hackathons."
+      },
+      {
         "company": "M&M Informática",
         "role": "Líder de Arquitectura & Desarrollo de Proyectos Internos",
         "period": "Diciembre 2024 - Febrero 2026",
@@ -157,6 +163,15 @@
       "ERC-20 / ERC-721",
       "Mentoría",
       "Revisión de Código"
+    ],
+    "categories": [
+      "Frontend",
+      "Backend",
+      "Base de Datos",
+      "DevOps & Herramientas",
+      "Inteligencia Artificial",
+      "Ingeniería de Software",
+      "Web3 & Blockchain"
     ]
   },
   "about": {
