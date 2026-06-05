@@ -35,7 +35,7 @@ export const Header = () => {
         ref={containerRef}
         className="relative w-full min-h-screen flex items-center bg-background overflow-hidden pt-16"
       >
-        <HeroDots onEgg={() => setGameOpen(true)} />
+        <HeroDots />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
 
         <ProgressiveLoader
@@ -107,6 +107,17 @@ export const Header = () => {
             </div>
           </div>
         </ProgressiveLoader>
+
+        <button
+          type="button"
+          onClick={() => setGameOpen(true)}
+          title="🐍 Snake"
+          aria-label="Easter egg: Snake game"
+          className="group absolute bottom-[75px] left-[75px] z-40 flex h-12 w-12 -translate-x-1/2 translate-y-1/2 cursor-pointer items-center justify-center rounded-full"
+        >
+          <span className="absolute h-6 w-6 rounded-full bg-[#ffb854]/25 blur-[2px] transition-all duration-300 group-hover:h-9 group-hover:w-9 group-hover:bg-[#ffb854]/40" />
+          <span className="relative h-2.5 w-2.5 animate-pulse rounded-full bg-[#ffb854] shadow-[0_0_10px_3px_rgba(255,184,84,0.6)] transition-transform duration-300 group-hover:scale-125" />
+        </button>
       </header>
       {gameOpen && <SnakeGame onClose={() => setGameOpen(false)} />}
     </>
