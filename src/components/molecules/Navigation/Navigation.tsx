@@ -4,7 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/atoms/button/button';
 import { Text } from '@/components/atoms/Text/Text';
 import { LanguageSelector } from '@/components/molecules/LanguageSelector/LanguageSelector';
+import { ColorSchemeSelector } from '@/components/molecules/ColorSchemeSelector/ColorSchemeSelector';
+import { SkinToggle } from '@/components/molecules/SkinToggle/SkinToggle';
 import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
+import { useSkin } from '@/hooks/useSkin';
 
 const smoothScrollTo = (elementId: string) => {
   const element = document.querySelector(elementId);
@@ -18,19 +21,27 @@ const smoothScrollTo = (elementId: string) => {
 
 export const Navigation = () => {
   const { t } = useTranslation();
+  const { skin } = useSkin();
+  const isCli = skin === 'cli';
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navigationItems = [
-    { label: t('nav.home'), href: '#inicio' },
-    { label: t('nav.projects'), href: '#projetos' },
-    { label: t('nav.skills'), href: '#habilidades' },
-    { label: t('nav.hackathons'), href: '#hackathons' },
-    { label: t('nav.about'), href: '#sobre' },
-    { label: t('nav.contact'), href: '#contato' },
-    { label: t('nav.resume'), href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing' }
-  ];
+  const resumeHref = 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing';
+  const navigationItems = isCli
+    ? [
+        { label: t('nav.home'), href: '#inicio' },
+        { label: t('nav.resume'), href: resumeHref },
+      ]
+    : [
+        { label: t('nav.home'), href: '#inicio' },
+        { label: t('nav.projects'), href: '#projetos' },
+        { label: t('nav.skills'), href: '#habilidades' },
+        { label: t('nav.hackathons'), href: '#hackathons' },
+        { label: t('nav.about'), href: '#sobre' },
+        { label: t('nav.contact'), href: '#contato' },
+        { label: t('nav.resume'), href: resumeHref },
+      ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,12 +124,16 @@ export const Navigation = () => {
             ))}
 
             <div className="ml-4 xl:ml-6 flex items-center gap-2">
+              <SkinToggle />
+              <ColorSchemeSelector />
               <ThemeToggle />
               <LanguageSelector />
             </div>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
+            <SkinToggle />
+            <ColorSchemeSelector />
             <ThemeToggle />
             <LanguageSelector />
             <Button

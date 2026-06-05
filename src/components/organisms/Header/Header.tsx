@@ -5,6 +5,7 @@ import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { ProgressiveLoader } from '@/components/atoms/ProgressiveLoader/ProgressiveLoader';
+import { SecondBrain } from '@/components/organisms/SecondBrain/SecondBrain';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
 
@@ -89,55 +90,14 @@ export const Header = () => {
                 </div>
               </div>
 
-              {/* ── Right: photo ── */}
+              {/* ── Right: second brain ── */}
               <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in">
                 <div className="relative">
-                  {/* Pulsing glow behind photo */}
-                  <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-neon-blue/25 to-neon-purple/25 blur-3xl animate-pulse-glow" />
-
-                  {/* Floating + breathing photo wrapper */}
-                  <div className="relative animate-float">
-                    {/* Neon border frame that breathes */}
-                    <div
-                      className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-2xl overflow-hidden
-                        border-2 border-primary/30 hover:border-primary/60 transition-colors duration-500 hover-glow"
-                      style={{ animation: 'float 5s ease-in-out infinite, pulse-glow 3s ease-in-out infinite' }}
-                    >
-                      <img
-                        src="/Samuel.jpg"
-                        alt="Samuel Stefano"
-                        className="w-full h-full object-cover scale-105 hover:scale-110 transition-transform duration-700"
-                      />
-                      {/* Subtle inner overlay that pulses */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-neon-purple/10 via-transparent to-neon-blue/5 pointer-events-none animate-gradient-shift" />
-                    </div>
-
-                    {/* Decorative corner accents */}
-                    <div className="absolute -bottom-3 -right-3 w-14 h-14 border-r-2 border-b-2 border-primary/50 rounded-br-xl" />
-                    <div className="absolute -top-3 -left-3 w-14 h-14 border-l-2 border-t-2 border-neon-purple/50 rounded-tl-xl" />
-
-                    {/* Orbiting dot */}
-                    <div
-                      className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 rounded-2xl pointer-events-none"
-                      style={{ animation: 'none' }}
-                    >
-                      <span
-                        className="absolute w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_currentColor]"
-                        style={{
-                          top: '-6px',
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          animation: 'float 3s ease-in-out infinite',
-                          animationDelay: '1s',
-                        }}
-                      />
-                    </div>
-                  </div>
-
+                  <SecondBrain />
                   {/* "Open to work" badge */}
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-card border border-green-500/30 rounded-full px-3 py-1.5 shadow-lg">
+                  <div className="absolute -bottom-2 left-1/2 z-[5] -translate-x-1/2 flex items-center gap-1.5 bg-card border border-green-500/30 rounded-full px-3 py-1.5 shadow-lg">
                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-xs text-green-400 font-medium whitespace-nowrap">Open to work</span>
+                    <span className="text-xs text-green-400 font-medium whitespace-nowrap">{t('controls.openToWork')}</span>
                   </div>
                 </div>
               </div>

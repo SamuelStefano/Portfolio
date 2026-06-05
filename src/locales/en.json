@@ -394,5 +394,24 @@
       "landing": "Homepage with platform presentation",
       "library": "Main interface with search and categorization of examples"
     }
+  },
+  "controls": {
+    "colorScheme": "Color scheme",
+    "cliMode": "CLI Mode",
+    "visualMode": "Visual Mode",
+    "openToWork": "Open to work"
+  },
+  "cli": {
+    "role": "Role",
+    "stack": "Stack",
+    "focus": "Focus",
+    "uptime": "Uptime",
+    "awards": "Awards",
+    "location": "Location",
+    "roleValue": "Tech Lead @ DevFellowship",
+    "focusValue": "Micro-frontends · AI · Web3",
+    "uptimeValue": "23 months · 38+ repos · 420K+ lines",
+    "locationValue": "Marialva, PR · Brazil",
+    "caption": "samuel.jpg — render @ 0.92"
   }
 }

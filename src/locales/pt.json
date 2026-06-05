@@ -394,5 +394,24 @@
     "technologiesCount": "tecnologias",
     "collaboratorsCount": "colaboradores",
     "linksCount": "links"
+  },
+  "controls": {
+    "colorScheme": "Esquema de cor",
+    "cliMode": "Modo CLI",
+    "visualMode": "Modo Visual",
+    "openToWork": "Aberto a propostas"
+  },
+  "cli": {
+    "role": "Cargo",
+    "stack": "Stack",
+    "focus": "Foco",
+    "uptime": "Uptime",
+    "awards": "Prêmios",
+    "location": "Local",
+    "roleValue": "Tech Lead @ DevFellowship",
+    "focusValue": "Micro-frontends · IA · Web3",
+    "uptimeValue": "23 meses · 38+ repos · 420K+ linhas",
+    "locationValue": "Marialva, PR · Brasil",
+    "caption": "samuel.jpg — render @ 0.92"
   }
 }

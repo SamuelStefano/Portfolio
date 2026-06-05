@@ -32,6 +32,8 @@ html {
     --neon-purple: 280 100% 70%;
     --neon-cyan: 180 100% 50%;
     --neon-green: 120 100% 50%;
+    /* constellation rgb (mouse-reactive background) */
+    --net: 140, 170, 255;
   }
 
   /* Light mode */
@@ -65,7 +67,40 @@ html {
     --neon-purple: 280 75% 48%;
     --neon-cyan: 180 75% 34%;
     --neon-green: 120 55% 30%;
+    --net: 70, 110, 200;
   }
+
+  /* ── Color schemes (accent ramp only; works on top of dark/light) ── */
+  html[data-color="onchain"] {
+    --primary: 270 90% 66%;
+    --neon-blue: 188 95% 55%;
+    --neon-purple: 312 95% 65%;
+    --neon-cyan: 188 95% 60%;
+    --neon-green: 270 80% 65%;
+    --ring: 270 90% 66%;
+    --net: 200, 150, 255;
+  }
+  html[data-color="emerald"] {
+    --primary: 158 84% 45%;
+    --neon-blue: 168 80% 48%;
+    --neon-purple: 92 80% 60%;
+    --neon-cyan: 174 80% 50%;
+    --neon-green: 145 75% 50%;
+    --ring: 158 84% 45%;
+    --net: 90, 230, 170;
+  }
+  html[data-color="sunset"] {
+    --primary: 18 95% 60%;
+    --neon-blue: 28 95% 58%;
+    --neon-purple: 346 90% 62%;
+    --neon-cyan: 40 95% 60%;
+    --neon-green: 8 90% 60%;
+    --ring: 18 95% 60%;
+    --net: 255, 170, 110;
+  }
+  html.light[data-color="onchain"] { --primary: 270 75% 50%; --net: 150, 90, 220; }
+  html.light[data-color="emerald"] { --primary: 158 75% 34%; --net: 40, 160, 110; }
+  html.light[data-color="sunset"]  { --primary: 18 88% 48%;  --net: 210, 110, 60; }
 }
 
 @layer base {
@@ -74,12 +109,43 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.5s ease;
   }
+}
+
+/* animated gradient text (shine) */
+@keyframes gradient-shine {
+  to { background-position: 200% center; }
 }
 
 .gradient-text {
   @apply bg-gradient-to-r from-primary via-neon-purple to-neon-cyan bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradient-shine 6s linear infinite;
 }
+
+/* ── Second brain ── */
+@keyframes brain-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes brain-flow { to { stroke-dashoffset: -34; } }
+.brain-ring {
+  background: conic-gradient(from 0deg,
+    hsl(var(--neon-blue)), hsl(var(--neon-purple)),
+    hsl(var(--neon-cyan)), hsl(var(--neon-blue)));
+  animation: brain-spin 9s linear infinite;
+}
+.brain-orbit { animation: brain-spin 40s linear infinite; }
+.brain-orbit.reverse { animation: brain-spin 60s linear infinite reverse; }
+.brain-link  { stroke: rgba(var(--net), .45); stroke-width: 1.4; fill: none; }
+.brain-flow  { stroke: hsl(var(--neon-blue)); stroke-width: 2; fill: none;
+  stroke-dasharray: 3 14; animation: brain-flow 1.6s linear infinite;
+  filter: drop-shadow(0 0 4px hsl(var(--neon-blue))); }
+
+/* ── CLI skin ── */
+@keyframes cli-blink { 50% { opacity: 0; } }
+.cli-cursor { display: inline-block; width: 9px; height: 1.05em; background: #3ddc84;
+  vertical-align: -3px; margin-left: 2px; animation: cli-blink 1s steps(1) infinite; }
+.cli-scanlines { background: repeating-linear-gradient(0deg,
+  transparent 0 2px, rgba(0,0,0,.16) 2px 4px); mix-blend-mode: multiply; }
 
 .gradient-primary {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neon-purple)) 100%);
@@ -429,5 +495,15 @@ img {
   .animate-in {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .brain-ring,
+  .brain-orbit,
+  .brain-flow,
+  .gradient-text,
+  .cli-cursor,
+  .animate-float,
+  .animate-pulse {
+    animation: none !important;
   }
 }
