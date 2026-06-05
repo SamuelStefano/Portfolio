@@ -9,8 +9,6 @@ const ICONS = [Blocks, Coins, Link2, Bot];
 export const FocusSection = () => {
   const { t } = useTranslation();
   const { containerRef } = useScrollAnimations();
-  const raw = t('focus.items', { returnObjects: true });
-  const items = (Array.isArray(raw) ? raw : []) as { title: string; desc: string }[];
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-background" ref={containerRef}>
@@ -25,24 +23,21 @@ export const FocusSection = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {items.map((item, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            return (
-              <div
-                key={item.title}
-                className="group rounded-xl border border-border bg-card p-5 hover-card animate-fade-up"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <Heading level={3} className="mb-1.5 text-base sm:text-lg">
-                  {item.title}
-                </Heading>
-                <Text className="text-sm leading-relaxed text-muted-foreground">{item.desc}</Text>
+          {ICONS.map((Icon, i) => (
+            <div
+              key={i}
+              className="group rounded-xl border border-border bg-card p-5 hover-card animate-fade-up"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">
+                <Icon className="h-5 w-5" />
               </div>
-            );
-          })}
+              <Heading level={3} className="mb-1.5 text-base sm:text-lg">
+                {t(`focus.items.${i}.title`)}
+              </Heading>
+              <Text className="text-sm leading-relaxed text-muted-foreground">{t(`focus.items.${i}.desc`)}</Text>
+            </div>
+          ))}
         </div>
 
         <div className="mt-10 flex justify-center animate-fade-up">
