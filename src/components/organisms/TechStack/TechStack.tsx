@@ -83,18 +83,18 @@ export const TechStack = () => {
         </div>
 
         {/* professional experience */}
-        <div className="animate-fade-up">
+        <div id="experiencia" className="animate-fade-up scroll-mt-24">
           <Heading level={3} className="text-center mb-10 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg lg:text-xl">
             {t('skills.professionalExperience')}
           </Heading>
 
           {/* company logos */}
-          <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 py-6 mb-12">
+          <div id="empresas" className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 py-6 mb-12 scroll-mt-24">
             {[
-              { src: '/prefeitura.png',  alt: 'Prefeitura de Marialva', cls: 'w-24 h-24', href: 'https://www.marialva.pr.gov.br' },
-              { src: '/DevFelloShip.png',  alt: 'DevFellowship',    cls: 'w-28 h-28', href: 'https://devfellowship.com' },
-              { src: '/EducarMais.webp',   alt: 'Instituto Educar+', cls: 'w-32 h-16', href: 'https://institutoeducarmais.org/' },
-              { src: '/MMIcon.png',        alt: 'M&M Informática',   cls: 'w-32 h-16', href: 'https://mminfo.me' },
+              { src: '/prefeitura.png',  alt: 'Prefeitura de Marialva', cls: 'w-32 h-32', href: 'https://www.marialva.pr.gov.br' },
+              { src: '/DevFelloShip.png',  alt: 'DevFellowship',    cls: 'w-36 h-36', href: 'https://devfellowship.com' },
+              { src: '/EducarMais.webp',   alt: 'Instituto Educar+', cls: 'w-40 h-20', href: 'https://institutoeducarmais.org/' },
+              { src: '/MMIcon.png',        alt: 'M&M Informática',   cls: 'w-40 h-20', href: 'https://mminfo.me' },
             ].map(logo => (
               <a
                 key={logo.alt}

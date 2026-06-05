@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, FileText, Brain, Check, Copy } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, Brain, Check, Copy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -22,11 +22,6 @@ const getSocialLinks = (t: any) => [
     icon: Instagram,
     href: 'https://instagram.com/samuel.stefano',
     label: t('hero.socialLinks.instagram')
-  },
-  {
-    icon: FileText,
-    href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing',
-    label: t('hero.socialLinks.resume')
   }
 ];
 

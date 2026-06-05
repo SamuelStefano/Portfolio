@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, Linkedin, Instagram, Mail, Phone, FileText, MapPin, GraduationCap } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Phone, MapPin, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SnakeGame } from '@/components/atoms/SnakeGame/SnakeGame';
 import { SocialLink } from '@/components/molecules/SocialLink/SocialLink';
@@ -16,7 +16,6 @@ const getSocialLinks = (t: any) => [
   { icon: Github,   href: 'https://github.com/SamuelStefano',                                                                label: t('hero.socialLinks.github')   },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',                                           label: t('hero.socialLinks.linkedin')  },
   { icon: Instagram,href: 'https://instagram.com/samuel.stefano',                                                            label: t('hero.socialLinks.instagram') },
-  { icon: FileText, href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing',            label: t('hero.socialLinks.resume')    },
   { icon: Mail,     href: 'mailto:samuelstefanodocarmo@gmail.com',                                                            label: t('hero.socialLinks.email')     },
   { icon: Phone,    href: 'tel:+5544998795387',                                                                              label: t('hero.socialLinks.phone')     },
 ];

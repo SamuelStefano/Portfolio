@@ -27,15 +27,16 @@ export const Navigation = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const resumeHref = 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing';
   const navigationItems = [
     { label: t('nav.home'), href: '#inicio' },
     { label: t('nav.projects'), href: '#projetos' },
+    { label: t('nav.focus'), href: '#foco' },
     { label: t('nav.skills'), href: '#habilidades' },
+    { label: t('nav.experience'), href: '#experiencia' },
+    { label: t('nav.companies'), href: '#empresas' },
     { label: t('nav.hackathons'), href: '#hackathons' },
     { label: t('nav.about'), href: '#sobre' },
     { label: t('nav.contact'), href: '#contato' },
-    { label: t('nav.resume'), href: resumeHref },
   ];
 
   useEffect(() => {

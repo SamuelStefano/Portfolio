@@ -2,11 +2,13 @@
   "nav": {
     "home": "Home",
     "projects": "Projects",
+    "focus": "Current Focus",
     "skills": "Skills",
+    "experience": "Experience",
+    "companies": "Companies",
     "hackathons": "Hackathons",
     "about": "About",
-    "contact": "Contact",
-    "resume": "Resume"
+    "contact": "Contact"
   },
   "hero": {
     "greeting": "Samuel Stefano",

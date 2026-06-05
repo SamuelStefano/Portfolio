@@ -5,18 +5,19 @@ type Node = {
   sub: string;
   color: string;
   a: number;
+  dy?: number;
 };
 
 // fixed angular slots 45° apart so nodes never cross or overlap each other
 const NODES: Node[] = [
-  { label: 'React',      sub: 'Frontend',   color: '#61dafb', a: -67.5 },
+  { label: 'React',      sub: 'Frontend',   color: '#61dafb', a: -67.5, dy: 26 },
   { label: 'TypeScript', sub: 'Language',   color: '#3178c6', a: -22.5 },
   { label: 'Supabase',   sub: 'Backend',    color: '#3ecf8e', a: 22.5  },
   { label: 'Web3',       sub: 'Solidity',   color: '#a855f7', a: 67.5  },
   { label: 'Claude AI',  sub: 'LLM',        color: '#d97757', a: 112.5 },
   { label: 'n8n',        sub: 'Automation', color: '#ea4b71', a: 157.5 },
   { label: 'Next.js',    sub: 'Framework',  color: '#e8eaf0', a: 202.5 },
-  { label: 'Docker',     sub: 'DevOps',     color: '#2496ed', a: 247.5 },
+  { label: 'Docker',     sub: 'DevOps',     color: '#2496ed', a: 247.5, dy: 26 },
 ];
 
 export const SecondBrain = () => {
@@ -35,13 +36,13 @@ export const SecondBrain = () => {
       const narrow = BW < 480;
       // wide horizontal radius pulls the near-top/bottom pairs apart and keeps the
       // side nodes off the centre photo; vertical radius spreads the stacked pairs
-      const rx = Math.max(narrow ? 165 : 180, Math.min(BW * 0.42, 205));
+      const rx = Math.max(narrow ? 185 : 205, Math.min(BW * 0.46, 230));
       const ry = Math.max(narrow ? 195 : 205, Math.min(BH * 0.43, 235));
 
       NODES.forEach((n, i) => {
         const ang = (n.a * Math.PI) / 180;
         const x = cx + Math.cos(ang) * rx;
-        const y = cy + Math.sin(ang) * ry;
+        const y = cy + Math.sin(ang) * ry + (n.dy ?? 0);
         const el = nodeRefs.current[i];
         if (el) {
           el.style.left = `${x.toFixed(1)}px`;

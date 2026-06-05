@@ -91,7 +91,9 @@ const Index = () => {
         ) : (
           <div className="relative z-10">
             <Header />
-            <FocusSection />
+            <section id="foco">
+              <FocusSection />
+            </section>
             <section id="projetos">
               <ProjectCarousel />
             </section>
