@@ -60,7 +60,9 @@
       "backend": "Arquitetura backend robusta com APIs RESTful, microserviços, banco de dados e infraestrutura escalável.",
       "database": "Estrutura de banco de dados otimizada com relacionamentos, índices, queries eficientes e backup automático.",
       "others": "Funcionalidades adicionais, integrações especiais e recursos complementares que enriquecem a experiência do usuário."
-    }
+    },
+    "showMore": "Ver mais projetos",
+    "showLess": "Ver menos"
   },
   "skills": {
     "title": "Habilidades & Experiência",
