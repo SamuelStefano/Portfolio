@@ -460,5 +460,16 @@
         "desc": "Verifiable logic computed on the DON with the Chainlink Runtime Environment."
       }
     ]
+  },
+  "game": {
+    "title": "Snake.exe",
+    "score": "Score",
+    "best": "Best",
+    "gameOver": "Game Over",
+    "restart": "Restart",
+    "close": "Close",
+    "hint": "Arrows or WASD · swipe on mobile",
+    "start": "Press an arrow to start",
+    "found": "Easter egg found!"
   }
 }

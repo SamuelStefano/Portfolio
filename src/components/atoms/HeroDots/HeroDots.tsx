@@ -8,8 +8,13 @@ const readNet = (): [number, number, number] => {
 
 const GAP = 30;
 const RADIUS = 150;
+const EGG_HIT = 22;
 
-export const HeroDots = () => {
+interface HeroDotsProps {
+  onEgg?: () => void;
+}
+
+export const HeroDots = ({ onEgg }: HeroDotsProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +28,7 @@ export const HeroDots = () => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let W = 0, H = 0;
     let dots: { bx: number; by: number }[] = [];
+    const egg = { x: 0, y: 0 };
     const mouse = { x: -9999, y: -9999 };
     let net = readNet();
 
@@ -30,6 +36,8 @@ export const HeroDots = () => {
       const r = host.getBoundingClientRect();
       W = cv.width = r.width;
       H = cv.height = r.height;
+      egg.x = GAP * 2.5;
+      egg.y = H - GAP * 2.5;
       dots = [];
       for (let x = GAP / 2; x < W; x += GAP) {
         for (let y = GAP / 2; y < H; y += GAP) {
@@ -56,6 +64,17 @@ export const HeroDots = () => {
         ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
         ctx.fill();
       }
+
+      const pulse = 0.5 + 0.5 * Math.sin(performance.now() / 420);
+      ctx.beginPath();
+      ctx.arc(egg.x, egg.y, 2.6 + pulse * 1.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,184,84,${0.55 + pulse * 0.4})`;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(egg.x, egg.y, 7 + pulse * 3, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(255,184,84,${0.18 + pulse * 0.22})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
     };
 
     let raf = 0;
@@ -68,6 +87,8 @@ export const HeroDots = () => {
       const r = host.getBoundingClientRect();
       mouse.x = e.clientX - r.left;
       mouse.y = e.clientY - r.top;
+      const near = Math.hypot(mouse.x - egg.x, mouse.y - egg.y) < EGG_HIT;
+      host.style.cursor = near ? 'pointer' : '';
       if (glowRef.current) {
         glowRef.current.style.left = `${mouse.x}px`;
         glowRef.current.style.top = `${mouse.y}px`;
@@ -76,7 +97,14 @@ export const HeroDots = () => {
     };
     const onLeave = () => {
       mouse.x = -9999; mouse.y = -9999;
+      host.style.cursor = '';
       if (glowRef.current) glowRef.current.style.opacity = '0';
+    };
+    const onClick = (e: MouseEvent) => {
+      const r = host.getBoundingClientRect();
+      const cx = e.clientX - r.left;
+      const cy = e.clientY - r.top;
+      if (Math.hypot(cx - egg.x, cy - egg.y) < EGG_HIT) onEgg?.();
     };
 
     const obs = new MutationObserver(() => { net = readNet(); if (reduce) draw(); });
@@ -86,6 +114,7 @@ export const HeroDots = () => {
     window.addEventListener('resize', size);
     host.addEventListener('mousemove', onMove);
     host.addEventListener('mouseleave', onLeave);
+    host.addEventListener('click', onClick);
 
     if (reduce) {
       draw();
@@ -99,8 +128,10 @@ export const HeroDots = () => {
       window.removeEventListener('resize', size);
       host.removeEventListener('mousemove', onMove);
       host.removeEventListener('mouseleave', onLeave);
+      host.removeEventListener('click', onClick);
+      host.style.cursor = '';
     };
-  }, []);
+  }, [onEgg]);
 
   return (
     <>

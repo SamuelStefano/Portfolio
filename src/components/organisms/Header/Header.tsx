@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Github, Linkedin, Instagram, Mail, Phone, FileText, MapPin, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { SnakeGame } from '@/components/atoms/SnakeGame/SnakeGame';
 import { SocialLink } from '@/components/molecules/SocialLink/SocialLink';
 import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { Heading } from '@/components/atoms/Heading/Heading';
@@ -24,6 +26,7 @@ export const Header = () => {
   const { containerRef } = useScrollAnimations();
   const { isPhaseLoaded, getPhaseDelay } = useProgressiveLoading();
   const socialLinks = getSocialLinks(t);
+  const [gameOpen, setGameOpen] = useState(false);
 
   return (
     <>
@@ -33,8 +36,8 @@ export const Header = () => {
         ref={containerRef}
         className="relative w-full min-h-screen flex items-center bg-background overflow-hidden pt-16"
       >
-        <HeroDots />
-        <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
+        <HeroDots onEgg={() => setGameOpen(true)} />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
 
         <ProgressiveLoader
           isVisible={isPhaseLoaded('header')}
@@ -106,6 +109,7 @@ export const Header = () => {
           </div>
         </ProgressiveLoader>
       </header>
+      {gameOpen && <SnakeGame onClose={() => setGameOpen(false)} />}
     </>
   );
 };

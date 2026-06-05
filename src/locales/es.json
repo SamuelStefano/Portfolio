@@ -460,5 +460,16 @@
         "desc": "Lógica verificable computada en el DON con el Chainlink Runtime Environment."
       }
     ]
+  },
+  "game": {
+    "title": "Snake.exe",
+    "score": "Puntos",
+    "best": "Récord",
+    "gameOver": "Game Over",
+    "restart": "Reiniciar",
+    "close": "Cerrar",
+    "hint": "Flechas o WASD · desliza en móvil",
+    "start": "Pulsa una flecha para empezar",
+    "found": "¡Easter egg encontrado!"
   }
 }
