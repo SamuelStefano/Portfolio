@@ -3,56 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
-
-interface Hackathon {
-  name: string;
-  event: string;
-  location: string;
-  date: string;
-  achievement: string;
-  project: string;
-  projectLink: string;
-  githubLink: string;
-  description: string;
-  technologies: string[];
-  team?: string[];
-  image?: string;
-}
-
-const getHackathonsData = (t: any): Hackathon[] => [
-  {
-    name: 'GreenLoop',
-    event: 'ETH Latam 2025',
-    location: 'São Paulo, Brasil',
-    date: 'Março 2025',
-    achievement: '4º Lugar trilha da base',
-    project: 'GreenLoop',
-    projectLink: 'https://greenloop-zeta.vercel.app/',
-    githubLink: 'https://github.com/RaulAl3n/GreenLoop',
-    description: t('hackathons.greenloop.description'),
-    technologies: ['TypeScript', 'Next.js', 'Node.js', 'Solidity', 'ERC-20', 'ERC-721', 'Base', 'Smart Contracts', 'Web3'],
-    team: ['Samuel Stefano', 'Guilherme Biensfeld', 'Raul Alencar'],
-    image: '/public/projects/greenloop/thumb.png'
-  },
-  {
-    name: 'TalentDAO',
-    event: 'DevConnect ETH 2025',
-    location: 'Buenos Aires, Argentina',
-    date: 'Fevereiro 2025',
-    achievement: t('hackathons.talentdao.achievement'),
-    project: 'TalentDAO',
-    projectLink: 'https://devconnect-talent-dao.vercel.app/',
-    githubLink: 'https://github.com/taigfs/devconnect-talent-dao',
-    description: t('hackathons.talentdao.description'),
-    technologies: ['TypeScript', 'Next.js', 'Solidity', 'ERC-20', 'ERC-721', 'Scroll', 'WETH', 'Web3', 'Smart Contracts'],
-    team: ['Tainan Fidelis', 'Samuel Stefano']
-  }
-];
+import { HACKATHONS } from '@/consts/hackathons';
 
 export const HackathonsSection = () => {
   const { t } = useTranslation();
   const { containerRef } = useScrollAnimations();
-  const hackathons = getHackathonsData(t);
+  const hackathons = HACKATHONS;
 
   return (
     <section id="hackathons" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-background" ref={containerRef}>
@@ -79,7 +35,7 @@ export const HackathonsSection = () => {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
-                      <span className="text-yellow-400 font-bold text-sm sm:text-base">{hackathon.achievement}</span>
+                      <span className="text-yellow-400 font-bold text-sm sm:text-base">{t(hackathon.achievementKey)}</span>
                     </div>
                     <Heading level={3} className="text-white text-lg sm:text-xl md:text-2xl mb-2">
                       {hackathon.name}
@@ -118,7 +74,7 @@ export const HackathonsSection = () => {
 
                 {/* Description */}
                 <Text className="mb-5 text-sm sm:text-base leading-relaxed">
-                  {hackathon.description}
+                  {t(hackathon.descriptionKey)}
                 </Text>
 
                 {/* Technologies */}

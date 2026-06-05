@@ -101,6 +101,48 @@ html {
   html.light[data-color="onchain"] { --primary: 270 75% 50%; --net: 150, 90, 220; }
   html.light[data-color="emerald"] { --primary: 158 75% 34%; --net: 40, 160, 110; }
   html.light[data-color="sunset"]  { --primary: 18 88% 48%;  --net: 210, 110, 60; }
+
+  /* ── CLI skin palette (dark default + light override) ── */
+  html[data-skin="cli"] {
+    --cli-bg: #05080c;
+    --cli-panel: rgba(10, 16, 21, 0.92);
+    --cli-panel-2: rgba(6, 10, 14, 0.96);
+    --cli-border: rgba(61, 220, 132, 0.14);
+    --cli-border-strong: rgba(61, 220, 132, 0.3);
+    --cli-surface: rgba(61, 220, 132, 0.04);
+    --cli-surface-hover: rgba(61, 220, 132, 0.12);
+    --cli-text: #cde7d8;
+    --cli-text-dim: #5e7867;
+    --cli-text-soft: #bcd6c8;
+    --cli-text-bright: #eafff4;
+    --cli-green: #3ddc84;
+    --cli-cyan: #36e2d0;
+    --cli-amber: #ffb454;
+    --cli-rain-bg: 5, 8, 12;
+    --cli-rain-dim: 61, 220, 132;
+    --cli-rain-bright: 54, 226, 208;
+    --cli-scanline: rgba(0, 0, 0, 0.16);
+  }
+  html.light[data-skin="cli"] {
+    --cli-bg: #e6efe9;
+    --cli-panel: rgba(255, 255, 255, 0.94);
+    --cli-panel-2: rgba(238, 246, 240, 0.97);
+    --cli-border: rgba(16, 130, 76, 0.22);
+    --cli-border-strong: rgba(16, 130, 76, 0.4);
+    --cli-surface: rgba(16, 130, 76, 0.06);
+    --cli-surface-hover: rgba(16, 130, 76, 0.14);
+    --cli-text: #15361f;
+    --cli-text-dim: #5a7a64;
+    --cli-text-soft: #2c5238;
+    --cli-text-bright: #0a1f12;
+    --cli-green: #0f9d58;
+    --cli-cyan: #0a8f86;
+    --cli-amber: #b46a00;
+    --cli-rain-bg: 230, 239, 233;
+    --cli-rain-dim: 16, 130, 76;
+    --cli-rain-bright: 10, 143, 134;
+    --cli-scanline: rgba(0, 0, 0, 0.05);
+  }
 }
 
 @layer base {
@@ -142,10 +184,10 @@ html {
 
 /* ── CLI skin ── */
 @keyframes cli-blink { 50% { opacity: 0; } }
-.cli-cursor { display: inline-block; width: 9px; height: 1.05em; background: #3ddc84;
+.cli-cursor { display: inline-block; width: 9px; height: 1.05em; background: var(--cli-green, #3ddc84);
   vertical-align: -3px; margin-left: 2px; animation: cli-blink 1s steps(1) infinite; }
 .cli-scanlines { background: repeating-linear-gradient(0deg,
-  transparent 0 2px, rgba(0,0,0,.16) 2px 4px); mix-blend-mode: multiply; }
+  transparent 0 2px, var(--cli-scanline, rgba(0,0,0,.16)) 2px 4px); mix-blend-mode: multiply; }
 
 .gradient-primary {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neon-purple)) 100%);

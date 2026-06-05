@@ -7,7 +7,6 @@ import { LanguageSelector } from '@/components/molecules/LanguageSelector/Langua
 import { ColorSchemeSelector } from '@/components/molecules/ColorSchemeSelector/ColorSchemeSelector';
 import { SkinToggle } from '@/components/molecules/SkinToggle/SkinToggle';
 import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
-import { useSkin } from '@/hooks/useSkin';
 
 const smoothScrollTo = (elementId: string) => {
   const element = document.querySelector(elementId);
@@ -21,27 +20,20 @@ const smoothScrollTo = (elementId: string) => {
 
 export const Navigation = () => {
   const { t } = useTranslation();
-  const { skin } = useSkin();
-  const isCli = skin === 'cli';
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
 
   const resumeHref = 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing';
-  const navigationItems = isCli
-    ? [
-        { label: t('nav.home'), href: '#inicio' },
-        { label: t('nav.resume'), href: resumeHref },
-      ]
-    : [
-        { label: t('nav.home'), href: '#inicio' },
-        { label: t('nav.projects'), href: '#projetos' },
-        { label: t('nav.skills'), href: '#habilidades' },
-        { label: t('nav.hackathons'), href: '#hackathons' },
-        { label: t('nav.about'), href: '#sobre' },
-        { label: t('nav.contact'), href: '#contato' },
-        { label: t('nav.resume'), href: resumeHref },
-      ];
+  const navigationItems = [
+    { label: t('nav.home'), href: '#inicio' },
+    { label: t('nav.projects'), href: '#projetos' },
+    { label: t('nav.skills'), href: '#habilidades' },
+    { label: t('nav.hackathons'), href: '#hackathons' },
+    { label: t('nav.about'), href: '#sobre' },
+    { label: t('nav.contact'), href: '#contato' },
+    { label: t('nav.resume'), href: resumeHref },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {

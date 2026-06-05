@@ -1,0 +1,52 @@
+import { useTranslation } from 'react-i18next';
+import { useProjects } from '@/hooks/useProjects';
+
+export const CliProjects = () => {
+  const { t } = useTranslation();
+  const { projects, loading } = useProjects();
+
+  if (loading) {
+    return <div className="text-sm text-[var(--cli-text-dim)]">$ loading projects<span className="cli-cursor" /></div>;
+  }
+
+  return (
+    <div className="grid gap-4">
+      <div className="text-xs text-[var(--cli-text-dim)]">
+        total {projects.length} · drwxr-xr-x
+      </div>
+      {projects.map((p) => {
+        const link = p.project_links.find((l) => l.url)?.url;
+        return (
+          <div
+            key={p.id}
+            className="rounded-lg border border-[var(--cli-border)] bg-[var(--cli-surface)] p-4 transition-colors duration-200 hover:border-[var(--cli-border-strong)]"
+          >
+            <div className="flex flex-wrap items-baseline gap-2">
+              <span className="text-[var(--cli-amber)]">▸</span>
+              <span className="text-[15px] font-bold text-[var(--cli-text-bright)]">{p.title}</span>
+              <span className="text-xs text-[var(--cli-text-dim)]">— {p.role}</span>
+            </div>
+            <p className="mt-1.5 max-w-2xl text-[13px] leading-relaxed text-[var(--cli-text-soft)]">{p.description}</p>
+            {p.stack.length > 0 && (
+              <div className="mt-2 text-xs text-[var(--cli-text-dim)]">
+                <span className="text-[var(--cli-green)]">stack:</span> {p.stack.join(' · ')}
+              </div>
+            )}
+            {link && (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-[var(--cli-cyan)] hover:underline"
+              >
+                → {t('hackathons.viewProject')}
+              </a>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default CliProjects;

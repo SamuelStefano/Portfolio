@@ -5,6 +5,7 @@ import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { ProgressiveLoader } from '@/components/atoms/ProgressiveLoader/ProgressiveLoader';
+import { HeroDots } from '@/components/atoms/HeroDots/HeroDots';
 import { SecondBrain } from '@/components/organisms/SecondBrain/SecondBrain';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
@@ -32,8 +33,7 @@ export const Header = () => {
         ref={containerRef}
         className="relative w-full min-h-screen flex items-center bg-background overflow-hidden pt-16"
       >
-        {/* dot-grid background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle,hsl(var(--muted-foreground)/0.15)_1px,transparent_1px)] bg-[size:28px_28px]" />
+        <HeroDots />
         <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
 
         <ProgressiveLoader

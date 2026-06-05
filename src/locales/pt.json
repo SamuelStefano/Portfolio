@@ -348,7 +348,12 @@
     "subtitle": "Participações em hackathons de blockchain e Web3, com projetos premiados e experiências enriquecedoras",
     "technologies": "Tecnologias",
     "viewProject": "Ver Projeto",
+    "altpay": {
+      "achievement": "Vencedor · Trilha Chainlink",
+      "description": "Solução de pagamentos PIX↔cripto onde um score de crédito é decidido on-chain. A Chainlink CRE roda a lógica de risco no DON e escreve o resultado em contratos via CCIP, enquanto Data Feeds garantem cotação confiável. Liberação de fundos verificável em Solana (Anchor/Rust) com prova de pagamento PIX. Atuei no frontend, backend e em toda a integração Chainlink e on-chain."
+    },
     "greenloop": {
+      "achievement": "4º Lugar trilha da Base",
       "description": "Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. Participei do frontend, backend e integração com contratos inteligentes na rede Base."
     },
     "talentdao": {
@@ -410,7 +415,7 @@
     "location": "Local",
     "roleValue": "Tech Lead @ DevFellowship",
     "focusValue": "Micro-frontends · IA · Web3",
-    "uptimeValue": "23 meses · 38+ repos · 420K+ linhas",
+    "uptimeValue": "2+ anos · Tech Lead @ DevFellowship",
     "locationValue": "Marialva, PR · Brasil",
     "caption": "samuel.jpg — render @ 0.92"
   }

@@ -87,9 +87,13 @@ export const TECH_CATEGORIES = [
     title: 'Web3 & Blockchain',
     icon: Code,
     skills: [
-      { name: 'Solidity', level: 20 },
+      { name: 'Solidity', level: 35 },
       { name: 'Smart Contracts', level: 65 },
       { name: 'ERC-20 / ERC-721', level: 70 },
+      { name: 'Solana / Anchor', level: 45 },
+      { name: 'Rust', level: 30 },
+      { name: 'Chainlink (CRE / CCIP)', level: 50 },
+      { name: 'Foundry', level: 35 },
       { name: 'Base / Scroll', level: 60 },
       { name: 'Viem', level: 20 }
     ],
