@@ -1,10 +1,10 @@
-import { Blocks, Coins, Link2, Bot, ArrowUpRight } from 'lucide-react';
+import { Blocks, Coins, Link2, Cpu, ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 
-const ICONS = [Blocks, Coins, Link2, Bot];
+const ICONS = [Blocks, Coins, Link2, Cpu];
 
 export const FocusSection = () => {
   const { t } = useTranslation();

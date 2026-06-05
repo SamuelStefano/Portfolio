@@ -11,8 +11,8 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Desenvolvedor Full-Stack & Arquiteto de Software",
-    "description": "2 anos de experiência • Module Federation • IA & Automação • ADS 3º ano • Marialva, PR",
-    "bio": "Especializado em React, TypeScript, Node.js, Supabase, Module Federation e Integrações com IA.",
+    "description": "2 anos de experiência • Web3 • IA & Automação • ADS 3º ano • Marialva, PR",
+    "bio": "Especializado em React, TypeScript, Node.js, Supabase, Web3 e Integrações com IA.",
     "bioContinue": "Arquitetando micro-frontends, automatizando pipelines com n8n e integrando LLMs para criar plataformas escaláveis e inteligentes.",
     "clickToSeeMore": "Clique para ver mais",
     "socialLinks": {
@@ -454,8 +454,8 @@
         "desc": "Chainlink Data Feeds e CCIP cross-chain."
       },
       {
-        "title": "Dev com IA",
-        "desc": "Automação e agentes acelerando entregas."
+        "title": "Chainlink CRE",
+        "desc": "Lógica verificável computada no DON com o Chainlink Runtime Environment."
       }
     ]
   }
