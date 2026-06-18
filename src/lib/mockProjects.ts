@@ -2,6 +2,111 @@ import { Project } from '../types/project';
 
 export const mockProjects: Project[] = [
   {
+    id: '0',
+    title: 'Deck',
+    role: 'Creator',
+    description: 'Posto de comando pessoal pra trabalhar com agentes de IA direto na minha VPS. Reúne chat com o agente, terminais ao vivo, memória persistente, skills, custos de tokens e administração do host numa única interface web. Criado sozinho, do zero.',
+    long_description: 'Deck é a plataforma que eu construí — sozinho, do zero — pra ser meu posto de comando ao trabalhar com agentes de IA rodando na minha própria VPS. Em vez de ficar preso num terminal SSH, o Deck conecta o navegador direto à máquina: cada "sessão" abre um agente Claude com contexto isolado, e eu acompanho a execução em tempo real, com terminais tmux ao vivo e fila persistente de tarefas. O app é dividido em áreas que cobrem toda a operação: Sessões (chat com o agente, seleção de modelo e skills ativas por mensagem), Contatos & Memória (a memória persistente do agente em cards navegáveis — fatos, feedbacks e contexto de projeto que sobrevivem entre conversas), Documentos (visualizador de markdown dos guias e learnings do repositório), Custos & Tokens (dashboard de gasto por sessão, tokens de entrada/saída, custo estimado e amostras — pra saber exatamente o que cada agente consumiu), Admin & Host (saúde e inventário da VPS: CPU, RAM, load, disco, uptime, CLIs no PATH, servidores MCP conectados, sessões tmux e plugins, com ações sensíveis protegidas por confirmação e role admin no relay) e Documentação in-app que explica cada parte. Arquitetura: frontend em React + TypeScript + Vite deployado na Vercel, backend Node em tempo real (WebSocket) rodando na VPS Hetzner, orquestração de sessões via tmux, integração com a Claude API (Anthropic) e com servidores MCP (Supabase, Infisical e os MCPs próprios), persistência em Supabase e gestão de segredos via Infisical. Tudo pensado, projetado e implementado por mim.',
+    stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'WebSocket', 'Claude API', 'Anthropic', 'MCP', 'tmux', 'Supabase', 'Infisical', 'Docker', 'VPS', 'TailwindCSS', 'Vercel'],
+    thumbnail_url: '/projects/Deck/Sessoes.png',
+    icon_name: 'Monitor',
+    created_at: '2026-06-05T00:00:00Z',
+    updated_at: '2026-06-18T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2026-06-05T00:00:00Z'
+      }
+    ],
+    project_links: [],
+    project_sections: [
+      {
+        id: '0-1',
+        folder_name: 'sessoes',
+        display_name: 'Sessões',
+        description: 'Cada sessão abre um agente Claude com contexto isolado: chat em tempo real, seleção de modelo e skills ativas por mensagem',
+        order_index: 1,
+        project_images: [
+          { id: '0-1-1', image_url: '/projects/Deck/Sessoes.png', order_index: 1 },
+          { id: '0-1-2', image_url: '/projects/Deck/Composer.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '0-2',
+        folder_name: 'memoria',
+        display_name: 'Contatos & Memória',
+        description: 'A memória persistente do agente em cards navegáveis — fatos, feedbacks e contexto de projeto que sobrevivem entre conversas',
+        order_index: 2,
+        project_images: [
+          { id: '0-2-1', image_url: '/projects/Deck/Contatos.png', order_index: 1 },
+          { id: '0-2-2', image_url: '/projects/Deck/Memoria.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '0-3',
+        folder_name: 'skills',
+        display_name: 'Skills',
+        description: 'Catálogo de skills do agente — modos de trabalho e regras que podem ser ativados por sessão',
+        order_index: 3,
+        project_images: [
+          { id: '0-3-1', image_url: '/projects/Deck/Skills.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-4',
+        folder_name: 'documentos',
+        display_name: 'Documentos',
+        description: 'Visualizador de markdown dos guias e learnings do repositório, com navegação por seções',
+        order_index: 4,
+        project_images: [
+          { id: '0-4-1', image_url: '/projects/Deck/Documentos.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-5',
+        folder_name: 'custos',
+        display_name: 'Custos & Tokens',
+        description: 'Dashboard de gasto por sessão: tokens de entrada/saída, custo estimado e amostras — pra saber o que cada agente consumiu',
+        order_index: 5,
+        project_images: [
+          { id: '0-5-1', image_url: '/projects/Deck/Custos.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-6',
+        folder_name: 'admin',
+        display_name: 'Admin & Host',
+        description: 'Saúde e inventário da VPS: CPU, RAM, load, disco, uptime, CLIs no PATH, servidores MCP, sessões tmux e plugins — com ações sensíveis protegidas',
+        order_index: 6,
+        project_images: [
+          { id: '0-6-1', image_url: '/projects/Deck/Admin.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-7',
+        folder_name: 'docs',
+        display_name: 'Documentação',
+        description: 'Documentação in-app que explica cada parte do Deck e como operar o posto de comando',
+        order_index: 7,
+        project_images: [
+          { id: '0-7-1', image_url: '/projects/Deck/Documentacao.png', order_index: 1 }
+        ]
+      }
+    ],
+    image_categories: {
+      'sessoes': ['/projects/Deck/Sessoes.png', '/projects/Deck/Composer.png'],
+      'memoria': ['/projects/Deck/Contatos.png', '/projects/Deck/Memoria.png'],
+      'skills': ['/projects/Deck/Skills.png'],
+      'documentos': ['/projects/Deck/Documentos.png'],
+      'custos': ['/projects/Deck/Custos.png'],
+      'admin': ['/projects/Deck/Admin.png'],
+      'docs': ['/projects/Deck/Documentacao.png']
+    }
+  },
+  {
     id: '1',
     title: 'Skill Evals',
     role: 'Creator',

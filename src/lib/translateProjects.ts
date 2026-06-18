@@ -21,6 +21,7 @@ export const translateProjectDescriptions = (projects: Project[], t: any): Proje
 
 const getProjectKey = (title: string): string | null => {
   const titleMap: Record<string, string> = {
+    'Deck': 'deck',
     'Skill Evals': 'skillEvals',
     'DevFellowship': 'devfellowship',
     'CodeLibrary': 'codeLibrary',
