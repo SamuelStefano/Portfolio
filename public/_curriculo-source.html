@@ -2,443 +2,453 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Samuel Stefano — Currículo</title>
+<title>Samuel Stefano Teixeira do Carmo — Currículo</title>
 <style>
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
-  html, body { margin: 0; padding: 0; width: 210mm; }
+  html, body { margin: 0; padding: 0; }
   body {
     font-family: 'Helvetica', 'Arial', sans-serif;
-    color: #1a202c;
-    font-size: 9.5pt;
+    color: #0f172a;
+    font-size: 10pt;
     line-height: 1.5;
   }
-  table.layout {
-    width: 210mm;
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  td { vertical-align: top; }
 
-  /* ===== SIDEBAR ===== */
-  td.sidebar {
-    width: 73mm;
+  /* ============== HEADER ============== */
+  header.cv-header {
     background-color: #0f172a !important;
-    color: #e2e8f0;
-    padding: 14mm 8mm 12mm 8mm;
-  }
-  .name {
-    font-size: 18pt;
-    font-weight: 700;
-    line-height: 1.1;
     color: #ffffff;
-    margin: 0 0 1.2mm 0;
-    letter-spacing: -0.4px;
+    padding: 14mm 16mm 11mm 16mm;
   }
-  .subrole {
-    font-size: 8pt;
-    color: #60a5fa;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
+  header h1 {
+    font-size: 24pt;
     font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 1.5mm 0;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+  }
+  header .role {
+    font-size: 10.5pt;
+    color: #93c5fd;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 600;
     margin: 0 0 5mm 0;
   }
-  h2.side {
-    font-size: 8pt;
-    color: #93c5fd;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    margin: 4mm 0 2mm 0;
-    font-weight: 700;
-    padding-bottom: 1mm;
-    border-bottom: 1px solid #334155;
+  header .contact-row {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1mm;
   }
-  .contact-item { margin: 1.5mm 0; word-break: break-word; }
-  .contact-item .label {
-    display: block;
-    font-size: 7pt;
-    color: #94a3b8;
+  header .contact-row td {
+    color: #cbd5e1;
+    font-size: 9pt;
+    padding: 0.8mm 0;
+    vertical-align: top;
+  }
+  header .contact-row .ic {
+    color: #60a5fa;
+    font-weight: 700;
+    width: 18mm;
+    padding-right: 2mm;
     text-transform: uppercase;
     letter-spacing: 0.7px;
-    margin-bottom: 0.3mm;
-    font-weight: 600;
-  }
-  .contact-item .value, .contact-item a {
-    color: #e2e8f0;
-    text-decoration: none;
-    font-size: 8.3pt;
-  }
-  .skill-group { margin-bottom: 2.5mm; }
-  .skill-group .title {
-    font-size: 7.8pt;
-    color: #ffffff;
-    font-weight: 700;
-    margin-bottom: 0.7mm;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .skill-group .items {
     font-size: 8pt;
-    color: #cbd5e1;
-    line-height: 1.5;
   }
-  .languages .lang {
-    font-size: 8.5pt;
-    margin: 0.8mm 0;
-    color: #cbd5e1;
-  }
-  .languages .lang strong { color: #ffffff; font-weight: 600; }
-  .award {
-    background-color: #1e293b !important;
-    border-left: 2px solid #60a5fa;
-    padding: 1.5mm 2.5mm;
-    margin: 1.3mm 0;
-    font-size: 8pt;
-    color: #e2e8f0;
-  }
-  .award strong {
-    color: #93c5fd;
-    display: block;
-    font-size: 7.3pt;
-    font-weight: 700;
-    margin-bottom: 0.3mm;
-    letter-spacing: 0.4px;
-  }
+  header a { color: #cbd5e1; text-decoration: none; }
 
-  /* ===== MAIN ===== */
-  td.main {
-    background-color: #ffffff !important;
-    padding: 14mm 11mm 12mm 11mm;
+  /* ============== BODY ============== */
+  main {
+    padding: 9mm 16mm 12mm 16mm;
+    background: #ffffff;
   }
-  h2.main {
+  section { margin-bottom: 6mm; page-break-inside: avoid; }
+  h2 {
     font-size: 10.5pt;
     color: #0f172a;
     text-transform: uppercase;
-    letter-spacing: 1.3px;
+    letter-spacing: 2px;
     margin: 0 0 3mm 0;
     font-weight: 800;
-    padding-bottom: 1mm;
-    border-bottom: 2px solid #3b82f6;
-    display: inline-block;
-    padding-right: 6mm;
+    padding-bottom: 1.2mm;
+    border-bottom: 1.5px solid #1e40af;
   }
-  section { margin-bottom: 5mm; }
-  .summary { font-size: 9.3pt; color: #334155; line-height: 1.55; margin: 0 0 2.5mm 0; }
-  .goal {
-    font-size: 9pt;
-    color: #475569;
-    line-height: 1.55;
+  .summary {
+    font-size: 9.8pt;
+    color: #334155;
+    line-height: 1.6;
     margin: 0;
-    padding-left: 3mm;
-    border-left: 2px solid #cbd5e1;
-    font-style: italic;
   }
-  .job { margin-bottom: 4mm; page-break-inside: avoid; }
-  .role { font-size: 10pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
+
+  /* ============== EXPERIENCIA ============== */
+  .job { margin-bottom: 5.5mm; page-break-inside: avoid; }
+  .job-head { width: 100%; border-collapse: collapse; }
+  .company {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+  .role-line {
+    font-size: 10pt;
+    color: #1e40af;
+    font-weight: 600;
+    margin: 0.3mm 0 0 0;
+  }
   .period {
-    font-size: 8pt;
+    font-size: 9pt;
     color: #475569;
     font-weight: 600;
     white-space: nowrap;
-    background-color: #f1f5f9 !important;
-    padding: 0.7mm 2.3mm;
-  }
-  .company {
-    font-size: 9.3pt;
-    color: #3b82f6;
-    font-weight: 600;
-    margin-bottom: 1.2mm;
+    text-align: right;
   }
   .current {
     background-color: #10b981 !important;
     color: #ffffff !important;
-    font-size: 6.5pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.3mm 1.6mm;
-    margin-left: 2mm;
-    letter-spacing: 0.6px;
-  }
-  .job ul {
-    margin: 0.8mm 0 0 0;
-    padding-left: 4mm;
-    color: #334155;
-    font-size: 8.8pt;
-    line-height: 1.5;
-  }
-  .job ul li { margin-bottom: 0.5mm; }
-  .project { margin-bottom: 2.8mm; page-break-inside: avoid; }
-  .proj-head { width: 100%; border-collapse: collapse; }
-  .proj-name { font-weight: 700; color: #0f172a; font-size: 9.5pt; }
-  .badge {
-    background-color: #f59e0b !important;
-    color: #1a202c !important;
     font-size: 6.8pt;
     font-weight: 700;
-    padding: 0.4mm 1.8mm;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-    white-space: nowrap;
+    padding: 0.5mm 1.8mm;
+    margin-left: 2mm;
+    letter-spacing: 0.6px;
+    border-radius: 1mm;
   }
-  .badge.silver { background-color: #94a3b8 !important; color: #0f172a !important; }
-  .badge.bronze { background-color: #b45309 !important; color: #ffffff !important; }
-  .desc { font-size: 8.7pt; color: #475569; line-height: 1.5; margin: 0.5mm 0 0 0; }
-  .tech {
+  .job ul {
+    margin: 1.5mm 0 1.5mm 0;
+    padding-left: 4.5mm;
+    color: #334155;
+    font-size: 9.5pt;
+    line-height: 1.55;
+  }
+  .job ul li { margin-bottom: 0.7mm; }
+  .stack-line {
+    font-size: 8.6pt;
+    color: #475569;
+    margin-top: 1mm;
+    padding-top: 1.2mm;
+    border-top: 0.5px dotted #cbd5e1;
+  }
+  .stack-line strong {
+    color: #1e40af;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
     font-size: 7.8pt;
-    color: #64748b;
-    margin-top: 0.4mm;
+  }
+
+  /* ============== SKILLS ============== */
+  .skills-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .skills-table td {
+    padding: 1mm 0;
+    vertical-align: top;
+    font-size: 9.3pt;
+    color: #334155;
+  }
+  .skills-table td.cat {
+    width: 38mm;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  /* ============== AWARDS / PROJECTS / EDU ============== */
+  .award-row {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5mm;
+  }
+  .award-row td { padding: 0; vertical-align: baseline; }
+  .award-row .medal {
+    width: 7mm;
+    text-align: center;
+    font-size: 11pt;
+    font-weight: 800;
+    color: #f59e0b;
+    padding-right: 2mm;
+  }
+  .award-row .medal.silver { color: #94a3b8; }
+  .award-row .medal.bronze { color: #b45309; }
+  .award-row .title {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 9.8pt;
+  }
+  .award-row .ctx {
+    color: #475569;
+    font-size: 9pt;
     font-style: italic;
   }
+
+  .project { margin-bottom: 2.5mm; page-break-inside: avoid; }
+  .project .name {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 10pt;
+  }
+  .project .desc {
+    font-size: 9.2pt;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0.4mm 0 0 0;
+  }
+
   .edu-row { width: 100%; border-collapse: collapse; }
-  .school { font-weight: 700; color: #0f172a; font-size: 9.8pt; }
-  .edu-period { font-size: 8.3pt; color: #475569; }
-  .course { font-size: 9pt; color: #475569; }
+  .edu-row .school {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 10.5pt;
+  }
+  .edu-row .course { color: #475569; font-size: 9.5pt; margin-top: 0.3mm; }
+  .edu-row .period { text-align: right; font-size: 9pt; color: #475569; font-weight: 600; }
+
+  .langs { font-size: 9.8pt; color: #334155; }
+  .langs strong { color: #0f172a; font-weight: 700; }
 </style>
 </head>
 <body>
-<table class="layout">
-<tr>
-  <!-- ============ SIDEBAR ============ -->
-  <td class="sidebar">
-    <div class="name">Samuel Stefano</div>
-    <div class="subrole">Full-Stack &amp; Tech Lead</div>
 
-    <h2 class="side">Contato</h2>
-    <div class="contact-item">
-      <span class="label">Local</span>
-      <span class="value">Marialva — PR, Brasil</span>
-    </div>
-    <div class="contact-item">
-      <span class="label">Telefone</span>
-      <span class="value">(44) 9 9879-5387</span>
-    </div>
-    <div class="contact-item">
-      <span class="label">Email</span>
-      <a href="mailto:samuelstefanodocarmo@gmail.com">samuelstefanodocarmo@gmail.com</a>
-    </div>
-    <div class="contact-item">
-      <span class="label">Portfólio</span>
-      <a href="https://samuelstefano.dev">samuelstefano.dev</a>
-    </div>
-    <div class="contact-item">
-      <span class="label">GitHub</span>
-      <a href="https://github.com/SamuelStefano">github.com/SamuelStefano</a>
-    </div>
-    <div class="contact-item">
-      <span class="label">LinkedIn</span>
-      <a href="https://www.linkedin.com/in/samuel-stefano-425a29246/">in/samuel-stefano</a>
-    </div>
+<header class="cv-header">
+  <h1>Samuel Stefano Teixeira do Carmo</h1>
+  <div class="role">Tech Lead &amp; Desenvolvedor Full-Stack</div>
+  <table class="contact-row">
+    <tr>
+      <td class="ic">Local</td>
+      <td>Marialva — PR, Brasil</td>
+      <td class="ic" style="width: 16mm;">Email</td>
+      <td><a href="mailto:samuelstefanodocarmo@gmail.com">samuelstefanodocarmo@gmail.com</a></td>
+    </tr>
+    <tr>
+      <td class="ic">Telefone</td>
+      <td>(44) 9 9879-5387</td>
+      <td class="ic">Portfólio</td>
+      <td><a href="https://samuelstefano.dev">samuelstefano.dev</a></td>
+    </tr>
+    <tr>
+      <td class="ic">LinkedIn</td>
+      <td><a href="https://www.linkedin.com/in/samuel-stefano-425a29246/">linkedin.com/in/samuel-stefano</a></td>
+      <td class="ic">GitHub</td>
+      <td><a href="https://github.com/SamuelStefano">github.com/SamuelStefano</a></td>
+    </tr>
+  </table>
+</header>
 
-    <h2 class="side">Conquistas</h2>
-    <div class="award"><strong>1º LUGAR · ETH LATAM 2025</strong>Trilha Base · PIX On-Chain</div>
-    <div class="award"><strong>2º LUGAR · DEVCONNECT 2025</strong>Trilha Scroll · TalentDAO</div>
-    <div class="award"><strong>4º LUGAR · ETH LATAM 2025</strong>Trilha Base · GreenLoop</div>
-    <div class="award"><strong>HACKANATION 2026</strong>Hackathon Web3 / RWA · TokenNation SP</div>
+<main>
 
-    <h2 class="side">Stack</h2>
-    <div class="skill-group">
-      <div class="title">Frontend</div>
-      <div class="items">React, Next.js, TypeScript, Vite, Module Federation, Micro-frontends, TailwindCSS, Storybook, Shadcn UI</div>
-    </div>
-    <div class="skill-group">
-      <div class="title">Backend</div>
-      <div class="items">Node.js, NestJS, Hono, Bun, REST APIs, Edge Functions, JWT, RabbitMQ, Judge0</div>
-    </div>
-    <div class="skill-group">
-      <div class="title">Banco &amp; Infra</div>
-      <div class="items">PostgreSQL, Supabase, Prisma, MySQL, MongoDB, Firebird, Docker, Docker Swarm, VPS Hetzner, Vercel, GitHub Actions, n8n</div>
-    </div>
-    <div class="skill-group">
-      <div class="title">IA &amp; Agentes</div>
-      <div class="items">Claude API, OpenAI, OpenRouter, MCP Servers, AI Agents, Prompt Engineering, LLM Integration, multi-agent squads</div>
-    </div>
-    <div class="skill-group">
-      <div class="title">Web3 &amp; Blockchain</div>
-      <div class="items">Solidity, ERC-20, ERC-721, Base, Scroll, Solana, Anchor, Rust, Chainlink CCIP &amp; CRE, Foundry, Viem, Smart Contracts</div>
-    </div>
-    <div class="skill-group">
-      <div class="title">Eng. de Software</div>
-      <div class="items">Arquitetura, CI/CD, Testes (Playwright), Componentização, Code Review, SDD, Documentação, Mentoria</div>
-    </div>
+  <!-- ========= RESUMO ========= -->
+  <section>
+    <h2>Resumo Profissional</h2>
+    <p class="summary">
+      Tech Lead e Desenvolvedor Full-Stack com 3+ anos de experiência liderando
+      arquiteturas de micro-frontends, plataformas escaláveis e integrações com IA.
+      Especialista em TypeScript, React, Next.js, NestJS e Supabase, com vivência
+      sólida em ambientes Web3 e arquiteturas orientadas a produto. Histórico de
+      liderança técnica, mentoria de desenvolvedores e participação em hackathons
+      internacionais premiados. Busco contribuir em equipes que valorizam autonomia,
+      qualidade técnica e velocidade de entrega.
+    </p>
+  </section>
 
-    <h2 class="side">Idiomas</h2>
-    <div class="languages">
-      <div class="lang"><strong>Português</strong> — Nativo</div>
-      <div class="lang"><strong>Inglês</strong> — B2 Intermediário Avançado</div>
-    </div>
+  <!-- ========= EXPERIENCIA ========= -->
+  <section>
+    <h2>Experiência Profissional</h2>
 
-    <h2 class="side">Formação</h2>
-    <div class="contact-item">
-      <span class="value"><strong style="color:#fff;">UNINGÁ</strong></span>
-      <div style="font-size:7.8pt;color:#94a3b8;">Análise e Desenvolvimento de Sistemas</div>
-      <div style="font-size:7.5pt;color:#64748b;">2024 — 2026</div>
-    </div>
-
-    <h2 class="side">Disponibilidade</h2>
-    <div class="contact-item" style="margin-top: 0;">
-      <span class="value">Remoto ou presencial (Maringá e região). Disponível para viagens.</span>
-    </div>
-  </td>
-
-  <!-- ============ MAIN ============ -->
-  <td class="main">
-    <section>
-      <h2 class="main">Objetivo</h2>
-      <p class="goal">
-        Desenvolvedor Full-Stack especializado em Node.js, NestJS, Next.js e React.
-        Experiência sólida em Web3, micro-frontends, integração com IA e infraestrutura
-        moderna. Busco contribuir em equipes que valorizam autonomia, velocidade de
-        entrega e evolução constante.
-      </p>
-    </section>
-
-    <section>
-      <h2 class="main">Perfil</h2>
-      <p class="summary">
-        Tech Lead com 3+ anos de experiência liderando arquiteturas de
-        micro-frontends com Module Federation, integrações com IA (Claude API, MCP
-        Servers) e plataformas Web3 premiadas em hackathons internacionais.
-        Atualmente lidero o ecossistema da DevFellowship e leciono no Instituto
-        Educar+. Apaixonado por automação, sistemas verificáveis e produtos
-        escaláveis — com foco em entregar produto, não só código.
-      </p>
-    </section>
-
-    <section>
-      <h2 class="main">Experiência</h2>
-
-      <div class="job">
-        <table class="proj-head"><tr>
-          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Líder Técnico &amp; Desenvolvedor Full-Stack</span></td>
-          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Jul 2024 — Atual</span></td>
-        </tr></table>
-        <div class="company">DevFellowship<span class="current">Atual</span></div>
-        <ul>
-          <li>Arquitetura e desenvolvimento do super-app <strong>DFL Learn</strong> (host) e dos micro-apps Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (Kanban com regras de unlock) e CI Revisor Bot com IA.</li>
-          <li>Construção de <strong>4 MCP Servers</strong> (work, learn, payments, plans) integrando agentes de IA ao ecossistema interno, com autenticação delegada e schemas tipados.</li>
-          <li>Stack backend TS com <strong>Hono + Bun</strong>, edge functions Supabase, PostgreSQL com RLS, integração Woovi (PIX) e Spedy (NF-e).</li>
-          <li>Definição de padrões técnicos, code reviews, mentoria de fellows e introdução de squad multi-agente como processo padrão de review.</li>
-          <li>Contribuidor ativo do site <strong>DevFellowship.com</strong> e participação em hackathons premiados (ETH Latam 2025, DevConnect ETH 2025).</li>
-        </ul>
+    <div class="job">
+      <table class="job-head"><tr>
+        <td style="vertical-align: baseline;">
+          <div class="company">DevFellowship<span class="current">Atual</span></div>
+          <div class="role-line">Tech Lead &amp; Desenvolvedor Full-Stack</div>
+        </td>
+        <td style="vertical-align: baseline; text-align: right; white-space: nowrap;">
+          <span class="period">Julho 2024 — Atual</span>
+        </td>
+      </tr></table>
+      <ul>
+        <li>Lidero a arquitetura técnica do ecossistema de micro-frontends da DevFellowship, definindo padrões, revisões de código e mentoria para um time de 5+ desenvolvedores.</li>
+        <li>Arquitetei e desenvolvi o super-app DFL Learn (host com Module Federation) e os micro-apps Reviews, Payments (cobrança recorrente + NF-e), Flows (Kanban com regras de negócio) e CI Revisor Bot com IA.</li>
+        <li>Construí 4 MCP Servers em Node.js (Work, Learn, Payments, Plans) que integram agentes de IA ao ecossistema interno, com autenticação delegada via JWT e contratos tipados.</li>
+        <li>Implementei pipeline completo de cobrança B2B/B2C (contratos → cobrança → NF-e Spedy → PIX Woovi), em produção, com idempotência, recuperação automática e gates de soft-launch.</li>
+        <li>Introduzi processo de squad multi-agente como padrão de review e metodologia spec-driven (SDD) para features sensíveis a dinheiro e segurança.</li>
+        <li>Representei a empresa em hackathons internacionais Web3 com resultados premiados (ETH Latam 2025, DevConnect ETH 2025).</li>
+      </ul>
+      <div class="stack-line">
+        <strong>Stack:</strong> TypeScript · React · Next.js · Module Federation · Hono · Bun · NestJS · Supabase · PostgreSQL · Docker · Claude API · MCP Servers · n8n · GitHub Actions
       </div>
+    </div>
 
-      <div class="job">
-        <table class="proj-head"><tr>
-          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Professor de Programação</span></td>
-          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Jan 2025 — Atual</span></td>
-        </tr></table>
-        <div class="company">Instituto Educar+<span class="current">Atual</span></div>
-        <ul>
-          <li>Ensino de lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes em tecnologia.</li>
-          <li>Mentoria individual de projetos finais — alunos chegaram a apresentar trabalhos em hackathons.</li>
-          <li>Construção da trilha didática "do zero ao deploy" usando Vercel e Supabase.</li>
-        </ul>
+    <div class="job">
+      <table class="job-head"><tr>
+        <td style="vertical-align: baseline;">
+          <div class="company">Instituto Educar+<span class="current">Atual</span></div>
+          <div class="role-line">Professor de Programação</div>
+        </td>
+        <td style="vertical-align: baseline; text-align: right; white-space: nowrap;">
+          <span class="period">Janeiro 2025 — Atual</span>
+        </td>
+      </tr></table>
+      <ul>
+        <li>Leciono lógica de programação, desenvolvimento web e boas práticas para turmas iniciantes em tecnologia no instituto profissionalizante.</li>
+        <li>Mentoro individualmente projetos finais — alunos chegaram a apresentar trabalhos em hackathons regionais.</li>
+        <li>Construí a trilha didática "do zero ao deploy" usando Vercel e Supabase como base prática, transformando alunos sem background técnico em desenvolvedores aptos a publicar produtos.</li>
+      </ul>
+      <div class="stack-line">
+        <strong>Stack:</strong> JavaScript · HTML · CSS · Git &amp; GitHub · Vercel · Supabase
       </div>
+    </div>
 
-      <div class="job">
-        <table class="proj-head"><tr>
-          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Líder de Arquitetura &amp; Projetos Internos</span></td>
-          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Dez 2024 — Fev 2026</span></td>
-        </tr></table>
-        <div class="company">M&amp;M Informática</div>
-        <ul>
-          <li>Desenvolvimento de sistemas empresariais modernos: módulos de vendas, notas fiscais (NF-e), PDV, etiquetas, aplicativos mobile e integrações fiscais.</li>
-          <li>Padronização da stack <strong>TypeScript / Next.js / NestJS</strong> para projetos novos do time, com Tailwind no front e SQL/NoSQL no back.</li>
-          <li>Bridge entre sistemas legados <strong>Delphi/Firebird</strong> e novas APIs REST, com automação de processos internos.</li>
-        </ul>
+    <div class="job">
+      <table class="job-head"><tr>
+        <td style="vertical-align: baseline;">
+          <div class="company">M&amp;M Informática</div>
+          <div class="role-line">Líder de Arquitetura &amp; Desenvolvimento de Projetos Internos</div>
+        </td>
+        <td style="vertical-align: baseline; text-align: right; white-space: nowrap;">
+          <span class="period">Dezembro 2024 — Fevereiro 2026</span>
+        </td>
+      </tr></table>
+      <ul>
+        <li>Liderei a definição de arquitetura e a padronização da stack tecnológica (TypeScript / Next.js / NestJS) para os projetos internos da empresa.</li>
+        <li>Desenvolvi sistemas empresariais completos: módulos de vendas, notas fiscais (NF-e), PDV, gestão de etiquetas, aplicativos mobile e integrações fiscais.</li>
+        <li>Implementei bridges entre sistemas legados Delphi/Firebird e novas APIs REST, automatizando processos internos manuais e reduzindo retrabalho operacional.</li>
+        <li>Defini boas práticas de código, fluxo Git e organização de repositórios para o time de desenvolvimento.</li>
+      </ul>
+      <div class="stack-line">
+        <strong>Stack:</strong> TypeScript · Next.js · NestJS · TailwindCSS · Firebird · Delphi · APIs REST · Arquitetura de Software
       </div>
+    </div>
 
-      <div class="job">
-        <table class="proj-head"><tr>
-          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Suporte Técnico</span></td>
-          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Fev 2023 — Dez 2024</span></td>
-        </tr></table>
-        <div class="company">Prefeitura de Marialva</div>
-        <ul>
-          <li>Suporte técnico atendendo órgãos públicos do município: redes, servidores, impressoras, computadores e sistemas operacionais.</li>
-          <li>Manutenção, configuração e atendimento administrativo — primeira experiência prática com infraestrutura e atendimento técnico em larga escala.</li>
-        </ul>
+    <div class="job">
+      <table class="job-head"><tr>
+        <td style="vertical-align: baseline;">
+          <div class="company">Prefeitura de Marialva</div>
+          <div class="role-line">Suporte Técnico</div>
+        </td>
+        <td style="vertical-align: baseline; text-align: right; white-space: nowrap;">
+          <span class="period">Fevereiro 2023 — Dezembro 2024</span>
+        </td>
+      </tr></table>
+      <ul>
+        <li>Prestei suporte técnico de TI a múltiplos órgãos públicos do município, cobrindo redes, servidores, impressoras e estações de trabalho.</li>
+        <li>Realizei manutenção, configuração de sistemas operacionais e atendimento ao usuário final, garantindo a continuidade operacional da administração pública municipal.</li>
+        <li>Primeiro contato profissional com infraestrutura de TI corporativa em larga escala, desenvolvendo postura de atendimento e diagnóstico estruturado.</li>
+      </ul>
+      <div class="stack-line">
+        <strong>Áreas:</strong> Redes · Servidores · Sistemas Operacionais · Suporte ao Usuário · Infraestrutura
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2 class="main">Projetos em Destaque</h2>
-      <p style="font-size:8.3pt; color:#64748b; margin: 0 0 2.5mm 0; font-style: italic;">
-        Todos os projetos estão detalhados com imagens, demonstrações e contexto em
-        <strong style="color:#3b82f6;">samuelstefano.dev</strong>.
-      </p>
+  <!-- ========= EDUCACAO ========= -->
+  <section>
+    <h2>Formação Acadêmica</h2>
+    <table class="edu-row"><tr>
+      <td style="vertical-align: baseline;">
+        <div class="school">UNINGÁ — Centro Universitário Ingá</div>
+        <div class="course">Análise e Desenvolvimento de Sistemas</div>
+      </td>
+      <td style="vertical-align: baseline; white-space: nowrap;" class="period">2024 — 2026</td>
+    </tr></table>
+  </section>
 
-      <div class="project">
-        <table class="proj-head"><tr>
-          <td style="vertical-align: baseline; padding-right: 3mm;"><span class="proj-name">PIX On-Chain</span></td>
-          <td style="text-align: right; vertical-align: baseline; white-space: nowrap;"><span class="badge">1º · TRILHA BASE · ETH LATAM 2025</span></td>
-        </tr></table>
-        <div class="desc">Participação na análise de requisitos, arquitetura e integração da base do projeto vencedor. Conversão de pagamentos PIX em tokens on-chain (USDC/ETH) na Base, com contratos Solidity e fluxo de autorização de gastos via merchant spending.</div>
-        <div class="tech">Solidity · Base · Next.js · Supabase · Woovi (PIX)</div>
-      </div>
+  <!-- ========= SKILLS ========= -->
+  <section>
+    <h2>Habilidades Técnicas</h2>
+    <table class="skills-table">
+      <tr>
+        <td class="cat">Linguagens</td>
+        <td>TypeScript · JavaScript · SQL · Rust · Solidity</td>
+      </tr>
+      <tr>
+        <td class="cat">Frontend</td>
+        <td>React · Next.js · Vite · Module Federation · Micro-frontends · TailwindCSS · Storybook</td>
+      </tr>
+      <tr>
+        <td class="cat">Backend</td>
+        <td>Node.js · NestJS · Hono · Bun · APIs REST · Edge Functions · JWT · RabbitMQ</td>
+      </tr>
+      <tr>
+        <td class="cat">Banco de Dados</td>
+        <td>PostgreSQL · Supabase · Prisma · MySQL · MongoDB · Firebird</td>
+      </tr>
+      <tr>
+        <td class="cat">DevOps &amp; Infra</td>
+        <td>Docker · Docker Swarm · Linux · VPS · Vercel · GitHub Actions · n8n</td>
+      </tr>
+      <tr>
+        <td class="cat">IA &amp; Agentes</td>
+        <td>Claude API · OpenAI · MCP Servers · AI Agents · Prompt Engineering · LLM Integration</td>
+      </tr>
+      <tr>
+        <td class="cat">Web3 &amp; Blockchain</td>
+        <td>Solidity · ERC-20 / ERC-721 · Base · Scroll · Solana · Anchor · Chainlink CCIP &amp; CRE · Foundry</td>
+      </tr>
+      <tr>
+        <td class="cat">Eng. de Software</td>
+        <td>Arquitetura · CI/CD · Testes (Playwright) · Code Review · Mentoria · Documentação · SDD</td>
+      </tr>
+    </table>
+  </section>
 
-      <div class="project">
-        <table class="proj-head"><tr>
-          <td style="vertical-align: baseline; padding-right: 3mm;"><span class="proj-name">TalentDAO</span></td>
-          <td style="text-align: right; vertical-align: baseline; white-space: nowrap;"><span class="badge silver">2º · TRILHA SCROLL · DEVCONNECT 2025</span></td>
-        </tr></table>
-        <div class="desc">DAO de descoberta e reputação de talentos on-chain. Frontend Next.js, contratos em Solidity e identidade verificável em Scroll. Premiado na trilha Scroll do DevConnect ETH 2025.</div>
-        <div class="tech">Scroll · Solidity · Next.js · Supabase · Viem</div>
-      </div>
+  <!-- ========= IDIOMAS ========= -->
+  <section>
+    <h2>Idiomas</h2>
+    <div class="langs">
+      <strong>Português</strong> — Nativo &nbsp;&nbsp;·&nbsp;&nbsp;
+      <strong>Inglês</strong> — B2 Intermediário Avançado
+    </div>
+  </section>
 
-      <div class="project">
-        <table class="proj-head"><tr>
-          <td style="vertical-align: baseline; padding-right: 3mm;"><span class="proj-name">GreenLoop</span></td>
-          <td style="text-align: right; vertical-align: baseline; white-space: nowrap;"><span class="badge bronze">4º · TRILHA BASE · ETH LATAM 2025</span></td>
-        </tr></table>
-        <div class="desc">Plataforma Web3 que transformava entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade. Construí partes do backend em Node.js e ajudei na integração com contratos na Base. O sistema registrava cada entrega em blockchain, garantindo rastreabilidade e transparência.</div>
-        <div class="tech">Base · Node.js · Solidity · Next.js · Smart Contracts</div>
-      </div>
+  <!-- ========= AWARDS ========= -->
+  <section>
+    <h2>Prêmios &amp; Reconhecimentos</h2>
+    <table class="award-row"><tr>
+      <td class="medal">1º</td>
+      <td><span class="title">PIX On-Chain</span> &nbsp;<span class="ctx">— Trilha Base · ETH Latam 2025 (Hackathon Web3 Internacional)</span></td>
+    </tr></table>
+    <table class="award-row"><tr>
+      <td class="medal silver">2º</td>
+      <td><span class="title">TalentDAO</span> &nbsp;<span class="ctx">— Trilha Scroll · DevConnect ETH 2025</span></td>
+    </tr></table>
+    <table class="award-row"><tr>
+      <td class="medal bronze">4º</td>
+      <td><span class="title">GreenLoop</span> &nbsp;<span class="ctx">— Trilha Base · ETH Latam 2025</span></td>
+    </tr></table>
+  </section>
 
-      <div class="project">
-        <span class="proj-name">MintWork — Plataforma Web3 de Trabalho</span>
-        <div class="desc">Pagamento on-chain para empresas que contratam desenvolvimento por entregas. Cliente solicita projeto, a wallet conecta no contrato e bloqueia fundos; quando a entrega é aprovada, o cliente recebe NFT de comprovante e o desenvolvedor recebe USDC instantaneamente na wallet. Desenvolvimento completo do fluxo: wallet, assinaturas, NFTs, saldos USDC e navegação Web3 — implementado em Scroll e Base.</div>
-        <div class="tech">Solidity · Scroll · Base · USDC · ERC-721 · Next.js · Wagmi/Viem</div>
-      </div>
+  <!-- ========= PROJETOS ========= -->
+  <section>
+    <h2>Projetos Selecionados</h2>
+    <p style="font-size:8.8pt; color:#64748b; margin: 0 0 2mm 0; font-style: italic;">
+      Portfólio completo com imagens, demonstrações e contexto em
+      <strong style="color:#1e40af;">samuelstefano.dev</strong>.
+    </p>
 
-      <div class="project">
-        <span class="proj-name">Uber Money — Crédito on-chain via Chainlink</span>
-        <div class="desc">Wallet-first com decisão de crédito off-chain via <strong>Chainlink CRE</strong> e escrita on-chain via <strong>CCIP</strong> (Ethereum Sepolia → Solana). Anchor (Rust) com fallback de raw tx; Ed25519 attestation pattern e integração com Mercado Bitcoin para faucet determinístico.</div>
-        <div class="tech">Solana · Anchor · Rust · Chainlink CCIP / CRE · Ethereum</div>
-      </div>
+    <div class="project">
+      <span class="name">DFL Learn (Codelibrary)</span>
+      <div class="desc">Super-app da DevFellowship que centraliza cursos LMS, Kanban, pagamentos, reuniões, CMDB e AI Chat em uma única plataforma com Module Federation.</div>
+    </div>
 
-      <div class="project">
-        <span class="proj-name">DFL Learn (Codelibrary) — Plataforma de Cursos</span>
-        <div class="desc">Super-app da DevFellowship e host do ecossistema Module Federation. Centraliza cursos LMS, projetos, Kanban, pagamentos, reuniões, CMDB e AI Chat numa única plataforma. Sistema completo com modularização, interface otimizada e estrutura escalável.</div>
-        <div class="tech">Next.js · NestJS · Module Federation · Supabase · Prisma · TailwindCSS</div>
-      </div>
+    <div class="project">
+      <span class="name">MintWork — Plataforma Web3 de Trabalho por Entregas</span>
+      <div class="desc">Pagamento on-chain para empresas que contratam desenvolvimento por entregas. Fluxo completo wallet → contrato → NFT → USDC implementado em Scroll e Base.</div>
+    </div>
 
-      <div class="project">
-        <span class="proj-name">DFL Revenue — Cobrança recorrente B2B/B2C</span>
-        <div class="desc">Pipeline completo de cobrança: contratos → cobranças → NF-e Spedy → Woovi (PIX). Cron dispatcher e sweeper rodando em produção, com idempotência, recuperação de strand e gates de soft-launch. Integração com Autentique para assinaturas.</div>
-        <div class="tech">Supabase · Edge Functions · PostgreSQL · Woovi · Spedy · Autentique</div>
-      </div>
+    <div class="project">
+      <span class="name">Uber Money — Crédito On-Chain via Chainlink</span>
+      <div class="desc">Decisão de crédito off-chain via Chainlink CRE e escrita on-chain via CCIP (Ethereum Sepolia → Solana). Anchor (Rust) com fallback de raw tx.</div>
+    </div>
 
-      <div class="project">
-        <span class="proj-name">Review Requests — Sistema de Revisões</span>
-        <div class="desc">Plataforma interna inspirada em GitHub Pull Requests com interface mais amigável pra cliente. Ciclos de revisão, reavaliações, rejeições, histórico completo, RLS, RPCs e modelagem SQL avançada no Supabase.</div>
-        <div class="tech">Next.js · Supabase · PostgreSQL · RLS · RPCs</div>
-      </div>
+    <div class="project">
+      <span class="name">Skill Evals — Plataforma de Desafios de Código</span>
+      <div class="desc">Plataforma estilo LeetCode/HackerRank idealizada e construída do zero. Execução isolada via Judge0 em VPS, com frontend Next.js e backend NestJS.</div>
+    </div>
+  </section>
 
-      <div class="project">
-        <span class="proj-name">Skill Evals — Plataforma de Desafios</span>
-        <div class="desc">Plataforma de desafios de código idealizada e criada por mim, inspirada em LeetCode e HackerRank. Execução isolada via Judge0 em VPS, frontend Next.js, backend NestJS, autenticação, segurança e infraestrutura Docker.</div>
-        <div class="tech">Next.js · NestJS · Judge0 · Docker · VPS · PostgreSQL</div>
-      </div>
-
-      <div class="project">
-        <span class="proj-name">Deck (Cockpit) — Comando pessoal para agentes de IA</span>
-        <div class="desc">App web pessoal que une chat com agentes, terminais ao vivo, memória persistente, skills, custos de tokens e administração do host numa única interface. Criado do zero, com fila persistente de prompts, espera por tokens e auto-resolução de modelos.</div>
-        <div class="tech">React · TypeScript · Node.js · WebSockets · tmux · Supabase</div>
-      </div>
-    </section>
-  </td>
-</tr>
-</table>
+</main>
 </body>
 </html>
