@@ -116,21 +116,18 @@ export const TECH_CATEGORIES = [
 
 export const EXPERIENCE_DATA = [
   {
-    company: 'Prefeitura de Marialva',
-    role: 'Suporte Técnico',
-    period: 'Fevereiro 2023 - Dezembro 2024',
-    description: 'Suporte Técinico, atendendo órgãos públicos do municipio em relação a informática.',
-    stack: ['Suporte Técnico', 'Informação', 'Configurações de Rede', 'Configurações de Impressoras', 'Configurações de Servidores', 'Configurações de Computadores', 'Configurações de Sistemas Operacionais'],
-    logo: '/prefeitura.png',
-    icon: Building2,
-    website: 'https://www.marialva.pr.gov.br'
-  },
-  {
     company: 'DevFellowship',
     role: 'Líder Técnico & Desenvolvedor Full-Stack',
     period: 'Julho 2024 - Presente',
-    description: 'Liderança técnica do ecossistema de micro-frontends com Module Federation. Arquitetura e desenvolvimento do super-app DFL Learn, Reviews App, Payments App e CI Revisor Bot com IA. Mentoria de fellows, definição de padrões técnicos, revisões de código e participação em hackathons premiados (ETH Latam 2025 e DevConnect ETH 2025).',
-    stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'Supabase', 'PostgreSQL', 'NestJS', 'Node.js', 'Stripe', 'Claude API', 'n8n', 'GitHub Actions', 'Docker', 'TailwindCSS', 'Playwright'],
+    current: true,
+    description: 'Liderança técnica do ecossistema de micro-frontends da DevFellowship com Module Federation. Arquitetei e desenvolvi o super-app DFL Learn (host), Reviews, Payments (revenue/cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
+    highlights: [
+      '4º lugar ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)',
+      '2º lugar DevConnect ETH 2025 trilha Scroll — TalentDAO',
+      'Squad multi-agente para review/SDD adotada como padrão do time',
+      'Arquitetura do Revenue (contratos→cobranças→NF-e) end-to-end em produção',
+    ],
+    stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'Hono', 'Bun', 'Supabase', 'PostgreSQL', 'Edge Functions', 'NestJS', 'Claude API', 'OpenRouter', 'MCP', 'n8n', 'GitHub Actions', 'Docker', 'TailwindCSS', 'Playwright'],
     logo: '/DevFelloShip.png',
     icon: Briefcase,
     website: 'https://devfellowship.com'
@@ -138,9 +135,15 @@ export const EXPERIENCE_DATA = [
   {
     company: 'Instituto Educar+',
     role: 'Professor de Programação',
-    period: '2025 - Presente',
-    description: 'Professor de programação e desenvolvimento no Instituto Educar+, instituto de ensino profissionalizante em tecnologia. Ensino lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes, com mentoria de projetos práticos — alunos chegaram a apresentar projetos em hackathons.',
-    stack: ['Ensino', 'Lógica de Programação', 'JavaScript', 'HTML', 'CSS', 'Desenvolvimento Web', 'Mentoria'],
+    period: 'Janeiro 2025 - Presente',
+    current: true,
+    description: 'Professor de programação no Instituto Educar+, instituto profissionalizante em tecnologia. Ensino lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes, com mentoria em projetos práticos — alunos chegaram a apresentar trabalhos em hackathons.',
+    highlights: [
+      'Turmas iniciantes em lógica, HTML/CSS, JS e Git',
+      'Mentoria de projetos finais, com alunos indo a hackathons',
+      'Trilha didática "do zero ao deploy" em Vercel/Supabase',
+    ],
+    stack: ['Ensino', 'Lógica de Programação', 'JavaScript', 'HTML', 'CSS', 'Git & GitHub', 'Vercel', 'Mentoria'],
     logo: '/EducarMais.webp',
     icon: GraduationCap,
     website: 'https://institutoeducarmais.org/'
@@ -149,11 +152,33 @@ export const EXPERIENCE_DATA = [
     company: 'M&M Informática',
     role: 'Líder de Arquitetura & Desenvolvimento de Projetos Internos',
     period: 'Dezembro 2024 - Fevereiro 2026',
-    description: 'Liderança da arquitetura e desenvolvimento de projetos internos da empresa. Definição de padrões técnicos, stack tecnológica e boas práticas para a equipe de desenvolvimento. Desenvolvimento fullstack de novos sistemas com TypeScript, Next.js e NestJS. Integração com sistemas fiscais, bancos de dados Firebird e automação de processos internos.',
-    stack: ['TypeScript', 'Next.js', 'NestJS', 'TailwindCSS', 'Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Arquitetura de Software', 'Liderança Técnica', 'Suporte Técnico'],
+    current: false,
+    description: 'Liderei a arquitetura e desenvolvimento dos projetos internos. Definição de padrões técnicos, stack e boas práticas para o time. Entreguei sistemas fullstack em TypeScript, Next.js e NestJS, integração com sistemas fiscais, banco de dados Firebird e automação de processos internos.',
+    highlights: [
+      'Padronização da stack TS/Next/NestJS para projetos novos',
+      'Integrações fiscais (NF-e) e automação de processos legacy',
+      'Bridge entre sistemas Delphi/Firebird e novas APIs REST',
+    ],
+    stack: ['TypeScript', 'Next.js', 'NestJS', 'TailwindCSS', 'Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Arquitetura de Software', 'Liderança Técnica'],
     logo: '/MMIcon.png',
     icon: Laptop,
     website: 'https://mminfo.me'
+  },
+  {
+    company: 'Prefeitura de Marialva',
+    role: 'Suporte Técnico',
+    period: 'Fevereiro 2023 - Dezembro 2024',
+    current: false,
+    description: 'Suporte técnico atendendo órgãos públicos do município. Cuidei de redes, servidores, impressoras, computadores e sistemas operacionais, garantindo continuidade da operação do setor público.',
+    highlights: [
+      'Atendimento ponta-a-ponta a múltiplos órgãos municipais',
+      'Configuração e manutenção de redes e servidores',
+      'Primeiro contato profissional com TI em larga escala',
+    ],
+    stack: ['Suporte Técnico', 'Redes', 'Servidores', 'Impressoras', 'Sistemas Operacionais', 'Infraestrutura'],
+    logo: '/prefeitura.png',
+    icon: Building2,
+    website: 'https://www.marialva.pr.gov.br'
   }
 ];
 
@@ -215,7 +240,7 @@ export const ADDITIONAL_SKILLS = [
 export const STATS_TEMPLATE = [
   {
     label: 'Tempo de atuação profissional',
-    value: '2+ anos',
+    value: '3+ anos',
     icon: User
   },
   {

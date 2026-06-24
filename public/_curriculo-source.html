@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Samuel Stefano — Currículo</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; width: 210mm; }
+  body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #1a202c;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+  table.layout {
+    width: 210mm;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  td { vertical-align: top; }
+
+  /* ===== SIDEBAR ===== */
+  td.sidebar {
+    width: 73mm;
+    background-color: #0f172a !important;
+    color: #e2e8f0;
+    padding: 16mm 8mm 14mm 8mm;
+  }
+  .name {
+    font-size: 19pt;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0 0 1.5mm 0;
+    letter-spacing: -0.4px;
+  }
+  .subrole {
+    font-size: 8pt;
+    color: #60a5fa;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+    margin: 0 0 6mm 0;
+  }
+  h2.side {
+    font-size: 8pt;
+    color: #93c5fd;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    margin: 5mm 0 2.5mm 0;
+    font-weight: 700;
+    padding-bottom: 1mm;
+    border-bottom: 1px solid #334155;
+  }
+  .contact-item { margin: 2mm 0; word-break: break-word; }
+  .contact-item .label {
+    display: block;
+    font-size: 7pt;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 0.3mm;
+    font-weight: 600;
+  }
+  .contact-item .value, .contact-item a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 8.5pt;
+  }
+  .skill-group { margin-bottom: 3mm; }
+  .skill-group .title {
+    font-size: 8pt;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 1mm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .skill-group .items {
+    font-size: 8.2pt;
+    color: #cbd5e1;
+    line-height: 1.55;
+  }
+  .languages .lang {
+    font-size: 9pt;
+    margin: 1mm 0;
+    color: #cbd5e1;
+  }
+  .languages .lang strong { color: #ffffff; font-weight: 600; }
+  .award {
+    background-color: #1e293b !important;
+    border-left: 2px solid #60a5fa;
+    padding: 1.8mm 2.8mm;
+    margin: 1.5mm 0;
+    font-size: 8.2pt;
+    color: #e2e8f0;
+  }
+  .award strong {
+    color: #93c5fd;
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 700;
+    margin-bottom: 0.4mm;
+    letter-spacing: 0.4px;
+  }
+
+  /* ===== MAIN ===== */
+  td.main {
+    background-color: #ffffff !important;
+    padding: 16mm 11mm 14mm 11mm;
+  }
+  h2.main {
+    font-size: 11pt;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    margin: 0 0 3.5mm 0;
+    font-weight: 800;
+    padding-bottom: 1.2mm;
+    border-bottom: 2px solid #3b82f6;
+    display: inline-block;
+    padding-right: 6mm;
+  }
+  section { margin-bottom: 6mm; }
+  .summary { font-size: 9.5pt; color: #334155; line-height: 1.6; margin: 0 0 3mm 0; }
+  .job { margin-bottom: 4.5mm; page-break-inside: avoid; }
+  .job-head { margin-bottom: 0.5mm; }
+  .job-head .role-wrap {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .role { font-size: 10.5pt; font-weight: 700; color: #0f172a; line-height: 1.2; }
+  .period {
+    font-size: 8.3pt;
+    color: #475569;
+    font-weight: 600;
+    white-space: nowrap;
+    background-color: #f1f5f9 !important;
+    padding: 0.8mm 2.5mm;
+    border-radius: 2.5mm;
+  }
+  .company {
+    font-size: 9.5pt;
+    color: #3b82f6;
+    font-weight: 600;
+    margin-bottom: 1.5mm;
+  }
+  .current {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+    font-size: 6.8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.4mm 1.8mm;
+    margin-left: 2mm;
+    letter-spacing: 0.6px;
+  }
+  .job ul {
+    margin: 1mm 0 0 0;
+    padding-left: 4mm;
+    color: #334155;
+    font-size: 9.2pt;
+    line-height: 1.5;
+  }
+  .job ul li { margin-bottom: 0.6mm; }
+  .project { margin-bottom: 3.2mm; page-break-inside: avoid; }
+  .proj-head {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .proj-name { font-weight: 700; color: #0f172a; font-size: 9.8pt; }
+  .badge {
+    background-color: #f59e0b !important;
+    color: #1a202c !important;
+    font-size: 7pt;
+    font-weight: 700;
+    padding: 0.4mm 2mm;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+  .badge.silver { background-color: #94a3b8 !important; color: #0f172a !important; }
+  .desc { font-size: 9pt; color: #475569; line-height: 1.5; margin: 0.5mm 0 0 0; }
+  .tech {
+    font-size: 8pt;
+    color: #64748b;
+    margin-top: 0.4mm;
+    font-style: italic;
+  }
+  .edu-row { width: 100%; border-collapse: collapse; }
+  .school { font-weight: 700; color: #0f172a; font-size: 10pt; }
+  .edu-period { font-size: 8.5pt; color: #475569; }
+  .course { font-size: 9.3pt; color: #475569; }
+</style>
+</head>
+<body>
+<table class="layout">
+<tr>
+  <!-- ============ SIDEBAR ============ -->
+  <td class="sidebar">
+    <div class="name">Samuel Stefano</div>
+    <div class="subrole">Full-Stack &amp; Tech Lead</div>
+
+    <h2 class="side">Contato</h2>
+    <div class="contact-item">
+      <span class="label">Local</span>
+      <span class="value">Marialva — PR, Brasil</span>
+    </div>
+    <div class="contact-item">
+      <span class="label">Telefone</span>
+      <span class="value">(44) 9 9879-5387</span>
+    </div>
+    <div class="contact-item">
+      <span class="label">Email</span>
+      <a href="mailto:samuelstefanodocarmo@gmail.com">samuelstefanodocarmo@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="label">Portfólio</span>
+      <a href="https://samuelstefano.dev">samuelstefano.dev</a>
+    </div>
+    <div class="contact-item">
+      <span class="label">GitHub</span>
+      <a href="https://github.com/SamuelStefano">github.com/SamuelStefano</a>
+    </div>
+    <div class="contact-item">
+      <span class="label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/samuel-stefano-425a29246/">in/samuel-stefano</a>
+    </div>
+
+    <h2 class="side">Conquistas</h2>
+    <div class="award"><strong>1º LUGAR · ETH LATAM 2025</strong>Trilha Base · PIX On-Chain</div>
+    <div class="award"><strong>2º LUGAR · DEVCONNECT 2025</strong>Trilha Scroll · TalentDAO</div>
+    <div class="award"><strong>4º LUGAR · ETH LATAM 2025</strong>Trilha Base · GreenLoop</div>
+
+    <h2 class="side">Stack</h2>
+    <div class="skill-group">
+      <div class="title">Frontend</div>
+      <div class="items">React, Next.js, TypeScript, Vite, Module Federation, TailwindCSS, Storybook</div>
+    </div>
+    <div class="skill-group">
+      <div class="title">Backend</div>
+      <div class="items">Node.js, NestJS, Hono, Bun, APIs REST, Edge Functions, JWT</div>
+    </div>
+    <div class="skill-group">
+      <div class="title">Banco &amp; Infra</div>
+      <div class="items">PostgreSQL, Supabase, Prisma, Firebird, Docker, Docker Swarm, VPS, Vercel, GitHub Actions</div>
+    </div>
+    <div class="skill-group">
+      <div class="title">IA &amp; Agentes</div>
+      <div class="items">Claude API, OpenAI, MCP Servers, AI Agents, Prompt Engineering, n8n</div>
+    </div>
+    <div class="skill-group">
+      <div class="title">Web3</div>
+      <div class="items">Solidity, ERC-20, ERC-721, Base, Scroll, Solana, Anchor, Chainlink CCIP &amp; CRE, Foundry</div>
+    </div>
+
+    <h2 class="side">Idiomas</h2>
+    <div class="languages">
+      <div class="lang"><strong>Português</strong> — Nativo</div>
+      <div class="lang"><strong>Inglês</strong> — B2 Intermediário</div>
+    </div>
+
+    <h2 class="side">Disponibilidade</h2>
+    <div class="contact-item" style="margin-top: 0;">
+      <span class="value">Remoto ou presencial (Maringá e região). Disponível para viagens.</span>
+    </div>
+  </td>
+
+  <!-- ============ MAIN ============ -->
+  <td class="main">
+    <section>
+      <h2 class="main">Perfil</h2>
+      <p class="summary">
+        Desenvolvedor Full-Stack e Tech Lead com 3+ anos de experiência, especializado em
+        ecossistemas de micro-frontends com Module Federation, integração com IA
+        (Claude API, MCP Servers) e arquitetura de plataformas escaláveis. Atualmente
+        lidero tecnicamente o ecossistema da DevFellowship e atuo como professor no
+        Instituto Educar+. Apaixonado por automação, sistemas verificáveis e Web3.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="main">Experiência</h2>
+
+      <div class="job">
+        <table class="role-wrap"><tr>
+          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Líder Técnico &amp; Desenvolvedor Full-Stack</span></td>
+          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Jul 2024 — Atual</span></td>
+        </tr></table>
+        <div class="company">DevFellowship<span class="current">Atual</span></div>
+        <ul>
+          <li>Arquitetura e desenvolvimento do super-app <strong>DFL Learn</strong> (host) e dos micro-apps Reviews, Payments (cobrança recorrente + NF-e Spedy) e Flows (Kanban com regras de unlock).</li>
+          <li>Construção de <strong>4 MCP servers</strong> (work, learn, payments, plans) integrando agentes de IA ao ecossistema interno.</li>
+          <li>Stack backend TypeScript com Hono + Bun, edge functions Supabase e PostgreSQL com RLS.</li>
+          <li>Definição de padrões técnicos, code reviews, mentoria de fellows e squad multi-agente como processo padrão de revisão.</li>
+          <li>Participação em hackathons premiados de Web3 (ETH Latam 2025, DevConnect ETH 2025).</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <table class="role-wrap"><tr>
+          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Professor de Programação</span></td>
+          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Jan 2025 — Atual</span></td>
+        </tr></table>
+        <div class="company">Instituto Educar+<span class="current">Atual</span></div>
+        <ul>
+          <li>Ensino de lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes.</li>
+          <li>Mentoria de projetos práticos — alunos chegaram a apresentar trabalhos em hackathons.</li>
+          <li>Trilha didática "do zero ao deploy" usando Vercel e Supabase.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <table class="role-wrap"><tr>
+          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Líder de Arquitetura &amp; Projetos Internos</span></td>
+          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Dez 2024 — Fev 2026</span></td>
+        </tr></table>
+        <div class="company">M&amp;M Informática</div>
+        <ul>
+          <li>Liderança da arquitetura e desenvolvimento de sistemas empresariais: vendas, NF-e, PDV, etiquetas e integrações fiscais.</li>
+          <li>Padronização da stack TypeScript / Next.js / NestJS para projetos novos do time.</li>
+          <li>Bridge entre sistemas legados Delphi/Firebird e novas APIs REST.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <table class="role-wrap"><tr>
+          <td style="vertical-align: baseline; width: 72%; padding-right: 3mm;"><span class="role">Suporte Técnico</span></td>
+          <td style="text-align: right; vertical-align: baseline; width: 28%; white-space: nowrap;"><span class="period">Fev 2023 — Dez 2024</span></td>
+        </tr></table>
+        <div class="company">Prefeitura de Marialva</div>
+        <ul>
+          <li>Suporte técnico aos órgãos públicos do município: redes, servidores, impressoras, computadores e sistemas operacionais.</li>
+          <li>Primeiro contato profissional com infraestrutura de TI em larga escala.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="main">Projetos em Destaque</h2>
+
+      <div class="project">
+        <table class="proj-head"><tr>
+          <td style="vertical-align: baseline;"><span class="proj-name">PIX On-Chain</span></td>
+          <td style="text-align: right; vertical-align: baseline;"><span class="badge">1º · ETH LATAM 2025</span></td>
+        </tr></table>
+        <div class="desc">Conversão de pagamentos PIX em tokens on-chain (USDC/ETH) na Base. Arquitetura, contratos Solidity e fluxo de autorização via merchant spending.</div>
+        <div class="tech">Solidity · Base · Next.js · Supabase</div>
+      </div>
+
+      <div class="project">
+        <table class="proj-head"><tr>
+          <td style="vertical-align: baseline;"><span class="proj-name">TalentDAO</span></td>
+          <td style="text-align: right; vertical-align: baseline;"><span class="badge silver">2º · DEVCONNECT 2025</span></td>
+        </tr></table>
+        <div class="desc">DAO de descoberta e reputação de talentos on-chain. Trilha Scroll do DevConnect ETH 2025.</div>
+        <div class="tech">Scroll · Solidity · Next.js · Supabase</div>
+      </div>
+
+      <div class="project">
+        <table class="proj-head"><tr>
+          <td style="vertical-align: baseline;"><span class="proj-name">GreenLoop</span></td>
+          <td style="text-align: right; vertical-align: baseline;"><span class="badge silver">4º · ETH LATAM 2025</span></td>
+        </tr></table>
+        <div class="desc">Recicláveis entregues em pontos de coleta convertidos em tokens on-chain na Base, com rastreabilidade e incentivo à sustentabilidade.</div>
+        <div class="tech">Base · Node.js · Solidity · Next.js</div>
+      </div>
+
+      <div class="project">
+        <span class="proj-name">Uber Money</span>
+        <div class="desc">Wallet-first com decisão de crédito off-chain via Chainlink CRE e escrita on-chain via CCIP (Ethereum Sepolia → Solana). Anchor + raw tx fallback.</div>
+        <div class="tech">Solana · Anchor · Chainlink CCIP/CRE · Rust</div>
+      </div>
+
+      <div class="project">
+        <span class="proj-name">Deck (Cockpit)</span>
+        <div class="desc">App web pessoal que une chat com agentes, terminais ao vivo, memória persistente, skills e custos de tokens numa única interface — criado do zero.</div>
+        <div class="tech">React · TypeScript · Node.js · WebSockets · Supabase</div>
+      </div>
+
+      <div class="project">
+        <span class="proj-name">DFL Revenue</span>
+        <div class="desc">Cobrança recorrente B2B/B2C: contratos → cobranças → NF-e Spedy → Woovi (PIX). Cron dispatcher e sweeper em produção.</div>
+        <div class="tech">Supabase · Edge Functions · PostgreSQL · Woovi · Spedy</div>
+      </div>
+
+      <div class="project">
+        <span class="proj-name">Review Requests &amp; Skill Evals</span>
+        <div class="desc">Plataforma de revisões inspirada em Pull Requests e plataforma de desafios de código (LeetCode-like) com execução via Judge0 em VPS.</div>
+        <div class="tech">NestJS · Next.js · Judge0 · Docker · Supabase</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="main">Formação</h2>
+      <table class="edu-row"><tr>
+        <td style="vertical-align: baseline;"><span class="school">UNINGÁ</span></td>
+        <td style="text-align: right; vertical-align: baseline;"><span class="edu-period">2024 — 2026</span></td>
+      </tr></table>
+      <div class="course">Análise e Desenvolvimento de Sistemas</div>
+    </section>
+  </td>
+</tr>
+</table>
+</body>
+</html>

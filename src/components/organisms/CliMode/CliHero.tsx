@@ -4,7 +4,7 @@ import { useTyped } from '@/hooks/useTyped';
 const CMDS = [
   { label: 'git clone github', href: 'https://github.com/SamuelStefano', amber: false },
   { label: 'open linkedin', href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/', amber: false },
-  { label: 'cat resume.pdf', href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing', amber: true },
+  { label: 'cat curriculo.pdf', href: '/curriculo.pdf', amber: true },
 ];
 
 export const CliHero = () => {

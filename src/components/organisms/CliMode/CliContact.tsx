@@ -5,7 +5,7 @@ const LINKS = [
   { icon: Github, label: 'github.com/SamuelStefano', href: 'https://github.com/SamuelStefano' },
   { icon: Linkedin, label: 'linkedin.com/in/samuel-stefano', href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/' },
   { icon: Instagram, label: 'instagram.com/samuel.stefano', href: 'https://instagram.com/samuel.stefano' },
-  { icon: FileText, label: 'resume.pdf', href: 'https://drive.google.com/file/d/1zbvD8g7rK3rSmMfeCPAR8o-DQ4zeYAvN/view?usp=sharing' },
+  { icon: FileText, label: 'curriculo.pdf', href: '/curriculo.pdf' },
   { icon: Phone, label: '+55 44 99879-5387', href: 'tel:+5544998795387' },
 ];
 
