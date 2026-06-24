@@ -412,6 +412,10 @@
     </tr></table>
     <table class="award-row"><tr>
       <td class="medal silver">2º</td>
+      <td><span class="title">Hackanation 2026</span> &nbsp;<span class="ctx">— Hackathon Web3 / RWA · TokenNation, São Paulo</span></td>
+    </tr></table>
+    <table class="award-row"><tr>
+      <td class="medal silver">2º</td>
       <td><span class="title">TalentDAO</span> &nbsp;<span class="ctx">— Trilha Scroll · DevConnect ETH 2025</span></td>
     </tr></table>
     <table class="award-row"><tr>
@@ -429,23 +433,39 @@
     </p>
 
     <div class="project">
-      <span class="name">DFL Learn (Codelibrary)</span>
-      <div class="desc">Super-app da DevFellowship que centraliza cursos LMS, Kanban, pagamentos, reuniões, CMDB e AI Chat em uma única plataforma com Module Federation.</div>
+      <span class="name">DFL Learn (Codelibrary) — Super-app educacional</span>
+      <div class="desc">Plataforma principal da DevFellowship e host do ecossistema Module Federation. Centraliza cursos LMS, Kanban de projetos, pagamentos, reuniões, CMDB e AI Chat em uma única interface. Arquitetura modular escalável, em produção atendendo a comunidade interna.</div>
+      <div class="tech" style="font-size:8pt; color:#64748b; font-style:italic; margin-top:0.3mm;">Next.js · NestJS · Module Federation · Supabase · Prisma · TailwindCSS</div>
     </div>
 
     <div class="project">
       <span class="name">MintWork — Plataforma Web3 de Trabalho por Entregas</span>
-      <div class="desc">Pagamento on-chain para empresas que contratam desenvolvimento por entregas. Fluxo completo wallet → contrato → NFT → USDC implementado em Scroll e Base.</div>
+      <div class="desc">Pagamento on-chain para empresas que contratam desenvolvimento por entregas. Cliente conecta wallet, contrato bloqueia fundos USDC; quando a entrega é aprovada, cliente recebe NFT de comprovante e desenvolvedor recebe USDC instantaneamente. Implementado em Scroll e Base após mudança de escopo do Lemon Cash.</div>
+      <div class="tech" style="font-size:8pt; color:#64748b; font-style:italic; margin-top:0.3mm;">Solidity · Scroll · Base · USDC · ERC-721 · Next.js · Wagmi/Viem</div>
     </div>
 
     <div class="project">
       <span class="name">Uber Money — Crédito On-Chain via Chainlink</span>
-      <div class="desc">Decisão de crédito off-chain via Chainlink CRE e escrita on-chain via CCIP (Ethereum Sepolia → Solana). Anchor (Rust) com fallback de raw tx.</div>
+      <div class="desc">Decisão de crédito off-chain via Chainlink CRE com escrita on-chain via CCIP (Ethereum Sepolia → Solana). Programa Anchor em Rust com fallback de raw transactions, Ed25519 attestation pattern e integração com Mercado Bitcoin para faucet determinístico.</div>
+      <div class="tech" style="font-size:8pt; color:#64748b; font-style:italic; margin-top:0.3mm;">Solana · Anchor · Rust · Chainlink CCIP / CRE · Ethereum</div>
+    </div>
+
+    <div class="project">
+      <span class="name">DFL Revenue — Cobrança Recorrente B2B/B2C</span>
+      <div class="desc">Pipeline completo de cobrança em produção: contratos → cobranças → NF-e (Spedy) → PIX (Woovi). Cron dispatcher e sweeper com idempotência, recuperação automática de strand, integração com Autentique para assinaturas e gates de soft-launch para deploy seguro.</div>
+      <div class="tech" style="font-size:8pt; color:#64748b; font-style:italic; margin-top:0.3mm;">Supabase · Edge Functions · PostgreSQL · Woovi · Spedy · Autentique</div>
     </div>
 
     <div class="project">
       <span class="name">Skill Evals — Plataforma de Desafios de Código</span>
-      <div class="desc">Plataforma estilo LeetCode/HackerRank idealizada e construída do zero. Execução isolada via Judge0 em VPS, com frontend Next.js e backend NestJS.</div>
+      <div class="desc">Plataforma estilo LeetCode/HackerRank idealizada e construída do zero. Execução isolada via Judge0 em VPS, frontend Next.js, backend NestJS, autenticação, segurança e infraestrutura Docker completa.</div>
+      <div class="tech" style="font-size:8pt; color:#64748b; font-style:italic; margin-top:0.3mm;">Next.js · NestJS · Judge0 · Docker · VPS · PostgreSQL</div>
+    </div>
+
+    <div class="project">
+      <span class="name">Deck (Cockpit) — Comando pessoal para agentes de IA</span>
+      <div class="desc">App web pessoal que une chat com agentes, terminais ao vivo via tmux, memória persistente, skills, custos de tokens e administração do host numa única interface. Criado do zero, com fila persistente de prompts, espera por tokens e auto-resolução de modelos.</div>
+      <div class="tech" style="font-size:8pt; color:#64748b; font-style:italic; margin-top:0.3mm;">React · TypeScript · Node.js · WebSockets · tmux · Supabase</div>
     </div>
   </section>
 
