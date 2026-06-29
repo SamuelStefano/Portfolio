@@ -63,9 +63,9 @@ export const CustomCursor = () => {
       // Dot snaps to cursor exactly
       dot.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
 
-      // Ring trails with a faster lerp (0.28 = snappy but still smooth)
-      ring.current.x += (pos.current.x - ring.current.x) * 0.28;
-      ring.current.y += (pos.current.y - ring.current.y) * 0.28;
+      // Ring follows the cursor instantly (no trail) — lighter on trackpads
+      ring.current.x = pos.current.x;
+      ring.current.y = pos.current.y;
 
       const scale = ringEl.dataset.pointer === '1' ? 1.5 : 1;
       ringEl.style.transform = `translate(${ring.current.x - 16}px, ${ring.current.y - 16}px) scale(${scale})`;
