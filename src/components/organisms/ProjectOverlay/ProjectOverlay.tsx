@@ -202,7 +202,7 @@ const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle }
           {section.description && (
             <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{section.description}</p>
           )}
-          <p className="text-xs text-muted-foreground/60 mt-1">{images.length} imagem{images.length !== 1 ? 's' : ''}</p>
+          <p className="text-xs text-muted-foreground/60 mt-1">{images.length} {t('projects.image', { count: images.length })}</p>
         </div>
       </div>
 
@@ -297,10 +297,10 @@ const OverviewSection: React.FC<{ project: Project }> = ({ project }) => {
     : Object.values(project.image_categories ?? {}).reduce((acc, imgs) => acc + imgs.length, 0);
 
   const stats = [
-    { label: 'Seções', value: getSections(project).length },
-    { label: 'Screenshots', value: totalImages },
-    { label: 'Tecnologias', value: project.stack.length },
-    { label: 'Colaboradores', value: project.project_collaborators.length },
+    { label: t('projects.sections'), value: getSections(project).length },
+    { label: t('projects.screenshots'), value: totalImages },
+    { label: t('projects.technologies'), value: project.stack.length },
+    { label: t('projects.collaboratorsSection'), value: project.project_collaborators.length },
   ];
 
   return (
@@ -337,7 +337,7 @@ const OverviewSection: React.FC<{ project: Project }> = ({ project }) => {
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Info className="w-4 h-4 text-primary flex-shrink-0" />
-          <p className="text-sm font-semibold text-foreground">Sobre o Projeto</p>
+          <p className="text-sm font-semibold text-foreground">{t('projects.aboutProject')}</p>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed pl-6">
           {project.long_description || project.description}
@@ -487,7 +487,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
   const ProjectIcon = getIconComponent(project.icon_name);
 
   const navItems = [
-    { id: '__overview__', label: 'Visão Geral', icon: Info },
+    { id: '__overview__', label: t('projects.overview'), icon: Info },
     ...sections.map(s => ({
       id: s.id,
       label: s.display_name,
@@ -568,7 +568,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                 {/* nav */}
                 <div className="p-3 space-y-0.5">
                   <p className="px-3 pt-2 pb-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                    Seções
+                    {t('projects.sections')}
                   </p>
                   {navItems.map(item => {
                     const Icon = item.icon;
@@ -598,7 +598,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                 <div className="p-3 pt-4">
                   <div className="flex items-center gap-1.5 mb-2 px-1">
                     <Tag className="w-3.5 h-3.5 text-muted-foreground" />
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Stack</p>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('projects.techStack')}</p>
                   </div>
                   <div className="flex flex-wrap gap-1.5 px-1">
                     {project.stack.map(tech => (
@@ -619,7 +619,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     <div className="p-3 pt-4">
                       <div className="flex items-center gap-1.5 mb-2 px-1">
                         <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
-                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Links</p>
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('projects.links')}</p>
                       </div>
                       <div className="space-y-1.5 px-1">
                         {project.project_links.map(link => (
@@ -647,7 +647,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     <div className="p-3 pt-4 pb-5">
                       <div className="flex items-center gap-1.5 mb-2 px-1">
                         <Users className="w-3.5 h-3.5 text-muted-foreground" />
-                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Equipe</p>
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('projects.projectTeam')}</p>
                       </div>
                       <div className="space-y-2 px-1">
                         {project.project_collaborators.map(collab => (
@@ -726,12 +726,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     <span className="truncate max-w-[120px]">{project.title}</span>
                     <ChevronRight className="w-3 h-3 flex-shrink-0" />
                     <span className="text-foreground/80 font-medium">
-                      {navItems.find(n => n.id === activeSection)?.label ?? 'Visão Geral'}
+                      {navItems.find(n => n.id === activeSection)?.label ?? t('projects.overview')}
                     </span>
                     {activeSection !== '__overview__' && imageCount > 0 && (
                       <>
                         <ChevronRight className="w-3 h-3 flex-shrink-0" />
-                        <span>{imageCount} imagem{imageCount !== 1 ? 's' : ''}</span>
+                        <span>{imageCount} {t('projects.image', { count: imageCount })}</span>
                       </>
                     )}
                   </div>
@@ -772,7 +772,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                       className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                     >
                       <ChevronLeft className="w-4 h-4" />
-                      Anterior
+                      {t('projects.previous')}
                     </button>
 
                     <div className="flex gap-1">
@@ -799,7 +799,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                       disabled={activeSection === navItems[navItems.length - 1].id}
                       className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                     >
-                      Próximo
+                      {t('projects.next')}
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>

@@ -93,7 +93,7 @@ export const ProjectCarousel = () => {
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <Text variant="large" className="text-muted-foreground">
-            Carregando projetos...
+            {t('projects.loading')}
           </Text>
         </div>
       </div>
@@ -105,7 +105,7 @@ export const ProjectCarousel = () => {
       <div className="py-20">
         <div className="text-center">
           <Text variant="large" className="text-destructive mb-4">
-            Erro ao carregar projetos
+            {t('projects.error')}
           </Text>
           <Text variant="small" className="text-muted-foreground">
             {error}
