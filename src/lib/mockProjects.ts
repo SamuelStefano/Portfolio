@@ -254,7 +254,7 @@ export const mockProjects: Project[] = [
         id: '4',
         name: 'Fellows',
         role: 'Collaborator',
-        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        avatar_url: '/placeholder.svg',
         created_at: '2024-03-01T00:00:00Z'
       }
     ],
@@ -323,7 +323,7 @@ export const mockProjects: Project[] = [
         id: '4',
         name: 'Fellows',
         role: 'Collaborator',
-        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        avatar_url: '/placeholder.svg',
         created_at: '2024-06-01T00:00:00Z'
       }
     ],
@@ -376,7 +376,7 @@ export const mockProjects: Project[] = [
         id: '5',
         name: 'Raul Alencar',
         role: 'Creator',
-        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        avatar_url: '/placeholder.svg',
         created_at: '2025-01-15T00:00:00Z'
       },
       {
@@ -819,7 +819,7 @@ export const mockProjects: Project[] = [
         id: '4',
         name: 'Fellows',
         role: 'Collaborator',
-        avatar_url: 'https://cesuras.blog/wp-content/uploads/2023/12/cesuras-perfil-vazio.webp',
+        avatar_url: '/placeholder.svg',
         created_at: '2024-07-01T00:00:00Z'
       }
     ],
