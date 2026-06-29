@@ -91,6 +91,7 @@
       "meetup": "Meetup",
       "hackathon": "Hackathon"
     },
+    "eventEcosystems": "Ecosystems:",
     "softwareEngineering": "Software Engineering",
     "web3Blockchain": "Web3 & Blockchain",
     "others": "Others",

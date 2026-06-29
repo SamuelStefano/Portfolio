@@ -254,6 +254,21 @@ export const TechStack = () => {
                         </span>
                       )}
                     </div>
+                    {ev.ecosystems && ev.ecosystems.length > 0 && (
+                      <div className="flex flex-wrap items-center gap-1.5 mt-3">
+                        <span className="text-[10px] uppercase tracking-wide text-muted-foreground/70 mr-1">
+                          {t('skills.eventEcosystems')}
+                        </span>
+                        {ev.ecosystems.map((eco) => (
+                          <span
+                            key={eco}
+                            className="px-2 py-0.5 rounded-full bg-muted/50 border border-border text-[11px] font-medium text-foreground"
+                          >
+                            {eco}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
                 return (
