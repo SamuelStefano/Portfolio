@@ -83,6 +83,14 @@
       "portuguese": "Portugués",
       "spanish": "Español"
     },
+    "eventsTitle": "Eventos y Comunidad",
+    "eventsSubtitle": "Conferencias, workshops y meetups del ecosistema Web3 a los que asistí",
+    "eventTypes": {
+      "conference": "Conferencia",
+      "workshop": "Taller",
+      "meetup": "Meetup",
+      "hackathon": "Hackathon"
+    },
     "softwareEngineering": "Ingeniería de Software",
     "web3Blockchain": "Web3 & Blockchain",
     "others": "Otros",

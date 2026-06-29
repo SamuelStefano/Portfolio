@@ -260,6 +260,15 @@ export const STATS_TEMPLATE = [
   }
 ];
 
+export const EVENTS_DATA = [
+  { name: 'Web3 Expertz Brazil', type: 'conference', date: 'Jun 2026', location: 'Brasil', url: '' },
+  { name: 'Hackanation', type: 'hackathon', date: 'Jun 2026', location: 'São Paulo, BR', url: '' },
+  { name: 'Solana / Chainlink Workshop', type: 'workshop', date: '2026', location: 'Brasil', url: '' },
+  { name: 'Avalanche', type: 'meetup', date: '2026', location: 'Brasil', url: '' },
+  { name: 'Klever', type: 'meetup', date: '2026', location: 'Brasil', url: '' },
+  { name: 'Binance', type: 'meetup', date: '2026', location: 'Brasil', url: '' },
+];
+
 
 
 

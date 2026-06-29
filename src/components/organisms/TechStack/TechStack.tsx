@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { Instagram, Languages } from 'lucide-react';
+import { Instagram, Languages, Calendar, MapPin } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar/SkillBar';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem/ExperienceItem';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
-import { TECH_CATEGORIES, EXPERIENCE_DATA } from '@/consts/data';
+import { TECH_CATEGORIES, EXPERIENCE_DATA, EVENTS_DATA } from '@/consts/data';
 
 const LANGUAGES = [
   { key: 'english', level: 70, inProgress: true },
@@ -216,6 +216,63 @@ export const TechStack = () => {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* events & community */}
+        <div id="eventos" className="mt-16 animate-fade-up scroll-mt-24">
+          <Heading level={3} className="text-center mb-3 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg lg:text-xl">
+            {t('skills.eventsTitle')}
+          </Heading>
+          <Text className="text-center text-muted-foreground text-sm mb-10 max-w-xl mx-auto">
+            {t('skills.eventsSubtitle')}
+          </Text>
+          <div className="max-w-3xl mx-auto relative">
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent" />
+            <div className="space-y-6">
+              {EVENTS_DATA.map((ev, i) => {
+                const card = (
+                  <div className="flex-1 bg-card border border-border rounded-xl p-4 sm:p-5 hover-card transition-all duration-300">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <Heading level={5} className="text-sm sm:text-base text-foreground">
+                        {ev.name}
+                      </Heading>
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-medium">
+                        {t(`skills.eventTypes.${ev.type}`)}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <span className="inline-flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {ev.date}
+                      </span>
+                      {ev.location && (
+                        <span className="inline-flex items-center gap-1">
+                          <MapPin className="w-3 h-3" />
+                          {ev.location}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+                return (
+                  <div
+                    key={ev.name}
+                    className="relative flex items-start gap-5 animate-slide-right pl-6"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  >
+                    <div className="absolute left-0 top-5 w-3 h-3 bg-primary rounded-full -translate-x-1/2 z-10 animate-pulse-glow" />
+                    {ev.url ? (
+                      <a href={ev.url} target="_blank" rel="noopener noreferrer" className="flex-1 block">
+                        {card}
+                      </a>
+                    ) : (
+                      card
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
