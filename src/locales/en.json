@@ -76,6 +76,13 @@
     "professionalExperience": "Professional Experience",
     "currentPosition": "Current Position",
     "otherCompetencies": "Other Competencies",
+    "languagesTitle": "Languages",
+    "inProgress": "in progress",
+    "languages": {
+      "english": "English",
+      "portuguese": "Portuguese",
+      "spanish": "Spanish"
+    },
     "softwareEngineering": "Software Engineering",
     "web3Blockchain": "Web3 & Blockchain",
     "others": "Others",

@@ -76,6 +76,13 @@
     "professionalExperience": "Experiência Profissional",
     "currentPosition": "Cargo Atual",
     "otherCompetencies": "Outras Competências",
+    "languagesTitle": "Idiomas",
+    "inProgress": "em progresso",
+    "languages": {
+      "english": "Inglês",
+      "portuguese": "Português",
+      "spanish": "Espanhol"
+    },
     "softwareEngineering": "Engenharia de Software",
     "web3Blockchain": "Web3 & Blockchain",
     "others": "Outros",

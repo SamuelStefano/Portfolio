@@ -5,14 +5,16 @@ interface SkillBarProps {
   name: string;
   level: number;
   className?: string;
+  badge?: React.ReactNode;
 }
 
-export const SkillBar = ({ name, level, className }: SkillBarProps) => {
+export const SkillBar = ({ name, level, className, badge }: SkillBarProps) => {
   return (
     <div className={cn("space-y-2", className)}>
       <div className="flex justify-between items-center">
-        <span className="text-sm font-medium text-foreground">
+        <span className="flex items-center gap-2 text-sm font-medium text-foreground">
           {name}
+          {badge}
         </span>
         <span className="text-xs text-muted-foreground">
           {level}%

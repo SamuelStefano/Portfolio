@@ -1,11 +1,17 @@
 import { useTranslation } from 'react-i18next';
-import { Instagram } from 'lucide-react';
+import { Instagram, Languages } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar/SkillBar';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem/ExperienceItem';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { TECH_CATEGORIES, EXPERIENCE_DATA } from '@/consts/data';
+
+const LANGUAGES = [
+  { key: 'english', level: 70, inProgress: true },
+  { key: 'portuguese', level: 100, inProgress: false },
+  { key: 'spanish', level: 80, inProgress: false },
+];
 
 export const TechStack = () => {
   const { t } = useTranslation();
@@ -61,6 +67,43 @@ export const TechStack = () => {
               </div>
             );
           })}
+
+          {/* languages */}
+          <div
+            className="group bg-card border border-border rounded-xl p-5 lg:p-6 hover-card animate-fade-up"
+            style={{ animationDelay: `${TECH_CATEGORIES.length * 0.08}s` }}
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                <Languages className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+              </div>
+              <Heading level={3} className="text-base sm:text-lg leading-tight">
+                {t('skills.languagesTitle')}
+              </Heading>
+            </div>
+            <div className="space-y-3">
+              {LANGUAGES.map((lang, li) => (
+                <div
+                  key={lang.key}
+                  className="animate-slide-left"
+                  style={{ animationDelay: `${0.2 + li * 0.08}s` }}
+                >
+                  <SkillBar
+                    name={t(`skills.languages.${lang.key}`)}
+                    level={lang.level}
+                    badge={
+                      lang.inProgress ? (
+                        <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-500 text-[10px] font-medium leading-none">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                          {t('skills.inProgress')}
+                        </span>
+                      ) : undefined
+                    }
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* other competencies scrolling strip */}
@@ -68,12 +111,13 @@ export const TechStack = () => {
           <Heading level={3} className="mb-4 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg lg:text-xl">
             {t('skills.otherCompetencies')}
           </Heading>
-          <div className="relative">
-            <div className="flex animate-scroll gap-2 sm:gap-3 whitespace-nowrap">
+          <div className="relative overflow-hidden">
+            <div className="flex w-max animate-scroll whitespace-nowrap">
               {[...additionalSkills, ...additionalSkills].map((skill, i) => (
                 <div
                   key={i}
-                  className="px-3 py-1.5 bg-card border border-border rounded-full text-xs font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
+                  aria-hidden={i >= additionalSkills.length || undefined}
+                  className="mr-2 sm:mr-3 px-3 py-1.5 bg-card border border-border rounded-full text-xs font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-shrink-0"
                 >
                   {skill}
                 </div>
