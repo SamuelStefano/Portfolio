@@ -302,6 +302,8 @@
       "companyDescription": "Devfellowship desarrolla soluciones y software para grandes empresas. Especializados en IA, webapps y arquitecturas escalables, Devfellowship es una startup que transforma ideas en realidad, si quieres saber más, haz clic en el botón de abajo."
     },
     "companies": "Empresas donde trabajé",
+    "companiesAndProjectsTitle": "Empresas y Proyectos",
+    "companiesAndProjectsSubtitle": "Algunas de las organizaciones y proyectos con los que tuve el placer de trabajar",
     "availability": {
       "title": "¿Hablamos?",
       "description": "Siempre estoy disponible para discutir proyectos, oportunidades o simplemente intercambiar ideas sobre tecnología.",
@@ -322,7 +324,7 @@
     "quickLinks": "Enlaces Rápidos",
     "social": "Redes Sociales",
     "contact": "Contacto",
-    "madeWith": "Hecho con",
+    "madeWith": "Hecho con mucho esfuerzo y dedicación",
     "by": "por",
     "allRightsReserved": "Todos los derechos reservados.",
     "phone": "Teléfono",
@@ -330,7 +332,13 @@
     "location": "Marialva, PR - Brasil",
     "availableFor": "Disponible para",
     "freelanceProjects": "• Proyectos freelance",
-    "collaborations": "• Colaboraciones"
+    "collaborations": "• Colaboraciones",
+    "emailCopied": "¡Email copiado!",
+    "stackTitle": "Stack principal",
+    "clickToCopy": "Clic para copiar",
+    "developedWith": "Desarrollado con React, TypeScript y Supabase",
+    "openSource": "Open Source",
+    "responsive": "Responsivo"
   },
   "common": {
     "loading": "Cargando...",

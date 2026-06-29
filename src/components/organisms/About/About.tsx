@@ -2,6 +2,8 @@ import type { TFunction } from 'i18next';
 import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch } from 'lucide-react';
 import { CountUp } from '@/components/atoms/CountUp/CountUp';
 import { useTranslation } from 'react-i18next';
+import { Badge } from '@/components/atoms/badge/badge';
+import { Button } from '@/components/atoms/button/button';
 import { Card, CardContent } from '@/components/atoms/card/card';
 import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
@@ -188,12 +190,12 @@ export const About = () => {
                 </Text>
                 <div className="flex flex-wrap gap-2">
                   {(t('about.focusAreas', { returnObjects: true }) as string[]).map((focus: string, index: number) => (
-                    <span
+                    <Badge
                       key={index}
-                      className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                      className="px-3 py-1 bg-primary/10 hover:bg-primary/10 text-primary text-xs rounded-full font-normal"
                     >
                       {focus}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
               </CardContent>
@@ -206,10 +208,10 @@ export const About = () => {
           <div className="mt-16 w-full">
             <div className="text-center mb-8">
               <Heading level={3} className="mb-4 text-foreground">
-                Empresas e Projetos
+                {t('about.companiesAndProjectsTitle')}
               </Heading>
               <Text className="text-muted-foreground max-w-2xl mx-auto">
-                Algumas das organizações e projetos com os quais tive o prazer de trabalhar
+                {t('about.companiesAndProjectsSubtitle')}
               </Text>
             </div>
           </div>
@@ -297,25 +299,35 @@ export const About = () => {
               </div>
                 <div className="text-center">
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a
-                      href="https://devfellowship.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 rounded-lg px-6 py-3 text-primary font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="inline-flex items-center justify-center gap-2 h-auto rounded-lg px-6 py-3 text-base font-medium bg-primary/10 hover:bg-primary/20 border-primary/30 hover:border-primary/50 text-primary hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg"
                     >
-                      <Icon icon={Globe} size="sm" />
-                      {t('about.devfellowship.learnMore')}
-                    </a>
+                      <a
+                        href="https://devfellowship.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Icon icon={Globe} size="sm" />
+                        {t('about.devfellowship.learnMore')}
+                      </a>
+                    </Button>
 
-                    <a
-                      href="https://apps.devfellowship.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-neon-purple/10 hover:bg-neon-purple/20 border border-neon-purple/30 hover:border-neon-purple/50 rounded-lg px-6 py-3 text-neon-purple font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="inline-flex items-center justify-center gap-2 h-auto rounded-lg px-6 py-3 text-base font-medium bg-neon-purple/10 hover:bg-neon-purple/20 border-neon-purple/30 hover:border-neon-purple/50 text-neon-purple hover:text-neon-purple transition-all duration-300 hover:scale-105 hover:shadow-lg"
                     >
-                      <Icon icon={Computer} size="sm" />
-                      {t('about.devfellowship.projects')}
-                    </a>
+                      <a
+                        href="https://apps.devfellowship.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Icon icon={Computer} size="sm" />
+                        {t('about.devfellowship.projects')}
+                      </a>
+                    </Button>
                   </div>
                 </div>
             </div>

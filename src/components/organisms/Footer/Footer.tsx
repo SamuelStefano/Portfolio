@@ -3,6 +3,7 @@ import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, Brain, Check, Co
 import { useTranslation } from 'react-i18next';
 import { useState, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Badge } from '@/components/atoms/badge/badge';
 import { Button } from '@/components/atoms/button/button';
 import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
@@ -86,7 +87,7 @@ export const Footer = () => {
             className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-green-500/10 border border-green-500/40 text-green-400 rounded-full px-4 py-2 shadow-lg backdrop-blur-sm pointer-events-none"
           >
             <Check className="w-4 h-4" />
-            <span className="text-sm font-medium">Email copiado!</span>
+            <span className="text-sm font-medium">{t('footer.emailCopied')}</span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -136,16 +137,17 @@ export const Footer = () => {
 
           <div className="order-last sm:order-none">
             <Heading level={4} className="mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg lg:text-xl">
-              Stack principal
+              {t('footer.stackTitle')}
             </Heading>
             <div className="flex flex-wrap gap-2">
               {stack.map((tech) => (
-                <span
+                <Badge
                   key={tech.label}
-                  className={`px-2.5 py-1 rounded-full border border-border bg-background/50 text-xs font-medium ${tech.color}`}
+                  variant="outline"
+                  className={`px-2.5 py-1 rounded-full border-border bg-background/50 text-xs font-medium ${tech.color}`}
                 >
                   {tech.label}
-                </span>
+                </Badge>
               ))}
             </div>
           </div>
@@ -160,7 +162,7 @@ export const Footer = () => {
                 <button
                   onClick={handleCopyEmail}
                   className="relative flex items-center gap-2 sm:gap-3 text-muted-foreground hover:text-primary transition-colors duration-200 touch-manipulation py-1 sm:py-1.5 md:py-2 group w-full text-left"
-                  title="Clique para copiar"
+                  title={t('footer.clickToCopy')}
                 >
                   <Icon
                     icon={copied ? Check : Mail}
@@ -168,7 +170,7 @@ export const Footer = () => {
                     className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 transition-colors duration-200 ${copied ? 'text-green-400' : ''}`}
                   />
                   <Text variant="small" className={`text-xs sm:text-sm md:text-base whitespace-nowrap transition-colors duration-200 ${copied ? 'text-green-400' : ''}`}>
-                    {copied ? 'Email copiado!' : EMAIL}
+                    {copied ? t('footer.emailCopied') : EMAIL}
                   </Text>
                   <Icon
                     icon={Copy}
@@ -204,19 +206,19 @@ export const Footer = () => {
         <div className="border-t border-border py-4 sm:py-5 md:py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6">
             <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base text-muted-foreground text-center sm:text-left">
-              <Text variant="small">© {currentYear} Samuel Stefano. {t('footer.madeWith')} muito esforço e com muito</Text>
+              <Text variant="small">© {currentYear} Samuel Stefano. {t('footer.madeWith')}</Text>
               <Icon icon={Code} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm md:text-base text-muted-foreground text-center sm:text-right">
-              <Text variant="small">Desenvolvido com React, TypeScript e Supabase</Text>
+              <Text variant="small">{t('footer.developedWith')}</Text>
               <div className="flex gap-2 sm:gap-2.5">
-                <span className="px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary rounded text-xs sm:text-sm font-medium">
-                  Open Source
-                </span>
-                <span className="px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 bg-neon-green/10 text-neon-green rounded text-xs sm:text-sm font-medium">
-                  Responsivo
-                </span>
+                <Badge variant="outline" className="px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary rounded text-xs sm:text-sm font-medium border-transparent">
+                  {t('footer.openSource')}
+                </Badge>
+                <Badge variant="outline" className="px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 bg-neon-green/10 text-neon-green rounded text-xs sm:text-sm font-medium border-transparent">
+                  {t('footer.responsive')}
+                </Badge>
               </div>
             </div>
           </div>
