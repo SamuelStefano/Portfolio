@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import type { LucideIcon } from 'lucide-react';
 import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 
 interface StatItem {
-  icon: React.ComponentType<any>;
+  icon: LucideIcon;
   label: string;
   value: number;
   suffix?: string;

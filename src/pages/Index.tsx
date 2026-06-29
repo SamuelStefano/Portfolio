@@ -52,10 +52,6 @@ const Index = () => {
           // Usuário negou permissão ou erro na geolocalização
           // Fallback: usar localização por IP
           fetch('/api/loc')
-            .then(response => response.json())
-            .then(data => {
-              // Dados são salvos automaticamente no servidor
-            })
             .catch(err => {
               console.error('Error fetching location by IP:', err);
             });
@@ -69,10 +65,6 @@ const Index = () => {
     } else {
       // Geolocalização não disponível, usar apenas IP
       fetch('/api/loc')
-        .then(response => response.json())
-        .then(data => {
-          // Dados são salvos automaticamente no servidor
-        })
         .catch(error => {
           console.error('Error fetching location:', error);
         });

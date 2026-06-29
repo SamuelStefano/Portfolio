@@ -23,12 +23,9 @@ import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { Project, ProjectSection } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
+import { cn } from '@/lib/utils';
 
 /* ─── helpers ──────────────────────────────────────────────────────── */
-
-function cn(...classes: (string | undefined | false | null)[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 /** Get all sections from a project, normalising both data shapes */
 function getSections(project: Project): ProjectSection[] {
@@ -478,7 +475,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
   if (!project) return null;
 
   const sections = getSections(project);
-  const ProjectIcon = getIconComponent(project.icon_name as any);
+  const ProjectIcon = getIconComponent(project.icon_name);
 
   const navItems = [
     { id: '__overview__', label: 'Visão Geral', icon: Info },

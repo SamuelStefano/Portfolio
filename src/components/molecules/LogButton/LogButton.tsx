@@ -49,9 +49,9 @@ export const LogButton = () => {
         }
         alert(`Erro ao buscar logs: ${errorMessage}`);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error fetching logs:', error);
-      alert(`Erro ao buscar logs: ${error?.message || 'Verifique o console para mais detalhes.'}`);
+      alert(`Erro ao buscar logs: ${error instanceof Error ? error.message : 'Verifique o console para mais detalhes.'}`);
     } finally {
       setIsLoadingLogs(false);
     }

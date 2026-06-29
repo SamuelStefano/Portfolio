@@ -1,3 +1,4 @@
+import type { TFunction } from 'i18next';
 import { Github, Linkedin, Instagram, Mail, Phone, MapPin, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SocialLink } from '@/components/molecules/SocialLink/SocialLink';
@@ -10,7 +11,7 @@ import { SecondBrain } from '@/components/organisms/SecondBrain/SecondBrain';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
 
-const getSocialLinks = (t: any) => [
+const getSocialLinks = (t: TFunction) => [
   { icon: Github,   href: 'https://github.com/SamuelStefano',                                                                label: t('hero.socialLinks.github')   },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',                                           label: t('hero.socialLinks.linkedin')  },
   { icon: Instagram,href: 'https://instagram.com/samuel.stefano',                                                            label: t('hero.socialLinks.instagram') },

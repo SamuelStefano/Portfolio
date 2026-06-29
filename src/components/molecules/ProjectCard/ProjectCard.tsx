@@ -23,7 +23,7 @@ const ROLE_ACCENT: Record<string, string> = {
 
 export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
   const { t } = useTranslation();
-  const IconComponent = getIconComponent(project.icon_name as any);
+  const IconComponent = getIconComponent(project.icon_name);
   const accentGradient = ROLE_ACCENT[project.role] ?? ROLE_ACCENT.Collaborator;
 
   return (

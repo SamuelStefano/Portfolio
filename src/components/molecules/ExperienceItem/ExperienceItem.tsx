@@ -1,4 +1,4 @@
-import React from 'react';
+import type { LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/atoms/badge/badge';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
@@ -9,7 +9,7 @@ interface ExperienceItemProps {
   period: string;
   description: string;
   stack: string[];
-  icon?: React.ComponentType<any>;
+  icon?: LucideIcon;
   className?: string;
 }
 

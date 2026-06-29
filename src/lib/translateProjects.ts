@@ -1,6 +1,7 @@
+import type { TFunction } from 'i18next';
 import { Project } from '../types/project';
 
-export const translateProjectDescriptions = (projects: Project[], t: any): Project[] => {
+export const translateProjectDescriptions = (projects: Project[], t: TFunction): Project[] => {
   return projects.map(project => {
     const projectKey = getProjectKey(project.title);
     

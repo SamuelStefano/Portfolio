@@ -1,3 +1,4 @@
+import type { TFunction } from 'i18next';
 import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, Brain, Check, Copy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState, useRef } from 'react';
@@ -7,7 +8,7 @@ import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 
-const getSocialLinks = (t: any) => [
+const getSocialLinks = (t: TFunction) => [
   {
     icon: Github,
     href: 'https://github.com/SamuelStefano',

@@ -1,3 +1,4 @@
+import type { TFunction } from 'i18next';
 import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch } from 'lucide-react';
 import { CountUp } from '@/components/atoms/CountUp/CountUp';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +14,7 @@ import { TECH_CATEGORIES } from '@/consts/data';
 
 const TECH_COUNT = Math.floor(TECH_CATEGORIES.reduce((sum, c) => sum + c.skills.length, 0) / 5) * 5;
 
-const getHighlights = (t: any) => [
+const getHighlights = (t: TFunction) => [
   {
     title: t('about.highlights.passion.title'),
     description: t('about.highlights.passion.description')

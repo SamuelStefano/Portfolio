@@ -81,7 +81,7 @@ export interface StatItem {
 
 export interface TechCategory {
   title: string;
-  icon: React.ComponentType<any>;
+  icon: LucideIcon;
   skills: { name: string; level: number }[];
   color: string;
 }

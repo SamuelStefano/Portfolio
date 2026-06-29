@@ -289,8 +289,8 @@ const iconMap: Record<LucideIconName, React.ComponentType<LucideProps>> = {
   Turtle
 };
 
-export const getIconComponent = (iconName: LucideIconName) => {
-  return iconMap[iconName] || Code;
+export const getIconComponent = (iconName: string) => {
+  return iconMap[iconName as LucideIconName] || Code;
 };
 
 

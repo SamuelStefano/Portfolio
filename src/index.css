@@ -599,4 +599,12 @@ img {
   .animate-pulse {
     animation: none !important;
   }
+
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+
+  .cli-card:hover > .cli-sweep {
+    animation: none !important;
+  }
 }
