@@ -176,6 +176,7 @@ export const ProjectCarousel = () => {
           <Button
             variant="outline"
             size="icon"
+            aria-label={t('projects.previous')}
             className="hidden xl:flex absolute -left-16 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-lg"
             onClick={prevProject}
           >
@@ -185,6 +186,7 @@ export const ProjectCarousel = () => {
           <Button
             variant="outline"
             size="icon"
+            aria-label={t('projects.next')}
             className="hidden xl:flex absolute -right-16 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-lg"
             onClick={nextProject}
           >
@@ -391,6 +393,8 @@ export const ProjectCarousel = () => {
             {projects.map((_, index) => (
               <button
                 key={index}
+                aria-label={`${t('projects.goToImage')} ${index + 1}`}
+                aria-current={index === currentProject ? 'true' : undefined}
                 className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 touch-manipulation ${
                   index === currentProject
                     ? 'bg-primary scale-125 shadow-lg'

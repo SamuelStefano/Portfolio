@@ -86,6 +86,7 @@ interface LightboxProps {
 }
 
 const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClose }) => {
+  const { t } = useTranslation();
   const [idx, setIdx] = useState(initialIndex);
 
   useEffect(() => {
@@ -110,6 +111,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClos
       {/* close */}
       <button
         onClick={onClose}
+        aria-label={t('projects.close')}
         className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
       >
         <X className="w-4 h-4" />
@@ -125,12 +127,14 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClos
         <>
           <button
             onClick={e => { e.stopPropagation(); setIdx(i => (i - 1 + images.length) % images.length); }}
+            aria-label={t('projects.previousImage')}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={e => { e.stopPropagation(); setIdx(i => (i + 1) % images.length); }}
+            aria-label={t('projects.nextImage')}
             className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
           >
             <ChevronRight className="w-5 h-5" />
@@ -157,6 +161,8 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClos
             <button
               key={i}
               onClick={() => setIdx(i)}
+              aria-label={`${t('projects.goToImage')} ${i + 1}`}
+              aria-current={i === idx ? 'true' : undefined}
               className={cn(
                 'w-1.5 h-1.5 rounded-full transition-all',
                 i === idx ? 'bg-primary w-5' : 'bg-white/30 hover:bg-white/60',
@@ -177,6 +183,7 @@ interface SectionGalleryProps {
 }
 
 const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle }) => {
+  const { t } = useTranslation();
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [current, setCurrent] = useState(0);
   const images = section.project_images.map(img => img.image_url);
@@ -224,12 +231,14 @@ const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle }
           <>
             <button
               onClick={() => setCurrent(i => (i - 1 + images.length) % images.length)}
+              aria-label={t('projects.previousImage')}
               className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => setCurrent(i => (i + 1) % images.length)}
+              aria-label={t('projects.nextImage')}
               className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all"
             >
               <ChevronRight className="w-4 h-4" />
@@ -544,6 +553,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
 
               <button
                 onClick={onClose}
+                aria-label={t('projects.close')}
                 className="flex-shrink-0 w-8 h-8 rounded-lg hover:bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
               >
                 <X className="w-4 h-4" />
@@ -770,6 +780,8 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                         <button
                           key={item.id}
                           onClick={() => setActiveSection(item.id)}
+                          aria-label={item.label}
+                          aria-current={activeSection === item.id ? 'true' : undefined}
                           className={cn(
                             'w-1.5 h-1.5 rounded-full transition-all duration-200',
                             activeSection === item.id ? 'bg-primary w-5' : 'bg-muted-foreground/30 hover:bg-muted-foreground/60',

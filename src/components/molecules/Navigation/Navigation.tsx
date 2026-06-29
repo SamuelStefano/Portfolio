@@ -119,6 +119,9 @@ export const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
               className="p-2 text-[var(--cli-text-soft)] hover:text-[var(--cli-green)]"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -127,7 +130,7 @@ export const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden border-t border-[var(--cli-border)] bg-[var(--cli-panel)]/98 backdrop-blur-md">
+          <div id="mobile-nav" className="lg:hidden border-t border-[var(--cli-border)] bg-[var(--cli-panel)]/98 backdrop-blur-md">
             <div className="px-4 py-4 space-y-1">
               {navigationItems.map((item) => (
                 <button
@@ -218,6 +221,9 @@ export const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
               className={`transition-colors duration-200 p-2 ${
                 isScrolled
                   ? 'text-muted-foreground hover:text-primary hover:bg-primary/5'
@@ -230,7 +236,7 @@ export const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div className={`lg:hidden transition-all duration-300 ${
+          <div id="mobile-nav" className={`lg:hidden transition-all duration-300 ${
             isScrolled
               ? 'border-t border-border/50 bg-background/98 backdrop-blur-md'
               : 'border-t border-white/20 bg-background/95 backdrop-blur-md'

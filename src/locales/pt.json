@@ -8,7 +8,9 @@
     "companies": "Empresas",
     "hackathons": "Hackathons",
     "about": "Sobre",
-    "contact": "Contato"
+    "contact": "Contato",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
   },
   "hero": {
     "greeting": "Samuel Stefano",
@@ -32,6 +34,12 @@
     "subtitle": "Trabalhos que incluem hackathons premiados, plataformas Web3, sistemas de desafios e ferramentas educacionais, todos documentados com detalhes e contexto",
     "exploreAll": "Explore todos os meus trabalhos e contribuições",
     "viewDetails": "Ver Detalhes",
+    "close": "Fechar",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "previousImage": "Imagem anterior",
+    "nextImage": "Próxima imagem",
+    "goToImage": "Ir para imagem",
     "collaborators": "colaborador",
     "collaborators_plural": "colaboradores",
     "autoDiscovered": "Auto-descoberto",

@@ -28,8 +28,17 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
 
   return (
     <Card
+      role="button"
+      tabIndex={0}
+      aria-label={t('projects.viewDetails')}
       className="group bg-card border-border hover:border-primary/40 transition-all duration-200 hover-glow cursor-pointer overflow-hidden"
       onClick={() => onProjectClick(project)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onProjectClick(project);
+        }
+      }}
     >
       {/* role accent top bar */}
       <div className={cn('h-0.5 w-full bg-gradient-to-r', accentGradient)} />
@@ -129,6 +138,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
             asChild
             className="w-full text-xs hover:bg-primary hover:text-primary-foreground"
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
           >
             <a href={link.url} target="_blank" rel="noopener noreferrer">
               <Icon icon={ExternalLink} size="sm" className="mr-1" />
