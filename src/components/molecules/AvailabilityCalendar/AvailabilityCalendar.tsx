@@ -78,8 +78,7 @@ export const AvailabilityCalendar = () => {
           </div>
 
           {[
-            { slot: '08:00 – 12:00', label: t('about.availability.weekdays').replace(/Segunda.*:/, '').trim() || '08:00 – 12:00', period: 'Manhã' },
-            { slot: '14:30 – 17:00', label: t('about.availability.tuesday').replace(/Segunda.*:/, '').trim() || '14:30 – 17:00', period: 'Tarde' },
+            { slot: '08:00 – 17:00', period: t('about.availability.weekdaysLabel') },
           ].map(({ period, slot }) => (
             <div
               key={slot}

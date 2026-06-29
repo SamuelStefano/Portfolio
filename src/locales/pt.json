@@ -278,8 +278,9 @@
       "whatsapp": "WhatsApp",
       "status": "Disponível para novos projetos",
       "hours": "Horários Disponíveis:",
-      "weekdays": "Segunda a Sexta: 08:00 – 12:00",
-      "tuesday": "Segunda a Sexta: 14:30 – 17:00",
+      "weekdays": "Segunda a Sexta: 08:00 – 17:00",
+      "weekdaysLabel": "Dias úteis",
+      "tuesday": "Segunda a Sexta: 08:00 – 17:00",
       "saturday": "Sábado e Domingo: Indisponível",
       "response": "Resposta em até 24h"
     }
