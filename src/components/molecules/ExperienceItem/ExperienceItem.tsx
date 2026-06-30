@@ -1,3 +1,4 @@
+import { createElement } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/atoms/badge/badge';
 import { Heading } from '@/components/atoms/Heading/Heading';
@@ -36,7 +37,7 @@ export const ExperienceItem = ({
       <div className="flex items-center gap-2 mb-3">
         {icon && (
           <div className="p-1.5 bg-primary/10 rounded flex-shrink-0">
-            {React.createElement(icon, { className: 'w-3.5 h-3.5 text-primary' })}
+            {createElement(icon, { className: 'w-3.5 h-3.5 text-primary' })}
           </div>
         )}
         <Heading level={5} className="text-primary font-semibold text-sm">
