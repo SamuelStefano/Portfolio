@@ -23,6 +23,7 @@ import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { Project, ProjectSection } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
+import { useMotionPreset } from '@/hooks/useMotionPreset';
 import { cn } from '@/lib/utils';
 
 /* ─── helpers ──────────────────────────────────────────────────────── */
@@ -291,6 +292,7 @@ const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle }
 
 const OverviewSection: React.FC<{ project: Project }> = ({ project }) => {
   const { t } = useTranslation();
+  const { transition, shift } = useMotionPreset();
 
   const totalImages = project.project_sections
     ? project.project_sections.reduce((acc, s) => acc + s.project_images.length, 0)
@@ -306,9 +308,9 @@ const OverviewSection: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <motion.div
       key="overview"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      initial={shift({ opacity: 0, y: 12 })}
+      animate={shift({ opacity: 1, y: 0 })}
+      transition={transition({ duration: 0.3 })}
       className="space-y-6"
     >
       {/* thumbnail hero */}
@@ -424,6 +426,7 @@ export interface ProjectOverlayProps {
 
 export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ project, isOpen, onClose }) => {
   const { t } = useTranslation();
+  const { transition, shift } = useMotionPreset();
   const [activeSection, setActiveSection] = useState<string>('__overview__');
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -511,10 +514,10 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
         >
           {/* Panel */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 24 }}
-            transition={{ type: 'spring', damping: 30, stiffness: 340, mass: 0.7 }}
+            initial={shift({ opacity: 0, scale: 0.95, y: 24 })}
+            animate={shift({ opacity: 1, scale: 1, y: 0 })}
+            exit={shift({ opacity: 0, scale: 0.95, y: 24 })}
+            transition={transition({ type: 'spring', damping: 30, stiffness: 340, mass: 0.7 })}
             className="relative w-full max-w-6xl h-[92vh] max-h-[860px] flex flex-col bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
             onClick={e => e.stopPropagation()}
           >
@@ -744,10 +747,10 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                       currentSection && (
                         <motion.div
                           key={currentSection.id}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.22 }}
+                          initial={shift({ opacity: 0, y: 10 })}
+                          animate={shift({ opacity: 1, y: 0 })}
+                          exit={shift({ opacity: 0, y: -10 })}
+                          transition={transition({ duration: 0.22 })}
                         >
                           <SectionGallery
                             section={currentSection}

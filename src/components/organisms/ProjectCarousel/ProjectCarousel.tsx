@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink, Users, Code, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -9,83 +9,31 @@ import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { ProjectOverlay } from '@/components/organisms/ProjectOverlay/ProjectOverlay';
+import { CarouselSideCard } from '@/components/molecules/CarouselSideCard/CarouselSideCard';
 import { useProjects } from '@/hooks/useProjects';
+import { useCarousel } from '@/hooks/useCarousel';
+import { useMotionPreset } from '@/hooks/useMotionPreset';
 import { getIconComponent } from '@/utils/iconResolver';
 import { Project } from '@/types/project';
 
 export const ProjectCarousel = () => {
   const { t } = useTranslation();
   const { projects, loading, error } = useProjects();
-  const [currentProject, setCurrentProject] = useState(0);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isHovering, setIsHovering] = useState(false);
-  const [dragStart, setDragStart] = useState<number | null>(null);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [direction, setDirection] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.95
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.95
-    })
-  };
+  const {
+    index: currentProject,
+    direction,
+    next: nextProject,
+    prev: prevProject,
+    goTo: goToProject,
+    dragHandlers,
+    dragOffset,
+  } = useCarousel(projects.length);
 
-  const sideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 50 : -50,
-      opacity: 0,
-      scale: 0.9
-    }),
-    center: {
-      x: 0,
-      opacity: 0.3,
-      scale: 1
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 50 : -50,
-      opacity: 0,
-      scale: 0.9
-    })
-  };
-
-  useEffect(() => {
-    if (projects.length === 0) return;
-
-    const interval = setInterval(() => {
-      setDirection(1);
-      setCurrentProject((prev) => (prev + 1) % projects.length);
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, [currentProject, projects.length]);
-
-  const nextProject = () => {
-    setDirection(1);
-    setCurrentProject((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setDirection(-1);
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const goToProject = (index: number) => {
-    if (index === currentProject || projects.length === 0) return;
-    setDirection(index > currentProject ? 1 : -1);
-    setCurrentProject(index);
-  };
+  const { cardVariants, sideVariants, transition } = useMotionPreset();
 
   if (loading) {
     return (
@@ -130,35 +78,10 @@ export const ProjectCarousel = () => {
     );
   }
 
-  const handleDragStart = (e: React.MouseEvent) => {
-    setDragStart(e.clientX);
-    setDragOffset(0);
-  };
-
-  const handleDragMove = (e: React.MouseEvent) => {
-    if (dragStart === null) return;
-    const deltaX = e.clientX - dragStart;
-    setDragOffset(deltaX);
-  };
-
-  const handleDragEnd = () => {
-    if (dragStart === null) return;
-
-    const threshold = 100;
-    if (Math.abs(dragOffset) > threshold) {
-      if (dragOffset > 0) {
-        prevProject();
-      } else {
-        nextProject();
-      }
-    }
-
-    setDragStart(null);
-    setDragOffset(0);
-  };
-
   const project = projects[currentProject];
   const IconComponent = getIconComponent(project.icon_name);
+  const prevIndex = (currentProject - 1 + projects.length) % projects.length;
+  const nextIndex = (currentProject + 1) % projects.length;
 
   return (
     <section id="projetos" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24">
@@ -196,69 +119,23 @@ export const ProjectCarousel = () => {
           <div
             ref={carouselRef}
             className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10 overflow-hidden"
-            onMouseDown={handleDragStart}
-            onMouseMove={handleDragMove}
-            onMouseUp={handleDragEnd}
-            onMouseLeave={handleDragEnd}
+            {...dragHandlers}
           >
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
-                key={`prev-${projects[(currentProject - 1 + projects.length) % projects.length].id}`}
+                key={`prev-${projects[prevIndex].id}`}
                 className="hidden lg:block w-48 xl:w-64 2xl:w-80 h-36 xl:h-48 2xl:h-60 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 transition-all duration-500 transform hover:scale-105 bg-card border border-border group relative flex-shrink-0"
                 custom={direction}
                 variants={sideVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{
+                transition={transition({
                   duration: 0.3,
                   ease: "easeOut"
-                }}
-                onClick={() => goToProject((currentProject - 1 + projects.length) % projects.length)}
+                })}
               >
-                {(() => {
-                  const prevProject = projects[(currentProject - 1 + projects.length) % projects.length];
-                  const PrevIconComponent = getIconComponent(prevProject.icon_name);
-                  return (
-                    <>
-                      {prevProject.thumbnail_url ? (
-                        <div className="w-full h-full relative">
-                           <img
-                              src={prevProject.thumbnail_url}
-                              alt={prevProject.title}
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <PrevIconComponent className="w-12 h-12 text-muted-foreground/80" />
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 to-primary/10">
-                          <PrevIconComponent className="w-16 h-16 text-muted-foreground" />
-                        </div>
-                      )}
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-
-                      <div className="absolute bottom-0 left-0 right-0 p-3 max-h-[60%] overflow-hidden">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs px-2 py-1">
-                            {prevProject.role}
-                          </Badge>
-                        </div>
-                        <Heading level={4} className="text-sm mb-1 group-hover:text-primary transition-colors duration-300 truncate">
-                          {prevProject.title}
-                        </Heading>
-                        <Text variant="small" className="text-xs opacity-90 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2 leading-tight">
-                          {prevProject.description}
-                        </Text>
-                      </div>
-                    </>
-                  );
-                })()}
+                <CarouselSideCard project={projects[prevIndex]} onClick={() => goToProject(prevIndex)} />
               </motion.div>
             </AnimatePresence>
 
@@ -271,14 +148,14 @@ export const ProjectCarousel = () => {
                   transition: 'all 0.3s ease-out'
                 }}
                 custom={direction}
-                variants={variants}
+                variants={cardVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{
+                transition={transition({
                   duration: 0.5,
                   ease: [0.25, 0.8, 0.25, 1]
-                }}
+                })}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
                 onClick={() => setSelectedProject(project)}
@@ -329,62 +206,19 @@ export const ProjectCarousel = () => {
 
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
-                key={`next-${projects[(currentProject + 1) % projects.length].id}`}
+                key={`next-${projects[nextIndex].id}`}
                 className="hidden lg:block w-48 xl:w-64 2xl:w-80 h-36 xl:h-48 2xl:h-60 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 transition-all duration-500 transform hover:scale-105 bg-card border border-border group relative flex-shrink-0"
                 custom={direction}
                 variants={sideVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{
+                transition={transition({
                   duration: 0.3,
                   ease: "easeOut"
-                }}
-                onClick={() => goToProject((currentProject + 1) % projects.length)}
+                })}
               >
-                {(() => {
-                  const nextProject = projects[(currentProject + 1) % projects.length];
-                  const NextIconComponent = getIconComponent(nextProject.icon_name);
-                  return (
-                    <>
-                      {nextProject.thumbnail_url ? (
-                        <div className="w-full h-full relative">
-                           <img
-                              src={nextProject.thumbnail_url}
-                              alt={nextProject.title}
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <NextIconComponent className="w-12 h-12 text-muted-foreground/80" />
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 to-primary/10">
-                          <NextIconComponent className="w-16 h-16 text-muted-foreground" />
-                        </div>
-                      )}
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-
-                      <div className="absolute bottom-0 left-0 right-0 p-3 max-h-[60%] overflow-hidden">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-xs px-2 py-1">
-                            {nextProject.role}
-                          </Badge>
-                        </div>
-                        <Heading level={4} className="text-sm mb-1 group-hover:text-primary transition-colors duration-300 truncate">
-                          {nextProject.title}
-                        </Heading>
-                        <Text variant="small" className="text-xs opacity-90 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2 leading-tight">
-                          {nextProject.description}
-                        </Text>
-                      </div>
-                    </>
-                  );
-                })()}
+                <CarouselSideCard project={projects[nextIndex]} onClick={() => goToProject(nextIndex)} />
               </motion.div>
             </AnimatePresence>
           </div>

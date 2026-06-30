@@ -1,7 +1,7 @@
-import type { TFunction } from 'i18next';
-import { Github, Linkedin, Instagram, Mail, Phone, MapPin, GraduationCap } from 'lucide-react';
+import { MapPin, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SocialLink } from '@/components/molecules/SocialLink/SocialLink';
+import { SOCIAL_LINKS } from '@/consts/components';
 import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
@@ -11,19 +11,10 @@ import { SecondBrain } from '@/components/organisms/SecondBrain/SecondBrain';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
 
-const getSocialLinks = (t: TFunction) => [
-  { icon: Github,   href: 'https://github.com/SamuelStefano',                                                                label: t('hero.socialLinks.github')   },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',                                           label: t('hero.socialLinks.linkedin')  },
-  { icon: Instagram,href: 'https://instagram.com/samuel.stefano',                                                            label: t('hero.socialLinks.instagram') },
-  { icon: Mail,     href: 'mailto:samuelstefanodocarmo@gmail.com',                                                            label: t('hero.socialLinks.email')     },
-  { icon: Phone,    href: 'tel:+5544998795387',                                                                              label: t('hero.socialLinks.phone')     },
-];
-
 export const Header = () => {
   const { t } = useTranslation();
   const { containerRef } = useScrollAnimations();
   const { isPhaseLoaded, getPhaseDelay } = useProgressiveLoading();
-  const socialLinks = getSocialLinks(t);
 
   return (
     <>
@@ -76,8 +67,8 @@ export const Header = () => {
                 </Text>
 
                 <div className="flex flex-wrap gap-3 mb-8">
-                  {socialLinks.map((link, i) => (
-                    <SocialLink key={i} icon={link.icon} href={link.href} label={link.label} />
+                  {SOCIAL_LINKS.map((link, i) => (
+                    <SocialLink key={i} icon={link.icon} href={link.href} label={t(link.labelKey)} />
                   ))}
                 </div>
 

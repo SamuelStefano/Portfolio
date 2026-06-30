@@ -1,5 +1,4 @@
-import type { TFunction } from 'i18next';
-import { Github, Linkedin, Instagram, Mail, Phone, Heart, Code, Brain, Check, Copy } from 'lucide-react';
+import { Mail, Phone, Heart, Code, Brain, Check, Copy } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -8,24 +7,7 @@ import { Button } from '@/components/atoms/button/button';
 import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
-
-const getSocialLinks = (t: TFunction) => [
-  {
-    icon: Github,
-    href: 'https://github.com/SamuelStefano',
-    label: t('hero.socialLinks.github')
-  },
-  {
-    icon: Linkedin,
-    href: 'https://linkedin.com/in/samuel-stefano',
-    label: t('hero.socialLinks.linkedin')
-  },
-  {
-    icon: Instagram,
-    href: 'https://instagram.com/samuel.stefano',
-    label: t('hero.socialLinks.instagram')
-  }
-];
+import { SOCIAL_LINKS } from '@/consts/components';
 
 const contactInfo = [
   {
@@ -60,7 +42,7 @@ const EMAIL = 'samuelstefanodocarmo@gmail.com';
 export const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
-  const socialLinks = getSocialLinks(t);
+  const socialLinks = SOCIAL_LINKS.slice(0, 3);
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -124,11 +106,11 @@ export const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={link.label}
+                    aria-label={t(link.labelKey)}
                     className="flex items-center gap-2 px-3 py-2"
                   >
                     <Icon icon={link.icon} size="sm" className="w-4 h-4" />
-                    <span className="sm:hidden text-xs font-medium">{link.label}</span>
+                    <span className="sm:hidden text-xs font-medium">{t(link.labelKey)}</span>
                   </a>
                 </Button>
               ))}

@@ -5,32 +5,27 @@ export const SOCIAL_LINKS = [
   {
     icon: Github,
     href: 'https://github.com/SamuelStefano',
-    label: 'GitHub'
+    labelKey: 'hero.socialLinks.github'
   },
   {
     icon: Linkedin,
-    href: 'https://linkedin.com/in/samuel-stefano',
-    label: 'LinkedIn'
+    href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',
+    labelKey: 'hero.socialLinks.linkedin'
   },
   {
     icon: Instagram,
     href: 'https://instagram.com/samuel.stefano',
-    label: 'Instagram'
-  },
-  {
-    icon: FileText,
-    href: '/curriculo.pdf',
-    label: 'Currículo'
+    labelKey: 'hero.socialLinks.instagram'
   },
   {
     icon: Mail,
-    href: 'mailto:samuel@example.com',
-    label: 'Email'
+    href: 'mailto:samuelstefanodocarmo@gmail.com',
+    labelKey: 'hero.socialLinks.email'
   },
   {
     icon: Phone,
     href: 'tel:+5544998795387',
-    label: 'Telefone'
+    labelKey: 'hero.socialLinks.phone'
   }
 ];
 
