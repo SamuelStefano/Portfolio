@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
+import { getClientIp } from './lib/clientIp';
 
 const ALLOWED_IP = '201.55.183.70';
 
@@ -28,10 +29,7 @@ export default async function handler(
   res: VercelResponse,
 ) {
   try {
-    const forwarded = req.headers['x-forwarded-for'];
-    const ip = Array.isArray(forwarded)
-      ? forwarded[0]
-      : forwarded?.split(',')[0] || (req.socket as any)?.remoteAddress;
+    const ip = getClientIp(req);
 
     if (ip !== ALLOWED_IP) {
       return res.status(403).json({ error: 'Not allowed' });

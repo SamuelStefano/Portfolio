@@ -37,9 +37,8 @@ export default async function handler(
     if (!reposResponse.ok) {
       const errorText = await reposResponse.text();
       console.error('GitHub API error:', reposResponse.status, errorText);
-      return response.status(reposResponse.status).json({ 
-        error: `GitHub API error: ${reposResponse.status}`,
-        details: errorText.substring(0, 200)
+      return response.status(reposResponse.status).json({
+        error: 'upstream unavailable'
       });
     }
 

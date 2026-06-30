@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
+import { getClientIp, isValidIp } from './lib/clientIp';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -15,34 +16,66 @@ const isSupabaseServerConfigured = () => {
   return !!supabaseUrl && !!supabaseServiceRoleKey;
 };
 
+const ALLOWED_SOURCES = ['gps', 'ip'] as const;
+
+const RATE_LIMIT_MAX = 10;
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+const isRateLimited = (key: string): boolean => {
+  const now = Date.now();
+  const bucket = rateBuckets.get(key);
+  if (!bucket || now > bucket.resetAt) {
+    rateBuckets.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  bucket.count += 1;
+  return bucket.count > RATE_LIMIT_MAX;
+};
+
 export default async function handler(
   request: VercelRequest,
   response: VercelResponse,
 ) {
   try {
-    const forwardedFor = request.headers['x-forwarded-for'];
-    const ip = forwardedFor 
-      ? (Array.isArray(forwardedFor) ? forwardedFor[0] : String(forwardedFor).split(',')[0].trim())
-      : (request.headers['x-real-ip'] ? String(request.headers['x-real-ip']) : 'unknown');
+    const clientIp = getClientIp(request);
+    const ip = clientIp ?? 'unknown';
+
+    if (isRateLimited(ip)) {
+      return response.status(429).json({ error: 'Too many requests' });
+    }
 
     let gpsLocation: { lat: number; lon: number; accuracy?: number } | null = null;
     if (request.method === 'POST') {
+      let body: Record<string, unknown> = {};
       try {
-        let body: any = {};
         if (typeof request.body === 'string') {
-          body = JSON.parse(request.body);
-        } else if (request.body) {
-          body = request.body;
+          body = JSON.parse(request.body) as Record<string, unknown>;
+        } else if (request.body && typeof request.body === 'object') {
+          body = request.body as Record<string, unknown>;
         }
-        
-        if (body.lat && body.lon && body.source === 'gps') {
-          gpsLocation = {
-            lat: parseFloat(String(body.lat)),
-            lon: parseFloat(String(body.lon)),
-            accuracy: body.accuracy ? parseFloat(String(body.accuracy)) : undefined
-          };
+      } catch {
+        return response.status(400).json({ error: 'Invalid request body' });
+      }
+
+      if (body.source !== undefined && !ALLOWED_SOURCES.includes(body.source as typeof ALLOWED_SOURCES[number])) {
+        return response.status(400).json({ error: 'Invalid source' });
+      }
+
+      if (body.source === 'gps') {
+        const lat = Number(body.lat);
+        const lon = Number(body.lon);
+        const accuracy = body.accuracy === undefined || body.accuracy === null ? undefined : Number(body.accuracy);
+
+        const validLat = Number.isFinite(lat) && lat >= -90 && lat <= 90;
+        const validLon = Number.isFinite(lon) && lon >= -180 && lon <= 180;
+        const validAccuracy = accuracy === undefined || (Number.isFinite(accuracy) && accuracy >= 0 && accuracy <= 1_000_000);
+
+        if (!validLat || !validLon || !validAccuracy) {
+          return response.status(400).json({ error: 'Invalid coordinates' });
         }
-      } catch (e) {
+
+        gpsLocation = { lat, lon, accuracy };
       }
     }
 
@@ -85,10 +118,10 @@ export default async function handler(
         accuracy: gpsLocation.accuracy,
         source: 'gps'
       };
-    } else {
+    } else if (clientIp && isValidIp(clientIp)) {
       try {
         const apiResponse = await fetch(
-          `http://ip-api.com/json/${ip}?fields=status,message,lat,lon,city,region,country`,
+          `http://ip-api.com/json/${encodeURIComponent(clientIp)}?fields=status,message,lat,lon,city,region,country`,
           {
             headers: {
               'User-Agent': 'Mozilla/5.0'
@@ -178,11 +211,10 @@ export default async function handler(
       },
       source: location?.source || 'ip'
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error in /api/loc:', error);
-    return response.status(500).json({ 
-      error: 'Internal server error',
-      message: error?.message || 'Unknown error'
+    return response.status(500).json({
+      error: 'Internal server error'
     });
   }
 }

@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { getClientIp } from './lib/clientIp';
 
 const ALLOWED_IP = '201.55.183.70';
 
@@ -7,10 +8,7 @@ export default async function handler(
   res: VercelResponse,
 ) {
   try {
-    const forwarded = req.headers['x-forwarded-for'];
-    const ip = Array.isArray(forwarded)
-      ? forwarded[0]
-      : forwarded?.split(',')[0] || (req.socket as any)?.remoteAddress;
+    const ip = getClientIp(req);
 
     const isAllowed = ip === ALLOWED_IP;
 
