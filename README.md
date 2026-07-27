@@ -11,7 +11,7 @@ Meu foco é simples: **resolver problemas de verdade, entregar rápido e aprende
 
 - **Frontend:** Next.js, React, Tailwind, storybook, Typescript;  
 - **Backend:** Node.js, NestJS, PostgreSQL, Supabase, PrismaORM;
-- **DevOps:** Docker, GitHub Actions, Traefik, VPS (DigitalOcean), Git; 
+- **DevOps:** Docker, GitHub Actions, Traefik, VPS (Hetzner), Git; 
 - **Web3:** Solidity, EVM, Viem, Base, USDC escrow, NFTs on-chain  
 - **Outros:** Judge0 API (execução de código), Webhooks, integração com APIs externas, Componentização, Mentorias, Linux, WSL, AWS;
 
@@ -62,6 +62,6 @@ Ecossistema completo com:
 
 - **LinkedIn:** https://linkedin.com/in/samuelstefano  
 - **Portfólio:** https://samuelstefano.dev  
-- **GitHub:** https://github.com/taigfs  
+- **GitHub:** https://github.com/SamuelStefano  
 
 ---
