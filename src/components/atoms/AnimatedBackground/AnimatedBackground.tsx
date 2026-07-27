@@ -21,7 +21,7 @@ export const AnimatedBackground = () => {
         {BLOBS.map((blob, i) => (
           <div
             key={i}
-            className={`absolute ${blob.pos} ${blob.anim}`}
+            className={`decor-anim absolute ${blob.pos} ${blob.anim}`}
             style={{ animationDelay: blob.delay, animationDuration: blob.duration }}
           >
             <div className={`h-full w-full rounded-full ${blob.fill}`} />

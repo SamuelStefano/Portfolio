@@ -24,6 +24,7 @@ import { Text } from '@/components/atoms/Text/Text';
 import { Project, ProjectSection } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
 import { useMotionPreset } from '@/hooks/useMotionPreset';
+import { setOverlayOpen } from '@/lib/overlayState';
 import { cn } from '@/lib/utils';
 
 /* ─── helpers ──────────────────────────────────────────────────────── */
@@ -81,24 +82,26 @@ function LinkIcon({ label }: { label: string }) {
 
 interface LightboxProps {
   images: string[];
-  initialIndex: number;
+  index: number;
   title: string;
+  onIndexChange: (next: number) => void;
   onClose: () => void;
 }
 
-const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClose }) => {
+/** Controlled: the parent overlay owns the index and the keyboard handling, so
+ *  Escape can dismiss the lightbox without also dismissing the overlay. */
+const Lightbox: React.FC<LightboxProps> = ({ images, index: idx, title, onIndexChange, onClose }) => {
   const { t } = useTranslation();
-  const [idx, setIdx] = useState(initialIndex);
+  const setIdx = onIndexChange;
 
+  // decode neighbours ahead of time so navigating doesn't stall on a 2500px screenshot
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') setIdx(i => (i + 1) % images.length);
-      if (e.key === 'ArrowLeft') setIdx(i => (i - 1 + images.length) % images.length);
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [images.length, onClose]);
+    if (images.length < 2) return;
+    [(idx + 1) % images.length, (idx - 1 + images.length) % images.length].forEach(i => {
+      const img = new Image();
+      img.src = images[i];
+    });
+  }, [idx, images]);
 
   return (
     <motion.div
@@ -106,7 +109,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClos
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[9999] bg-black/95 flex flex-col items-center justify-center"
       onClick={onClose}
     >
       {/* close */}
@@ -127,14 +130,14 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClos
       {images.length > 1 && (
         <>
           <button
-            onClick={e => { e.stopPropagation(); setIdx(i => (i - 1 + images.length) % images.length); }}
+            onClick={e => { e.stopPropagation(); setIdx((idx - 1 + images.length) % images.length); }}
             aria-label={t('projects.previousImage')}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
-            onClick={e => { e.stopPropagation(); setIdx(i => (i + 1) % images.length); }}
+            onClick={e => { e.stopPropagation(); setIdx((idx + 1) % images.length); }}
             aria-label={t('projects.nextImage')}
             className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
           >
@@ -143,15 +146,12 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClos
         </>
       )}
 
-      {/* image */}
-      <motion.img
-        key={idx}
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.15 }}
+      {/* image — no key remount: swapping src keeps the decoded bitmap path warm */}
+      <img
         src={images[idx]}
         alt={`${title} — ${idx + 1}`}
-        className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl"
+        decoding="async"
+        className="max-w-[96vw] max-h-[92vh] object-contain rounded-lg shadow-2xl select-none"
         onClick={e => e.stopPropagation()}
       />
 
@@ -181,11 +181,11 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, title, onClos
 interface SectionGalleryProps {
   section: ProjectSection;
   projectTitle: string;
+  onOpenLightbox: (images: string[], index: number, title: string) => void;
 }
 
-const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle }) => {
+const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle, onOpenLightbox }) => {
   const { t } = useTranslation();
-  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [current, setCurrent] = useState(0);
   const images = section.project_images.map(img => img.image_url);
 
@@ -209,20 +209,17 @@ const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle }
 
       {/* main image */}
       <div className="relative rounded-xl overflow-hidden bg-card border border-border group">
-        <motion.img
-          key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
+        <img
           src={images[current]}
           alt={`${section.display_name} — ${current + 1}`}
-          className="w-full object-contain max-h-[420px] cursor-zoom-in"
-          onClick={() => setLightboxIdx(current)}
+          decoding="async"
+          className="w-full object-contain max-h-[68vh] cursor-zoom-in"
+          onClick={() => onOpenLightbox(images, current, `${projectTitle} — ${section.display_name}`)}
         />
 
         {/* zoom overlay */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/20 transition-opacity duration-200 pointer-events-none">
-          <div className="bg-black/50 backdrop-blur-sm rounded-full p-2.5">
+          <div className="bg-black/70 rounded-full p-2.5">
             <ZoomIn className="w-5 h-5 text-white" />
           </div>
         </div>
@@ -272,25 +269,16 @@ const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle }
           ))}
         </div>
       )}
-
-      {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxIdx !== null && (
-          <Lightbox
-            images={images}
-            initialIndex={lightboxIdx}
-            title={`${projectTitle} — ${section.display_name}`}
-            onClose={() => setLightboxIdx(null)}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 };
 
 /* ─── overview section ───────────────────────────────────────────────── */
 
-const OverviewSection: React.FC<{ project: Project }> = ({ project }) => {
+const OverviewSection: React.FC<{
+  project: Project;
+  onOpenLightbox: (images: string[], index: number, title: string) => void;
+}> = ({ project, onOpenLightbox }) => {
   const { t } = useTranslation();
   const { transition, shift } = useMotionPreset();
 
@@ -319,7 +307,9 @@ const OverviewSection: React.FC<{ project: Project }> = ({ project }) => {
           <img
             src={project.thumbnail_url}
             alt={project.title}
-            className="w-full object-contain max-h-72"
+            decoding="async"
+            className="w-full object-contain max-h-[48vh] cursor-zoom-in"
+            onClick={() => onOpenLightbox([project.thumbnail_url!], 0, project.title)}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
         </div>
@@ -428,12 +418,28 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
   const { t } = useTranslation();
   const { transition, shift } = useMotionPreset();
   const [activeSection, setActiveSection] = useState<string>('__overview__');
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number; title: string } | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const openLightbox = useCallback((images: string[], index: number, title: string) => {
+    setLightbox({ images, index, title });
+  }, []);
 
   /* Reset active section when project changes */
   useEffect(() => {
     setActiveSection('__overview__');
+    setLightbox(null);
   }, [project?.id]);
+
+  useEffect(() => {
+    if (!isOpen) setLightbox(null);
+  }, [isOpen]);
+
+  /* Pause the decorative canvas/blobs behind the overlay while it covers them */
+  useEffect(() => {
+    setOverlayOpen(isOpen);
+    return () => setOverlayOpen(false);
+  }, [isOpen]);
 
   /* Scroll to top of content on section change */
   useEffect(() => {
@@ -472,13 +478,25 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
     };
   }, [isOpen]);
 
-  /* Keyboard */
+  /* Keyboard — single listener so Escape peels off one layer at a time */
   useEffect(() => {
     if (!isOpen) return;
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (lightbox) setLightbox(null);
+        else onClose();
+        return;
+      }
+      if (!lightbox || lightbox.images.length < 2) return;
+      if (e.key === 'ArrowRight') {
+        setLightbox(l => l && { ...l, index: (l.index + 1) % l.images.length });
+      } else if (e.key === 'ArrowLeft') {
+        setLightbox(l => l && { ...l, index: (l.index - 1 + l.images.length) % l.images.length });
+      }
+    };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, lightbox]);
 
   const handleBackdropClick = useCallback((e: React.MouseEvent) => {
     if (e.target === e.currentTarget) onClose();
@@ -509,7 +527,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.22 }}
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-3 sm:p-5"
           onClick={handleBackdropClick}
         >
           {/* Panel */}
@@ -518,14 +536,14 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
             animate={shift({ opacity: 1, scale: 1, y: 0 })}
             exit={shift({ opacity: 0, scale: 0.95, y: 24 })}
             transition={transition({ type: 'spring', damping: 30, stiffness: 340, mass: 0.7 })}
-            className="relative w-full max-w-6xl h-[92vh] max-h-[860px] flex flex-col bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
+            className="relative w-full max-w-[1600px] h-[94vh] flex flex-col bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
             onClick={e => e.stopPropagation()}
           >
             {/* ── gradient top bar ── */}
             <div className="h-0.5 w-full bg-gradient-to-r from-primary via-neon-purple to-neon-cyan flex-shrink-0" />
 
             {/* ── header ── */}
-            <div className="flex-shrink-0 flex items-center gap-3 px-5 py-4 border-b border-border bg-background/90 backdrop-blur-sm">
+            <div className="flex-shrink-0 flex items-center gap-3 px-5 py-4 border-b border-border bg-background">
               <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-primary/15 border border-primary/25 flex items-center justify-center">
                 {ProjectIcon && <ProjectIcon className="w-4.5 h-4.5 text-primary" />}
               </div>
@@ -699,7 +717,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                 className="flex-1 overflow-y-auto"
               >
                 {/* mobile tab bar */}
-                <div className="lg:hidden sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border overflow-x-auto scrollbar-none">
+                <div className="lg:hidden sticky top-0 z-10 bg-background border-b border-border overflow-x-auto scrollbar-none">
                   <div className="flex gap-1 p-2 min-w-max">
                     {navItems.map(item => {
                       const Icon = item.icon;
@@ -742,7 +760,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                   {/* content */}
                   <AnimatePresence mode="wait">
                     {activeSection === '__overview__' ? (
-                      <OverviewSection key="overview" project={project} />
+                      <OverviewSection key="overview" project={project} onOpenLightbox={openLightbox} />
                     ) : (
                       currentSection && (
                         <motion.div
@@ -755,6 +773,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                           <SectionGallery
                             section={currentSection}
                             projectTitle={project.title}
+                            onOpenLightbox={openLightbox}
                           />
                         </motion.div>
                       )
@@ -764,7 +783,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
 
                 {/* footer nav */}
                 {sections.length > 1 && (
-                  <div className="flex items-center justify-between gap-3 px-5 lg:px-7 py-4 border-t border-border bg-background/80 sticky bottom-0 backdrop-blur-sm">
+                  <div className="flex items-center justify-between gap-3 px-5 lg:px-7 py-4 border-t border-border bg-background sticky bottom-0">
                     <button
                       onClick={() => {
                         const allIds = navItems.map(n => n.id);
@@ -810,6 +829,18 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
               </main>
             </div>
           </motion.div>
+
+          <AnimatePresence>
+            {lightbox && (
+              <Lightbox
+                images={lightbox.images}
+                index={lightbox.index}
+                title={lightbox.title}
+                onIndexChange={next => setLightbox(l => l && { ...l, index: next })}
+                onClose={() => setLightbox(null)}
+              />
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
     </AnimatePresence>

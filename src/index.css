@@ -541,6 +541,12 @@ html {
   animation-play-state: paused !important;
 }
 
+/* blurred decorative blobs re-rasterize every frame; while a fullscreen
+   overlay covers them that cost buys nothing */
+html[data-overlay-open] .decor-anim {
+  animation-play-state: paused !important;
+}
+
 /* Estado ativo quando visível */
 .animate-in {
   opacity: 1 !important;

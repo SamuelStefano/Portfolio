@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { isOverlayOpen, subscribeOverlay } from '@/lib/overlayState';
 
 type Pt = { x: number; y: number; vx: number; vy: number; r: number };
 
@@ -40,6 +41,7 @@ export const ConstellationBackground = () => {
     };
 
     const onMove = (e: MouseEvent) => {
+      if (isOverlayOpen()) return;
       mouse.x = e.clientX;
       mouse.y = e.clientY;
       if (glowRef.current) {
@@ -100,12 +102,27 @@ export const ConstellationBackground = () => {
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7);
         ctx.fillStyle = `rgba(${r},${g},${b},.5)`; ctx.fill();
       }
-    } else {
+    } else if (!isOverlayOpen()) {
       raf = requestAnimationFrame(tick);
     }
 
+    // the canvas is fully occluded while a fullscreen overlay is open, and this
+    // loop is O(n²) per frame — leaving it running is what made modals feel like 10fps
+    const unsubscribe = subscribeOverlay(open => {
+      if (reduce) return;
+      if (open) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+        mouse.x = -999;
+        mouse.y = -999;
+      } else if (!raf) {
+        raf = requestAnimationFrame(tick);
+      }
+    });
+
     return () => {
       cancelAnimationFrame(raf);
+      unsubscribe();
       obs.disconnect();
       window.removeEventListener('resize', size);
       window.removeEventListener('mousemove', onMove);
