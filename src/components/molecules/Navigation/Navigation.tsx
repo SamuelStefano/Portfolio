@@ -9,6 +9,20 @@ import { SkinToggle } from '@/components/molecules/SkinToggle/SkinToggle';
 import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
 import { useSkin } from '@/hooks/useSkin';
 
+const NAV_ITEMS = [
+  { labelKey: 'nav.home', href: '#inicio' },
+  { labelKey: 'nav.focus', href: '#foco' },
+  { labelKey: 'nav.projects', href: '#projetos' },
+  { labelKey: 'nav.skills', href: '#habilidades' },
+  { labelKey: 'nav.experience', href: '#experiencia' },
+  { labelKey: 'nav.companies', href: '#empresas' },
+  { labelKey: 'nav.hackathons', href: '#hackathons' },
+  { labelKey: 'nav.about', href: '#sobre' },
+  { labelKey: 'nav.contact', href: '#contato' },
+];
+
+const SECTION_IDS = NAV_ITEMS.map((item) => item.href.substring(1));
+
 const smoothScrollTo = (elementId: string) => {
   const element = document.querySelector(elementId);
   if (element) {
@@ -27,28 +41,20 @@ export const Navigation = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navigationItems = [
-    { label: t('nav.home'), href: '#inicio' },
-    { label: t('nav.focus'), href: '#foco' },
-    { label: t('nav.projects'), href: '#projetos' },
-    { label: t('nav.skills'), href: '#habilidades' },
-    { label: t('nav.experience'), href: '#experiencia' },
-    { label: t('nav.companies'), href: '#empresas' },
-    { label: t('nav.hackathons'), href: '#hackathons' },
-    { label: t('nav.about'), href: '#sobre' },
-    { label: t('nav.contact'), href: '#contato' },
-  ];
+  const navigationItems = NAV_ITEMS.map((item) => ({ label: t(item.labelKey), href: item.href }));
 
   useEffect(() => {
-    const handleScroll = () => {
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
       const scrollY = window.scrollY;
 
       setIsScrolled(scrollY > 50);
 
-      const sections = navigationItems.map(item => item.href.substring(1));
       const scrollPosition = scrollY + 100;
 
-      for (const section of sections) {
+      for (const section of SECTION_IDS) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
@@ -60,8 +66,17 @@ export const Navigation = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const handleNavClick = (href: string) => {

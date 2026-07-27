@@ -23,8 +23,11 @@ export const HeroDots = () => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let W = 0, H = 0;
     let dots: { bx: number; by: number }[] = [];
+    const client = { x: -9999, y: -9999 };
     const mouse = { x: -9999, y: -9999 };
     let net = readNet();
+    let visible = true;
+    let raf = 0;
 
     const size = () => {
       const r = host.getBoundingClientRect();
@@ -44,7 +47,15 @@ export const HeroDots = () => {
       for (const d of dots) {
         const dx = d.bx - mouse.x;
         const dy = d.by - mouse.y;
-        const dist = Math.hypot(dx, dy) || 0.001;
+        const d2 = dx * dx + dy * dy;
+        if (d2 > RADIUS * RADIUS) {
+          ctx.beginPath();
+          ctx.arc(d.bx, d.by, 1.1, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${r},${g},${b},0.12)`;
+          ctx.fill();
+          continue;
+        }
+        const dist = Math.sqrt(d2) || 0.001;
         const inf = Math.max(0, 1 - dist / RADIUS);
         const push = inf * 16;
         const x = d.bx + (dx / dist) * push;
@@ -56,47 +67,62 @@ export const HeroDots = () => {
         ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
         ctx.fill();
       }
-
     };
 
-    let raf = 0;
-    const tick = () => {
+    const frame = () => {
+      raf = 0;
+      const r = host.getBoundingClientRect();
+      mouse.x = client.x - r.left;
+      mouse.y = client.y - r.top;
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%)`;
+      }
       draw();
-      raf = requestAnimationFrame(tick);
+    };
+
+    const schedule = () => {
+      if (raf || !visible) return;
+      raf = requestAnimationFrame(frame);
     };
 
     const onMove = (e: MouseEvent) => {
-      const r = host.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
-      if (glowRef.current) {
-        glowRef.current.style.left = `${mouse.x}px`;
-        glowRef.current.style.top = `${mouse.y}px`;
-        glowRef.current.style.opacity = '1';
-      }
+      client.x = e.clientX;
+      client.y = e.clientY;
+      if (glowRef.current) glowRef.current.style.opacity = '1';
+      schedule();
     };
     const onLeave = () => {
-      mouse.x = -9999; mouse.y = -9999;
+      client.x = -9999; client.y = -9999;
       if (glowRef.current) glowRef.current.style.opacity = '0';
+      schedule();
     };
-    const obs = new MutationObserver(() => { net = readNet(); if (reduce) draw(); });
+    const onResize = () => { size(); schedule(); };
+
+    const obs = new MutationObserver(() => { net = readNet(); schedule(); });
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-color', 'class'] });
 
     size();
-    window.addEventListener('resize', size);
-    host.addEventListener('mousemove', onMove);
-    host.addEventListener('mouseleave', onLeave);
+    window.addEventListener('resize', onResize);
 
     if (reduce) {
       draw();
     } else {
-      raf = requestAnimationFrame(tick);
+      host.addEventListener('mousemove', onMove, { passive: true });
+      host.addEventListener('mouseleave', onLeave);
+      draw();
     }
 
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (!visible && raf) { cancelAnimationFrame(raf); raf = 0; }
+    });
+    io.observe(host);
+
     return () => {
-      cancelAnimationFrame(raf);
+      if (raf) cancelAnimationFrame(raf);
       obs.disconnect();
-      window.removeEventListener('resize', size);
+      io.disconnect();
+      window.removeEventListener('resize', onResize);
       host.removeEventListener('mousemove', onMove);
       host.removeEventListener('mouseleave', onLeave);
     };
@@ -108,7 +134,7 @@ export const HeroDots = () => {
       <div
         ref={glowRef}
         aria-hidden
-        className="pointer-events-none absolute h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 transition-opacity duration-300"
+        className="pointer-events-none absolute left-0 top-0 h-[320px] w-[320px] rounded-full opacity-0 transition-opacity duration-300"
         style={{ background: 'radial-gradient(circle, rgba(var(--net), 0.12), transparent 70%)' }}
       />
     </>

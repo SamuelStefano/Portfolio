@@ -17,11 +17,14 @@ import { ScrollProgress } from '@/components/atoms/ScrollProgress/ScrollProgress
 import { CustomCursor } from '@/components/atoms/CustomCursor/CustomCursor';
 import { BackToTop } from '@/components/atoms/BackToTop/BackToTop';
 import { useSkin } from '@/hooks/useSkin';
+import { useOffscreenAnimationPause } from '@/hooks/useOffscreenAnimationPause';
 
 const Index = () => {
   const { skin } = useSkin();
   const isCli = skin === 'cli';
   const [gameOpen, setGameOpen] = useState(false);
+
+  useOffscreenAnimationPause();
 
   useEffect(() => {
     // Tentar obter localização GPS exata primeiro

@@ -2,6 +2,9 @@ import { useEffect, useRef } from 'react';
 
 type Pt = { x: number; y: number; vx: number; vy: number; r: number };
 
+const LINK = 130;
+const MOUSE_LINK = 170;
+
 const readNet = (): [number, number, number] => {
   const v = getComputedStyle(document.documentElement).getPropertyValue('--net').trim();
   const p = v.split(',').map(n => parseInt(n, 10));
@@ -40,8 +43,7 @@ export const ConstellationBackground = () => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
       if (glowRef.current) {
-        glowRef.current.style.left = `${e.clientX}px`;
-        glowRef.current.style.top = `${e.clientY}px`;
+        glowRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       }
     };
 
@@ -50,8 +52,8 @@ export const ConstellationBackground = () => {
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-color', 'class'] });
 
     size();
-    window.addEventListener('resize', size);
-    window.addEventListener('mousemove', onMove);
+    window.addEventListener('resize', size, { passive: true });
+    window.addEventListener('mousemove', onMove, { passive: true });
 
     let raf = 0;
     const tick = () => {
@@ -66,22 +68,25 @@ export const ConstellationBackground = () => {
         ctx.fillStyle = `rgba(${r},${g},${b},.55)`;
         ctx.fill();
       }
+      ctx.lineWidth = 1;
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
           const a = pts[i], c = pts[j];
-          const d = Math.hypot(a.x - c.x, a.y - c.y);
-          if (d < 130) {
-            ctx.strokeStyle = `rgba(${r},${g},${b},${0.16 * (1 - d / 130)})`;
-            ctx.lineWidth = 1;
+          const dx = a.x - c.x, dy = a.y - c.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK * LINK) {
+            const d = Math.sqrt(d2);
+            ctx.strokeStyle = `rgba(${r},${g},${b},${0.16 * (1 - d / LINK)})`;
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
           }
         }
       }
       for (const p of pts) {
-        const d = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-        if (d < 170) {
-          ctx.strokeStyle = `rgba(${r},${g},${b},${0.55 * (1 - d / 170)})`;
-          ctx.lineWidth = 1;
+        const dx = p.x - mouse.x, dy = p.y - mouse.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < MOUSE_LINK * MOUSE_LINK) {
+          const d = Math.sqrt(d2);
+          ctx.strokeStyle = `rgba(${r},${g},${b},${0.55 * (1 - d / MOUSE_LINK)})`;
           ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
         }
       }
@@ -113,7 +118,7 @@ export const ConstellationBackground = () => {
       <div
         ref={glowRef}
         aria-hidden
-        className="fixed -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none hidden md:block"
+        className="fixed left-0 top-0 -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none hidden md:block"
         style={{ background: 'radial-gradient(circle, rgba(var(--net), .10), transparent 70%)' }}
       />
     </>

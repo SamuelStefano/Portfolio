@@ -34,6 +34,25 @@ export const CustomCursor = () => {
       ringEl.dataset.pointer = p ? '1' : '0';
     };
 
+    const animate = () => {
+      rafId.current = 0;
+
+      // Dot snaps to cursor exactly
+      dot.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
+
+      // Ring follows the cursor instantly (no trail) — lighter on trackpads
+      ring.current.x = pos.current.x;
+      ring.current.y = pos.current.y;
+
+      const scale = ringEl.dataset.pointer === '1' ? 1.5 : 1;
+      ringEl.style.transform = `translate(${ring.current.x - 16}px, ${ring.current.y - 16}px) scale(${scale})`;
+    };
+
+    const schedule = () => {
+      if (rafId.current) return;
+      rafId.current = requestAnimationFrame(animate);
+    };
+
     const onMouseMove = (e: MouseEvent) => {
       pos.current = { x: e.clientX, y: e.clientY };
 
@@ -50,35 +69,22 @@ export const CustomCursor = () => {
         pointer.current = isPointer;
         setPointerStyle(isPointer);
       }
+
+      schedule();
     };
 
     const onMouseLeave = () => { visible.current = false; setOpacity(false); };
     const onMouseEnter = () => { visible.current = true; setOpacity(true); };
 
-    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mousemove', onMouseMove, { passive: true });
     document.addEventListener('mouseleave', onMouseLeave);
     document.addEventListener('mouseenter', onMouseEnter);
-
-    const animate = () => {
-      // Dot snaps to cursor exactly
-      dot.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
-
-      // Ring follows the cursor instantly (no trail) — lighter on trackpads
-      ring.current.x = pos.current.x;
-      ring.current.y = pos.current.y;
-
-      const scale = ringEl.dataset.pointer === '1' ? 1.5 : 1;
-      ringEl.style.transform = `translate(${ring.current.x - 16}px, ${ring.current.y - 16}px) scale(${scale})`;
-
-      rafId.current = requestAnimationFrame(animate);
-    };
-    rafId.current = requestAnimationFrame(animate);
 
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseenter', onMouseEnter);
-      cancelAnimationFrame(rafId.current);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, []);
 

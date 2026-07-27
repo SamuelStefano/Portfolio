@@ -1,24 +1,40 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const ScrollProgress = () => {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      const bar = barRef.current;
+      if (!bar) return;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+      const ratio = docHeight > 0 ? window.scrollY / docHeight : 0;
+      bar.style.transform = `scaleX(${Math.min(Math.max(ratio, 0), 1)})`;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[9999] h-[3px] bg-transparent pointer-events-none">
       <div
-        className="h-full bg-gradient-to-r from-neon-blue via-primary to-neon-purple transition-none"
-        style={{ width: `${progress}%` }}
+        ref={barRef}
+        className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-neon-blue via-primary to-neon-purple transition-none"
       />
     </div>
   );
