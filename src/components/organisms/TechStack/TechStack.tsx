@@ -8,7 +8,7 @@ import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { TECH_CATEGORIES, EXPERIENCE_DATA, EVENTS_DATA } from '@/consts/data';
 
 const LANGUAGES = [
-  { key: 'english', level: 70, inProgress: true },
+  { key: 'english', level: 65, inProgress: true },
   { key: 'portuguese', level: 100, inProgress: false },
   { key: 'spanish', level: 80, inProgress: false },
 ];
@@ -179,43 +179,56 @@ export const TechStack = () => {
           <div className="max-w-3xl mx-auto relative">
             <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent" />
             <div className="space-y-10">
-              {EXPERIENCE_DATA.map((job, i) => (
-                <div
-                  key={i}
-                  className="relative flex items-start gap-5 animate-slide-right pl-6"
-                  style={{ animationDelay: `${i * 0.15}s` }}
-                >
-                  <div className="absolute left-0 top-5 w-3 h-3 bg-primary rounded-full -translate-x-1/2 z-10 animate-pulse-glow" />
-                  {job.website ? (
-                    <a
-                      href={job.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-card border border-border rounded-xl p-5 hover-card transition-all duration-300 block"
-                    >
-                      <ExperienceItem
-                        company={t(`skills.experienceData.${i}.company`)}
-                        role={t(`skills.experienceData.${i}.role`)}
-                        period={t(`skills.experienceData.${i}.period`)}
-                        description={t(`skills.experienceData.${i}.description`)}
-                        stack={job.stack}
-                        icon={job.icon}
-                      />
-                    </a>
-                  ) : (
-                    <div className="flex-1 bg-card border border-border rounded-xl p-5 hover-card">
-                      <ExperienceItem
-                        company={t(`skills.experienceData.${i}.company`)}
-                        role={t(`skills.experienceData.${i}.role`)}
-                        period={t(`skills.experienceData.${i}.period`)}
-                        description={t(`skills.experienceData.${i}.description`)}
-                        stack={job.stack}
-                        icon={job.icon}
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
+              {EXPERIENCE_DATA.map((job, i) => {
+                const localizedHighlights = t(`skills.experienceData.${i}.highlights`, {
+                  returnObjects: true,
+                  defaultValue: null,
+                }) as unknown;
+                const highlights =
+                  Array.isArray(localizedHighlights) && localizedHighlights.length > 0
+                    ? (localizedHighlights as string[])
+                    : job.highlights;
+
+                return (
+                  <div
+                    key={i}
+                    className="relative flex items-start gap-5 animate-slide-right pl-6"
+                    style={{ animationDelay: `${i * 0.15}s` }}
+                  >
+                    <div className="absolute left-0 top-5 w-3 h-3 bg-primary rounded-full -translate-x-1/2 z-10 animate-pulse-glow" />
+                    {job.website ? (
+                      <a
+                        href={job.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-card border border-border rounded-xl p-5 hover-card transition-all duration-300 block"
+                      >
+                        <ExperienceItem
+                          company={t(`skills.experienceData.${i}.company`)}
+                          role={t(`skills.experienceData.${i}.role`)}
+                          period={t(`skills.experienceData.${i}.period`)}
+                          description={t(`skills.experienceData.${i}.description`)}
+                          stack={job.stack}
+                          highlights={highlights}
+                          icon={job.icon}
+                        />
+                      </a>
+                    ) : (
+                      <div className="flex-1 bg-card border border-border rounded-xl p-5 hover-card">
+                        <ExperienceItem
+                          company={t(`skills.experienceData.${i}.company`)}
+                          role={t(`skills.experienceData.${i}.role`)}
+                          period={t(`skills.experienceData.${i}.period`)}
+                          description={t(`skills.experienceData.${i}.description`)}
+                          stack={job.stack}
+                          highlights={highlights}
+                          icon={job.icon}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

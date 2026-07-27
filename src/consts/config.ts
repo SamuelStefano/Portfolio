@@ -10,28 +10,6 @@ export const CACHE_CONFIG = {
   PROJECTS_CACHE_DURATION: 5 * 60 * 1000, // 5 minutes
   GITHUB_STATS_CACHE_DURATION: 10 * 60 * 1000, // 10 minutes
 };
-export const STORAGE_CONFIG = {
-  KNOWN_BUCKETS: [
-    'challenge-images',
-    'Codelibrary-website', 
-    'codelibrary-website',
-    'Devfellowship', 
-    'devfellowship',
-    'Portfolio-bucket'
-  ],
-  CANDIDATE_PATHS_BY_BUCKET: {
-    'challenge-images': [
-      'challenges',
-      'challenges/DevSharper',
-      'challenges/CodeLibrary'
-    ],
-    'Codelibrary-website': ['codelibrary images'],
-    'codelibrary-website': ['codelibrary images'],
-    'Devfellowship': ['Devfellowship'],
-    'devfellowship': ['Devfellowship'],
-    'Portfolio-bucket': []
-  }
-};
 
 // Animation Configuration
 export const ANIMATION_CONFIG = {

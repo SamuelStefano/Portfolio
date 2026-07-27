@@ -40,7 +40,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = React.memo(({
     if (!isHovering) {
       intervalRef.current = window.setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, 5000); // Aumentado para 5000ms para reduzir mudanças frequentes
+      }, 5000); // Aumentado para 5000ms para reduzir mudanÃ§as frequentes
     }
 
     return () => {

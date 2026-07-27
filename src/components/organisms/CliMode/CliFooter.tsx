@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 const SOCIALS = [
   { label: 'github', href: 'https://github.com/SamuelStefano' },
   { label: 'linkedin', href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/' },
-  { label: 'instagram', href: 'https://instagram.com/samuel.stefano' },
 ];
 
 export const CliFooter = () => {

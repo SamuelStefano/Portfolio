@@ -1,4 +1,4 @@
-import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, Code2, Sparkles, GraduationCap, Users } from 'lucide-react';
+import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, GitPullRequest, Sparkles, GraduationCap, Users } from 'lucide-react';
 
 export const TECH_CATEGORIES = [
   {
@@ -239,24 +239,24 @@ export const ADDITIONAL_SKILLS = [
 
 export const STATS_TEMPLATE = [
   {
-    label: 'Tempo de atuação profissional',
-    value: '3+ anos',
-    icon: User
+    label: 'Pull requests mergeadas',
+    value: '833+',
+    icon: GitPullRequest
   },
   {
-    label: 'Repositórios GitHub',
-    value: '15+',
+    label: 'Repositórios com entregas',
+    value: '38+',
     icon: GitBranch
   },
   {
     label: 'Tecnologias',
-    value: '15+',
+    value: '55+',
     icon: Globe
   },
   {
-    label: 'Linhas de Código',
-    value: '50K+',
-    icon: Code2
+    label: 'Tempo de atuação profissional',
+    value: '3+ anos',
+    icon: User
   }
 ];
 

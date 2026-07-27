@@ -1,5 +1,5 @@
 import type { TFunction } from 'i18next';
-import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch } from 'lucide-react';
+import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch, GitPullRequest } from 'lucide-react';
 import { CountUp } from '@/components/atoms/CountUp/CountUp';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/atoms/badge/badge';
@@ -48,6 +48,13 @@ export const About = () => {
       numericValue: null as number | null,
       suffix: '',
       icon: User
+    },
+    {
+      label: t('about.pullRequests'),
+      value: gitHubStats.isLoading ? '...' : `${gitHubStats.mergedPullRequests}+`,
+      numericValue: gitHubStats.isLoading ? null : gitHubStats.mergedPullRequests,
+      suffix: '+',
+      icon: GitPullRequest
     },
     {
       label: t('about.projectsCreated'),
@@ -152,7 +159,9 @@ export const About = () => {
               {stats.map((stat, index) => (
                   <Card
                     key={index}
-                    className="bg-card border border-border hover-card animate-fade-up"
+                    className={`bg-card border border-border hover-card animate-fade-up ${
+                      index === stats.length - 1 && stats.length % 2 === 1 ? 'sm:col-span-2' : ''
+                    }`}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CardContent className="p-4 sm:p-5 md:p-6 text-center">

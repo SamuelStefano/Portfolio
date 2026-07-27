@@ -1,67 +1,71 @@
 # 👋 Olá! Meu nome é Samuel Stefano
 
-Desenvolvedor Pleno Full Stack (JS/TS) focado em construir produtos reais, integrações complexas e sistemas que geram impacto.  
-Atualmente trabalhando em projetos que envolvem **Next.js**, **Node.js**, **Supabase**, **Judge0**, **DOCKER** **Blockchain/Web3**, mensageria e arquiteturas distribuídas.
+Desenvolvedor Full-Stack pleno (JS/TS), completo tanto no full-stack quanto em Solidity/Web3.
+Construo produtos reais: plataformas de educação, esteiras de cobrança em produção e integrações com IA.
 
-Meu foco é simples: **resolver problemas de verdade, entregar rápido e aprender no processo**.
-
----
-
-## 🚀 Tecnologias que fazem parte do meu dia a dia
-
-- **Frontend:** Next.js, React, Tailwind, storybook, Typescript;  
-- **Backend:** Node.js, NestJS, PostgreSQL, Supabase, PrismaORM;
-- **DevOps:** Docker, GitHub Actions, Traefik, VPS (Hetzner), Git; 
-- **Web3:** Solidity, EVM, Viem, Base, USDC escrow, NFTs on-chain  
-- **Outros:** Judge0 API (execução de código), Webhooks, integração com APIs externas, Componentização, Mentorias, Linux, WSL, AWS;
+Em busca de novas experiências em times de produto remotos.
 
 ---
 
-## 💼 Projetos Principais
+## 🚀 Tecnologias do dia a dia
 
-### 🔹 DevSharper  
-Plataforma própria com execução de código via Judge0, desafios estilo LeetCode e flow completo de avaliações.  
-Contém:
-- API `/api/execute-code` integrada ao Judge0  
-- Sistema de desafios, testes automáticos e feedback  
-- Painel de gestão para admins e alunos  
-
-### 🔹 DevFellowship  
-Ecossistema completo com:
-- Plataforma de desafios  
-- Sistema de Review Requests com RLS no Supabase  
-- Skill Evals, Academy gamificada, Codelibrary  
-- Kanban, rastreamento, pagamentos, automações
-
-### 🔹 Web3 – ETH Latam Hackathon  
-- On-ramp PIX → USDC instantâneo  
-- Vault com autorização de débito (merchant spending)  
-- Jobs on-chain com escrow em USDC + NFTs de credencial  
-- Contratos Solidity + orquestração Node.js
+- **Frontend:** React, Next.js, Vite, TypeScript, TailwindCSS, Module Federation, Storybook
+- **Backend:** Node.js, NestJS, Hono + Bun, PostgreSQL, Supabase (Edge Functions, RLS), Prisma
+- **DevOps:** Docker, GitHub Actions, Traefik, VPS (Hetzner), Vercel, Git
+- **Web3:** Solidity, EVM, Anchor/Solana, Viem, Base, Chainlink (Data Feeds, CCIP, CRE)
+- **IA & Automação:** Claude API, OpenRouter, servidores MCP, n8n
+- **Outros:** Judge0, webhooks, Playwright, Linux, WSL, AWS
 
 ---
 
-## 🧪 Projetos Técnicos
+## 💼 Projetos principais
 
-- Infra completa do **Judge0** (Docker Compose, Redis, Postgres, config extras)  
-- Execução de código multi-linguagem, healthcheck automático, scripts de teste  
-- Integração com Next.js e Supabase
+### 🔹 ITERA — plataforma de cursos com aula ao vivo
+LMS por assinatura com aula ao vivo síncrona: o professor conduz e o stage do aluno acompanha em tempo real,
+sobre Supabase Realtime (broadcast + postgres_changes + presence num único canal).
+Em produção com turmas reais, incluindo o Instituto Educar+.
+
+### 🔹 DFL Payments — esteira de receita em produção
+Do contrato à nota fiscal: geração do documento, assinatura eletrônica (Autentique), cronograma de parcelas,
+Pix via Woovi com webhook validado por HMAC e emissão automática de NFS-e pela Spedy.
+Régua de cobrança, conciliação e cron dispatcher por cima. Movimenta dinheiro real.
+
+### 🔹 Deck — posto de comando para agentes de IA
+App web pessoal que orquestra sessões de agentes numa VPS: fila de tarefas, streaming de saída,
+ledger de pontos e operações de host. Realtime sobre Supabase.
+
+### 🔹 AltPay — vitória na trilha Chainlink
+Submissão de hackathon com lógica verificável computada no DON via Chainlink CRE,
+Data Feeds consumidos on-chain por CPI e atestação Ed25519.
+
+### 🔹 Ecossistema DevFellowship
+Micro-frontends com Module Federation: DFL Learn (super-app host), Reviews, Payments, Flows
+e o CI Revisor Bot com IA. Mais 4 servidores MCP (work/learn/payments/plans) e a stack de back-end TS em Hono + Bun.
+
+---
+
+## 🏆 Hackathons
+
+- 🥇 **Vitória na trilha Chainlink** — AltPay
+- 🥈 **2º lugar na trilha Scroll**, DevConnect ETH 2025 — TalentDAO
+- 🏅 **4º lugar**, ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)
 
 ---
 
 ## 🎯 O que estou estudando agora
 
-- Arquiteturas orientadas a eventos  
-- Blockchain profissional (Solana, EVM, Chainlink)  
-- Estruturas avançadas no Supabase (RLS, policies, RPCs)  
-- Fluência total em JavaScript/TypeScript
+- Arquiteturas orientadas a eventos
+- Blockchain profissional (Solana/Anchor, EVM, Chainlink)
+- Estruturas avançadas no Supabase (RLS, policies, RPCs)
+- Testes de ponta a ponta e observabilidade
 
 ---
 
 ## 📬 Como falar comigo
 
-- **LinkedIn:** https://linkedin.com/in/samuelstefano  
-- **Portfólio:** https://samuelstefano.dev  
-- **GitHub:** https://github.com/SamuelStefano  
+- **Portfólio:** https://samuelstefano.dev
+- **LinkedIn:** https://www.linkedin.com/in/samuel-stefano-425a29246/
+- **GitHub:** https://github.com/SamuelStefano
+- **Email:** samuelstefanodocarmo@gmail.com
 
 ---

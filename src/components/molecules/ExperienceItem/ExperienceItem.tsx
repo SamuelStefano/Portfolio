@@ -10,6 +10,7 @@ interface ExperienceItemProps {
   period: string;
   description: string;
   stack: string[];
+  highlights?: string[];
   icon?: LucideIcon;
   className?: string;
 }
@@ -20,6 +21,7 @@ export const ExperienceItem = ({
   period,
   description,
   stack,
+  highlights,
   icon,
   className,
 }: ExperienceItemProps) => {
@@ -48,6 +50,17 @@ export const ExperienceItem = ({
       <Text className="mb-4 text-sm text-muted-foreground leading-relaxed">
         {description}
       </Text>
+
+      {highlights && highlights.length > 0 && (
+        <ul className="mb-4 space-y-1.5">
+          {highlights.map((highlight, i) => (
+            <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary/70 flex-shrink-0" />
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <div className="flex flex-wrap gap-1.5">
         {stack.map((tech, i) => (

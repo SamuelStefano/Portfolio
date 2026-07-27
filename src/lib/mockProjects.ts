@@ -163,6 +163,38 @@ export const mockProjects: Project[] = [
     }
   },
   {
+    id: '12',
+    title: 'Valdez',
+    role: 'Creator',
+    description: 'Bot de Discord em TypeScript que vive dentro do canal de voz: entra sozinho quando chega gente, contabiliza horas em call com ranking, grava replay dos últimos minutos e toca música do YouTube e Spotify. Roda numa VPS Hetzner com healthcheck, auto-cura e proteção contra OOM.',
+    long_description: 'Valdez é um bot de Discord escrito em TypeScript sobre discord.js 14 e @discordjs/voice, pensado pra viver dentro do canal de voz do servidor. A presença é automática por ocupação: ele entra quando o primeiro humano chega e sai quando a call esvazia, e esse comportamento pode ser desligado pelo comando /call. Cada entrada e saída vira uma sessão persistida em SQLite (better-sqlite3 em modo WAL), o que alimenta o /horas e o /leaderboard com o ranking de tempo em call. O recurso mais difícil é o replay buffer: o bot assina o receiver de voz e mantém em memória uma janela deslizante dos últimos minutos de pacotes Opus por usuário, com poda periódica pra não acumular áudio de quem falou e ficou quieto — no /replay esses pacotes são decodificados pra PCM, mixados por timeline (e não simplesmente concatenados, que era a causa do som travado) e exportados em MP3 via ffmpeg. Também tem um player de música com fila, loop, modal persistente com botões de controle e busca no YouTube via yt-dlp, com suporte a playlists e álbuns do Spotify consultando a Web API direto. A parte que mais rendeu aprendizado foi a operação: o bot migrou do Fly.io para uma VPS Hetzner em Docker Compose e ganhou uma camada de resiliência de verdade — um endpoint /health que reporta o estado do gateway e da conexão de voz e responde 503 enquanto ainda está subindo, autoheal reiniciando o container quando o healthcheck falha, limites de memória com oom_score_adj e swap na máquina, um heartbeat externo funcionando como dead-man\'s switch (o único sinal que sobrevive ao host inteiro cair), handlers de uncaughtException e unhandledRejection pra não morrer por erro solto, e resolução DNS forçada em IPv4 depois de investigar as desconexões de voz pelo closeCode.',
+    stack: ['TypeScript', 'Node.js', 'discord.js', '@discordjs/voice', 'Opus', 'SQLite', 'better-sqlite3', 'ffmpeg', 'yt-dlp', 'Spotify Web API', 'Docker', 'Docker Compose', 'Hetzner VPS'],
+    icon_name: 'Headphones',
+    created_at: '2026-05-14T00:00:00Z',
+    updated_at: '2026-07-23T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '12-c1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2026-05-14T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '12-l1',
+        label: 'GitHub Repository',
+        title: 'GitHub Repository',
+        url: 'https://github.com/SamuelStefano/valdez-bot',
+        type: 'github',
+        created_at: '2026-05-14T00:00:00Z'
+      }
+    ],
+    project_sections: [],
+    image_categories: {}
+  },
+  {
     id: '1',
     title: 'Skill Evals',
     role: 'Creator',
@@ -277,143 +309,6 @@ export const mockProjects: Project[] = [
       'dashboard': ['/projects/Skill Evals/Dashboard principal.png'],
       'login': ['/projects/Skill Evals/Meu perfil alterando.png', '/projects/Skill Evals/Meu Perfil.png'],
       'others': ['/projects/Skill Evals/Code.png', '/projects/Skill Evals/Inpect.png', '/projects/Skill Evals/inspect 2.png']
-    }
-  },
-  {
-    id: '2',
-    title: 'DevFellowship',
-    role: 'Collaborator',
-    description: 'Site da devfellowship em que colaborei, minha task era trabalhar apenas no hero.',
-    long_description: 'Site da devfellowship em que colaborei, minha task era trabalhar apenas no hero. Projeto focado no desenvolvimento do hero da página principal da comunidade DevFellowship.',
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'TailwindCSS', 'Discord API'],
-    thumbnail_url: '/projects/Devfellowship/Thumb devfellowship.png',
-    icon_name: 'users',
-    created_at: '2024-03-01T00:00:00Z',
-    updated_at: '2024-12-01T00:00:00Z',
-    project_collaborators: [
-      {
-        id: '3',
-        name: 'Tainan Fidelis',
-        website: 'https://tainanfidelis.com/linktree',
-        role: 'Creator',
-        avatar_url: '/Tainan Fidelis.jpeg',
-        created_at: '2024-03-01T00:00:00Z'
-      },
-      {
-        id: '1',
-        name: 'Samuel Stefano',
-        role: 'Collaborator',
-        avatar_url: '/Samuel.jpg',
-        created_at: '2024-03-01T00:00:00Z'
-      },
-      {
-        id: '4',
-        name: 'Fellows',
-        role: 'Collaborator',
-        avatar_url: '/placeholder.svg',
-        created_at: '2024-03-01T00:00:00Z'
-      }
-    ],
-    project_links: [
-      {
-        id: '3',
-        label: 'Website',
-        title: 'Website',
-        url: 'https://devfellowship.com',
-        type: 'website',
-        created_at: '2024-03-01T00:00:00Z'
-      },
-      {
-        id: '4',
-        label: 'Discord',
-        title: 'Discord',
-        url: 'https://discord.gg/devfellowship',
-        type: 'discord',
-        created_at: '2024-03-01T00:00:00Z'
-      }
-    ],
-    project_sections: [
-      {
-        id: '2-1',
-        folder_name: 'hero',
-        display_name: 'Hero',
-        description: 'Hero section do site',
-        order_index: 1,
-        project_images: [
-          { id: '2-1-1', image_url: '/projects/Devfellowship/Hero devfellowship.png', order_index: 1 }
-        ]
-      }
-    ],
-    image_categories: {
-      'hero': ['/projects/Devfellowship/Hero devfellowship.png']
-    }
-  },
-  {
-    id: '3',
-    title: 'CodeLibrary',
-    role: 'Collaborator',
-    description: 'Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship',
-    long_description: 'Uma landing page de uma plataforma de cursos chamada CodeLibrary que será o proximo lançamento da Devfellowship. Projeto focado no desenvolvimento da página inicial da nova plataforma de cursos da comunidade.',
-    stack: ['React', 'TypeScript', 'Next.js', 'Supabase', 'TailwindCSS', 'Prisma'],
-    thumbnail_url: '/projects/Codelibrary/Hero.png',
-    icon_name: 'Book',
-    created_at: '2024-06-01T00:00:00Z',
-    updated_at: '2024-12-01T00:00:00Z',
-    project_collaborators: [
-      {
-        id: '2',
-        name: 'Tainan Fidelis',
-        website: 'https://tainanfidelis.com/linktree',
-        role: 'Creator',
-        avatar_url: '/Tainan Fidelis.jpeg',
-        created_at: '2024-06-01T00:00:00Z'
-      },
-      {
-        id: '1',
-        name: 'Samuel Stefano',
-        role: 'Collaborator',
-        avatar_url: '/Samuel.jpg',
-        created_at: '2024-06-01T00:00:00Z'
-      },
-      {
-        id: '4',
-        name: 'Fellows',
-        role: 'Collaborator',
-        avatar_url: '/placeholder.svg',
-        created_at: '2024-06-01T00:00:00Z'
-      }
-    ],
-    project_links: [
-      {
-        id: '5',
-        label: 'GitHub',
-        title: 'GitHub Repository',
-        url: 'https://github.com/SamuelStefano/codelibrary-website',
-        type: 'github',
-        created_at: '2024-06-01T00:00:00Z'
-      }
-    ],
-    project_sections: [
-      { id: '3-1', folder_name: 'hero', display_name: 'Hero', description: 'Hero section', order_index: 1, project_images: [{ id: '3-1-1', image_url: '/projects/Codelibrary/Hero.png', order_index: 1 }] },
-      { id: '3-2', folder_name: 'about', display_name: 'About Us', description: 'Sobre nós', order_index: 2, project_images: [{ id: '3-2-1', image_url: '/projects/Codelibrary/AboutUs.png', order_index: 1 }] },
-      { id: '3-3', folder_name: 'courses', display_name: 'Courses', description: 'Card de cursos', order_index: 3, project_images: [{ id: '3-3-1', image_url: '/projects/Codelibrary/Courses.png', order_index: 1 }] },
-      { id: '3-4', folder_name: 'community', display_name: 'Community', description: 'Comunidade', order_index: 4, project_images: [{ id: '3-4-1', image_url: '/projects/Codelibrary/Community.png', order_index: 1 }] },
-      { id: '3-5', folder_name: 'methodologies', display_name: 'Methodologies', description: 'Metodologias', order_index: 5, project_images: [{ id: '3-5-1', image_url: '/projects/Codelibrary/Methodologies.png', order_index: 1 }] },
-      { id: '3-6', folder_name: 'pricing', display_name: 'Plans and Prices', description: 'Planos e preços', order_index: 6, project_images: [{ id: '3-6-1', image_url: '/projects/Codelibrary/Plan and Prices.png', order_index: 1 }] },
-      { id: '3-7', folder_name: 'table', display_name: 'Table', description: 'Tabela comparativa', order_index: 7, project_images: [{ id: '3-7-1', image_url: '/projects/Codelibrary/table.png', order_index: 1 }] },
-      { id: '3-8', folder_name: 'footer', display_name: 'Footer', description: 'Rodapé', order_index: 8, project_images: [{ id: '3-8-1', image_url: '/projects/Codelibrary/Footer.png', order_index: 1 }] },
-      { id: '3-9', folder_name: 'others', display_name: 'Others', description: 'Logos', order_index: 9, project_images: [{ id: '3-9-1', image_url: '/projects/Codelibrary/Logo-codelibrary.png', order_index: 1 }, { id: '3-9-2', image_url: '/projects/Codelibrary/Logo (1).png', order_index: 2 }] }
-    ],
-    image_categories: {
-      'hero': ['/projects/Codelibrary/Hero.png'],
-      'about': ['/projects/Codelibrary/AboutUs.png'],
-      'courses': ['/projects/Codelibrary/Courses.png'],
-      'community': ['/projects/Codelibrary/Community.png'],
-      'methodologies': ['/projects/Codelibrary/Methodologies.png'],
-      'pricing': ['/projects/Codelibrary/Plan and Prices.png'],
-      'table': ['/projects/Codelibrary/table.png'],
-      'footer': ['/projects/Codelibrary/Footer.png'],
-      'others': ['/projects/Codelibrary/Logo-codelibrary.png', '/projects/Codelibrary/Logo (1).png']
     }
   },
   {
@@ -909,13 +804,13 @@ export const mockProjects: Project[] = [
     id: '8',
     title: 'DFL Payments',
     role: 'Creator',
-    description: 'Micro-frontend de pagamentos integrado via Module Federation. Fellows geram invoices mensais selecionando deliveries concluídas — o sistema calcula automaticamente pontos × taxa e gera a cobrança.',
-    long_description: 'DFL Payments é um micro-frontend remote do ecossistema Module Federation. O fluxo de invoice funciona assim: o fellow seleciona o mês de referência e a organização responsável, e o sistema lista todas as "available deliveries" — entregas cujas tasks estão todas em `dev_completed`. Cada delivery exibe o nome, organização, pontuação total e taxa (ex: R$ 75,00/pt), calculando o valor final automaticamente. Uma entrega por invoice. O sistema também rastreia "open invoices" (invoices em andamento). Integrado ao DFL Learn como mini-app independente com deploy próprio via Vercel, compartilhando React e React-Query via shared scope do Module Federation.',
-    stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'TailwindCSS', 'Supabase', 'Supabase Edge Functions', 'Webhooks', 'PostgreSQL'],
+    description: 'Pipeline de receita da DevFellowship, do contrato à nota fiscal: gera o documento, coleta assinatura eletrônica na Autentique, agenda a cobrança recorrente, emite o Pix pela Woovi e a NFS-e pela Spedy — com régua de cobrança, conciliação e um cron dispatcher por cima. Software de produção movimentando dinheiro real.',
+    long_description: 'DFL Payments nasceu como um micro-frontend remote de invoices no ecossistema Module Federation e cresceu até virar a esteira de receita inteira da DevFellowship. O fluxo original continua lá: o fellow seleciona o mês de referência e a organização responsável, o sistema lista as "available deliveries" — entregas cujas tasks estão todas em `dev_completed` — e calcula pontos × taxa (ex: R$ 75,00/pt) pra fechar o valor da invoice automaticamente. Em cima disso foi construído o pipeline B2B. Um contrato define valor, modo de cobrança e recorrência; a partir dele o sistema gera o documento a partir de template, envia pra assinatura eletrônica na Autentique e, quando o webhook de assinatura volta, ativa o contrato e materializa o cronograma de parcelas. Um cron dispatcher acorda cada parcela na data certa e a conduz pelo kanban de status — agendada, aguardando NF, disparada, aguardando Pix, paga, vencida ou cancelada. O Pix é gerado pela Woovi e a confirmação chega por webhook com verificação de assinatura HMAC no servidor (o provider migrou de RSA pra HMAC no meio do caminho e o gate teve que ser reescrito às pressas, com o webhook voltando 401 em produção). A nota fiscal de serviço é emitida automaticamente pela API da Spedy, com o status da NFS-e retornando por webhook e amarrado à cobrança que a originou. Fecham o ciclo uma régua de cobrança (dunning) para inadimplência, uma tela de conciliação entre o que foi cobrado e o que de fato caiu, aditivos contratuais que alteram apenas as parcelas futuras sem reescrever o passado, e um forecast de receita. A lógica sensível vive em TypeScript testado — serviços de cobrança, cronograma, recorrência e forecast têm testes unitários — em vez de procedures no banco, mantendo o banco fino e a autorização em RLS.',
+    stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'TailwindCSS', 'Supabase', 'Supabase Edge Functions', 'PostgreSQL', 'RLS', 'Autentique', 'Woovi', 'Pix', 'Spedy', 'NFS-e', 'Webhooks', 'HMAC', 'Cron', 'Vitest'],
     thumbnail_url: '/projects/payments/New Invoice.png',
     icon_name: 'CreditCard',
     created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2026-04-01T00:00:00Z',
+    updated_at: '2026-07-24T00:00:00Z',
     project_collaborators: [
       {
         id: '1',

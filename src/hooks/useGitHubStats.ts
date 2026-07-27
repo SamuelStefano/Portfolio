@@ -5,6 +5,7 @@ interface GitHubStats {
   totalRepos: number;
   totalStars: number;
   totalForks: number;
+  mergedPullRequests: number;
   linesOfCode: number;
   languages: Record<string, number>;
   isLoading: boolean;
@@ -17,6 +18,7 @@ export const useGitHubStats = () => {
     totalRepos: 0,
     totalStars: 0,
     totalForks: 0,
+    mergedPullRequests: 0,
     linesOfCode: 0,
     languages: {},
     isLoading: true,
@@ -41,6 +43,7 @@ export const useGitHubStats = () => {
           totalRepos: data.totalRepos || 0,
           totalStars: data.totalStars || 0,
           totalForks: data.totalForks || 0,
+          mergedPullRequests: data.mergedPullRequests || 0,
           linesOfCode: data.linesOfCode || 0,
           languages: data.languages || {},
           isLoading: false,
@@ -54,6 +57,7 @@ export const useGitHubStats = () => {
           totalRepos: 38,
           totalStars: 5,
           totalForks: 2,
+          mergedPullRequests: 833,
           linesOfCode: 420000,
           languages: {
             'TypeScript': 210000,

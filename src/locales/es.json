@@ -14,20 +14,19 @@
   },
   "hero": {
     "greeting": "Samuel Stefano",
-    "role": "Tech Lead & Desarrollador Full-Stack",
-    "description": "3+ años de experiencia • Web3 • IA & Automatización • 3er Año ADS • Marialva, PR",
-    "bio": "Especializado en React, TypeScript, Node.js, Supabase, Web3 e Integraciones con IA.",
+    "role": "Desarrollador Full-Stack Semi Senior · Solidity & Web3",
+    "description": "3+ años de experiencia • React, TypeScript, Node • Solidity & Web3 • Remoto • Marialva, PR",
+    "bio": "Perfil semi senior completo en full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) y en Solidity/Web3.",
     "bioContinue": "Arquitectando micro-frontends, automatizando pipelines con n8n e integrando LLMs para construir plataformas escalables e inteligentes.",
     "clickToSeeMore": "Haz clic para ver más",
     "socialLinks": {
       "github": "GitHub",
       "linkedin": "LinkedIn",
-      "instagram": "Instagram",
       "resume": "Currículum",
       "email": "Email",
       "phone": "Teléfono"
     },
-    "web3Signal": "building the on-chain web · abierto a oportunidades web3"
+    "web3Signal": "semi senior completo en full-stack y Solidity/Web3 · en busca de nuevas experiencias · abierto a oportunidades remotas"
   },
   "projects": {
     "title": "Proyectos",
@@ -129,25 +128,46 @@
         "company": "DevFellowship",
         "role": "Líder Técnico & Desarrollador Full-Stack",
         "period": "Julio 2024 - Presente",
-        "description": "Liderazgo técnico del ecosistema de micro-frontends con Module Federation. Arquitectura y desarrollo del super-app DFL Learn, Reviews App, Payments App y CI Reviewer Bot con IA. Mentoría de fellows, definición de estándares técnicos, revisiones de código y participación en hackathons premiados."
+        "description": "Liderazgo técnico del ecosistema de micro-frontends con Module Federation. Arquitectura y desarrollo del super-app DFL Learn, Reviews App, Payments App y CI Reviewer Bot con IA. Mentoría de fellows, definición de estándares técnicos, revisiones de código y participación en hackathons premiados.",
+        "highlights": [
+          "4º lugar en ETH Latam 2025 — GreenLoop (reciclables → tokens on-chain en Base)",
+          "2º lugar en DevConnect ETH 2025, pista Scroll — TalentDAO",
+          "Squad multiagente de review/SDD adoptada como estándar del equipo",
+          "Arquitectura de Revenue (contratos → cobros → factura electrónica) end-to-end en producción"
+        ]
       },
       {
         "company": "Instituto Educar+",
         "role": "Profesor de Programación",
         "period": "2025 - Presente",
-        "description": "Profesor de programación y desarrollo en el Instituto Educar+, instituto de enseñanza profesional en tecnología. Enseño lógica de programación, desarrollo web y buenas prácticas a estudiantes principiantes, con mentoría de proyectos prácticos — los estudiantes han presentado proyectos en hackathons."
+        "description": "Profesor de programación y desarrollo en el Instituto Educar+, instituto de enseñanza profesional en tecnología. Enseño lógica de programación, desarrollo web y buenas prácticas a estudiantes principiantes, con mentoría de proyectos prácticos — los estudiantes han presentado proyectos en hackathons.",
+        "highlights": [
+          "Clases iniciales de lógica de programación, HTML/CSS, JS y Git",
+          "Mentoría de proyectos finales, con alumnos llegando a hackathons",
+          "Ruta didáctica \"de cero al deploy\" en Vercel/Supabase"
+        ]
       },
       {
         "company": "M&M Informática",
         "role": "Líder de Arquitectura & Desarrollo de Proyectos Internos",
         "period": "Diciembre 2024 - Febrero 2026",
-        "description": "Liderazgo de la arquitectura y desarrollo de proyectos internos. Definición de estándares técnicos, stack y buenas prácticas para el equipo. Desarrollo fullstack de nuevos sistemas con TypeScript, Next.js y NestJS. Integración con sistemas fiscales, Firebird y automatización de procesos internos."
+        "description": "Liderazgo de la arquitectura y desarrollo de proyectos internos. Definición de estándares técnicos, stack y buenas prácticas para el equipo. Desarrollo fullstack de nuevos sistemas con TypeScript, Next.js y NestJS. Integración con sistemas fiscales, Firebird y automatización de procesos internos.",
+        "highlights": [
+          "Estandarización del stack TS/Next/NestJS para proyectos nuevos",
+          "Integraciones fiscales (factura electrónica) y automatización de procesos legacy",
+          "Puente entre sistemas Delphi/Firebird y nuevas APIs REST"
+        ]
       },
       {
         "company": "Prefeitura de Marialva",
         "role": "Soporte Técnico",
         "period": "Febrero 2023 - Diciembre 2024",
-        "description": "Soporte Técnico, atendiendo organismos públicos del municipio en relación a informática."
+        "description": "Soporte Técnico, atendiendo organismos públicos del municipio en relación a informática.",
+        "highlights": [
+          "Atención end-to-end a múltiples órganos municipales",
+          "Configuración y mantenimiento de redes y servidores",
+          "Primer contacto profesional con TI a gran escala"
+        ]
       }
     ],
     "additionalSkills": [
@@ -215,19 +235,19 @@
     "title": "Acerca de Mí",
     "subtitle": "Conoce un poco más sobre mi trayectoria y pasiones",
     "greeting": "¡Hola! Soy Samuel.",
-    "bio1": "Desarrollador Full-Stack con 3+ años de experiencia, especializado en arquitecturas de micro-frontends con Module Federation, integraciones con IA (Claude API, OpenAI) y automatización de procesos con n8n. Actualmente soy líder técnico en DevFellowship; antes lideré la arquitectura de los proyectos internos de M&M Informática.",
+    "bio1": "Desarrollador Full-Stack semi senior con 3+ años de experiencia, completo tanto en full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) como en Solidity y Web3. Arquitecturas de micro-frontends con Module Federation, integraciones con IA (Claude API, OpenAI) y automatización de procesos con n8n. Actualmente soy líder técnico en DevFellowship; antes lideré la arquitectura de los proyectos internos de M&M Informática.",
     "bio2": "En DevFellowship construí el ecosistema completo de Module Federation — DFL Learn (super-app host), Reviews, Payments y el CI Revisor Bot con IA — además de 4 servidores MCP y el flujo de ingresos en producción, de contratos a cobro recurrente y facturación electrónica. Creé ITERA, plataforma de cursos con clase en vivo sincrónica sobre Supabase Realtime, y Deck, mi puesto de mando para agentes de IA. En hackathons: gané la pista Chainlink con AltPay, 4º lugar en ETH Latam 2025 (GreenLoop) y 2º lugar en la pista Scroll de DevConnect ETH 2025 (TalentDAO).",
-    "bio3": "Experiencia sólida en React, TypeScript, Supabase, PostgreSQL, NestJS, Docker y pipelines CI/CD. Apasionado por resolver problemas complejos de arquitectura y crear automatizaciones inteligentes que eliminan trabajo repetitivo.",
+    "bio3": "Experiencia sólida en React, TypeScript, Node.js, Supabase, PostgreSQL, NestJS, Solidity, Docker y pipelines CI/CD. Estoy en busca de nuevas experiencias en equipos de producto remotos, donde pueda sumar lo que ya entrego hoy y seguir creciendo.",
     "location": "Marialva, PR",
     "language": "Inglés B2",
     "schedule": "6:00 A.M - 18:00 P.M",
     "experience": "de experiencia",
     "professionalTime": "Tiempo de experiencia profesional",
-    "projectsCreated": "Repositorios GitHub",
+    "projectsCreated": "Repos con entregas",
     "technologies": "Tecnologías",
     "linesOfCode": "Líneas de Código",
     "currentFocus": "Enfoque Actual",
-    "currentFocusDescription": "Finalizando el curso de ADS y especializándome en arquitecturas escalables y desarrollo full-stack moderno.",
+    "currentFocusDescription": "Cursando el 3er año de ADS y ganando experiencia en equipos de producto, especializándome en arquitecturas escalables, full-stack moderno y Solidity/Web3.",
     "focusAreas": [
       "TypeScript",
       "Next.js",
@@ -317,10 +337,11 @@
       "tuesday": "Lunes a Viernes: 08:00 – 17:00",
       "saturday": "Sábado y Domingo: No disponible",
       "response": "Respuesta en 24h"
-    }
+    },
+    "pullRequests": "Pull requests fusionadas"
   },
   "footer": {
-    "description": "Desarrollador Full-Stack apasionado por crear soluciones digitales innovadoras y funcionales.",
+    "description": "Desarrollador Full-Stack semi senior, completo en full-stack y Solidity/Web3, en busca de nuevas experiencias.",
     "quickLinks": "Enlaces Rápidos",
     "social": "Redes Sociales",
     "contact": "Contacto",
@@ -330,9 +351,9 @@
     "phone": "Teléfono",
     "email": "Email",
     "location": "Marialva, PR - Brasil",
-    "availableFor": "Disponible para",
-    "freelanceProjects": "• Proyectos freelance",
-    "collaborations": "• Colaboraciones",
+    "availableFor": "Abierto a",
+    "freelanceProjects": "• Vacantes remotas (tiempo completo o contrato)",
+    "collaborations": "• Proyectos full-stack y Web3",
     "emailCopied": "¡Email copiado!",
     "stackTitle": "Stack principal",
     "clickToCopy": "Clic para copiar",
@@ -382,14 +403,6 @@
       "description": "Plataforma de desafíos para desarrolladores, challenges donde los devs deben desafiarse referente a los cursos vinculados en la plataforma de cursos DevfellowshipAcademy.",
       "longDescription": "Plataforma de desafíos para desarrolladores, challenges donde los devs deben desafiarse referente a los cursos vinculados en la plataforma de cursos DevfellowshipAcademy. Con pantallas para Mentoría, Administradores, todo bien organizado. Utiliza Judge0 como API de compilación. Integrado como mini app usando Module Federation para integración modular con la plataforma principal."
     },
-    "devfellowship": {
-      "description": "Plataforma principal de la comunidad DevFellowship, donde los desarrolladores se conectan, comparten conocimiento y participan en proyectos colaborativos.",
-      "longDescription": "Plataforma principal de la comunidad DevFellowship, donde los desarrolladores se conectan, comparten conocimiento y participan en proyectos colaborativos. Interfaz moderna con foros, eventos y sistema de mentoría integrado."
-    },
-    "codeLibrary": {
-      "description": "Una landing page de una plataforma de cursos llamada CodeLibrary que será el próximo lanzamiento de Devfellowship",
-      "longDescription": "Una landing page de una plataforma de cursos llamada CodeLibrary que será el próximo lanzamiento de Devfellowship. Proyecto enfocado en el desarrollo de la página inicial de la nueva plataforma de cursos de la comunidad."
-    },
     "greenloop": {
       "description": "Plataforma Web3 que transforma entregas de materiales reciclables en tokens on-chain. 4º lugar en ETH Latam 2025.",
       "longDescription": "GreenLoop es una plataforma creada durante ETH Latam 2025 que registra reciclables entregados en puntos de recolección y convierte estas entregas en tokens on-chain, usando tecnología de la red Base. Conquistamos el 4º lugar en el hackathon."
@@ -407,8 +420,8 @@
       "longDescription": "DFL Learn es la plataforma operacional completa de DevFellowship — host del ecosistema Module Federation. Dashboard con Kanban de tasks por estado (To Do, In Progress, Dev Completed, Done), filtros por proyecto/epic/entrega y métricas en tiempo real. Sidebar con módulos: Projects, Tasks, Skills, Epics, Deliveries, Meetings, Reviews, Payments, Diagrams, Members y Plans. Múltiples schemas Supabase y HookChat (IA vía Claude API)."
     },
     "paymentsApp": {
-      "description": "Micro-frontend de pagos vía Module Federation. Fellows generan invoices seleccionando deliveries completadas — el sistema calcula puntos × tasa automáticamente.",
-      "longDescription": "DFL Payments gestiona el pago de fellows por deliveries. El flujo: seleccionar mes de referencia + organización, el sistema lista deliveries disponibles (todas las tasks en `dev_completed`), cada una con puntuación y tasa (ej: R$ 75,00/pt) calculando el total. Una entrega por invoice. Rastrea open invoices e historial. Micro-frontend independiente integrado vía Module Federation en DFL Learn."
+      "description": "Pipeline de ingresos de DevFellowship, del contrato a la factura fiscal: genera el documento, recoge la firma electrónica en Autentique, agenda el cobro recurrente, emite el Pix por Woovi y la NFS-e por Spedy — con escalera de cobranza, conciliación y un cron dispatcher encima. Software de producción moviendo dinero real.",
+      "longDescription": "DFL Payments nació como un micro-frontend remote de invoices en el ecosistema Module Federation y creció hasta convertirse en toda la cadena de ingresos de DevFellowship. El flujo original sigue ahí: el fellow selecciona el mes de referencia y la organización responsable, el sistema lista las entregas cuyas tasks están todas completadas y calcula puntos × tarifa para cerrar el monto de la invoice automáticamente. Sobre eso se construyó el pipeline B2B. Un contrato define monto, modo de cobro y recurrencia; a partir de él, el sistema genera el documento desde una plantilla, lo envía a firma electrónica en Autentique y, cuando vuelve el webhook de firma, activa el contrato y materializa el cronograma de cuotas. Un cron dispatcher despierta cada cuota en la fecha correcta y la conduce por el kanban de estados — agendada, esperando factura, disparada, esperando Pix, pagada, vencida o cancelada. El Pix lo genera Woovi y la confirmación llega por webhook con verificación de firma HMAC en el servidor. La factura de servicio se emite automáticamente por la API de Spedy, con el estado de la NFS-e retornando por webhook y atado al cobro que lo originó. Cierran el ciclo una escalera de cobranza para morosidad, una pantalla de conciliación entre lo cobrado y lo que realmente entró, adendas contractuales que alteran solo las cuotas futuras sin reescribir el pasado, y un forecast de ingresos. La lógica sensible vive en TypeScript testeado — servicios de cobro, cronograma, recurrencia y forecast tienen tests unitarios — en vez de procedures en la base, manteniendo la base delgada y la autorización en RLS."
     },
     "ciRevisorBot": {
       "description": "Bot de CI en GitHub Actions. Ejecuta build, pruebas, lint y architecture checks — luego publica inline comments y summary en el PR vía Claude API.",
@@ -417,6 +430,10 @@
     "altpay": {
       "description": "Microcrédito on-chain para conductores de apps: score propio sin consulta a buró, crédito al instante y cobros vía Pix. Ganó la pista Chainlink del hackathon (Solana + Chainlink CRE/CCIP).",
       "longDescription": "AltPay (Uber Money) es una plataforma de microcrédito para conductores de aplicaciones. El conductor conecta su billetera, declara su perfil en un onboarding sin consulta a buró de crédito (\"tú declaras, nosotros ajustamos\") y el sistema calcula un score propio que decide la aprobación, el límite y los intereses. El crédito llega por Pix en segundos y los cobros se generan y se siguen mediante Woovi. La decisión de crédito corre on-chain: el score se decide en el DON mediante Chainlink CRE y se escribe on-chain por CCIP, con el desembolso y el repago liquidados en el programa de Solana (Anchor). Trabajé en el front-end, en el backend (Supabase Edge Functions) y en la integración on-chain (Solana + Chainlink). El proyecto ganó la pista Chainlink del hackathon."
+    },
+    "valdez": {
+      "description": "Bot de Discord en TypeScript que vive dentro del canal de voz: entra solo cuando llega gente, contabiliza horas en llamada con ranking, graba replay de los últimos minutos y reproduce música de YouTube y Spotify. Corre en un VPS Hetzner con healthcheck, auto-curación y protección contra OOM.",
+      "longDescription": "Valdez es un bot de Discord escrito en TypeScript sobre discord.js 14 y @discordjs/voice, pensado para vivir dentro del canal de voz del servidor. La presencia es automática por ocupación: entra cuando llega el primer humano y sale cuando la llamada se vacía. Cada entrada y salida se convierte en una sesión persistida en SQLite (better-sqlite3 en modo WAL), lo que alimenta /horas y /leaderboard con el ranking de tiempo en llamada. La función más difícil es el replay buffer: el bot se suscribe al receiver de voz y mantiene en memoria una ventana deslizante de los últimos minutos de paquetes Opus por usuario, con poda periódica para no acumular audio de quien habló y se quedó callado — en /replay esos paquetes se decodifican a PCM, se mezclan por timeline (y no simplemente concatenados, que era la causa del sonido entrecortado) y se exportan a MP3 vía ffmpeg. También hay un reproductor de música con cola, loop, modal persistente con botones de control y búsqueda en YouTube vía yt-dlp, con soporte para playlists y álbumes de Spotify. La parte que más enseñanza dejó fue la operación: el bot migró de Fly.io a un VPS Hetzner en Docker Compose y ganó una capa de resiliencia real — endpoint /health reportando el estado del gateway y de la conexión de voz, autoheal reiniciando el contenedor cuando falla el healthcheck, límites de memoria con oom_score_adj y swap, un heartbeat externo funcionando como dead-man's switch, handlers de uncaughtException y unhandledRejection, y resolución DNS forzada a IPv4 tras investigar las desconexiones de voz por el closeCode."
     }
   },
   "hackathons": {
@@ -498,8 +515,8 @@
   },
   "focus": {
     "title": "En foco ahora",
-    "subtitle": "Construyendo el puente entre las finanzas tradicionales y on-chain.",
-    "open": "Explorando nuevas oportunidades en el ecosistema Web3.",
+    "subtitle": "Full-stack de producto y el puente entre las finanzas tradicionales y on-chain.",
+    "open": "En busca de nuevas experiencias — abierto a oportunidades remotas en full-stack y Web3.",
     "items": [
       {
         "title": "Web3 & Smart Contracts",

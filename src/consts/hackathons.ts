@@ -16,7 +16,7 @@ export const HACKATHONS: Hackathon[] = [
     name: 'AltPay',
     event: 'Hackanation 2026 · TokenNation',
     location: 'São Paulo, Brasil',
-    date: 'Junho 2026',
+    date: 'Maio 2026',
     achievementKey: 'hackathons.altpay.achievement',
     descriptionKey: 'hackathons.altpay.description',
     projectLink: 'https://github.com/SamuelStefano/AltPay',

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, Mail, Phone, FileText, User, GitBranch, Globe, Code2 } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, FileText, User, GitBranch, Globe, Code2 } from 'lucide-react';
 
 // Social Links
 export const SOCIAL_LINKS = [
@@ -11,11 +11,6 @@ export const SOCIAL_LINKS = [
     icon: Linkedin,
     href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/',
     labelKey: 'hero.socialLinks.linkedin'
-  },
-  {
-    icon: Instagram,
-    href: 'https://instagram.com/samuel.stefano',
-    labelKey: 'hero.socialLinks.instagram'
   },
   {
     icon: Mail,

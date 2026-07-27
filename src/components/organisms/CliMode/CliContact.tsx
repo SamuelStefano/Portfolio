@@ -1,10 +1,9 @@
-import { Github, Linkedin, Instagram, FileText, Phone } from 'lucide-react';
+import { Github, Linkedin, FileText, Phone } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const LINKS = [
   { icon: Github, label: 'github.com/SamuelStefano', href: 'https://github.com/SamuelStefano' },
   { icon: Linkedin, label: 'linkedin.com/in/samuel-stefano', href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/' },
-  { icon: Instagram, label: 'instagram.com/samuel.stefano', href: 'https://instagram.com/samuel.stefano' },
   { icon: FileText, label: 'curriculo.pdf', href: '/curriculo.pdf' },
   { icon: Phone, label: '+55 44 99879-5387', href: 'tel:+5544998795387' },
 ];

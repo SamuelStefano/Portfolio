@@ -42,6 +42,21 @@ export default async function handler(
       });
     }
 
+    const mergedPullRequests = await (async () => {
+      try {
+        const query = encodeURIComponent(`is:pr author:${GITHUB_USERNAME} is:merged`);
+        const prResponse = await fetch(
+          `https://api.github.com/search/issues?q=${query}&per_page=1`,
+          { headers },
+        );
+        if (!prResponse.ok) return 0;
+        const data = await prResponse.json();
+        return data.total_count || 0;
+      } catch {
+        return 0;
+      }
+    })();
+
     const repos = await reposResponse.json();
     console.log(`Found ${repos.length} total repos`);
     const ownRepos = repos.filter((repo: any) => !repo.fork);
@@ -135,6 +150,7 @@ export default async function handler(
       totalRepos,
       totalStars,
       totalForks,
+      mergedPullRequests,
       linesOfCode: estimatedLinesOfCode,
       languages
     });
