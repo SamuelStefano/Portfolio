@@ -22,13 +22,18 @@ export const translateProjectDescriptions = (projects: Project[], t: TFunction):
 
 const getProjectKey = (title: string): string | null => {
   const titleMap: Record<string, string> = {
+    'ITERA': 'itera',
     'Deck': 'deck',
     'Skill Evals': 'skillEvals',
     'DevFellowship': 'devfellowship',
     'CodeLibrary': 'codeLibrary',
     'GreenLoop': 'greenloop',
     'TalentDAO': 'talentdao',
-    'Review Requests': 'reviewRequests'
+    'Review Requests': 'reviewRequests',
+    'DFL Learn': 'dflLearn',
+    'DFL Payments': 'paymentsApp',
+    'DFL-Bot Reviewer': 'ciRevisorBot',
+    'AltPay': 'altpay'
   };
   
   return titleMap[title] || null;

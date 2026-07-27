@@ -126,12 +126,6 @@
     "fiscalSystems": "Fiscal Systems",
     "experienceData": [
       {
-        "company": "Prefeitura de Marialva",
-        "role": "Technical Support",
-        "period": "February 2023 - December 2024",
-        "description": "Technical Support, serving public agencies in the municipality regarding information technology."
-      },
-      {
         "company": "DevFellowship",
         "role": "Tech Lead & Full-Stack Developer",
         "period": "July 2024 - Present",
@@ -148,6 +142,12 @@
         "role": "Architecture Lead & Internal Projects Developer",
         "period": "December 2024 - February 2026",
         "description": "Leading architecture and development of internal projects. Defining technical standards, stack and best practices for the development team. Full-stack development of new systems with TypeScript, Next.js and NestJS. Integration with fiscal systems, Firebird and internal process automation."
+      },
+      {
+        "company": "Prefeitura de Marialva",
+        "role": "Technical Support",
+        "period": "February 2023 - December 2024",
+        "description": "Technical Support, serving public agencies in the municipality regarding information technology."
       }
     ],
     "additionalSkills": [
@@ -377,6 +377,10 @@
     "linksCount": "links"
   },
   "projectDescriptions": {
+    "itera": {
+      "description": "A subscription course platform with a synchronous \"Live class\" mode: the instructor advances the whole cohort in real time, with a shared timer, raise-hand, ranking and podium. A five-app ecosystem — learner player, authoring MCP, contract package, API and documentation.",
+      "longDescription": "ITERA is a subscription course platform built as a five-app ecosystem, on its own Supabase, with RLS as the authorization authority — there is no service_role key anywhere in the servers. The learner-facing player is a Vite + React 18 SPA with Monaco, TanStack Query, PT/EN i18n and 59 test files across Vitest, Playwright and Storybook. itera-mcp is a Streamable-HTTP MCP server in Fastify exposing 25 authoring tools (Program → Unit → Lesson → Activity), where every write is validated against the author's JWT and gated by RLS policies. The Zod package @iterahq/activity-spec is the single source of truth for the 11 activity kinds, collapsing a drift that used to live in three places — the database enum, the player's type union and the MCP's constant — so an activity is validated identically on the server and on the client. itera-api is a pull-only REST v1 in Express + Zod, with per-tenant API keys, keyset pagination, federated SSO via token exchange, and Stripe billing. The landing page and the documentation live in an Astro + Starlight turborepo sharing one brand-token package. The hardest feature is the live class: a single private Supabase Realtime channel, protected by RLS, carries three concerns at once — broadcast for the instant cohort-wide advance, postgres_changes as the durable truth for anyone reconnecting mid-class, and presence for the roster of who is in the room. On top of that run a synchronized timer with add-time, raise-hand, a top-three podium, a ranking, a \"who's done\" view scoped to who is actually present, and the ability to pull a learner's work onto the class stage. Attendance and answers — both correct and incorrect — are persisted and become the post-class report, aggregated in TypeScript rather than in the database. Nothing the learner needs comes from a public CDN: Monaco and the fonts are served from our own domain, because the class runs on school and community networks where a blocked CDN is a realistic scenario. That decision was validated in practice: the platform ran a live, free programming pilot class for teenagers at Instituto Educar+."
+    },
     "deck": {
       "description": "A personal command center for working with AI agents directly on my VPS. It brings together agent chat, live terminals, persistent memory, skills, token costs and host administration in a single web interface. Built entirely by myself, from scratch.",
       "longDescription": "Deck is the platform I built — alone, from scratch — to be my command center when working with AI agents running on my own VPS. Instead of being stuck in an SSH terminal, Deck connects the browser straight to the machine: each session opens a Claude agent with isolated context, and I follow the execution in real time, with live tmux terminals and a persistent task queue. The app is split into areas covering the whole operation: Sessions (agent chat, model and active-skill selection per message), Contacts & Memory (the agent's persistent memory in navigable cards — facts, feedback and project context that survive across conversations), Documents (a markdown viewer for the repository's guides and learnings), Costs & Tokens (spend dashboard per session: input/output tokens, estimated cost and samples), Admin & Host (VPS health and inventory: CPU, RAM, load, disk, uptime, CLIs on PATH, connected MCP servers, tmux sessions and plugins, with sensitive actions protected by confirmation and an admin role on the relay) and in-app Documentation. Architecture: React + TypeScript + Vite frontend deployed on Vercel, a real-time Node backend (WebSocket) running on the Hetzner VPS, session orchestration via tmux, integration with the Claude API (Anthropic) and MCP servers, persistence in Supabase and secret management with Infisical. Everything designed, architected and implemented by me."
@@ -416,6 +420,10 @@
     "ciRevisorBot": {
       "description": "CI bot running on GitHub Actions. Executes build, tests, lint and architecture checks — then posts inline comments and summary on the PR via Claude API.",
       "longDescription": "DFL-Bot Reviewer is the shared CI system across all DevFellowship repos. Each PR triggers: build, Vitest, verify docs, lint, architecture checks, typecheck. Then the bot runs two steps: Inline review (analyzes the diff via Claude API and posts comments on changed lines) and Summary comment (consolidates the result on the PR). Example: 'Review submitted: 3 new inline comment(s), 0 file-level item(s)'. Based on DFL CI core, a reusable composite action."
+    },
+    "altpay": {
+      "description": "On-chain microcredit for rideshare drivers: an in-house score with no credit-bureau lookup, instant credit and Pix collections. Won the Chainlink track at the hackathon (Solana + Chainlink CRE/CCIP).",
+      "longDescription": "AltPay (Uber Money) is a microcredit platform for rideshare drivers. The driver connects a wallet and declares their profile in an onboarding flow that never queries a credit bureau (\"you declare, we adjust\"), and the system computes an in-house score that decides approval, limit and interest rate. The credit lands via Pix in seconds, and collections are issued and tracked through Woovi. The credit decision runs on-chain: the score is decided on the DON through Chainlink CRE and written on-chain via CCIP, with disbursement and repayment settled by a Solana program built with Anchor. I worked on the front end, the backend (Supabase Edge Functions) and the on-chain integration (Solana + Chainlink). The project won the Chainlink track at the hackathon."
     }
   },
   "hackathons": {

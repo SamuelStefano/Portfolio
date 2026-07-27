@@ -126,12 +126,6 @@
     "fiscalSystems": "Sistemas Fiscais",
     "experienceData": [
       {
-        "company": "Prefeitura de Marialva",
-        "role": "Suporte Técnico",
-        "period": "Fevereiro 2023 - Dezembro 2024",
-        "description": "Suporte Técnico, atendendo órgãos públicos do município em relação a informática."
-      },
-      {
         "company": "DevFellowship",
         "role": "Líder Técnico & Desenvolvedor Full-Stack",
         "period": "Julho 2024 - Presente",
@@ -148,6 +142,12 @@
         "role": "Líder de Arquitetura & Desenvolvimento de Projetos Internos",
         "period": "Dezembro 2024 - Fevereiro 2026",
         "description": "Liderança da arquitetura e desenvolvimento de projetos internos. Definição de padrões técnicos, stack e boas práticas para a equipe. Desenvolvimento fullstack de novos sistemas com TypeScript, Next.js e NestJS. Integração com sistemas fiscais, Firebird e automação de processos internos."
+      },
+      {
+        "company": "Prefeitura de Marialva",
+        "role": "Suporte Técnico",
+        "period": "Fevereiro 2023 - Dezembro 2024",
+        "description": "Suporte Técnico, atendendo órgãos públicos do município em relação a informática."
       }
     ],
     "additionalSkills": [
@@ -370,6 +370,10 @@
     "sections": "Seções:"
   },
   "projectDescriptions": {
+    "itera": {
+      "description": "Plataforma de cursos por assinatura com um modo \"Aula ao vivo\" síncrono: o professor avança a turma inteira em tempo real, com timer compartilhado, mão levantada, ranking e pódio. Ecossistema de 5 aplicações — player do aluno, MCP de autoria, pacote de contratos, API e documentação.",
+      "longDescription": "ITERA é uma plataforma de cursos por assinatura construída como um ecossistema de cinco aplicações, com Supabase próprio e RLS como autoridade de autorização — não existe chave service_role em nenhum dos servidores. O player do aluno é uma SPA em Vite + React 18 com Monaco, TanStack Query, i18n PT/EN e 59 arquivos de teste entre Vitest, Playwright e Storybook. O itera-mcp é um servidor MCP Streamable-HTTP em Fastify com 25 ferramentas de autoria (Program → Unit → Lesson → Activity), onde cada escrita é validada contra o JWT do autor e barrada pelas policies de RLS. O pacote Zod @iterahq/activity-spec é a fonte única de verdade dos 11 tipos de atividade, colapsando uma divergência que existia em três lugares — o enum do banco, a união de tipos do player e a constante do MCP — de modo que uma atividade é validada de forma idêntica no servidor e no cliente. A itera-api é uma REST v1 pull-only em Express + Zod, com chave de API por tenant, paginação keyset, SSO federado por token-exchange e billing Stripe. A landing e a documentação vivem num turborepo Astro + Starlight com um pacote único de tokens de marca. O recurso mais difícil é a aula ao vivo: um único canal privado do Supabase Realtime, protegido por RLS, carrega três preocupações ao mesmo tempo — broadcast para o avanço instantâneo da turma, postgres_changes como verdade durável para quem reconecta no meio da aula, e presence para a lista de quem está na sala. Em cima disso rodam timer sincronizado com adicionar tempo, mão levantada, pódio dos três primeiros, ranking, a visão de \"quem já terminou\" limitada a quem está de fato presente, e o recurso de puxar o trabalho de um aluno para o palco da turma. Presença e respostas — certas e erradas — são persistidas e viram o relatório pós-aula, agregado em TypeScript e não no banco. Nada do que o aluno precisa vem de CDN pública: o Monaco e as fontes são servidos do nosso próprio domínio, porque a aula roda em rede de escola e de comunidade, onde uma CDN bloqueada é cenário realista. Essa decisão foi validada na prática: a plataforma rodou uma aula piloto ao vivo e gratuita de programação com adolescentes do Instituto Educar+."
+    },
     "deck": {
       "description": "Posto de comando pessoal pra trabalhar com agentes de IA direto na minha VPS. Reúne chat com o agente, terminais ao vivo, memória persistente, skills, custos de tokens e administração do host numa única interface web. Criado sozinho, do zero.",
       "longDescription": "Deck é a plataforma que eu construí — sozinho, do zero — pra ser meu posto de comando ao trabalhar com agentes de IA rodando na minha própria VPS. Em vez de ficar preso num terminal SSH, o Deck conecta o navegador direto à máquina: cada sessão abre um agente Claude com contexto isolado, e eu acompanho a execução em tempo real, com terminais tmux ao vivo e fila persistente de tarefas. O app é dividido em áreas que cobrem toda a operação: Sessões (chat com o agente, seleção de modelo e skills ativas por mensagem), Contatos & Memória (a memória persistente do agente em cards navegáveis — fatos, feedbacks e contexto de projeto que sobrevivem entre conversas), Documentos (visualizador de markdown dos guias e learnings do repositório), Custos & Tokens (dashboard de gasto por sessão: tokens de entrada/saída, custo estimado e amostras), Admin & Host (saúde e inventário da VPS: CPU, RAM, load, disco, uptime, CLIs no PATH, servidores MCP conectados, sessões tmux e plugins, com ações sensíveis protegidas por confirmação e role admin no relay) e Documentação in-app. Arquitetura: frontend em React + TypeScript + Vite deployado na Vercel, backend Node em tempo real (WebSocket) rodando na VPS Hetzner, orquestração de sessões via tmux, integração com a Claude API (Anthropic) e servidores MCP, persistência em Supabase e gestão de segredos via Infisical. Tudo pensado, projetado e implementado por mim."
@@ -409,6 +413,10 @@
     "ciRevisorBot": {
       "description": "Bot de CI que roda no GitHub Actions. Executa build, testes, lint e architecture checks — depois posta inline comments e summary na PR via Claude API.",
       "longDescription": "DFL-Bot Reviewer é o sistema de CI compartilhado entre todos os repos da DevFellowship. Cada PR dispara: build, Vitest, verify docs, lint, architecture checks, typecheck. Depois o bot roda dois steps: Inline review (analisa o diff via Claude API e posta comentários nas linhas alteradas) e Summary comment (consolida o resultado na PR). Exemplo: 'Review submitted: 3 new inline comment(s), 0 file-level item(s)'. Baseado em DFL CI core, uma composite action reutilizável."
+    },
+    "altpay": {
+      "description": "Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. Venceu a trilha Chainlink do hackathon (Solana + Chainlink CRE/CCIP).",
+      "longDescription": "AltPay (Uber Money) é uma plataforma de microcrédito para quem roda — motoristas de aplicativo. O motorista conecta a carteira, declara seu perfil num onboarding sem consulta a bureau (\"você declara, a gente ajusta\") e o sistema calcula um score próprio que decide aprovação, limite e juros. O crédito cai no Pix em segundos e as cobranças são geradas e acompanhadas via Woovi. A decisão de crédito roda on-chain: o score é decidido no DON via Chainlink CRE e escrito on-chain por CCIP, com o desembolso e o repagamento liquidados no programa Solana (Anchor). Atuei no front-end, no backend (Supabase Edge Functions) e na integração on-chain (Solana + Chainlink). O projeto venceu a trilha Chainlink do hackathon."
     }
   },
   "hackathons": {

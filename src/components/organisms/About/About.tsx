@@ -92,7 +92,7 @@ export const About = () => {
                   {t('about.greeting')}
                 </Heading>
                 <img
-                  src="https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/imagem%20profissional.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9pbWFnZW0gcHJvZmlzc2lvbmFsLmpwZyIsImlhdCI6MTc1ODMxMDA0MiwiZXhwIjoxNzg5ODQ2MDQyfQ.IobSgu4JA84a7JH4l_SRZxkZZ8qCpS7oQ4PfwhlEut0"
+                  src="/imagem profissional.jpg"
                   alt="Samuel Stefano"
                   className="rounded-full border-2 border-primary/30 object-cover w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 shadow-lg flex-shrink-0 hover-photo cursor-pointer"
                 />

@@ -2,6 +2,62 @@ import { Project } from '../types/project';
 
 export const mockProjects: Project[] = [
   {
+    id: '11',
+    title: 'ITERA',
+    role: 'Creator',
+    description: 'Plataforma de cursos por assinatura com um modo "Aula ao vivo" síncrono: o professor avança a turma inteira em tempo real, com timer compartilhado, mão levantada, ranking e pódio. Ecossistema de 5 aplicações — player do aluno, MCP de autoria, pacote de contratos, API e documentação.',
+    long_description: 'ITERA é uma plataforma de cursos por assinatura construída como um ecossistema de cinco aplicações, com Supabase próprio e RLS como autoridade de autorização — não existe chave service_role em nenhum dos servidores. O player do aluno é uma SPA em Vite + React 18 com Monaco, TanStack Query, i18n PT/EN e 59 arquivos de teste entre Vitest, Playwright e Storybook. O itera-mcp é um servidor MCP Streamable-HTTP em Fastify com 25 ferramentas de autoria (Program → Unit → Lesson → Activity), onde cada escrita é validada contra o JWT do autor e barrada pelas policies de RLS. O pacote Zod @iterahq/activity-spec é a fonte única de verdade dos 11 tipos de atividade, colapsando uma divergência que existia em três lugares — o enum do banco, a união de tipos do player e a constante do MCP — de modo que uma atividade é validada de forma idêntica no servidor e no cliente. A itera-api é uma REST v1 pull-only em Express + Zod, com chave de API por tenant, paginação keyset, SSO federado por token-exchange e billing Stripe. A landing e a documentação vivem num turborepo Astro + Starlight com um pacote único de tokens de marca. O recurso mais difícil é a aula ao vivo: um único canal privado do Supabase Realtime, protegido por RLS, carrega três preocupações ao mesmo tempo — broadcast para o avanço instantâneo da turma, postgres_changes como verdade durável para quem reconecta no meio da aula, e presence para a lista de quem está na sala. Em cima disso rodam timer sincronizado com adicionar tempo, mão levantada, pódio dos três primeiros, ranking, a visão de "quem já terminou" limitada a quem está de fato presente, e o recurso de puxar o trabalho de um aluno para o palco da turma. Presença e respostas — certas e erradas — são persistidas e viram o relatório pós-aula, agregado em TypeScript e não no banco. Nada do que o aluno precisa vem de CDN pública: o Monaco e as fontes são servidos do nosso próprio domínio, porque a aula roda em rede de escola e de comunidade, onde uma CDN bloqueada é cenário realista. Essa decisão foi validada na prática: a plataforma rodou uma aula piloto ao vivo e gratuita de programação com adolescentes do Instituto Educar+.',
+    stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'Supabase Realtime', 'PostgreSQL', 'RLS', 'Zod', 'TanStack Query', 'Fastify', 'MCP', 'Express', 'Stripe', 'Astro', 'Monaco Editor', 'Turborepo', 'Vitest', 'Playwright', 'Storybook', 'OpenTelemetry', 'TailwindCSS'],
+    thumbnail_url: '/projects/itera/aula-ao-vivo.png',
+    icon_name: 'GraduationCap',
+    created_at: '2026-06-19T00:00:00Z',
+    updated_at: '2026-07-24T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '11-c1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel.jpg',
+        created_at: '2026-06-19T00:00:00Z'
+      },
+      {
+        id: '11-c2',
+        name: 'Tainan Fidelis',
+        website: 'https://tainanfidelis.com/linktree',
+        role: 'Collaborator',
+        avatar_url: '/Tainan Fidelis.jpeg',
+        created_at: '2026-06-19T00:00:00Z'
+      }
+    ],
+    project_links: [
+      { id: '11-l1', label: 'Website', title: 'App', url: 'https://app.iterahq.dev', type: 'website', created_at: '2026-06-19T00:00:00Z' },
+      { id: '11-l2', label: 'Website', title: 'Landing', url: 'https://iterahq.dev', type: 'website', created_at: '2026-06-19T00:00:00Z' },
+      { id: '11-l3', label: 'Website', title: 'Documentação', url: 'https://docs.iterahq.dev', type: 'website', created_at: '2026-06-19T00:00:00Z' }
+    ],
+    project_sections: [
+      {
+        id: '11-s1',
+        folder_name: 'live',
+        display_name: 'Aula ao vivo',
+        description: 'Aula síncrona num único canal Realtime: broadcast para o avanço instantâneo da turma, postgres_changes para quem reconecta e presence para a lista de quem está na sala',
+        order_index: 1,
+        project_images: [{ id: '11-s1-i1', image_url: '/projects/itera/aula-ao-vivo.png', order_index: 1 }]
+      },
+      {
+        id: '11-s2',
+        folder_name: 'hero',
+        display_name: 'Recepção da sala',
+        description: 'Sala de espera antes do professor iniciar, com a lista de quem já entrou atualizada por presence',
+        order_index: 2,
+        project_images: [{ id: '11-s2-i1', image_url: '/projects/itera/recepcao.png', order_index: 1 }]
+      }
+    ],
+    image_categories: {
+      'live': ['/projects/itera/aula-ao-vivo.png'],
+      'hero': ['/projects/itera/recepcao.png']
+    }
+  },
+  {
     id: '0',
     title: 'Deck',
     role: 'Creator',
@@ -473,7 +529,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-11-01T00:00:00Z'
       }
     ],
@@ -627,7 +683,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-09-01T00:00:00Z'
       },
       {
@@ -812,7 +868,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2024-07-01T00:00:00Z'
       },
       {
@@ -873,7 +929,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Collaborator',
-        avatar_url: 'https://kushljlnnwmqxubeeete.supabase.co/storage/v1/object/sign/Portfolio-bucket/images/Tainan%20Fidelis.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wMmE1ZjE0Ny0zOTI3LTQwMmQtOTllMS00OTJiZjVhYzk5YTIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQb3J0Zm9saW8tYnVja2V0L2ltYWdlcy9UYWluYW4gRmlkZWxpcy5qcGVnIiwiaWF0IjoxNzU5MjYxOTc5LCJleHAiOjE3OTA3OTc5Nzl9.5S1vw8Z_RthbiR9J427HPDzm_Cq8P2qlDwxtaE-utAQ',
+        avatar_url: '/Tainan Fidelis.jpeg',
         created_at: '2025-01-01T00:00:00Z'
       }
     ],
@@ -944,7 +1000,7 @@ export const mockProjects: Project[] = [
     id: '10',
     title: 'AltPay',
     role: 'Creator',
-    description: 'Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. Projeto de hackathon Web3 (Solana + Chainlink CRE/CCIP).',
+    description: 'Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. Venceu a trilha Chainlink do hackathon (Solana + Chainlink CRE/CCIP).',
     long_description: 'AltPay (Uber Money) é uma plataforma de microcrédito para quem roda — motoristas de aplicativo. O motorista conecta a carteira, declara seu perfil num onboarding sem consulta a bureau ("você declara, a gente ajusta") e o sistema calcula um score próprio que decide aprovação, limite e juros. O crédito cai no Pix em segundos e as cobranças são geradas e acompanhadas via Woovi. A decisão de crédito roda on-chain: o score é decidido no DON via Chainlink CRE e escrito on-chain por CCIP, com o desembolso e o repagamento liquidados no programa Solana (Anchor). Atuei no front-end, backend (Supabase Edge Functions) e na integração on-chain (Solana + Chainlink).',
     stack: ['React', 'TypeScript', 'Vite', 'Solana', 'Anchor', 'Rust', 'Chainlink CRE', 'CCIP', 'Supabase Edge Functions', 'Woovi', 'Pix', 'Web3', 'TailwindCSS'],
     thumbnail_url: '/projects/altpay/Landing.png',
