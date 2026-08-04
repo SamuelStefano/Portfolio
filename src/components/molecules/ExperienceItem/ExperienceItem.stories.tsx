@@ -32,7 +32,7 @@ export const CurrentJob: Story = {
     role: 'Analista de Suporte Técnico',
     period: 'Dezembro 2024 - Janeiro 2026',
     description: 'Suporte técnico aos clientes do ERP da empresa, diagnosticando incidentes de sistema, banco de dados e operação de loja.',
-    stack: ['Suporte a ERP', 'Firebird', 'Delphi', 'SQL', 'Atendimento ao Cliente'],
+    stack: ['Suporte a ERP', 'Firebird', 'SQL', 'Diagnóstico de Incidentes', 'Atendimento ao Cliente'],
     icon: Briefcase,
   },
 };
@@ -73,7 +73,7 @@ export const Timeline: Story = {
             role="Analista de Suporte Técnico"
             period="Dezembro 2024 - Janeiro 2026"
             description="Suporte técnico aos clientes do ERP da empresa."
-            stack={['Suporte a ERP', 'Firebird', 'Delphi', 'SQL']}
+            stack={['Suporte a ERP', 'Firebird', 'SQL', 'Diagnóstico de Incidentes']}
             icon={Briefcase}
           />
         </div>

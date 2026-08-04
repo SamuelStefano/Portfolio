@@ -151,10 +151,10 @@
         "company": "M&M Informática",
         "role": "Analista de Soporte Técnico",
         "period": "Diciembre 2024 - Enero 2026",
-        "description": "Soporte técnico a los clientes del ERP de la empresa, diagnosticando incidentes de sistema, base de datos y operación de tienda. Tuve contacto con Delphi y Firebird en el producto legacy, ganando familiaridad con el funcionamiento interno de un ERP de retail (facturación fiscal, punto de venta y modelado de datos).",
+        "description": "Soporte técnico a los clientes del ERP de la empresa, diagnosticando incidentes de sistema, base de datos y operación de tienda. Trabajé a diario sobre la base de datos Firebird del ERP, investigando datos y consultas para resolver los tickets. Recibí formación en el producto legacy y gané familiaridad con el funcionamiento interno de un ERP de retail (facturación fiscal, punto de venta y modelado de datos).",
         "highlights": [
           "Atención y diagnóstico de incidentes en ERP de retail",
-          "Estudio de Delphi y Firebird en el producto legacy"
+          "Investigación de datos y consultas en la base Firebird del ERP"
         ]
       },
       {

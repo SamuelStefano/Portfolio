@@ -153,12 +153,12 @@ export const EXPERIENCE_DATA = [
     role: 'Analista de Suporte Técnico',
     period: 'Dezembro 2024 - Janeiro 2026',
     current: false,
-    description: 'Suporte técnico aos clientes do ERP da empresa, diagnosticando incidentes de sistema, banco de dados e operação de loja. Tive contato com Delphi e Firebird no produto legado, ganhando familiaridade com o funcionamento interno de um ERP de varejo (emissão fiscal, PDV e modelagem de dados).',
+    description: 'Suporte técnico aos clientes do ERP da empresa, diagnosticando incidentes de sistema, banco de dados e operação de loja. Trabalhei diariamente sobre o banco Firebird do ERP, investigando dados e consultas para resolver os chamados. Recebi treinamento no produto legado e ganhei familiaridade com o funcionamento interno de um ERP de varejo (emissão fiscal, PDV e modelagem de dados).',
     highlights: [
       'Atendimento e diagnóstico de incidentes em ERP de varejo',
-      'Estudo de Delphi e Firebird no produto legado',
+      'Investigação de dados e consultas no banco Firebird do ERP',
     ],
-    stack: ['Suporte a ERP', 'Firebird', 'Delphi', 'SQL', 'Atendimento ao Cliente'],
+    stack: ['Suporte a ERP', 'Firebird', 'SQL', 'Diagnóstico de Incidentes', 'Atendimento ao Cliente'],
     logo: '/MMIcon.png',
     icon: Laptop,
     website: 'https://mminfo.me'
