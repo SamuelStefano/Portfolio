@@ -126,9 +126,9 @@
     "experienceData": [
       {
         "company": "DevFellowship",
-        "role": "Líder Técnico & Desenvolvedor Full-Stack",
+        "role": "Líder Técnico da Plataforma Interna de Desenvolvimento",
         "period": "Julho 2024 - Presente",
-        "description": "Liderança técnica do ecossistema de micro-frontends com Module Federation. Arquitetura e desenvolvimento do super-app DFL Learn, Reviews App, Payments App e CI Revisor Bot com IA. Mentoria de fellows, definição de padrões técnicos, revisões de código e participação em hackathons premiados.",
+        "description": "Liderança técnica da plataforma interna de desenvolvimento — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetura e desenvolvimento do super-app DFL Learn, Reviews App, Payments App e CI Revisor Bot com IA. Mentoria de fellows, definição de padrões técnicos, revisões de código e participação em hackathons premiados.",
         "highlights": [
           "4º lugar ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)",
           "2º lugar DevConnect ETH 2025 trilha Scroll — TalentDAO",
@@ -149,18 +149,17 @@
       },
       {
         "company": "M&M Informática",
-        "role": "Líder de Arquitetura & Desenvolvimento de Projetos Internos",
-        "period": "Dezembro 2024 - Fevereiro 2026",
-        "description": "Liderança da arquitetura e desenvolvimento de projetos internos. Definição de padrões técnicos, stack e boas práticas para a equipe. Desenvolvimento fullstack de novos sistemas com TypeScript, Next.js e NestJS. Integração com sistemas fiscais, Firebird e automação de processos internos.",
+        "role": "Analista de Suporte Técnico",
+        "period": "Dezembro 2024 - Janeiro 2026",
+        "description": "Suporte técnico aos clientes do ERP da empresa, diagnosticando incidentes de sistema, banco de dados e operação de loja. Tive contato com Delphi e Firebird no produto legado, ganhando familiaridade com o funcionamento interno de um ERP de varejo (emissão fiscal, PDV e modelagem de dados).",
         "highlights": [
-          "Padronização da stack TS/Next/NestJS para projetos novos",
-          "Integrações fiscais (NF-e) e automação de processos legacy",
-          "Bridge entre sistemas Delphi/Firebird e novas APIs REST"
+          "Atendimento e diagnóstico de incidentes em ERP de varejo",
+          "Estudo de Delphi e Firebird no produto legado"
         ]
       },
       {
         "company": "Prefeitura de Marialva",
-        "role": "Suporte Técnico",
+        "role": "Estagiário de Suporte Técnico",
         "period": "Fevereiro 2023 - Dezembro 2024",
         "description": "Suporte Técnico, atendendo órgãos públicos do município em relação a informática.",
         "highlights": [
@@ -235,7 +234,7 @@
     "title": "Sobre Mim",
     "subtitle": "Conheça um pouco mais sobre minha trajetória e paixões",
     "greeting": "Olá! Eu sou o Samuel.",
-    "bio1": "Desenvolvedor Full-Stack pleno com 3+ anos de experiência, completo tanto no full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) quanto em Solidity e Web3. Arquiteturas de micro-frontends com Module Federation, integrações com IA (Claude API, OpenAI) e automação de processos com n8n. Atualmente sou líder técnico na DevFellowship; antes disso liderei a arquitetura dos projetos internos da M&M Informática.",
+    "bio1": "Desenvolvedor Full-Stack pleno com 3+ anos de experiência, completo tanto no full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) quanto em Solidity e Web3. Arquiteturas de micro-frontends com Module Federation, integrações com IA (Claude API, OpenAI) e automação de processos com n8n. Atualmente sou líder técnico da plataforma interna de desenvolvimento na DevFellowship.",
     "bio2": "Na DevFellowship, construí o ecossistema completo de Module Federation — DFL Learn (super-app host), Reviews, Payments e o CI Revisor Bot com IA — além de 4 servidores MCP e do fluxo de receita em produção, de contratos a cobrança recorrente e NF-e. Criei o ITERA, plataforma de cursos com aula ao vivo síncrona sobre Supabase Realtime, e o Deck, meu posto de comando para agentes de IA. Em hackathons: vitória na trilha Chainlink com o AltPay, 4º lugar no ETH Latam 2025 (GreenLoop) e 2º lugar na trilha Scroll do DevConnect ETH 2025 (TalentDAO).",
     "bio3": "Experiência sólida em React, TypeScript, Node.js, Supabase, PostgreSQL, NestJS, Solidity, Docker e pipelines CI/CD. Estou em busca de novas experiências em times de produto remotos, onde eu possa somar o que já entrego hoje e continuar crescendo.",
     "location": "Marialva, PR",

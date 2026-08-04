@@ -126,9 +126,9 @@
     "experienceData": [
       {
         "company": "DevFellowship",
-        "role": "Tech Lead & Full-Stack Developer",
+        "role": "Tech Lead — Internal Developer Platform",
         "period": "July 2024 - Present",
-        "description": "Technical leadership of the micro-frontends ecosystem with Module Federation. Architecture and development of DFL Learn super-app, Reviews App, Payments App and CI Reviewer Bot with AI. Mentoring fellows, defining technical standards, code reviews and participation in award-winning hackathons.",
+        "description": "Technical leadership of the internal developer platform — the tooling and workflow the company's devs use to build client software. Architecture and development of DFL Learn super-app, Reviews App, Payments App and CI Reviewer Bot with AI. Mentoring fellows, defining technical standards, code reviews and participation in award-winning hackathons.",
         "highlights": [
           "4th place at ETH Latam 2025 — GreenLoop (recyclables → on-chain tokens on Base)",
           "2nd place at DevConnect ETH 2025, Scroll track — TalentDAO",
@@ -149,18 +149,17 @@
       },
       {
         "company": "M&M Informática",
-        "role": "Architecture Lead & Internal Projects Developer",
-        "period": "December 2024 - February 2026",
-        "description": "Leading architecture and development of internal projects. Defining technical standards, stack and best practices for the development team. Full-stack development of new systems with TypeScript, Next.js and NestJS. Integration with fiscal systems, Firebird and internal process automation.",
+        "role": "Technical Support Analyst",
+        "period": "December 2024 - January 2026",
+        "description": "Technical support for the company's ERP customers, troubleshooting system, database and store-operation incidents. I had exposure to Delphi and Firebird on the legacy product, gaining familiarity with the inner workings of a retail ERP (tax invoicing, POS and data modelling).",
         "highlights": [
-          "Standardised the TS/Next/NestJS stack for new projects",
-          "Tax integrations (e-invoicing) and legacy process automation",
-          "Bridge between Delphi/Firebird systems and new REST APIs"
+          "Support and incident troubleshooting on a retail ERP",
+          "Studied Delphi and Firebird on the legacy product"
         ]
       },
       {
         "company": "Prefeitura de Marialva",
-        "role": "Technical Support",
+        "role": "IT Support Intern",
         "period": "February 2023 - December 2024",
         "description": "Technical Support, serving public agencies in the municipality regarding information technology.",
         "highlights": [
@@ -235,7 +234,7 @@
     "title": "About Me",
     "subtitle": "Learn a little more about my journey and passions",
     "greeting": "Hello! I'm Samuel.",
-    "bio1": "Mid-level Full-Stack Developer with 3+ years of experience, fully-rounded both across the full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) and in Solidity and Web3. Micro-frontend architectures with Module Federation, AI integrations (Claude API, OpenAI) and process automation with n8n. I am currently tech lead at DevFellowship; before that I led the architecture of M&M Informática internal projects.",
+    "bio1": "Mid-level Full-Stack Developer with 3+ years of experience, fully-rounded both across the full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) and in Solidity and Web3. Micro-frontend architectures with Module Federation, AI integrations (Claude API, OpenAI) and process automation with n8n. I am currently tech lead of the internal developer platform at DevFellowship.",
     "bio2": "At DevFellowship I built the complete Module Federation ecosystem — DFL Learn (super-app host), Reviews, Payments and the AI-powered CI Reviewer Bot — plus 4 MCP servers and the revenue pipeline running in production, from contracts to recurring billing and electronic invoicing. I created ITERA, a course platform with a synchronous live-class mode built on Supabase Realtime, and Deck, my command post for AI agents. In hackathons: won the Chainlink track with AltPay, 4th place at ETH Latam 2025 (GreenLoop) and 2nd place in the Scroll track at DevConnect ETH 2025 (TalentDAO).",
     "bio3": "Solid experience in React, TypeScript, Node.js, Supabase, PostgreSQL, NestJS, Solidity, Docker and CI/CD pipelines. I am looking for new experience on remote product teams, where I can add what I already deliver today and keep growing.",
     "location": "Marialva, PR",

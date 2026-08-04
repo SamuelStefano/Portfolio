@@ -117,10 +117,10 @@ export const TECH_CATEGORIES = [
 export const EXPERIENCE_DATA = [
   {
     company: 'DevFellowship',
-    role: 'Líder Técnico & Desenvolvedor Full-Stack',
+    role: 'Líder Técnico da Plataforma Interna de Desenvolvimento',
     period: 'Julho 2024 - Presente',
     current: true,
-    description: 'Liderança técnica do ecossistema de micro-frontends da DevFellowship com Module Federation. Arquitetei e desenvolvi o super-app DFL Learn (host), Reviews, Payments (revenue/cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
+    description: 'Lidero tecnicamente a plataforma interna de desenvolvimento da DevFellowship — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetei e desenvolvi o ecossistema de micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
     highlights: [
       '4º lugar ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)',
       '2º lugar DevConnect ETH 2025 trilha Scroll — TalentDAO',
@@ -150,23 +150,22 @@ export const EXPERIENCE_DATA = [
   },
   {
     company: 'M&M Informática',
-    role: 'Líder de Arquitetura & Desenvolvimento de Projetos Internos',
-    period: 'Dezembro 2024 - Fevereiro 2026',
+    role: 'Analista de Suporte Técnico',
+    period: 'Dezembro 2024 - Janeiro 2026',
     current: false,
-    description: 'Liderei a arquitetura e desenvolvimento dos projetos internos. Definição de padrões técnicos, stack e boas práticas para o time. Entreguei sistemas fullstack em TypeScript, Next.js e NestJS, integração com sistemas fiscais, banco de dados Firebird e automação de processos internos.',
+    description: 'Suporte técnico aos clientes do ERP da empresa, diagnosticando incidentes de sistema, banco de dados e operação de loja. Tive contato com Delphi e Firebird no produto legado, ganhando familiaridade com o funcionamento interno de um ERP de varejo (emissão fiscal, PDV e modelagem de dados).',
     highlights: [
-      'Padronização da stack TS/Next/NestJS para projetos novos',
-      'Integrações fiscais (NF-e) e automação de processos legacy',
-      'Bridge entre sistemas Delphi/Firebird e novas APIs REST',
+      'Atendimento e diagnóstico de incidentes em ERP de varejo',
+      'Estudo de Delphi e Firebird no produto legado',
     ],
-    stack: ['TypeScript', 'Next.js', 'NestJS', 'TailwindCSS', 'Firebird', 'Delphi', 'APIs', 'Sistemas Fiscais', 'Arquitetura de Software', 'Liderança Técnica'],
+    stack: ['Suporte a ERP', 'Firebird', 'Delphi', 'SQL', 'Atendimento ao Cliente'],
     logo: '/MMIcon.png',
     icon: Laptop,
     website: 'https://mminfo.me'
   },
   {
     company: 'Prefeitura de Marialva',
-    role: 'Suporte Técnico',
+    role: 'Estagiário de Suporte Técnico',
     period: 'Fevereiro 2023 - Dezembro 2024',
     current: false,
     description: 'Suporte técnico atendendo órgãos públicos do município. Cuidei de redes, servidores, impressoras, computadores e sistemas operacionais, garantindo continuidade da operação do setor público.',

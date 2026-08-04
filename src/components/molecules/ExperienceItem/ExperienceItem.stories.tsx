@@ -29,10 +29,10 @@ export const Default: Story = {
 export const CurrentJob: Story = {
   args: {
     company: 'M&M Informática',
-    role: 'Suporte Técnico & Desenvolvedor',
-    period: 'Dezembro 2024 - atualmente',
-    description: 'Suporte técnico especializado em diversos softwares que a empresa desenvolve.',
-    stack: ['Firebird', 'Delphi', 'APIs', 'JavaScript', 'TypeScript', 'NestJS'],
+    role: 'Analista de Suporte Técnico',
+    period: 'Dezembro 2024 - Janeiro 2026',
+    description: 'Suporte técnico aos clientes do ERP da empresa, diagnosticando incidentes de sistema, banco de dados e operação de loja.',
+    stack: ['Suporte a ERP', 'Firebird', 'Delphi', 'SQL', 'Atendimento ao Cliente'],
     icon: Briefcase,
   },
 };
@@ -40,7 +40,7 @@ export const CurrentJob: Story = {
 export const FirstJob: Story = {
   args: {
     company: 'Prefeitura de Marialva',
-    role: 'Suporte Técnico',
+    role: 'Estagiário de Suporte Técnico',
     period: 'Fevereiro 2023 - Dezembro 2024',
     description: 'Suporte Técnico, atendendo órgãos públicos do município em relação a informática.',
     stack: ['Suporte Técnico', 'Redes', 'Hardware'],
@@ -70,10 +70,10 @@ export const Timeline: Story = {
         <div className="flex-1 bg-card border border-border rounded-lg p-6">
           <ExperienceItem
             company="M&M Informática"
-            role="Desenvolvedor"
-            period="Dezembro 2024 - atualmente"
-            description="Desenvolvimento e suporte de sistemas fiscais."
-            stack={['Delphi', 'APIs', 'JavaScript', 'TypeScript']}
+            role="Analista de Suporte Técnico"
+            period="Dezembro 2024 - Janeiro 2026"
+            description="Suporte técnico aos clientes do ERP da empresa."
+            stack={['Suporte a ERP', 'Firebird', 'Delphi', 'SQL']}
             icon={Briefcase}
           />
         </div>
@@ -84,7 +84,7 @@ export const Timeline: Story = {
         <div className="flex-1 bg-card border border-border rounded-lg p-6 opacity-70">
           <ExperienceItem
             company="Prefeitura de Marialva"
-            role="Suporte Técnico"
+            role="Estagiário de Suporte Técnico"
             period="Fevereiro 2023 - Dezembro 2024"
             description="Suporte técnico para órgãos públicos."
             stack={['Suporte Técnico', 'Redes']}
