@@ -50,11 +50,38 @@ export const mockProjects: Project[] = [
         description: 'Sala de espera antes do professor iniciar, com a lista de quem já entrou atualizada por presence',
         order_index: 2,
         project_images: [{ id: '11-s2-i1', image_url: '/projects/itera/recepcao.png', order_index: 1 }]
+      },
+      {
+        id: '11-s3',
+        folder_name: 'landing',
+        display_name: 'Landing',
+        description: 'Página de apresentação da plataforma: hero com preview do player ao vivo, seção de cursos e proposta de valor para membros DFL e assinantes',
+        order_index: 3,
+        project_images: [{ id: '11-s3-i1', image_url: '/projects/itera/landing.png', order_index: 1 }]
+      },
+      {
+        id: '11-s4',
+        folder_name: 'docs',
+        display_name: 'Documentação',
+        description: 'Site de documentação do itera-mcp: descreve o servidor MCP Streamable-HTTP com 21 ferramentas de autoria que escrevem Program → Unit → Lesson → Activity sob RLS do autor',
+        order_index: 4,
+        project_images: [{ id: '11-s4-i1', image_url: '/projects/itera/docs.png', order_index: 1 }]
+      },
+      {
+        id: '11-s5',
+        folder_name: 'login',
+        display_name: 'Acesso ao app',
+        description: 'Tela de login do player do aluno: entrada por e-mail, senha ou link mágico — sem barreira de senha na primeira aula — e SSO federado via conta DFL',
+        order_index: 5,
+        project_images: [{ id: '11-s5-i1', image_url: '/projects/itera/login.png', order_index: 1 }]
       }
     ],
     image_categories: {
       'live': ['/projects/itera/aula-ao-vivo.png'],
-      'hero': ['/projects/itera/recepcao.png']
+      'hero': ['/projects/itera/recepcao.png'],
+      'landing': ['/projects/itera/landing.png'],
+      'docs': ['/projects/itera/docs.png'],
+      'login': ['/projects/itera/login.png']
     }
   },
   {
