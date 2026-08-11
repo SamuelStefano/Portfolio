@@ -44,11 +44,57 @@ export const mockProjects: Project[] = [
         project_images: [{ id: '11-s1-i1', image_url: '/projects/itera/aula-ao-vivo.png', order_index: 1 }]
       },
       {
+        id: '11-s6',
+        folder_name: 'sandbox',
+        display_name: 'Sandbox de código',
+        description: 'Editor Monaco com preview ao vivo no navegador e correção determinística: o aluno escreve, vê a tela mudar na hora e recebe check a check o que já passou. A variante guiada troca o código livre por lacunas com banco de palavras, para quem ainda não digita sintaxe de cabeça',
+        order_index: 2,
+        project_images: [
+          { id: '11-s6-i1', image_url: '/projects/itera/sandbox-codigo.png', order_index: 1 },
+          { id: '11-s6-i2', image_url: '/projects/itera/code-guiado.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '11-s7',
+        folder_name: 'git',
+        display_name: 'Aula de Git no terminal',
+        description: 'Terminal simulado com engine de Git determinística — sem rede e sem container. O comando errado executa, imprime o erro real do Git e simplesmente não acende o passo. Dois modos de entrada: texto livre para quem já sabe digitar, e escolha de comando para a primeira aula',
+        order_index: 3,
+        project_images: [
+          { id: '11-s7-i1', image_url: '/projects/itera/git-terminal.png', order_index: 1 },
+          { id: '11-s7-i2', image_url: '/projects/itera/git-terminal-opcoes.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '11-s8',
+        folder_name: 'canvas',
+        display_name: 'Canvas de atividades',
+        description: 'Doze tipos de atividade renderizados pelo mesmo engine, despachados pelo campo kind e validados por Zod antes de chegar à tela. Conceito com markdown, associação, ordenação arrastável e diagrama Mermaid dividem os mesmos primitivos de instrução e feedback',
+        order_index: 4,
+        project_images: [
+          { id: '11-s8-i1', image_url: '/projects/itera/canvas-conceito.png', order_index: 1 },
+          { id: '11-s8-i2', image_url: '/projects/itera/canvas-associacao.png', order_index: 2 },
+          { id: '11-s8-i3', image_url: '/projects/itera/canvas-ordenacao.png', order_index: 3 },
+          { id: '11-s8-i4', image_url: '/projects/itera/canvas-diagrama.png', order_index: 4 }
+        ]
+      },
+      {
+        id: '11-s9',
+        folder_name: 'trilha',
+        display_name: 'Trilhas',
+        description: 'A jornada do aluno como uma trilha vertical: unidade a unidade, lição a lição, com o tipo de cada atividade visível e o que ainda não abriu marcado com cadeado. O catálogo é a porta de entrada, com matrícula e progresso por curso',
+        order_index: 5,
+        project_images: [
+          { id: '11-s9-i1', image_url: '/projects/itera/trilha.png', order_index: 1 },
+          { id: '11-s9-i2', image_url: '/projects/itera/catalogo.png', order_index: 2 }
+        ]
+      },
+      {
         id: '11-s2',
         folder_name: 'hero',
         display_name: 'Recepção da sala',
         description: 'Sala de espera antes do professor iniciar, com a lista de quem já entrou atualizada por presence',
-        order_index: 2,
+        order_index: 6,
         project_images: [{ id: '11-s2-i1', image_url: '/projects/itera/recepcao.png', order_index: 1 }]
       },
       {
@@ -56,7 +102,7 @@ export const mockProjects: Project[] = [
         folder_name: 'landing',
         display_name: 'Landing',
         description: 'Página de apresentação da plataforma: hero com preview do player ao vivo, seção de cursos e proposta de valor para membros DFL e assinantes',
-        order_index: 3,
+        order_index: 7,
         project_images: [{ id: '11-s3-i1', image_url: '/projects/itera/landing.png', order_index: 1 }]
       },
       {
@@ -64,7 +110,7 @@ export const mockProjects: Project[] = [
         folder_name: 'docs',
         display_name: 'Documentação',
         description: 'Site de documentação do itera-mcp: descreve o servidor MCP Streamable-HTTP com 21 ferramentas de autoria que escrevem Program → Unit → Lesson → Activity sob RLS do autor',
-        order_index: 4,
+        order_index: 8,
         project_images: [{ id: '11-s4-i1', image_url: '/projects/itera/docs.png', order_index: 1 }]
       },
       {
@@ -72,12 +118,21 @@ export const mockProjects: Project[] = [
         folder_name: 'login',
         display_name: 'Acesso ao app',
         description: 'Tela de login do player do aluno: entrada por e-mail, senha ou link mágico — sem barreira de senha na primeira aula — e SSO federado via conta DFL',
-        order_index: 5,
+        order_index: 9,
         project_images: [{ id: '11-s5-i1', image_url: '/projects/itera/login.png', order_index: 1 }]
       }
     ],
     image_categories: {
       'live': ['/projects/itera/aula-ao-vivo.png'],
+      'sandbox': ['/projects/itera/sandbox-codigo.png', '/projects/itera/code-guiado.png'],
+      'git': ['/projects/itera/git-terminal.png', '/projects/itera/git-terminal-opcoes.png'],
+      'canvas': [
+        '/projects/itera/canvas-conceito.png',
+        '/projects/itera/canvas-associacao.png',
+        '/projects/itera/canvas-ordenacao.png',
+        '/projects/itera/canvas-diagrama.png'
+      ],
+      'trilha': ['/projects/itera/trilha.png', '/projects/itera/catalogo.png'],
       'hero': ['/projects/itera/recepcao.png'],
       'landing': ['/projects/itera/landing.png'],
       'docs': ['/projects/itera/docs.png'],

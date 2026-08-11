@@ -17,6 +17,10 @@ import {
   ArrowUpRight,
   Github,
   Tag,
+  Terminal,
+  GitBranch,
+  LayoutGrid,
+  Route,
 } from 'lucide-react';
 import { Button } from '@/components/atoms/button/button';
 import { Heading } from '@/components/atoms/Heading/Heading';
@@ -63,6 +67,10 @@ const SECTION_ICONS: Record<string, React.ComponentType<any>> = {
   hero: Globe,
   challenges: Code2,
   challenge: Code2,
+  sandbox: Terminal,
+  git: GitBranch,
+  canvas: LayoutGrid,
+  trilha: Route,
 };
 
 function SectionIcon({ name, className }: { name: string; className?: string }) {
