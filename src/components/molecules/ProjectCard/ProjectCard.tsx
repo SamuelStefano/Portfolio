@@ -1,6 +1,6 @@
 import { ExternalLink, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { cn } from '@/lib/utils';
+import { cn, cardSrc } from '@/lib/utils';
 import { Card, CardContent } from '@/components/atoms/card/card';
 import { Badge } from '@/components/atoms/badge/badge';
 import { Button } from '@/components/atoms/button/button';
@@ -47,11 +47,12 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
       <div className="relative h-44 overflow-hidden">
         {project.thumbnail_url ? (
           <img
-            src={project.thumbnail_url}
+            src={cardSrc(project.thumbnail_url)}
             alt={project.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
             decoding="async"
+            onError={e => { e.currentTarget.src = project.thumbnail_url!; }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">

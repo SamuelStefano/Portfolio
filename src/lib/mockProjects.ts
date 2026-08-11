@@ -17,7 +17,7 @@ export const mockProjects: Project[] = [
         id: '11-c1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2026-06-19T00:00:00Z'
       },
       {
@@ -25,7 +25,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Collaborator',
-        avatar_url: '/Tainan Fidelis.jpeg',
+        avatar_url: '/Tainan Fidelis-avatar.webp',
         created_at: '2026-06-19T00:00:00Z'
       }
     ],
@@ -100,7 +100,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2026-06-05T00:00:00Z'
       }
     ],
@@ -204,7 +204,7 @@ export const mockProjects: Project[] = [
         id: '12-c1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2026-05-14T00:00:00Z'
       }
     ],
@@ -237,7 +237,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2024-01-15T00:00:00Z'
       },
       {
@@ -245,7 +245,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Collaborator',
-        avatar_url: '/Tainan Fidelis.jpeg',
+        avatar_url: '/Tainan Fidelis-avatar.webp',
         created_at: '2024-01-15T00:00:00Z'
       }
     ],
@@ -361,7 +361,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2025-01-15T00:00:00Z'
       }
     ],
@@ -443,7 +443,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2024-11-01T00:00:00Z'
       },
       {
@@ -451,7 +451,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
-        avatar_url: '/Tainan Fidelis.jpeg',
+        avatar_url: '/Tainan Fidelis-avatar.webp',
         created_at: '2024-11-01T00:00:00Z'
       }
     ],
@@ -605,14 +605,14 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
-        avatar_url: '/Tainan Fidelis.jpeg',
+        avatar_url: '/Tainan Fidelis-avatar.webp',
         created_at: '2024-09-01T00:00:00Z'
       },
       {
         id: '1',
         name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2024-09-01T00:00:00Z'
       }
     ],
@@ -782,7 +782,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2024-07-01T00:00:00Z'
       },
       {
@@ -790,7 +790,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Creator',
-        avatar_url: '/Tainan Fidelis.jpeg',
+        avatar_url: '/Tainan Fidelis-avatar.webp',
         created_at: '2024-07-01T00:00:00Z'
       },
       {
@@ -843,7 +843,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2025-01-01T00:00:00Z'
       },
       {
@@ -851,7 +851,7 @@ export const mockProjects: Project[] = [
         name: 'Tainan Fidelis',
         website: 'https://tainanfidelis.com/linktree',
         role: 'Collaborator',
-        avatar_url: '/Tainan Fidelis.jpeg',
+        avatar_url: '/Tainan Fidelis-avatar.webp',
         created_at: '2025-01-01T00:00:00Z'
       }
     ],
@@ -897,7 +897,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2025-02-01T00:00:00Z'
       }
     ],
@@ -934,7 +934,7 @@ export const mockProjects: Project[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel.jpg',
+        avatar_url: '/Samuel-avatar.webp',
         created_at: '2026-05-29T00:00:00Z'
       }
     ],

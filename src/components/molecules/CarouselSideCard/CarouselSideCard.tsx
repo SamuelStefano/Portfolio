@@ -1,3 +1,4 @@
+import { cardSrc } from '@/lib/utils';
 import { Badge } from '@/components/atoms/badge/badge';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
@@ -17,7 +18,7 @@ export const CarouselSideCard = ({ project, onClick }: CarouselSideCardProps) =>
       {project.thumbnail_url ? (
         <div className="w-full h-full relative">
            <img
-              src={project.thumbnail_url}
+              src={cardSrc(project.thumbnail_url)}
               alt={project.title}
               className="w-full h-full object-cover"
               loading="lazy"

@@ -25,7 +25,7 @@ import { Project, ProjectSection } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
 import { useMotionPreset } from '@/hooks/useMotionPreset';
 import { setOverlayOpen } from '@/lib/overlayState';
-import { cn } from '@/lib/utils';
+import { cn, thumbSrc } from '@/lib/utils';
 
 /* ─── helpers ──────────────────────────────────────────────────────── */
 
@@ -264,7 +264,16 @@ const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle, 
                   : 'border-border hover:border-primary/50 opacity-60 hover:opacity-100',
               )}
             >
-              <img src={img} alt={`thumb ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+              <img
+                src={thumbSrc(img)}
+                alt={`thumb ${i + 1}`}
+                width={64}
+                height={48}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                onError={e => { e.currentTarget.src = img; }}
+              />
             </button>
           ))}
         </div>
@@ -765,10 +774,10 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                       currentSection && (
                         <motion.div
                           key={currentSection.id}
-                          initial={shift({ opacity: 0, y: 10 })}
+                          initial={shift({ opacity: 0, y: 8 })}
                           animate={shift({ opacity: 1, y: 0 })}
-                          exit={shift({ opacity: 0, y: -10 })}
-                          transition={transition({ duration: 0.22 })}
+                          exit={shift({ opacity: 0 })}
+                          transition={transition({ duration: 0.16 })}
                         >
                           <SectionGallery
                             section={currentSection}

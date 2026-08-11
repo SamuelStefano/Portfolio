@@ -1,3 +1,4 @@
+import { cardSrc } from '@/lib/utils';
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink, Users, Code, X } from 'lucide-react';
@@ -163,7 +164,7 @@ export const ProjectCarousel = () => {
                 {project.thumbnail_url ? (
                   <div className="w-full h-full relative">
                      <img
-                        src={project.thumbnail_url}
+                        src={cardSrc(project.thumbnail_url)}
                         alt={project.title}
                         className="w-full h-full object-cover"
                         loading="lazy"
