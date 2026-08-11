@@ -149,6 +149,22 @@ export const EXPERIENCE_DATA = [
     website: 'https://institutoeducarmais.org/'
   },
   {
+    company: 'Revera',
+    role: 'Desenvolvedor Full-Stack com IA',
+    period: 'Fevereiro 2026 - Presente',
+    current: true,
+    description: 'Desenvolvimento full-stack de aplicações web, com IA como parte central do fluxo de trabalho. Atuo do banco ao front — modelagem de dados, APIs e interfaces — usando agentes de IA, MCP e integração de LLM para acelerar entrega e revisão de código.',
+    highlights: [
+      'Entrega full-stack ponta a ponta (front, API e banco)',
+      'IA aplicada ao fluxo de desenvolvimento: agentes, MCP e revisão assistida',
+      'Integração de LLM em funcionalidades de produto',
+    ],
+    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'PostgreSQL', 'TailwindCSS', 'Claude API', 'AI Agents', 'MCP', 'Git & GitHub'],
+    logo: '',
+    icon: Sparkles,
+    website: ''
+  },
+  {
     company: 'M&M Informática',
     role: 'Analista de Suporte Técnico',
     period: 'Dezembro 2024 - Janeiro 2026',
