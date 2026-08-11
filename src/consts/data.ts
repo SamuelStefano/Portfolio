@@ -160,9 +160,9 @@ export const EXPERIENCE_DATA = [
       'Integração de LLM em funcionalidades de produto',
     ],
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'PostgreSQL', 'TailwindCSS', 'Claude API', 'AI Agents', 'MCP', 'Git & GitHub'],
-    logo: '',
+    logo: '/Revera.png',
     icon: Sparkles,
-    website: ''
+    website: 'https://revera.dev/'
   },
   {
     company: 'M&M Informática',
