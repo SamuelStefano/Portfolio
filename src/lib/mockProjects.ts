@@ -915,7 +915,7 @@ export const mockProjects: Project[] = [
         id: '11',
         label: 'Website',
         title: 'Website',
-        url: 'https://dfl-payments.devfellowship.com/invoices',
+        url: 'https://payments.devfellowship.com/invoices',
         type: 'website',
         created_at: '2025-01-01T00:00:00Z'
       }
