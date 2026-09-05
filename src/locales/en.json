@@ -162,21 +162,21 @@
         "company": "M&M Informática",
         "role": "Technical Support Analyst",
         "period": "December 2024 - January 2026",
-        "description": "Technical support for the company's ERP customers, troubleshooting system, database and store-operation incidents. I worked daily against the ERP's Firebird database, investigating data and queries to close tickets. I was trained on the legacy product and gained familiarity with the inner workings of a retail ERP (tax invoicing, POS and data modelling).",
+        "description": "Technical support for the company's product, a retail ERP: customer support, troubleshooting system and store-operation incidents. I was trained on the product and gained familiarity with how a retail ERP works (tax invoicing, POS and records).",
         "highlights": [
-          "Support and incident troubleshooting on a retail ERP",
-          "Investigated data and queries on the ERP's Firebird database"
+          "Direct support for the ERP's customers",
+          "Troubleshooting system and store-operation incidents"
         ]
       },
       {
         "company": "Prefeitura de Marialva",
         "role": "IT Support Intern",
         "period": "February 2023 - December 2024",
-        "description": "Technical Support, serving public agencies in the municipality regarding information technology.",
+        "description": "IT support internship serving public agencies in the municipality: computer maintenance and repair, hardware and software installation.",
         "highlights": [
-          "End-to-end support for multiple municipal departments",
-          "Network and server setup and maintenance",
-          "First professional exposure to IT at scale"
+          "Computer maintenance and repair",
+          "Hardware and software installation",
+          "First professional exposure to IT"
         ]
       }
     ],

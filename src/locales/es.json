@@ -162,21 +162,21 @@
         "company": "M&M Informática",
         "role": "Analista de Soporte Técnico",
         "period": "Diciembre 2024 - Enero 2026",
-        "description": "Soporte técnico a los clientes del ERP de la empresa, diagnosticando incidentes de sistema, base de datos y operación de tienda. Trabajé a diario sobre la base de datos Firebird del ERP, investigando datos y consultas para resolver los tickets. Recibí formación en el producto legacy y gané familiaridad con el funcionamiento interno de un ERP de retail (facturación fiscal, punto de venta y modelado de datos).",
+        "description": "Soporte técnico al producto de la empresa, un ERP de retail: atención a los clientes, diagnóstico de incidentes de sistema y de operación de tienda. Recibí formación en el producto y gané familiaridad con el funcionamiento de un ERP (facturación fiscal, punto de venta y registros).",
         "highlights": [
-          "Atención y diagnóstico de incidentes en ERP de retail",
-          "Investigación de datos y consultas en la base Firebird del ERP"
+          "Atención directa a los clientes del ERP",
+          "Diagnóstico de incidentes de sistema y de operación de tienda"
         ]
       },
       {
         "company": "Prefeitura de Marialva",
         "role": "Pasante de Soporte Técnico",
         "period": "Febrero 2023 - Diciembre 2024",
-        "description": "Soporte Técnico, atendiendo organismos públicos del municipio en relación a informática.",
+        "description": "Pasantía de soporte técnico atendiendo organismos públicos del municipio: mantenimiento y reparación de computadoras, instalación de equipos y software.",
         "highlights": [
-          "Atención end-to-end a múltiples órganos municipales",
-          "Configuración y mantenimiento de redes y servidores",
-          "Primer contacto profesional con TI a gran escala"
+          "Mantenimiento y reparación de computadoras",
+          "Instalación de equipos y software",
+          "Primer contacto profesional con TI"
         ]
       }
     ],
