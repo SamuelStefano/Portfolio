@@ -1,5 +1,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getClientIp } from './_lib/clientIp';
+const firstHeader = (value: string | string[] | undefined): string | null => {
+  if (!value) return null;
+  const raw = Array.isArray(value) ? value[0] : value;
+  return raw.split(',')[0].trim() || null;
+};
+
+const getClientIp = (request: VercelRequest): string | null =>
+  firstHeader(request.headers['x-vercel-forwarded-for']) ??
+  firstHeader(request.headers['x-real-ip']) ??
+  null;
 
 // nunca hardcodar: o repo e publico e isso e um IP residencial.
 // sem a env var configurada o gate falha fechado, que e o default seguro.
