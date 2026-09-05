@@ -38,25 +38,6 @@ export const CONTACT_INFO = [
   }
 ];
 
-// Languages
-export const LANGUAGES = [
-  {
-    code: 'pt',
-    name: 'Português',
-    flag: 'https://flagicons.lipis.dev/flags/4x3/br.svg'
-  },
-  {
-    code: 'en',
-    name: 'English',
-    flag: 'https://flagicons.lipis.dev/flags/4x3/us.svg'
-  },
-  {
-    code: 'es',
-    name: 'Español',
-    flag: 'https://flagicons.lipis.dev/flags/4x3/es.svg'
-  }
-];
-
 // Text Variants
 export const TEXT_VARIANTS = {
   default: 'text-foreground',
