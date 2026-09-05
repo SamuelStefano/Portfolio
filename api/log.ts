@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
-import { getClientIp } from './lib/clientIp';
+import { getClientIp } from './_lib/clientIp';
 
 const ALLOWED_IP = '201.55.183.70';
 

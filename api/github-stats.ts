@@ -10,7 +10,9 @@ export default async function handler(
   const MAX_EXECUTION_TIME = 25000;
 
   try {
-    const githubToken = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN;
+    // so GITHUB_TOKEN: o prefixo VITE_ e inlinado no bundle do cliente pelo Vite,
+    // entao aceitar VITE_GITHUB_TOKEN aqui convida a publicar o token no site.
+    const githubToken = process.env.GITHUB_TOKEN;
 
     if (!githubToken) {
       console.error('GITHUB_TOKEN not found in environment variables');

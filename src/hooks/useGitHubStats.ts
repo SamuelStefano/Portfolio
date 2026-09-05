@@ -57,7 +57,7 @@ export const useGitHubStats = () => {
           totalRepos: 38,
           totalStars: 5,
           totalForks: 2,
-          mergedPullRequests: 833,
+          mergedPullRequests: 1251,
           linesOfCode: 420000,
           languages: {
             'TypeScript': 210000,

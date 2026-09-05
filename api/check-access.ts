@@ -1,7 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getClientIp } from './lib/clientIp';
+import { getClientIp } from './_lib/clientIp';
 
-const ALLOWED_IP = '201.55.183.70';
+// nunca hardcodar: o repo e publico e isso e um IP residencial.
+// sem a env var configurada o gate falha fechado, que e o default seguro.
+const ALLOWED_IP = process.env.ADMIN_IP;
 
 export default async function handler(
   req: VercelRequest,
@@ -10,7 +12,7 @@ export default async function handler(
   try {
     const ip = getClientIp(req);
 
-    const isAllowed = ip === ALLOWED_IP;
+    const isAllowed = Boolean(ALLOWED_IP && ip === ALLOWED_IP);
 
     return res.status(200).json({ 
       allowed: isAllowed 
