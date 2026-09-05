@@ -1,54 +1,43 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const languages = [
-  {
-    code: 'pt',
-    name: 'Português',
-    flag: 'https://flagicons.lipis.dev/flags/4x3/br.svg'
-  },
-  {
-    code: 'en',
-    name: 'English',
-    flag: 'https://flagicons.lipis.dev/flags/4x3/us.svg'
-  },
-  {
-    code: 'es',
-    name: 'Español',
-    flag: 'https://flagicons.lipis.dev/flags/4x3/es.svg'
-  }
+const LANGUAGES = [
+  { code: 'pt', short: 'PT', name: 'Português' },
+  { code: 'en', short: 'EN', name: 'English' },
+  { code: 'es', short: 'ES', name: 'Español' }
 ];
 
 export const LanguageSelector = () => {
   const { i18n } = useTranslation();
 
-  const handleLanguageChange = (languageCode: string) => {
-    i18n.changeLanguage(languageCode);
-  };
+  const current = (i18n.language || 'pt').slice(0, 2);
 
   return (
-    <div className="flex items-center gap-2">
-      {languages.map((language) => (
-        <button
-          key={language.code}
-          onClick={() => handleLanguageChange(language.code)}
-          className={`hover:scale-110 transition-all duration-200 p-1 rounded ${
-            i18n.language === language.code
-              ? 'grayscale brightness-75 ring-2 ring-primary/50'
-              : 'hover:brightness-110'
-          }`}
-          title={language.name}
-        >
-          <img
-            src={language.flag}
-            alt={`${language.name} flag`}
-            className="w-6 h-4 object-cover rounded-sm"
-          />
-        </button>
-      ))}
+    <div
+      role="group"
+      aria-label="Language"
+      className="inline-flex h-9 items-center rounded-full border border-border bg-card/70 p-0.5"
+    >
+      {LANGUAGES.map((language) => {
+        const isActive = current === language.code;
+        return (
+          <button
+            key={language.code}
+            onClick={() => i18n.changeLanguage(language.code)}
+            title={language.name}
+            aria-label={language.name}
+            aria-pressed={isActive}
+            className={`h-8 rounded-full px-2 font-mono text-[11px] font-semibold leading-none tracking-wide transition-colors duration-200 sm:px-2.5 sm:text-xs ${
+              isActive
+                ? 'bg-primary/15 text-primary'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            {language.short}
+          </button>
+        );
+      })}
     </div>
   );
 };
 
-
-
+export default LanguageSelector;
