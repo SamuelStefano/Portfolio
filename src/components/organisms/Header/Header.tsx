@@ -48,7 +48,7 @@ export const Header = () => {
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs">
                     <GraduationCap className="w-3 h-3" />
-                    ADS 3º ano
+                    ADS · UNINGÁ
                   </span>
                 </div>
 

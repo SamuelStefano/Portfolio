@@ -35,8 +35,7 @@ export const TECH_CATEGORIES = [
       { name: 'PostgreSQL', level: 85 },
       { name: 'Supabase Edge Functions', level: 90 },
       { name: 'MySQL', level: 70 },
-      { name: 'Prisma', level: 40 },
-      { name: 'Firebird', level: 20 }
+      { name: 'Prisma', level: 40 }
     ],
     color: 'neon-cyan'
   },
@@ -278,6 +277,8 @@ export const STATS_TEMPLATE = [
 export const EVENTS_DATA = [
   { name: 'Web3 Expertz Brazil', type: 'conference', date: 'Jun 2026', location: 'São Paulo, BR', ecosystems: ['Avalanche', 'Klever'], url: '' },
   { name: 'Hackanation', type: 'hackathon', date: 'May 2026', location: 'São Paulo, BR', ecosystems: ['Binance', 'Chainlink', 'Solana'], url: '' },
+  { name: 'DevConnect ETH 2025', type: 'hackathon', date: 'Nov 2025', location: 'Buenos Aires, AR', ecosystems: ['Scroll', 'Ethereum'], url: '' },
+  { name: 'ETH Latam 2025', type: 'hackathon', date: 'Aug 2025', location: 'São Paulo, BR', ecosystems: ['Base', 'Ethereum'], url: '' },
 ];
 
 
