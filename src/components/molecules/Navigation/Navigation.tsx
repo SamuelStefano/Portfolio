@@ -125,11 +125,8 @@ export const Navigation = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
-            <SkinToggle />
-            <ColorSchemeSelector />
+          <div className="flex shrink-0 items-center gap-1 lg:hidden">
             <ThemeToggle />
-            <LanguageSelector />
             <Button
               variant="ghost"
               size="sm"
@@ -145,7 +142,7 @@ export const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div id="mobile-nav" className="lg:hidden border-t border-[var(--cli-border)] bg-[var(--cli-panel)]/98 backdrop-blur-md">
+          <div id="mobile-nav" className="lg:hidden max-h-[calc(100vh-3.5rem)] overflow-y-auto border-t border-[var(--cli-border)] bg-[var(--cli-panel)]/98 backdrop-blur-md">
             <div className="px-4 py-4 space-y-1">
               {navigationItems.map((item) => (
                 <button
@@ -161,6 +158,11 @@ export const Navigation = () => {
                 </button>
               ))}
             </div>
+            <div className="flex flex-wrap items-center gap-2 border-t border-[var(--cli-border)] px-4 py-4">
+              <SkinToggle />
+              <ColorSchemeSelector />
+              <LanguageSelector />
+            </div>
           </div>
         )}
       </nav>
@@ -175,21 +177,21 @@ export const Navigation = () => {
     }`}>
       <div className="relative flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-6 lg:px-8">
           {/* LEFT: logo + SkinToggle */}
-          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-            <div className="relative">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3 md:gap-4">
+            <div className="relative shrink-0">
               <img
                 src="/EuGhibli.png"
                 alt="Samuel Stefano"
-                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 shadow-lg"
+                className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 shadow-lg"
               />
             </div>
-            <div className="flex flex-col">
-              <Text className={`font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-colors duration-300 leading-tight ${
+            <div className="flex min-w-0 flex-col">
+              <Text className={`font-bold whitespace-nowrap text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-colors duration-300 leading-tight ${
                 isScrolled ? 'gradient-text' : 'text-white drop-shadow-lg'
               }`}>
                 Samuel Stefano
               </Text>
-              <Text className={`text-xs sm:text-sm md:text-base transition-colors duration-300 ${
+              <Text className={`hidden sm:block whitespace-nowrap text-xs sm:text-sm md:text-base transition-colors duration-300 ${
                 isScrolled ? 'text-muted-foreground' : 'text-white/70'
               }`}>
                 Full-Stack Developer
@@ -227,11 +229,8 @@ export const Navigation = () => {
           </div>
 
           {/* Mobile: controls + hamburger */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <SkinToggle />
-            <ColorSchemeSelector />
+          <div className="flex shrink-0 items-center gap-1 lg:hidden">
             <ThemeToggle />
-            <LanguageSelector />
             <Button
               variant="ghost"
               size="sm"
@@ -251,17 +250,17 @@ export const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div id="mobile-nav" className={`lg:hidden transition-all duration-300 ${
+          <div id="mobile-nav" className={`lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto transition-all duration-300 ${
             isScrolled
               ? 'border-t border-border/50 bg-background/98 backdrop-blur-md'
               : 'border-t border-white/20 bg-background/95 backdrop-blur-md'
           }`}>
-            <div className="px-4 py-4 space-y-2">
+            <div className="px-4 py-4 space-y-1">
               {navigationItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors duration-200 ${
+                  className={`block w-full text-left px-4 py-2.5 text-base font-medium rounded-lg transition-colors duration-200 ${
                     activeSection === item.href
                       ? 'text-primary bg-primary/15 border border-primary/30'
                       : isScrolled
@@ -272,6 +271,11 @@ export const Navigation = () => {
                   {item.label}
                 </button>
               ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-2 border-t border-border/50 px-4 py-4">
+              <SkinToggle />
+              <ColorSchemeSelector />
+              <LanguageSelector />
             </div>
           </div>
         )}
