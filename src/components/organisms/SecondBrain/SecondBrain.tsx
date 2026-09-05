@@ -1,4 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+// abaixo disso a orbita nao cabe: 8 chips de ~100px nao tem raio livre em volta
+// da foto sem se sobrepor a ela, entao o layout vira foto + chips empilhados
+const COMPACT_QUERY = '(max-width: 639px)';
 
 type Node = {
   label: string;
@@ -25,10 +29,21 @@ export const SecondBrain = () => {
   const nodeRefs = useRef<HTMLDivElement[]>([]);
   const linkRefs = useRef<SVGLineElement[]>([]);
   const flowRefs = useRef<SVGLineElement[]>([]);
+  const [compact, setCompact] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(COMPACT_QUERY).matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(COMPACT_QUERY);
+    const onChange = () => setCompact(mq.matches);
+    onChange();
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   useEffect(() => {
     const brain = brainRef.current;
-    if (!brain) return;
+    if (!brain || compact) return;
 
     const layout = () => {
       const r = brain.getBoundingClientRect();
@@ -59,7 +74,35 @@ export const SecondBrain = () => {
     ro.observe(brain);
 
     return () => ro.disconnect();
-  }, []);
+  }, [compact]);
+
+  if (compact) {
+    return (
+      <div className="flex w-full max-w-[520px] flex-col items-center gap-6">
+        <div className="relative">
+          <div className="brain-ring absolute left-1/2 top-1/2 h-[230px] w-[230px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50 blur-[8px]" />
+          <div className="relative z-[3] h-[176px] w-[176px] overflow-hidden rounded-full bg-card shadow-[0_0_0_1px_rgba(var(--net),0.3),0_30px_80px_rgba(5,12,40,0.7)]">
+            <img src="/Samuel.jpg" alt="Samuel Stefano" draggable={false} className="h-full w-full object-cover object-[center_44%]" />
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {NODES.map((n) => (
+            <div
+              key={n.label}
+              className="node flex items-center gap-1.5 whitespace-nowrap rounded-xl border border-border bg-card/85 px-2.5 py-1.5 font-mono text-[11px] font-semibold text-foreground shadow-[0_12px_30px_rgba(5,10,30,0.55)] backdrop-blur-sm"
+            >
+              <i className="block h-2 w-2 flex-shrink-0 rounded" style={{ background: n.color }} />
+              <span className="flex flex-col leading-tight">
+                <span>{n.label}</span>
+                <small className="text-[9px] font-medium text-muted-foreground">{n.sub}</small>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

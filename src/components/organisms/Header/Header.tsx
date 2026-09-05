@@ -86,7 +86,7 @@ export const Header = () => {
                 <div className="relative">
                   <SecondBrain />
                   {/* "Open to work" badge */}
-                  <div className="absolute -bottom-2 left-1/2 z-[5] -translate-x-1/2 flex items-center gap-1.5 bg-card border border-green-500/30 rounded-full px-3 py-1.5 shadow-lg">
+                  <div className="relative z-[5] mx-auto mt-5 flex w-fit items-center gap-1.5 bg-card border border-green-500/30 rounded-full px-3 py-1.5 shadow-lg sm:absolute sm:-bottom-2 sm:left-1/2 sm:mt-0 sm:w-auto sm:-translate-x-1/2">
                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                     <span className="text-xs text-green-400 font-medium whitespace-nowrap">{t('controls.openToWork')}</span>
                   </div>
