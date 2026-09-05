@@ -1,8 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
-import { getClientIp } from './_lib/clientIp';
+// inline de proposito: import relativo dentro de api/ nao e empacotado pelo
+// Vercel e derruba a funcao com FUNCTION_INVOCATION_FAILED.
+const firstHeader = (value: string | string[] | undefined): string | null => {
+  if (!value) return null;
+  const raw = Array.isArray(value) ? value[0] : value;
+  return raw.split(',')[0].trim() || null;
+};
 
-const ALLOWED_IP = '201.55.183.70';
+// so x-vercel-forwarded-for: a Vercel sempre o define e sobrescreve.
+// x-real-ip como fallback aceitaria um header forjado pelo cliente.
+const getClientIp = (request: VercelRequest): string | null =>
+  firstHeader(request.headers['x-vercel-forwarded-for']);
+
+// IP e o mapa de nomes sao dado pessoal e o repo e publico: vem de env.
+// Sem ADMIN_IP configurado o gate nega todo mundo.
+const ALLOWED_IP = process.env.ADMIN_IP;
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -18,11 +31,15 @@ const isSupabaseServerConfigured = () => {
   return !!supabaseUrl && !!supabaseServiceRoleKey;
 };
 
-const IP_NAMES: Record<string, string> = {
-  "201.55.183.70": "Samuel",
-  "131.100.63.23": "Íttalo",
-  "187.109.205.55": "José",
-};
+// VISITOR_NAMES: JSON {"<ip>":"<nome>"}. Ausente = nenhum nome resolvido.
+const IP_NAMES: Record<string, string> = (() => {
+  try {
+    return JSON.parse(process.env.VISITOR_NAMES || '{}');
+  } catch {
+    console.error('VISITOR_NAMES nao e um JSON valido; ignorando');
+    return {};
+  }
+})();
 
 export default async function handler(
   req: VercelRequest,
@@ -31,7 +48,7 @@ export default async function handler(
   try {
     const ip = getClientIp(req);
 
-    if (ip !== ALLOWED_IP) {
+    if (!ALLOWED_IP || ip !== ALLOWED_IP) {
       return res.status(403).json({ error: 'Not allowed' });
     }
 
@@ -65,10 +82,9 @@ export default async function handler(
     });
   } catch (error: any) {
     console.error('Error in /api/log:', error);
-    return res.status(500).json({ 
-      error: 'Internal server error',
-      message: error?.message || 'Unknown error'
-    });
+    // sem ecoar a mensagem upstream: e info disclosure num endpoint
+    // que fala com o banco via service-role.
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }
 
