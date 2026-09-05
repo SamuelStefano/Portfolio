@@ -14,7 +14,7 @@
   },
   "hero": {
     "greeting": "Samuel Stefano",
-    "role": "Mid-Level Full-Stack Developer · Solidity & Web3",
+    "role": "Mid-Level Full-Stack Developer · Applied AI & Web3",
     "description": "3+ years of experience • React, TypeScript, Node • Solidity & Web3 • Remote • Marialva, PR",
     "bio": "Fully-rounded mid-level developer across full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) and Solidity/Web3.",
     "bioContinue": "Architecting micro-frontends, automating pipelines with n8n and integrating LLMs to build scalable, intelligent platforms.",
@@ -26,7 +26,7 @@
       "email": "Email",
       "phone": "Phone"
     },
-    "web3Signal": "complete mid-level in full-stack and Solidity/Web3 · looking for new experience · open to remote roles"
+    "web3Signal": "complete mid-level in full-stack, applied AI (agents, MCP, Claude) and Solidity/Web3 · open to remote roles and to freelance projects"
   },
   "projects": {
     "title": "Projects",
@@ -451,6 +451,10 @@
     "valdez": {
       "description": "Discord bot in TypeScript that lives inside the voice channel: it joins on its own when someone shows up, tracks hours in call with a leaderboard, records a replay of the last few minutes and plays music from YouTube and Spotify. Runs on a Hetzner VPS with healthcheck, self-healing and OOM protection.",
       "longDescription": "Valdez is a Discord bot written in TypeScript on top of discord.js 14 and @discordjs/voice, designed to live inside the server's voice channel. Presence is automatic by occupancy: it joins when the first human arrives and leaves when the call empties. Every join and leave becomes a session persisted in SQLite (better-sqlite3 in WAL mode), which feeds /horas and /leaderboard with the call-time ranking. The hardest feature is the replay buffer: the bot subscribes to the voice receiver and keeps a sliding window of the last few minutes of Opus packets per user in memory, pruned periodically so audio from someone who spoke and then went quiet doesn't pile up — on /replay those packets are decoded to PCM, mixed by timeline (rather than simply concatenated, which was the cause of the stuttering audio) and exported to MP3 via ffmpeg. There is also a music player with a queue, loop, a persistent modal with control buttons and YouTube search via yt-dlp, with support for Spotify playlists and albums. The part that taught me the most was operations: the bot migrated from Fly.io to a Hetzner VPS on Docker Compose and gained a real resilience layer — a /health endpoint reporting gateway and voice-connection state, autoheal restarting the container when the healthcheck fails, memory limits with oom_score_adj and swap, an external heartbeat acting as a dead-man's switch, uncaughtException and unhandledRejection handlers, and DNS resolution forced to IPv4 after investigating voice disconnects through the closeCode."
+    },
+    "codelibrary": {
+      "description": "Prototype of DevFellowship's courses and learning-track platform: landing page and content navigation — video lessons, materials, challenges and tracks — designed to stay clear for beginners and fast for experienced devs. It was never launched.",
+      "longDescription": "CodeLibrary was the first design of DevFellowship's official platform for courses, learning tracks and technical content. The goal was to centralise the community's material in one direct environment: video lessons, study materials, challenges and useful links organised by track, behind an interface that would not intimidate a beginner nor slow down an experienced developer. I built the full landing page and the content navigation in Next.js with React, TypeScript and TailwindCSS, handling route structure, componentisation and responsiveness. The project was conceived as the base for later integration with Academy, Skill Evals and DevSharper. It never launched officially and stayed a prototype, but it is where I matured UI/UX, content organisation and frontend architecture — and the DevFellowship education ecosystem that came afterwards inherited a lot of this structure."
     }
   },
   "hackathons": {
@@ -525,8 +529,8 @@
   },
   "focus": {
     "title": "Currently in focus",
-    "subtitle": "Product full-stack and the bridge between traditional finance and on-chain.",
-    "open": "Looking for new experience — open to remote full-stack and Web3 roles.",
+    "subtitle": "Product full-stack, applied AI in production and the bridge between traditional finance and on-chain.",
+    "open": "Open to remote full-stack and Web3 roles — and to freelance work in applied AI: agents, MCP servers, LLM integration and automation.",
     "items": [
       {
         "title": "Web3 & Smart Contracts",

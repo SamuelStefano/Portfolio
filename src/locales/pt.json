@@ -14,7 +14,7 @@
   },
   "hero": {
     "greeting": "Samuel Stefano",
-    "role": "Desenvolvedor Full-Stack Pleno · Solidity & Web3",
+    "role": "Desenvolvedor Full-Stack Pleno · IA Aplicada & Web3",
     "description": "3+ anos de experiência • React, TypeScript, Node • Solidity & Web3 • Remoto • Marialva, PR",
     "bio": "Pleno completo em full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) e em Solidity/Web3.",
     "bioContinue": "Arquitetando micro-frontends, automatizando pipelines com n8n e integrando LLMs para criar plataformas escaláveis e inteligentes.",
@@ -26,7 +26,7 @@
       "email": "Email",
       "phone": "Telefone"
     },
-    "web3Signal": "pleno completo em full-stack e Solidity/Web3 · em busca de novas experiências · aberto a oportunidades remotas"
+    "web3Signal": "pleno completo em full-stack, IA aplicada (agentes, MCP, Claude) e Solidity/Web3 · aberto a vagas remotas e a projetos freelance"
   },
   "projects": {
     "title": "Projetos",
@@ -444,6 +444,10 @@
     "valdez": {
       "description": "Bot de Discord em TypeScript que vive dentro do canal de voz: entra sozinho quando chega gente, contabiliza horas em call com ranking, grava replay dos últimos minutos e toca música do YouTube e Spotify. Roda numa VPS Hetzner com healthcheck, auto-cura e proteção contra OOM.",
       "longDescription": "Valdez é um bot de Discord escrito em TypeScript sobre discord.js 14 e @discordjs/voice, pensado pra viver dentro do canal de voz do servidor. A presença é automática por ocupação: ele entra quando o primeiro humano chega e sai quando a call esvazia. Cada entrada e saída vira uma sessão persistida em SQLite (better-sqlite3 em modo WAL), o que alimenta o /horas e o /leaderboard com o ranking de tempo em call. O recurso mais difícil é o replay buffer: o bot assina o receiver de voz e mantém em memória uma janela deslizante dos últimos minutos de pacotes Opus por usuário, com poda periódica pra não acumular áudio de quem falou e ficou quieto — no /replay esses pacotes são decodificados pra PCM, mixados por timeline (e não simplesmente concatenados, que era a causa do som travado) e exportados em MP3 via ffmpeg. Também tem um player de música com fila, loop, modal persistente com botões de controle e busca no YouTube via yt-dlp, com suporte a playlists e álbuns do Spotify. A parte que mais rendeu aprendizado foi a operação: o bot migrou do Fly.io para uma VPS Hetzner em Docker Compose e ganhou uma camada de resiliência de verdade — endpoint /health reportando o estado do gateway e da conexão de voz, autoheal reiniciando o container quando o healthcheck falha, limites de memória com oom_score_adj e swap, um heartbeat externo funcionando como dead-man's switch, handlers de uncaughtException e unhandledRejection, e resolução DNS forçada em IPv4 depois de investigar as desconexões de voz pelo closeCode."
+    },
+    "codelibrary": {
+      "description": "Protótipo da plataforma de cursos e trilhas da DevFellowship: landing e navegação de conteúdo técnico — videoaulas, materiais, desafios e trilhas — pensada para ser clara para iniciante e rápida para dev avançado. Não chegou a ser lançada.",
+      "longDescription": "CodeLibrary foi o primeiro desenho da plataforma oficial de cursos, trilhas e conteúdos técnicos da DevFellowship. A proposta era centralizar o material da comunidade num ambiente direto: videoaulas, materiais de estudo, desafios e links úteis organizados por trilha, com uma interface que não intimidasse quem está começando nem atrasasse quem já é experiente. Construí a landing completa e a navegação de conteúdo em Next.js com React, TypeScript e TailwindCSS, cuidando de estrutura de rotas, componentização e responsividade. O projeto foi concebido como base para integrar depois com a Academy, o Skill Evals e o DevSharper. Ele não chegou a ser lançado oficialmente — ficou como protótipo — mas foi onde amadureci UI/UX, organização de conteúdo e arquitetura de frontend, e o ecossistema educacional da DevFellowship que veio depois herdou muito dessa estrutura."
     }
   },
   "hackathons": {
@@ -525,8 +529,8 @@
   },
   "focus": {
     "title": "Em foco agora",
-    "subtitle": "Full-stack de produto e a ponte entre as finanças tradicionais e o on-chain.",
-    "open": "Em busca de novas experiências — aberto a oportunidades remotas em full-stack e Web3.",
+    "subtitle": "Full-stack de produto, IA aplicada em produção e a ponte entre as finanças tradicionais e o on-chain.",
+    "open": "Aberto a vagas remotas em full-stack e Web3 — e a projetos freelance de IA aplicada: agentes, servidores MCP, integração de LLM e automação.",
     "items": [
       {
         "title": "Web3 & Smart Contracts",
