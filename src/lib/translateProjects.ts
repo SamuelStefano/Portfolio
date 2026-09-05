@@ -32,7 +32,8 @@ const getProjectKey = (title: string): string | null => {
     'DFL Learn': 'dflLearn',
     'DFL Payments': 'paymentsApp',
     'DFL-Bot Reviewer': 'ciRevisorBot',
-    'AltPay': 'altpay'
+    'AltPay': 'altpay',
+    'CodeLibrary': 'codelibrary'
   };
   
   return titleMap[title] || null;

@@ -1051,6 +1051,99 @@ export const mockProjects: Project[] = [
       'score': ['/projects/altpay/Onboarding Score.png'],
       'cobrancas': ['/projects/altpay/Cobrancas Pix.png']
     }
+  },
+  {
+    id: '13',
+    title: 'CodeLibrary',
+    role: 'Creator',
+    description: 'Protótipo da plataforma de cursos e trilhas da DevFellowship: landing e navegação de conteúdo técnico — videoaulas, materiais, desafios e trilhas — pensada para ser clara para iniciante e rápida para dev avançado. Não chegou a ser lançada.',
+    long_description: 'CodeLibrary foi o primeiro desenho da plataforma oficial de cursos, trilhas e conteúdos técnicos da DevFellowship. A proposta era centralizar o material da comunidade num ambiente direto: videoaulas, materiais de estudo, desafios e links úteis organizados por trilha, com uma interface que não intimidasse quem está começando nem atrasasse quem já é experiente. Construí a landing completa e a navegação de conteúdo em Next.js com React, TypeScript e TailwindCSS, cuidando de estrutura de rotas, componentização e responsividade. O projeto foi concebido como base para integrar depois com a Academy, o Skill Evals e o DevSharper. Ele não chegou a ser lançado oficialmente — ficou como protótipo — mas foi onde amadureci UI/UX, organização de conteúdo e arquitetura de frontend, e o ecossistema educacional da DevFellowship que veio depois herdou muito dessa estrutura.',
+    stack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Vercel'],
+    thumbnail_url: '/projects/Codelibrary/Hero.png',
+    icon_name: 'Library',
+    created_at: '2025-11-21T00:00:00Z',
+    updated_at: '2025-11-21T00:00:00Z',
+    project_collaborators: [
+      {
+        id: '1',
+        name: 'Samuel Stefano',
+        role: 'Creator',
+        avatar_url: '/Samuel-avatar.webp',
+        created_at: '2025-11-21T00:00:00Z'
+      }
+    ],
+    project_links: [
+      {
+        id: '13-l1',
+        label: 'GitHub Repository',
+        title: 'GitHub Repository',
+        url: 'https://github.com/SamuelStefano/codelibrary-website',
+        type: 'github',
+        created_at: '2025-11-21T00:00:00Z'
+      }
+    ],
+    project_sections: [
+      {
+        id: '13-1',
+        folder_name: 'hero',
+        display_name: 'Hero',
+        description: 'Abertura da landing, com a proposta da plataforma e o caminho para as trilhas',
+        order_index: 1,
+        project_images: [
+          { id: '13-1-1', image_url: '/projects/Codelibrary/Hero.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '13-2',
+        folder_name: 'cursos',
+        display_name: 'Cursos',
+        description: 'Catálogo de cursos e trilhas, organizado para ser varrido rápido',
+        order_index: 2,
+        project_images: [
+          { id: '13-2-1', image_url: '/projects/Codelibrary/Courses.png', order_index: 1 },
+          { id: '13-2-2', image_url: '/projects/Codelibrary/table.png', order_index: 2 }
+        ]
+      },
+      {
+        id: '13-3',
+        folder_name: 'metodologia',
+        display_name: 'Metodologia',
+        description: 'Como a trilha conduz o aluno do zero ao projeto entregue',
+        order_index: 3,
+        project_images: [
+          { id: '13-3-1', image_url: '/projects/Codelibrary/Methodologies.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '13-4',
+        folder_name: 'planos',
+        display_name: 'Planos',
+        description: 'Comparativo de planos e preços da plataforma',
+        order_index: 4,
+        project_images: [
+          { id: '13-4-1', image_url: '/projects/Codelibrary/Plan and Prices.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '13-5',
+        folder_name: 'comunidade',
+        display_name: 'Comunidade',
+        description: 'Seção de comunidade e a página institucional da DevFellowship',
+        order_index: 5,
+        project_images: [
+          { id: '13-5-1', image_url: '/projects/Codelibrary/Community.png', order_index: 1 },
+          { id: '13-5-2', image_url: '/projects/Codelibrary/AboutUs.png', order_index: 2 },
+          { id: '13-5-3', image_url: '/projects/Codelibrary/Footer.png', order_index: 3 }
+        ]
+      }
+    ],
+    image_categories: {
+      'hero': ['/projects/Codelibrary/Hero.png'],
+      'cursos': ['/projects/Codelibrary/Courses.png', '/projects/Codelibrary/table.png'],
+      'metodologia': ['/projects/Codelibrary/Methodologies.png'],
+      'planos': ['/projects/Codelibrary/Plan and Prices.png'],
+      'comunidade': ['/projects/Codelibrary/Community.png', '/projects/Codelibrary/AboutUs.png', '/projects/Codelibrary/Footer.png']
+    }
   }
 ];
 
