@@ -78,7 +78,7 @@ export const AvailabilityCalendar = () => {
           </div>
 
           {[
-            { slot: '08:00 – 17:00', period: t('about.availability.weekdaysLabel') },
+            { slot: '09:00 – 17:00', period: t('about.availability.weekdaysLabel') },
           ].map(({ period, slot }) => (
             <div
               key={slot}
