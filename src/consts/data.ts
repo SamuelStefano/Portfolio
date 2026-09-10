@@ -117,7 +117,7 @@ export const EXPERIENCE_DATA = [
   {
     company: 'DevFellowship',
     role: 'Desenvolvedor Full-Stack — Plataforma Interna de Desenvolvimento',
-    period: 'Julho 2024 - Presente',
+    period: 'Novembro 2023 - Presente',
     current: true,
     description: 'Trabalho na plataforma interna de desenvolvimento da DevFellowship — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetei e desenvolvi o ecossistema de micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
     highlights: [
@@ -166,7 +166,7 @@ export const EXPERIENCE_DATA = [
   {
     company: 'M&M Informática',
     role: 'Analista de Suporte Técnico',
-    period: 'Dezembro 2024 - Janeiro 2026',
+    period: 'Dezembro 2024 - Fevereiro 2026',
     current: false,
     description: 'Suporte técnico ao produto da empresa, um ERP de varejo: atendimento aos clientes, diagnóstico de incidentes de sistema e de operação de loja. Recebi treinamento no produto e ganhei familiaridade com o funcionamento de um ERP (emissão fiscal, PDV e cadastro).',
     highlights: [
@@ -181,7 +181,7 @@ export const EXPERIENCE_DATA = [
   {
     company: 'Prefeitura de Marialva',
     role: 'Estagiário de Suporte Técnico',
-    period: 'Fevereiro 2023 - Dezembro 2024',
+    period: 'Fevereiro 2024 - Dezembro 2024',
     current: false,
     description: 'Estágio em suporte técnico atendendo órgãos públicos do município: manutenção e conserto de computadores, instalação de equipamentos e de software.',
     highlights: [

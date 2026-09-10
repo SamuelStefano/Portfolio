@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const START_DATE = new Date('2024-07-01');
+const START_DATE = new Date('2023-11-01');
 
 export const useExperienceTime = () => {
   const { t } = useTranslation();
