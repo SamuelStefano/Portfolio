@@ -40,7 +40,7 @@ export const Header = () => {
                 <div className="flex flex-wrap items-center gap-2 mb-6">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                    DevFellowship · Tech Lead
+                    DevFellowship · Full-Stack
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs">
                     <MapPin className="w-3 h-3" />

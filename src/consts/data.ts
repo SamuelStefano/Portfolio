@@ -116,10 +116,10 @@ export const TECH_CATEGORIES = [
 export const EXPERIENCE_DATA = [
   {
     company: 'DevFellowship',
-    role: 'Líder Técnico da Plataforma Interna de Desenvolvimento',
+    role: 'Desenvolvedor Full-Stack — Plataforma Interna de Desenvolvimento',
     period: 'Julho 2024 - Presente',
     current: true,
-    description: 'Lidero tecnicamente a plataforma interna de desenvolvimento da DevFellowship — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetei e desenvolvi o ecossistema de micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
+    description: 'Trabalho na plataforma interna de desenvolvimento da DevFellowship — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetei e desenvolvi o ecossistema de micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
     highlights: [
       '4º lugar ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)',
       '2º lugar DevConnect ETH 2025 trilha Scroll — TalentDAO',
@@ -240,7 +240,6 @@ export const ADDITIONAL_SKILLS = [
   'n8n',
   'LLM Integration',
   'Arquitetura de Software',
-  'Liderança Técnica',
   'Docker',
   'VPS',
   'WSL',
