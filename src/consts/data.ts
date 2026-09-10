@@ -269,7 +269,7 @@ export const STATS_TEMPLATE = [
   },
   {
     label: 'Tempo de atuação profissional',
-    value: '3+ anos',
+    value: '2 anos',
     icon: User
   }
 ];

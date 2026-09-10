@@ -15,7 +15,7 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Mid-Level Full-Stack Developer · Applied AI & Web3",
-    "description": "3+ years of experience • React, TypeScript, Node • Solidity & Web3 • Remote • Marialva, PR",
+    "description": "2 years of experience • React, TypeScript, Node • Solidity & Web3 • Remote • Marialva, PR",
     "bio": "Fully-rounded mid-level developer across full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) and Solidity/Web3.",
     "bioContinue": "Architecting micro-frontends, automating pipelines with n8n and integrating LLMs to build scalable, intelligent platforms.",
     "clickToSeeMore": "Click to see more",
@@ -245,7 +245,7 @@
     "title": "About Me",
     "subtitle": "Learn a little more about my journey and passions",
     "greeting": "Hello! I'm Samuel.",
-    "bio1": "Mid-level Full-Stack Developer with 3+ years of experience, fully-rounded both across the full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) and in Solidity and Web3. Micro-frontend architectures with Module Federation, AI integrations (Claude API, OpenAI) and process automation with n8n. I am currently tech lead of the internal developer platform at DevFellowship.",
+    "bio1": "Mid-level Full-Stack Developer with 2 years of experience, fully-rounded both across the full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) and in Solidity and Web3. Micro-frontend architectures with Module Federation, AI integrations (Claude API, OpenAI) and process automation with n8n. I am currently tech lead of the internal developer platform at DevFellowship.",
     "bio2": "At DevFellowship I built the complete Module Federation ecosystem — DFL Learn (super-app host), Reviews, Payments and the AI-powered CI Reviewer Bot — plus 4 MCP servers and the revenue pipeline running in production, from contracts to recurring billing and electronic invoicing. I created ITERA, a course platform with a synchronous live-class mode built on Supabase Realtime, and Deck, my command post for AI agents. In hackathons: won the Chainlink track with AltPay, 4th place at ETH Latam 2025 (GreenLoop) and 2nd place in the Scroll track at DevConnect ETH 2025 (TalentDAO).",
     "bio3": "Solid experience in React, TypeScript, Node.js, Supabase, PostgreSQL, NestJS, Solidity, Docker and CI/CD pipelines. I am looking for new experience on remote product teams, where I can add what I already deliver today and keep growing.",
     "location": "Marialva, PR",
@@ -523,7 +523,7 @@
     "location": "Location",
     "roleValue": "Tech Lead @ DevFellowship",
     "focusValue": "Micro-frontends · AI · Web3",
-    "uptimeValue": "2+ years · Tech Lead @ DevFellowship",
+    "uptimeValue": "Since Oct/2024 · Tech Lead @ DevFellowship",
     "locationValue": "Marialva, PR · Brazil",
     "caption": "samuel.jpg — render @ 0.92"
   },
