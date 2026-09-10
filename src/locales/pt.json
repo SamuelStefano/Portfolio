@@ -15,7 +15,7 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Desenvolvedor Full-Stack Pleno · IA Aplicada & Web3",
-    "description": "3+ anos de experiência • React, TypeScript, Node • Solidity & Web3 • Remoto • Marialva, PR",
+    "description": "2+ anos de experiência • React, TypeScript, Node • Solidity & Web3 • Remoto • Marialva, PR",
     "bio": "Pleno completo em full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) e em Solidity/Web3.",
     "bioContinue": "Arquitetando micro-frontends, automatizando pipelines com n8n e integrando LLMs para criar plataformas escaláveis e inteligentes.",
     "clickToSeeMore": "Clique para ver mais",
@@ -244,7 +244,7 @@
     "title": "Sobre Mim",
     "subtitle": "Conheça um pouco mais sobre minha trajetória e paixões",
     "greeting": "Olá! Eu sou o Samuel.",
-    "bio1": "Desenvolvedor Full-Stack pleno com 3+ anos de experiência, completo tanto no full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) quanto em Solidity e Web3. Arquiteturas de micro-frontends com Module Federation, integrações com IA (Claude API, OpenAI) e automação de processos com n8n. Atualmente trabalho na plataforma interna de desenvolvimento da DevFellowship.",
+    "bio1": "Desenvolvedor Full-Stack pleno com 2+ anos de experiência, completo tanto no full-stack (React, TypeScript, Node.js, Supabase, PostgreSQL) quanto em Solidity e Web3. Arquiteturas de micro-frontends com Module Federation, integrações com IA (Claude API, OpenAI) e automação de processos com n8n. Atualmente trabalho na plataforma interna de desenvolvimento da DevFellowship.",
     "bio2": "Na DevFellowship, construí o ecossistema completo de Module Federation — DFL Learn (super-app host), Reviews, Payments e o CI Revisor Bot com IA — além de 4 servidores MCP e do fluxo de receita em produção, de contratos a cobrança recorrente e NF-e. Criei o ITERA, plataforma de cursos com aula ao vivo síncrona sobre Supabase Realtime, e o Deck, meu posto de comando para agentes de IA. Em hackathons: vitória na trilha Chainlink com o AltPay, 4º lugar no ETH Latam 2025 (GreenLoop) e 2º lugar na trilha Scroll do DevConnect ETH 2025 (TalentDAO).",
     "bio3": "Experiência sólida em React, TypeScript, Node.js, Supabase, PostgreSQL, NestJS, Solidity, Docker e pipelines CI/CD. Estou em busca de novas experiências em times de produto remotos, onde eu possa somar o que já entrego hoje e continuar crescendo.",
     "location": "Marialva, PR",
