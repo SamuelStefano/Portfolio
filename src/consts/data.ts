@@ -119,7 +119,7 @@ export const EXPERIENCE_DATA = [
     role: 'Desenvolvedor Full-Stack — Plataforma Interna de Desenvolvimento',
     period: 'Novembro 2023 - Presente',
     current: true,
-    description: 'Trabalho na plataforma interna de desenvolvimento da DevFellowship — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetei e desenvolvi o ecossistema de micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
+    description: 'Comecei como freelancer no fim de 2023 e passei à dedicação integral em 2026. Trabalho na plataforma interna de desenvolvimento da DevFellowship — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetei e desenvolvi o ecossistema de micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
     highlights: [
       '4º lugar ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)',
       '2º lugar DevConnect ETH 2025 trilha Scroll — TalentDAO',
