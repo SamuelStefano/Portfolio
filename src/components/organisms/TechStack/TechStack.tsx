@@ -160,6 +160,8 @@ export const TechStack = () => {
             {[
               { href: 'https://www.instagram.com/instituto.educarmais/', handle: 'instituto.educarmais' },
               { href: 'https://www.instagram.com/devfellowship/', handle: 'devfellowship' },
+              { href: 'https://www.instagram.com/revera.dev/', handle: 'revera.dev' },
+              { href: 'https://www.instagram.com/iterahq/', handle: 'iterahq' },
               { href: 'https://www.instagram.com/mm.informatica.marialva/', handle: 'mm.informatica.marialva' },
             ].map(ig => (
               <a
