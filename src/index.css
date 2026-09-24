@@ -568,6 +568,15 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Mobile: page only moves vertically, no sideways drift or bounce */
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: clip;
+    overscroll-behavior: none;
+  }
+}
+
 /* Otimizações para imagens */
 img {
   max-width: 100%;
