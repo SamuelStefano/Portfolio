@@ -212,6 +212,8 @@ export const TechStack = () => {
                           stack={job.stack}
                           highlights={highlights}
                           icon={job.icon}
+                          logo={job.logo}
+                          website={job.website}
                         />
                       </a>
                     ) : (
@@ -224,6 +226,8 @@ export const TechStack = () => {
                           stack={job.stack}
                           highlights={highlights}
                           icon={job.icon}
+                          logo={job.logo}
+                          website={job.website}
                         />
                       </div>
                     )}

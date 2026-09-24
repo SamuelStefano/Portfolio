@@ -164,6 +164,22 @@ export const EXPERIENCE_DATA = [
     website: 'https://revera.dev/'
   },
   {
+    company: 'Itera',
+    role: 'Professor',
+    period: '2026 - Presente',
+    current: true,
+    description: 'Professor de programação na Itera, plataforma de cursos com aula ao vivo que também ajudei a construir. Conduzo as turmas pela própria plataforma: aula síncrona, atividades de código com correção automática e acompanhamento do código dos alunos em tempo real.',
+    highlights: [
+      'Aulas ao vivo de programação conduzidas na própria plataforma',
+      'Aula piloto gratuita com adolescentes do Instituto Educar+',
+      'Material e atividades autorados direto na Itera',
+    ],
+    stack: ['Ensino', 'Aula ao Vivo', 'Lógica de Programação', 'JavaScript', 'Mentoria'],
+    logo: '/Itera.svg',
+    icon: GraduationCap,
+    website: 'https://iterahq.dev/'
+  },
+  {
     company: 'M&M Informática',
     role: 'Analista de Suporte Técnico',
     period: 'Dezembro 2024 - Fevereiro 2026',

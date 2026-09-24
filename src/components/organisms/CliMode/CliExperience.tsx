@@ -15,6 +15,14 @@ export const CliExperience = () => {
             <span className="text-[var(--cli-green)]">@{t(`skills.experienceData.${i}.company`)}</span>
             <span className="mx-2">·</span>
             <span>{t(`skills.experienceData.${i}.period`)}</span>
+            {job.website && (
+              <>
+                <span className="mx-2">·</span>
+                <a href={job.website} target="_blank" rel="noopener noreferrer" className="text-[var(--cli-text-soft)] underline-offset-2 hover:underline">
+                  {new URL(job.website).hostname.replace(/^www\./, '')}
+                </a>
+              </>
+            )}
           </div>
           <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-[var(--cli-text-soft)]">{t(`skills.experienceData.${i}.description`)}</p>
           {job.stack.length > 0 && (

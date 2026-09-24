@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import type { LucideIcon } from 'lucide-react';
+import { ExternalLink, type LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/atoms/badge/badge';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
@@ -12,6 +12,8 @@ interface ExperienceItemProps {
   stack: string[];
   highlights?: string[];
   icon?: LucideIcon;
+  logo?: string;
+  website?: string;
   className?: string;
 }
 
@@ -23,6 +25,8 @@ export const ExperienceItem = ({
   stack,
   highlights,
   icon,
+  logo,
+  website,
   className,
 }: ExperienceItemProps) => {
   return (
@@ -37,14 +41,24 @@ export const ExperienceItem = ({
       </div>
 
       <div className="flex items-center gap-2 mb-3">
-        {icon && (
-          <div className="p-1.5 bg-primary/10 rounded flex-shrink-0">
-            {createElement(icon, { className: 'w-3.5 h-3.5 text-primary' })}
-          </div>
+        {logo ? (
+          <img src={logo} alt="" className="w-6 h-6 rounded object-contain bg-white/5 flex-shrink-0" loading="lazy" />
+        ) : (
+          icon && (
+            <div className="p-1.5 bg-primary/10 rounded flex-shrink-0">
+              {createElement(icon, { className: 'w-3.5 h-3.5 text-primary' })}
+            </div>
+          )
         )}
         <Heading level={5} className="text-primary font-semibold text-sm">
           {company}
         </Heading>
+        {website && (
+          <span className="inline-flex items-center gap-1 text-xs text-muted-foreground underline-offset-2 hover:underline">
+            {new URL(website).hostname.replace(/^www\./, '')}
+            <ExternalLink className="w-3 h-3" />
+          </span>
+        )}
       </div>
 
       <Text className="mb-4 text-sm text-muted-foreground leading-relaxed">
