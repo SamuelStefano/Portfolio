@@ -34,7 +34,7 @@
     "title": "Projetos",
     "subtitle": "Produtos que criei ou ajudei a construir. Clique em um card para ver telas, decisões técnicas e stack.",
     "exploreAll": "Explore todos os meus trabalhos e contribuições",
-    "viewDetails": "Ver Detalhes",
+    "viewDetails": "Ver detalhes",
     "close": "Fechar",
     "previous": "Anterior",
     "next": "Próximo",
@@ -386,7 +386,10 @@
       "weekdaysLabel": "Dias úteis",
       "tuesday": "Segunda a Sexta: 09:00 – 17:00",
       "saturday": "Sábado e Domingo: Indisponível",
-      "response": "Resposta em até 24h"
+      "response": "Resposta em até 24h",
+      "unavailable": "Indisponível",
+      "emailSubject": "Conversa pelo seu portfólio",
+      "whatsappText": "Olá, Samuel! Vi seu portfólio e gostaria de conversar."
     },
     "pullRequests": "Pull requests mergeadas",
     "education": "Análise e Desenvolvimento de Sistemas — UNINGÁ · formatura em dez/2026",
@@ -533,7 +536,8 @@
     "viewProject": "Ver Projeto",
     "altpay": {
       "achievement": "Vencedor · Trilha Chainlink",
-      "description": "Solução de pagamentos PIX↔cripto onde um score de crédito é decidido on-chain. A Chainlink CRE roda a lógica de risco no DON e escreve o resultado em contratos via CCIP, enquanto Data Feeds garantem cotação confiável. Liberação de fundos verificável em Solana (Anchor/Rust) com prova de pagamento PIX. Atuei no frontend, backend e em toda a integração Chainlink e on-chain."
+      "description": "Solução de pagamentos PIX↔cripto onde um score de crédito é decidido on-chain. A Chainlink CRE roda a lógica de risco no DON e escreve o resultado em contratos via CCIP, enquanto Data Feeds garantem cotação confiável. Liberação de fundos verificável em Solana (Anchor/Rust) com prova de pagamento PIX. Atuei no frontend, backend e em toda a integração Chainlink e on-chain.",
+      "team": "Samuel Stefano (desenvolvimento) e alunos do Educar+ (apresentação)"
     },
     "greenloop": {
       "achievement": "4º Lugar trilha da Base",

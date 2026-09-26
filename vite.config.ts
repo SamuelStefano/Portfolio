@@ -48,7 +48,8 @@ const devApi = (): Plugin => ({
 
 export default defineConfig({
   server: {
-    host: "::",
+    // loopback only: the dev server has no auth and this box is a public VPS
+    host: "127.0.0.1",
     port: 8080,
     hmr: {
       overlay: true,

@@ -44,6 +44,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
+// shadcn pattern: the variants live beside the component so links can look like buttons
+// eslint-disable-next-line react-refresh/only-export-components
 export { Button, buttonVariants };
 
 

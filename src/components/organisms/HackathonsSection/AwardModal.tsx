@@ -51,7 +51,7 @@ export const AwardModal = ({ hackathon, open, onOpenChange }: AwardModalProps) =
             {hackathon.team && (
               <div className="flex items-start gap-2 text-sm text-muted-foreground sm:col-span-2">
                 <Users className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                <span>{hackathon.team.join(', ')}</span>
+                <span>{hackathon.teamKey ? t(hackathon.teamKey) : hackathon.team.join(', ')}</span>
               </div>
             )}
           </div>

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ProjectOverlay } from './ProjectOverlay';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/lib/i18n';
@@ -79,6 +79,7 @@ const OverlayStory = () => {
 const meta = {
   title: 'Organisms/ProjectOverlay',
   component: ProjectOverlay,
+  args: { project: mockProject, isOpen: true, onClose: () => {} },
   parameters: {
     layout: 'fullscreen',
   },

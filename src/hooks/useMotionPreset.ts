@@ -1,5 +1,5 @@
 import { useReducedMotion } from 'framer-motion';
-import type { Transition, Variants } from 'framer-motion';
+import type { TargetAndTransition, Transition, Variants } from 'framer-motion';
 
 interface MotionOffset {
   opacity?: number;
@@ -13,7 +13,7 @@ export const useMotionPreset = () => {
 
   const transition = (full: Transition): Transition => (reduced ? { duration: 0 } : full);
 
-  const shift = (full: MotionOffset): MotionOffset => (reduced ? { opacity: full.opacity } : full);
+  const shift = (full: MotionOffset): TargetAndTransition => (reduced ? { opacity: full.opacity } : { ...full });
 
   const slideVariants = (offset: number, scale: number, centerOpacity: number): Variants => ({
     enter: (direction: number) =>

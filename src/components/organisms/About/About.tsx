@@ -1,5 +1,5 @@
 import type { TFunction } from 'i18next';
-import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch, GitPullRequest, GitCommitHorizontal } from 'lucide-react';
+import { User, GraduationCap, MapPin, Globe, Heart, Computer, Code2, Calendar, GitBranch, GitPullRequest, GitCommitHorizontal } from 'lucide-react';
 import { CountUp } from '@/components/atoms/CountUp/CountUp';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/atoms/badge/badge';

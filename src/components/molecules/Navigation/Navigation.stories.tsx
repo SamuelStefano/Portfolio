@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Navigation } from './Navigation';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/lib/i18n';
-import { BrowserRouter } from 'react-router-dom';
 
 const meta = {
   title: 'Molecules/Navigation',
@@ -13,11 +12,9 @@ const meta = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <BrowserRouter>
-        <I18nextProvider i18n={i18n}>
+      <I18nextProvider i18n={i18n}>
           <Story />
         </I18nextProvider>
-      </BrowserRouter>
     ),
   ],
 } satisfies Meta<typeof Navigation>;

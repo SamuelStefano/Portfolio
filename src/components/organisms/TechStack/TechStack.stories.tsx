@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TechStack } from './TechStack';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/lib/i18n';

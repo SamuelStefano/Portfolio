@@ -2,7 +2,15 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEve
 import { Github } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from '@/hooks/useInView';
-import { levelFor, levelThresholds, summarize, toDays, toWeeks, type ContributionDay } from '@/lib/contributions';
+import {
+  levelFor,
+  levelThresholds,
+  monthLabelColumns,
+  summarize,
+  toDays,
+  toWeeks,
+  type ContributionDay,
+} from '@/lib/contributions';
 import { cn } from '@/lib/utils';
 import type { GitHubContributions } from '@/hooks/useGitHubStats';
 
@@ -32,13 +40,8 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
   const lang = (i18n.language || 'pt').slice(0, 2);
   const rootRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(rootRef, 0.25);
-  const [shown, setShown] = useState(false);
+  const shown = useInView(rootRef, 0.25, true);
   const [hovered, setHovered] = useState<Hovered | null>(null);
-
-  useEffect(() => {
-    if (inView) setShown(true);
-  }, [inView]);
 
   // on narrow screens the grid scrolls; start at the most recent week
   useEffect(() => {
@@ -70,19 +73,10 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
 
   if (weeks.length === 0) return null;
 
-  // a month label on the first column of each month, skipped when it would collide
-  let lastLabelAt = -3;
-  const monthLabels = weeks.map((week, wi) => {
-    const date = new Date(`${week[0].date}T00:00:00Z`);
-    const previous = wi > 0 ? new Date(`${weeks[wi - 1][0].date}T00:00:00Z`) : null;
-    const isNewMonth = !previous || previous.getUTCMonth() !== date.getUTCMonth();
-    // a month that only owns the first column gives its label to the next one
-    const next = weeks[wi + 1] ? new Date(`${weeks[wi + 1][0].date}T00:00:00Z`) : null;
-    const ownsOneColumn = wi === 0 && next !== null && next.getUTCMonth() !== date.getUTCMonth();
-    if (!isNewMonth || ownsOneColumn || wi - lastLabelAt < 3) return '';
-    lastLabelAt = wi;
-    return fmt.month.format(date).replace('.', '');
-  });
+  const labelled = new Set(monthLabelColumns(weeks));
+  const monthLabels = weeks.map((week, wi) =>
+    labelled.has(wi) ? fmt.month.format(new Date(`${week[0].date}T00:00:00Z`)).replace('.', '') : '',
+  );
 
   // Sunday-first rows; label Mon / Wed / Fri like GitHub does
   const weekdayLabels = [1, 3, 5].map((row) => ({
@@ -105,8 +99,6 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
       ? t('about.activity.none', { date })
       : t('about.activity.day', { count: day.count, date, formatted: fmt.number.format(day.count) });
   };
-
-  let dayIndex = -1;
 
   return (
     <div
@@ -179,8 +171,9 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
               }}
             >
               {weeks.map((week, wi) =>
-                week.map((day) => {
-                  dayIndex += 1;
+                week.map((day, di) => {
+                  // every week but the last is complete, so the flat index is wi * 7 + di
+                  const dayIndex = wi * 7 + di;
                   const weekday = new Date(`${day.date}T00:00:00Z`).getUTCDay();
                   return (
                     <span

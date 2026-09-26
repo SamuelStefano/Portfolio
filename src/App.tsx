@@ -1,23 +1,19 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const App = () => (
-  <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route
-        path="*"
-        element={
-          <Suspense fallback={null}>
-            <NotFound />
-          </Suspense>
-        }
-      />
-    </Routes>
-  </BrowserRouter>
-);
+// Two pages do not need a router: Vercel rewrites every non-file path to index.html,
+// so anything other than "/" is the 404.
+const isHome = (pathname: string) => pathname === "/" || pathname === "/index.html";
+
+const App = () =>
+  isHome(window.location.pathname) ? (
+    <Index />
+  ) : (
+    <Suspense fallback={null}>
+      <NotFound />
+    </Suspense>
+  );
 
 export default App;

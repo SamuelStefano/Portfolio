@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { levelFor, levelThresholds, summarize, toDays, toWeeks } from './contributions';
+import { levelFor, levelThresholds, monthLabelColumns, summarize, toDays, toWeeks } from './contributions';
 
 describe('toDays', () => {
   it('dates every count from the first day, across month boundaries', () => {
@@ -43,5 +43,20 @@ describe('summarize', () => {
   it('counts total, active days and the longest run of active days', () => {
     const days = toDays('2026-01-01', [1, 2, 0, 5, 5, 5, 0, 1]);
     expect(summarize(days)).toEqual({ total: 19, activeDays: 6, longestStreak: 3 });
+  });
+});
+
+describe('monthLabelColumns', () => {
+  it('labels the first week of each month and skips a month that only owns column 0', () => {
+    // 2026-03-29 (Sun) … eight weeks: Mar 29 | Apr 5,12,19,26 | May 3,10,17
+    const weeks = toWeeks(toDays('2026-03-29', Array.from({ length: 56 }, () => 0)));
+    expect(monthLabelColumns(weeks)).toEqual([1, 5]);
+  });
+
+  it('drops a label that would collide with the previous one', () => {
+    const weeks = toWeeks(toDays('2026-04-05', Array.from({ length: 35 }, () => 0)));
+    // Apr 5,12,19,26 | May 3 -> April at 0, May at 4
+    expect(monthLabelColumns(weeks, 5)).toEqual([0]);
+    expect(monthLabelColumns(weeks, 3)).toEqual([0, 4]);
   });
 });

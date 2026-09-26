@@ -1,10 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SocialLink } from './SocialLink';
 import { Github, Linkedin, Mail, Twitter, Instagram } from 'lucide-react';
 
 const meta = {
   title: 'Molecules/SocialLink',
   component: SocialLink,
+  args: { href: 'https://github.com/SamuelStefano', icon: Github, label: 'GitHub' },
   parameters: {
     layout: 'centered',
   },

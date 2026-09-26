@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Phone, FileText, User, GitBranch, Globe, Code2 } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 
 // Social Links
 export const SOCIAL_LINKS = [
@@ -23,83 +23,3 @@ export const SOCIAL_LINKS = [
     labelKey: 'hero.socialLinks.phone'
   }
 ];
-
-// Contact Info
-export const CONTACT_INFO = [
-  {
-    icon: Mail,
-    label: 'samuelstefanodocarmo@gmail.com',
-    href: 'mailto:samuelstefanodocarmo@gmail.com'
-  },
-  {
-    icon: Phone,
-    label: '+55 (44) 99879-5387',
-    href: 'tel:+5544998795387'
-  }
-];
-
-// Text Variants
-export const TEXT_VARIANTS = {
-  default: 'text-foreground',
-  large: 'text-lg font-medium',
-  small: 'text-sm',
-  muted: 'text-muted-foreground'
-};
-
-// Icon Size Classes
-export const ICON_SIZE_CLASSES = {
-  sm: 'w-4 h-4',
-  md: 'w-6 h-6',
-  lg: 'w-8 h-8'
-};
-
-// Heading Classes
-export const HEADING_CLASSES = {
-  1: 'text-4xl font-bold',
-  2: 'text-3xl font-bold',
-  3: 'text-2xl font-semibold',
-  4: 'text-xl font-semibold',
-  5: 'text-lg font-medium',
-  6: 'text-base font-medium'
-};
-
-// Animation Variants
-export const ANIMATION_VARIANTS = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 300 : -300,
-    opacity: 0,
-    scale: 0.95
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    scale: 1
-  },
-  exit: (direction: number) => ({
-    x: direction < 0 ? 300 : -300,
-    opacity: 0,
-    scale: 0.95
-  })
-};
-
-export const SIDE_ANIMATION_VARIANTS = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 50 : -50,
-    opacity: 0,
-    scale: 0.9
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    scale: 1
-  },
-  exit: (direction: number) => ({
-    x: direction < 0 ? 50 : -50,
-    opacity: 0,
-    scale: 0.9
-  })
-};
-
-
-
-

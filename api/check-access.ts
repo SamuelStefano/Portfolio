@@ -5,13 +5,13 @@ const firstHeader = (value: string | string[] | undefined): string | null => {
   return raw.split(',')[0].trim() || null;
 };
 
-// so x-vercel-forwarded-for: a Vercel sempre o define e sobrescreve.
-// x-real-ip como fallback aceitaria um header forjado pelo cliente.
+// Only x-vercel-forwarded-for: Vercel always sets and overwrites it.
+// Falling back to x-real-ip would accept a header forged by the client.
 const getClientIp = (request: VercelRequest): string | null =>
   firstHeader(request.headers['x-vercel-forwarded-for']);
 
-// nunca hardcodar: o repo e publico e isso e um IP residencial.
-// sem a env var configurada o gate falha fechado, que e o default seguro.
+// Never hardcode it: the repo is public and this is a residential IP.
+// Without the env var the gate fails closed, which is the safe default.
 const ALLOWED_IP = process.env.ADMIN_IP;
 
 export default async function handler(

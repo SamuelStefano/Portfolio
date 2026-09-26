@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Text } from './Text';
 
 const meta = {
   title: 'Atoms/Text',
   component: Text,
+  args: { children: 'Full-stack developer' },
   parameters: {
     layout: 'centered',
   },
@@ -57,7 +58,7 @@ export const AllVariants: Story = {
   render: () => (
     <div className="space-y-4 max-w-lg">
       <Text variant="large">Large text variant for emphasis</Text>
-      <Text variant="default">Default text variant for normal content</Text>
+      <Text variant="body">Body text variant for normal content</Text>
       <Text variant="small">Small text variant for less important details</Text>
       <Text variant="muted">Muted text variant for secondary information</Text>
     </div>

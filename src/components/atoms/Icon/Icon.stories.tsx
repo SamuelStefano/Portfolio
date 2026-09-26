@@ -1,10 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Icon } from './Icon';
-import { Heart, Star, Code, Github, Linkedin, Mail, ChevronRight } from 'lucide-react';
+import { Heart, Star, Code, Github, Linkedin, Mail } from 'lucide-react';
 
 const meta = {
   title: 'Atoms/Icon',
   component: Icon,
+  args: { icon: Code },
   parameters: {
     layout: 'centered',
   },

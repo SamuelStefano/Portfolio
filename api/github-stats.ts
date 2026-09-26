@@ -31,6 +31,22 @@ interface ContributionDay {
   contributionCount: number;
 }
 
+interface ContributionsResponse {
+  data?: {
+    viewer?: {
+      contributionsCollection?: {
+        totalCommitContributions: number;
+        totalPullRequestContributions: number;
+        totalPullRequestReviewContributions: number;
+        contributionCalendar: {
+          totalContributions: number;
+          weeks: { contributionDays: ContributionDay[] }[];
+        };
+      };
+    };
+  };
+}
+
 const fetchWithTimeout = async (url: string, options: RequestInit, timeout = 4000) => {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -50,19 +66,17 @@ const fetchContributions = async (headers: Record<string, string>) => {
       6000,
     );
     if (!res.ok) return null;
-    const body = await res.json();
-    const collection = body?.data?.viewer?.contributionsCollection;
+    const body = (await res.json()) as ContributionsResponse;
+    const collection = body.data?.viewer?.contributionsCollection;
     if (!collection) return null;
 
-    const days: ContributionDay[] = collection.contributionCalendar.weeks.flatMap(
-      (week: { contributionDays: ContributionDay[] }) => week.contributionDays,
-    );
+    const days = collection.contributionCalendar.weeks.flatMap((week) => week.contributionDays);
 
     return {
-      total: collection.contributionCalendar.totalContributions as number,
-      commits: collection.totalCommitContributions as number,
-      pullRequests: collection.totalPullRequestContributions as number,
-      reviews: collection.totalPullRequestReviewContributions as number,
+      total: collection.contributionCalendar.totalContributions,
+      commits: collection.totalCommitContributions,
+      pullRequests: collection.totalPullRequestContributions,
+      reviews: collection.totalPullRequestReviewContributions,
       // compact calendar: first day + one count per day
       start: days[0]?.date ?? null,
       counts: days.map((day) => day.contributionCount),
@@ -77,8 +91,8 @@ const fetchMergedPullRequests = async (headers: Record<string, string>) => {
     const query = encodeURIComponent(`is:pr author:${GITHUB_USERNAME} is:merged`);
     const res = await fetchWithTimeout(`https://api.github.com/search/issues?q=${query}&per_page=1`, { headers });
     if (!res.ok) return 0;
-    const data = await res.json();
-    return (data.total_count as number) || 0;
+    const data = (await res.json()) as { total_count?: number };
+    return data.total_count ?? 0;
   } catch {
     return 0;
   }

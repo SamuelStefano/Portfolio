@@ -1,20 +1,20 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
-// inline de proposito: import relativo dentro de api/ nao e empacotado pelo
-// Vercel e derruba a funcao com FUNCTION_INVOCATION_FAILED.
+// Inline on purpose: Vercel does not bundle relative imports inside api/, and the
+// function dies with FUNCTION_INVOCATION_FAILED.
 const firstHeader = (value: string | string[] | undefined): string | null => {
   if (!value) return null;
   const raw = Array.isArray(value) ? value[0] : value;
   return raw.split(',')[0].trim() || null;
 };
 
-// so x-vercel-forwarded-for: a Vercel sempre o define e sobrescreve.
-// x-real-ip como fallback aceitaria um header forjado pelo cliente.
+// Only x-vercel-forwarded-for: Vercel always sets and overwrites it.
+// Falling back to x-real-ip would accept a header forged by the client.
 const getClientIp = (request: VercelRequest): string | null =>
   firstHeader(request.headers['x-vercel-forwarded-for']);
 
-// IP e o mapa de nomes sao dado pessoal e o repo e publico: vem de env.
-// Sem ADMIN_IP configurado o gate nega todo mundo.
+// The IP and the name map are personal data and the repo is public: both come from env.
+// Without ADMIN_IP the gate denies everyone.
 const ALLOWED_IP = process.env.ADMIN_IP;
 
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -71,7 +71,7 @@ export default async function handler(
       });
     }
 
-    const visitsWithNames = (data || []).map((visit: any) => ({
+    const visitsWithNames = ((data ?? []) as Array<{ ip: string }>).map((visit) => ({
       ...visit,
       name: IP_NAMES[visit.ip] ?? null
     }));
@@ -80,10 +80,10 @@ export default async function handler(
       total: visitsWithNames.length,
       visits: visitsWithNames
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error in /api/log:', error);
-    // sem ecoar a mensagem upstream: e info disclosure num endpoint
-    // que fala com o banco via service-role.
+    // never echo the upstream message: this endpoint talks to the database with the
+    // service role, so its errors are information disclosure.
     return res.status(500).json({ error: 'Internal server error' });
   }
 }

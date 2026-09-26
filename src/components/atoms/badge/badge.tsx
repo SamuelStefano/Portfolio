@@ -26,6 +26,8 @@ function Badge({ className, variant, ...props }: BadgeProps) {
   return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
 }
 
+// shadcn pattern: the variants live beside the component so callers can style links as badges
+// eslint-disable-next-line react-refresh/only-export-components
 export { Badge, badgeVariants };
 
 

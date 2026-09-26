@@ -34,7 +34,7 @@
     "title": "Proyectos",
     "subtitle": "Productos que creé o ayudé a construir. Haz clic en una tarjeta para ver pantallas, decisiones técnicas y stack.",
     "exploreAll": "Explora todos mis trabajos y contribuciones",
-    "viewDetails": "Ver Detalles",
+    "viewDetails": "Ver detalles",
     "close": "Cerrar",
     "previous": "Anterior",
     "next": "Siguiente",
@@ -386,7 +386,10 @@
       "weekdaysLabel": "Días hábiles",
       "tuesday": "Lunes a Viernes: 09:00 – 17:00",
       "saturday": "Sábado y Domingo: No disponible",
-      "response": "Respuesta en 24h"
+      "response": "Respuesta en 24h",
+      "unavailable": "No disponible",
+      "emailSubject": "Contacto desde tu portafolio",
+      "whatsappText": "¡Hola, Samuel! Vi tu portafolio y me gustaría conversar."
     },
     "pullRequests": "Pull requests fusionadas",
     "education": "Análisis y Desarrollo de Sistemas — UNINGÁ · graduación en dic/2026",
@@ -533,7 +536,8 @@
     "viewProject": "Ver Proyecto",
     "altpay": {
       "achievement": "Ganador · Pista Chainlink",
-      "description": "Solución de pagos PIX↔cripto donde un score de crédito se decide on-chain. Chainlink CRE ejecuta la lógica de riesgo en el DON y escribe el resultado en contratos vía CCIP, mientras los Data Feeds garantizan una cotización confiable. La liberación de fondos es verificable en Solana (Anchor/Rust) con prueba de pago PIX. Trabajé en el frontend, backend y en toda la integración de Chainlink y on-chain."
+      "description": "Solución de pagos PIX↔cripto donde un score de crédito se decide on-chain. Chainlink CRE ejecuta la lógica de riesgo en el DON y escribe el resultado en contratos vía CCIP, mientras los Data Feeds garantizan una cotización confiable. La liberación de fondos es verificable en Solana (Anchor/Rust) con prueba de pago PIX. Trabajé en el frontend, backend y en toda la integración de Chainlink y on-chain.",
+      "team": "Samuel Stefano (desarrollo) y alumnos de Educar+ (presentación)"
     },
     "greenloop": {
       "achievement": "4º Lugar pista de Base",

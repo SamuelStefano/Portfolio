@@ -8,10 +8,11 @@ import { SkinToggle } from '@/components/molecules/SkinToggle/SkinToggle';
 import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
 import { useSkin } from '@/hooks/useSkin';
 
+// same order as the sections on the page
 const NAV_ITEMS = [
   { labelKey: 'nav.projects', href: '#projetos' },
-  { labelKey: 'nav.experience', href: '#experiencia' },
   { labelKey: 'nav.skills', href: '#habilidades' },
+  { labelKey: 'nav.experience', href: '#experiencia' },
   { labelKey: 'nav.hackathons', href: '#hackathons' },
   { labelKey: 'nav.about', href: '#sobre' },
   { labelKey: 'nav.contact', href: '#contato' },
@@ -48,15 +49,23 @@ export const Navigation = () => {
       const scrollPosition = scrollY + 100;
       let current = '';
 
+      // the section whose top was passed most recently wins, so a nested section
+      // (#experiencia inside #habilidades) takes over from its parent
+      let currentTop = -Infinity;
       for (const section of SECTION_IDS) {
         const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            current = `#${section}`;
-            break;
-          }
+        if (!element) continue;
+        const top = element.getBoundingClientRect().top + scrollY;
+        const bottom = top + element.offsetHeight;
+        if (scrollPosition >= top && scrollPosition < bottom && top > currentTop) {
+          current = `#${section}`;
+          currentTop = top;
         }
+      }
+      // the footer can never scroll up to the top; at the very bottom it is the current section
+      const atBottom = window.innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+      if (atBottom && document.getElementById(SECTION_IDS[SECTION_IDS.length - 1])) {
+        current = `#${SECTION_IDS[SECTION_IDS.length - 1]}`;
       }
       setActiveSection(current);
     };

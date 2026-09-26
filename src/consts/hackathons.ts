@@ -11,6 +11,8 @@ export interface Hackathon {
   githubLink: string;
   technologies: string[];
   team?: string[];
+  /** Translated team line, for teams that are more than a list of names. */
+  teamKey?: string;
 }
 
 export const HACKATHONS: Hackathon[] = [
@@ -19,20 +21,21 @@ export const HACKATHONS: Hackathon[] = [
     place: 1,
     photo: '/podium/hackanation-1.jpg',
     event: 'Hackanation 2026 · TokenNation',
-    location: 'São Paulo, Brasil',
+    location: 'São Paulo, BR',
     date: 'May 2026',
     achievementKey: 'hackathons.altpay.achievement',
     descriptionKey: 'hackathons.altpay.description',
     projectLink: 'https://github.com/SamuelStefano/AltPay',
     githubLink: 'https://github.com/SamuelStefano/AltPay',
     technologies: ['Solana', 'Anchor', 'Rust', 'Chainlink', 'CCIP', 'Data Feeds', 'Solidity', 'Foundry', 'USDC', 'PIX', 'TypeScript', 'Web3'],
-    team: ['Samuel Stefano (dev)', 'Alunos Educar+ (apresentação)'],
+    team: ['Samuel Stefano'],
+    teamKey: 'hackathons.altpay.team',
   },
   {
     name: 'GreenLoop',
     place: 4,
     event: 'ETH Latam 2025',
-    location: 'São Paulo, Brasil',
+    location: 'São Paulo, BR',
     date: 'Aug 2025',
     achievementKey: 'hackathons.greenloop.achievement',
     descriptionKey: 'hackathons.greenloop.description',
@@ -45,7 +48,7 @@ export const HACKATHONS: Hackathon[] = [
     name: 'TalentDAO',
     place: 2,
     event: 'DevConnect ETH 2025',
-    location: 'Buenos Aires, Argentina',
+    location: 'Buenos Aires, AR',
     date: 'Nov 2025',
     achievementKey: 'hackathons.talentdao.achievement',
     descriptionKey: 'hackathons.talentdao.description',

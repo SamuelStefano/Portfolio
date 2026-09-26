@@ -1,10 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ExperienceItem } from './ExperienceItem';
 import { Briefcase } from 'lucide-react';
 
 const meta = {
   title: 'Molecules/ExperienceItem',
   component: ExperienceItem,
+  args: {
+    company: 'DevFellowship',
+    role: 'Full-Stack Developer',
+    period: 'Nov 2023 – Present',
+    description: 'Internal developer platform: micro-frontends, revenue flow and MCP servers.',
+    stack: ['React', 'TypeScript', 'Supabase'],
+  },
   parameters: {
     layout: 'centered',
   },

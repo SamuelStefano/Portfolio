@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { createElement, useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import {
@@ -21,10 +21,8 @@ import {
   GitBranch,
   LayoutGrid,
   Route,
+  type LucideIcon,
 } from 'lucide-react';
-import { Button } from '@/components/atoms/button/button';
-import { Heading } from '@/components/atoms/Heading/Heading';
-import { Text } from '@/components/atoms/Text/Text';
 import { Project, ProjectSection } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
 import { useMotionPreset } from '@/hooks/useMotionPreset';
@@ -53,7 +51,7 @@ function getSections(project: Project): ProjectSection[] {
 }
 
 /** Map section folder_name → Lucide icon */
-const SECTION_ICONS: Record<string, React.ComponentType<any>> = {
+const SECTION_ICONS: Record<string, LucideIcon> = {
   overview: Info,
   admin: Layers,
   dashboard: Layers,
@@ -445,15 +443,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
     setLightbox({ images, index, title });
   }, []);
 
-  /* Reset active section when project changes */
-  useEffect(() => {
-    setActiveSection('__overview__');
+  // A fresh instance mounts for every open (the provider keys it), so the section and the
+  // lightbox start clean without resetting state from an effect. Closing clears the lightbox.
+  const close = useCallback(() => {
     setLightbox(null);
-  }, [project?.id]);
-
-  useEffect(() => {
-    if (!isOpen) setLightbox(null);
-  }, [isOpen]);
+    onClose();
+  }, [onClose]);
 
   /* Scroll to top of content on section change */
   useEffect(() => {
@@ -498,7 +493,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (lightbox) setLightbox(null);
-        else onClose();
+        else close();
         return;
       }
       if (!lightbox || lightbox.images.length < 2) return;
@@ -510,16 +505,15 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [isOpen, onClose, lightbox]);
+  }, [isOpen, close, lightbox]);
 
   const handleBackdropClick = useCallback((e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
-  }, [onClose]);
+    if (e.target === e.currentTarget) close();
+  }, [close]);
 
   if (!project) return null;
 
   const sections = getSections(project);
-  const ProjectIcon = getIconComponent(project.icon_name);
 
   const navItems = [
     { id: '__overview__', label: t('projects.overview'), icon: Info },
@@ -559,7 +553,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
             {/* ── header ── */}
             <div className="flex-shrink-0 flex items-center gap-3 px-5 py-4 border-b border-border bg-background">
               <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-primary/15 border border-primary/25 flex items-center justify-center">
-                {ProjectIcon && <ProjectIcon className="w-4.5 h-4.5 text-primary" />}
+                {createElement(getIconComponent(project.icon_name), { className: 'w-4.5 h-4.5 text-primary' })}
               </div>
 
               <div className="flex-1 min-w-0">
@@ -587,7 +581,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
               </div>
 
               <button
-                onClick={onClose}
+                onClick={close}
                 aria-label={t('projects.close')}
                 className="flex-shrink-0 w-8 h-8 rounded-lg hover:bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
               >

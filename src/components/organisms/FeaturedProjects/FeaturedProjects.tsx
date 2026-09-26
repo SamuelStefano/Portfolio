@@ -151,7 +151,7 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                   decoding="async"
                   className="absolute inset-0 h-full w-full select-none object-cover object-top"
                   style={{
-                    transformOrigin: '50% 0%',
+                    transformOrigin: '0% 0%',
                     opacity: i === index ? 1 : 0,
                     transform: i === index && !reducedMotion ? 'scale(1.045)' : 'scale(1)',
                     transition: reducedMotion

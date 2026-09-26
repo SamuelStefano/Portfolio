@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SkillBar } from './SkillBar';
 
 const meta = {
   title: 'Molecules/SkillBar',
   component: SkillBar,
+  args: { name: 'React', level: 90 },
   parameters: {
     layout: 'centered',
   },

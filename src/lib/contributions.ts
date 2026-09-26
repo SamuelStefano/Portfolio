@@ -63,3 +63,20 @@ export const summarize = (days: ContributionDay[]): ContributionSummary => {
   }
   return { total, activeDays, longestStreak };
 };
+
+/**
+ * Columns that get a month label: the first week of each month, skipping a label that would
+ * sit less than `minGap` columns after the previous one, and giving the first column's label
+ * away when that month only owns that single column.
+ */
+export const monthLabelColumns = (weeks: ContributionDay[][], minGap = 3): number[] => {
+  const monthOf = (week: ContributionDay[]) => new Date(`${week[0].date}T00:00:00Z`).getUTCMonth();
+  const columns: number[] = [];
+  weeks.forEach((week, wi) => {
+    const isNewMonth = wi === 0 || monthOf(weeks[wi - 1]) !== monthOf(week);
+    const ownsOnlyFirstColumn = wi === 0 && weeks.length > 1 && monthOf(weeks[1]) !== monthOf(week);
+    const last = columns[columns.length - 1];
+    if (isNewMonth && !ownsOnlyFirstColumn && (last === undefined || wi - last >= minGap)) columns.push(wi);
+  });
+  return columns;
+};

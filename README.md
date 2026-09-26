@@ -1,71 +1,94 @@
-# 👋 Olá! Meu nome é Samuel Stefano
+<div align="center">
 
-Desenvolvedor Full-Stack pleno (JS/TS), completo tanto no full-stack quanto em Solidity/Web3.
-Construo produtos reais: plataformas de educação, esteiras de cobrança em produção e integrações com IA.
+# Samuel Stefano — Portfolio
 
-Em busca de novas experiências em times de produto remotos.
+**Full-stack developer · applied AI** — React, TypeScript, Node.js and Supabase, with LLMs, agents and MCP servers in production.
+
+[![Live site](https://img.shields.io/badge/live-samuelstefano.dev-3b82f6?style=flat-square)](https://samuelstefano.dev)
+[![CI](https://github.com/SamuelStefano/Portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/SamuelStefano/Portfolio/actions/workflows/ci.yml)
+![React 18](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646cff?style=flat-square&logo=vite&logoColor=white)
+
+<a href="https://samuelstefano.dev"><img src="docs/hero.png" alt="Portfolio hero section" width="900" /></a>
+
+</div>
+
+## What is in it
+
+**Featured projects** — six flagship projects in a showcase: screenshot in a browser frame, status, role, stack and links. Autoplay is driven by the progress bar of the active thumbnail and pauses on hover, keyboard focus, when the carousel leaves the screen, when the tab is hidden and under `prefers-reduced-motion`; swipe and arrow keys work too. Every project opens a detail view with a sectioned gallery and a lightbox.
+
+<img src="docs/featured-projects.png" alt="Featured projects carousel" width="900" />
+
+**Skills backed by evidence** — each skill shows how many projects use it; clicking opens the list, and each project opens its detail view. The mapping is derived from the projects' stacks, not typed by hand ([`src/lib/skillProjects.ts`](src/lib/skillProjects.ts), unit-tested).
+
+<img src="docs/skills.png" alt="Skill evidence panel" width="900" />
+
+**Live GitHub activity** — a Vercel function reads the last year of contributions through GitHub GraphQL with a server-side token and is cached at the edge for six hours. The About section shows commits and merged pull requests, plus a six-month heatmap coloured by quartiles so one huge day does not wash the rest out.
+
+<img src="docs/github-activity.png" alt="GitHub activity heatmap" width="600" />
+
+**Hackathons as a podium**, a timeline of experience, a trilingual interface (Portuguese, English, Spanish), a terminal skin, four colour schemes and a light theme — all applied before the first paint.
+
+<img src="docs/podium.png" alt="Hackathon podium" width="900" />
+
+## Engineering notes
+
+| | |
+|---|---|
+| **Performance** | Initial JavaScript is 108 KB gzip (it was 221 KB). The project overlay (with framer-motion), terminal skin, snake game, award dialog and 404 page are separate chunks; cards warm the overlay chunk on hover. Each visitor downloads one locale and the others load when the browser is idle. Photos ship as WebP variants sized for where they render. |
+| **Content model** | [`projectCatalog.ts`](src/lib/projectCatalog.ts) holds structure only (links, stack, images, status). Every sentence a visitor reads lives in [`src/locales`](src/locales), so a text exists once per language. |
+| **Security** | Strict CSP (the single inline script is allow-listed by hash), HSTS, frame and content-type headers. Tokens stay in serverless functions; CI fails if anything shaped like a key reaches `dist/`. |
+| **Accessibility** | Keyboard focus is always visible, skip link, carousel follows the WAI-ARIA pattern with a pause control, `<html lang>` follows the chosen language, reduced motion is respected everywhere. |
+| **Quality gates** | `npm run check` = typecheck + lint + tests + build, also on every push in GitHub Actions (read-only token, actions pinned by SHA). |
+
+The tests guard the things that silently break a portfolio: an image path that does not exist, a project text missing in one language, locale keys drifting apart, the CSP hash falling out of sync with the inline script, the heatmap maths and the skill ↔ project matching.
+
+## Stack
+
+React 18 · TypeScript · Vite · Tailwind CSS · Radix UI (dialog) · framer-motion (overlay only) · i18next · Vitest · Storybook · Vercel (static site + serverless functions) · sharp (image pipeline)
+
+## Structure
+
+```
+src/
+  components/   atoms · molecules · organisms (atomic design)
+  hooks/        view state: in-view, reduced motion, GitHub stats, theme, skin
+  lib/          pure logic: catalog, translation, skills ↔ projects, contributions, language
+  locales/      pt · en · es — every text a visitor reads
+  pages/        index and 404
+api/            Vercel functions: github-stats, IP-gated visit log
+scripts/        image pipeline (sharp → thumb/card WebP variants)
+public/         screenshots, photos, résumés, share card
+```
+
+## Running it
+
+```bash
+npm install
+npm run dev            # http://127.0.0.1:8080 — /api/github-stats is proxied to production
+npm run check          # typecheck, lint, tests, build
+npm run images         # regenerate WebP variants after adding screenshots
+npm run dev:vercel     # run the API functions locally (Vercel CLI + env)
+```
+
+Offline, point the stats endpoint at a saved response: `GITHUB_STATS_FIXTURE=stats.json npm run dev`.
+
+| Environment variable | Where | Used by |
+|---|---|---|
+| `GITHUB_TOKEN` | Vercel (server) | `api/github-stats` — fine-grained, read-only |
+| `ADMIN_IP` | Vercel (server) | `api/check-access`, `api/log` — the visit-log gate fails closed without it |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | Vercel (server) | `api/log` |
+
+Nothing is read from `VITE_*` variables: anything with that prefix would be inlined into the public bundle.
+
+## Adding a project
+
+1. Put the screenshots in `public/projects/<slug>/` and run `npm run images`.
+2. Add the entry to `src/lib/projectCatalog.ts` and its status (and `featured`) to `PROJECT_META`.
+3. Add its key to `src/lib/translateProjects.ts` and the texts to the three locales under `projectDescriptions.<key>` and `projectSectionText.<section id>`.
+4. `npm test` — the catalog test lists anything that is missing.
 
 ---
 
-## 🚀 Tecnologias do dia a dia
-
-- **Frontend:** React, Next.js, Vite, TypeScript, TailwindCSS, Module Federation, Storybook
-- **Backend:** Node.js, NestJS, Hono + Bun, PostgreSQL, Supabase (Edge Functions, RLS), Prisma
-- **DevOps:** Docker, GitHub Actions, Traefik, VPS (Hetzner), Vercel, Git
-- **Web3:** Solidity, EVM, Anchor/Solana, Viem, Base, Chainlink (Data Feeds, CCIP, CRE)
-- **IA & Automação:** Claude API, OpenRouter, servidores MCP, n8n
-- **Outros:** Judge0, webhooks, Playwright, Linux, WSL, AWS
-
----
-
-## 💼 Projetos principais
-
-### 🔹 ITERA — plataforma de cursos com aula ao vivo
-LMS por assinatura com aula ao vivo síncrona: o professor conduz e o stage do aluno acompanha em tempo real,
-sobre Supabase Realtime (broadcast + postgres_changes + presence num único canal).
-Em produção com turmas reais, incluindo o Instituto Educar+.
-
-### 🔹 DFL Payments — esteira de receita em produção
-Do contrato à nota fiscal: geração do documento, assinatura eletrônica (Autentique), cronograma de parcelas,
-Pix via Woovi com webhook validado por HMAC e emissão automática de NFS-e pela Spedy.
-Régua de cobrança, conciliação e cron dispatcher por cima. Movimenta dinheiro real.
-
-### 🔹 Deck — posto de comando para agentes de IA
-App web pessoal que orquestra sessões de agentes numa VPS: fila de tarefas, streaming de saída,
-ledger de pontos e operações de host. Realtime sobre Supabase.
-
-### 🔹 AltPay — vitória na trilha Chainlink
-Submissão de hackathon com lógica verificável computada no DON via Chainlink CRE,
-Data Feeds consumidos on-chain por CPI e atestação Ed25519.
-
-### 🔹 Ecossistema DevFellowship
-Micro-frontends com Module Federation: DFL Learn (super-app host), Reviews, Payments, Flows
-e o CI Revisor Bot com IA. Mais 4 servidores MCP (work/learn/payments/plans) e a stack de back-end TS em Hono + Bun.
-
----
-
-## 🏆 Hackathons
-
-- 🥇 **Vitória na trilha Chainlink** — AltPay
-- 🥈 **2º lugar na trilha Scroll**, DevConnect ETH 2025 — TalentDAO
-- 🏅 **4º lugar**, ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)
-
----
-
-## 🎯 O que estou estudando agora
-
-- Arquiteturas orientadas a eventos
-- Blockchain profissional (Solana/Anchor, EVM, Chainlink)
-- Estruturas avançadas no Supabase (RLS, policies, RPCs)
-- Testes de ponta a ponta e observabilidade
-
----
-
-## 📬 Como falar comigo
-
-- **Portfólio:** https://samuelstefano.dev
-- **LinkedIn:** https://www.linkedin.com/in/samuel-stefano-425a29246/
-- **GitHub:** https://github.com/SamuelStefano
-- **Email:** samuelstefanodocarmo@gmail.com
-
----
+The code is public to read and learn from. Photos, texts and project material are personal — please don't reuse them.

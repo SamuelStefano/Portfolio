@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Heading } from './Heading';
 
 const meta = {
   title: 'Atoms/Heading',
   component: Heading,
+  args: { level: 2, children: 'Samuel Stefano' },
   parameters: {
     layout: 'centered',
   },

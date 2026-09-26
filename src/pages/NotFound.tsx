@@ -1,10 +1,9 @@
 import { ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 
 const NotFound = () => {
   const { t } = useTranslation();
-  const { pathname } = useLocation();
+  const { pathname } = window.location;
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6">

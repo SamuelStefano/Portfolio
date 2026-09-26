@@ -17,7 +17,7 @@ export const useExperienceTime = () => {
       const now = new Date();
       let years = now.getFullYear() - START_DATE.getFullYear();
       let months = now.getMonth() - START_DATE.getMonth();
-      let days = now.getDate() - START_DATE.getDate();
+      const days = now.getDate() - START_DATE.getDate();
       if (days < 0) months -= 1;
       if (months < 0) { years -= 1; months += 12; }
       const totalMonths = years * 12 + months;

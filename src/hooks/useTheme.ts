@@ -8,7 +8,9 @@ const getInitialTheme = (): Theme => {
   try {
     const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
     if (stored === 'light' || stored === 'dark') return stored;
-  } catch {}
+  } catch {
+    /* localStorage unavailable (private mode) */
+  }
   return 'dark';
 };
 
@@ -24,7 +26,9 @@ export const useTheme = () => {
     }
     try {
       localStorage.setItem(STORAGE_KEY, theme);
-    } catch {}
+    } catch {
+      /* localStorage unavailable (private mode) */
+    }
   }, [theme]);
 
   const toggle = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));

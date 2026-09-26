@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ProjectCard } from './ProjectCard';
 import type { Project } from '@/types/project';
 
@@ -47,6 +47,7 @@ const mockProject: Project = {
 const meta = {
   title: 'Molecules/ProjectCard',
   component: ProjectCard,
+  args: { project: mockProject, onProjectClick: () => {} },
   parameters: {
     layout: 'centered',
   },

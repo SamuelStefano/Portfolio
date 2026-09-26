@@ -12,10 +12,12 @@ const ProjectOverlay = lazy(loadProjectOverlay);
 export const ProjectOverlayProvider = ({ children }: { children: ReactNode }) => {
   const { projects } = useProjects();
   const [openId, setOpenId] = useState<string | null>(null);
-  const [mounted, setMounted] = useState(false);
+  // bumped on every open: a new overlay instance starts on the overview with no lightbox;
+  // unchanged on close, so the exit animation still plays on the old instance
+  const [session, setSession] = useState(0);
 
   const openProject = useCallback((project: Project) => {
-    setMounted(true);
+    setSession((n) => n + 1);
     setOpenId(project.id);
   }, []);
 
@@ -31,9 +33,9 @@ export const ProjectOverlayProvider = ({ children }: { children: ReactNode }) =>
   return (
     <ProjectOverlayContext.Provider value={api}>
       {children}
-      {mounted && (
+      {session > 0 && (
         <Suspense fallback={null}>
-          <ProjectOverlay project={project} isOpen={project !== null} onClose={close} />
+          <ProjectOverlay key={session} project={project} isOpen={project !== null} onClose={close} />
         </Suspense>
       )}
     </ProjectOverlayContext.Provider>

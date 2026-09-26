@@ -20,7 +20,7 @@ export const SocialLink = ({
   return (
     <Button
       variant={variant}
-      size={size}
+      size={size === 'md' ? 'default' : size}
       asChild
       className="border-border bg-card hover:border-primary/50 hover:bg-card hover:text-primary transition-colors"
     >

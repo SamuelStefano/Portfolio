@@ -1,3 +1,4 @@
+import { createElement } from 'react';
 import { ExternalLink, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn, cardSrc } from '@/lib/utils';
@@ -25,7 +26,6 @@ const ROLE_ACCENT: Record<string, string> = {
 
 export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
   const { t } = useTranslation();
-  const IconComponent = getIconComponent(project.icon_name);
   const accentGradient = ROLE_ACCENT[project.role] ?? ROLE_ACCENT.Collaborator;
 
   return (
@@ -60,7 +60,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
-            <IconComponent className="w-14 h-14 text-primary" />
+            {createElement(getIconComponent(project.icon_name), { className: 'w-14 h-14 text-primary' })}
           </div>
         )}
         {project.status && <StatusBadge status={project.status} className="absolute left-3 top-3 shadow-sm" />}

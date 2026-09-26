@@ -90,7 +90,7 @@ export const HackathonsSection = () => {
                     {hackathon.team && (
                       <div className="flex items-start gap-2">
                         <Users className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
-                        <span>{hackathon.team.join(', ')}</span>
+                        <span>{hackathon.teamKey ? t(hackathon.teamKey) : hackathon.team.join(', ')}</span>
                       </div>
                     )}
                   </div>

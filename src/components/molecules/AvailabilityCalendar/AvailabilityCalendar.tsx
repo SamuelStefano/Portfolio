@@ -6,29 +6,29 @@ import { Icon } from '@/components/atoms/Icon/Icon';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 
-const DAYS = [
-  { key: 'seg', label: 'Seg', active: true },
-  { key: 'ter', label: 'Ter', active: true },
-  { key: 'qua', label: 'Qua', active: true },
-  { key: 'qui', label: 'Qui', active: true },
-  { key: 'sex', label: 'Sex', active: true },
-  { key: 'sab', label: 'Sáb', active: false },
-  { key: 'dom', label: 'Dom', active: false },
-];
+// Monday-first week; 2024-01-01 was a Monday
+const WEEK = Array.from({ length: 7 }, (_, i) => ({ date: new Date(Date.UTC(2024, 0, 1 + i)), active: i < 5 }));
 
 export const AvailabilityCalendar = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const weekday = new Intl.DateTimeFormat((i18n.language || 'pt').slice(0, 2), { weekday: 'short', timeZone: 'UTC' });
+  const dayLabel = (date: Date) => {
+    const label = weekday.format(date).replace('.', '');
+    return label.charAt(0).toUpperCase() + label.slice(1);
+  };
 
   const handleScheduleMeeting = () => {
-    window.open('https://calendly.com/samuelstefanodocarmo/30min', '_blank');
+    window.open('https://calendly.com/samuelstefanodocarmo/30min', '_blank', 'noopener,noreferrer');
   };
 
   const handleEmailContact = () => {
-    window.open('mailto:samuelstefanodocarmo@gmail.com?subject=Reunião - Portfolio', '_blank');
+    const subject = encodeURIComponent(t('about.availability.emailSubject'));
+    window.open(`mailto:samuelstefanodocarmo@gmail.com?subject=${subject}`, '_blank');
   };
 
   const handleWhatsAppContact = () => {
-    window.open('https://wa.me/5544998795387?text=Olá! Vi seu portfólio e gostaria de agendar uma conversa.', '_blank');
+    const text = encodeURIComponent(t('about.availability.whatsappText'));
+    window.open(`https://wa.me/5544998795387?text=${text}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -51,16 +51,16 @@ export const AvailabilityCalendar = () => {
 
         {/* Day pills */}
         <div className="flex justify-center gap-1.5 mb-5">
-          {DAYS.map((d) => (
+          {WEEK.map((d) => (
             <div
-              key={d.key}
+              key={d.date.toISOString()}
               className={`flex flex-col items-center gap-1 px-2.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${
                 d.active
                   ? 'bg-primary/15 text-primary border border-primary/30'
                   : 'bg-muted/30 text-muted-foreground/50 border border-border/30'
               }`}
             >
-              {d.label}
+              {dayLabel(d.date)}
               <span
                 className={`w-1.5 h-1.5 rounded-full ${
                   d.active ? 'bg-green-500 animate-pulse' : 'bg-muted-foreground/30'
@@ -90,8 +90,10 @@ export const AvailabilityCalendar = () => {
           ))}
 
           <div className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/20 border border-border/30 opacity-50">
-            <span className="text-xs text-muted-foreground">Sáb / Dom</span>
-            <span className="text-xs text-muted-foreground">{t('about.availability.saturday').split(':')[1]?.trim() || 'Indisponível'}</span>
+            <span className="text-xs text-muted-foreground">
+              {dayLabel(WEEK[5].date)} / {dayLabel(WEEK[6].date)}
+            </span>
+            <span className="text-xs text-muted-foreground">{t('about.availability.unavailable')}</span>
           </div>
 
           <Text variant="small" className="text-muted-foreground/70 text-center pt-1">
