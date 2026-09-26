@@ -51,9 +51,12 @@ i18n
     react: { useSuspense: true },
   })
   .then(() => {
+    document.title = i18n.t('meta.title');
+
     // only an explicit switch is remembered; first visits keep following the browser
     i18n.on('languageChanged', (language) => {
       document.documentElement.lang = htmlLang(language);
+      document.title = i18n.t('meta.title');
       try {
         localStorage.setItem(STORAGE_KEY, language);
       } catch {

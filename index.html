@@ -1,62 +1,60 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <!-- codificação primeiro para evitar mojibake -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Samuel Stefano - Full-Stack Developer | Portfólio</title>
-
-    <!-- SEO base -->
-    <meta name="description" content="Portfólio de Samuel Stefano — Desenvolvedor Full-Stack especializado em React, TypeScript, Next.js, Module Federation e micro-frontends. Desenvolvedor no DevFellowship, com experiência em NestJS, Supabase, Docker e IA." />
-    <meta name="keywords" content="Samuel Stefano, Full-Stack Developer, React, TypeScript, Next.js, NestJS, Module Federation, Micro-frontends, Supabase, DevFellowship, Portfólio, Desenvolvedor, Brasil" />
+    <title>Samuel Stefano — Full-Stack Developer · Applied AI</title>
+    <meta name="description" content="Full-stack developer (React, TypeScript, Node.js, Supabase) who ships AI to production: agents, MCP servers and LLM features. Chainlink track winner at Hackanation 2026. Based in Brazil, working remotely." />
     <meta name="author" content="Samuel Stefano Teixeira do Carmo" />
-    <link rel="canonical" href="https://samuelstefano.dev" />
+    <link rel="canonical" href="https://samuelstefano.dev/" />
     <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#030816" />
+    <meta name="color-scheme" content="dark light" />
 
-    <!-- Ícones -->
-    <link rel="icon" type="image/png" href="/EuGhibli.png" />
-    <link rel="apple-touch-icon" href="/EuGhibli.png" />
-    <meta name="theme-color" content="#0EA5E9" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" as="image" type="image/webp" href="/hero-photo.card.webp" />
 
-    <!-- Open Graph (Facebook/LinkedIn) -->
+    <!-- paint the stored theme, colour scheme and skin before React mounts (no flash);
+         its sha256 is allow-listed in the CSP in vercel.json -->
+    <script>(function(){try{var d=document.documentElement,s=localStorage;if(s.getItem('portfolio-theme')==='light')d.classList.add('light');var c=s.getItem('portfolio-color');if(c&&c!=='aurora')d.setAttribute('data-color',c);d.setAttribute('data-skin',s.getItem('portfolio-skin')==='cli'?'cli':'modern')}catch(e){}})();</script>
+    <style>html{background:#030816}html.light{background:#e1e7ef}</style>
+
+    <!-- Open Graph (LinkedIn, WhatsApp, Slack) -->
     <meta property="og:type" content="profile" />
-    <meta property="og:url" content="https://samuelstefano.dev" />
-    <meta property="og:title" content="Samuel Stefano - Full-Stack Developer | Portfólio" />
-    <meta property="og:description" content="Portfólio de Samuel Stefano — Desenvolvedor Full-Stack especializado em React, TypeScript, Next.js, Module Federation e micro-frontends. Desenvolvedor no DevFellowship." />
-    <meta property="og:image" content="https://samuelstefano.dev/og-image-v6.png" />
-    <meta property="og:image:secure_url" content="https://samuelstefano.dev/og-image-v6.png" />
+    <meta property="og:url" content="https://samuelstefano.dev/" />
+    <meta property="og:site_name" content="Samuel Stefano" />
+    <meta property="og:title" content="Samuel Stefano — Full-Stack Developer · Applied AI" />
+    <meta property="og:description" content="React, TypeScript, Node.js and Supabase, with AI in production. Chainlink track winner at Hackanation 2026 · 990+ merged pull requests." />
+    <meta property="og:image" content="https://samuelstefano.dev/og-image-v7.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Samuel Stefano - Full-Stack Developer" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:site_name" content="Samuel Stefano" />
+    <meta property="og:image:alt" content="Samuel Stefano — Full-Stack Developer · Applied AI" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:locale:alternate" content="es_ES" />
     <meta property="profile:first_name" content="Samuel" />
     <meta property="profile:last_name" content="Stefano" />
 
-    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@samuel_stefano" />
-    <meta name="twitter:creator" content="@samuel_stefano" />
-    <meta name="twitter:title" content="Samuel Stefano - Full-Stack Developer" />
-    <meta name="twitter:description" content="Portfólio de Samuel Stefano — Full-Stack Developer especializado em React, TypeScript, Next.js e micro-frontends." />
-    <meta name="twitter:image" content="https://samuelstefano.dev/og-image-v6.png" />
-    <meta name="twitter:image:alt" content="Samuel Stefano - Full-Stack Developer" />
+    <meta name="twitter:title" content="Samuel Stefano — Full-Stack Developer · Applied AI" />
+    <meta name="twitter:description" content="React, TypeScript, Node.js and Supabase, with AI in production. Chainlink track winner at Hackanation 2026." />
+    <meta name="twitter:image" content="https://samuelstefano.dev/og-image-v7.png" />
+    <meta name="twitter:image:alt" content="Samuel Stefano — Full-Stack Developer · Applied AI" />
 
-    <!-- JSON-LD (schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Samuel Stefano Teixeira do Carmo",
-      "givenName": "Samuel",
-      "familyName": "Stefano Teixeira do Carmo",
+      "alternateName": "Samuel Stefano",
       "jobTitle": "Full-Stack Developer",
-      "description": "Desenvolvedor Full-Stack especializado em React, TypeScript, Next.js, Module Federation e micro-frontends. Desenvolvedor no DevFellowship com experiência em NestJS, Supabase, Docker e Inteligência Artificial.",
-      "url": "https://samuelstefano.dev",
-      "image": "https://samuelstefano.dev/og-image-v6.png",
-      "email": "samuelstefanodocarmo@gmail.com",
+      "description": "Full-stack developer (React, TypeScript, Node.js, Supabase) who ships AI to production: agents, MCP servers and LLM features.",
+      "url": "https://samuelstefano.dev/",
+      "image": "https://samuelstefano.dev/hero-photo.jpg",
+      "email": "mailto:samuelstefanodocarmo@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Marialva",
@@ -65,40 +63,42 @@
       },
       "sameAs": [
         "https://github.com/SamuelStefano",
-        "https://linkedin.com/in/samuel-stefano",
-        "https://instagram.com/samuel.stefano"
-      ],
-      "knowsAbout": [
-        "React",
-        "TypeScript",
-        "Next.js",
-        "Node.js",
-        "NestJS",
-        "Module Federation",
-        "Micro-frontends",
-        "Supabase",
-        "PostgreSQL",
-        "Docker",
-        "GitHub Actions",
-        "Tailwind CSS",
-        "Claude API",
-        "AI Agents",
-        "Full-Stack Development",
-        "Web3 & Blockchain",
-        "Software Architecture"
+        "https://www.linkedin.com/in/samuel-stefano-425a29246/"
       ],
       "worksFor": {
         "@type": "Organization",
         "name": "DevFellowship",
         "url": "https://devfellowship.com"
-      }
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "UNINGÁ — Centro Universitário Ingá"
+      },
+      "award": "Chainlink track winner — Hackanation 2026",
+      "knowsLanguage": ["pt-BR", "en", "es"],
+      "knowsAbout": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Supabase",
+        "PostgreSQL",
+        "Module Federation",
+        "Model Context Protocol",
+        "AI agents",
+        "LLM integration",
+        "Claude API",
+        "Hono",
+        "Docker",
+        "GitHub Actions",
+        "Solidity",
+        "Chainlink"
+      ]
     }
     </script>
   </head>
 
   <body>
     <div id="root"></div>
-    <!-- Vite/React -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

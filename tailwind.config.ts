@@ -1,4 +1,5 @@
-﻿import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
@@ -19,9 +20,11 @@ export default {
       },
     },
     extend: {
+      // self-hosted through @fontsource-variable (see main.tsx); only the latin subset downloads
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
-        'mono': ['JetBrains Mono', 'monospace'],
+        sans: ['"Inter Variable"', 'Inter', ...defaultTheme.fontFamily.sans],
+        inter: ['"Inter Variable"', 'Inter', ...defaultTheme.fontFamily.sans],
+        mono: ['"JetBrains Mono Variable"', '"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",

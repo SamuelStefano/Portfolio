@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { Analytics } from "@vercel/analytics/react";
 import App from "./App.tsx";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
 import "./index.css";
 import "./lib/i18n";
 

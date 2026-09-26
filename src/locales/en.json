@@ -951,5 +951,8 @@
     "title": "This page does not exist.",
     "description": "The link may be broken or the page has moved.",
     "back": "Back to home"
+  },
+  "meta": {
+    "title": "Samuel Stefano — Full-Stack Developer · Applied AI"
   }
 }

@@ -951,5 +951,8 @@
     "title": "Essa página não existe.",
     "description": "O link pode estar quebrado ou a página mudou de lugar.",
     "back": "Voltar ao início"
+  },
+  "meta": {
+    "title": "Samuel Stefano — Desenvolvedor Full-Stack · IA aplicada"
   }
 }

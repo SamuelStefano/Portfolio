@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { readFileSync } from "fs";
@@ -61,5 +62,9 @@ export default defineConfig({
   },
   build: {
     sourcemap: false,
+  },
+  test: {
+    environment: "node",
+    include: ["src/**/*.test.ts", "api/**/*.test.ts"],
   },
 });

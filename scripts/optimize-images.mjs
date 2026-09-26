@@ -15,11 +15,9 @@ const MAX_WIDTH = 1600;
 const CAPS = {
   'DevFelloShip.png': 512,
   'EducarMais.webp': 640,
-  'og-image-v6.png': 1200,
-  'x-card.png': 1200,
-  'imagem profissional.jpg': 900,
+  'og-image-v7.png': 1200,
   'MMIcon.png': 400,
-  'Tainan Fidelis.jpeg': 400,
+  'EuGhibli.png': 512,
 };
 
 async function walk(dir) {
