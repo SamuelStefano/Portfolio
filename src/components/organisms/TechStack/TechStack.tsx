@@ -323,7 +323,7 @@ export const TechStack = () => {
                 const card = (
                   <div className="flex-1 bg-card border border-border rounded-xl p-4 sm:p-5 hover-card transition-all duration-300">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <Heading level={5} className="text-sm sm:text-base text-foreground group-hover/ev:text-primary transition-colors">
+                      <Heading level={4} className="text-sm sm:text-base md:text-base text-foreground group-hover/ev:text-primary transition-colors">
                         {ev.name}
                       </Heading>
                       {ev.url && <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />}
@@ -345,7 +345,7 @@ export const TechStack = () => {
                     </div>
                     {ev.ecosystems && ev.ecosystems.length > 0 && (
                       <div className="flex flex-wrap items-center gap-1.5 mt-3">
-                        <span className="text-[10px] uppercase tracking-wide text-muted-foreground/70 mr-1">
+                        <span className="text-[10px] uppercase tracking-wide text-muted-foreground mr-1">
                           {t('skills.eventEcosystems')}
                         </span>
                         {ev.ecosystems.map((eco) => (

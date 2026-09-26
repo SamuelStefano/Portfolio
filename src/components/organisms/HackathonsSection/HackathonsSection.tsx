@@ -149,7 +149,7 @@ export const HackathonsSection = () => {
           })}
         </div>
         <div className="h-1.5 rounded-b-xl bg-gradient-to-r from-primary/30 via-neon-purple/30 to-neon-cyan/30" />
-        <Text className="mt-4 text-center text-xs text-muted-foreground/70">{t('hackathons.podiumHint')}</Text>
+        <Text className="mt-4 text-center text-xs text-muted-foreground">{t('hackathons.podiumHint')}</Text>
       </div>
 
       {modalMounted && (

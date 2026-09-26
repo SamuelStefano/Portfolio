@@ -24,7 +24,7 @@ export const Header = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-12 lg:gap-16 items-center">
-            <div className="animate-fade-up">
+            <div className="hero-in">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 text-xs text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 font-medium text-green-500">
                   <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -82,7 +82,7 @@ export const Header = () => {
                   {t('hero.ctaContact')}
                 </button>
               </div>
-              <Text className="mb-8 text-xs text-muted-foreground/70">{t('hero.resumeNote')}</Text>
+              <Text className="mb-8 text-xs text-muted-foreground">{t('hero.resumeNote')}</Text>
 
               <div className="mb-8 flex flex-wrap gap-2">
                 {SOCIAL_LINKS.slice(0, 2).map((link) => (
@@ -99,7 +99,7 @@ export const Header = () => {
               </ul>
             </div>
 
-            <div className="mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[320px] xl:max-w-[360px] animate-scale-in">
+            <div className="mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[320px] xl:max-w-[360px] hero-in hero-in-late">
               <div className="relative photo-float">
                 <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.45)]">
                   <img

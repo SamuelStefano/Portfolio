@@ -57,7 +57,7 @@ export const AvailabilityCalendar = () => {
               className={`flex flex-col items-center gap-1 px-2.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${
                 d.active
                   ? 'bg-primary/15 text-primary border border-primary/30'
-                  : 'bg-muted/30 text-muted-foreground/50 border border-border/30'
+                  : 'bg-muted/30 text-muted-foreground border border-border/30'
               }`}
             >
               {dayLabel(d.date)}
@@ -96,7 +96,7 @@ export const AvailabilityCalendar = () => {
             <span className="text-xs text-muted-foreground">{t('about.availability.unavailable')}</span>
           </div>
 
-          <Text variant="small" className="text-muted-foreground/70 text-center pt-1">
+          <Text variant="small" className="text-muted-foreground text-center pt-1">
             ⏱ {t('about.availability.response')}
           </Text>
         </div>

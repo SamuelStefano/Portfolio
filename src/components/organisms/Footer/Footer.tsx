@@ -63,7 +63,7 @@ export const Footer = ({ onOpenGame }: FooterProps) => {
               <a href={resumeHref(i18n.language)} target="_blank" rel="noopener noreferrer" className={linkClass}>
                 <FileText className="h-4 w-4" />
                 {t('footer.resume')}
-                <span className="text-xs text-muted-foreground/60">· {t('footer.resumeNote')}</span>
+                <span className="text-xs text-muted-foreground">· {t('footer.resumeNote')}</span>
               </a>
             </li>
           </ul>
@@ -89,7 +89,7 @@ export const Footer = ({ onOpenGame }: FooterProps) => {
             <button
               type="button"
               onClick={onOpenGame}
-              className="font-mono text-muted-foreground/70 transition-colors hover:text-primary"
+              className="font-mono text-muted-foreground transition-colors hover:text-primary"
             >
               {t('footer.snake')} →
             </button>

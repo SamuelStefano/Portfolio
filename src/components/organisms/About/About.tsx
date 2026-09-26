@@ -355,7 +355,7 @@ export const About = () => {
                     <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon icon={Heart} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.passion.title')}</Heading>
+                    <Heading level={4} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.passion.title')}</Heading>
                   </div>
                   <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
                     {t('about.devfellowship.cards.passion.description')}
@@ -367,7 +367,7 @@ export const About = () => {
                     <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-neon-cyan/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon icon={Globe} size="sm" className="text-neon-cyan w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.learning.title')}</Heading>
+                    <Heading level={4} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.learning.title')}</Heading>
                   </div>
                   <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
                     {t('about.devfellowship.cards.learning.description')}
@@ -379,7 +379,7 @@ export const About = () => {
                     <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon icon={User} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.communityWelcoming.title')}</Heading>
+                    <Heading level={4} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.communityWelcoming.title')}</Heading>
                   </div>
                   <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
                     {t('about.devfellowship.cards.communityWelcoming.description')}

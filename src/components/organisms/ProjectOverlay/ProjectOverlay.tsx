@@ -208,7 +208,7 @@ const SectionGallery: React.FC<SectionGalleryProps> = ({ section, projectTitle, 
           {section.description && (
             <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{section.description}</p>
           )}
-          <p className="text-xs text-muted-foreground/60 mt-1">{images.length} {t('projects.image', { count: images.length })}</p>
+          <p className="text-xs text-muted-foreground mt-1">{images.length} {t('projects.image', { count: images.length })}</p>
         </div>
       </div>
 
@@ -706,7 +706,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                               ) : (
                                 <p className="text-xs font-medium text-foreground truncate">{collab.name}</p>
                               )}
-                              <p className="text-xs text-muted-foreground/70">
+                              <p className="text-xs text-muted-foreground">
                                 {collab.role !== 'Collaborator' ? '✦ ' : '· '}{t(`projects.roles.${collab.role}`, { defaultValue: collab.role })}
                               </p>
                             </div>
@@ -751,7 +751,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
 
                 <div className="p-5 lg:p-7 space-y-6">
                   {/* breadcrumb */}
-                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
+                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                     <span className="truncate max-w-[120px]">{project.title}</span>
                     <ChevronRight className="w-3 h-3 flex-shrink-0" />
                     <span className="text-foreground/80 font-medium">
