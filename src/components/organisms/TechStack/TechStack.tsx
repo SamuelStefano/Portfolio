@@ -241,7 +241,7 @@ export const TechStack = () => {
                 rel="noopener noreferrer"
                 aria-label={`Instagram ${ig.handle}`}
                 title={`Instagram ${ig.handle}`}
-                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-200 opacity-60 hover:opacity-100"
+                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 <Instagram className="w-3.5 h-3.5" />
                 <span>{ig.handle}</span>
