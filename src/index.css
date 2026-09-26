@@ -215,15 +215,7 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-@keyframes glow-spin { to { transform: rotate(360deg); } }
 .photo-float { animation: photo-float 5s ease-in-out infinite; }
-.photo-glow {
-  background: conic-gradient(from 0deg,
-    hsl(var(--neon-blue) / .55), hsl(var(--neon-purple) / .55),
-    hsl(var(--neon-cyan) / .55), hsl(var(--neon-blue) / .55));
-  filter: blur(22px);
-  animation: glow-spin 14s linear infinite;
-}
 
 .gradient-primary {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neon-purple)) 100%);
@@ -583,7 +575,6 @@ img {
 
   .gradient-text,
   .photo-float,
-  .photo-glow,
   .animate-float,
   .animate-pulse,
   .animate-pulse-glow,

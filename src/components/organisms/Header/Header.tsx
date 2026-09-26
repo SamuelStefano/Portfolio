@@ -23,7 +23,7 @@ export const Header = () => {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/[0.06] to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-12 lg:gap-16 items-center">
             <div className="animate-fade-up">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 text-xs text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 font-medium text-green-500">
@@ -99,16 +99,14 @@ export const Header = () => {
               </ul>
             </div>
 
-            <div className="mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none animate-scale-in">
+            <div className="mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[320px] xl:max-w-[360px] animate-scale-in">
               <div className="relative photo-float">
-                {/* soft rotating glow behind the photo */}
-                <div className="photo-glow pointer-events-none absolute -inset-3 rounded-[28px] opacity-70" aria-hidden />
-                <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card shadow-2xl">
+                <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.45)]">
                   <img
                     src="/hero-photo.jpg"
                     alt="Samuel Stefano"
-                    width={1092}
-                    height={1365}
+                    width={720}
+                    height={900}
                     className="aspect-[4/5] w-full object-cover"
                   />
                 </div>
