@@ -39,10 +39,11 @@
 | **Performance** | Initial JavaScript is 108 KB gzip (it was 221 KB). The project overlay (with framer-motion), terminal skin, snake game, award dialog and 404 page are separate chunks; cards warm the overlay chunk on hover. Each visitor downloads one locale and the others load when the browser is idle. Photos ship as WebP variants sized for where they render. |
 | **Content model** | [`projectCatalog.ts`](src/lib/projectCatalog.ts) holds structure only (links, stack, images, status). Every sentence a visitor reads lives in [`src/locales`](src/locales), so a text exists once per language. |
 | **Security** | Strict CSP (the single inline script is allow-listed by hash), HSTS, frame and content-type headers. Tokens stay in serverless functions; CI fails if anything shaped like a key reaches `dist/`. |
-| **Accessibility** | Keyboard focus is always visible, skip link, carousel follows the WAI-ARIA pattern with a pause control, `<html lang>` follows the chosen language, reduced motion is respected everywhere. |
+| **Accessibility** | Keyboard focus is always visible, skip link, carousel follows the WAI-ARIA pattern with a pause control, the project view is a real modal (the page behind goes inert, focus moves in and returns to where it came from), `<html lang>` follows the chosen language, reduced motion is respected everywhere. |
+| **Resilience** | A lazily loaded piece that fails to download loses only itself, never the page (error boundaries); a tab left open across a deploy reloads once to pick up the new chunks. A partial answer from GitHub is cached for a minute instead of six hours, and the page never shows a zero where GitHub failed to answer. |
 | **Quality gates** | `npm run check` = typecheck + lint + tests + build, also on every push in GitHub Actions (read-only token, actions pinned by SHA). |
 
-The tests guard the things that silently break a portfolio: an image path that does not exist, a project text missing in one language, locale keys drifting apart, the CSP hash falling out of sync with the inline script, the heatmap maths and the skill ↔ project matching.
+The tests guard the things that silently break a portfolio: an image path that does not exist, a project text missing in one language, locales drifting apart (keys, list lengths, `{{placeholders}}`), the CSP hash falling out of sync with the inline script, the heatmap maths and the skill ↔ project matching.
 
 ## Stack
 
