@@ -284,11 +284,27 @@ const allProjects: Project[] = [
         project_images: [{ id: '16-s2-i1', image_url: '/projects/campaigns/revisao.png', order_index: 1 }]
       },
       {
+        id: '16-s5',
+        folder_name: 'post',
+        display_name: 'Post publicado',
+        description: 'Cada post publicado guarda as métricas coletadas por dia (views, curtidas, comentários, alcance), a configuração por rede e uma thread de comentários com revisão, alteração e sugestão',
+        order_index: 3,
+        project_images: [{ id: '16-s5-i1', image_url: '/projects/campaigns/post.png', order_index: 1 }]
+      },
+      {
+        id: '16-s6',
+        folder_name: 'novo-post',
+        display_name: 'Novo post',
+        description: 'Formato (post, vídeo ou vídeo curto), unidade de negócio, quem posta e quem pediu, redes e conta em cada uma. Enviar pra revisão exige texto, conta por rede e vídeo no YouTube',
+        order_index: 4,
+        project_images: [{ id: '16-s6-i1', image_url: '/projects/campaigns/novo-post.png', order_index: 1 }]
+      },
+      {
         id: '16-s3',
         folder_name: 'analytics',
         display_name: 'Analytics',
         description: 'Comparação entre contas e formatos, visualizações por dia e ranking dos posts do período — coletado por rede, nunca somado entre redes',
-        order_index: 3,
+        order_index: 5,
         project_images: [{ id: '16-s3-i1', image_url: '/projects/campaigns/analytics.png', order_index: 1 }]
       },
       {
@@ -296,13 +312,15 @@ const allProjects: Project[] = [
         folder_name: 'perfis',
         display_name: 'Perfis e contas',
         description: 'Cada perfil do Zernio com as contas conectadas por rede — um post nasce em um perfil, mas pode sair em contas de vários',
-        order_index: 4,
+        order_index: 6,
         project_images: [{ id: '16-s4-i1', image_url: '/projects/campaigns/perfis.png', order_index: 1 }]
       }
     ],
     image_categories: {
       'calendario': ['/projects/campaigns/calendario.png'],
       'revisao': ['/projects/campaigns/revisao.png'],
+      'post': ['/projects/campaigns/post.png'],
+      'novo-post': ['/projects/campaigns/novo-post.png'],
       'analytics': ['/projects/campaigns/analytics.png'],
       'perfis': ['/projects/campaigns/perfis.png']
     }
