@@ -31,7 +31,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
       role="button"
       tabIndex={0}
       aria-label={t('projects.viewDetails')}
-      className="group bg-card border-border hover:border-primary/50 transition-colors duration-200 cursor-pointer h-full flex flex-col overflow-hidden"
+      className="group bg-card border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_12px_30px_-12px_hsl(var(--primary)/0.35)] transition-all duration-300 cursor-pointer h-full flex flex-col overflow-hidden"
       onClick={() => onProjectClick(project)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -49,7 +49,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
           <img
             src={cardSrc(project.thumbnail_url)}
             alt={project.title}
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
             decoding="async"
             onError={e => { e.currentTarget.src = project.thumbnail_url!; }}

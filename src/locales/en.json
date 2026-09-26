@@ -13,20 +13,27 @@
   "hero": {
     "greeting": "Samuel Stefano",
     "role": "Full-Stack Developer · Applied AI",
+    "description": "2+ years of experience • React, TypeScript, Node • Solidity & Web3 • Remote • Marialva, PR",
     "bio": "I build web products end to end with React, TypeScript, Node.js and Supabase/PostgreSQL — from the data model to the interface. Today I work on DevFellowship's internal platform and ship LLMs, agents and MCP servers to production.",
     "bioContinue": "At hackathons I take that to Web3: winner of the Chainlink track at Hackanation 2026 and podium finishes at ETH Latam and DevConnect 2025.",
-    "ctaProjects": "See projects",
-    "ctaResume": "Résumé (PDF, PT)",
-    "ctaContact": "Contact",
+    "clickToSeeMore": "Click to see more",
     "socialLinks": {
       "github": "GitHub",
       "linkedin": "LinkedIn",
       "resume": "Resume",
       "email": "Email",
       "phone": "Phone"
-    }
+    },
+    "web3Signal": "complete mid-level in full-stack, applied AI (agents, MCP, Claude) and Solidity/Web3 · open to remote roles and to freelance projects",
+    "ctaProjects": "See projects",
+    "ctaResume": "Résumé (PDF)",
+    "ctaContact": "Contact",
+    "resumeNote": "The résumé downloads in PT or EN, following the site language."
   },
   "projects": {
+    "title": "Projects",
+    "subtitle": "Products I created or helped build. Click a card to see screens, technical decisions and stack.",
+    "exploreAll": "Explore all my work and contributions",
     "viewDetails": "View Details",
     "close": "Close",
     "previous": "Previous",
@@ -44,6 +51,7 @@
     "error": "Error loading projects",
     "collaborators": "collaborator",
     "collaborators_other": "collaborators",
+    "autoDiscovered": "Auto-discovered",
     "viewProject": "View Project",
     "github": "GitHub",
     "overview": "Overview",
@@ -55,14 +63,25 @@
     "projectGallery": "Project Gallery",
     "noProjects": "No projects found",
     "loading": "Loading projects...",
+    "hint": "Check if there are projects configured in Supabase.",
     "collaboratorsSection": "Collaborators",
     "clickToSeeMore": "Click to see more",
     "creator": "Creator:",
     "collaborator": "Collaborator:",
+    "sectionDescriptions": {
+      "admin": "Complete administrative interface with full system control, user management, advanced settings and real-time monitoring.",
+      "dashboard": "Main dashboard with real-time metrics, interactive charts, important KPIs and data visualizations for decision making.",
+      "create": "Creation and development process, showing the tools used, applied methodologies and implemented workflow.",
+      "login": "Secure authentication system with multiple login methods, password recovery and permission-based access control.",
+      "mobile": "Optimized mobile version with responsive design, intuitive gestures and experience adapted for mobile devices.",
+      "desktop": "Desktop interface with advanced features, keyboard shortcuts and layout optimized for productivity on large screens.",
+      "web": "Responsive web version with cross-browser compatibility, optimized performance and modern web resources.",
+      "backend": "Robust backend architecture with RESTful APIs, microservices, database and scalable infrastructure.",
+      "database": "Optimized database structure with relationships, indexes, efficient queries and automatic backup.",
+      "others": "Additional features, special integrations and complementary resources that enrich the user experience."
+    },
     "showMore": "See all projects",
     "showLess": "See less",
-    "title": "Projects",
-    "subtitle": "Products I created or helped build. Click a card to see screens, technical decisions and stack.",
     "roles": {
       "Creator": "Creator",
       "Collaborator": "Collaborator",
@@ -70,43 +89,327 @@
     }
   },
   "skills": {
-    "title": "Skills",
-    "subtitle": "Grouped by how much I actually use them.",
-    "tiers": {
-      "daily": "Daily use",
-      "shipped": "Shipped to production",
-      "learning": "Hackathons & study"
+    "title": "Skills & Experience",
+    "subtitle": "Technologies I use day to day and my professional journey",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "tools": "Tools",
+    "professionalExperience": "Professional Experience",
+    "currentPosition": "Current Position",
+    "otherCompetencies": "Other Competencies",
+    "languagesTitle": "Languages",
+    "inProgress": "in progress",
+    "languages": {
+      "english": "English",
+      "portuguese": "Portuguese",
+      "spanish": "Spanish"
     },
+    "eventsTitle": "Events & Community",
+    "eventsSubtitle": "Web3 ecosystem conferences, workshops and meetups I attended",
+    "eventTypes": {
+      "conference": "Conference",
+      "workshop": "Workshop",
+      "meetup": "Meetup",
+      "hackathon": "Hackathon"
+    },
+    "eventEcosystems": "Ecosystems:",
+    "softwareEngineering": "Software Engineering",
+    "web3Blockchain": "Web3 & Blockchain",
+    "others": "Others",
+    "documentation": "Documentation",
+    "testing": "Testing",
+    "architecture": "Architecture",
+    "componentization": "Componentization",
+    "deploy": "Deploy",
+    "technicalSupport": "Technical Support",
+    "information": "Information",
+    "networkConfiguration": "Network Configuration",
+    "printerConfiguration": "Printer Configuration",
+    "serverConfiguration": "Server Configuration",
+    "computerConfiguration": "Computer Configuration",
+    "operatingSystemConfiguration": "Operating System Configuration",
+    "fiscalSystems": "Fiscal Systems",
+    "experienceData": [
+      {
+        "company": "DevFellowship",
+        "role": "Full-Stack Developer — Internal Developer Platform",
+        "period": "November 2023 - Present",
+        "description": "Started as a freelancer in late 2023 and moved to full-time in 2026. Development of the internal developer platform — the tooling and workflow the company's devs use to build client software. Architecture and development of DFL Learn super-app, Reviews App, Payments App and CI Reviewer Bot with AI. Mentoring fellows, defining technical standards, code reviews and participation in award-winning hackathons.",
+        "highlights": [
+          "4th place at ETH Latam 2025 — GreenLoop (recyclables → on-chain tokens on Base)",
+          "2nd place at DevConnect ETH 2025, Scroll track — TalentDAO",
+          "Multi-agent review/SDD squad adopted as the team standard",
+          "Revenue architecture (contracts → billing → e-invoicing) end-to-end in production"
+        ]
+      },
+      {
+        "company": "Instituto Educar+",
+        "role": "Programming Teacher",
+        "period": "2025 - Present",
+        "description": "Programming and development teacher at Instituto Educar+, a vocational technology school. I teach programming logic, web development and best practices to beginner students, mentoring hands-on projects — students have presented projects at hackathons.",
+        "highlights": [
+          "Beginner classes on programming logic, HTML/CSS, JS and Git",
+          "Mentoring final projects, with students going on to hackathons",
+          "\"Zero to deploy\" teaching track on Vercel/Supabase"
+        ]
+      },
+      {
+        "company": "Revera",
+        "role": "AI-Driven Full-Stack Developer",
+        "period": "February 2026 - Present",
+        "description": "Full-stack web development with AI at the core of the workflow. I work from the database to the front end — data modelling, APIs and interfaces — using AI agents, MCP and LLM integration to speed up delivery and code review.",
+        "highlights": [
+          "End-to-end full-stack delivery (front end, API and database)",
+          "AI applied to the development workflow: agents, MCP and assisted review",
+          "LLM integration in product features"
+        ]
+      },
+      {
+        "company": "Itera",
+        "role": "Teacher",
+        "period": "2026 - Present",
+        "description": "Programming teacher at Itera, a course platform with live classes that I also helped build. I run classes on the platform itself: synchronous lessons, auto-graded coding activities and following students' code in real time.",
+        "highlights": [
+          "Live programming classes run on the platform itself",
+          "Free pilot class with teenagers from Instituto Educar+",
+          "Lessons and activities authored directly in Itera"
+        ]
+      },
+      {
+        "company": "M&M Informática",
+        "role": "Technical Support Analyst",
+        "period": "December 2024 - February 2026",
+        "description": "Technical support for the company's product, a retail ERP: customer support, troubleshooting system and store-operation incidents. I was trained on the product and gained familiarity with how a retail ERP works (tax invoicing, POS and records).",
+        "highlights": [
+          "Direct support for the ERP's customers",
+          "Troubleshooting system and store-operation incidents"
+        ]
+      },
+      {
+        "company": "Prefeitura de Marialva",
+        "role": "IT Support Intern",
+        "period": "February 2024 - December 2024",
+        "description": "IT support internship serving public agencies in the municipality: computer maintenance and repair, hardware and software installation.",
+        "highlights": [
+          "Computer maintenance and repair",
+          "Hardware and software installation",
+          "First professional exposure to IT"
+        ]
+      }
+    ],
+    "additionalSkills": [
+      "Supabase",
+      "Supabase Edge Functions",
+      "PostgreSQL",
+      "RabbitMQ",
+      "Module Federation",
+      "Micro-frontends",
+      "Judge0 API",
+      "REST APIs",
+      "Responsive Design",
+      "UI/UX Design",
+      "Automation",
+      "Database",
+      "Technical Support",
+      "Frontend",
+      "Backend",
+      "Teamwork",
+      "Agile Methodologies",
+      "Problem Solving",
+      "Commitment",
+      "Creativity",
+      "Git & GitHub",
+      "GitHub Actions",
+      "Linux",
+      "Storybook",
+      "Figma",
+      "Miro",
+      "Componentization",
+      "DevOps",
+      "API Development",
+      "Artificial Intelligence",
+      "Claude API",
+      "OpenAI API",
+      "AI Agents",
+      "Prompt Engineering",
+      "n8n",
+      "LLM Integration",
+      "Software Architecture",
+      "Docker",
+      "VPS",
+      "WSL",
+      "Vercel",
+      "Web3 & Blockchain",
+      "Smart Contracts",
+      "Solidity",
+      "ERC-20 / ERC-721",
+      "Mentoring",
+      "Code Review"
+    ],
     "categories": {
       "frontend": "Frontend",
       "backend": "Back end & data",
       "ai": "Applied AI",
       "devops": "DevOps & tooling",
       "quality": "Quality & process",
-      "web3": "Web3"
+      "web3": "Web3",
+      "collab": "Collaboration & Process"
     },
-    "languagesTitle": "Languages",
-    "languages": "Portuguese (native) · English (intermediate, B2) · Spanish (intermediate)"
+    "tiers": {
+      "daily": "Daily use",
+      "shipped": "Shipped to production",
+      "learning": "Hackathons & study"
+    }
   },
   "about": {
-    "title": "About",
-    "bio1": "I am a full-stack developer based in Marialva, Brazil, working remotely. I started in IT support, joined DevFellowship as a freelancer in late 2023 and now work full-time on the company's internal platform.",
-    "bio2": "Outside of it, I created ITERA (courses with live classes on Supabase Realtime) and Deck, my dashboard for working with AI agents. I also teach programming to beginners. I am looking for a remote product team where I can deliver end to end.",
-    "education": "Systems Analysis and Development — UNINGÁ (3rd year)",
-    "location": "Marialva, Brazil · remote",
+    "title": "About Me",
+    "subtitle": "Learn a little more about my journey and passions",
+    "greeting": "Hello! I'm Samuel.",
+    "bio1": "Full-stack developer based in Marialva, Brazil, working remotely. I started in IT support, joined DevFellowship as a freelancer in late 2023 and now work full-time on the company's internal platform — React, TypeScript, Node.js, Supabase and PostgreSQL day to day, with applied AI (agents, MCP, Claude) at the core of the workflow.",
+    "bio2": "At DevFellowship I built the complete Module Federation ecosystem — DFL Learn (super-app host), Reviews, Payments and the AI-powered CI Reviewer Bot — plus 4 MCP servers and the revenue pipeline running in production, from contracts to recurring billing and electronic invoicing. I created ITERA, a course platform with a synchronous live-class mode built on Supabase Realtime, and Deck, my command post for AI agents. In hackathons: won the Chainlink track with AltPay, 4th place at ETH Latam 2025 (GreenLoop) and 2nd place in the Scroll track at DevConnect ETH 2025 (TalentDAO).",
+    "bio3": "I am in the final year of Systems Analysis and Development at UNINGÁ — graduating in December 2026. I am looking for a remote product team where I can add what I already deliver today and keep growing.",
+    "location": "Marialva, PR",
     "language": "English B2",
-    "professionalTime": "Of professional experience",
+    "schedule": "6:00 A.M - 18:00 P.M",
+    "experience": "of experience",
+    "professionalTime": "Professional experience time",
+    "projectsCreated": "Repos shipped to",
+    "technologies": "Technologies",
+    "linesOfCode": "Lines of Code",
+    "currentFocus": "Current Focus",
+    "currentFocusDescription": "Final year of my degree (graduating December 2026), working on a product team and specializing in applied AI, modern full-stack and Web3.",
+    "focusAreas": [
+      "Applied AI",
+      "TypeScript",
+      "Supabase / PostgreSQL",
+      "Web3"
+    ],
+    "highlights": {
+      "passion": {
+        "title": "Passion for Technology",
+        "description": "I learn something new every week and put it to work: my focus today is bringing AI — agents, MCP and LLMs — into the products I build."
+      },
+      "teamwork": {
+        "title": "Teamwork",
+        "description": "Experience in collaborative projects using agile methodologies, Git/GitHub for versioning and communication tools like Discord and Slack."
+      },
+      "learning": {
+        "title": "Continuous Learning",
+        "description": "Always seeking to stay updated with the latest market trends and technologies, participating in communities and online courses."
+      },
+      "evolution": {
+        "title": "Constant Evolution",
+        "description": "Studying ADS and always seeking to specialize in new technologies and frameworks, improving my skills and knowledge."
+      }
+    },
+    "devfellowship": {
+      "title": "DevFellowship",
+      "subtitle": "Developer Community",
+      "description": "A vibrant community of Brazilian developers focused on education, networking and professional growth. We participate in collaborative projects, workshops and events that boost our tech career.",
+      "journeyTitle": "🚀 Devfellowship - My Journey in the Startup",
+      "journeyDescription": "Devfellowship is not just a startup, it's the place where I found my passion for programming and where I improve as a developer and professional.",
+      "journeyDescriptionParts": {
+        "intro": "Devfellowship is not just a ",
+        "startup": "startup",
+        "middle1": ", it's the place where I found my ",
+        "passion": "passion for programming",
+        "middle2": " and where I improve as a ",
+        "professional": "developer and professional",
+        "end": "."
+      },
+      "cards": {
+        "community": {
+          "title": "Active Community",
+          "description": "Over 500 connected developers, sharing knowledge and experiences daily."
+        },
+        "projects": {
+          "title": "Real Projects",
+          "description": "Development of real applications in teams, using agile methodologies and market best practices."
+        },
+        "mentorship": {
+          "title": "Mentorship",
+          "description": "Mentorship program with senior developers, accelerating professional growth."
+        },
+        "networking": {
+          "title": "Networking",
+          "description": "Valuable connections with industry professionals, career opportunities and strategic partnerships."
+        },
+        "passion": {
+          "title": "Passion for Programming",
+          "description": "It was at Devfellowship that I discovered my true passion for programming. The community showed me that programming goes beyond code - it's about solving real problems."
+        },
+        "learning": {
+          "title": "Continuous Learning",
+          "description": "With each project, challenge and mentorship, I grow as a developer. Devfellowship taught me that learning never stops in technology."
+        },
+        "communityWelcoming": {
+          "title": "Welcoming Community",
+          "description": "I found at Devfellowship not only technical knowledge, but a family of developers who always support me and inspire me to be better."
+        }
+      },
+      "learnMore": "Learn More",
+      "projects": "Projects",
+      "companyDescription": "Devfellowship develops solutions and software for large companies. Specialized in AI, webapps and scalable architectures, Devfellowship is a startup that transforms ideas into reality, if you want to know more, click the button below."
+    },
+    "companies": "Companies where I worked",
+    "companiesAndProjectsTitle": "Companies and Projects",
+    "companiesAndProjectsSubtitle": "Some of the organizations and projects I had the pleasure of working with",
+    "availability": {
+      "title": "Let's Talk?",
+      "description": "I'm always available to discuss projects, opportunities or just exchange ideas about technology.",
+      "schedule": "Schedule Meeting",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "status": "Available for new projects",
+      "hours": "Available Hours:",
+      "weekdays": "Monday to Friday: 09:00 – 17:00",
+      "weekdaysLabel": "Weekdays",
+      "tuesday": "Monday to Friday: 09:00 – 17:00",
+      "saturday": "Saturday and Sunday: Unavailable",
+      "response": "Response within 24h"
+    },
     "pullRequests": "Merged pull requests",
-    "projectsCreated": "Repositories contributed to"
+    "education": "Systems Analysis and Development — UNINGÁ · graduating Dec 2026",
+    "journey": {
+      "title": "Journey",
+      "subtitle": "From IT support to full-stack in three years — with a classroom and a hackathon stage along the way."
+    },
+    "educar": {
+      "title": "Educar+ · classroom and stage",
+      "description": "I teach programming to teenagers at Instituto Educar+. In May 2026 I took a class to Hackanation in São Paulo: they presented AltPay on stage and we won the Chainlink track. For many of them it was their first tech event.",
+      "caption": "The Educar+ class at Hackanation 2026 — \"Hacking the Future\" shirts"
+    },
+    "gallery": {
+      "dfl": "DevFellowship",
+      "podium1": "Chainlink track podium · Hackanation 2026",
+      "podium2": "Winners on the TokenNation stage",
+      "educar": "Educar+ students at the event"
+    }
   },
   "footer": {
     "description": "Full-Stack Developer · Applied AI. Open to remote roles.",
+    "quickLinks": "Quick Links",
+    "social": "Social Media",
     "contact": "Contact",
+    "madeWith": "Made with great effort and dedication",
+    "by": "by",
+    "allRightsReserved": "All rights reserved.",
+    "phone": "Phone",
+    "email": "Email",
     "location": "Marialva, PR — Brazil",
-    "clickToCopy": "Click to copy",
+    "availableFor": "Open to",
+    "freelanceProjects": "• Remote roles (full-time or contract)",
+    "collaborations": "• Full-stack and Web3 projects",
     "emailCopied": "Email copied!",
+    "stackTitle": "Main stack",
+    "clickToCopy": "Click to copy",
+    "developedWith": "Developed with React, TypeScript and Supabase",
+    "openSource": "Open Source",
+    "responsive": "Responsive",
     "resume": "Résumé (PDF, PT)",
-    "snake": "play snake"
+    "snake": "play snake",
+    "resumeNote": "PT or EN, following the site language"
   },
   "common": {
     "loading": "Loading...",
@@ -188,13 +491,13 @@
       "longDescription": "Lesson Studio is DevFellowship's editor for video lessons and reels, and I am the main contributor to the repository, alongside Tainan Fidelis. A lesson is a sequence of slides built from templates; each slide gets its own recording — audio, webcam, screen or screen plus webcam picture-in-picture — with start and end trimming. Recordings land in IndexedDB first as a local backup and then upload to S3 through an Edge Function, with upload state tracked per slide: closing the tab mid-way must not cost the take. Preview runs in the browser, but the final export is rendered on the server (dfl-render), so the MP4 does not depend on the recording machine. Editor state and recording-session state live in separate Zustand stores so editing and capturing never step on each other. On top of that, the company's MCP server exposes the Studio as tools: AI agents create projects, fill slides from templates, render images and trigger exports."
     },
     "tradeview": {
-      "description": "Trading terminal with an AI layer: live prices from Foxbit and OKX, hand-rolled SVG charts and paper-mode execution on top of a double-entry ledger.",
+      "description": "Trading terminal with an AI layer: live prices from Foxbit and OKX, hand-rolled SVG charts and paper-mode execution on top of a double-entry ledger. Personal project still in testing — it did not move forward.",
       "longDescription": "TradeView is a personal trading terminal built on Next.js 16 and React 19. Prices stream live from Foxbit and OKX through CCXT — and the venues were chosen by reachability testing, not preference: Binance answers 451 and Mercado Bitcoin 403 to datacenter IPs, Vercel functions included. The money model has no balance column: every balance is the sum of immutable ledger entries, and a constraint trigger rejects any transaction that does not net to zero per currency. The paper execution engine walks the order book level by level, charging taker fees and slippage instead of filling at an average price. Candlestick, donut, heatmap and sparkline charts are hand-rolled SVG with no charting library. The database is a Supabase project shared with another app, so nothing is created in public: everything lives in the tradeview and tradeview_private schemas, and the test suite fails if a neighbouring table loses a grant. The AI analysis uses the Anthropic API."
     }
   },
   "hackathons": {
-    "title": "Hackathons & events",
-    "subtitle": "Web3 projects built in a few days, with a team and a tight deadline.",
+    "title": "Hackathons & Events",
+    "subtitle": "Three Web3 hackathons, three podiums. Projects built in a few days, with a team and a tight deadline.",
     "technologies": "Technologies",
     "viewProject": "View Project",
     "altpay": {
@@ -211,13 +514,12 @@
     },
     "viewDetails": "View details",
     "eventsTitle": "Events I attended",
-    "eventTypes": {
-      "conference": "Conference",
-      "workshop": "Workshop",
-      "meetup": "Meetup",
-      "hackathon": "Hackathon"
+    "places": {
+      "1": "1st place",
+      "2": "2nd place",
+      "4": "4th place"
     },
-    "eventEcosystems": "Ecosystems:"
+    "podiumHint": "Click a project for details"
   },
   "projectSections": {
     "overview": "Overview",

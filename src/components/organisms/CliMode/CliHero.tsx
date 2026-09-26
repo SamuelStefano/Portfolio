@@ -1,14 +1,15 @@
 import { useTranslation } from 'react-i18next';
+import { resumeHref } from '@/lib/resume';
 import { useTyped } from '@/hooks/useTyped';
 
 const CMDS = [
   { label: 'git clone github', href: 'https://github.com/SamuelStefano', amber: false },
   { label: 'open linkedin', href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/', amber: false },
-  { label: 'cat curriculo.pdf', href: '/curriculo.pdf', amber: true },
 ];
 
 export const CliHero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const commands = [...CMDS, { label: `cat ${resumeHref(i18n.language).slice(1)}`, href: resumeHref(i18n.language), amber: true }];
   const typed = useTyped('whoami --full');
 
   const rows: [string, string][] = [
@@ -60,7 +61,7 @@ export const CliHero = () => {
         </div>
 
         <div className="mt-2 flex flex-wrap gap-2.5">
-          {CMDS.map((c) => (
+          {commands.map((c) => (
             <a
               key={c.label}
               href={c.href}

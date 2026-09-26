@@ -1,6 +1,8 @@
 export interface Hackathon {
   name: string;
   event: string;
+  place: 1 | 2 | 4;
+  photo?: string;
   location: string;
   date: string;
   achievementKey: string;
@@ -14,6 +16,8 @@ export interface Hackathon {
 export const HACKATHONS: Hackathon[] = [
   {
     name: 'AltPay',
+    place: 1,
+    photo: '/podium/hackanation-1.jpg',
     event: 'Hackanation 2026 · TokenNation',
     location: 'São Paulo, Brasil',
     date: 'May 2026',
@@ -26,6 +30,7 @@ export const HACKATHONS: Hackathon[] = [
   },
   {
     name: 'GreenLoop',
+    place: 4,
     event: 'ETH Latam 2025',
     location: 'São Paulo, Brasil',
     date: 'Aug 2025',
@@ -38,6 +43,7 @@ export const HACKATHONS: Hackathon[] = [
   },
   {
     name: 'TalentDAO',
+    place: 2,
     event: 'DevConnect ETH 2025',
     location: 'Buenos Aires, Argentina',
     date: 'Nov 2025',

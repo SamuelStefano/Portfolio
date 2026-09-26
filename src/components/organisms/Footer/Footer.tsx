@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { SOCIAL_LINKS } from '@/consts/components';
+import { resumeHref } from '@/lib/resume';
 
 const EMAIL = 'samuelstefanodocarmo@gmail.com';
 const PHONE_LABEL = '+55 (44) 99879-5387';
@@ -17,7 +18,7 @@ const linkClass =
   'inline-flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary';
 
 export const Footer = ({ onOpenGame }: FooterProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -59,9 +60,10 @@ export const Footer = ({ onOpenGame }: FooterProps) => {
               </a>
             </li>
             <li>
-              <a href="/curriculo.pdf" target="_blank" rel="noopener noreferrer" className={linkClass}>
+              <a href={resumeHref(i18n.language)} target="_blank" rel="noopener noreferrer" className={linkClass}>
                 <FileText className="h-4 w-4" />
                 {t('footer.resume')}
+                <span className="text-xs text-muted-foreground/60">· {t('footer.resumeNote')}</span>
               </a>
             </li>
           </ul>

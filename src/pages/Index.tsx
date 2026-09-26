@@ -2,24 +2,28 @@ import { useState } from 'react';
 import { Header } from '@/components/organisms/Header/Header';
 import { SnakeGame } from '@/components/atoms/SnakeGame/SnakeGame';
 import { ProjectGrid } from '@/components/organisms/ProjectGrid/ProjectGrid';
-import { Experience } from '@/components/organisms/Experience/Experience';
 import { TechStack } from '@/components/organisms/TechStack/TechStack';
 import { HackathonsSection } from '@/components/organisms/HackathonsSection/HackathonsSection';
 import { About } from '@/components/organisms/About/About';
 import { Footer } from '@/components/organisms/Footer/Footer';
+import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
 import { CliMode } from '@/components/organisms/CliMode/CliMode';
 import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
 import { BackToTop } from '@/components/atoms/BackToTop/BackToTop';
 import { useSkin } from '@/hooks/useSkin';
+import { useOffscreenAnimationPause } from '@/hooks/useOffscreenAnimationPause';
 
 const Index = () => {
   const { skin } = useSkin();
   const isCli = skin === 'cli';
   const [gameOpen, setGameOpen] = useState(false);
 
+  useOffscreenAnimationPause();
+
   return (
     <main className="min-h-screen relative">
+        {!isCli && <AnimatedBackground />}
         {isCli ? (
           <div className="relative z-10">
             <Navigation />
@@ -29,7 +33,6 @@ const Index = () => {
           <div className="relative z-10">
             <Header />
             <ProjectGrid />
-            <Experience />
             <TechStack />
             <HackathonsSection />
             <About />

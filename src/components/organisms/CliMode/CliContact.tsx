@@ -1,20 +1,21 @@
 import { Github, Linkedin, FileText, Phone } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { resumeHref } from '@/lib/resume';
 
 const LINKS = [
   { icon: Github, label: 'github.com/SamuelStefano', href: 'https://github.com/SamuelStefano' },
   { icon: Linkedin, label: 'linkedin.com/in/samuel-stefano', href: 'https://www.linkedin.com/in/samuel-stefano-425a29246/' },
-  { icon: FileText, label: 'curriculo.pdf', href: '/curriculo.pdf' },
   { icon: Phone, label: '+55 44 99879-5387', href: 'tel:+5544998795387' },
 ];
 
 export const CliContact = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const links = [...LINKS.slice(0, 2), { icon: FileText, label: resumeHref(i18n.language).slice(1), href: resumeHref(i18n.language) }, ...LINKS.slice(2)];
 
   return (
     <div className="grid gap-2.5">
       <p className="mb-1 text-[13.5px] text-[var(--cli-text-soft)]">{t('footer.description')}</p>
-      {LINKS.map((l) => (
+      {links.map((l) => (
         <a
           key={l.label}
           href={l.href}
