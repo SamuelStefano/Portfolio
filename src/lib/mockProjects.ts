@@ -1,6 +1,6 @@
 import { Project } from '../types/project';
 
-export const mockProjects: Project[] = [
+const allProjects: Project[] = [
   {
     id: '11',
     title: 'ITERA',
@@ -140,6 +140,114 @@ export const mockProjects: Project[] = [
     }
   },
   {
+    id: '14',
+    title: 'Lesson Studio',
+    role: 'Lead Developer',
+    description: 'Estúdio de videoaulas em slides da DevFellowship: grava narração, webcam e tela no navegador, monta a aula no editor e exporta MP4 renderizado no servidor.',
+    long_description: '',
+    stack: ['React', 'TypeScript', 'Vite', 'Zustand', 'Immer', 'TanStack Query', 'RecordRTC', 'Dexie (IndexedDB)', 'Supabase', 'Edge Functions', 'S3', 'dnd-kit', 'MCP', 'OpenTelemetry', 'Playwright', 'TailwindCSS'],
+    thumbnail_url: '/projects/lesson-studio/editor.png',
+    icon_name: 'Video',
+    created_at: '2026-06-30T00:00:00Z',
+    updated_at: '2026-09-25T00:00:00Z',
+    project_collaborators: [
+      { id: '14-c1', name: 'Samuel Stefano', role: 'Lead Developer', avatar_url: '/Samuel-avatar.webp', created_at: '2026-06-30T00:00:00Z' },
+      { id: '14-c2', name: 'Tainan Fidelis', website: 'https://tainanfidelis.com/linktree', role: 'Collaborator', avatar_url: '/Tainan Fidelis-avatar.webp', created_at: '2026-06-30T00:00:00Z' }
+    ],
+    project_links: [
+      { id: '14-l1', label: 'Website', title: 'App', url: 'https://lesson-studio.devfellowship.com', type: 'website', created_at: '2026-06-30T00:00:00Z' }
+    ],
+    project_sections: [
+      {
+        id: '14-s1',
+        folder_name: 'editor',
+        display_name: 'Editor de slides',
+        description: 'Preview no centro, composições na lateral e painel de propriedades com layout, elementos, animação e câmera. Cada slide recebe sua própria gravação',
+        order_index: 1,
+        project_images: [{ id: '14-s1-i1', image_url: '/projects/lesson-studio/editor.png', order_index: 1 }]
+      },
+      {
+        id: '14-s2',
+        folder_name: 'projetos',
+        display_name: 'Projetos',
+        description: 'Aulas, reels e posts organizados por status — rascunho, em andamento e publicado',
+        order_index: 2,
+        project_images: [{ id: '14-s2-i1', image_url: '/projects/lesson-studio/projetos.png', order_index: 1 }]
+      },
+      {
+        id: '14-s3',
+        folder_name: 'templates',
+        display_name: 'Biblioteca de templates',
+        description: 'Slides são montados a partir de templates com slots; o mesmo catálogo é usado pela interface e pelos agentes via MCP',
+        order_index: 3,
+        project_images: [{ id: '14-s3-i1', image_url: '/projects/lesson-studio/templates.png', order_index: 1 }]
+      },
+      {
+        id: '14-s4',
+        folder_name: 'canvas',
+        display_name: 'Visão de canvas',
+        description: 'A composição inteira em miniatura, para revisar ritmo e ordem antes do export',
+        order_index: 4,
+        project_images: [{ id: '14-s4-i1', image_url: '/projects/lesson-studio/canvas.png', order_index: 1 }]
+      }
+    ],
+    image_categories: {
+      'editor': ['/projects/lesson-studio/editor.png'],
+      'projetos': ['/projects/lesson-studio/projetos.png'],
+      'templates': ['/projects/lesson-studio/templates.png'],
+      'canvas': ['/projects/lesson-studio/canvas.png']
+    }
+  },
+  {
+    id: '15',
+    title: 'TradeView',
+    role: 'Creator',
+    description: 'Terminal de trading com camada de IA: preços ao vivo de Foxbit e OKX, gráficos em SVG próprio e execução em modo paper sobre um ledger de partidas dobradas.',
+    long_description: '',
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'TailwindCSS v4', 'Supabase', 'PostgreSQL', 'CCXT', 'decimal.js', 'Anthropic SDK', 'Vercel'],
+    thumbnail_url: '/projects/tradeview/ativo.png',
+    icon_name: 'TrendingUp',
+    created_at: '2026-08-25T00:00:00Z',
+    updated_at: '2026-08-26T00:00:00Z',
+    project_collaborators: [
+      { id: '15-c1', name: 'Samuel Stefano', role: 'Creator', avatar_url: '/Samuel-avatar.webp', created_at: '2026-08-25T00:00:00Z' }
+    ],
+    project_links: [
+      { id: '15-l1', label: 'Website', title: 'App', url: 'https://tradeview-six.vercel.app', type: 'website', created_at: '2026-08-25T00:00:00Z' }
+    ],
+    project_sections: [
+      {
+        id: '15-s1',
+        folder_name: 'ativo',
+        display_name: 'Detalhe do ativo',
+        description: 'Candlestick desenhado em SVG próprio, livro de ofertas ao vivo e aba de análise por IA',
+        order_index: 1,
+        project_images: [{ id: '15-s1-i1', image_url: '/projects/tradeview/ativo.png', order_index: 1 }]
+      },
+      {
+        id: '15-s2',
+        folder_name: 'overview',
+        display_name: 'Patrimônio e watchlist',
+        description: 'Patrimônio consolidado, variação de 24h por corretora e watchlist com preços reais',
+        order_index: 2,
+        project_images: [{ id: '15-s2-i1', image_url: '/projects/tradeview/overview.png', order_index: 1 }]
+      },
+      {
+        id: '15-s3',
+        folder_name: 'mercados',
+        display_name: 'Mercados conectados',
+        description: 'Status e latência de cada corretora. Foxbit e OKX foram escolhidas por teste de alcance: Binance e Mercado Bitcoin bloqueiam IPs de datacenter',
+        order_index: 3,
+        project_images: [{ id: '15-s3-i1', image_url: '/projects/tradeview/mercados.png', order_index: 1 }]
+      }
+    ],
+    image_categories: {
+      'ativo': ['/projects/tradeview/ativo.png'],
+      'overview': ['/projects/tradeview/overview.png'],
+      'mercados': ['/projects/tradeview/mercados.png']
+    }
+  },
+  {
     id: '0',
     title: 'Deck',
     role: 'Creator',
@@ -251,6 +359,7 @@ export const mockProjects: Project[] = [
     description: 'Bot de Discord em TypeScript que vive dentro do canal de voz: entra sozinho quando chega gente, contabiliza horas em call com ranking, grava replay dos últimos minutos e toca música do YouTube e Spotify. Roda numa VPS Hetzner com healthcheck, auto-cura e proteção contra OOM.',
     long_description: 'Valdez é um bot de Discord escrito em TypeScript sobre discord.js 14 e @discordjs/voice, pensado pra viver dentro do canal de voz do servidor. A presença é automática por ocupação: ele entra quando o primeiro humano chega e sai quando a call esvazia, e esse comportamento pode ser desligado pelo comando /call. Cada entrada e saída vira uma sessão persistida em SQLite (better-sqlite3 em modo WAL), o que alimenta o /horas e o /leaderboard com o ranking de tempo em call. O recurso mais difícil é o replay buffer: o bot assina o receiver de voz e mantém em memória uma janela deslizante dos últimos minutos de pacotes Opus por usuário, com poda periódica pra não acumular áudio de quem falou e ficou quieto — no /replay esses pacotes são decodificados pra PCM, mixados por timeline (e não simplesmente concatenados, que era a causa do som travado) e exportados em MP3 via ffmpeg. Também tem um player de música com fila, loop, modal persistente com botões de controle e busca no YouTube via yt-dlp, com suporte a playlists e álbuns do Spotify consultando a Web API direto. A parte que mais rendeu aprendizado foi a operação: o bot migrou do Fly.io para uma VPS Hetzner em Docker Compose e ganhou uma camada de resiliência de verdade — um endpoint /health que reporta o estado do gateway e da conexão de voz e responde 503 enquanto ainda está subindo, autoheal reiniciando o container quando o healthcheck falha, limites de memória com oom_score_adj e swap na máquina, um heartbeat externo funcionando como dead-man\'s switch (o único sinal que sobrevive ao host inteiro cair), handlers de uncaughtException e unhandledRejection pra não morrer por erro solto, e resolução DNS forçada em IPv4 depois de investigar as desconexões de voz pelo closeCode.',
     stack: ['TypeScript', 'Node.js', 'discord.js', '@discordjs/voice', 'Opus', 'SQLite', 'better-sqlite3', 'ffmpeg', 'yt-dlp', 'Spotify Web API', 'Docker', 'Docker Compose', 'Hetzner VPS'],
+    thumbnail_url: '/projects/valdez/landing.png',
     icon_name: 'Headphones',
     created_at: '2026-05-14T00:00:00Z',
     updated_at: '2026-07-23T00:00:00Z',
@@ -273,8 +382,28 @@ export const mockProjects: Project[] = [
         created_at: '2026-05-14T00:00:00Z'
       }
     ],
-    project_sections: [],
-    image_categories: {}
+    project_sections: [
+      {
+        id: '12-s1',
+        folder_name: 'landing',
+        display_name: 'Landing',
+        description: 'Página pública do bot: o replay dos últimos minutos da call, com /clip gerando o MP3 direto no canal',
+        order_index: 1,
+        project_images: [{ id: '12-s1-i1', image_url: '/projects/valdez/landing.png', order_index: 1 }]
+      },
+      {
+        id: '12-s2',
+        folder_name: 'sala',
+        display_name: 'Vídeo da sala',
+        description: 'O clipe vira vídeo com os avatares de quem estava na call, acendendo em quem fala',
+        order_index: 2,
+        project_images: [{ id: '12-s2-i1', image_url: '/projects/valdez/sala.png', order_index: 1 }]
+      }
+    ],
+    image_categories: {
+      'landing': ['/projects/valdez/landing.png'],
+      'sala': ['/projects/valdez/sala.png']
+    }
   },
   {
     id: '1',
@@ -1147,6 +1276,26 @@ export const mockProjects: Project[] = [
   }
 ];
 
+const PROJECT_ORDER = [
+  'ITERA',
+  'Lesson Studio',
+  'Deck',
+  'DFL Payments',
+  'TradeView',
+  'AltPay',
+  'Valdez',
+  'GreenLoop',
+  'TalentDAO',
+  'Skill Evals',
+  'DFL Learn',
+  'Review Requests',
+  'DFL-Bot Reviewer',
+  'CodeLibrary',
+];
 
+const rank = (title: string) => {
+  const i = PROJECT_ORDER.indexOf(title);
+  return i === -1 ? PROJECT_ORDER.length : i;
+};
 
-
+export const mockProjects: Project[] = [...allProjects].sort((a, b) => rank(a.title) - rank(b.title));

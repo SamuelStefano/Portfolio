@@ -24,6 +24,8 @@ const getProjectKey = (title: string): string | null => {
   const titleMap: Record<string, string> = {
     'ITERA': 'itera',
     'Deck': 'deck',
+    'Lesson Studio': 'lessonStudio',
+    'TradeView': 'tradeview',
     'Skill Evals': 'skillEvals',
     'Valdez': 'valdez',
     'GreenLoop': 'greenloop',

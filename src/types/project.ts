@@ -85,6 +85,7 @@ export type LucideIconName =
   | 'Tablet'
   | 'Watch'
   | 'Headphones'
+  | 'TrendingUp'
   | 'Camera'
   | 'Video'
   | 'Music'

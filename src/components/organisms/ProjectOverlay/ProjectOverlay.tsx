@@ -356,7 +356,7 @@ const OverviewSection: React.FC<{
       <div className="flex items-center gap-2 pl-0">
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20">
           <Users className="w-3.5 h-3.5 text-primary" />
-          <span className="text-xs font-medium text-primary">{project.role}</span>
+          <span className="text-xs font-medium text-primary">{t(`projects.roles.${project.role}`, { defaultValue: project.role })}</span>
         </div>
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/40 border border-border">
           <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
@@ -392,7 +392,7 @@ const OverviewSection: React.FC<{
                   )}
                   <span className={cn(
                     'absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border border-background',
-                    collab.role === 'Creator' ? 'bg-yellow-400' : 'bg-primary',
+                    collab.role !== 'Collaborator' ? 'bg-yellow-400' : 'bg-primary',
                   )} />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -410,7 +410,7 @@ const OverviewSection: React.FC<{
                     <p className="text-sm font-medium text-foreground truncate">{collab.name}</p>
                   )}
                   <p className="text-xs text-muted-foreground">
-                    {collab.role === 'Creator' ? '✦ Criador' : '· Colaborador'}
+                    {collab.role !== 'Collaborator' ? '✦ ' : '· '}{t(`projects.roles.${collab.role}`, { defaultValue: collab.role })}
                   </p>
                 </div>
               </div>
@@ -562,7 +562,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                 <h2 className="text-base font-bold gradient-text leading-tight truncate">
                   {project.title}
                 </h2>
-                <p className="text-xs text-muted-foreground truncate">{project.role}</p>
+                <p className="text-xs text-muted-foreground truncate">{t(`projects.roles.${project.role}`, { defaultValue: project.role })}</p>
               </div>
 
               {/* quick links */}
@@ -709,7 +709,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                                 <p className="text-xs font-medium text-foreground truncate">{collab.name}</p>
                               )}
                               <p className="text-xs text-muted-foreground/70">
-                                {collab.role === 'Creator' ? '✦ Criador' : '· Colaborador'}
+                                {collab.role !== 'Collaborator' ? '✦ ' : '· '}{t(`projects.roles.${collab.role}`, { defaultValue: collab.role })}
                               </p>
                             </div>
                           </div>

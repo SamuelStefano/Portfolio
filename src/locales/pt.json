@@ -65,7 +65,8 @@
     "subtitle": "Produtos que criei ou ajudei a construir. Clique em um card para ver telas, decisões técnicas e stack.",
     "roles": {
       "Creator": "Criador",
-      "Collaborator": "Colaborador"
+      "Collaborator": "Colaborador",
+      "Lead Developer": "Dev principal"
     }
   },
   "skills": {
@@ -174,6 +175,14 @@
     "codelibrary": {
       "description": "Protótipo da plataforma de cursos e trilhas da DevFellowship: landing e navegação de conteúdo técnico — videoaulas, materiais, desafios e trilhas — pensada para ser clara para iniciante e rápida para dev avançado. Não chegou a ser lançada.",
       "longDescription": "CodeLibrary foi o primeiro desenho da plataforma oficial de cursos, trilhas e conteúdos técnicos da DevFellowship. A proposta era centralizar o material da comunidade num ambiente direto: videoaulas, materiais de estudo, desafios e links úteis organizados por trilha, com uma interface que não intimidasse quem está começando nem atrasasse quem já é experiente. Construí a landing completa e a navegação de conteúdo em Next.js com React, TypeScript e TailwindCSS, cuidando de estrutura de rotas, componentização e responsividade. O projeto foi concebido como base para integrar depois com a Academy, o Skill Evals e o DevSharper. Ele não chegou a ser lançado oficialmente — ficou como protótipo — mas foi onde amadureci UI/UX, organização de conteúdo e arquitetura de frontend, e o ecossistema educacional da DevFellowship que veio depois herdou muito dessa estrutura."
+    },
+    "lessonStudio": {
+      "description": "Estúdio de videoaulas em slides da DevFellowship: grava narração, webcam e tela no navegador, monta a aula no editor e exporta MP4 renderizado no servidor. Também é operado por agentes de IA via MCP.",
+      "longDescription": "O Lesson Studio é o editor de videoaulas e reels da DevFellowship, e sou o principal contribuidor do repositório, ao lado de Tainan Fidelis. A aula é uma sequência de slides montados a partir de templates; cada slide recebe sua própria gravação — áudio, webcam, tela ou tela com webcam em picture-in-picture — com corte de início e fim. A gravação vai primeiro para o IndexedDB como backup local e depois sobe para o S3 por uma Edge Function, com o estado de upload acompanhado slide a slide: fechar a aba no meio não pode custar a gravação. O preview roda no navegador, mas o export final é renderizado no servidor (dfl-render), então o MP4 não depende da máquina de quem gravou. O estado do editor e o da sessão de gravação ficam em stores Zustand separadas, para que editar e capturar não se atropelem. Por cima disso, o servidor MCP da empresa expõe o Studio como ferramentas: agentes de IA criam projetos, preenchem slides a partir dos templates, renderizam imagens e disparam exports."
+    },
+    "tradeview": {
+      "description": "Terminal de trading com camada de IA: preços ao vivo de Foxbit e OKX, gráficos em SVG próprio e execução em modo paper sobre um ledger de partidas dobradas.",
+      "longDescription": "O TradeView é um terminal de trading pessoal em Next.js 16 e React 19. Os preços chegam ao vivo de Foxbit e OKX via CCXT — e a escolha das corretoras veio de teste de alcance, não de preferência: Binance responde 451 e Mercado Bitcoin 403 para IPs de datacenter, inclusive as functions da Vercel. O modelo de dinheiro não tem coluna de saldo: todo saldo é a soma de lançamentos imutáveis num ledger, e um constraint trigger recusa qualquer transação que não feche em zero por moeda. O motor de execução em modo paper percorre o livro de ofertas nível a nível, cobrando taxa taker e slippage, em vez de simular pelo preço médio. Candlestick, donut, heatmap e sparkline são SVG próprio, sem biblioteca de gráficos. O banco é um Supabase compartilhado com outro app, então nada é criado em public: tudo vive nos schemas tradeview e tradeview_private, e a suíte de testes falha se uma tabela vizinha perder privilégio. A análise por IA usa a API da Anthropic."
     }
   },
   "hackathons": {
