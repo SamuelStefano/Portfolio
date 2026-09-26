@@ -25,6 +25,7 @@ const getProjectKey = (title: string): string | null => {
     'ITERA': 'itera',
     'Deck': 'deck',
     'Lesson Studio': 'lessonStudio',
+    'Campaigns': 'campaigns',
     'TradeView': 'tradeview',
     'Skill Evals': 'skillEvals',
     'Valdez': 'valdez',

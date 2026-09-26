@@ -248,6 +248,66 @@ const allProjects: Project[] = [
     }
   },
   {
+    id: '16',
+    title: 'Campaigns',
+    role: 'Lead Developer',
+    description: 'Cockpit de conteúdo e leads da DevFellowship: calendário de posts por unidade de negócio, fila de revisão com rascunhos gerados por IA, despacho automático para Instagram, TikTok, LinkedIn e YouTube via Zernio, e analytics por conta.',
+    long_description: '',
+    stack: ['React 19', 'TypeScript', 'Vite', 'TailwindCSS v4', 'Hono', 'Node 22', 'Supabase', 'PostgreSQL', 'ClickHouse', 'TipTap', 'Zod', 'MCP', 'Claude API', 'Zernio API', 'Playwright'],
+    thumbnail_url: '/projects/campaigns/calendario.png',
+    icon_name: 'Calendar',
+    created_at: '2026-08-06T00:00:00Z',
+    updated_at: '2026-09-25T00:00:00Z',
+    project_collaborators: [
+      { id: '16-c1', name: 'Samuel Stefano', role: 'Lead Developer', avatar_url: '/Samuel-avatar.webp', created_at: '2026-08-06T00:00:00Z' },
+      { id: '16-c2', name: 'Tainan Fidelis', website: 'https://tainanfidelis.com/linktree', role: 'Collaborator', avatar_url: '/Tainan Fidelis-avatar.webp', created_at: '2026-08-06T00:00:00Z' },
+      { id: '16-c3', name: 'William Nunes', role: 'Collaborator', created_at: '2026-08-06T00:00:00Z' }
+    ],
+    project_links: [
+      { id: '16-l1', label: 'Website', title: 'App', url: 'https://campaigns.devfellowship.com', type: 'website', created_at: '2026-08-06T00:00:00Z' }
+    ],
+    project_sections: [
+      {
+        id: '16-s1',
+        folder_name: 'calendario',
+        display_name: 'Calendário de posts',
+        description: 'Tudo que está agendado, por unidade de negócio e por criador, com o estado de cada post: em revisão, aprovado, agendado, publicado ou recusado',
+        order_index: 1,
+        project_images: [{ id: '16-s1-i1', image_url: '/projects/campaigns/calendario.png', order_index: 1 }]
+      },
+      {
+        id: '16-s2',
+        folder_name: 'revisao',
+        display_name: 'Fila de revisão',
+        description: 'Rascunhos escritos por agentes de IA caem aqui. Uma pessoa lê, edita, aprova e agenda — quem escreveu nunca é quem libera. Aprovado, o post vai pro Zernio e sai no horário',
+        order_index: 2,
+        project_images: [{ id: '16-s2-i1', image_url: '/projects/campaigns/revisao.png', order_index: 1 }]
+      },
+      {
+        id: '16-s3',
+        folder_name: 'analytics',
+        display_name: 'Analytics',
+        description: 'Comparação entre contas e formatos, visualizações por dia e ranking dos posts do período — coletado por rede, nunca somado entre redes',
+        order_index: 3,
+        project_images: [{ id: '16-s3-i1', image_url: '/projects/campaigns/analytics.png', order_index: 1 }]
+      },
+      {
+        id: '16-s4',
+        folder_name: 'perfis',
+        display_name: 'Perfis e contas',
+        description: 'Cada perfil do Zernio com as contas conectadas por rede — um post nasce em um perfil, mas pode sair em contas de vários',
+        order_index: 4,
+        project_images: [{ id: '16-s4-i1', image_url: '/projects/campaigns/perfis.png', order_index: 1 }]
+      }
+    ],
+    image_categories: {
+      'calendario': ['/projects/campaigns/calendario.png'],
+      'revisao': ['/projects/campaigns/revisao.png'],
+      'analytics': ['/projects/campaigns/analytics.png'],
+      'perfis': ['/projects/campaigns/perfis.png']
+    }
+  },
+  {
     id: '0',
     title: 'Deck',
     role: 'Creator',
@@ -1279,6 +1339,7 @@ const allProjects: Project[] = [
 const PROJECT_ORDER = [
   'ITERA',
   'Lesson Studio',
+  'Campaigns',
   'Deck',
   'DFL Payments',
   'TradeView',
