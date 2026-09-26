@@ -15,7 +15,7 @@ const seeds: ProjectSeed[] = [
         id: '11-c1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2026-06-19T00:00:00Z'
       },
       {
@@ -138,7 +138,7 @@ const seeds: ProjectSeed[] = [
     created_at: '2026-06-30T00:00:00Z',
     updated_at: '2026-09-25T00:00:00Z',
     project_collaborators: [
-      { id: '14-c1', name: 'Samuel Stefano', role: 'Lead Developer', avatar_url: '/Samuel-avatar.webp', created_at: '2026-06-30T00:00:00Z' },
+      { id: '14-c1', name: 'Samuel Stefano', role: 'Lead Developer', avatar_url: '/avatar-lg.webp', created_at: '2026-06-30T00:00:00Z' },
       { id: '14-c2', name: 'Tainan Fidelis', website: 'https://tainanfidelis.com/linktree', role: 'Collaborator', avatar_url: '/Tainan Fidelis-avatar.webp', created_at: '2026-06-30T00:00:00Z' }
     ],
     project_links: [
@@ -172,13 +172,21 @@ const seeds: ProjectSeed[] = [
         display_name: 'Visão de canvas',
         order_index: 4,
         project_images: [{ id: '14-s4-i1', image_url: '/projects/lesson-studio/canvas.png', order_index: 1 }]
+      },
+      {
+        id: '14-s5',
+        folder_name: 'exports',
+        display_name: 'Exports',
+        order_index: 5,
+        project_images: [{ id: '14-s5-i1', image_url: '/projects/lesson-studio/exports.png', order_index: 1 }]
       }
     ],
     image_categories: {
       'editor': ['/projects/lesson-studio/editor.png'],
       'projetos': ['/projects/lesson-studio/projetos.png'],
       'templates': ['/projects/lesson-studio/templates.png'],
-      'canvas': ['/projects/lesson-studio/canvas.png']
+      'canvas': ['/projects/lesson-studio/canvas.png'],
+      'exports': ['/projects/lesson-studio/exports.png']
     }
   },
   {
@@ -191,7 +199,7 @@ const seeds: ProjectSeed[] = [
     created_at: '2026-08-25T00:00:00Z',
     updated_at: '2026-08-26T00:00:00Z',
     project_collaborators: [
-      { id: '15-c1', name: 'Samuel Stefano', role: 'Creator', avatar_url: '/Samuel-avatar.webp', created_at: '2026-08-25T00:00:00Z' }
+      { id: '15-c1', name: 'Samuel Stefano', role: 'Creator', avatar_url: '/avatar-lg.webp', created_at: '2026-08-25T00:00:00Z' }
     ],
     project_links: [
       { id: '15-l1', label: 'Website', title: 'App', url: 'https://tradeview-six.vercel.app', type: 'website', created_at: '2026-08-25T00:00:00Z' }
@@ -235,7 +243,7 @@ const seeds: ProjectSeed[] = [
     created_at: '2026-08-06T00:00:00Z',
     updated_at: '2026-09-25T00:00:00Z',
     project_collaborators: [
-      { id: '16-c1', name: 'Samuel Stefano', role: 'Lead Developer', avatar_url: '/Samuel-avatar.webp', created_at: '2026-08-06T00:00:00Z' },
+      { id: '16-c1', name: 'Samuel Stefano', role: 'Lead Developer', avatar_url: '/avatar-lg.webp', created_at: '2026-08-06T00:00:00Z' },
       { id: '16-c2', name: 'Tainan Fidelis', website: 'https://tainanfidelis.com/linktree', role: 'Collaborator', avatar_url: '/Tainan Fidelis-avatar.webp', created_at: '2026-08-06T00:00:00Z' },
       { id: '16-c3', name: 'William Nunes', role: 'Collaborator', created_at: '2026-08-06T00:00:00Z' }
     ],
@@ -309,7 +317,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2026-06-05T00:00:00Z'
       }
     ],
@@ -405,7 +413,7 @@ const seeds: ProjectSeed[] = [
         id: '12-c1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2026-05-14T00:00:00Z'
       }
     ],
@@ -454,7 +462,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2024-01-15T00:00:00Z'
       },
       {
@@ -570,7 +578,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2025-01-15T00:00:00Z'
       }
     ],
@@ -648,7 +656,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2024-11-01T00:00:00Z'
       },
       {
@@ -811,7 +819,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Collaborator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2024-09-01T00:00:00Z'
       }
     ],
@@ -959,18 +967,18 @@ const seeds: ProjectSeed[] = [
   {
     id: '7',
     title: 'DFL Learn',
-    role: 'Creator',
+    role: 'Collaborator',
     stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'TanStack Query', 'Module Federation', 'TailwindCSS', 'Stripe', 'n8n', 'PostgreSQL', 'Claude API', 'Framer Motion', 'Playwright'],
-    thumbnail_url: '/projects/dfllearn/Dashboard.png',
+    thumbnail_url: '/projects/dfllearn/dashboard.png',
     icon_name: 'Layout',
     created_at: '2024-07-01T00:00:00Z',
-    updated_at: '2026-04-01T00:00:00Z',
+    updated_at: '2026-09-25T00:00:00Z',
     project_collaborators: [
       {
         id: '1',
         name: 'Samuel Stefano',
-        role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        role: 'Collaborator',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2024-07-01T00:00:00Z'
       },
       {
@@ -1001,25 +1009,58 @@ const seeds: ProjectSeed[] = [
     ],
     project_sections: [
       {
-        id: '7-1',
+        id: '7-s1',
         folder_name: 'dashboard',
-        display_name: 'Dashboard',
+        display_name: 'Meu dashboard',
         order_index: 1,
         project_images: [
-          { id: '7-1-1', image_url: '/projects/dfllearn/Dashboard.png', order_index: 1 }
+          { id: '7-s1-1', image_url: '/projects/dfllearn/dashboard.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '7-s2',
+        folder_name: 'miniapp',
+        display_name: 'Mini-app dentro do host',
+        order_index: 2,
+        project_images: [
+          { id: '7-s2-1', image_url: '/projects/dfllearn/mini-app-reviews.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '7-s3',
+        folder_name: 'deliveries',
+        display_name: 'Entregas',
+        order_index: 3,
+        project_images: [
+          { id: '7-s3-1', image_url: '/projects/dfllearn/deliveries.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '7-s4',
+        folder_name: 'meetings',
+        display_name: 'Grafo de reuniões',
+        order_index: 4,
+        project_images: [
+          { id: '7-s4-1', image_url: '/projects/dfllearn/meetings-graph.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '7-s5',
+        folder_name: 'courses',
+        display_name: 'Cursos',
+        order_index: 5,
+        project_images: [
+          { id: '7-s5-1', image_url: '/projects/dfllearn/courses.png', order_index: 1 }
         ]
       }
-    ],
-    image_categories: {
-      'dashboard': ['/projects/dfllearn/Dashboard.png']
-    }
+    ]
   },
   {
     id: '8',
     title: 'DFL Payments',
     role: 'Creator',
     stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'TailwindCSS', 'Supabase', 'Supabase Edge Functions', 'PostgreSQL', 'RLS', 'Autentique', 'Woovi', 'Pix', 'Spedy', 'NFS-e', 'Webhooks', 'HMAC', 'Cron', 'Vitest'],
-    thumbnail_url: '/projects/payments/New Invoice.png',
+    thumbnail_url: '/projects/payments/revenue.png',
     icon_name: 'CreditCard',
     created_at: '2025-01-01T00:00:00Z',
     updated_at: '2026-07-24T00:00:00Z',
@@ -1028,7 +1069,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2025-01-01T00:00:00Z'
       },
       {
@@ -1052,18 +1093,60 @@ const seeds: ProjectSeed[] = [
     ],
     project_sections: [
       {
-        id: '8-1',
-        folder_name: 'invoice',
-        display_name: 'New Invoice',
+        id: '8-s1',
+        folder_name: 'revenue',
+        display_name: 'Receita B2B',
         order_index: 1,
         project_images: [
-          { id: '8-1-1', image_url: '/projects/payments/New Invoice.png', order_index: 1 }
+          { id: '8-s1-1', image_url: '/projects/payments/revenue.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '8-s2',
+        folder_name: 'contracts',
+        display_name: 'Contratos',
+        order_index: 2,
+        project_images: [
+          { id: '8-s2-1', image_url: '/projects/payments/contracts.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '8-s3',
+        folder_name: 'create',
+        display_name: 'Novo contrato',
+        order_index: 3,
+        project_images: [
+          { id: '8-s3-1', image_url: '/projects/payments/contract-new.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '8-s4',
+        folder_name: 'board',
+        display_name: 'Invoices dos fellows',
+        order_index: 4,
+        project_images: [
+          { id: '8-s4-1', image_url: '/projects/payments/board.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '8-s5',
+        folder_name: 'invoice',
+        display_name: 'Nova invoice',
+        order_index: 5,
+        project_images: [
+          { id: '8-s5-1', image_url: '/projects/payments/new-invoice.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '8-s6',
+        folder_name: 'invoice-detail',
+        display_name: 'Detalhe da invoice',
+        order_index: 6,
+        project_images: [
+          { id: '8-s6-1', image_url: '/projects/payments/invoice-detail.png', order_index: 1 }
         ]
       }
-    ],
-    image_categories: {
-      'invoice': ['/projects/payments/New Invoice.png']
-    }
+    ]
   },
   {
     id: '9',
@@ -1079,7 +1162,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2025-02-01T00:00:00Z'
       }
     ],
@@ -1113,7 +1196,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2026-05-29T00:00:00Z'
       }
     ],
@@ -1186,7 +1269,7 @@ const seeds: ProjectSeed[] = [
         id: '1',
         name: 'Samuel Stefano',
         role: 'Creator',
-        avatar_url: '/Samuel-avatar.webp',
+        avatar_url: '/avatar-lg.webp',
         created_at: '2025-11-21T00:00:00Z'
       }
     ],

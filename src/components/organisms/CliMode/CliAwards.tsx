@@ -6,7 +6,7 @@ export const CliAwards = () => {
 
   return (
     <div className="grid gap-3">
-      {HACKATHONS.map((h) => (
+      {[...HACKATHONS].sort((a, b) => a.place - b.place).map((h) => (
         <div key={h.name} className="rounded-lg border border-[var(--cli-border)] bg-[var(--cli-surface)] p-4">
           <div className="flex flex-wrap items-baseline gap-2">
             <span className="text-[var(--cli-amber)]">★</span>
@@ -18,9 +18,14 @@ export const CliAwards = () => {
           <div className="mt-2 text-xs text-[var(--cli-text-dim)]">
             <span className="text-[var(--cli-green)]">stack:</span> {h.technologies.join(' · ')}
           </div>
-          <div className="mt-2 flex gap-4 text-xs font-medium">
-            <a href={h.projectLink} target="_blank" rel="noopener noreferrer" className="text-[var(--cli-cyan)] hover:underline">→ {t('hackathons.viewProject')}</a>
-            <a href={h.githubLink} target="_blank" rel="noopener noreferrer" className="text-[var(--cli-cyan)] hover:underline">→ GitHub</a>
+          <div className="mt-2 flex flex-wrap gap-4 text-xs font-medium">
+            {h.projectLink && (
+              <a href={h.projectLink} target="_blank" rel="noopener noreferrer" className="text-[var(--cli-cyan)] hover:underline">→ {t('hackathons.viewProject')}</a>
+            )}
+            {h.githubLink && (
+              <a href={h.githubLink} target="_blank" rel="noopener noreferrer" className="text-[var(--cli-cyan)] hover:underline">→ GitHub</a>
+            )}
+            <a href={h.eventLink} target="_blank" rel="noopener noreferrer" className="text-[var(--cli-cyan)] hover:underline">→ {t('hackathons.viewEvent')}</a>
           </div>
         </div>
       ))}

@@ -77,23 +77,36 @@ export const AwardModal = ({ hackathon, open, onOpenChange }: AwardModalProps) =
           </div>
 
           <div className="flex flex-wrap gap-3">
+            {hackathon.projectLink && (
+              <a
+                href={hackathon.projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+              >
+                <span>{t('hackathons.viewProject')}</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
+            {hackathon.githubLink && (
+              <a
+                href={hackathon.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-card px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+              >
+                <Github className="h-4 w-4" />
+                <span>GitHub</span>
+              </a>
+            )}
             <a
-              href={hackathon.projectLink}
+              href={hackathon.eventLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
             >
-              <span>{t('hackathons.viewProject')}</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-            <a
-              href={hackathon.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-card px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-            >
-              <Github className="h-4 w-4" />
-              <span>GitHub</span>
+              <Trophy className="h-4 w-4" />
+              <span>{t('hackathons.viewEvent')}</span>
             </a>
           </div>
         </div>

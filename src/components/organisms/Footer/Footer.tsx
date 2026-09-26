@@ -35,9 +35,22 @@ export const Footer = ({ onOpenGame }: FooterProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-10">
           <div>
-            <Heading level={2} className="mb-3 text-2xl sm:text-3xl tracking-tight text-foreground">
-              {t('footer.contact')}
-            </Heading>
+            <div className="mb-4 flex items-center gap-4">
+              <img
+                src="/avatar-lg.webp"
+                alt=""
+                width={64}
+                height={64}
+                loading="lazy"
+                className="h-16 w-16 shrink-0 rounded-full border-2 border-primary/30 bg-muted/40 object-cover transition-transform duration-300 hover:-rotate-6 hover:scale-110"
+              />
+              <div>
+                <Heading level={2} className="text-2xl sm:text-3xl tracking-tight text-foreground">
+                  {t('footer.contact')}
+                </Heading>
+                <p className="text-sm font-medium text-muted-foreground">Samuel Stefano</p>
+              </div>
+            </div>
             <Text className="mb-4 max-w-md text-sm sm:text-base text-muted-foreground">{t('footer.description')}</Text>
             <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="h-4 w-4 text-primary" />
@@ -63,8 +76,8 @@ export const Footer = ({ onOpenGame }: FooterProps) => {
               <a href={resumeHref(i18n.language)} target="_blank" rel="noopener noreferrer" className={linkClass}>
                 <FileText className="h-4 w-4" />
                 {t('footer.resume')}
-                <span className="text-xs text-muted-foreground">· {t('footer.resumeNote')}</span>
               </a>
+              <p className="mt-1 pl-[26px] text-xs text-muted-foreground">{t('footer.resumeNote')}</p>
             </li>
           </ul>
 

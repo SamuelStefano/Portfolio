@@ -18,14 +18,6 @@ import { cardSrc } from '@/lib/utils';
 
 const TECH_COUNT = Math.floor(TECH_CATEGORIES.reduce((sum, c) => sum + c.skills.length, 0) / 5) * 5;
 
-// The DevFellowship photos already appear in the block below, so the journey gallery keeps
-// to the hackathon stage.
-const JOURNEY_PHOTOS = [
-  { src: '/podium/hackanation-1.jpg', captionKey: 'about.gallery.podium1', position: 'center' },
-  { src: '/podium/hackanation-2.jpg', captionKey: 'about.gallery.podium2', position: 'center' },
-  { src: '/podium/tokennation-selfie.jpg', captionKey: 'about.gallery.selfie', position: 'center 30%' },
-];
-
 const getHighlights = (t: TFunction) => [
   {
     title: t('about.highlights.passion.title'),
@@ -262,6 +254,19 @@ export const About = () => {
                 <Text className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
                   {t('about.educar.description')}
                 </Text>
+                <figure className="mt-6">
+                  <div className="group overflow-hidden rounded-xl border border-primary/20">
+                    <img
+                      src={cardSrc('/podium/hackanation-2.jpg')}
+                      onError={(e) => { e.currentTarget.src = '/podium/hackanation-2.jpg'; }}
+                      alt={t('about.educar.stageCaption')}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full aspect-[16/9] object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <figcaption className="mt-2 text-xs text-muted-foreground text-center">{t('about.educar.stageCaption')}</figcaption>
+                </figure>
               </div>
               <figure className="animate-slide-left">
                 <div className="group overflow-hidden rounded-xl border border-primary/20">
@@ -275,32 +280,6 @@ export const About = () => {
                 </div>
                 <figcaption className="mt-2 text-xs text-muted-foreground text-center">{t('about.educar.caption')}</figcaption>
               </figure>
-            </div>
-          </div>
-
-          {/* Journey gallery */}
-          <div className="mt-8 sm:mt-10 md:mt-12 w-full">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-              {JOURNEY_PHOTOS.map((photo, i) => (
-                <figure
-                  key={photo.src}
-                  className={`group relative overflow-hidden rounded-lg sm:rounded-xl border border-primary/20 animate-scale-in ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
-                  style={{ animationDelay: `${i * 0.08}s` }}
-                >
-                  <img
-                    src={cardSrc(photo.src)}
-                    onError={(e) => { e.currentTarget.src = photo.src; }}
-                    alt={t(photo.captionKey)}
-                    loading="lazy"
-                    decoding="async"
-                    style={{ objectPosition: photo.position }}
-                    className="h-full w-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-3 py-2 text-[11px] sm:text-xs text-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    {t(photo.captionKey)}
-                  </figcaption>
-                </figure>
-              ))}
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from 'react';
-import { Trophy, Calendar, MapPin, Users, Github, Maximize2 } from 'lucide-react';
+import { Trophy, Calendar, MapPin, Users, Github, Maximize2, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
@@ -11,12 +11,21 @@ import { HACKATHONS, type Hackathon } from '@/consts/hackathons';
 const AwardModal = lazy(() => import('./AwardModal'));
 import { cardSrc, cn } from '@/lib/utils';
 
-/* Podium: 2nd on the left, 1st in the centre and tallest, 4th on the right. */
-const PODIUM: Record<Hackathon['place'], { order: string; step: string; accent: string; ring: string }> = {
-  1: { order: 'md:order-2', step: 'h-32 md:h-40', accent: 'from-amber-300 via-yellow-400 to-amber-500', ring: 'border-amber-400/60 shadow-[0_0_40px_-8px_rgba(251,191,36,0.55)]' },
-  2: { order: 'md:order-1', step: 'h-24 md:h-28', accent: 'from-slate-200 via-slate-300 to-slate-400', ring: 'border-slate-300/50' },
-  4: { order: 'md:order-3', step: 'h-20 md:h-20', accent: 'from-orange-300 via-amber-600 to-orange-700', ring: 'border-orange-500/40' },
+const PLACE_STYLE: Record<Hackathon['place'], { step: string; accent: string; ring: string }> = {
+  1: { step: 'h-32 xl:h-40', accent: 'from-amber-300 via-yellow-400 to-amber-500', ring: 'border-amber-400/60 shadow-[0_0_40px_-8px_rgba(251,191,36,0.55)]' },
+  2: { step: 'h-24 xl:h-28', accent: 'from-slate-200 via-slate-300 to-slate-400', ring: 'border-slate-300/50' },
+  4: { step: 'h-20', accent: 'from-orange-300 via-amber-600 to-orange-700', ring: 'border-orange-500/40' },
 };
+const XL_ORDER = ['xl:order-1', 'xl:order-2', 'xl:order-3', 'xl:order-4'];
+
+// The page lists the awards by ranking; from xl up they stand as a podium: 2nd on the left,
+// the first places in the centre and tallest, the rest on the right.
+const RANKING = [...HACKATHONS].sort((a, b) => a.place - b.place);
+const PODIUM_ORDER = [
+  ...RANKING.filter((h) => h.place === 2),
+  ...RANKING.filter((h) => h.place === 1),
+  ...RANKING.filter((h) => h.place > 2),
+];
 
 export const HackathonsSection = () => {
   const { t } = useTranslation();
@@ -28,8 +37,6 @@ export const HackathonsSection = () => {
     setModalMounted(true);
     setSelected(hackathon);
   };
-
-  const podium = [...HACKATHONS].sort((a, b) => a.place - b.place);
 
   return (
     <section id="hackathons" className="py-16 sm:py-20 lg:py-24 bg-background" ref={containerRef}>
@@ -43,24 +50,24 @@ export const HackathonsSection = () => {
           </Text>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-6 md:gap-4">
-          {podium.map((hackathon, index) => {
-            const style = PODIUM[hackathon.place];
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-end gap-6 md:gap-4">
+          {RANKING.map((hackathon, index) => {
+            const style = PLACE_STYLE[hackathon.place];
             return (
               <div
                 key={hackathon.name}
-                className={cn('flex flex-col animate-fade-up', style.order)}
+                className={cn('flex flex-col animate-fade-up', XL_ORDER[PODIUM_ORDER.indexOf(hackathon)])}
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <article
                   className={cn(
-                    'group relative flex flex-col rounded-2xl border bg-card p-5 sm:p-6 hover-card cursor-pointer',
+                    'group relative flex flex-col rounded-2xl border bg-card p-5 sm:p-6 xl:p-5 hover-card cursor-pointer',
                     style.ring,
                   )}
                   onClick={() => openAward(hackathon)}
                 >
                   {hackathon.photo && (
-                    <div className="relative -mx-5 -mt-5 sm:-mx-6 sm:-mt-6 mb-4 h-40 overflow-hidden rounded-t-2xl">
+                    <div className="relative -mx-5 -mt-5 sm:-mx-6 sm:-mt-6 xl:-mx-5 xl:-mt-5 mb-4 h-40 overflow-hidden rounded-t-2xl">
                       <img
                         src={cardSrc(hackathon.photo)}
                         onError={(e) => { if (hackathon.photo) e.currentTarget.src = hackathon.photo; }}
@@ -101,7 +108,7 @@ export const HackathonsSection = () => {
                   </Text>
 
                   <div className="mb-5 flex flex-wrap gap-1.5">
-                    {hackathon.technologies.slice(0, 6).map((tech) => (
+                    {hackathon.technologies.slice(0, 5).map((tech) => (
                       <span key={tech} className="px-2 py-0.5 bg-primary/10 border border-primary/20 rounded-full text-xs text-primary">
                         {tech}
                       </span>
@@ -117,14 +124,14 @@ export const HackathonsSection = () => {
                       {t('hackathons.viewDetails')}
                     </button>
                     <a
-                      href={hackathon.githubLink}
+                      href={hackathon.githubLink ?? hackathon.eventLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center gap-2 rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
                     >
-                      <Github className="h-4 w-4" />
-                      GitHub
+                      {hackathon.githubLink ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
+                      {hackathon.githubLink ? 'GitHub' : t('hackathons.viewEvent')}
                     </a>
                   </div>
                 </article>

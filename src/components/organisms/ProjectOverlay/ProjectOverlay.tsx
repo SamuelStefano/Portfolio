@@ -21,6 +21,14 @@ import {
   GitBranch,
   LayoutGrid,
   Route,
+  TrendingUp,
+  FileText,
+  Receipt,
+  GraduationCap,
+  Package,
+  Network,
+  Puzzle,
+  Film,
   type LucideIcon,
 } from 'lucide-react';
 import { Project, ProjectSection } from '@/types/project';
@@ -69,6 +77,16 @@ const SECTION_ICONS: Record<string, LucideIcon> = {
   git: GitBranch,
   canvas: LayoutGrid,
   trilha: Route,
+  revenue: TrendingUp,
+  contracts: FileText,
+  board: LayoutGrid,
+  invoice: Receipt,
+  'invoice-detail': Receipt,
+  courses: GraduationCap,
+  deliveries: Package,
+  meetings: Network,
+  miniapp: Puzzle,
+  exports: Film,
 };
 
 function SectionIcon({ name, className }: { name: string; className?: string }) {
@@ -357,9 +375,14 @@ const OverviewSection: React.FC<{
           <Info className="w-4 h-4 text-primary flex-shrink-0" />
           <p className="text-sm font-semibold text-foreground">{t('projects.aboutProject')}</p>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed pl-6">
-          {project.long_description || project.description}
-        </p>
+        {/* longer texts are written in paragraphs: what it is, how it works, what I did */}
+        <div className="space-y-3 pl-6">
+          {(project.long_description || project.description).split(/\n{2,}/).map((paragraph, i) => (
+            <p key={i} className="text-sm text-muted-foreground leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
 
       {/* role */}

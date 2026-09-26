@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Instagram, Languages, Calendar, MapPin, ExternalLink, MousePointerClick } from 'lucide-react';
+import { Instagram, Languages, Calendar, MapPin, ExternalLink, MousePointerClick, Trophy } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar/SkillBar';
 import { SkillEvidencePanel } from '@/components/molecules/SkillEvidencePanel/SkillEvidencePanel';
 import { useProjects } from '@/hooks/useProjects';
@@ -11,6 +11,8 @@ import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { TECH_CATEGORIES, EXPERIENCE_DATA, EVENTS_DATA } from '@/consts/data';
+import { HACKATHONS } from '@/consts/hackathons';
+import { cn } from '@/lib/utils';
 
 const LANGUAGES = [
   { key: 'english', level: 65, inProgress: true },
@@ -226,7 +228,7 @@ export const TechStack = () => {
           </div>
 
           {/* Instagrams */}
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-6 -mt-6">
+          <div className="flex flex-wrap justify-center gap-2 mb-8 -mt-6">
             {[
               { href: 'https://www.instagram.com/instituto.educarmais/', handle: 'instituto.educarmais' },
               { href: 'https://www.instagram.com/devfellowship/', handle: 'devfellowship' },
@@ -241,10 +243,10 @@ export const TechStack = () => {
                 rel="noopener noreferrer"
                 aria-label={`Instagram ${ig.handle}`}
                 title={`Instagram ${ig.handle}`}
-                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
               >
                 <Instagram className="w-3.5 h-3.5" />
-                <span>{ig.handle}</span>
+                <span>@{ig.handle}</span>
               </a>
             ))}
           </div>
@@ -308,7 +310,7 @@ export const TechStack = () => {
           </div>
         </div>
 
-        {/* events & community */}
+        {/* events & community: one ticket per event, with what came out of it */}
         <div id="eventos" className="mt-16 animate-fade-up scroll-mt-6">
           <Heading level={3} className="text-center mb-3 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg lg:text-xl">
             {t('skills.eventsTitle')}
@@ -316,68 +318,82 @@ export const TechStack = () => {
           <Text className="text-center text-muted-foreground text-sm mb-10 max-w-xl mx-auto">
             {t('skills.eventsSubtitle')}
           </Text>
-          <div className="max-w-3xl mx-auto relative">
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent" />
-            <div className="space-y-6">
-              {EVENTS_DATA.map((ev, i) => {
-                const card = (
-                  <div className="flex-1 bg-card border border-border rounded-xl p-4 sm:p-5 hover-card transition-all duration-300">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <Heading level={4} className="text-sm sm:text-base md:text-base text-foreground group-hover/ev:text-primary transition-colors">
-                        {ev.name}
-                      </Heading>
-                      {ev.url && <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />}
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-medium">
-                        {t(`skills.eventTypes.${ev.type}`)}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <span className="inline-flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {ev.date}
-                      </span>
-                      {ev.location && (
-                        <span className="inline-flex items-center gap-1">
-                          <MapPin className="w-3 h-3" />
-                          {ev.location}
-                        </span>
-                      )}
-                    </div>
-                    {ev.ecosystems && ev.ecosystems.length > 0 && (
-                      <div className="flex flex-wrap items-center gap-1.5 mt-3">
-                        <span className="text-[10px] uppercase tracking-wide text-muted-foreground mr-1">
-                          {t('skills.eventEcosystems')}
-                        </span>
-                        {ev.ecosystems.map((eco) => (
-                          <span
-                            key={eco}
-                            className="px-2 py-0.5 rounded-full bg-muted/50 border border-border text-[11px] font-medium text-foreground"
-                          >
-                            {eco}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-                return (
+          <div className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2">
+            {EVENTS_DATA.map((ev, i) => {
+              const awards = HACKATHONS.filter((h) => h.eventLink === ev.url).sort((a, b) => a.place - b.place);
+              const host = new URL(ev.url).hostname.replace(/^www\./, '');
+              const isHackathon = ev.type === 'hackathon';
+              return (
+                <a
+                  key={ev.name}
+                  href={ev.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/ev relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_20px_50px_-24px_hsl(var(--primary)/0.6)] animate-scale-in"
+                  style={{ animationDelay: `${i * 0.08}s` }}
+                >
                   <div
-                    key={ev.name}
-                    className="relative flex items-start gap-5 animate-slide-right pl-6"
-                    style={{ animationDelay: `${i * 0.1}s` }}
-                  >
-                    <div className="absolute left-0 top-5 w-3 h-3 bg-primary rounded-full -translate-x-1/2 z-10 animate-pulse-glow" />
-                    {ev.url ? (
-                      <a href={ev.url} target="_blank" rel="noopener noreferrer" className="flex-1 block group/ev">
-                        {card}
-                      </a>
-                    ) : (
-                      card
+                    className={cn(
+                      'flex items-center justify-between gap-3 px-5 py-3 text-xs font-semibold',
+                      isHackathon
+                        ? 'bg-gradient-to-r from-primary/25 via-neon-purple/15 to-transparent text-primary'
+                        : 'bg-gradient-to-r from-neon-cyan/25 via-emerald-500/10 to-transparent text-neon-cyan',
                     )}
+                  >
+                    <span className="uppercase tracking-wider">{t(`skills.eventTypes.${ev.type}`)}</span>
+                    <span className="inline-flex items-center gap-1.5 font-mono font-medium text-muted-foreground">
+                      <Calendar className="h-3.5 w-3.5" />
+                      {ev.date}
+                    </span>
                   </div>
-                );
-              })}
-            </div>
+                  {/* ticket perforation */}
+                  <div aria-hidden className="relative border-t border-dashed border-border">
+                    <span className="absolute -left-2 -top-2 h-4 w-4 rounded-full border border-border bg-background" />
+                    <span className="absolute -right-2 -top-2 h-4 w-4 rounded-full border border-border bg-background" />
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-5">
+                    <Heading level={4} className="text-lg leading-snug text-foreground transition-colors group-hover/ev:text-primary">
+                      {ev.name}
+                    </Heading>
+                    <span className="mt-1 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                      <MapPin className="h-3.5 w-3.5" />
+                      {ev.location}
+                    </span>
+
+                    {awards.length > 0 && (
+                      <ul className="mt-4 space-y-1.5">
+                        {awards.map((h) => (
+                          <li key={h.name} className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm">
+                            <Trophy
+                              className={cn(
+                                'h-4 w-4 shrink-0',
+                                h.place === 1 ? 'text-amber-400' : h.place === 2 ? 'text-slate-300' : 'text-orange-400',
+                              )}
+                            />
+                            <span className="font-semibold text-foreground">{h.name}</span>
+                            <span className="text-muted-foreground">{t(h.achievementKey)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {ev.ecosystems.map((eco) => (
+                        <span key={eco} className="rounded-full border border-border bg-muted/40 px-2.5 py-0.5 text-[11px] font-medium text-foreground">
+                          {eco}
+                        </span>
+                      ))}
+                    </div>
+
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-xs font-medium text-muted-foreground transition-colors group-hover/ev:text-primary">
+                      {host}
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </div>
 

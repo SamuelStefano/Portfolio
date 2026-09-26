@@ -122,14 +122,13 @@
       "spanish": "Spanish"
     },
     "eventsTitle": "Events & Community",
-    "eventsSubtitle": "Web3 ecosystem conferences, workshops and meetups I attended",
+    "eventsSubtitle": "Web3 hackathons and conferences I took part in, with the result of each hackathon.",
     "eventTypes": {
       "conference": "Conference",
       "workshop": "Workshop",
       "meetup": "Meetup",
       "hackathon": "Hackathon"
     },
-    "eventEcosystems": "Ecosystems:",
     "softwareEngineering": "Software Engineering",
     "web3Blockchain": "Web3 & Blockchain",
     "others": "Others",
@@ -287,7 +286,7 @@
     "subtitle": "Learn a little more about my journey and passions",
     "greeting": "Hello! I'm Samuel.",
     "bio1": "Full-stack developer based in Marialva, Brazil, working remotely. I started in IT support, joined DevFellowship as a freelancer in late 2023 and now work full-time on the company's internal platform — React, TypeScript, Node.js, Supabase and PostgreSQL day to day, with applied AI (agents, MCP, Claude) at the core of the workflow.",
-    "bio2": "At DevFellowship I built the complete Module Federation ecosystem — DFL Learn (super-app host), Reviews, Payments and the AI-powered CI Reviewer Bot — plus 4 MCP servers and the revenue pipeline running in production, from contracts to recurring billing and electronic invoicing. I created ITERA, a course platform with a synchronous live-class mode built on Supabase Realtime, and Deck, my command post for AI agents. In hackathons: won the Chainlink track with AltPay, 4th place at ETH Latam 2025 (GreenLoop) and 2nd place in the Scroll track at DevConnect ETH 2025 (TalentDAO).",
+    "bio2": "At DevFellowship I built the complete Module Federation ecosystem — DFL Learn (super-app host), Reviews, Payments and the AI-powered CI Reviewer Bot — plus 4 MCP servers and the revenue pipeline running in production, from contracts to recurring billing and electronic invoicing. I created ITERA, a course platform with a synchronous live-class mode built on Supabase Realtime, and Deck, my command post for AI agents. In hackathons: 1st place in the Base track at ETH Latam 2025 (PIX On-Chain), won the Chainlink track at Hackanation 2026 with AltPay and 2nd place in the Scroll track at DevConnect ETH 2025 (TalentDAO).",
     "bio3": "I am in the final year of Systems Analysis and Development at UNINGÁ — graduating in December 2026. I am looking for a remote product team where I can add what I already deliver today and keep growing.",
     "location": "Marialva, PR",
     "language": "English B2",
@@ -401,14 +400,8 @@
     "educar": {
       "title": "Educar+ · classroom and stage",
       "description": "I teach programming to teenagers at Instituto Educar+. In May 2026 I took a class to Hackanation in São Paulo: they presented AltPay on stage and we won the Chainlink track. For many of them it was their first tech event.",
-      "caption": "The Educar+ class at Hackanation 2026 — \"Hacking the Future\" shirts"
-    },
-    "gallery": {
-      "dfl": "DevFellowship",
-      "podium1": "Chainlink track podium · Hackanation 2026",
-      "podium2": "Winners on the TokenNation stage",
-      "educar": "Educar+ students at the event",
-      "selfie": "At Hackanation 2026, São Paulo"
+      "caption": "The Educar+ class at Hackanation 2026 — \"Hacking the Future\" shirts",
+      "stageCaption": "Winners on the TokenNation stage"
     },
     "commitsLastYear": "Commits in the last 12 months",
     "activity": {
@@ -485,8 +478,8 @@
       "longDescription": "Deck is the platform I built — alone, from scratch — to be my command center when working with AI agents running on my own VPS. Instead of being stuck in an SSH terminal, Deck wires the browser straight to the machine: each session opens a Claude agent with isolated context, and I watch the execution in real time. The chat surfaces the reasoning, the tools, the agent's task list in a tray pinned above the composer, and the cost of every turn in tokens, time and money — including turns run straight from the terminal, reconstructed from history. Long sessions load only recent messages, with a button that pulls in whatever came before a /compact. The terminals are real VPS PTYs inside the app, with tabs and state shared across devices: the same terminal is still alive if I open it from my phone. Around the chat sit the areas that cover the whole operation. Contexts is the agent's persistent memory in read mode — typed markdown files (user, project, feedback, reference) that it writes on its own and consults between conversations. Skills is the catalogue of abilities the agent loads on demand. Crons are scheduled prompts that fire autonomous turns at the appointed time, with nobody in front of the screen. Points is a financial ledger: the agent records its own score when it finishes a task, and the route cross-references that with the project tree and the invoices pulled from the DevFellowship API, with a configurable value per point. Playground is a code bench with live preview across several runtimes — React, HTML, an iPhone frame, SVG and a test judge — plus snippet sharing by link. Graph builds a knowledge graph of the code with tree-sitter, 100% locally. Usage is the consumption observatory: estimated cost, tokens and turns per session, plus the plan's rate-limit window. Admin & Host exposes VPS health and inventory (CPU, RAM, load, disk, uptime, CLIs on PATH, MCP servers, tmux sessions, plugins) with sensitive actions behind a confirmation and an admin role on the relay. Notes is a markdown scratchpad with autosave, and the in-app documentation explains every part. Architecture: React + TypeScript + Vite front end on Vercel, a Node WebSocket backend on a Hetzner VPS, session orchestration through tmux, integration with the Claude API and with MCP servers (Supabase, Infisical and my own), persistence in Supabase and secrets in Infisical. It all runs on its own design system, with primitives and a living gallery at /ds. Designed, architected and implemented by me."
     },
     "skillEvals": {
-      "description": "Developer challenges platform, where devs must challenge themselves regarding courses linked to the DevfellowshipAcademy course platform.",
-      "longDescription": "Developer challenges platform, where devs must challenge themselves regarding courses linked to the DevfellowshipAcademy course platform. With screens for Mentorship, Administrators, everything well organized. Uses Judge0 as compilation API. Integrated as a mini app using Module Federation for modular integration with the main platform."
+      "description": "Coding challenges tied to DevFellowship's courses: the student solves them in the browser, the code really runs on Judge0 against test cases and the result comes back at once. Admins create, archive and follow the challenges.",
+      "longDescription": "Skill Evals turns course content into graded practice. Each challenge has a statement, starter code and test cases; the student writes the solution in the browser and the code is compiled and run by the Judge0 API, which returns the output, the error or the passing tests.\n\nAdmins create challenges in two steps, archive old ones and follow everything from a dashboard; the student's profile keeps their progress. Integrated as a mini-app in DFL Learn through Module Federation."
     },
     "greenloop": {
       "description": "Web3 platform that transforms recyclable material deliveries into on-chain tokens. 4th place at ETH Latam 2025.",
@@ -497,20 +490,20 @@
       "longDescription": "TalentDAO (DevConnect/MintWork) is a Web3 marketplace that connects companies and talents. Jobs are stored in smart contracts, with USDC escrow. When approved, it issues ERC-721 NFTs as permanent credentials. We achieved 2nd place in the Scroll track at DevConnect ETH 2025."
     },
     "reviewRequests": {
-      "description": "DevFellowship's internal task review system, similar to Pull Requests.",
-      "longDescription": "Review Requests is an internal system developed for DevFellowship that allows creating, reviewing and evaluating tasks in a structured way. With complete review cycles, approval/rejection, reassessment and detailed history. Integrated as a mini app using Module Federation for modular integration with the main platform."
+      "description": "The \"pull request\" for DevFellowship's tasks: whoever finishes a task opens a review with a checklist and a self-assessment, a mentor evaluates it, approves it or sends it back with comments, and everything stays on record.",
+      "longDescription": "An internal task review system modelled on a pull request. Whoever finished the task opens the review from a template, with a checklist and a self-assessment; the mentor evaluates it item by item, approves or rejects it with a reason, and the conversation stays in the comments. The dashboard shows what is waiting for more work, waiting for review, under review and already approved.\n\nIt runs as a mini-app inside DFL Learn through Module Federation — I integrated that remote into the host."
     },
     "dflLearn": {
-      "description": "DevFellowship's super-app and Module Federation ecosystem host. Centralizes projects, Kanban, payments, meetings, LMS courses, CMDB and AI Chat in a single platform.",
-      "longDescription": "DFL Learn is DevFellowship's complete operational platform — Module Federation host. Dashboard with Kanban board for tasks by status (To Do, In Progress, Dev Completed, Done), filters by project/epic/delivery and real-time metrics. Sidebar with modules: Projects, Tasks, Skills, Epics, Deliveries, Meetings, Reviews, Payments, Diagrams, Members and Plans. Multiple Supabase schemas and HookChat (AI via Claude API)."
+      "description": "DevFellowship's internal super-app: tasks, deliveries, meetings, weekly updates and courses in one place. Each team tool — Reviews, Payments, Lesson Studio, Plans — is a mini-app loaded through Module Federation inside the same shell.",
+      "longDescription": "DFL Learn is where the DevFellowship team works day to day: the task board, the deliveries that later become invoices in DFL Payments, meetings, weekly updates and courses. The sidebar separates governance, delivery and the mini-apps. The platform was created by Tainan Fidelis; I have contributed to it since December 2025.\n\nWhat I built here: the Module Federation integration that brings the mini-apps into the host — Reviews, Payments and later Lesson Studio — including style isolation so a remote's CSS neither leaks into the host layout nor gets lost when the route is reopened; GitHub account linking with OAuth and an Edge Function; the weekly updates page, which gathers each person's tasks, PRs, Core Dailies and plans for the week and copies it all in the daily stand-up format; and the 390px mobile pass, covered by a hermetic end-to-end suite."
     },
     "paymentsApp": {
-      "description": "DevFellowship's revenue pipeline, from contract to fiscal invoice: it generates the document, collects the e-signature on Autentique, schedules the recurring billing, issues the Pix through Woovi and the NFS-e through Spedy — with a dunning layer, reconciliation and a cron dispatcher on top. Production software moving real money.",
-      "longDescription": "DFL Payments started as a remote invoices micro-frontend in the Module Federation ecosystem and grew into DevFellowship's entire revenue pipeline. The original flow is still there: the fellow selects the reference month and the responsible organization, the system lists the deliveries whose tasks are all completed and computes points × rate to close the invoice amount automatically. On top of that the B2B pipeline was built. A contract defines amount, billing mode and recurrence; from it the system generates the document from a template, sends it for e-signature on Autentique and, when the signature webhook comes back, activates the contract and materializes the installment schedule. A cron dispatcher wakes each installment on the right date and moves it through the status kanban — scheduled, awaiting invoice, dispatched, awaiting Pix, paid, overdue or cancelled. The Pix is generated by Woovi and confirmation arrives by webhook with HMAC signature verification on the server. The service invoice is issued automatically through the Spedy API, with the NFS-e status returning by webhook and tied to the charge that originated it. Closing the loop are a dunning ladder for delinquency, a reconciliation screen between what was charged and what actually landed, contract addenda that change only future installments without rewriting the past, and a revenue forecast. The sensitive logic lives in tested TypeScript — billing, schedule, recurrence and forecast services have unit tests — rather than in database procedures, keeping the database thin and authorization in RLS."
+      "description": "DevFellowship's money system, both ways: it pays the fellows — every approved delivery becomes an invoice priced as points × rate and goes out as a Pix — and it bills the clients — a signed contract becomes recurring billing, with Pix and the service invoice issued on their own. In production, moving real money.",
+      "longDescription": "DFL Payments is DevFellowship's money system, and it works in both directions. I created the app and built both halves, with Tainan Fidelis as a collaborator.\n\nPaying the fellows. The fellow picks the month and the organization; the app lists only deliveries whose tasks are done and approved in review, and prices them as points × rate — one delivery per invoice. The invoice moves submitted → approved → paid (or rejected, with a reason). Payment goes out as a Pix through the Woovi API, with key-type detection (CPF, CNPJ, email, phone or random key) and a lock against paying twice; on payment the linked tasks, deliveries and epics are updated, and the invoice renders to PDF.\n\nBilling the clients. A contract sets the amount, the recurrence and the billing mode — for example, Pix first and the service invoice once it is paid. The document is generated from a template and sent for e-signature on Autentique; when the signature webhook comes back, the contract activates and its installment schedule is created. A cron dispatcher wakes each installment on its date and walks it through the board: scheduled, awaiting invoice, dispatched, awaiting Pix, paid. Pix comes from Woovi with an HMAC-verified webhook, and the NFS-e is issued through Spedy. Around it: a monthly revenue forecast, delinquency and reconciliation between what was billed, what arrived and the invoice issued.\n\nUnderneath, the money rules live in tested TypeScript — billing, schedules, recurrence and forecast — rather than database procedures, so the database stays thin and guarded by RLS. In the screenshots, amounts, keys and client and colleague names are hidden."
     },
     "ciRevisorBot": {
-      "description": "CI bot running on GitHub Actions. Executes build, tests, lint and architecture checks — then posts inline comments and summary on the PR via Claude API.",
-      "longDescription": "DFL-Bot Reviewer is the shared CI system across all DevFellowship repos. Each PR triggers: build, Vitest, verify docs, lint, architecture checks, typecheck. Then the bot runs two steps: Inline review (analyzes the diff via Claude API and posts comments on changed lines) and Summary comment (consolidates the result on the PR). Example: 'Review submitted: 3 new inline comment(s), 0 file-level item(s)'. Based on DFL CI core, a reusable composite action."
+      "description": "DevFellowship's automatic pull request reviewer. It runs on GitHub Actions: build, tests, lint, typecheck and architecture checks — then reads the diff with the Claude API and comments right on the changed lines, with a summary on the PR.",
+      "longDescription": "A CI shared by every DevFellowship repository, packaged as a composite action (DFL CI core) so each repo adopts it in a few lines. Every PR runs build, Vitest, docs verification, lint, architecture checks and typecheck.\n\nThen the bot does two things: the inline review — it analyses the diff with the Claude API and comments on the changed lines — and a summary comment that consolidates the result on the PR (for example: \"Review submitted: 3 new inline comment(s), 0 file-level item(s)\"). That way the human reviewer starts from what matters, not from what is mechanical."
     },
     "altpay": {
       "description": "On-chain microcredit for rideshare drivers: an in-house score with no credit-bureau lookup, instant credit and Pix collections. Won the Chainlink track at the hackathon (Solana + Chainlink CRE/CCIP).",
@@ -539,9 +532,13 @@
   },
   "hackathons": {
     "title": "Hackathons & Events",
-    "subtitle": "Three Web3 hackathons, three podiums. Projects built in a few days, with a team and a tight deadline.",
+    "subtitle": "Three Web3 hackathons, a podium at every one: four awards, two of them first place. Built in a few days, as a team, against the clock.",
     "technologies": "Technologies",
     "viewProject": "View Project",
+    "pixonchain": {
+      "achievement": "1st Place Base Track",
+      "description": "Pix brought on-chain: someone pays a regular Pix and the value lands on-chain, on Base. First place in the Base track at ETH Latam 2025."
+    },
     "altpay": {
       "achievement": "Winner · Chainlink Track",
       "description": "A PIX↔crypto payments solution where a credit score is decided on-chain. Chainlink CRE runs the risk logic on the DON and writes the result to contracts via CCIP, while Data Feeds provide a trusted price. Fund release is verifiable on Solana (Anchor/Rust) with a PIX payment proof. I worked on the frontend, backend and the full Chainlink and on-chain integration.",
@@ -562,7 +559,8 @@
       "2": "2nd place",
       "4": "4th place"
     },
-    "podiumHint": "Click a project for details"
+    "podiumHint": "Click a project for details",
+    "viewEvent": "Event page"
   },
   "projectSections": {
     "overview": "Overview",
@@ -904,14 +902,6 @@
       "title": "Templates",
       "description": "Review templates"
     },
-    "7-1": {
-      "title": "Dashboard",
-      "description": "A kanban board with tasks by status, filters by project/epic/delivery, and real-time metrics"
-    },
-    "8-1": {
-      "title": "New invoice",
-      "description": "Invoice generation: reference month, organization, and delivery selection with automatic points × rate calculation"
-    },
     "9-1": {
       "title": "CI pipeline",
       "description": "The full pipeline: build, tests, lint, architecture checks, and DFL-Bot_Reviewer posting inline comments on the PR"
@@ -951,6 +941,54 @@
     "13-5": {
       "title": "Community",
       "description": "The community section and DevFellowship's institutional page"
+    },
+    "8-s1": {
+      "title": "B2B revenue",
+      "description": "Monthly revenue forecast (paid vs expected) and the charge board: scheduled → awaiting invoice → dispatched → awaiting Pix → paid. Amounts and clients hidden."
+    },
+    "8-s2": {
+      "title": "Contracts",
+      "description": "Active contracts, total contracted and recurring revenue. Each contract generates its document, goes for signature on Autentique and, once active, creates its installments."
+    },
+    "8-s3": {
+      "title": "New contract",
+      "description": "A three-step wizard — client and contract, payment plan, review. Fixed term or open-ended monthly; Pix first and the service invoice after payment, among other modes. Nothing reaches the client before activation."
+    },
+    "8-s4": {
+      "title": "Fellow invoices",
+      "description": "Invoice board by status: draft, submitted, approved, awaiting Woovi, rejected, paid and cancelled. Names and amounts blurred."
+    },
+    "8-s5": {
+      "title": "New invoice",
+      "description": "The fellow picks the month and the organization; only deliveries whose tasks are all done and approved in review are listed, priced as points × rate."
+    },
+    "8-s6": {
+      "title": "Invoice detail",
+      "description": "Summary (fellow, Pix key, month, status and total) and the items: delivery, epic, points and every task with a description of the work. Renders to PDF and links to the payment transaction."
+    },
+    "7-s1": {
+      "title": "My dashboard",
+      "description": "Personal task Kanban — ideation, design review, approved, to do, doing, code review and done — with filters by project, epic and delivery."
+    },
+    "7-s2": {
+      "title": "A mini-app inside the host",
+      "description": "Reviews running inside DFL Learn through Module Federation: the remote loads at runtime inside the host shell, without a duplicate header."
+    },
+    "7-s3": {
+      "title": "Deliveries",
+      "description": "Each delivery groups tasks, adds up points and shows progress — this is where DFL Payments finds what can become an invoice."
+    },
+    "7-s4": {
+      "title": "Meetings graph",
+      "description": "Meetings linked to the tools, concepts and areas of expertise mentioned in them: 1,529 nodes and 1,404 connections, with statistics per node type."
+    },
+    "7-s5": {
+      "title": "Courses",
+      "description": "The course catalog (LMS), with AI agent and Supabase tracks, lessons, duration and progress."
+    },
+    "14-s5": {
+      "title": "Exports",
+      "description": "Videos rendered on the server, newest first: 9:16 reels and 1080p lessons, with status (rendering, ready) and download."
     }
   },
   "notFound": {

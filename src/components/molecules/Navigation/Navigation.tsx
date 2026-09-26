@@ -192,7 +192,7 @@ export const Navigation = () => {
             <span className="whitespace-nowrap text-sm font-semibold text-foreground sm:text-base">Samuel Stefano</span>
           </button>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {navigationItems.map((item) => (
               <button
                 key={item.href}
@@ -208,14 +208,14 @@ export const Navigation = () => {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden xl:flex items-center gap-2">
             <SkinToggle />
             <ColorSchemeSelector />
             <ThemeToggle />
             <LanguageSelector prominent />
           </div>
 
-          <div className="flex shrink-0 items-center gap-1.5 lg:hidden">
+          <div className="flex shrink-0 items-center gap-1.5 xl:hidden">
             <LanguageSelector />
             <ThemeToggle />
             <Button
@@ -233,7 +233,7 @@ export const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div id="mobile-nav" className="lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border/50 bg-background">
+          <div id="mobile-nav" className="xl:hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border/50 bg-background">
             <div className="px-4 py-4 space-y-1">
               {navigationItems.map((item) => (
                 <button
