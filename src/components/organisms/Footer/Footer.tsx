@@ -31,7 +31,7 @@ export const Footer = ({ onOpenGame }: FooterProps) => {
   };
 
   return (
-    <footer id="contato" className="scroll-mt-20 border-t border-border bg-card">
+    <footer id="contato" className="border-t border-border bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-10">
           <div>

@@ -210,6 +210,32 @@
   animation: gradient-shine 6s linear infinite;
 }
 
+/* ── Offscreen sections skip style, layout and paint until they approach the viewport.
+   Sizes are measured first-render estimates per breakpoint; `auto` remembers the real
+   size once a section has rendered, so scrolling back up does not jump. ── */
+#habilidades, #hackathons, #sobre, #contato { content-visibility: auto; }
+/* content-box heights (the sections' vertical padding is not part of the intrinsic size) */
+#habilidades { contain-intrinsic-size: auto 8355px; }
+#hackathons { contain-intrinsic-size: auto 1913px; }
+#sobre { contain-intrinsic-size: auto 5743px; }
+#contato { contain-intrinsic-size: auto 590px; }
+@media (min-width: 768px) {
+  #habilidades { contain-intrinsic-size: auto 5638px; }
+  #hackathons { contain-intrinsic-size: auto 1068px; }
+  #sobre { contain-intrinsic-size: auto 5228px; }
+  #contato { contain-intrinsic-size: auto 366px; }
+}
+@media (min-width: 1280px) {
+  #habilidades { contain-intrinsic-size: auto 5033px; }
+  #hackathons { contain-intrinsic-size: auto 952px; }
+  #sobre { contain-intrinsic-size: auto 4117px; }
+  #contato { contain-intrinsic-size: auto 358px; }
+}
+
+/* Each floating blob gets its own compositor layer: the blur is rasterized once and the
+   animation only moves the layer, instead of re-blurring every frame. */
+.decor-anim { will-change: transform, opacity; }
+
 /* ── Hero entrance: CSS only, starts on mount. Above-the-fold content must not wait for
    the scroll observer, and starting at 0.01 (not 0) keeps it an LCP candidate from frame one. ── */
 @keyframes hero-in {
@@ -583,7 +609,8 @@ html[data-overlay-open] .decor-anim {
 }
 
 html {
-  scroll-padding-top: 4.5rem;
+  /* the fixed nav is 4rem tall; anchors land right below it */
+  scroll-padding-top: 4rem;
 }
 
 body {

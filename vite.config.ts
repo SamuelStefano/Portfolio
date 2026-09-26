@@ -46,6 +46,25 @@ const devApi = (): Plugin => ({
   },
 });
 
+/**
+ * Vercel answers unknown paths with dist/404.html and a real 404 status. This emits it from the
+ * built index.html (same app, same CSP-hashed script) so there is one source of truth; the app
+ * renders its 404 page for any path other than "/".
+ */
+const notFoundPage = (): Plugin => ({
+  name: "not-found-page",
+  apply: "build",
+  enforce: "post",
+  generateBundle(_options, bundle) {
+    const index = bundle["index.html"];
+    if (!index || index.type !== "asset") return;
+    const html = String(index.source)
+      .replace('<meta name="robots" content="index,follow" />', '<meta name="robots" content="noindex" />')
+      .replace(/\s*<link rel="canonical"[^>]*>/, "");
+    this.emitFile({ type: "asset", fileName: "404.html", source: html });
+  },
+});
+
 export default defineConfig({
   server: {
     // loopback only: the dev server has no auth and this box is a public VPS
@@ -55,7 +74,7 @@ export default defineConfig({
       overlay: true,
     },
   },
-  plugins: [react(), devApi()],
+  plugins: [react(), devApi(), notFoundPage()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

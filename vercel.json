@@ -1,10 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/((?!.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|map|json|txt|xml|pdf)).*)",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/og-image-v7.png",

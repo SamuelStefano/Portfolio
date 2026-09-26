@@ -23,7 +23,7 @@ export const ProjectGrid = () => {
   const visible = showAll ? others : others.slice(0, INITIAL_COUNT);
 
   return (
-    <section id="projetos" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-muted/20" ref={containerRef}>
+    <section id="projetos" className="py-16 sm:py-20 lg:py-24 bg-muted/20" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 lg:mb-14 animate-fade-up">
           <Heading level={2} className="mb-3 gradient-text text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">

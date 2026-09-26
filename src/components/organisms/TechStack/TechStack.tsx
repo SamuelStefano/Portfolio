@@ -53,7 +53,7 @@ export const TechStack = () => {
   );
 
   return (
-    <section id="habilidades" className="scroll-mt-20 py-16 sm:py-20 lg:py-24" ref={containerRef}>
+    <section id="habilidades" className="py-16 sm:py-20 lg:py-24" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* section header */}
@@ -197,13 +197,13 @@ export const TechStack = () => {
         </div>
 
         {/* professional experience */}
-        <div id="experiencia" className="animate-fade-up scroll-mt-24">
+        <div id="experiencia" className="scroll-mt-6">
           <Heading level={3} className="text-center mb-10 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg lg:text-xl">
             {t('skills.professionalExperience')}
           </Heading>
 
           {/* company logos */}
-          <div id="empresas" className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 py-6 mb-12 scroll-mt-24">
+          <div id="empresas" className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 py-6 mb-12 scroll-mt-6">
             {[
               { src: '/prefeitura.png',  alt: 'Prefeitura de Marialva', cls: 'w-32 h-32', href: 'https://www.marialva.pr.gov.br' },
               { src: '/DevFelloShip.png',  alt: 'DevFellowship',    cls: 'w-36 h-36', href: 'https://devfellowship.com' },
@@ -309,7 +309,7 @@ export const TechStack = () => {
         </div>
 
         {/* events & community */}
-        <div id="eventos" className="mt-16 animate-fade-up scroll-mt-24">
+        <div id="eventos" className="mt-16 animate-fade-up scroll-mt-6">
           <Heading level={3} className="text-center mb-3 from-purple-300 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg lg:text-xl">
             {t('skills.eventsTitle')}
           </Heading>

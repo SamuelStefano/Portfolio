@@ -21,7 +21,7 @@ export const StatusBadge = ({ status, className }: StatusBadgeProps) => {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-background/80 px-2.5 py-0.5 text-[11px] font-medium text-foreground backdrop-blur-sm',
+        'inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-background/90 px-2.5 py-0.5 text-[11px] font-medium text-foreground',
         className,
       )}
     >

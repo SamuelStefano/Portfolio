@@ -97,7 +97,7 @@ export const About = () => {
   ];
 
   return (
-    <section id="sobre" className="scroll-mt-20 py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 bg-muted/20" ref={containerRef}>
+    <section id="sobre" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 bg-muted/20" ref={containerRef}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 animate-fade-up">
           <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
