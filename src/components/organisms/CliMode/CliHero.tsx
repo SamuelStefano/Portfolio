@@ -47,7 +47,7 @@ export const CliHero = () => {
           <span className="bg-gradient-to-r from-[var(--cli-green)] to-[var(--cli-cyan)] bg-clip-text text-transparent">Stefano</span>
         </div>
         <div className="mb-5 mt-1.5 text-[17px] font-medium text-[var(--cli-amber)]">
-          Full-Stack Developer &amp; Software Architect
+          {t('hero.role')}
         </div>
 
         <div className="mb-4 grid gap-2.5">
