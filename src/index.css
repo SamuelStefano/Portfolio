@@ -210,6 +210,25 @@
   animation: gradient-shine 6s linear infinite;
 }
 
+/* ── Skill evidence panel: quick pop from the row it belongs to ── */
+@keyframes skill-panel-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.skill-panel { animation: skill-panel-in 160ms ease-out both; transform-origin: top center; }
+
+/* ── Featured projects: autoplay progress bar (its animationend advances the slide) ── */
+@keyframes carousel-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.carousel-progress {
+  display: block;
+  height: 100%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--neon-purple)));
+  animation-name: carousel-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 /* ── Hero photo: slow float + soft rotating glow ── */
 @keyframes photo-float {
   0%, 100% { transform: translateY(0); }
@@ -521,8 +540,9 @@ html[data-overlay-open] .decor-anim {
   animation-play-state: paused !important;
 }
 
-/* Estado ativo quando visível */
-.animate-in {
+/* Revealed by useScrollAnimations. An attribute, not a class: React rewrites className on
+   re-render and would silently hide the element again. */
+[data-revealed] {
   opacity: 1 !important;
   transform: translate3d(0, 0, 0) scale(1) rotate(0deg) !important;
 }
@@ -575,6 +595,7 @@ img {
 
   .gradient-text,
   .photo-float,
+  .skill-panel,
   .animate-float,
   .animate-pulse,
   .animate-pulse-glow,

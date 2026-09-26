@@ -41,10 +41,16 @@ export interface ProjectSection {
   project_images: ProjectImage[];
 }
 
+/** Where a project stands today; drives the badge on cards and the showcase. */
+export type ProjectStatus = 'production' | 'personal' | 'hackathon' | 'prototype';
+
 export interface Project {
   id: string;
   title: string;
   role: string;
+  status?: ProjectStatus;
+  /** Shown in the featured showcase at the top of the projects section. */
+  featured?: boolean;
   description: string;
   long_description?: string;
   stack: string[];

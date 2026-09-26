@@ -86,6 +86,21 @@
       "Creator": "Creador",
       "Collaborator": "Colaborador",
       "Lead Developer": "Dev principal"
+    },
+    "carouselLabel": "Proyectos destacados",
+    "slideOf": "{{current}} de {{total}}",
+    "openSite": "Abrir sitio",
+    "openRepo": "Ver código",
+    "pause": "Pausar presentación",
+    "play": "Reanudar presentación",
+    "moreTitle": "Otros proyectos",
+    "moreSubtitle": "Hackathons, prototipos y las herramientas internas que vinieron antes de los destacados.",
+    "projectsCount": "proyectos",
+    "status": {
+      "production": "En producción",
+      "personal": "Proyecto personal",
+      "hackathon": "Hackathon",
+      "prototype": "Prototipo"
     }
   },
   "skills": {
@@ -254,13 +269,17 @@
       "devops": "DevOps y herramientas",
       "quality": "Calidad y proceso",
       "web3": "Web3",
-      "collab": "Colaboración y Procesos"
+      "collab": "Colaboración y proceso"
     },
     "tiers": {
       "daily": "Uso diario",
       "shipped": "Usado en producción",
       "learning": "Hackathons y estudio"
-    }
+    },
+    "evidenceHint": "Haz clic en una habilidad para ver en qué proyectos la usé",
+    "usedIn": "Usado en",
+    "usedInCount_one": "{{count}} proyecto",
+    "usedInCount_other": "{{count}} proyectos"
   },
   "about": {
     "title": "Acerca de Mí",
@@ -649,6 +668,264 @@
           "Instalación de equipos y software"
         ]
       }
+    }
+  },
+  "projectSectionText": {
+    "11-s1": {
+      "title": "Clase en vivo",
+      "description": "Clase síncrona en un único canal de Realtime: broadcast para avanzar a toda la clase al instante, postgres_changes para quien se reconecta y presence para la lista de quién está en la sala"
+    },
+    "11-s6": {
+      "title": "Sandbox de código",
+      "description": "Editor Monaco con vista previa en vivo en el navegador y corrección determinística: el estudiante escribe, ve la pantalla cambiar al instante y recibe, check a check, lo que ya pasó. La variante guiada cambia el código libre por espacios en blanco con banco de palabras, para quien todavía no escribe sintaxis de memoria"
+    },
+    "11-s7": {
+      "title": "Terminal de Git",
+      "description": "Terminal simulada con un motor de Git determinístico — sin red y sin contenedor. El comando incorrecto se ejecuta e imprime el error real de Git, simplemente no enciende el paso. Dos modos de entrada: texto libre para quien ya sabe escribir los comandos, y selección de comando para la primera lección"
+    },
+    "11-s8": {
+      "title": "Canvas de actividades",
+      "description": "Doce tipos de actividad renderizados por el mismo motor, despachados por el campo kind y validados con Zod antes de llegar a la pantalla. Concepto en markdown, asociación, ordenamiento arrastrable y diagrama Mermaid comparten los mismos primitivos de instrucción y feedback"
+    },
+    "11-s9": {
+      "title": "Rutas de aprendizaje",
+      "description": "El recorrido del estudiante como una ruta vertical: unidad por unidad, lección por lección, con el tipo de cada actividad visible y lo que todavía no se desbloqueó marcado con un candado. El catálogo es la puerta de entrada, con inscripción y progreso por curso"
+    },
+    "11-s2": {
+      "title": "Recepción de la sala",
+      "description": "Sala de espera antes de que el instructor inicie, con la lista de quién ya entró actualizada por presence"
+    },
+    "11-s3": {
+      "title": "Landing",
+      "description": "Página de presentación de la plataforma: hero con vista previa del reproductor en vivo, sección de cursos y propuesta de valor para miembros de DFL y suscriptores"
+    },
+    "11-s4": {
+      "title": "Documentación",
+      "description": "Sitio de documentación de itera-mcp: describe el servidor MCP Streamable-HTTP con 21 herramientas de autoría que escriben Program → Unit → Lesson → Activity bajo el RLS del autor"
+    },
+    "11-s5": {
+      "title": "Acceso a la app",
+      "description": "Pantalla de inicio de sesión del reproductor del estudiante: entrada por correo, contraseña o enlace mágico — sin barrera de contraseña en la primera lección — y SSO federado vía cuenta de DFL"
+    },
+    "14-s1": {
+      "title": "Editor de slides",
+      "description": "Vista previa en el centro, composiciones en el lateral y panel de propiedades con layout, elementos, animación y cámara. Cada slide recibe su propia grabación"
+    },
+    "14-s2": {
+      "title": "Proyectos",
+      "description": "Lecciones, reels y posts organizados por estado — borrador, en curso y publicado"
+    },
+    "14-s3": {
+      "title": "Biblioteca de templates",
+      "description": "Los slides se arman a partir de templates con slots; el mismo catálogo lo usan tanto la interfaz como los agentes vía MCP"
+    },
+    "14-s4": {
+      "title": "Vista de canvas",
+      "description": "Toda la composición en miniatura, para revisar ritmo y orden antes del export"
+    },
+    "15-s1": {
+      "title": "Detalle del activo",
+      "description": "Gráfico de velas dibujado con SVG propio, libro de órdenes en vivo y pestaña de análisis por IA"
+    },
+    "15-s2": {
+      "title": "Patrimonio y watchlist",
+      "description": "Patrimonio consolidado, variación de 24h por exchange y watchlist con precios reales"
+    },
+    "15-s3": {
+      "title": "Mercados conectados",
+      "description": "Estado y latencia de cada exchange. Foxbit y OKX se eligieron tras pruebas de alcance: Binance y Mercado Bitcoin bloquean IPs de datacenter"
+    },
+    "16-s1": {
+      "title": "Calendario de posts",
+      "description": "Todo lo programado, por unidad de negocio y por creador, con el estado de cada post: en revisión, aprobado, programado, publicado o rechazado"
+    },
+    "16-s2": {
+      "title": "Cola de revisión",
+      "description": "Los borradores escritos por agentes de IA caen aquí. Una persona los lee, edita, aprueba y programa — quien lo escribió nunca es quien lo libera. Una vez aprobado, el post va a Zernio y sale a la hora programada"
+    },
+    "16-s5": {
+      "title": "Post publicado",
+      "description": "Cada post publicado guarda las métricas recolectadas por día (vistas, me gusta, comentarios, alcance), la configuración por red y un hilo de comentarios con revisión, cambios y sugerencias"
+    },
+    "16-s6": {
+      "title": "Nuevo post",
+      "description": "Formato (post, video o video corto), unidad de negocio, quién publica y quién lo pidió, redes y cuenta en cada una. Enviar a revisión exige texto, cuenta por red y video para YouTube"
+    },
+    "16-s3": {
+      "title": "Analytics",
+      "description": "Comparación entre cuentas y formatos, vistas por día y ranking de los posts del período — recolectado por red, nunca sumado entre redes"
+    },
+    "16-s4": {
+      "title": "Perfiles y cuentas",
+      "description": "Cada perfil de Zernio con las cuentas conectadas por red — un post nace en un perfil, pero puede salir en cuentas de varios"
+    },
+    "0-1": {
+      "title": "Sesiones",
+      "description": "Cada sesión abre un agente Claude con contexto aislado: chat en tiempo real, selección de modelo y skills activas por mensaje"
+    },
+    "0-2": {
+      "title": "Contactos & memoria",
+      "description": "La memoria persistente del agente en tarjetas navegables — datos, feedback y contexto de proyecto que sobreviven entre conversaciones"
+    },
+    "0-3": {
+      "title": "Skills",
+      "description": "Catálogo de skills del agente — modos de trabajo y reglas que se pueden activar por sesión"
+    },
+    "0-4": {
+      "title": "Documentos",
+      "description": "Visor de markdown para las guías y learnings del repositorio, con navegación por secciones"
+    },
+    "0-5": {
+      "title": "Costos & tokens",
+      "description": "Dashboard de gasto por sesión: tokens de entrada/salida, costo estimado y muestras — para saber qué consumió cada agente"
+    },
+    "0-6": {
+      "title": "Admin & host",
+      "description": "Salud e inventario de la VPS: CPU, RAM, load, disco, uptime, CLIs en el PATH, servidores MCP, sesiones tmux y plugins — con acciones sensibles protegidas"
+    },
+    "0-7": {
+      "title": "Documentación",
+      "description": "Documentación in-app que explica cada parte de Deck y cómo operar el puesto de comando"
+    },
+    "12-s1": {
+      "title": "Landing",
+      "description": "Página pública del bot: el replay de los últimos minutos de la llamada, con /clip generando el MP3 directo en el canal"
+    },
+    "12-s2": {
+      "title": "Video de la sala",
+      "description": "El clip se convierte en video con los avatares de quienes estaban en la llamada, que se iluminan según quién habla"
+    },
+    "1-1": {
+      "title": "Admin",
+      "description": "Panel de administración"
+    },
+    "1-2": {
+      "title": "Desafíos",
+      "description": "Sistema de desafíos"
+    },
+    "1-3": {
+      "title": "Crear",
+      "description": "Creación de desafíos"
+    },
+    "1-4": {
+      "title": "Dashboard",
+      "description": "Dashboard principal"
+    },
+    "1-5": {
+      "title": "Login",
+      "description": "Perfil y autenticación"
+    },
+    "1-6": {
+      "title": "Otros",
+      "description": "Otras funcionalidades"
+    },
+    "4-1": {
+      "title": "Dashboard",
+      "description": "Interfaz principal de GreenLoop"
+    },
+    "4-2": {
+      "title": "Blockchain",
+      "description": "Integración con blockchain y tokens"
+    },
+    "5-1": {
+      "title": "Dashboard",
+      "description": "Interfaz principal y listado de empleos"
+    },
+    "5-2": {
+      "title": "Empleos",
+      "description": "Creación y gestión de empleos"
+    },
+    "5-3": {
+      "title": "NFTs & credenciales",
+      "description": "Sistema de NFTs y certificados"
+    },
+    "5-4": {
+      "title": "Blockchain",
+      "description": "Integración con blockchain"
+    },
+    "6-1": {
+      "title": "Dashboard",
+      "description": "Dashboard principal de revisiones"
+    },
+    "6-2": {
+      "title": "Crear revisión",
+      "description": "Creación de una solicitud de revisión"
+    },
+    "6-3": {
+      "title": "Ver revisión",
+      "description": "Vista detallada de una revisión"
+    },
+    "6-4": {
+      "title": "Autoevaluación",
+      "description": "Sistema de autoevaluación"
+    },
+    "6-5": {
+      "title": "Evaluación del mentor",
+      "description": "Evaluación realizada por el mentor"
+    },
+    "6-6": {
+      "title": "Revisión del mentor",
+      "description": "Revisión completa del mentor"
+    },
+    "6-7": {
+      "title": "Rechazo de revisión",
+      "description": "Proceso de rechazo de una revisión"
+    },
+    "6-8": {
+      "title": "Comentarios",
+      "description": "Sistema de comentarios en las revisiones"
+    },
+    "6-9": {
+      "title": "Templates",
+      "description": "Templates de revisiones"
+    },
+    "7-1": {
+      "title": "Dashboard",
+      "description": "Tablero kanban con tareas por estado, filtros por proyecto/epic/entrega y métricas en tiempo real"
+    },
+    "8-1": {
+      "title": "Nueva factura",
+      "description": "Generación de factura: mes de referencia, organización y selección de deliveries con cálculo automático de puntos × tarifa"
+    },
+    "9-1": {
+      "title": "CI pipeline",
+      "description": "Pipeline completo: build, tests, lint, architecture checks y DFL-Bot_Reviewer publicando comentarios inline en el PR"
+    },
+    "10-1": {
+      "title": "Landing",
+      "description": "Crédito al instante para quienes manejan — microcrédito para conductores con score propio y sin consulta al SPC"
+    },
+    "10-2": {
+      "title": "Dashboard",
+      "description": "Panel del conductor: saldo disponible, solicitar crédito y seguimiento de límite y score"
+    },
+    "10-3": {
+      "title": "Score onboarding",
+      "description": "Onboarding sin buró: el conductor declara su perfil y el sistema calcula su propio score"
+    },
+    "10-4": {
+      "title": "Cobros Pix",
+      "description": "Cobros generados y monitoreados vía Woovi: préstamos con estado pendiente, pagado y expirado"
+    },
+    "13-1": {
+      "title": "Hero",
+      "description": "Apertura de la landing, con la propuesta de la plataforma y el camino hacia las rutas de aprendizaje"
+    },
+    "13-2": {
+      "title": "Cursos",
+      "description": "Catálogo de cursos y rutas de aprendizaje, organizado para recorrerse rápido"
+    },
+    "13-3": {
+      "title": "Metodología",
+      "description": "Cómo la ruta de aprendizaje lleva al estudiante de cero a un proyecto entregado"
+    },
+    "13-4": {
+      "title": "Planes",
+      "description": "Comparativo de planes y precios de la plataforma"
+    },
+    "13-5": {
+      "title": "Comunidad",
+      "description": "Sección de comunidad y la página institucional de DevFellowship"
     }
   }
 }

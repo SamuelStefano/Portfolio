@@ -422,6 +422,10 @@ const OverviewSection: React.FC<{
   );
 };
 
+/** "App" / "Landing" / "Docs" read better than three buttons all called "Website". */
+const linkName = (link: { label: string; title?: string }) =>
+  link.title && link.title !== link.label && !/^(website|github repository)$/i.test(link.title) ? link.title : link.label;
+
 /* ─── main component ─────────────────────────────────────────────────── */
 
 export interface ProjectOverlayProps {
@@ -576,7 +580,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                     className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 hover:border-primary/40 transition-all"
                   >
                     <LinkIcon label={link.label} />
-                    {link.label}
+                    {linkName(link)}
                     <ArrowUpRight className="w-3 h-3" />
                   </a>
                 ))}
@@ -662,7 +666,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
                             className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-xs text-muted-foreground hover:text-primary hover:bg-primary/8 border border-transparent hover:border-primary/20 transition-all group"
                           >
                             <LinkIcon label={link.label} />
-                            <span className="flex-1 truncate">{link.label}</span>
+                            <span className="flex-1 truncate">{linkName(link)}</span>
                             <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                           </a>
                         ))}

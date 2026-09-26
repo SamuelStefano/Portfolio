@@ -1,16 +1,25 @@
 import { Code, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, Sparkles, GraduationCap, Users } from 'lucide-react';
 
-export const TECH_CATEGORIES = [
+export interface Skill {
+  name: string;
+  level: number;
+  /** Stack items (from the projects) that count as evidence for this skill. Defaults to `[name]`. */
+  match?: string[];
+  /** Projects that prove the skill without it being a stack item (e.g. code review). */
+  projects?: string[];
+}
+
+export const TECH_CATEGORIES: { key: string; icon: typeof Globe; skills: Skill[] }[] = [
   {
     key: 'frontend',
     icon: Globe,
     skills: [
-      { name: 'React', level: 90 },
+      { name: 'React', level: 90, match: ['React', 'React 19'] },
       { name: 'TypeScript', level: 90 },
       { name: 'Vite', level: 85 },
-      { name: 'TailwindCSS', level: 85 },
+      { name: 'TailwindCSS', level: 85, match: ['TailwindCSS', 'TailwindCSS v4'] },
       { name: 'Module Federation', level: 75 },
-      { name: 'Next.js', level: 70 },
+      { name: 'Next.js', level: 70, match: ['Next.js', 'Next.js 16'] },
       { name: 'TanStack Query', level: 70 },
       { name: 'Storybook', level: 65 },
     ],
@@ -19,12 +28,12 @@ export const TECH_CATEGORIES = [
     key: 'backend',
     icon: Server,
     skills: [
-      { name: 'Supabase', level: 90 },
-      { name: 'Edge Functions', level: 85 },
-      { name: 'Node.js', level: 80 },
-      { name: 'PostgreSQL', level: 75 },
+      { name: 'Supabase', level: 90, match: ['Supabase', 'Supabase Realtime', 'Supabase Edge Functions'] },
+      { name: 'Edge Functions', level: 85, match: ['Edge Functions', 'Supabase Edge Functions'] },
+      { name: 'Node.js', level: 80, match: ['Node.js', 'Node 22', 'Express', 'Fastify'] },
+      { name: 'PostgreSQL', level: 75, match: ['PostgreSQL', 'RLS', 'SQL'] },
       { name: 'Zod', level: 75 },
-      { name: 'Hono + Bun', level: 70 },
+      { name: 'Hono + Bun', level: 70, match: ['Hono', 'Bun'] },
       { name: 'NestJS', level: 55 },
       { name: 'ClickHouse', level: 40 },
       { name: 'RabbitMQ', level: 35 },
@@ -34,10 +43,10 @@ export const TECH_CATEGORIES = [
     key: 'ai',
     icon: Sparkles,
     skills: [
-      { name: 'Claude API', level: 85 },
-      { name: 'MCP servers', level: 85 },
-      { name: 'AI agents', level: 80 },
-      { name: 'LLM integration', level: 75 },
+      { name: 'Claude API', level: 85, match: ['Claude API', 'Anthropic', 'Anthropic SDK'] },
+      { name: 'MCP servers', level: 85, match: ['MCP'] },
+      { name: 'AI agents', level: 80, match: ['MCP', 'Anthropic'] },
+      { name: 'LLM integration', level: 75, match: ['Claude API', 'Anthropic', 'Anthropic SDK', 'OpenAI API'] },
       { name: 'n8n', level: 60 },
       { name: 'OpenAI API', level: 55 },
     ],
@@ -46,21 +55,21 @@ export const TECH_CATEGORIES = [
     key: 'devops',
     icon: Cpu,
     skills: [
-      { name: 'Git & GitHub', level: 90 },
+      { name: 'Git & GitHub', level: 90, match: [] },
       { name: 'Vercel', level: 85 },
       { name: 'GitHub Actions', level: 80 },
-      { name: 'Docker', level: 65 },
-      { name: 'Linux / VPS', level: 65 },
+      { name: 'Docker', level: 65, match: ['Docker', 'Docker Compose'] },
+      { name: 'Linux / VPS', level: 65, match: ['Hetzner VPS', 'tmux', 'PTY'] },
       { name: 'Dokploy', level: 60 },
-      { name: 'AWS', level: 30 },
+      { name: 'AWS', level: 30, match: [] },
     ],
   },
   {
     key: 'quality',
     icon: Brain,
     skills: [
-      { name: 'Code review', level: 85 },
-      { name: 'Technical docs', level: 80 },
+      { name: 'Code review', level: 85, projects: ['DFL-Bot Reviewer', 'Review Requests'] },
+      { name: 'Technical docs', level: 80, match: ['Astro'] },
       { name: 'Vitest', level: 70 },
       { name: 'Playwright', level: 65 },
       { name: 'Figma', level: 40 },
@@ -70,12 +79,12 @@ export const TECH_CATEGORIES = [
     key: 'web3',
     icon: Code,
     skills: [
-      { name: 'ERC-20 / ERC-721', level: 50 },
-      { name: 'Base / Scroll', level: 50 },
+      { name: 'ERC-20 / ERC-721', level: 50, match: ['ERC-20', 'ERC-721'] },
+      { name: 'Base / Scroll', level: 50, match: ['Base', 'Scroll'] },
       { name: 'Solidity', level: 45 },
-      { name: 'Chainlink CRE / CCIP', level: 45 },
+      { name: 'Chainlink CRE / CCIP', level: 45, match: ['Chainlink CRE', 'CCIP'] },
       { name: 'Foundry', level: 35 },
-      { name: 'Solana / Anchor', level: 35 },
+      { name: 'Solana / Anchor', level: 35, match: ['Solana', 'Anchor'] },
       { name: 'Rust', level: 25 },
     ],
   },
@@ -84,8 +93,8 @@ export const TECH_CATEGORIES = [
     icon: Users,
     skills: [
       { name: 'Daily / Scrum', level: 90 },
-      { name: 'Code & PR reviews', level: 85 },
-      { name: 'Mentoring', level: 85 },
+      { name: 'Code & PR reviews', level: 85, projects: ['DFL-Bot Reviewer', 'Review Requests'] },
+      { name: 'Mentoring', level: 85, projects: ['ITERA', 'Skill Evals'] },
       { name: 'Pair programming', level: 80 },
       { name: 'UI/UX design', level: 60 },
     ],

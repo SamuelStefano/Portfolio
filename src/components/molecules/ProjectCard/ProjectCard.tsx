@@ -9,6 +9,8 @@ import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { Project } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
+import { StatusBadge } from '@/components/molecules/StatusBadge/StatusBadge';
+import { loadProjectOverlay } from '@/components/organisms/ProjectOverlay/loadProjectOverlay';
 
 interface ProjectCardProps {
   project: Project;
@@ -30,9 +32,11 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
     <Card
       role="button"
       tabIndex={0}
-      aria-label={t('projects.viewDetails')}
-      className="group bg-card border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_12px_30px_-12px_hsl(var(--primary)/0.35)] transition-all duration-300 cursor-pointer h-full flex flex-col overflow-hidden"
+      aria-label={`${t('projects.viewDetails')}: ${project.title}`}
+      className="group bg-card border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_12px_30px_-12px_hsl(var(--primary)/0.35)] transition-all duration-300 cursor-pointer h-full flex flex-col overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       onClick={() => onProjectClick(project)}
+      onPointerEnter={() => void loadProjectOverlay()}
+      onFocus={() => void loadProjectOverlay()}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -59,7 +63,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
             <IconComponent className="w-14 h-14 text-primary" />
           </div>
         )}
-
+        {project.status && <StatusBadge status={project.status} className="absolute left-3 top-3 shadow-sm" />}
       </div>
 
       <CardContent className="p-5 flex flex-1 flex-col">

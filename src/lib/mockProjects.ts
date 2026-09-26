@@ -32,7 +32,7 @@ const allProjects: Project[] = [
     project_links: [
       { id: '11-l1', label: 'Website', title: 'App', url: 'https://app.iterahq.dev', type: 'website', created_at: '2026-06-19T00:00:00Z' },
       { id: '11-l2', label: 'Website', title: 'Landing', url: 'https://iterahq.dev', type: 'website', created_at: '2026-06-19T00:00:00Z' },
-      { id: '11-l3', label: 'Website', title: 'Documentação', url: 'https://docs.iterahq.dev', type: 'website', created_at: '2026-06-19T00:00:00Z' }
+      { id: '11-l3', label: 'Website', title: 'Docs', url: 'https://docs.iterahq.dev', type: 'website', created_at: '2026-06-19T00:00:00Z' }
     ],
     project_sections: [
       {
@@ -253,7 +253,7 @@ const allProjects: Project[] = [
     role: 'Lead Developer',
     description: 'Cockpit de conteúdo e leads da DevFellowship: calendário de posts por unidade de negócio, fila de revisão com rascunhos gerados por IA, despacho automático para Instagram, TikTok, LinkedIn e YouTube via Zernio, e analytics por conta.',
     long_description: '',
-    stack: ['React 19', 'TypeScript', 'Vite', 'TailwindCSS v4', 'Hono', 'Node 22', 'Supabase', 'PostgreSQL', 'ClickHouse', 'TipTap', 'Zod', 'MCP', 'Claude API', 'Zernio API', 'Playwright'],
+    stack: ['React 19', 'TypeScript', 'Vite', 'TailwindCSS v4', 'Hono', 'Node 22', 'Supabase', 'PostgreSQL', 'ClickHouse', 'TipTap', 'Zod', 'MCP', 'Claude API', 'Zernio API', 'Playwright', 'Docker', 'Dokploy'],
     thumbnail_url: '/projects/campaigns/calendario.png',
     icon_name: 'Calendar',
     created_at: '2026-08-06T00:00:00Z',
@@ -695,7 +695,7 @@ const allProjects: Project[] = [
     role: 'Collaborator',
     description: 'Marketplace Web3 onde empresas criam jobs, pagam em USDC e geram NFTs como credenciais de trabalho concluído. Sistema de escrow em smart contracts.',
     long_description: 'TalentDAO (também conhecido como DevConnect/MintWork) é um marketplace Web3 que conecta empresas e talentos de forma descentralizada. Os jobs são armazenados em smart contracts como structs, com um contrato de marketplace que atua como escrow em USDC. Quando o trabalho é aprovado, um contrato ERC-721 emite uma NFT como credencial permanente do job realizado. Participei da arquitetura dos contratos, fluxo de estados (aplicação, execução, revisão, conclusão), e integração do frontend com a blockchain usando Wagmi/Viem.',
-    stack: ['Solidity', 'ERC-721', 'USDC', 'Next.js', 'React', 'TypeScript', 'Wagmi', 'Viem', 'Smart Contracts', 'TailwindCSS'],
+    stack: ['Solidity', 'ERC-721', 'USDC', 'Scroll', 'Next.js', 'React', 'TypeScript', 'Wagmi', 'Viem', 'Smart Contracts', 'TailwindCSS'],
     thumbnail_url: '/projects/mintwork/Dashboard - mintwork.png',
     icon_name: 'Briefcase',
     created_at: '2024-11-01T00:00:00Z',
@@ -1186,7 +1186,7 @@ const allProjects: Project[] = [
     role: 'Creator',
     description: 'Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. Venceu a trilha Chainlink do hackathon (Solana + Chainlink CRE/CCIP).',
     long_description: 'AltPay (Uber Money) é uma plataforma de microcrédito para quem roda — motoristas de aplicativo. O motorista conecta a carteira, declara seu perfil num onboarding sem consulta a bureau ("você declara, a gente ajusta") e o sistema calcula um score próprio que decide aprovação, limite e juros. O crédito cai no Pix em segundos e as cobranças são geradas e acompanhadas via Woovi. A decisão de crédito roda on-chain: o score é decidido no DON via Chainlink CRE e escrito on-chain por CCIP, com o desembolso e o repagamento liquidados no programa Solana (Anchor). Atuei no front-end, backend (Supabase Edge Functions) e na integração on-chain (Solana + Chainlink).',
-    stack: ['React', 'TypeScript', 'Vite', 'Solana', 'Anchor', 'Rust', 'Chainlink CRE', 'CCIP', 'Supabase Edge Functions', 'Woovi', 'Pix', 'Web3', 'TailwindCSS'],
+    stack: ['React', 'TypeScript', 'Vite', 'Solana', 'Anchor', 'Rust', 'Chainlink CRE', 'CCIP', 'Solidity', 'Foundry', 'Supabase Edge Functions', 'Woovi', 'Pix', 'Web3', 'TailwindCSS'],
     thumbnail_url: '/projects/altpay/Landing.png',
     icon_name: 'CreditCard',
     created_at: '2026-05-29T00:00:00Z',
@@ -1354,27 +1354,32 @@ const allProjects: Project[] = [
   }
 ];
 
-const PROJECT_ORDER = [
-  'ITERA',
-  'Lesson Studio',
-  'Campaigns',
-  'Deck',
-  'DFL Payments',
-  'TradeView',
-  'AltPay',
-  'Valdez',
-  'GreenLoop',
-  'TalentDAO',
-  'Skill Evals',
-  'DFL Learn',
-  'Review Requests',
-  'DFL-Bot Reviewer',
-  'CodeLibrary',
+/** Display order; the first block is the featured showcase. */
+const PROJECT_META: Array<[title: string, meta: Pick<Project, 'status' | 'featured'>]> = [
+  ['ITERA', { status: 'production', featured: true }],
+  ['Lesson Studio', { status: 'production', featured: true }],
+  ['Campaigns', { status: 'production', featured: true }],
+  ['Deck', { status: 'personal', featured: true }],
+  ['DFL Payments', { status: 'production', featured: true }],
+  ['AltPay', { status: 'hackathon', featured: true }],
+  ['GreenLoop', { status: 'hackathon' }],
+  ['TalentDAO', { status: 'hackathon' }],
+  ['Valdez', { status: 'personal' }],
+  ['DFL Learn', { status: 'production' }],
+  ['Review Requests', { status: 'production' }],
+  ['Skill Evals', { status: 'production' }],
+  ['DFL-Bot Reviewer', { status: 'production' }],
+  ['TradeView', { status: 'personal' }],
+  ['CodeLibrary', { status: 'prototype' }],
 ];
 
 const rank = (title: string) => {
-  const i = PROJECT_ORDER.indexOf(title);
-  return i === -1 ? PROJECT_ORDER.length : i;
+  const i = PROJECT_META.findIndex(([t]) => t === title);
+  return i === -1 ? PROJECT_META.length : i;
 };
 
-export const mockProjects: Project[] = [...allProjects].sort((a, b) => rank(a.title) - rank(b.title));
+const metaFor = (title: string) => PROJECT_META.find(([t]) => t === title)?.[1] ?? {};
+
+export const mockProjects: Project[] = [...allProjects]
+  .sort((a, b) => rank(a.title) - rank(b.title))
+  .map((project) => ({ ...project, ...metaFor(project.title) }));

@@ -14,7 +14,7 @@ export const useScrollAnimations = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.setAttribute('data-revealed', '');
           // Parar de observar após animar para melhor performance
           observer.unobserve(entry.target);
         }

@@ -11,6 +11,7 @@ import { CliMode } from '@/components/organisms/CliMode/CliMode';
 import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
 import { BackToTop } from '@/components/atoms/BackToTop/BackToTop';
+import { ProjectOverlayProvider } from '@/components/organisms/ProjectOverlay/ProjectOverlayProvider';
 import { useSkin } from '@/hooks/useSkin';
 import { useOffscreenAnimationPause } from '@/hooks/useOffscreenAnimationPause';
 
@@ -22,6 +23,7 @@ const Index = () => {
   useOffscreenAnimationPause();
 
   return (
+    <ProjectOverlayProvider>
     <main className="min-h-screen relative">
         {!isCli && <AnimatedBackground />}
         {isCli ? (
@@ -43,6 +45,7 @@ const Index = () => {
         <BackToTop />
         {gameOpen && <SnakeGame onClose={() => setGameOpen(false)} />}
       </main>
+    </ProjectOverlayProvider>
   );
 };
 

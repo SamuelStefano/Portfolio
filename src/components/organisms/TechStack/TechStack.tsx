@@ -1,6 +1,11 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Instagram, Languages, Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Instagram, Languages, Calendar, MapPin, ExternalLink, MousePointerClick } from 'lucide-react';
 import { SkillBar } from '@/components/molecules/SkillBar/SkillBar';
+import { SkillEvidencePanel } from '@/components/molecules/SkillEvidencePanel/SkillEvidencePanel';
+import { useProjects } from '@/hooks/useProjects';
+import { useProjectOverlay } from '@/hooks/useProjectOverlay';
+import { projectsForSkill } from '@/lib/skillProjects';
 import { ExperienceItem } from '@/components/molecules/ExperienceItem/ExperienceItem';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
@@ -16,6 +21,32 @@ const LANGUAGES = [
 export const TechStack = () => {
   const { t } = useTranslation();
   const { containerRef } = useScrollAnimations();
+  const { projects } = useProjects();
+  const { openProject } = useProjectOverlay();
+  const [openSkill, setOpenSkill] = useState<string | null>(null);
+  const openRowRef = useRef<HTMLDivElement | null>(null);
+
+  const closeSkill = useCallback((restoreFocus = false) => {
+    const button = openRowRef.current?.querySelector('button');
+    setOpenSkill(null);
+    if (restoreFocus) button?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (!openSkill) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (openRowRef.current && !openRowRef.current.contains(e.target as Node)) closeSkill();
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeSkill(true);
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [openSkill, closeSkill]);
 
   const additionalSkills = Array.from({ length: 64 }, (_, i) => t(`skills.additionalSkills.${i}`)).filter(
     (s) => !s.startsWith('skills.additionalSkills.')
@@ -33,6 +64,10 @@ export const TechStack = () => {
           <Text variant="large" className="max-w-xl mx-auto text-sm sm:text-base text-muted-foreground">
             {t('skills.subtitle')}
           </Text>
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs text-primary">
+            <MousePointerClick className="h-3.5 w-3.5" />
+            {t('skills.evidenceHint')}
+          </p>
         </div>
 
         {/* skill categories */}
@@ -42,27 +77,62 @@ export const TechStack = () => {
             return (
               <div
                 key={category.key}
-                className="group bg-card border border-border rounded-xl p-5 lg:p-6 hover-card animate-fade-up"
-                style={{ animationDelay: `${ci * 0.08}s` }}
+                className="group relative bg-card border border-border rounded-xl p-5 lg:p-6 hover-card animate-fade-up"
+                style={{
+                  animationDelay: `${ci * 0.08}s`,
+                  zIndex: openSkill?.startsWith(`${category.key}:`) ? 20 : undefined,
+                }}
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors flex-shrink-0">
                     <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
-                  <Heading level={3} className="text-base sm:text-lg leading-tight">
+                  <Heading level={3} className="text-base sm:text-lg md:text-lg leading-tight">
                     {t(`skills.categories.${category.key}`)}
                   </Heading>
                 </div>
                 <div className="space-y-3">
-                  {category.skills.map((skill, si) => (
-                    <div
-                      key={si}
-                      className="animate-slide-left"
-                      style={{ animationDelay: `${ci * 0.15 + si * 0.08}s` }}
-                    >
-                      <SkillBar name={skill.name} level={skill.level} />
-                    </div>
-                  ))}
+                  {category.skills.map((skill, si) => {
+                    const id = `${category.key}:${skill.name}`;
+                    const used = projectsForSkill(skill, projects);
+                    const expanded = openSkill === id;
+                    const panelId = `skill-evidence-${category.key}-${si}`;
+                    return (
+                      <div
+                        key={skill.name}
+                        ref={expanded ? openRowRef : undefined}
+                        className="relative animate-slide-left"
+                        style={{ animationDelay: `${ci * 0.15 + si * 0.08}s`, zIndex: expanded ? 30 : undefined }}
+                      >
+                        <SkillBar
+                          name={skill.name}
+                          level={skill.level}
+                          evidence={
+                            used.length > 0
+                              ? {
+                                  count: used.length,
+                                  label: t('skills.usedInCount', { count: used.length }),
+                                  expanded,
+                                  controls: panelId,
+                                  onToggle: () => setOpenSkill(expanded ? null : id),
+                                }
+                              : undefined
+                          }
+                        />
+                        {expanded && (
+                          <SkillEvidencePanel
+                            id={panelId}
+                            skill={skill.name}
+                            projects={used}
+                            onSelect={(project) => {
+                              closeSkill();
+                              openProject(project);
+                            }}
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             );
