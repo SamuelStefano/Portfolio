@@ -11,6 +11,7 @@ import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
 import { BackToTop } from '@/components/atoms/BackToTop/BackToTop';
 import { ProjectOverlayProvider } from '@/components/organisms/ProjectOverlay/ProjectOverlayProvider';
+import { ChunkBoundary } from '@/components/atoms/ChunkBoundary/ChunkBoundary';
 import { useSkin } from '@/hooks/useSkin';
 import { useOffscreenAnimationPause } from '@/hooks/useOffscreenAnimationPause';
 
@@ -39,9 +40,11 @@ const Index = () => {
         {isCli ? (
           <div className="relative z-10">
             <Navigation />
-            <Suspense fallback={<div className="min-h-screen" />}>
-              <CliMode />
-            </Suspense>
+            <ChunkBoundary>
+              <Suspense fallback={<div className="min-h-screen" />}>
+                <CliMode />
+              </Suspense>
+            </ChunkBoundary>
           </div>
         ) : (
           <div className="relative z-10">
@@ -56,9 +59,11 @@ const Index = () => {
         <LogButton />
         <BackToTop />
         {gameOpen && (
-          <Suspense fallback={null}>
-            <SnakeGame onClose={() => setGameOpen(false)} />
-          </Suspense>
+          <ChunkBoundary>
+            <Suspense fallback={null}>
+              <SnakeGame onClose={() => setGameOpen(false)} />
+            </Suspense>
+          </ChunkBoundary>
         )}
       </main>
     </ProjectOverlayProvider>

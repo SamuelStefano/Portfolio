@@ -7,8 +7,11 @@ const GITHUB_USERNAME = 'SamuelStefano';
 const MAX_EXECUTION_TIME = 20000;
 const AVERAGE_BYTES_PER_LINE = 35;
 
-// Cached at the edge: the numbers move slowly and a cold run makes ~40 upstream calls.
+// Cached at the edge: the numbers move slowly and a cold run makes ~40 upstream calls. A partial
+// answer (GitHub hiccuped on one of the calls) is cached only briefly, so it heals on its own
+// instead of showing zeros for six hours.
 const CACHE_HEADER = 'public, s-maxage=21600, stale-while-revalidate=86400';
+const PARTIAL_CACHE_HEADER = 'public, s-maxage=60';
 
 const CONTRIBUTIONS_QUERY = `
   query {
@@ -86,20 +89,28 @@ const fetchContributions = async (headers: Record<string, string>) => {
   }
 };
 
+/** null when the search call failed, so a failure is never mistaken for "zero pull requests". */
 const fetchMergedPullRequests = async (headers: Record<string, string>) => {
   try {
     const query = encodeURIComponent(`is:pr author:${GITHUB_USERNAME} is:merged`);
     const res = await fetchWithTimeout(`https://api.github.com/search/issues?q=${query}&per_page=1`, { headers });
-    if (!res.ok) return 0;
+    if (!res.ok) return null;
     const data = (await res.json()) as { total_count?: number };
-    return data.total_count ?? 0;
+    return typeof data.total_count === 'number' ? data.total_count : null;
   } catch {
-    return 0;
+    return null;
   }
 };
 
-export default async function handler(_request: VercelRequest, response: VercelResponse) {
+export default async function handler(request: VercelRequest, response: VercelResponse) {
   const startTime = Date.now();
+
+  // The edge cache is keyed by the full URL: `?x=1`, `?x=2`… would each start a cold run on the
+  // owner's token. Every variant is sent to the one cached URL instead.
+  if (request.url?.includes('?')) {
+    response.setHeader('Cache-Control', 'public, max-age=86400');
+    return response.redirect(308, '/api/github-stats');
+  }
 
   // Only GITHUB_TOKEN: a VITE_ prefix would be inlined into the public client bundle.
   const githubToken = process.env.GITHUB_TOKEN;
@@ -155,14 +166,15 @@ export default async function handler(_request: VercelRequest, response: VercelR
     );
 
     const totalLanguageBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
+    const complete = contributions !== null && mergedPullRequests !== null;
 
-    response.setHeader('Cache-Control', CACHE_HEADER);
+    response.setHeader('Cache-Control', complete ? CACHE_HEADER : PARTIAL_CACHE_HEADER);
     return response.status(200).json({
       totalCommits: contributions?.commits ?? 0,
       totalRepos: ownRepos.length,
       totalStars: ownRepos.reduce((sum, repo) => sum + repo.stargazers_count, 0),
       totalForks: ownRepos.reduce((sum, repo) => sum + repo.forks_count, 0),
-      mergedPullRequests,
+      mergedPullRequests: mergedPullRequests ?? 0,
       linesOfCode: Math.round(totalLanguageBytes / AVERAGE_BYTES_PER_LINE),
       languages,
       contributions,

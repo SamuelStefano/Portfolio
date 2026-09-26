@@ -1,4 +1,4 @@
-import React, { createElement, useEffect, useState, useCallback, useRef } from 'react';
+import React, { createElement, useEffect, useId, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import {
@@ -27,6 +27,7 @@ import { Project, ProjectSection } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
 import { useMotionPreset } from '@/hooks/useMotionPreset';
 import { cn, thumbSrc } from '@/lib/utils';
+import { htmlLang } from '@/lib/language';
 
 /* ─── helpers ──────────────────────────────────────────────────────── */
 
@@ -98,6 +99,13 @@ interface LightboxProps {
 const Lightbox: React.FC<LightboxProps> = ({ images, index: idx, title, onIndexChange, onClose }) => {
   const { t } = useTranslation();
   const setIdx = onIndexChange;
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    closeRef.current?.focus({ preventScroll: true });
+    return () => opener?.focus({ preventScroll: true });
+  }, []);
 
   // decode neighbours ahead of time so navigating doesn't stall on a 2500px screenshot
   useEffect(() => {
@@ -116,9 +124,13 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index: idx, title, onIndexC
       transition={{ duration: 0.18 }}
       className="fixed inset-0 z-[9999] bg-black/95 flex flex-col items-center justify-center"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
     >
       {/* close */}
       <button
+        ref={closeRef}
         onClick={onClose}
         aria-label={t('projects.close')}
         className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
@@ -293,7 +305,7 @@ const OverviewSection: React.FC<{
   project: Project;
   onOpenLightbox: (images: string[], index: number, title: string) => void;
 }> = ({ project, onOpenLightbox }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { transition, shift } = useMotionPreset();
 
   const totalImages = project.project_sections
@@ -359,7 +371,7 @@ const OverviewSection: React.FC<{
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/40 border border-border">
           <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
           <span className="text-xs text-muted-foreground">
-            {new Date(project.created_at).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
+            {new Date(project.created_at).toLocaleDateString(htmlLang(i18n.language), { month: 'long', year: 'numeric' })}
           </span>
         </div>
       </div>
@@ -438,6 +450,10 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
   const [activeSection, setActiveSection] = useState<string>('__overview__');
   const [lightbox, setLightbox] = useState<{ images: string[]; index: number; title: string } | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const titleId = useId();
+  const lightboxOpen = lightbox !== null;
 
   const openLightbox = useCallback((images: string[], index: number, title: string) => {
     setLightbox({ images, index, title });
@@ -487,6 +503,33 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
     };
   }, [isOpen]);
 
+  /* Modal: the page behind goes inert (no Tab, no clicks, no screen-reader browsing — and the
+     showcase's arrow keys stop reacting), focus moves into the dialog and goes back to the
+     element that opened it. */
+  useEffect(() => {
+    if (!isOpen) return;
+    const backdrop = backdropRef.current;
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const background = Array.from(backdrop?.parentElement?.children ?? []).filter(
+      (el): el is HTMLElement => el instanceof HTMLElement && el !== backdrop && !el.inert,
+    );
+    background.forEach((el) => {
+      el.inert = true;
+    });
+    panelRef.current?.focus({ preventScroll: true });
+    return () => {
+      background.forEach((el) => {
+        el.inert = false;
+      });
+      trigger?.focus({ preventScroll: true });
+    };
+  }, [isOpen]);
+
+  /* The lightbox is a layer of its own: the panel under it leaves the tab order meanwhile */
+  useEffect(() => {
+    if (panelRef.current) panelRef.current.inert = lightboxOpen;
+  }, [lightboxOpen]);
+
   /* Keyboard — single listener so Escape peels off one layer at a time */
   useEffect(() => {
     if (!isOpen) return;
@@ -535,6 +578,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.22 }}
+          ref={backdropRef}
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-3 sm:p-5"
           onClick={handleBackdropClick}
         >
@@ -544,7 +588,12 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
             animate={shift({ opacity: 1, scale: 1, y: 0 })}
             exit={shift({ opacity: 0, scale: 0.95, y: 24 })}
             transition={transition({ type: 'spring', damping: 30, stiffness: 340, mass: 0.7 })}
-            className="relative w-full max-w-[1600px] h-[94vh] flex flex-col bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            tabIndex={-1}
+            className="relative w-full max-w-[1600px] h-[94vh] flex flex-col bg-background rounded-2xl border border-border shadow-2xl overflow-hidden focus-visible:outline-none"
             onClick={e => e.stopPropagation()}
           >
             {/* ── gradient top bar ── */}
@@ -557,7 +606,7 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
               </div>
 
               <div className="flex-1 min-w-0">
-                <h2 className="text-base font-bold gradient-text leading-tight truncate">
+                <h2 id={titleId} className="text-base font-bold gradient-text leading-tight truncate">
                   {project.title}
                 </h2>
                 <p className="text-xs text-muted-foreground truncate">{t(`projects.roles.${project.role}`, { defaultValue: project.role })}</p>

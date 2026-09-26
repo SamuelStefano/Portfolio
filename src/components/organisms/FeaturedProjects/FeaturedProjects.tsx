@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, type FocusEvent, type KeyboardEvent, type PointerEvent } from 'react';
+import { useCallback, useRef, useState, type FocusEvent, type KeyboardEvent, type MouseEvent, type PointerEvent } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Github, Maximize2, Pause, Play } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { StatusBadge } from '@/components/molecules/StatusBadge/StatusBadge';
@@ -22,12 +22,12 @@ interface FeaturedProjectsProps {
  * Showcase for the flagship projects. Autoplay is driven by the CSS progress bar of the
  * active thumbnail: the bar's `animationend` advances the slide, so pausing is just
  * `animation-play-state`. It pauses on hover, keyboard focus, when the carousel leaves the
- * viewport, when the tab is hidden, when the visitor presses pause, and never starts under
- * `prefers-reduced-motion`.
+ * viewport, when the tab is hidden, while a project is open, when the visitor presses pause,
+ * and never starts under `prefers-reduced-motion`.
  */
 export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
   const { t } = useTranslation();
-  const { openProject } = useProjectOverlay();
+  const { openProject, isOpen: overlayOpen } = useProjectOverlay();
   const rootRef = useRef<HTMLDivElement>(null);
   const inView = useInView(rootRef, 0.35);
   const pageVisible = usePageVisible();
@@ -41,7 +41,7 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
 
   const count = projects.length;
   const autoplay = !reducedMotion && !userPaused;
-  const running = autoplay && inView && pageVisible && !hovered && !keyboardFocus;
+  const running = autoplay && inView && pageVisible && !hovered && !keyboardFocus && !overlayOpen;
 
   const goTo = useCallback(
     (target: number) => {
@@ -54,7 +54,9 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
   const prev = useCallback(() => goTo(index - 1), [goTo, index]);
 
   const drag = useRef<{ x: number; y: number } | null>(null);
-  const swallowClick = useRef(false);
+  // a mouse drag still ends in a click on the stage, a touch swipe does not: only a click
+  // right after the swipe is swallowed, so the next tap always opens the project
+  const swipedAt = useRef(-Infinity);
 
   const onPointerDown = (e: PointerEvent) => {
     drag.current = { x: e.clientX, y: e.clientY };
@@ -66,7 +68,7 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
     const dx = e.clientX - start.x;
     const dy = e.clientY - start.y;
     if (Math.abs(dx) > SWIPE_PX && Math.abs(dx) > Math.abs(dy)) {
-      swallowClick.current = true;
+      swipedAt.current = e.timeStamp;
       if (dx < 0) next();
       else prev();
     }
@@ -94,11 +96,8 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
   const current = projects[index];
   const currentLink = primaryLink(current);
 
-  const openCurrent = () => {
-    if (swallowClick.current) {
-      swallowClick.current = false;
-      return;
-    }
+  const openCurrent = (e: MouseEvent) => {
+    if (e.timeStamp - swipedAt.current < 400) return;
     openProject(current);
   };
 
@@ -184,8 +183,10 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                   aria-label={t('projects.slideOf', { current: i + 1, total: count })}
                   aria-hidden={!active}
                   className={cn(
-                    '[grid-area:1/1] transition-all duration-500 ease-out',
-                    active ? 'visible translate-y-0 opacity-100 delay-100' : 'invisible translate-y-3 opacity-0',
+                    // visibility transitions too, so the outgoing slide fades out, but only the
+                    // active one takes clicks while both are on screen
+                    '[grid-area:1/1] transition-[opacity,transform,visibility] duration-500 ease-out',
+                    active ? 'visible translate-y-0 opacity-100 delay-100' : 'pointer-events-none invisible translate-y-3 opacity-0',
                   )}
                 >
                   <div className="mb-4 flex flex-wrap items-center gap-2.5 text-xs">

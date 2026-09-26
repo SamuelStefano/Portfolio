@@ -217,7 +217,7 @@ export const TechStack = () => {
                 href={logo.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={`Visitar ${logo.alt}`}
+                title={t('controls.visit', { name: logo.alt })}
                 className="group opacity-40 grayscale hover:opacity-100 hover:grayscale-0 hover:-translate-y-2 hover:scale-110 transition-all duration-300 cursor-pointer"
               >
                 <img src={logo.src} alt={logo.alt} className={`${logo.cls} object-contain`} />

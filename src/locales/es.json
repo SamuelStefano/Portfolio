@@ -28,7 +28,8 @@
     "ctaProjects": "Ver proyectos",
     "ctaResume": "Currículum (PDF)",
     "ctaContact": "Contacto",
-    "resumeNote": "El currículum se descarga en PT o EN según el idioma del sitio."
+    "resumeNote": "El currículum se descarga en PT o EN según el idioma del sitio.",
+    "location": "Marialva, PR · Brasil"
   },
   "projects": {
     "title": "Proyectos",
@@ -603,7 +604,8 @@
     "lightMode": "Activar modo claro",
     "darkMode": "Activar modo oscuro",
     "backToTop": "Volver arriba",
-    "skipToContent": "Saltar al contenido"
+    "skipToContent": "Saltar al contenido",
+    "visit": "Visitar {{name}}"
   },
   "cli": {
     "role": "Rol",

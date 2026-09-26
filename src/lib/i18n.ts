@@ -20,8 +20,10 @@ const lazyLocales: BackendModule = {
       return;
     }
     loaders[language]().then(
-      (module) => callback(null, module.default),
-      (error: Error) => callback(error, false),
+      // undefined when a stale chunk already triggered a reload (see reloadOnStaleChunk)
+      (module) => module && callback(null, module.default),
+      // `true` lets i18next retry with backoff instead of giving up on the language for good
+      (error: Error) => callback(error, true),
     );
   },
 };

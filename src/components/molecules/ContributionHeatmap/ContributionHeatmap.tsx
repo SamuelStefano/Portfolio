@@ -32,7 +32,11 @@ interface Hovered {
   day: ContributionDay;
   x: number;
   y: number;
+  /** near the card's edges the tooltip grows inwards instead of centring on the cell */
+  align: 'start' | 'center' | 'end';
 }
+
+const TOOLTIP_SHIFT = { start: '-12px', center: '-50%', end: 'calc(-100% + 12px)' } as const;
 
 /** Last six months of GitHub activity, drawn like GitHub's calendar; cells fade in column by column. */
 export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps) => {
@@ -84,13 +88,18 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
     label: fmt.weekday.format(new Date(Date.UTC(2023, 0, 1 + row))).replace('.', ''),
   }));
 
+  // The tooltip is positioned against the card, not the scroller: inside the scroller the top
+  // rows and the edge columns would clip it.
   const onMouseOver = (e: MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
     const index = target.dataset.i;
-    if (index === undefined) return;
-    const host = e.currentTarget.getBoundingClientRect();
+    const root = rootRef.current;
+    if (index === undefined || !root) return;
+    const host = root.getBoundingClientRect();
     const cell = target.getBoundingClientRect();
-    setHovered({ day: flat[Number(index)], x: cell.left - host.left + cell.width / 2, y: cell.top - host.top });
+    const x = cell.left - host.left + cell.width / 2;
+    const align = x < host.width * 0.2 ? 'start' : x > host.width * 0.8 ? 'end' : 'center';
+    setHovered({ day: flat[Number(index)], x, y: cell.top - host.top, align });
   };
 
   const tooltip = (day: ContributionDay) => {
@@ -103,7 +112,7 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
   return (
     <div
       ref={rootRef}
-      className="heatmap rounded-xl border border-border bg-card p-4 sm:p-5 transition-all duration-300 hover:border-primary/40"
+      className="heatmap relative rounded-xl border border-border bg-card p-4 sm:p-5 transition-all duration-300 hover:border-primary/40"
     >
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div className="flex items-center gap-2.5">
@@ -140,7 +149,11 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
           ))}
         </div>
 
-        <div ref={scrollerRef} className="min-w-0 flex-1 overflow-x-auto scrollbar-none">
+        <div
+          ref={scrollerRef}
+          onScroll={() => setHovered(null)}
+          className="min-w-0 flex-1 overflow-x-auto scrollbar-none"
+        >
           <div
             className="relative"
             onMouseOver={onMouseOver}
@@ -190,18 +203,23 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
               )}
             </div>
 
-            {hovered && (
-              <div
-                role="tooltip"
-                className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-md border border-border bg-background px-2 py-1 text-[11px] text-foreground shadow-lg"
-                style={{ left: hovered.x, top: hovered.y - 6 }}
-              >
-                {tooltip(hovered.day)}
-              </div>
-            )}
           </div>
         </div>
       </div>
+
+      {hovered && (
+        <div
+          role="tooltip"
+          className="pointer-events-none absolute z-10 whitespace-nowrap rounded-md border border-border bg-background px-2 py-1 text-[11px] text-foreground shadow-lg"
+          style={{
+            left: hovered.x,
+            top: hovered.y - 6,
+            transform: `translate(${TOOLTIP_SHIFT[hovered.align]}, -100%)`,
+          }}
+        >
+          {tooltip(hovered.day)}
+        </div>
+      )}
 
       <div className="mt-3 flex items-center justify-end gap-1.5 text-[10px] text-muted-foreground">
         <span>{t('about.activity.less')}</span>

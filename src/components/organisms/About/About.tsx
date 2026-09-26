@@ -50,6 +50,8 @@ export const About = () => {
   const experienceTime = useExperienceTime();
   const gitHubStats = useGitHubStats();
   const { containerRef } = useScrollAnimations();
+  // a missing or half-loaded locale returns the key as a string, not the list
+  const focusAreas = t('about.focusAreas', { returnObjects: true, defaultValue: [] }) as unknown;
 
   const stats = [
     {
@@ -221,7 +223,7 @@ export const About = () => {
                   {t('about.currentFocusDescription')}
                 </Text>
                 <div className="flex flex-wrap gap-2">
-                  {(t('about.focusAreas', { returnObjects: true }) as string[]).map((focus: string, index: number) => (
+                  {(Array.isArray(focusAreas) ? (focusAreas as string[]) : []).map((focus, index) => (
                     <Badge
                       key={index}
                       className="px-3 py-1 bg-primary/10 hover:bg-primary/10 text-primary text-xs rounded-full font-normal"

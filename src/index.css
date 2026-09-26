@@ -212,8 +212,10 @@
 
 /* ── Offscreen sections skip style, layout and paint until they approach the viewport.
    Sizes are measured first-render estimates per breakpoint; `auto` remembers the real
-   size once a section has rendered, so scrolling back up does not jump. ── */
-#habilidades, #hackathons, #sobre, #contato { content-visibility: auto; }
+   size once a section has rendered, so scrolling back up does not jump. The terminal skin
+   reuses these ids with other heights, so it is left out (the sizes below only apply
+   where content-visibility is on). ── */
+html:not([data-skin="cli"]) :is(#habilidades, #hackathons, #sobre, #contato) { content-visibility: auto; }
 /* content-box heights (the sections' vertical padding is not part of the intrinsic size) */
 #habilidades { contain-intrinsic-size: auto 8355px; }
 #hackathons { contain-intrinsic-size: auto 1913px; }

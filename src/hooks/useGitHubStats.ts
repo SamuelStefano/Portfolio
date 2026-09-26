@@ -48,13 +48,14 @@ const load = (): Promise<GitHubStats> => {
     .then(async (response) => {
       if (!response.ok) throw new Error(`GitHub stats responded ${response.status}`);
       const data = await response.json();
+      // a figure GitHub failed to answer arrives as 0; the fallback is a floor, never "0+"
       return {
-        totalCommits: data.totalCommits || 0,
-        totalRepos: data.totalRepos || 0,
+        totalCommits: data.totalCommits || FALLBACK.totalCommits,
+        totalRepos: data.totalRepos || FALLBACK.totalRepos,
         totalStars: data.totalStars || 0,
         totalForks: data.totalForks || 0,
-        mergedPullRequests: data.mergedPullRequests || 0,
-        linesOfCode: data.linesOfCode || 0,
+        mergedPullRequests: data.mergedPullRequests || FALLBACK.mergedPullRequests,
+        linesOfCode: data.linesOfCode || FALLBACK.linesOfCode,
         languages: data.languages || {},
         contributions: data.contributions?.counts?.length ? data.contributions : null,
         isLoading: false,

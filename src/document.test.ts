@@ -14,13 +14,20 @@ const csp = vercel.headers
   .find((h) => h.key === 'Content-Security-Policy')?.value ?? '';
 
 describe('index.html', () => {
-  it('allow-lists every inline script in the CSP by hash', () => {
-    const inline = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+  it('allow-lists every executable inline script in the CSP by hash', () => {
+    // JSON-LD and other data blocks are never executed, so the CSP does not apply to them
+    const inline = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)]
+      .filter(([, attrs]) => !/\bsrc\s*=/.test(attrs) && !/\btype\s*=\s*["']application\/(ld\+)?json["']/.test(attrs))
+      .map(([, , body]) => body);
     expect(inline.length).toBeGreaterThan(0);
     for (const script of inline) {
       const hash = createHash('sha256').update(script).digest('base64');
       expect(csp, 'edit the inline script? update its sha256 in vercel.json').toContain(`'sha256-${hash}'`);
     }
+  });
+
+  it('has no inline event handlers (the CSP would block them)', () => {
+    expect(html).not.toMatch(/<[^>]+\son[a-z]+\s*=/i);
   });
 
   it('points social previews at an image that exists', () => {

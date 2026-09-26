@@ -3,6 +3,7 @@ import { Trophy, Calendar, MapPin, Users, Github, Maximize2 } from 'lucide-react
 import { useTranslation } from 'react-i18next';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
+import { ChunkBoundary } from '@/components/atoms/ChunkBoundary/ChunkBoundary';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { HACKATHONS, type Hackathon } from '@/consts/hackathons';
 
@@ -153,13 +154,15 @@ export const HackathonsSection = () => {
       </div>
 
       {modalMounted && (
-        <Suspense fallback={null}>
-          <AwardModal
-            hackathon={selected}
-            open={selected !== null}
-            onOpenChange={(o) => !o && setSelected(null)}
-          />
-        </Suspense>
+        <ChunkBoundary>
+          <Suspense fallback={null}>
+            <AwardModal
+              hackathon={selected}
+              open={selected !== null}
+              onOpenChange={(o) => !o && setSelected(null)}
+            />
+          </Suspense>
+        </ChunkBoundary>
       )}
     </section>
   );

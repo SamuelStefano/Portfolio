@@ -32,7 +32,7 @@ export const Header = () => {
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5" />
-                  Marialva, PR · Brasil
+                  {t('hero.location')}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <GraduationCap className="h-3.5 w-3.5" />

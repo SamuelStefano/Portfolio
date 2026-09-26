@@ -28,7 +28,8 @@
     "ctaProjects": "See projects",
     "ctaResume": "Résumé (PDF)",
     "ctaContact": "Contact",
-    "resumeNote": "The résumé downloads in PT or EN, following the site language."
+    "resumeNote": "The résumé downloads in PT or EN, following the site language.",
+    "location": "Marialva, PR · Brazil"
   },
   "projects": {
     "title": "Projects",
@@ -603,7 +604,8 @@
     "lightMode": "Switch to light mode",
     "darkMode": "Switch to dark mode",
     "backToTop": "Back to top",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "visit": "Visit {{name}}"
   },
   "cli": {
     "role": "Role",
