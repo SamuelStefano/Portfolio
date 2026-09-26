@@ -1,20 +1,23 @@
-import { TooltipProvider } from "@/components/atoms/tooltip/tooltip";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
-  <TooltipProvider>
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  </TooltipProvider>
+  <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={null}>
+            <NotFound />
+          </Suspense>
+        }
+      />
+    </Routes>
+  </BrowserRouter>
 );
 
 export default App;
-
-
-

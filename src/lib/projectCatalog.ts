@@ -1,12 +1,10 @@
-import { Project } from '../types/project';
+import type { Project, ProjectSeed } from '../types/project';
 
-const allProjects: Project[] = [
+const seeds: ProjectSeed[] = [
   {
     id: '11',
     title: 'ITERA',
     role: 'Creator',
-    description: 'Plataforma de cursos por assinatura com um modo "Aula ao vivo" síncrono: o professor avança a turma inteira em tempo real, com timer compartilhado, mão levantada, ranking e pódio. Ecossistema de 5 aplicações — player do aluno, MCP de autoria, pacote de contratos, API e documentação.',
-    long_description: 'ITERA é uma plataforma de cursos por assinatura construída como um ecossistema de cinco aplicações, com Supabase próprio e RLS como autoridade de autorização — não existe chave service_role em nenhum dos servidores. O player do aluno é uma SPA em Vite + React 18 com Monaco, TanStack Query, i18n PT/EN e 59 arquivos de teste entre Vitest, Playwright e Storybook. O itera-mcp é um servidor MCP Streamable-HTTP em Fastify com 21 ferramentas de autoria (Program → Unit → Lesson → Activity), onde cada escrita é validada contra o JWT do autor e barrada pelas policies de RLS. O pacote Zod @iterahq/activity-spec é a fonte única de verdade dos 11 tipos de atividade, colapsando uma divergência que existia em três lugares — o enum do banco, a união de tipos do player e a constante do MCP — de modo que uma atividade é validada de forma idêntica no servidor e no cliente. A itera-api é uma REST v1 pull-only em Express + Zod, com chave de API por tenant, paginação keyset, SSO federado por token-exchange e billing Stripe. A landing e a documentação vivem num turborepo Astro + Starlight com um pacote único de tokens de marca. O recurso mais difícil é a aula ao vivo: um único canal privado do Supabase Realtime, protegido por RLS, carrega três preocupações ao mesmo tempo — broadcast para o avanço instantâneo da turma, postgres_changes como verdade durável para quem reconecta no meio da aula, e presence para a lista de quem está na sala. Em cima disso rodam timer sincronizado por tipo de atividade com adicionar tempo, mão levantada, pódio dos três primeiros, ranking, a visão de "quem já terminou" limitada a quem está de fato presente, e o palco da turma: o professor puxa o trabalho em andamento de um aluno — não só a resposta concluída — e a turma acompanha o código sendo digitado ao vivo, com o professor podendo resolver a própria atividade ali na frente de todos. O login é sem senha, por código OTP ou link mágico, porque pedir senha a um adolescente na primeira aula é perder a aula. O exercício de código tem correção determinística, tolerante a espaço e acento, e o aluno pode recomeçar do código inicial ou recuperar o que estava escrevendo depois de um reload. A adição mais recente é o BYOC: a atividade é gerada a partir do contexto do próprio aluno, para que o exercício fale a língua de quem está resolvendo. Presença e respostas — certas e erradas — são persistidas e viram o relatório pós-aula, agregado em TypeScript e não no banco. Nada do que o aluno precisa vem de CDN pública: o Monaco e as fontes são servidos do nosso próprio domínio, porque a aula roda em rede de escola e de comunidade, onde uma CDN bloqueada é cenário realista. Essa decisão foi validada na prática: a plataforma rodou uma aula piloto ao vivo e gratuita de programação com adolescentes do Instituto Educar+.',
     stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'Supabase Realtime', 'PostgreSQL', 'RLS', 'Zod', 'TanStack Query', 'Fastify', 'MCP', 'Express', 'Stripe', 'Astro', 'Monaco Editor', 'Turborepo', 'Vitest', 'Playwright', 'Storybook', 'OpenTelemetry', 'TailwindCSS'],
     thumbnail_url: '/projects/itera/aula-ao-vivo.png',
     icon_name: 'GraduationCap',
@@ -39,7 +37,6 @@ const allProjects: Project[] = [
         id: '11-s1',
         folder_name: 'live',
         display_name: 'Aula ao vivo',
-        description: 'Aula síncrona num único canal Realtime: broadcast para o avanço instantâneo da turma, postgres_changes para quem reconecta e presence para a lista de quem está na sala',
         order_index: 1,
         project_images: [{ id: '11-s1-i1', image_url: '/projects/itera/aula-ao-vivo.png', order_index: 1 }]
       },
@@ -47,7 +44,6 @@ const allProjects: Project[] = [
         id: '11-s6',
         folder_name: 'sandbox',
         display_name: 'Sandbox de código',
-        description: 'Editor Monaco com preview ao vivo no navegador e correção determinística: o aluno escreve, vê a tela mudar na hora e recebe check a check o que já passou. A variante guiada troca o código livre por lacunas com banco de palavras, para quem ainda não digita sintaxe de cabeça',
         order_index: 2,
         project_images: [
           { id: '11-s6-i1', image_url: '/projects/itera/sandbox-codigo.png', order_index: 1 },
@@ -58,7 +54,6 @@ const allProjects: Project[] = [
         id: '11-s7',
         folder_name: 'git',
         display_name: 'Aula de Git no terminal',
-        description: 'Terminal simulado com engine de Git determinística — sem rede e sem container. O comando errado executa, imprime o erro real do Git e simplesmente não acende o passo. Dois modos de entrada: texto livre para quem já sabe digitar, e escolha de comando para a primeira aula',
         order_index: 3,
         project_images: [
           { id: '11-s7-i1', image_url: '/projects/itera/git-terminal.png', order_index: 1 },
@@ -69,7 +64,6 @@ const allProjects: Project[] = [
         id: '11-s8',
         folder_name: 'canvas',
         display_name: 'Canvas de atividades',
-        description: 'Doze tipos de atividade renderizados pelo mesmo engine, despachados pelo campo kind e validados por Zod antes de chegar à tela. Conceito com markdown, associação, ordenação arrastável e diagrama Mermaid dividem os mesmos primitivos de instrução e feedback',
         order_index: 4,
         project_images: [
           { id: '11-s8-i1', image_url: '/projects/itera/canvas-conceito.png', order_index: 1 },
@@ -82,7 +76,6 @@ const allProjects: Project[] = [
         id: '11-s9',
         folder_name: 'trilha',
         display_name: 'Trilhas',
-        description: 'A jornada do aluno como uma trilha vertical: unidade a unidade, lição a lição, com o tipo de cada atividade visível e o que ainda não abriu marcado com cadeado. O catálogo é a porta de entrada, com matrícula e progresso por curso',
         order_index: 5,
         project_images: [
           { id: '11-s9-i1', image_url: '/projects/itera/trilha.png', order_index: 1 },
@@ -93,7 +86,6 @@ const allProjects: Project[] = [
         id: '11-s2',
         folder_name: 'hero',
         display_name: 'Recepção da sala',
-        description: 'Sala de espera antes do professor iniciar, com a lista de quem já entrou atualizada por presence',
         order_index: 6,
         project_images: [{ id: '11-s2-i1', image_url: '/projects/itera/recepcao.png', order_index: 1 }]
       },
@@ -101,7 +93,6 @@ const allProjects: Project[] = [
         id: '11-s3',
         folder_name: 'landing',
         display_name: 'Landing',
-        description: 'Página de apresentação da plataforma: hero com preview do player ao vivo, seção de cursos e proposta de valor para membros DFL e assinantes',
         order_index: 7,
         project_images: [{ id: '11-s3-i1', image_url: '/projects/itera/landing.png', order_index: 1 }]
       },
@@ -109,7 +100,6 @@ const allProjects: Project[] = [
         id: '11-s4',
         folder_name: 'docs',
         display_name: 'Documentação',
-        description: 'Site de documentação do itera-mcp: descreve o servidor MCP Streamable-HTTP com 21 ferramentas de autoria que escrevem Program → Unit → Lesson → Activity sob RLS do autor',
         order_index: 8,
         project_images: [{ id: '11-s4-i1', image_url: '/projects/itera/docs.png', order_index: 1 }]
       },
@@ -117,7 +107,6 @@ const allProjects: Project[] = [
         id: '11-s5',
         folder_name: 'login',
         display_name: 'Acesso ao app',
-        description: 'Tela de login do player do aluno: entrada por e-mail, senha ou link mágico — sem barreira de senha na primeira aula — e SSO federado via conta DFL',
         order_index: 9,
         project_images: [{ id: '11-s5-i1', image_url: '/projects/itera/login.png', order_index: 1 }]
       }
@@ -143,8 +132,6 @@ const allProjects: Project[] = [
     id: '14',
     title: 'Lesson Studio',
     role: 'Lead Developer',
-    description: 'Estúdio de videoaulas em slides da DevFellowship: grava narração, webcam e tela no navegador, monta a aula no editor e exporta MP4 renderizado no servidor.',
-    long_description: '',
     stack: ['React', 'TypeScript', 'Vite', 'Zustand', 'Immer', 'TanStack Query', 'RecordRTC', 'Dexie (IndexedDB)', 'Supabase', 'Edge Functions', 'S3', 'dnd-kit', 'MCP', 'OpenTelemetry', 'Playwright', 'TailwindCSS'],
     thumbnail_url: '/projects/lesson-studio/editor.png',
     icon_name: 'Video',
@@ -162,7 +149,6 @@ const allProjects: Project[] = [
         id: '14-s1',
         folder_name: 'editor',
         display_name: 'Editor de slides',
-        description: 'Preview no centro, composições na lateral e painel de propriedades com layout, elementos, animação e câmera. Cada slide recebe sua própria gravação',
         order_index: 1,
         project_images: [{ id: '14-s1-i1', image_url: '/projects/lesson-studio/editor.png', order_index: 1 }]
       },
@@ -170,7 +156,6 @@ const allProjects: Project[] = [
         id: '14-s2',
         folder_name: 'projetos',
         display_name: 'Projetos',
-        description: 'Aulas, reels e posts organizados por status — rascunho, em andamento e publicado',
         order_index: 2,
         project_images: [{ id: '14-s2-i1', image_url: '/projects/lesson-studio/projetos.png', order_index: 1 }]
       },
@@ -178,7 +163,6 @@ const allProjects: Project[] = [
         id: '14-s3',
         folder_name: 'templates',
         display_name: 'Biblioteca de templates',
-        description: 'Slides são montados a partir de templates com slots; o mesmo catálogo é usado pela interface e pelos agentes via MCP',
         order_index: 3,
         project_images: [{ id: '14-s3-i1', image_url: '/projects/lesson-studio/templates.png', order_index: 1 }]
       },
@@ -186,7 +170,6 @@ const allProjects: Project[] = [
         id: '14-s4',
         folder_name: 'canvas',
         display_name: 'Visão de canvas',
-        description: 'A composição inteira em miniatura, para revisar ritmo e ordem antes do export',
         order_index: 4,
         project_images: [{ id: '14-s4-i1', image_url: '/projects/lesson-studio/canvas.png', order_index: 1 }]
       }
@@ -202,8 +185,6 @@ const allProjects: Project[] = [
     id: '15',
     title: 'TradeView',
     role: 'Creator',
-    description: 'Terminal de trading com camada de IA: preços ao vivo de Foxbit e OKX, gráficos em SVG próprio e execução em modo paper sobre um ledger de partidas dobradas.',
-    long_description: '',
     stack: ['Next.js 16', 'React 19', 'TypeScript', 'TailwindCSS v4', 'Supabase', 'PostgreSQL', 'CCXT', 'decimal.js', 'Anthropic SDK', 'Vercel'],
     thumbnail_url: '/projects/tradeview/ativo.png',
     icon_name: 'TrendingUp',
@@ -220,7 +201,6 @@ const allProjects: Project[] = [
         id: '15-s1',
         folder_name: 'ativo',
         display_name: 'Detalhe do ativo',
-        description: 'Candlestick desenhado em SVG próprio, livro de ofertas ao vivo e aba de análise por IA',
         order_index: 1,
         project_images: [{ id: '15-s1-i1', image_url: '/projects/tradeview/ativo.png', order_index: 1 }]
       },
@@ -228,7 +208,6 @@ const allProjects: Project[] = [
         id: '15-s2',
         folder_name: 'overview',
         display_name: 'Patrimônio e watchlist',
-        description: 'Patrimônio consolidado, variação de 24h por corretora e watchlist com preços reais',
         order_index: 2,
         project_images: [{ id: '15-s2-i1', image_url: '/projects/tradeview/overview.png', order_index: 1 }]
       },
@@ -236,7 +215,6 @@ const allProjects: Project[] = [
         id: '15-s3',
         folder_name: 'mercados',
         display_name: 'Mercados conectados',
-        description: 'Status e latência de cada corretora. Foxbit e OKX foram escolhidas por teste de alcance: Binance e Mercado Bitcoin bloqueiam IPs de datacenter',
         order_index: 3,
         project_images: [{ id: '15-s3-i1', image_url: '/projects/tradeview/mercados.png', order_index: 1 }]
       }
@@ -251,8 +229,6 @@ const allProjects: Project[] = [
     id: '16',
     title: 'Campaigns',
     role: 'Lead Developer',
-    description: 'Cockpit de conteúdo e leads da DevFellowship: calendário de posts por unidade de negócio, fila de revisão com rascunhos gerados por IA, despacho automático para Instagram, TikTok, LinkedIn e YouTube via Zernio, e analytics por conta.',
-    long_description: '',
     stack: ['React 19', 'TypeScript', 'Vite', 'TailwindCSS v4', 'Hono', 'Node 22', 'Supabase', 'PostgreSQL', 'ClickHouse', 'TipTap', 'Zod', 'MCP', 'Claude API', 'Zernio API', 'Playwright', 'Docker', 'Dokploy'],
     thumbnail_url: '/projects/campaigns/calendario.png',
     icon_name: 'Calendar',
@@ -271,7 +247,6 @@ const allProjects: Project[] = [
         id: '16-s1',
         folder_name: 'calendario',
         display_name: 'Calendário de posts',
-        description: 'Tudo que está agendado, por unidade de negócio e por criador, com o estado de cada post: em revisão, aprovado, agendado, publicado ou recusado',
         order_index: 1,
         project_images: [{ id: '16-s1-i1', image_url: '/projects/campaigns/calendario.png', order_index: 1 }]
       },
@@ -279,7 +254,6 @@ const allProjects: Project[] = [
         id: '16-s2',
         folder_name: 'revisao',
         display_name: 'Fila de revisão',
-        description: 'Rascunhos escritos por agentes de IA caem aqui. Uma pessoa lê, edita, aprova e agenda — quem escreveu nunca é quem libera. Aprovado, o post vai pro Zernio e sai no horário',
         order_index: 2,
         project_images: [{ id: '16-s2-i1', image_url: '/projects/campaigns/revisao.png', order_index: 1 }]
       },
@@ -287,7 +261,6 @@ const allProjects: Project[] = [
         id: '16-s5',
         folder_name: 'post',
         display_name: 'Post publicado',
-        description: 'Cada post publicado guarda as métricas coletadas por dia (views, curtidas, comentários, alcance), a configuração por rede e uma thread de comentários com revisão, alteração e sugestão',
         order_index: 3,
         project_images: [{ id: '16-s5-i1', image_url: '/projects/campaigns/post.png', order_index: 1 }]
       },
@@ -295,7 +268,6 @@ const allProjects: Project[] = [
         id: '16-s6',
         folder_name: 'novo-post',
         display_name: 'Novo post',
-        description: 'Formato (post, vídeo ou vídeo curto), unidade de negócio, quem posta e quem pediu, redes e conta em cada uma. Enviar pra revisão exige texto, conta por rede e vídeo no YouTube',
         order_index: 4,
         project_images: [{ id: '16-s6-i1', image_url: '/projects/campaigns/novo-post.png', order_index: 1 }]
       },
@@ -303,7 +275,6 @@ const allProjects: Project[] = [
         id: '16-s3',
         folder_name: 'analytics',
         display_name: 'Analytics',
-        description: 'Comparação entre contas e formatos, visualizações por dia e ranking dos posts do período — coletado por rede, nunca somado entre redes',
         order_index: 5,
         project_images: [{ id: '16-s3-i1', image_url: '/projects/campaigns/analytics.png', order_index: 1 }]
       },
@@ -311,7 +282,6 @@ const allProjects: Project[] = [
         id: '16-s4',
         folder_name: 'perfis',
         display_name: 'Perfis e contas',
-        description: 'Cada perfil do Zernio com as contas conectadas por rede — um post nasce em um perfil, mas pode sair em contas de vários',
         order_index: 6,
         project_images: [{ id: '16-s4-i1', image_url: '/projects/campaigns/perfis.png', order_index: 1 }]
       }
@@ -329,8 +299,6 @@ const allProjects: Project[] = [
     id: '0',
     title: 'Deck',
     role: 'Creator',
-    description: 'Posto de comando pessoal pra trabalhar com agentes de IA direto na minha VPS. Reúne chat com o agente, terminais reais multi-dispositivo, memória persistente, prompts agendados, ledger financeiro, bancada de código ao vivo, knowledge graph e administração do host numa única interface web. Criado sozinho, do zero.',
-    long_description: 'Deck é a plataforma que eu construí — sozinho, do zero — pra ser meu posto de comando ao trabalhar com agentes de IA rodando na minha própria VPS. Em vez de ficar preso num terminal SSH, o Deck conecta o navegador direto à máquina: cada sessão abre um agente Claude com contexto isolado, e eu acompanho a execução em tempo real. O chat mostra o raciocínio, as ferramentas, a lista de tarefas do agente num tray fixo acima do composer e o gasto de cada turno em tokens, tempo e custo — inclusive de turnos feitos direto no terminal, reconstruídos do histórico. Sessões longas carregam só as mensagens recentes, com um botão que traz o histórico anterior a um /compact. Os terminais são PTYs de verdade da VPS dentro do app, com abas e estado compartilhado entre dispositivos: o mesmo terminal continua vivo se eu abrir do celular. Em volta do chat existem as áreas que cobrem a operação inteira. Contextos é a memória persistente do agente em modo leitura — arquivos markdown tipados (usuário, projeto, feedback, referência) que ele escreve sozinho e consulta entre conversas. Skills é o catálogo de habilidades que o agente carrega sob demanda. Crons são prompts agendados que disparam turnos autônomos no horário marcado, sem ninguém na frente da tela. Pontos é um ledger financeiro: o agente registra sozinho a pontuação ao terminar uma task e a rota cruza isso com a árvore de projetos e as faturas puxadas da API da DevFellowship, com valor por ponto configurável. Playground é uma bancada de código com preview ao vivo em vários runtimes — React, HTML, moldura de iPhone, SVG e um juiz de testes — e compartilhamento do snippet por link. Graph gera um knowledge graph do código com tree-sitter, 100% local. Uso é o observatório de consumo: custo estimado, tokens e turnos por sessão, mais a janela de rate-limit do plano. Admin & Host expõe saúde e inventário da VPS (CPU, RAM, load, disco, uptime, CLIs no PATH, servidores MCP, sessões tmux, plugins) com ações sensíveis atrás de confirmação e role admin no relay. Notas é um rascunho markdown com salvamento automático, e a documentação in-app explica cada parte. Arquitetura: frontend React + TypeScript + Vite na Vercel, backend Node em WebSocket na VPS Hetzner, orquestração de sessões via tmux, integração com a Claude API e com servidores MCP (Supabase, Infisical e os meus próprios), persistência em Supabase e segredos no Infisical. Tudo tem design system próprio, com primitivos e galeria viva em /ds. Pensado, projetado e implementado por mim.',
     stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'WebSocket', 'Claude API', 'Anthropic', 'MCP', 'tmux', 'PTY', 'Supabase', 'Infisical', 'tree-sitter', 'Vitest', 'Docker', 'Hetzner VPS', 'TailwindCSS', 'Vercel'],
     thumbnail_url: '/projects/Deck/Sessoes.png',
     icon_name: 'Monitor',
@@ -351,7 +319,6 @@ const allProjects: Project[] = [
         id: '0-1',
         folder_name: 'sessoes',
         display_name: 'Sessões',
-        description: 'Cada sessão abre um agente Claude com contexto isolado: chat em tempo real, seleção de modelo e skills ativas por mensagem',
         order_index: 1,
         project_images: [
           { id: '0-1-1', image_url: '/projects/Deck/Sessoes.png', order_index: 1 },
@@ -362,7 +329,6 @@ const allProjects: Project[] = [
         id: '0-2',
         folder_name: 'memoria',
         display_name: 'Contatos & Memória',
-        description: 'A memória persistente do agente em cards navegáveis — fatos, feedbacks e contexto de projeto que sobrevivem entre conversas',
         order_index: 2,
         project_images: [
           { id: '0-2-1', image_url: '/projects/Deck/Contatos.png', order_index: 1 },
@@ -373,7 +339,6 @@ const allProjects: Project[] = [
         id: '0-3',
         folder_name: 'skills',
         display_name: 'Skills',
-        description: 'Catálogo de skills do agente — modos de trabalho e regras que podem ser ativados por sessão',
         order_index: 3,
         project_images: [
           { id: '0-3-1', image_url: '/projects/Deck/Skills.png', order_index: 1 }
@@ -383,7 +348,6 @@ const allProjects: Project[] = [
         id: '0-4',
         folder_name: 'documentos',
         display_name: 'Documentos',
-        description: 'Visualizador de markdown dos guias e learnings do repositório, com navegação por seções',
         order_index: 4,
         project_images: [
           { id: '0-4-1', image_url: '/projects/Deck/Documentos.png', order_index: 1 }
@@ -393,7 +357,6 @@ const allProjects: Project[] = [
         id: '0-5',
         folder_name: 'custos',
         display_name: 'Custos & Tokens',
-        description: 'Dashboard de gasto por sessão: tokens de entrada/saída, custo estimado e amostras — pra saber o que cada agente consumiu',
         order_index: 5,
         project_images: [
           { id: '0-5-1', image_url: '/projects/Deck/Custos.png', order_index: 1 }
@@ -403,7 +366,6 @@ const allProjects: Project[] = [
         id: '0-6',
         folder_name: 'admin',
         display_name: 'Admin & Host',
-        description: 'Saúde e inventário da VPS: CPU, RAM, load, disco, uptime, CLIs no PATH, servidores MCP, sessões tmux e plugins — com ações sensíveis protegidas',
         order_index: 6,
         project_images: [
           { id: '0-6-1', image_url: '/projects/Deck/Admin.png', order_index: 1 }
@@ -413,7 +375,6 @@ const allProjects: Project[] = [
         id: '0-7',
         folder_name: 'docs',
         display_name: 'Documentação',
-        description: 'Documentação in-app que explica cada parte do Deck e como operar o posto de comando',
         order_index: 7,
         project_images: [
           { id: '0-7-1', image_url: '/projects/Deck/Documentacao.png', order_index: 1 }
@@ -434,8 +395,6 @@ const allProjects: Project[] = [
     id: '12',
     title: 'Valdez',
     role: 'Creator',
-    description: 'Bot de Discord em TypeScript que vive dentro do canal de voz: entra sozinho quando chega gente, contabiliza horas em call com ranking, grava replay dos últimos minutos e toca música do YouTube e Spotify. Roda numa VPS Hetzner com healthcheck, auto-cura e proteção contra OOM.',
-    long_description: 'Valdez é um bot de Discord escrito em TypeScript sobre discord.js 14 e @discordjs/voice, pensado pra viver dentro do canal de voz do servidor. A presença é automática por ocupação: ele entra quando o primeiro humano chega e sai quando a call esvazia, e esse comportamento pode ser desligado pelo comando /call. Cada entrada e saída vira uma sessão persistida em SQLite (better-sqlite3 em modo WAL), o que alimenta o /horas e o /leaderboard com o ranking de tempo em call. O recurso mais difícil é o replay buffer: o bot assina o receiver de voz e mantém em memória uma janela deslizante dos últimos minutos de pacotes Opus por usuário, com poda periódica pra não acumular áudio de quem falou e ficou quieto — no /replay esses pacotes são decodificados pra PCM, mixados por timeline (e não simplesmente concatenados, que era a causa do som travado) e exportados em MP3 via ffmpeg. Também tem um player de música com fila, loop, modal persistente com botões de controle e busca no YouTube via yt-dlp, com suporte a playlists e álbuns do Spotify consultando a Web API direto. A parte que mais rendeu aprendizado foi a operação: o bot migrou do Fly.io para uma VPS Hetzner em Docker Compose e ganhou uma camada de resiliência de verdade — um endpoint /health que reporta o estado do gateway e da conexão de voz e responde 503 enquanto ainda está subindo, autoheal reiniciando o container quando o healthcheck falha, limites de memória com oom_score_adj e swap na máquina, um heartbeat externo funcionando como dead-man\'s switch (o único sinal que sobrevive ao host inteiro cair), handlers de uncaughtException e unhandledRejection pra não morrer por erro solto, e resolução DNS forçada em IPv4 depois de investigar as desconexões de voz pelo closeCode.',
     stack: ['TypeScript', 'Node.js', 'discord.js', '@discordjs/voice', 'Opus', 'SQLite', 'better-sqlite3', 'ffmpeg', 'yt-dlp', 'Spotify Web API', 'Docker', 'Docker Compose', 'Hetzner VPS'],
     thumbnail_url: '/projects/valdez/landing.png',
     icon_name: 'Headphones',
@@ -465,7 +424,6 @@ const allProjects: Project[] = [
         id: '12-s1',
         folder_name: 'landing',
         display_name: 'Landing',
-        description: 'Página pública do bot: o replay dos últimos minutos da call, com /clip gerando o MP3 direto no canal',
         order_index: 1,
         project_images: [{ id: '12-s1-i1', image_url: '/projects/valdez/landing.png', order_index: 1 }]
       },
@@ -473,7 +431,6 @@ const allProjects: Project[] = [
         id: '12-s2',
         folder_name: 'sala',
         display_name: 'Vídeo da sala',
-        description: 'O clipe vira vídeo com os avatares de quem estava na call, acendendo em quem fala',
         order_index: 2,
         project_images: [{ id: '12-s2-i1', image_url: '/projects/valdez/sala.png', order_index: 1 }]
       }
@@ -487,11 +444,9 @@ const allProjects: Project[] = [
     id: '1',
     title: 'Skill Evals',
     role: 'Creator',
-    description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy.',
-    long_description: 'Plataforma de desafios para desenvolvedores, challenges onde os devs devem se desafiar referente aos cursos ligados na plataforma de cursos DevfellowshipAcademy. Com telas para Mentoria, Administradores, tudo bem organizado. Utiliza-se Judge0 como API de compilação.',
     stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'Judge0 API', 'Module Federation', 'TailwindCSS'],
     thumbnail_url: '/projects/Skill Evals/Thumb.png',
-    icon_name: 'code',
+    icon_name: 'Code',
     created_at: '2024-01-15T00:00:00Z',
     updated_at: '2024-12-01T00:00:00Z',
     project_collaborators: [
@@ -526,7 +481,6 @@ const allProjects: Project[] = [
         id: '1-1',
         folder_name: 'admin',
         display_name: 'Admin',
-        description: 'Painel administrativo',
         order_index: 1,
         project_images: [
           { id: '1-1-1', image_url: '/projects/Skill Evals/Challenge arquivada.png', order_index: 1 },
@@ -537,7 +491,6 @@ const allProjects: Project[] = [
         id: '1-2',
         folder_name: 'challenges',
         display_name: 'Challenges',
-        description: 'Sistema de desafios',
         order_index: 2,
         project_images: [
           { id: '1-2-1', image_url: '/projects/Skill Evals/Challenge tela.png', order_index: 1 },
@@ -550,7 +503,6 @@ const allProjects: Project[] = [
         id: '1-3',
         folder_name: 'create',
         display_name: 'Create',
-        description: 'Criação de challenges',
         order_index: 3,
         project_images: [
           { id: '1-3-1', image_url: '/projects/Skill Evals/Tela 1 criar challenge.png', order_index: 1 },
@@ -561,7 +513,6 @@ const allProjects: Project[] = [
         id: '1-4',
         folder_name: 'dashboard',
         display_name: 'Dashboard',
-        description: 'Dashboard principal',
         order_index: 4,
         project_images: [
           { id: '1-4-1', image_url: '/projects/Skill Evals/Dashboard principal.png', order_index: 1 }
@@ -571,7 +522,6 @@ const allProjects: Project[] = [
         id: '1-5',
         folder_name: 'login',
         display_name: 'Login',
-        description: 'Perfil e autenticação',
         order_index: 5,
         project_images: [
           { id: '1-5-1', image_url: '/projects/Skill Evals/Meu perfil alterando.png', order_index: 1 },
@@ -582,7 +532,6 @@ const allProjects: Project[] = [
         id: '1-6',
         folder_name: 'others',
         display_name: 'Others',
-        description: 'Outras funcionalidades',
         order_index: 6,
         project_images: [
           { id: '1-6-1', image_url: '/projects/Skill Evals/Code.png', order_index: 1 },
@@ -604,8 +553,6 @@ const allProjects: Project[] = [
     id: '4',
     title: 'GreenLoop',
     role: 'Collaborator',
-    description: 'Plataforma Web3 que transforma entregas de materiais recicláveis em tokens on-chain, incentivando sustentabilidade através de incentivos econômicos. 4º lugar no ETH Latam 2025.',
-    long_description: 'GreenLoop é uma plataforma criada durante o ETH Latam 2025 que registra recicláveis entregues em pontos de coleta e converte essas entregas em tokens on-chain, usando tecnologia da rede Base. O projeto conquistou o 4º lugar no hackathon. Participei da parte de backend com Node.js e integração com contratos inteligentes, garantindo rastreabilidade e transparência no registro das entregas. A solução combina impacto social com tecnologia blockchain para incentivar práticas sustentáveis.',
     stack: ['Node.js', 'Solidity', 'Base', 'Smart Contracts', 'TypeScript', 'Web3', 'ERC-20', 'TailwindCSS'],
     thumbnail_url: '/projects/greenloop/GreenLoop - Dashboard.png',
     icon_name: 'Leaf',
@@ -650,7 +597,6 @@ const allProjects: Project[] = [
         id: '4-1',
         folder_name: 'dashboard',
         display_name: 'Dashboard',
-        description: 'Interface principal do GreenLoop',
         order_index: 1,
         project_images: [
           {
@@ -664,7 +610,6 @@ const allProjects: Project[] = [
         id: '4-2',
         folder_name: 'blockchain',
         display_name: 'Blockchain',
-        description: 'Integração com blockchain e tokens',
         order_index: 2,
         project_images: [
           {
@@ -693,8 +638,6 @@ const allProjects: Project[] = [
     id: '5',
     title: 'TalentDAO',
     role: 'Collaborator',
-    description: 'Marketplace Web3 onde empresas criam jobs, pagam em USDC e geram NFTs como credenciais de trabalho concluído. Sistema de escrow em smart contracts.',
-    long_description: 'TalentDAO (também conhecido como DevConnect/MintWork) é um marketplace Web3 que conecta empresas e talentos de forma descentralizada. Os jobs são armazenados em smart contracts como structs, com um contrato de marketplace que atua como escrow em USDC. Quando o trabalho é aprovado, um contrato ERC-721 emite uma NFT como credencial permanente do job realizado. Participei da arquitetura dos contratos, fluxo de estados (aplicação, execução, revisão, conclusão), e integração do frontend com a blockchain usando Wagmi/Viem.',
     stack: ['Solidity', 'ERC-721', 'USDC', 'Scroll', 'Next.js', 'React', 'TypeScript', 'Wagmi', 'Viem', 'Smart Contracts', 'TailwindCSS'],
     thumbnail_url: '/projects/mintwork/Dashboard - mintwork.png',
     icon_name: 'Briefcase',
@@ -740,7 +683,6 @@ const allProjects: Project[] = [
         id: '5-1',
         folder_name: 'dashboard',
         display_name: 'Dashboard',
-        description: 'Interface principal e listagem de jobs',
         order_index: 1,
         project_images: [
           {
@@ -759,7 +701,6 @@ const allProjects: Project[] = [
         id: '5-2',
         folder_name: 'jobs',
         display_name: 'Jobs',
-        description: 'Criação e gerenciamento de jobs',
         order_index: 2,
         project_images: [
           {
@@ -783,7 +724,6 @@ const allProjects: Project[] = [
         id: '5-3',
         folder_name: 'nfts',
         display_name: 'NFTs & Credentials',
-        description: 'Sistema de NFTs e certificados',
         order_index: 3,
         project_images: [
           {
@@ -812,7 +752,6 @@ const allProjects: Project[] = [
         id: '5-4',
         folder_name: 'blockchain',
         display_name: 'Blockchain',
-        description: 'Integração com blockchain',
         order_index: 4,
         project_images: [
           {
@@ -854,8 +793,6 @@ const allProjects: Project[] = [
     id: '6',
     title: 'Review Requests',
     role: 'Collaborator',
-    description: 'Sistema interno de revisões de tarefas da DevFellowship, similar a Pull Requests, com ciclos de revisão, rejeições, reavaliações e histórico completo.',
-    long_description: 'Review Requests é um sistema interno desenvolvido para a DevFellowship que permite criar, revisar e avaliar tarefas de forma estruturada. Inspirado no sistema de Pull Requests do GitHub, possui ciclos de revisão completos: submissão, análise, aprovação/rejeição, reavaliação e histórico detalhado. Implementado com Supabase (RLS e RPCs), SQL avançado para queries complexas e frontend em Next.js com foco em UX intuitiva. O sistema permite que mentores revisem trabalhos de fellows de forma organizada, com comentários, notas e feedback estruturado.',
     stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'RLS', 'SQL', 'Module Federation', 'TailwindCSS'],
     thumbnail_url: '/projects/reviewrequests/Reviews  - dashboard.png',
     icon_name: 'FileText',
@@ -893,7 +830,6 @@ const allProjects: Project[] = [
         id: '6-1',
         folder_name: 'dashboard',
         display_name: 'Dashboard',
-        description: 'Dashboard principal de revisões',
         order_index: 1,
         project_images: [
           {
@@ -907,7 +843,6 @@ const allProjects: Project[] = [
         id: '6-2',
         folder_name: 'create',
         display_name: 'Criar Review',
-        description: 'Criação de review request',
         order_index: 2,
         project_images: [
           {
@@ -921,7 +856,6 @@ const allProjects: Project[] = [
         id: '6-3',
         folder_name: 'view',
         display_name: 'Visualizar Review',
-        description: 'Visualização detalhada de review',
         order_index: 3,
         project_images: [
           {
@@ -935,7 +869,6 @@ const allProjects: Project[] = [
         id: '6-4',
         folder_name: 'autoavaliacao',
         display_name: 'Autoavaliação',
-        description: 'Sistema de autoavaliação',
         order_index: 4,
         project_images: [
           {
@@ -949,7 +882,6 @@ const allProjects: Project[] = [
         id: '6-5',
         folder_name: 'avaliacaoMentor',
         display_name: 'Avaliação do Mentor',
-        description: 'Avaliação realizada pelo mentor',
         order_index: 5,
         project_images: [
           {
@@ -963,7 +895,6 @@ const allProjects: Project[] = [
         id: '6-6',
         folder_name: 'reviewMentor',
         display_name: 'Review do Mentor',
-        description: 'Review completa do mentor',
         order_index: 6,
         project_images: [
           {
@@ -977,7 +908,6 @@ const allProjects: Project[] = [
         id: '6-7',
         folder_name: 'reprovacaoReview',
         display_name: 'Reprovação da Review',
-        description: 'Processo de reprovação de review',
         order_index: 7,
         project_images: [
           {
@@ -991,7 +921,6 @@ const allProjects: Project[] = [
         id: '6-8',
         folder_name: 'comments',
         display_name: 'Comentários',
-        description: 'Sistema de comentários nas reviews',
         order_index: 8,
         project_images: [
           {
@@ -1005,7 +934,6 @@ const allProjects: Project[] = [
         id: '6-9',
         folder_name: 'templates',
         display_name: 'Templates',
-        description: 'Templates de reviews',
         order_index: 9,
         project_images: [
           {
@@ -1032,8 +960,6 @@ const allProjects: Project[] = [
     id: '7',
     title: 'DFL Learn',
     role: 'Creator',
-    description: 'Super-app da DevFellowship e host do ecossistema Module Federation. Centraliza projetos, tarefas em Kanban, pagamentos, reuniões, cursos LMS, CMDB e AI Chat numa única plataforma.',
-    long_description: 'DFL Learn é a plataforma operacional completa da DevFellowship — host do ecossistema de micro-frontends via Module Federation. O dashboard principal exibe um Kanban board com tasks organizadas por status (To Do, In Progress, Dev Completed, Done), filtros por projeto, epic e entrega, e métricas em tempo real. A barra lateral navega entre módulos: Dashboard, Projects, Tasks, Skills, Business Units, Design Templates, Epics, Deliveries, Meetings, Reviews (micro-frontend), Payments (micro-frontend), Diagrams, Members e Plans. Arquitetado com múltiplos schemas Supabase (lms, work, event_management, public), edge functions para automações e HookChat — assistente de IA via Claude API.',
     stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'TanStack Query', 'Module Federation', 'TailwindCSS', 'Stripe', 'n8n', 'PostgreSQL', 'Claude API', 'Framer Motion', 'Playwright'],
     thumbnail_url: '/projects/dfllearn/Dashboard.png',
     icon_name: 'Layout',
@@ -1078,7 +1004,6 @@ const allProjects: Project[] = [
         id: '7-1',
         folder_name: 'dashboard',
         display_name: 'Dashboard',
-        description: 'Kanban board com tasks por status, filtros por projeto/epic/entrega e métricas em tempo real',
         order_index: 1,
         project_images: [
           { id: '7-1-1', image_url: '/projects/dfllearn/Dashboard.png', order_index: 1 }
@@ -1093,8 +1018,6 @@ const allProjects: Project[] = [
     id: '8',
     title: 'DFL Payments',
     role: 'Creator',
-    description: 'Pipeline de receita da DevFellowship, do contrato à nota fiscal: gera o documento, coleta assinatura eletrônica na Autentique, agenda a cobrança recorrente, emite o Pix pela Woovi e a NFS-e pela Spedy — com régua de cobrança, conciliação e um cron dispatcher por cima. Software de produção movimentando dinheiro real.',
-    long_description: 'DFL Payments nasceu como um micro-frontend remote de invoices no ecossistema Module Federation e cresceu até virar a esteira de receita inteira da DevFellowship. O fluxo original continua lá: o fellow seleciona o mês de referência e a organização responsável, o sistema lista as "available deliveries" — entregas cujas tasks estão todas em `dev_completed` — e calcula pontos × taxa (ex: R$ 75,00/pt) pra fechar o valor da invoice automaticamente. Em cima disso foi construído o pipeline B2B. Um contrato define valor, modo de cobrança e recorrência; a partir dele o sistema gera o documento a partir de template, envia pra assinatura eletrônica na Autentique e, quando o webhook de assinatura volta, ativa o contrato e materializa o cronograma de parcelas. Um cron dispatcher acorda cada parcela na data certa e a conduz pelo kanban de status — agendada, aguardando NF, disparada, aguardando Pix, paga, vencida ou cancelada. O Pix é gerado pela Woovi e a confirmação chega por webhook com verificação de assinatura HMAC no servidor (o provider migrou de RSA pra HMAC no meio do caminho e o gate teve que ser reescrito às pressas, com o webhook voltando 401 em produção). A nota fiscal de serviço é emitida automaticamente pela API da Spedy, com o status da NFS-e retornando por webhook e amarrado à cobrança que a originou. Fecham o ciclo uma régua de cobrança (dunning) para inadimplência, uma tela de conciliação entre o que foi cobrado e o que de fato caiu, aditivos contratuais que alteram apenas as parcelas futuras sem reescrever o passado, e um forecast de receita. A lógica sensível vive em TypeScript testado — serviços de cobrança, cronograma, recorrência e forecast têm testes unitários — em vez de procedures no banco, mantendo o banco fino e a autorização em RLS.',
     stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'TailwindCSS', 'Supabase', 'Supabase Edge Functions', 'PostgreSQL', 'RLS', 'Autentique', 'Woovi', 'Pix', 'Spedy', 'NFS-e', 'Webhooks', 'HMAC', 'Cron', 'Vitest'],
     thumbnail_url: '/projects/payments/New Invoice.png',
     icon_name: 'CreditCard',
@@ -1132,7 +1055,6 @@ const allProjects: Project[] = [
         id: '8-1',
         folder_name: 'invoice',
         display_name: 'New Invoice',
-        description: 'Geração de invoice: mês de referência, organização e seleção de deliveries com cálculo automático pontos × taxa',
         order_index: 1,
         project_images: [
           { id: '8-1-1', image_url: '/projects/payments/New Invoice.png', order_index: 1 }
@@ -1147,8 +1069,6 @@ const allProjects: Project[] = [
     id: '9',
     title: 'DFL-Bot Reviewer',
     role: 'Creator',
-    description: 'Bot de revisão automática de PRs integrado ao pipeline GitHub Actions. Roda build, testes, lint, typecheck e architecture checks — depois posta inline comments e summary diretamente na PR via Claude API.',
-    long_description: 'DFL-Bot Reviewer (DFL-Bot_Reviewer no GitHub) é o sistema de CI da DevFellowship. Cada PR dispara um job `review / ci` que executa: checkout do DFL CI core (composite action reutilizável), setup de Node, install, build, smoke tests com Vitest, verify docs, lint com geração de relatório, architecture checks e typecheck. Por último, dois steps exclusivos do bot: "Inline review (Files changed)" — que analisa o diff via Claude API e posta comentários inline nas linhas alteradas — e "Summary comment" — que consolida o resultado na PR. Exemplo real: "Review submitted: 3 new inline comment(s), 0 file-level item(s)". Compartilhado entre todos os repositórios do ecossistema DFL via DFL CI core.',
     stack: ['GitHub Actions', 'Claude API', 'Anthropic', 'Node.js', 'TypeScript', 'Vitest', 'ESLint', 'CI/CD', 'Composite Actions'],
     thumbnail_url: '/projects/cibot/GitHub Actions CI.png',
     icon_name: 'Bot',
@@ -1169,7 +1089,6 @@ const allProjects: Project[] = [
         id: '9-1',
         folder_name: 'pipeline',
         display_name: 'CI Pipeline',
-        description: 'Pipeline completo: build, testes, lint, architecture checks e DFL-Bot_Reviewer postando inline comments na PR',
         order_index: 1,
         project_images: [
           { id: '9-1-1', image_url: '/projects/cibot/GitHub Actions CI.png', order_index: 1 }
@@ -1184,8 +1103,6 @@ const allProjects: Project[] = [
     id: '10',
     title: 'AltPay',
     role: 'Creator',
-    description: 'Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. Venceu a trilha Chainlink do hackathon (Solana + Chainlink CRE/CCIP).',
-    long_description: 'AltPay (Uber Money) é uma plataforma de microcrédito para quem roda — motoristas de aplicativo. O motorista conecta a carteira, declara seu perfil num onboarding sem consulta a bureau ("você declara, a gente ajusta") e o sistema calcula um score próprio que decide aprovação, limite e juros. O crédito cai no Pix em segundos e as cobranças são geradas e acompanhadas via Woovi. A decisão de crédito roda on-chain: o score é decidido no DON via Chainlink CRE e escrito on-chain por CCIP, com o desembolso e o repagamento liquidados no programa Solana (Anchor). Atuei no front-end, backend (Supabase Edge Functions) e na integração on-chain (Solana + Chainlink).',
     stack: ['React', 'TypeScript', 'Vite', 'Solana', 'Anchor', 'Rust', 'Chainlink CRE', 'CCIP', 'Solidity', 'Foundry', 'Supabase Edge Functions', 'Woovi', 'Pix', 'Web3', 'TailwindCSS'],
     thumbnail_url: '/projects/altpay/Landing.png',
     icon_name: 'CreditCard',
@@ -1215,7 +1132,6 @@ const allProjects: Project[] = [
         id: '10-1',
         folder_name: 'landing',
         display_name: 'Landing',
-        description: 'Crédito na hora, pra quem roda — microcrédito para motoristas com score próprio e sem consulta a SPC',
         order_index: 1,
         project_images: [
           { id: '10-1-1', image_url: '/projects/altpay/Landing.png', order_index: 1 }
@@ -1225,7 +1141,6 @@ const allProjects: Project[] = [
         id: '10-2',
         folder_name: 'dashboard',
         display_name: 'Dashboard',
-        description: 'Painel do motorista: saldo disponível, solicitar crédito e acompanhar limite e score',
         order_index: 2,
         project_images: [
           { id: '10-2-1', image_url: '/projects/altpay/Dashboard.png', order_index: 1 }
@@ -1235,7 +1150,6 @@ const allProjects: Project[] = [
         id: '10-3',
         folder_name: 'score',
         display_name: 'Score Onboarding',
-        description: 'Onboarding sem bureau: o motorista declara o perfil e o sistema calcula o score próprio',
         order_index: 3,
         project_images: [
           { id: '10-3-1', image_url: '/projects/altpay/Onboarding Score.png', order_index: 1 }
@@ -1245,7 +1159,6 @@ const allProjects: Project[] = [
         id: '10-4',
         folder_name: 'cobrancas',
         display_name: 'Cobranças Pix',
-        description: 'Cobranças geradas e acompanhadas via Woovi: empréstimos com status pendente, pago e expirado',
         order_index: 4,
         project_images: [
           { id: '10-4-1', image_url: '/projects/altpay/Cobrancas Pix.png', order_index: 1 }
@@ -1263,8 +1176,6 @@ const allProjects: Project[] = [
     id: '13',
     title: 'CodeLibrary',
     role: 'Creator',
-    description: 'Protótipo da plataforma de cursos e trilhas da DevFellowship: landing e navegação de conteúdo técnico — videoaulas, materiais, desafios e trilhas — pensada para ser clara para iniciante e rápida para dev avançado. Não chegou a ser lançada.',
-    long_description: 'CodeLibrary foi o primeiro desenho da plataforma oficial de cursos, trilhas e conteúdos técnicos da DevFellowship. A proposta era centralizar o material da comunidade num ambiente direto: videoaulas, materiais de estudo, desafios e links úteis organizados por trilha, com uma interface que não intimidasse quem está começando nem atrasasse quem já é experiente. Construí a landing completa e a navegação de conteúdo em Next.js com React, TypeScript e TailwindCSS, cuidando de estrutura de rotas, componentização e responsividade. O projeto foi concebido como base para integrar depois com a Academy, o Skill Evals e o DevSharper. Ele não chegou a ser lançado oficialmente — ficou como protótipo — mas foi onde amadureci UI/UX, organização de conteúdo e arquitetura de frontend, e o ecossistema educacional da DevFellowship que veio depois herdou muito dessa estrutura.',
     stack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Vercel'],
     thumbnail_url: '/projects/Codelibrary/Hero.png',
     icon_name: 'Library',
@@ -1294,7 +1205,6 @@ const allProjects: Project[] = [
         id: '13-1',
         folder_name: 'hero',
         display_name: 'Hero',
-        description: 'Abertura da landing, com a proposta da plataforma e o caminho para as trilhas',
         order_index: 1,
         project_images: [
           { id: '13-1-1', image_url: '/projects/Codelibrary/Hero.png', order_index: 1 }
@@ -1304,7 +1214,6 @@ const allProjects: Project[] = [
         id: '13-2',
         folder_name: 'cursos',
         display_name: 'Cursos',
-        description: 'Catálogo de cursos e trilhas, organizado para ser varrido rápido',
         order_index: 2,
         project_images: [
           { id: '13-2-1', image_url: '/projects/Codelibrary/Courses.png', order_index: 1 },
@@ -1315,7 +1224,6 @@ const allProjects: Project[] = [
         id: '13-3',
         folder_name: 'metodologia',
         display_name: 'Metodologia',
-        description: 'Como a trilha conduz o aluno do zero ao projeto entregue',
         order_index: 3,
         project_images: [
           { id: '13-3-1', image_url: '/projects/Codelibrary/Methodologies.png', order_index: 1 }
@@ -1325,7 +1233,6 @@ const allProjects: Project[] = [
         id: '13-4',
         folder_name: 'planos',
         display_name: 'Planos',
-        description: 'Comparativo de planos e preços da plataforma',
         order_index: 4,
         project_images: [
           { id: '13-4-1', image_url: '/projects/Codelibrary/Plan and Prices.png', order_index: 1 }
@@ -1335,7 +1242,6 @@ const allProjects: Project[] = [
         id: '13-5',
         folder_name: 'comunidade',
         display_name: 'Comunidade',
-        description: 'Seção de comunidade e a página institucional da DevFellowship',
         order_index: 5,
         project_images: [
           { id: '13-5-1', image_url: '/projects/Codelibrary/Community.png', order_index: 1 },
@@ -1380,6 +1286,7 @@ const rank = (title: string) => {
 
 const metaFor = (title: string) => PROJECT_META.find(([t]) => t === title)?.[1] ?? {};
 
-export const mockProjects: Project[] = [...allProjects]
+/** Every project in display order, with its status and featured flag. */
+export const projectCatalog: ProjectSeed[] = [...seeds]
   .sort((a, b) => rank(a.title) - rank(b.title))
   .map((project) => ({ ...project, ...metaFor(project.title) }));

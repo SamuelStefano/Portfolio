@@ -103,10 +103,12 @@ export const Header = () => {
               <div className="relative photo-float">
                 <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.45)]">
                   <img
-                    src="/hero-photo.jpg"
+                    src="/hero-photo.card.webp"
+                    onError={(e) => { e.currentTarget.src = '/hero-photo.jpg'; }}
                     alt="Samuel Stefano"
                     width={720}
                     height={900}
+                    decoding="async"
                     className="aspect-[4/5] w-full object-cover"
                   />
                 </div>

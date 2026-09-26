@@ -3,11 +3,7 @@ import { useProjects } from '@/hooks/useProjects';
 
 export const CliProjects = () => {
   const { t } = useTranslation();
-  const { projects, loading } = useProjects();
-
-  if (loading) {
-    return <div className="text-sm text-[var(--cli-text-dim)]">$ loading projects<span className="cli-cursor" /></div>;
-  }
+  const { projects } = useProjects();
 
   return (
     <div className="grid gap-4">

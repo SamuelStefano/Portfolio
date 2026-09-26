@@ -1,48 +1,70 @@
-import i18n from 'i18next';
+import i18n, { type BackendModule, type ResourceKey } from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import { htmlLang, isLanguage, LANGUAGES, pickLanguage, type Language } from './language';
 
-import ptTranslations from '../locales/pt.json';
-import enTranslations from '../locales/en.json';
-import esTranslations from '../locales/es.json';
+const STORAGE_KEY = 'i18nextLng';
 
-const resources = {
-  pt: {
-    translation: ptTranslations
+// Each locale is its own chunk: a visitor downloads one language, not three.
+const loaders: Record<Language, () => Promise<{ default: ResourceKey }>> = {
+  pt: () => import('../locales/pt.json'),
+  en: () => import('../locales/en.json'),
+  es: () => import('../locales/es.json'),
+};
+
+const lazyLocales: BackendModule = {
+  type: 'backend',
+  init: () => {},
+  read: (language, _namespace, callback) => {
+    if (!isLanguage(language)) {
+      callback(new Error(`Unsupported language: ${language}`), false);
+      return;
+    }
+    loaders[language]().then(
+      (module) => callback(null, module.default),
+      (error: Error) => callback(error, false),
+    );
   },
-  en: {
-    translation: enTranslations
-  },
-  es: {
-    translation: esTranslations
+};
+
+const readStored = () => {
+  try {
+    return localStorage.getItem(STORAGE_KEY);
+  } catch {
+    return null;
   }
 };
 
+const initial = pickLanguage(readStored(), navigator.languages?.length ? navigator.languages : [navigator.language]);
+
+document.documentElement.lang = htmlLang(initial);
+
 i18n
-  .use(LanguageDetector)
+  .use(lazyLocales)
   .use(initReactI18next)
   .init({
-    resources,
-    fallbackLng: 'pt',
-    debug: false,
+    lng: initial,
+    // falling back to the language already loaded costs no extra download
+    fallbackLng: initial,
+    supportedLngs: LANGUAGES,
+    load: 'languageOnly',
+    interpolation: { escapeValue: false },
+    react: { useSuspense: true },
+  })
+  .then(() => {
+    // only an explicit switch is remembered; first visits keep following the browser
+    i18n.on('languageChanged', (language) => {
+      document.documentElement.lang = htmlLang(language);
+      try {
+        localStorage.setItem(STORAGE_KEY, language);
+      } catch {
+        /* private mode */
+      }
+    });
 
-    detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
-      caches: ['localStorage']
-    },
-
-    interpolation: {
-      escapeValue: false
-    }
+    // warm the other languages once the page is idle so switching never waits on the network
+    const warm = () => void i18n.loadLanguages(LANGUAGES.filter((language) => language !== initial));
+    if ('requestIdleCallback' in window) window.requestIdleCallback(warm, { timeout: 5000 });
+    else setTimeout(warm, 3000);
   });
 
-document.documentElement.lang = i18n.language;
-
-i18n.on('languageChanged', (lng) => {
-  document.documentElement.lang = lng;
-});
-
 export default i18n;
-
-
-

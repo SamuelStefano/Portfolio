@@ -61,13 +61,22 @@ for (const file of await walk(ROOT)) {
   const { width } = await sharp(buffer).metadata();
   if (!width || width <= cap) continue;
   await writeFile(file, await encodeAtWidth(buffer, cap, path.extname(file).toLowerCase()));
-  console.log(`redimensionado ${width} -> ${cap}  ${rel}`);
+  console.log(`downscaled ${width} -> ${cap}  ${rel}`);
   downscaled++;
 }
 
-// Variantes pequenas: a tira de miniaturas renderiza a 64x48 e os cards a ~380px.
+// Small variants: the thumbnail strip renders at ~64px and cards/photos at <= 800px, so
+// they point at these instead of decoding the full-size originals.
+const VARIANT_DIRS = ['projects', 'podium', 'dfl'];
+const VARIANT_FILES = ['hero-photo.jpg', 'about-photo.jpg'];
+
+const variantSources = [
+  ...(await Promise.all(VARIANT_DIRS.map((dir) => walk(path.join(ROOT, dir))))).flat(),
+  ...VARIANT_FILES.map((file) => path.join(ROOT, file)),
+];
+
 let variants = 0;
-for (const file of await walk(path.join(ROOT, 'projects'))) {
+for (const file of variantSources) {
   const buffer = await readFile(file);
   for (const [suffix, width, quality] of [['thumb', 192, 74], ['card', 800, 80]]) {
     const dest = file.replace(/\.(png|jpe?g|webp)$/i, `.${suffix}.webp`);
@@ -80,4 +89,4 @@ for (const file of await walk(path.join(ROOT, 'projects'))) {
   }
 }
 
-console.log(`\n${downscaled} originais redimensionados | ${variants} variantes geradas`);
+console.log(`\n${downscaled} originals downscaled | ${variants} variants generated`);

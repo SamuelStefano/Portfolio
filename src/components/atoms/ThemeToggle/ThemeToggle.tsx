@@ -1,41 +1,25 @@
 import { Moon, Sun } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/hooks/useTheme';
+import { cn } from '@/lib/utils';
+
+const ICON = 'absolute h-4 w-4 text-primary transition-all duration-200 ease-out';
 
 export const ThemeToggle = () => {
+  const { t } = useTranslation();
   const { theme, toggle } = useTheme();
+  const dark = theme === 'dark';
 
   return (
     <button
+      type="button"
       onClick={toggle}
-      aria-label={theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+      aria-label={dark ? t('controls.lightMode') : t('controls.darkMode')}
+      title={dark ? t('controls.lightMode') : t('controls.darkMode')}
       className="relative w-9 h-9 rounded-full flex items-center justify-center border border-border/60 bg-card/60 hover:bg-primary/10 hover:border-primary/40 transition-all duration-200"
     >
-      <AnimatePresence mode="wait" initial={false}>
-        {theme === 'dark' ? (
-          <motion.span
-            key="moon"
-            initial={{ opacity: 0, rotate: -30, scale: 0.7 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: 30, scale: 0.7 }}
-            transition={{ duration: 0.18 }}
-            className="absolute"
-          >
-            <Moon className="w-4 h-4 text-primary" />
-          </motion.span>
-        ) : (
-          <motion.span
-            key="sun"
-            initial={{ opacity: 0, rotate: 30, scale: 0.7 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: -30, scale: 0.7 }}
-            transition={{ duration: 0.18 }}
-            className="absolute"
-          >
-            <Sun className="w-4 h-4 text-primary" />
-          </motion.span>
-        )}
-      </AnimatePresence>
+      <Moon className={cn(ICON, dark ? 'rotate-0 scale-100 opacity-100' : '-rotate-45 scale-50 opacity-0')} />
+      <Sun className={cn(ICON, dark ? 'rotate-45 scale-50 opacity-0' : 'rotate-0 scale-100 opacity-100')} />
     </button>
   );
 };

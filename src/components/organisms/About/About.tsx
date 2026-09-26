@@ -14,15 +14,16 @@ import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalenda
 import { ContributionHeatmap } from '@/components/molecules/ContributionHeatmap/ContributionHeatmap';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { TECH_CATEGORIES } from '@/consts/data';
+import { cardSrc } from '@/lib/utils';
 
 const TECH_COUNT = Math.floor(TECH_CATEGORIES.reduce((sum, c) => sum + c.skills.length, 0) / 5) * 5;
 
+// The DevFellowship photos already appear in the block below, so the journey gallery keeps
+// to the hackathon stage.
 const JOURNEY_PHOTOS = [
-  { src: '/podium/hackanation-1.jpg', captionKey: 'about.gallery.podium1' },
-  { src: '/podium/hackanation-2.jpg', captionKey: 'about.gallery.podium2' },
-  { src: '/dfl/dfl-1.jpg', captionKey: 'about.gallery.dfl' },
-  { src: '/dfl/dfl-2.jpg', captionKey: 'about.gallery.dfl' },
-  { src: '/dfl/dfl-3.jpg', captionKey: 'about.gallery.dfl' },
+  { src: '/podium/hackanation-1.jpg', captionKey: 'about.gallery.podium1', position: 'center' },
+  { src: '/podium/hackanation-2.jpg', captionKey: 'about.gallery.podium2', position: 'center' },
+  { src: '/podium/tokennation-selfie.jpg', captionKey: 'about.gallery.selfie', position: 'center 30%' },
 ];
 
 const getHighlights = (t: TFunction) => [
@@ -115,7 +116,8 @@ export const About = () => {
                   {t('about.greeting')}
                 </Heading>
                 <img
-                  src="/about-photo.jpg"
+                  src="/about-photo.card.webp"
+                  onError={(e) => { e.currentTarget.src = '/about-photo.jpg'; }}
                   alt="Samuel Stefano"
                   className="rounded-full border-2 border-primary/30 object-cover w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 shadow-lg flex-shrink-0 hover-photo cursor-pointer"
                 />
@@ -262,7 +264,8 @@ export const About = () => {
               <figure className="animate-slide-left">
                 <div className="group overflow-hidden rounded-xl border border-primary/20">
                   <img
-                    src="/podium/educar-tokennation.jpg"
+                    src={cardSrc('/podium/educar-tokennation.jpg')}
+                    onError={(e) => { e.currentTarget.src = '/podium/educar-tokennation.jpg'; }}
                     alt={t('about.educar.caption')}
                     loading="lazy"
                     className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
@@ -275,7 +278,7 @@ export const About = () => {
 
           {/* Journey gallery */}
           <div className="mt-8 sm:mt-10 md:mt-12 w-full">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               {JOURNEY_PHOTOS.map((photo, i) => (
                 <figure
                   key={photo.src}
@@ -283,9 +286,12 @@ export const About = () => {
                   style={{ animationDelay: `${i * 0.08}s` }}
                 >
                   <img
-                    src={photo.src}
+                    src={cardSrc(photo.src)}
+                    onError={(e) => { e.currentTarget.src = photo.src; }}
                     alt={t(photo.captionKey)}
                     loading="lazy"
+                    decoding="async"
+                    style={{ objectPosition: photo.position }}
                     className="h-full w-full object-cover aspect-[4/3] transition-transform duration-500 group-hover:scale-110"
                   />
                   <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-3 py-2 text-[11px] sm:text-xs text-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -325,9 +331,11 @@ export const About = () => {
                     style={{ animationDelay: `${i * 0.1}s` }}
                   >
                     <img
-                      src={src}
-                      alt={`Samuel na DevFellowship ${i + 1}`}
+                      src={cardSrc(src)}
+                      onError={(e) => { e.currentTarget.src = src; }}
+                      alt={`Samuel Stefano, DevFellowship ${i + 1}`}
                       loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

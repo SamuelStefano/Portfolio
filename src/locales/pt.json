@@ -403,7 +403,8 @@
       "dfl": "DevFellowship",
       "podium1": "Pódio da trilha Chainlink · Hackanation 2026",
       "podium2": "Vencedores no palco do TokenNation",
-      "educar": "Alunos do Educar+ no evento"
+      "educar": "Alunos do Educar+ no evento",
+      "selfie": "No Hackanation 2026, em São Paulo"
     },
     "commitsLastYear": "Commits nos últimos 12 meses",
     "activity": {
@@ -594,7 +595,11 @@
     "colorScheme": "Esquema de cor",
     "cliMode": "Modo CLI",
     "visualMode": "Modo Visual",
-    "openToWork": "Aberto a propostas"
+    "openToWork": "Aberto a propostas",
+    "lightMode": "Ativar modo claro",
+    "darkMode": "Ativar modo escuro",
+    "backToTop": "Voltar ao topo",
+    "skipToContent": "Pular para o conteúdo"
   },
   "cli": {
     "role": "Cargo",
@@ -941,5 +946,10 @@
       "title": "Comunidade",
       "description": "Seção de comunidade e a página institucional da DevFellowship"
     }
+  },
+  "notFound": {
+    "title": "Essa página não existe.",
+    "description": "O link pode estar quebrado ou a página mudou de lugar.",
+    "back": "Voltar ao início"
   }
 }

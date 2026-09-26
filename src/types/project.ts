@@ -41,6 +41,9 @@ export interface ProjectSection {
   project_images: ProjectImage[];
 }
 
+/** Catalog entry without texts: descriptions and captions come from the locale files. */
+export type ProjectSectionSeed = Omit<ProjectSection, 'description'>;
+
 /** Where a project stands today; drives the badge on cards and the showcase. */
 export type ProjectStatus = 'production' | 'personal' | 'hackathon' | 'prototype';
 
@@ -211,4 +214,7 @@ export type LucideIconName =
   | 'Rabbit'
   | 'Turtle';
 
-
+/** Structure, links, stack and images of a project; `translateProjects` adds the texts. */
+export type ProjectSeed = Omit<Project, 'description' | 'long_description' | 'project_sections'> & {
+  project_sections?: ProjectSectionSeed[];
+};

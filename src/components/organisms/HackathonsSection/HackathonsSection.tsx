@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Trophy, Calendar, MapPin, Users, Github, Maximize2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { HACKATHONS, type Hackathon } from '@/consts/hackathons';
-import { AwardModal } from './AwardModal';
-import { cn } from '@/lib/utils';
+
+// Radix Dialog only loads when a visitor opens an award.
+const AwardModal = lazy(() => import('./AwardModal'));
+import { cardSrc, cn } from '@/lib/utils';
 
 /* Podium: 2nd on the left, 1st in the centre and tallest, 4th on the right. */
 const PODIUM: Record<Hackathon['place'], { order: string; step: string; accent: string; ring: string }> = {
@@ -19,6 +21,12 @@ export const HackathonsSection = () => {
   const { t } = useTranslation();
   const { containerRef } = useScrollAnimations();
   const [selected, setSelected] = useState<Hackathon | null>(null);
+  // stays mounted after the first open so the dialog can play its closing animation
+  const [modalMounted, setModalMounted] = useState(false);
+  const openAward = (hackathon: Hackathon) => {
+    setModalMounted(true);
+    setSelected(hackathon);
+  };
 
   const podium = [...HACKATHONS].sort((a, b) => a.place - b.place);
 
@@ -48,12 +56,13 @@ export const HackathonsSection = () => {
                     'group relative flex flex-col rounded-2xl border bg-card p-5 sm:p-6 hover-card cursor-pointer',
                     style.ring,
                   )}
-                  onClick={() => setSelected(hackathon)}
+                  onClick={() => openAward(hackathon)}
                 >
                   {hackathon.photo && (
                     <div className="relative -mx-5 -mt-5 sm:-mx-6 sm:-mt-6 mb-4 h-40 overflow-hidden rounded-t-2xl">
                       <img
-                        src={hackathon.photo}
+                        src={cardSrc(hackathon.photo)}
+                        onError={(e) => { if (hackathon.photo) e.currentTarget.src = hackathon.photo; }}
                         alt={`${hackathon.name} — ${hackathon.event}`}
                         loading="lazy"
                         className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
@@ -100,7 +109,7 @@ export const HackathonsSection = () => {
 
                   <div className="mt-auto flex flex-wrap gap-2">
                     <button
-                      onClick={(e) => { e.stopPropagation(); setSelected(hackathon); }}
+                      onClick={(e) => { e.stopPropagation(); openAward(hackathon); }}
                       className="inline-flex items-center gap-2 rounded-lg bg-primary px-3.5 py-2 text-sm font-medium text-primary-foreground transition-all duration-300 hover:bg-primary/90 group-hover:gap-3"
                     >
                       <Maximize2 className="h-4 w-4" />
@@ -143,11 +152,15 @@ export const HackathonsSection = () => {
         <Text className="mt-4 text-center text-xs text-muted-foreground/70">{t('hackathons.podiumHint')}</Text>
       </div>
 
-      <AwardModal
-        hackathon={selected}
-        open={selected !== null}
-        onOpenChange={(o) => !o && setSelected(null)}
-      />
+      {modalMounted && (
+        <Suspense fallback={null}>
+          <AwardModal
+            hackathon={selected}
+            open={selected !== null}
+            onOpenChange={(o) => !o && setSelected(null)}
+          />
+        </Suspense>
+      )}
     </section>
   );
 };
