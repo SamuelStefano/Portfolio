@@ -1,353 +1,79 @@
-import type { TFunction } from 'i18next';
-import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch, GitPullRequest } from 'lucide-react';
-import { CountUp } from '@/components/atoms/CountUp/CountUp';
+import { createElement } from 'react';
+import { MapPin, GraduationCap, Languages, GitPullRequest, GitBranch, Calendar } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Badge } from '@/components/atoms/badge/badge';
-import { Button } from '@/components/atoms/button/button';
-import { Card, CardContent } from '@/components/atoms/card/card';
-import { Icon } from '@/components/atoms/Icon/Icon';
-import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
+import { SectionHeader } from '@/components/molecules/SectionHeader/SectionHeader';
 import { useExperienceTime } from '@/hooks/useExperienceTime';
 import { useGitHubStats } from '@/hooks/useGitHubStats';
-import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalendar/AvailabilityCalendar';
-import { useScrollAnimations } from '@/hooks/useScrollAnimations';
-import { TECH_CATEGORIES } from '@/consts/data';
 
-const TECH_COUNT = Math.floor(TECH_CATEGORIES.reduce((sum, c) => sum + c.skills.length, 0) / 5) * 5;
-
-const getHighlights = (t: TFunction) => [
-  {
-    title: t('about.highlights.passion.title'),
-    description: t('about.highlights.passion.description')
-  },
-  {
-    title: t('about.highlights.teamwork.title'),
-    description: t('about.highlights.teamwork.description')
-  },
-  {
-    title: t('about.highlights.learning.title'),
-    description: t('about.highlights.learning.description')
-  },
-  {
-    title: t('about.highlights.evolution.title'),
-    description: t('about.highlights.evolution.description')
-  }
-];
+const PHOTOS = ['/dfl/dfl-1.jpg', '/dfl/dfl-2.jpg', '/dfl/dfl-3.jpg'];
 
 export const About = () => {
   const { t } = useTranslation();
   const experienceTime = useExperienceTime();
   const gitHubStats = useGitHubStats();
-  const { containerRef } = useScrollAnimations();
 
   const stats = [
-    {
-      label: t('about.professionalTime'),
-      value: experienceTime.formatted,
-      numericValue: null as number | null,
-      suffix: '',
-      icon: User
-    },
-    {
-      label: t('about.pullRequests'),
-      value: gitHubStats.isLoading ? '...' : `${gitHubStats.mergedPullRequests}+`,
-      numericValue: gitHubStats.isLoading ? null : gitHubStats.mergedPullRequests,
-      suffix: '+',
-      icon: GitPullRequest
-    },
-    {
-      label: t('about.projectsCreated'),
-      value: gitHubStats.isLoading ? '...' : `${gitHubStats.totalRepos}+`,
-      numericValue: gitHubStats.isLoading ? null : gitHubStats.totalRepos,
-      suffix: '+',
-      icon: GitBranch
-    },
-    {
-      label: t('about.technologies'),
-      value: `${TECH_COUNT}+`,
-      numericValue: TECH_COUNT,
-      suffix: '+',
-      icon: Globe
-    },
-    {
-      label: t('about.linesOfCode'),
-      value: gitHubStats.isLoading ? '...' : `${Math.round(gitHubStats.linesOfCode / 1000)}K+`,
-      numericValue: gitHubStats.isLoading ? null : Math.round(gitHubStats.linesOfCode / 1000),
-      suffix: 'K+',
-      icon: Code2
-    }
+    { icon: Calendar, value: experienceTime.formatted, label: t('about.professionalTime') },
+    { icon: GitPullRequest, value: gitHubStats.isLoading ? '…' : `${gitHubStats.mergedPullRequests}+`, label: t('about.pullRequests') },
+    { icon: GitBranch, value: gitHubStats.isLoading ? '…' : `${gitHubStats.totalRepos}+`, label: t('about.projectsCreated') },
+  ];
+
+  const facts = [
+    { icon: MapPin, text: t('about.location') },
+    { icon: GraduationCap, text: t('about.education') },
+    { icon: Languages, text: t('skills.languages') },
   ];
 
   return (
-    <section id="sobre" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 bg-muted/20" ref={containerRef}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 animate-fade-up">
-          <Heading level={2} className="mb-3 sm:mb-4 md:mb-6 gradient-text text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            {t('about.title')}
-          </Heading>
-          <Text variant="large" className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
-            {t('about.subtitle')}
-          </Text>
-        </div>
+    <section id="sobre" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-muted/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader title={t('about.title')} />
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-start xl:items-center">
-          <div className="space-y-6 sm:space-y-7 md:space-y-8">
-            <div>
-              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 md:gap-6 mb-4 sm:mb-5 md:mb-6 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600">
-                <Heading level={3} className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center sm:text-left leading-tight">
-                  {t('about.greeting')}
-                </Heading>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-16">
+          <div>
+            <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+              <Text className="text-base text-muted-foreground">{t('about.bio1')}</Text>
+              <Text className="text-base text-muted-foreground">{t('about.bio2')}</Text>
+            </div>
+
+            <ul className="mt-6 space-y-2.5">
+              {facts.map((fact) => (
+                <li key={fact.text} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                  {createElement(fact.icon, { className: 'mt-0.5 h-4 w-4 flex-shrink-0 text-primary' })}
+                  <span>{fact.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-6">
+            <div className="grid grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-3">
+              {stats.map((stat) => (
+                <div key={stat.label} className="rounded-xl border border-border bg-card p-4">
+                  {createElement(stat.icon, { className: 'mb-2 h-4 w-4 text-primary' })}
+                  <p className="text-base sm:text-xl font-bold text-foreground">{stat.value}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-3 gap-3">
+              {PHOTOS.map((src, i) => (
                 <img
-                  src="/imagem profissional.jpg"
-                  alt="Samuel Stefano"
-                  className="rounded-full border-2 border-primary/30 object-cover w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 shadow-lg flex-shrink-0 hover-photo cursor-pointer"
+                  key={src}
+                  src={src}
+                  alt={`Samuel Stefano na DevFellowship ${i + 1}`}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full rounded-lg border border-border object-cover"
                 />
-              </div>
-              <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl border border-primary/20 rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 hover:bg-primary/5 hover:border-primary/30 lg:hover-slide-scale transition-all duration-300">
-                <Text>
-                  {t('about.bio1')}
-                </Text>
-                <Text>
-                  {t('about.bio2')}
-                </Text>
-                <Text>
-                  {t('about.bio3')}
-                </Text>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 animate-slide-left mx-2 sm:mx-6">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Icon icon={MapPin} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">{t('about.location')}</Text>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Icon icon={Globe} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">{t('about.language')}</Text>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Icon icon={Clock} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">{t('about.schedule')}</Text>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Icon icon={Calendar} size="sm" className="text-primary" />
-                <Text variant="small" className="text-xs sm:text-sm">{experienceTime.formatted} {t('about.experience')}</Text>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-              {getHighlights(t).map((highlight, index) => (
-                <Card
-                  key={index}
-                  className="bg-card border border-border hover-card animate-scale-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-3 sm:p-4 md:p-5 lg:p-6">
-                    <Heading level={4} className="mb-2 sm:mb-3 from-purple-500 to-blue-700 bg-gradient-to-r bg-clip-text text-transparent text-sm sm:text-base md:text-lg font-semibold">
-                      {highlight.title}
-                    </Heading>
-                    <Text variant="small" className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
-                      {highlight.description}
-                    </Text>
-                  </CardContent>
-                </Card>
               ))}
             </div>
           </div>
-
-          <div className="space-y-4 sm:space-y-5 md:space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
-              {stats.map((stat, index) => (
-                  <Card
-                    key={index}
-                    className={`bg-card border border-border hover-card animate-fade-up ${
-                      index === stats.length - 1 && stats.length % 2 === 1 ? 'sm:col-span-2' : ''
-                    }`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <CardContent className="p-4 sm:p-5 md:p-6 text-center">
-                      <div className="mb-3 sm:mb-4 flex justify-center">
-                        <div className="p-2 sm:p-2.5 md:p-3 bg-primary/10 rounded-full">
-                          <Icon icon={stat.icon} className="text-primary w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                        </div>
-                      </div>
-                      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold gradient-text mb-1 sm:mb-2">
-                        {stat.numericValue !== null ? (
-                          <CountUp value={stat.numericValue} suffix={stat.suffix} />
-                        ) : (
-                          stat.value
-                        )}
-                      </div>
-                      <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base">
-                        {stat.label}
-                      </Text>
-                    </CardContent>
-                  </Card>
-                ))}
-            </div>
-            <Card className="bg-gradient-card border-border hover-card animate-slide-right">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Icon icon={GraduationCap} size="sm" className="text-primary" />
-                  </div>
-                  <Heading level={4}>
-                    {t('about.currentFocus')}
-                  </Heading>
-                </div>
-                <Text className="mb-4">
-                  {t('about.currentFocusDescription')}
-                </Text>
-                <div className="flex flex-wrap gap-2">
-                  {(t('about.focusAreas', { returnObjects: true }) as string[]).map((focus: string, index: number) => (
-                    <Badge
-                      key={index}
-                      className="px-3 py-1 bg-primary/10 hover:bg-primary/10 text-primary text-xs rounded-full font-normal"
-                    >
-                      {focus}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <div className="animate-fade-up">
-              <AvailabilityCalendar />
-            </div>
-            </div>
-          </div>
-          <div className="mt-16 w-full">
-            <div className="text-center mb-8">
-              <Heading level={3} className="mb-4 text-foreground">
-                {t('about.companiesAndProjectsTitle')}
-              </Heading>
-              <Text className="text-muted-foreground max-w-2xl mx-auto">
-                {t('about.companiesAndProjectsSubtitle')}
-              </Text>
-            </div>
-          </div>
-          <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 w-full">
-            <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 border border-primary/20 lg:hover-slide-scale transition-all duration-300">
-                <div className="mb-6 sm:mb-7 md:mb-8">
-                    <div className="relative">
-                      <img src="/DevFelloShip.png" alt="Devfellowship" className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 absolute left-0 top-0" />
-                      <div className="text-center pl-14 sm:pl-18 md:pl-22 lg:pl-26 xl:pl-32">
-                        <Heading level={3} className="mb-3 sm:mb-4 md:mb-5 from-primary to-accent bg-gradient-to-r bg-clip-text text-transparent text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-tight">
-                          {t('about.devfellowship.journeyTitle')}
-                        </Heading>
-                        <Text className="text-xs sm:text-sm md:text-base lg:text-lg max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto leading-relaxed">
-                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.intro')}</span>
-                    <span className="text-foreground font-semibold">{t('about.devfellowship.journeyDescriptionParts.startup')}</span>
-                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.middle1')}</span>
-                    <span className="text-foreground font-semibold">{t('about.devfellowship.journeyDescriptionParts.passion')}</span>
-                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.middle2')}</span>
-                    <span className="text-foreground font-semibold">{t('about.devfellowship.journeyDescriptionParts.professional')}</span>
-                    <span className="text-muted-foreground">{t('about.devfellowship.journeyDescriptionParts.end')}</span>
-                        </Text>
-                      </div>
-                    </div>
-                </div>
-              <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-7 md:mb-8">
-                {['/dfl/dfl-1.jpg', '/dfl/dfl-2.jpg', '/dfl/dfl-3.jpg'].map((src, i) => (
-                  <div
-                    key={src}
-                    className="group relative overflow-hidden rounded-lg sm:rounded-xl border border-primary/20 aspect-[4/3] animate-fade-up"
-                    style={{ animationDelay: `${i * 0.1}s` }}
-                  >
-                    <img
-                      src={src}
-                      alt={`Samuel na DevFellowship ${i + 1}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ))}
-              </div>
-              <div className="text-center mb-4 sm:mb-5 md:mb-6">
-                <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-2.5 md:py-3 border border-primary/20">
-                  <Text className="text-foreground font-semibold text-xs sm:text-sm md:text-base text-center">
-                    {t('about.devfellowship.companyDescription')}
-                  </Text>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-6 sm:mb-7 md:mb-8">
-                <div className="bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon icon={Heart} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.passion.title')}</Heading>
-                  </div>
-                  <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
-                    {t('about.devfellowship.cards.passion.description')}
-                  </Text>
-                </div>
-
-                <div className="bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-neon-cyan/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon icon={Globe} size="sm" className="text-neon-cyan w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.learning.title')}</Heading>
-                  </div>
-                  <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
-                    {t('about.devfellowship.cards.learning.description')}
-                  </Text>
-                </div>
-
-                <div className="bg-card/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-primary/10 hover:border-primary/30 transition-all duration-300 md:col-span-2 lg:col-span-1">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon icon={User} size="sm" className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <Heading level={5} className="text-foreground text-sm sm:text-base md:text-lg font-semibold">{t('about.devfellowship.cards.communityWelcoming.title')}</Heading>
-                  </div>
-                  <Text variant="small" className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
-                    {t('about.devfellowship.cards.communityWelcoming.description')}
-                  </Text>
-                </div>
-              </div>
-                <div className="text-center">
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="inline-flex items-center justify-center gap-2 h-auto rounded-lg px-6 py-3 text-base font-medium bg-primary/10 hover:bg-primary/20 border-primary/30 hover:border-primary/50 text-primary hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                    >
-                      <a
-                        href="https://devfellowship.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Icon icon={Globe} size="sm" />
-                        {t('about.devfellowship.learnMore')}
-                      </a>
-                    </Button>
-
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="inline-flex items-center justify-center gap-2 h-auto rounded-lg px-6 py-3 text-base font-medium bg-neon-purple/10 hover:bg-neon-purple/20 border-neon-purple/30 hover:border-neon-purple/50 text-neon-purple hover:text-neon-purple transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                    >
-                      <a
-                        href="https://apps.devfellowship.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Icon icon={Computer} size="sm" />
-                        {t('about.devfellowship.projects')}
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-            </div>
-          </div>
-
         </div>
-      </section>
+      </div>
+    </section>
   );
 };
 
 export default About;
-
-
-

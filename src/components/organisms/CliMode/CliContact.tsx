@@ -13,7 +13,7 @@ export const CliContact = () => {
 
   return (
     <div className="grid gap-2.5">
-      <p className="mb-1 text-[13.5px] text-[var(--cli-text-soft)]">{t('about.availability.description')}</p>
+      <p className="mb-1 text-[13.5px] text-[var(--cli-text-soft)]">{t('footer.description')}</p>
       {LINKS.map((l) => (
         <a
           key={l.label}

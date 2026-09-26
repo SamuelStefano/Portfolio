@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/atoms/button/button';
-import { Text } from '@/components/atoms/Text/Text';
 import { LanguageSelector } from '@/components/molecules/LanguageSelector/LanguageSelector';
 import { ColorSchemeSelector } from '@/components/molecules/ColorSchemeSelector/ColorSchemeSelector';
 import { SkinToggle } from '@/components/molecules/SkinToggle/SkinToggle';
@@ -10,12 +9,9 @@ import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
 import { useSkin } from '@/hooks/useSkin';
 
 const NAV_ITEMS = [
-  { labelKey: 'nav.home', href: '#inicio' },
-  { labelKey: 'nav.focus', href: '#foco' },
   { labelKey: 'nav.projects', href: '#projetos' },
-  { labelKey: 'nav.skills', href: '#habilidades' },
   { labelKey: 'nav.experience', href: '#experiencia' },
-  { labelKey: 'nav.companies', href: '#empresas' },
+  { labelKey: 'nav.skills', href: '#habilidades' },
   { labelKey: 'nav.hackathons', href: '#hackathons' },
   { labelKey: 'nav.about', href: '#sobre' },
   { labelKey: 'nav.contact', href: '#contato' },
@@ -26,10 +22,7 @@ const SECTION_IDS = NAV_ITEMS.map((item) => item.href.substring(1));
 const smoothScrollTo = (elementId: string) => {
   const element = document.querySelector(elementId);
   if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+    element.scrollIntoView({ block: 'start' });
   }
 };
 
@@ -53,17 +46,19 @@ export const Navigation = () => {
       setIsScrolled(scrollY > 50);
 
       const scrollPosition = scrollY + 100;
+      let current = '';
 
       for (const section of SECTION_IDS) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(`#${section}`);
+            current = `#${section}`;
             break;
           }
         }
       }
+      setActiveSection(current);
     };
 
     const handleScroll = () => {
@@ -170,50 +165,33 @@ export const Navigation = () => {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled
-        ? 'bg-background/95 backdrop-blur-md border-b border-border/50 shadow-lg'
-        : 'bg-transparent backdrop-blur-none border-b-0 shadow-none'
+    <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
+      isScrolled ? 'bg-background/90 backdrop-blur-md border-border/60' : 'bg-background/0 border-transparent'
     }`}>
-      <div className="relative flex items-center justify-between h-16 sm:h-18 md:h-20 px-4 sm:px-6 lg:px-8">
-          {/* LEFT: logo + SkinToggle */}
-          <div className="flex min-w-0 items-center gap-2 sm:gap-3 md:gap-4">
-            <div className="relative shrink-0">
-              <img
-                src="/EuGhibli.png"
-                alt="Samuel Stefano"
-                className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 shadow-lg"
-              />
-            </div>
-            <div className="flex min-w-0 flex-col">
-              <Text className={`font-bold whitespace-nowrap text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl transition-colors duration-300 leading-tight ${
-                isScrolled ? 'gradient-text' : 'text-white drop-shadow-lg'
-              }`}>
-                Samuel Stefano
-              </Text>
-              <Text className={`hidden sm:block whitespace-nowrap text-xs sm:text-sm md:text-base transition-colors duration-300 ${
-                isScrolled ? 'text-muted-foreground' : 'text-white/70'
-              }`}>
-                Full-Stack Developer
-              </Text>
-            </div>
-            <div className="hidden lg:flex ml-2">
-              <SkinToggle />
-            </div>
-          </div>
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 h-16 px-4 sm:px-6 lg:px-8">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0 })}
+            className="flex min-w-0 items-center gap-2.5"
+            aria-label="Samuel Stefano"
+          >
+            <img
+              src="/EuGhibli.png"
+              alt=""
+              className="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
+            />
+            <span className="whitespace-nowrap text-sm font-semibold text-foreground sm:text-base">Samuel Stefano</span>
+          </button>
 
-          {/* CENTER: nav links — absolutely centered at xl, static flex at lg */}
-          <div className="hidden lg:flex xl:absolute xl:left-1/2 xl:-translate-x-1/2 items-center space-x-1 xl:space-x-2">
+          <div className="hidden lg:flex items-center gap-1">
             {navigationItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className={`text-sm xl:text-base font-medium transition-colors duration-200 px-3 py-2 rounded-lg whitespace-nowrap ${
+                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150 whitespace-nowrap ${
                   activeSection === item.href
-                    ? 'text-primary bg-primary/10'
-                    : isScrolled
-                      ? 'text-muted-foreground hover:text-primary hover:bg-primary/5'
-                      : 'text-white/90 hover:text-white hover:bg-white/10'
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.label}
@@ -221,14 +199,13 @@ export const Navigation = () => {
             ))}
           </div>
 
-          {/* RIGHT: remaining controls (desktop) */}
           <div className="hidden lg:flex items-center gap-2">
+            <SkinToggle />
             <ColorSchemeSelector />
             <ThemeToggle />
             <LanguageSelector />
           </div>
 
-          {/* Mobile: controls + hamburger */}
           <div className="flex shrink-0 items-center gap-1 lg:hidden">
             <ThemeToggle />
             <Button
@@ -238,11 +215,7 @@ export const Navigation = () => {
               aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
               aria-expanded={isOpen}
               aria-controls="mobile-nav"
-              className={`transition-colors duration-200 p-2 ${
-                isScrolled
-                  ? 'text-muted-foreground hover:text-primary hover:bg-primary/5'
-                  : 'text-white/90 hover:text-white hover:bg-white/10'
-              }`}
+              className="p-2 text-muted-foreground hover:text-foreground"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
@@ -250,11 +223,7 @@ export const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div id="mobile-nav" className={`lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto transition-all duration-300 ${
-            isScrolled
-              ? 'border-t border-border/50 bg-background/98 backdrop-blur-md'
-              : 'border-t border-white/20 bg-background/95 backdrop-blur-md'
-          }`}>
+          <div id="mobile-nav" className="lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border/50 bg-background">
             <div className="px-4 py-4 space-y-1">
               {navigationItems.map((item) => (
                 <button
@@ -263,9 +232,7 @@ export const Navigation = () => {
                   className={`block w-full text-left px-4 py-2.5 text-base font-medium rounded-lg transition-colors duration-200 ${
                     activeSection === item.href
                       ? 'text-primary bg-primary/15 border border-primary/30'
-                      : isScrolled
-                        ? 'text-foreground hover:text-primary hover:bg-primary/5'
-                        : 'text-foreground hover:text-primary hover:bg-primary/10'
+                      : 'text-foreground hover:text-primary hover:bg-primary/5'
                   }`}
                 >
                   {item.label}

@@ -1,91 +1,43 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ProjectCard } from '@/components/molecules/ProjectCard/ProjectCard';
-import { ProjectCardSkeleton } from '@/components/molecules/ProjectCardSkeleton/ProjectCardSkeleton';
+import { SectionHeader } from '@/components/molecules/SectionHeader/SectionHeader';
 import { ProjectOverlay } from '@/components/organisms/ProjectOverlay/ProjectOverlay';
-import { Heading } from '@/components/atoms/Heading/Heading';
-import { ProgressiveLoader } from '@/components/atoms/ProgressiveLoader/ProgressiveLoader';
 import { Project } from '@/types/project';
 import { useProjects } from '@/hooks/useProjects';
-import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
+
+const INITIAL_COUNT = 6;
 
 export const ProjectGrid = () => {
   const { t } = useTranslation();
-  const { projects, loading, error } = useProjects();
+  const { projects } = useProjects();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-  const [showAllMobile, setShowAllMobile] = useState(false);
-  const { isPhaseLoaded, getPhaseDelay } = useProgressiveLoading();
+  const [showAll, setShowAll] = useState(false);
 
-  if (loading) {
-    return (
-      <section className="py-20 px-6 bg-muted/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <Heading level={2} className="mb-4 gradient-text">
-              {t('projects.exploreAll')}
-            </Heading>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <ProjectCardSkeleton key={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className="py-20 px-6 bg-muted/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <Text variant="large" className="text-destructive">{t('projects.hint')}: {error}</Text>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const visible = showAll ? projects : projects.slice(0, INITIAL_COUNT);
 
   return (
-    <section className="py-20 px-6 bg-muted/20">
-      <ProgressiveLoader 
-        isVisible={isPhaseLoaded('projects')} 
-        phase="projects" 
-        delay={getPhaseDelay('projects')}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <Heading level={2} className="mb-4 gradient-text">
-              {t('projects.exploreAll')}
-            </Heading>
-          </div>
+    <section id="projetos" className="scroll-mt-20 py-16 sm:py-20 lg:py-24 bg-muted/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader title={t('projects.title')} subtitle={t('projects.subtitle')} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`h-full [&>*]:h-full ${index > 0 && !showAllMobile ? 'hidden md:block' : ''}`}
-            >
-              <ProjectCard
-                project={project}
-                onProjectClick={setSelectedProject}
-                isHovered={hoveredProject === project.id}
-              />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visible.map((project) => (
+            <ProjectCard key={project.id} project={project} onProjectClick={setSelectedProject} />
           ))}
         </div>
 
-        {!showAllMobile && projects.length > 1 && (
-          <div className="mt-10 flex justify-center md:hidden">
+        {projects.length > INITIAL_COUNT && (
+          <div className="mt-10 flex justify-center">
             <button
-              onClick={() => setShowAllMobile(true)}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
             >
-              {t('projects.showMore')}
-              <ChevronDown className="h-4 w-4" />
+              {showAll ? t('projects.showLess') : `${t('projects.showMore')} (${projects.length})`}
+              {showAll ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
             </button>
           </div>
         )}
@@ -95,12 +47,9 @@ export const ProjectGrid = () => {
           isOpen={!!selectedProject}
           onClose={() => setSelectedProject(null)}
         />
-        </div>
-      </ProgressiveLoader>
+      </div>
     </section>
   );
 };
 
 export default ProjectGrid;
-
-

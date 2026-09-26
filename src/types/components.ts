@@ -37,11 +37,6 @@ export interface SocialLinkProps {
   label: string;
 }
 
-export interface SkillBarProps {
-  name: string;
-  level: number;
-}
-
 export interface ProjectCardProps {
   project: Project;
   onClick: () => void;
@@ -67,16 +62,6 @@ export interface ExperienceItemProps {
   logo: string;
   icon: LucideIcon;
   website?: string | null;
-}
-
-export interface StatsCounterProps {
-  stats: StatItem[];
-}
-
-export interface StatItem {
-  label: string;
-  value: string;
-  icon: LucideIcon;
 }
 
 export interface TechCategory {

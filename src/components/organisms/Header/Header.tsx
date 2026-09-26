@@ -1,102 +1,113 @@
-import { MapPin, GraduationCap } from 'lucide-react';
+import { MapPin, GraduationCap, ArrowRight, FileText, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SocialLink } from '@/components/molecules/SocialLink/SocialLink';
 import { SOCIAL_LINKS } from '@/consts/components';
 import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
-import { ProgressiveLoader } from '@/components/atoms/ProgressiveLoader/ProgressiveLoader';
-import { HeroDots } from '@/components/atoms/HeroDots/HeroDots';
-import { SecondBrain } from '@/components/organisms/SecondBrain/SecondBrain';
-import { useScrollAnimations } from '@/hooks/useScrollAnimations';
-import { useProgressiveLoading } from '@/hooks/useProgressiveLoading';
+
+const HERO_STACK = ['React', 'TypeScript', 'Node.js', 'Supabase', 'PostgreSQL', 'Claude API', 'MCP', 'Solidity'];
+
+const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ block: 'start' });
 
 export const Header = () => {
   const { t } = useTranslation();
-  const { containerRef } = useScrollAnimations();
-  const { isPhaseLoaded, getPhaseDelay } = useProgressiveLoading();
 
   return (
     <>
       <Navigation />
-      <header
-        id="inicio"
-        ref={containerRef}
-        className="relative w-full min-h-screen flex items-center bg-background overflow-hidden pt-16"
-      >
-        <HeroDots />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5" />
+      <header id="inicio" className="relative w-full bg-background pt-24 pb-16 lg:pt-32 lg:pb-24">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/[0.06] to-transparent" />
 
-        <ProgressiveLoader
-          isVisible={isPhaseLoaded('header')}
-          phase="header"
-          delay={getPhaseDelay('header')}
-        >
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 lg:py-24">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-              {/* ── Left: text ── */}
-              <div className="order-2 lg:order-1 animate-fade-up">
-                <div className="flex flex-wrap items-center gap-2 mb-6">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                    DevFellowship · Full-Stack
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs">
-                    <MapPin className="w-3 h-3" />
-                    Marialva, PR
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-muted-foreground text-xs">
-                    <GraduationCap className="w-3 h-3" />
-                    ADS · UNINGÁ
-                  </span>
-                </div>
-
-                <Heading level={1} className="mb-3 font-inter text-4xl sm:text-5xl xl:text-6xl leading-tight">
-                  <span className="gradient-text">{t('hero.greeting')}</span>
-                </Heading>
-
-                <Text variant="large" className="font-semibold tracking-wide text-xl sm:text-2xl text-primary mb-4">
-                  {t('hero.role')}
-                </Text>
-
-                <Text className="text-muted-foreground text-sm sm:text-base mb-6 max-w-lg leading-relaxed">
-                  {t('hero.bio')}
-                  {' '}
-                  {t('hero.bioContinue')}
-                </Text>
-
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {SOCIAL_LINKS.map((link, i) => (
-                    <SocialLink key={i} icon={link.icon} href={link.href} label={t(link.labelKey)} />
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
-                  {['React', 'Next.js', 'TypeScript', 'Node.js', 'Solidity', 'Solana', 'Rust', 'Anchor', 'Chainlink', 'Module Federation', 'Supabase', 'PostgreSQL', 'Claude API', 'n8n', 'Docker', 'Tailwind', 'Web3', 'Vite'].map(tech => (
-                    <span key={tech} className="px-2.5 py-1 rounded-md border border-border bg-card font-mono hover:border-primary/50 hover:text-primary transition-colors duration-200 cursor-default">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
+            <div>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 font-medium text-green-500">
+                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                  {t('controls.openToWork')}
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5" />
+                  Marialva, PR · Brasil
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <GraduationCap className="h-3.5 w-3.5" />
+                  ADS · UNINGÁ
+                </span>
               </div>
 
-              {/* ── Right: second brain ── */}
-              <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in">
-                <div className="relative">
-                  <SecondBrain />
-                  {/* "Open to work" badge */}
-                  <div className="relative z-[5] mx-auto mt-5 flex w-fit items-center gap-1.5 bg-card border border-green-500/30 rounded-full px-3 py-1.5 shadow-lg sm:absolute sm:-bottom-2 sm:left-1/2 sm:mt-0 sm:w-auto sm:-translate-x-1/2">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-xs text-green-400 font-medium whitespace-nowrap">{t('controls.openToWork')}</span>
-                  </div>
-                </div>
+              <Heading level={1} className="mb-3 text-4xl sm:text-5xl xl:text-6xl tracking-tight text-foreground">
+                {t('hero.greeting')}
+              </Heading>
+
+              <Text className="mb-6 text-xl sm:text-2xl font-semibold text-primary">
+                {t('hero.role')}
+              </Text>
+
+              <Text className="mb-3 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
+                {t('hero.bio')}
+              </Text>
+              <Text className="mb-8 max-w-2xl text-sm sm:text-base leading-relaxed text-muted-foreground">
+                {t('hero.bioContinue')}
+              </Text>
+
+              <div className="mb-8 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => scrollTo('projetos')}
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  {t('hero.ctaProjects')}
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+                <a
+                  href="/curriculo.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                >
+                  <FileText className="h-4 w-4" />
+                  {t('hero.ctaResume')}
+                </a>
+                <button
+                  type="button"
+                  onClick={() => scrollTo('contato')}
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                >
+                  <Mail className="h-4 w-4" />
+                  {t('hero.ctaContact')}
+                </button>
               </div>
 
+              <div className="mb-8 flex flex-wrap gap-2">
+                {SOCIAL_LINKS.slice(0, 2).map((link) => (
+                  <SocialLink key={link.href} icon={link.icon} href={link.href} label={t(link.labelKey)} size="sm" />
+                ))}
+              </div>
+
+              <ul className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+                {HERO_STACK.map((tech) => (
+                  <li key={tech} className="rounded-md border border-border bg-card px-2.5 py-1 font-mono">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
+              <div className="overflow-hidden rounded-2xl border border-border bg-[#0b0b0b] shadow-xl">
+                <img
+                  src="/imagem profissional.jpg"
+                  alt="Samuel Stefano"
+                  width={900}
+                  height={1167}
+                  className="aspect-[4/5] w-full object-cover object-top"
+                />
+              </div>
             </div>
           </div>
-        </ProgressiveLoader>
-
+        </div>
       </header>
     </>
   );

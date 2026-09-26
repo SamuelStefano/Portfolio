@@ -22,7 +22,7 @@ export const SocialLink = ({
       variant={variant}
       size={size}
       asChild
-      className="hover-glow border-border bg-card/50 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+      className="border-border bg-card hover:border-primary/50 hover:bg-card hover:text-primary transition-colors"
     >
       <a
         href={href}
@@ -30,7 +30,7 @@ export const SocialLink = ({
         rel="noopener noreferrer"
         aria-label={label}
       >
-        <Icon icon={icon} className="mr-2 group-hover:scale-110 transition-transform" />
+        <Icon icon={icon} className="mr-2" />
         {label}
       </a>
     </Button>

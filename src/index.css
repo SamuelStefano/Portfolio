@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
 @layer base {
   :root {
     --background: 222.2 84% 4.9%;
@@ -155,33 +151,6 @@ html {
   }
 }
 
-/* animated gradient text (shine) */
-@keyframes gradient-shine {
-  to { background-position: 200% center; }
-}
-
-.gradient-text {
-  @apply bg-gradient-to-r from-primary via-neon-purple to-neon-cyan bg-clip-text text-transparent;
-  background-size: 200% auto;
-  animation: gradient-shine 6s linear infinite;
-}
-
-/* ── Second brain ── */
-@keyframes brain-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-@keyframes brain-flow { to { stroke-dashoffset: -34; } }
-.brain-ring {
-  background: conic-gradient(from 0deg,
-    hsl(var(--neon-blue)), hsl(var(--neon-purple)),
-    hsl(var(--neon-cyan)), hsl(var(--neon-blue)));
-  animation: brain-spin 9s linear infinite;
-}
-.brain-orbit { animation: brain-spin 40s linear infinite; }
-.brain-orbit.reverse { animation: brain-spin 60s linear infinite reverse; }
-.brain-link  { stroke: rgba(var(--net), .45); stroke-width: 1.4; fill: none; }
-.brain-flow  { stroke: hsl(var(--neon-blue)); stroke-width: 2; fill: none;
-  stroke-dasharray: 3 14; animation: brain-flow 1.6s linear infinite;
-  filter: drop-shadow(0 0 4px hsl(var(--neon-blue))); }
-
 /* ── CLI skin ── */
 @keyframes cli-blink { 50% { opacity: 0; } }
 .cli-cursor { display: inline-block; width: 9px; height: 1.05em; background: var(--cli-green, #3ddc84);
@@ -230,199 +199,9 @@ html {
 .cli-card:hover > .cli-sweep { animation: cli-sweep 0.9s ease forwards; }
 @keyframes cli-sweep { to { left: 130%; } }
 
-.gradient-primary {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neon-purple)) 100%);
-}
-
-.hover-glow {
-  transition: all 0.3s ease;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 20px hsla(var(--primary), 0.3) !important;
-  border-color: hsla(var(--primary), 0.5) !important;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slide-up {
-  animation: slideUp 0.6s ease-out forwards;
-}
-
-@keyframes slideUpHover {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-8px);
-  }
-}
-
-.hover-slide-up {
-  transition: transform 0.3s ease;
-}
-
-.hover-slide-up:hover {
-  transform: translateY(-8px) !important;
-}
-
-@keyframes textScale {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.05);
-  }
-}
-
-.hover-text-scale {
-  transition: transform 0.3s ease;
-}
-
-.hover-text-scale:hover {
-  animation: textScale 0.3s ease forwards;
-}
-
-.hover-scale {
-  transition: transform 0.3s ease;
-}
-
-.hover-scale:hover {
-  transform: scale(1.05) !important;
-}
-
-.hover-slide-scale {
-  transition: transform 0.3s ease;
-}
-
-.hover-slide-scale:hover {
-  transform: translateY(-8px) scale(1.05) !important;
-}
-
-/* Hover específico para fotos */
-.hover-photo {
-  transition: all 0.3s ease;
-}
-
-.hover-photo:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Hover específico para cards */
-.hover-card {
-  transition: all 0.3s ease;
-}
-
-.hover-card:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-  border-color: hsla(var(--primary), 0.5) !important;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes hero-float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes mouse-float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-}
-
-.animate-hero-float {
-  animation: hero-float 3s ease-in-out infinite;
-}
-
-.animate-mouse-float {
-  animation: mouse-float 2s ease-in-out infinite;
-}
-
-@keyframes spin-up {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-up {
-  animation: spin-up 2s linear infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  width: max-content;
-  animation: scroll 40s linear infinite;
-}
-
-.animate-scroll:hover {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-scroll {
-    animation: none;
-    flex-wrap: wrap;
-    justify-content: center;
-    white-space: normal;
-  }
+/* static brand gradient, used sparingly */
+.gradient-text {
+  @apply bg-gradient-to-r from-primary via-neon-purple to-neon-cyan bg-clip-text text-transparent;
 }
 
 .scrollbar-none {
@@ -434,132 +213,8 @@ html {
   display: none;
 }
 
-.touch-manipulation {
-  touch-action: manipulation;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes rotate {
-  from {
-    opacity: 0;
-    transform: rotate(-10deg) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-up {
-  opacity: 0;
-  transform: translate3d(0, 30px, 0);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.animate-slide-left {
-  opacity: 0;
-  transform: translate3d(-30px, 0, 0);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.animate-slide-right {
-  opacity: 0;
-  transform: translate3d(30px, 0, 0);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.animate-scale-in {
-  opacity: 0;
-  transform: translate3d(0, 0, 0) scale(0.95);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.animate-rotate {
-  opacity: 0;
-  transform: translate3d(0, 0, 0) rotate(-5deg) scale(0.95);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.animate-fade-in {
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-
-.anim-paused {
-  animation-play-state: paused !important;
-}
-
-/* blurred decorative blobs re-rasterize every frame; while a fullscreen
-   overlay covers them that cost buys nothing */
-html[data-overlay-open] .decor-anim {
-  animation-play-state: paused !important;
-}
-
-/* Estado ativo quando visível */
-.animate-in {
-  opacity: 1 !important;
-  transform: translate3d(0, 0, 0) scale(1) rotate(0deg) !important;
-}
-
-/* Otimizações de performance */
-* {
-  box-sizing: border-box;
-}
-
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
 }
 
 body {
@@ -577,46 +232,13 @@ body {
   }
 }
 
-/* Otimizações para imagens */
 img {
   max-width: 100%;
   height: auto;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
-/* Reduzir movimento para usuários que preferem */
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-up,
-  .animate-slide-left,
-  .animate-slide-right,
-  .animate-scale-in,
-  .animate-rotate,
-  .animate-fade-in {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  
-  .animate-in {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .brain-ring,
-  .brain-orbit,
-  .brain-flow,
-  .gradient-text,
   .cli-cursor,
-  .animate-float,
-  .animate-pulse {
-    animation: none !important;
-  }
-
-  .animate-pulse-glow {
-    animation: none !important;
-  }
-
   .cli-card:hover > .cli-sweep {
     animation: none !important;
   }

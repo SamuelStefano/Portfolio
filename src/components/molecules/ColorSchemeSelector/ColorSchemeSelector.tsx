@@ -36,7 +36,7 @@ export const ColorSchemeSelector = () => {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-[calc(100%+10px)] z-50 min-w-[182px] rounded-2xl border border-border bg-popover/95 backdrop-blur-md p-2.5 shadow-2xl animate-fade-in animate-in">
+        <div className="absolute right-0 top-[calc(100%+10px)] z-50 min-w-[182px] rounded-2xl border border-border bg-popover/95 backdrop-blur-md p-2.5 shadow-2xl animate-in">
           <div className="px-2 pb-1.5 pt-1 text-[10.5px] font-mono uppercase tracking-[1.5px] text-muted-foreground">
             {t('controls.colorScheme')}
           </div>

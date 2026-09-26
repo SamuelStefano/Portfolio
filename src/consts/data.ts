@@ -1,292 +1,146 @@
-import { Code, Database, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, User, GitBranch, GitPullRequest, Sparkles, GraduationCap, Users } from 'lucide-react';
+import { Code, Server, Globe, Cpu, Brain, Building2, Briefcase, Laptop, Sparkles, GraduationCap } from 'lucide-react';
 
-export const TECH_CATEGORIES = [
+export type SkillTier = 'daily' | 'shipped' | 'learning';
+
+export const SKILL_TIERS: SkillTier[] = ['daily', 'shipped', 'learning'];
+
+export const TECH_CATEGORIES: { key: string; icon: typeof Globe; skills: { name: string; tier: SkillTier }[] }[] = [
   {
-    title: 'Frontend',
+    key: 'frontend',
     icon: Globe,
     skills: [
-      { name: 'React', level: 100 },
-      { name: 'TypeScript', level: 100 },
-      { name: 'Next.js', level: 100 },
-      { name: 'TailwindCSS', level: 100 },
-      { name: 'Module Federation', level: 90 },
-      { name: 'Storybook', level: 90 },
+      { name: 'React', tier: 'daily' },
+      { name: 'TypeScript', tier: 'daily' },
+      { name: 'Vite', tier: 'daily' },
+      { name: 'TailwindCSS', tier: 'daily' },
+      { name: 'TanStack Query', tier: 'shipped' },
+      { name: 'Next.js', tier: 'shipped' },
+      { name: 'Module Federation', tier: 'shipped' },
+      { name: 'Storybook', tier: 'shipped' },
     ],
-    color: 'neon-blue'
   },
   {
-    title: 'Backend',
+    key: 'backend',
     icon: Server,
     skills: [
-      { name: 'Node.js', level: 80 },
-      { name: 'NestJS', level: 75 },
-      { name: 'APIs', level: 90 },
-      { name: 'JWT', level: 80 },
-      { name: 'RabbitMQ', level: 75 },
-      { name: 'Web3 Integration', level: 70 },
+      { name: 'Node.js', tier: 'daily' },
+      { name: 'Supabase', tier: 'daily' },
+      { name: 'PostgreSQL', tier: 'daily' },
+      { name: 'Edge Functions', tier: 'daily' },
+      { name: 'Hono + Bun', tier: 'shipped' },
+      { name: 'Zod', tier: 'shipped' },
+      { name: 'NestJS', tier: 'shipped' },
+      { name: 'ClickHouse', tier: 'shipped' },
+      { name: 'MySQL', tier: 'learning' },
+      { name: 'RabbitMQ', tier: 'learning' },
     ],
-    color: 'neon-purple'
   },
   {
-    title: 'Database',
-    icon: Database,
-    skills: [
-      { name: 'Supabase', level: 100 },
-      { name: 'PostgreSQL', level: 85 },
-      { name: 'Supabase Edge Functions', level: 90 },
-      { name: 'MySQL', level: 70 },
-      { name: 'Prisma', level: 40 }
-    ],
-    color: 'neon-cyan'
-  },
-  {
-    title: 'DevOps & Tools',
-    icon: Cpu,
-    skills: [
-      { name: 'Docker', level: 80 },
-      { name: 'VPS', level: 65 },
-      { name: 'WSL', level: 80 },
-      { name: 'Git', level: 100 },
-      { name: 'Figma', level: 50 },
-      { name: 'Vercel', level: 100 },
-      { name: 'n8n', level: 75 },
-      { name: 'GitHub Actions', level: 85 },
-      { name: 'AWS', level: 50 }
-    ],
-    color: 'accent'
-  },
-  {
-    title: 'Inteligência Artificial',
+    key: 'ai',
     icon: Sparkles,
     skills: [
-      { name: 'Claude API (Anthropic)', level: 85 },
-      { name: 'OpenAI API', level: 70 },
-      { name: 'AI Agents', level: 80 },
-      { name: 'Prompt Engineering', level: 85 },
-      { name: 'n8n AI Workflows', level: 75 },
-      { name: 'LLM Integration', level: 80 },
+      { name: 'Claude API', tier: 'daily' },
+      { name: 'MCP servers', tier: 'daily' },
+      { name: 'AI agents', tier: 'daily' },
+      { name: 'LLM integration', tier: 'shipped' },
+      { name: 'OpenAI API', tier: 'shipped' },
+      { name: 'n8n', tier: 'shipped' },
     ],
-    color: 'neon-purple'
   },
   {
-    title: 'Engenharia de Software',
+    key: 'devops',
+    icon: Cpu,
+    skills: [
+      { name: 'Git & GitHub', tier: 'daily' },
+      { name: 'GitHub Actions', tier: 'daily' },
+      { name: 'Vercel', tier: 'daily' },
+      { name: 'Docker', tier: 'shipped' },
+      { name: 'Linux / VPS', tier: 'shipped' },
+      { name: 'Dokploy', tier: 'shipped' },
+      { name: 'AWS', tier: 'learning' },
+    ],
+  },
+  {
+    key: 'quality',
     icon: Brain,
     skills: [
-      { name: 'Miro', level: 90 },
-      { name: 'Documentação', level: 100 },
-      { name: 'Testes', level: 100 },
-      { name: 'Arquitetura', level: 95 },
-      { name: 'CI/CD', level: 100 },
-      { name: 'Componentização', level: 100 },
-      { name: 'Micro-frontends', level: 90 },
+      { name: 'Code review', tier: 'daily' },
+      { name: 'Vitest', tier: 'shipped' },
+      { name: 'Playwright', tier: 'shipped' },
+      { name: 'Technical docs', tier: 'shipped' },
+      { name: 'Figma', tier: 'learning' },
     ],
-    color: 'neon-green'
   },
   {
-    title: 'Web3 & Blockchain',
+    key: 'web3',
     icon: Code,
     skills: [
-      { name: 'Solidity', level: 35 },
-      { name: 'Smart Contracts', level: 65 },
-      { name: 'ERC-20 / ERC-721', level: 70 },
-      { name: 'Solana / Anchor', level: 45 },
-      { name: 'Rust', level: 30 },
-      { name: 'Chainlink (CRE / CCIP)', level: 50 },
-      { name: 'Foundry', level: 35 },
-      { name: 'Base / Scroll', level: 60 },
-      { name: 'Viem', level: 20 }
+      { name: 'Solidity', tier: 'learning' },
+      { name: 'Foundry', tier: 'learning' },
+      { name: 'ERC-20 / ERC-721', tier: 'learning' },
+      { name: 'Solana / Anchor', tier: 'learning' },
+      { name: 'Rust', tier: 'learning' },
+      { name: 'Chainlink CRE / CCIP', tier: 'learning' },
+      { name: 'Base / Scroll', tier: 'learning' },
     ],
-    color: 'neon-green'
-  },
-  {
-    title: 'Colaboração & Processos',
-    icon: Users,
-    skills: [
-      { name: 'Daily / Scrum', level: 100 },
-      { name: 'Code & PR Reviews', level: 95 },
-      { name: 'Pair Programming', level: 90 },
-      { name: 'UI/UX Design', level: 80 },
-      { name: 'Mentoring', level: 90 },
-      { name: 'Documentation', level: 95 },
-    ],
-    color: 'neon-blue'
   },
 ];
 
 export const EXPERIENCE_DATA = [
   {
+    key: 'dfl',
     company: 'DevFellowship',
-    role: 'Desenvolvedor Full-Stack — Plataforma Interna de Desenvolvimento',
-    period: 'Novembro 2023 - Presente',
     current: true,
-    description: 'Comecei como freelancer no fim de 2023 e passei à dedicação integral em 2026. Trabalho na plataforma interna de desenvolvimento da DevFellowship — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetei e desenvolvi o ecossistema de micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments (cobrança recorrente + NF-e Spedy), Flows (kanban com regras de unlock) e o CI Revisor Bot com IA. Construí 4 MCP servers (work/learn/payments/plans) e a stack de back-end TS (Hono+Bun). Mentoria de fellows, definição de padrões e participação em hackathons premiados.',
-    highlights: [
-      '4º lugar ETH Latam 2025 — GreenLoop (recicláveis → tokens on-chain na Base)',
-      '2º lugar DevConnect ETH 2025 trilha Scroll — TalentDAO',
-      'Squad multi-agente para review/SDD adotada como padrão do time',
-      'Arquitetura do Revenue (contratos→cobranças→NF-e) end-to-end em produção',
-    ],
-    stack: ['React', 'TypeScript', 'Vite', 'Module Federation', 'Hono', 'Bun', 'Supabase', 'PostgreSQL', 'Edge Functions', 'NestJS', 'Claude API', 'OpenRouter', 'MCP', 'n8n', 'GitHub Actions', 'Docker', 'TailwindCSS', 'Playwright'],
+    stack: ['React', 'TypeScript', 'Module Federation', 'Hono', 'Bun', 'Supabase', 'PostgreSQL', 'Edge Functions', 'MCP', 'Claude API', 'GitHub Actions', 'Docker', 'Playwright'],
     logo: '/DevFelloShip.png',
     icon: Briefcase,
-    website: 'https://devfellowship.com'
+    website: 'https://devfellowship.com',
   },
   {
-    company: 'Instituto Educar+',
-    role: 'Professor de Programação',
-    period: 'Janeiro 2025 - Presente',
-    current: true,
-    description: 'Professor de programação no Instituto Educar+, instituto profissionalizante em tecnologia. Ensino lógica de programação, desenvolvimento web e boas práticas para alunos iniciantes, com mentoria em projetos práticos — alunos chegaram a apresentar trabalhos em hackathons.',
-    highlights: [
-      'Turmas iniciantes em lógica, HTML/CSS, JS e Git',
-      'Mentoria de projetos finais, com alunos indo a hackathons',
-      'Trilha didática "do zero ao deploy" em Vercel/Supabase',
-    ],
-    stack: ['Ensino', 'Lógica de Programação', 'JavaScript', 'HTML', 'CSS', 'Git & GitHub', 'Vercel', 'Mentoria'],
-    logo: '/EducarMais.webp',
-    icon: GraduationCap,
-    website: 'https://institutoeducarmais.org/'
-  },
-  {
+    key: 'revera',
     company: 'Revera',
-    role: 'Desenvolvedor Full-Stack com IA',
-    period: 'Fevereiro 2026 - Presente',
     current: true,
-    description: 'Desenvolvimento full-stack de aplicações web, com IA como parte central do fluxo de trabalho. Atuo do banco ao front — modelagem de dados, APIs e interfaces — usando agentes de IA, MCP e integração de LLM para acelerar entrega e revisão de código.',
-    highlights: [
-      'Entrega full-stack ponta a ponta (front, API e banco)',
-      'IA aplicada ao fluxo de desenvolvimento: agentes, MCP e revisão assistida',
-      'Integração de LLM em funcionalidades de produto',
-    ],
-    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'PostgreSQL', 'TailwindCSS', 'Claude API', 'AI Agents', 'MCP', 'Git & GitHub'],
+    stack: ['React', 'TypeScript', 'Node.js', 'Supabase', 'PostgreSQL', 'TailwindCSS', 'Claude API', 'AI agents', 'MCP'],
     logo: '/Revera.png',
     icon: Sparkles,
-    website: 'https://revera.dev/'
+    website: 'https://revera.dev/',
   },
   {
+    key: 'itera',
     company: 'Itera',
-    role: 'Professor',
-    period: '2026 - Presente',
     current: true,
-    description: 'Professor de programação na Itera, plataforma de cursos com aula ao vivo que também ajudei a construir. Conduzo as turmas pela própria plataforma: aula síncrona, atividades de código com correção automática e acompanhamento do código dos alunos em tempo real.',
-    highlights: [
-      'Aulas ao vivo de programação conduzidas na própria plataforma',
-      'Aula piloto gratuita com adolescentes do Instituto Educar+',
-      'Material e atividades autorados direto na Itera',
-    ],
-    stack: ['Ensino', 'Aula ao Vivo', 'Lógica de Programação', 'JavaScript', 'Mentoria'],
+    stack: ['Live classes', 'JavaScript', 'Programming logic', 'Mentoring'],
     logo: '/Itera.svg',
     icon: GraduationCap,
-    website: 'https://iterahq.dev/'
+    website: 'https://iterahq.dev/',
   },
   {
+    key: 'educar',
+    company: 'Instituto Educar+',
+    current: true,
+    stack: ['Teaching', 'JavaScript', 'HTML', 'CSS', 'Git & GitHub', 'Vercel', 'Mentoring'],
+    logo: '/EducarMais.webp',
+    icon: GraduationCap,
+    website: 'https://institutoeducarmais.org/',
+  },
+  {
+    key: 'mm',
     company: 'M&M Informática',
-    role: 'Analista de Suporte Técnico',
-    period: 'Dezembro 2024 - Fevereiro 2026',
     current: false,
-    description: 'Suporte técnico ao produto da empresa, um ERP de varejo: atendimento aos clientes, diagnóstico de incidentes de sistema e de operação de loja. Recebi treinamento no produto e ganhei familiaridade com o funcionamento de um ERP (emissão fiscal, PDV e cadastro).',
-    highlights: [
-      'Atendimento direto aos clientes do ERP',
-      'Diagnóstico de incidentes de sistema e de operação de loja',
-    ],
-    stack: ['Suporte a ERP', 'Diagnóstico de Incidentes', 'Atendimento ao Cliente'],
+    stack: ['ERP support', 'Incident triage', 'Customer support'],
     logo: '/MMIcon.png',
     icon: Laptop,
-    website: 'https://mminfo.me'
+    website: 'https://mminfo.me',
   },
   {
+    key: 'prefeitura',
     company: 'Prefeitura de Marialva',
-    role: 'Estagiário de Suporte Técnico',
-    period: 'Fevereiro 2024 - Dezembro 2024',
     current: false,
-    description: 'Estágio em suporte técnico atendendo órgãos públicos do município: manutenção e conserto de computadores, instalação de equipamentos e de software.',
-    highlights: [
-      'Manutenção e conserto de computadores',
-      'Instalação de equipamentos e software',
-      'Primeiro contato profissional com TI',
-    ],
-    stack: ['Suporte Técnico', 'Manutenção de Computadores', 'Instalação de Equipamentos', 'Sistemas Operacionais'],
+    stack: ['IT support', 'Hardware maintenance', 'Operating systems'],
     logo: '/prefeitura.png',
     icon: Building2,
-    website: 'https://www.marialva.pr.gov.br'
-  }
-];
-
-export const ADDITIONAL_SKILLS = [
-  'Supabase',
-  'Supabase Edge Functions',
-  'PostgreSQL',
-  'RabbitMQ',
-  'Module Federation',
-  'Micro-frontends',
-  'Judge0 API',
-  'REST APIs',
-  'Responsive Design',
-  'UI/UX Design',
-  'Automação',
-  'Banco de Dados',
-  'Suporte Técnico',
-  'Frontend',
-  'Backend',
-  'Web3 & Blockchain',
-  'Smart Contracts',
-  'Solidity',
-  'ERC-20 / ERC-721',
-  'Base',
-  'WEB3',
-  'Trabalho em Equipe',
-  'Metodologias Ágeis',
-  'Resolução de Problemas',
-  'Comprometimento',
-  'Criatividade',
-  'Git & GitHub',
-  'GitHub Actions',
-  'Linux',
-  'Storybook',
-  'Figma',
-  'Miro',
-  'Componentização',
-  'DevOps',
-  'API Development',
-  'Inteligência Artificial',
-  'Claude API',
-  'OpenAI API',
-  'AI Agents',
-  'Prompt Engineering',
-  'n8n',
-  'LLM Integration',
-  'Arquitetura de Software',
-  'Docker',
-  'VPS',
-  'WSL',
-  'Vercel',
-  'AWS',
-  'Mentoria',
-  'Code Review'
-];
-
-
-export const STATS_TEMPLATE = [
-  {
-    label: 'Pull requests mergeadas',
-    value: '833+',
-    icon: GitPullRequest
+    website: 'https://www.marialva.pr.gov.br',
   },
-  {
-    label: 'Repositórios com entregas',
-    value: '38+',
-    icon: GitBranch
-  },
-  {
-    label: 'Tecnologias',
-    value: '55+',
-    icon: Globe
-  },
-  {
-    label: 'Tempo de atuação profissional',
-    value: '2+ anos',
-    icon: User
-  }
 ];
 
 export const EVENTS_DATA = [
@@ -295,11 +149,3 @@ export const EVENTS_DATA = [
   { name: 'DevConnect ETH 2025', type: 'hackathon', date: 'Nov 2025', location: 'Buenos Aires, AR', ecosystems: ['Scroll', 'Ethereum'], url: '' },
   { name: 'ETH Latam 2025', type: 'hackathon', date: 'Aug 2025', location: 'São Paulo, BR', ecosystems: ['Base', 'Ethereum'], url: '' },
 ];
-
-
-
-
-
-
-
-

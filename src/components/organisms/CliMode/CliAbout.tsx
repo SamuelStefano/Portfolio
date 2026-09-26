@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 export const CliAbout = () => {
   const { t } = useTranslation();
-  const paragraphs = [t('about.bio1'), t('about.bio2'), t('about.bio3')];
+  const paragraphs = [t('about.bio1'), t('about.bio2')];
 
   return (
     <div className="cli-card max-w-3xl rounded-lg p-5">

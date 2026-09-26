@@ -28,7 +28,6 @@ import { Text } from '@/components/atoms/Text/Text';
 import { Project, ProjectSection } from '@/types/project';
 import { getIconComponent } from '@/utils/iconResolver';
 import { useMotionPreset } from '@/hooks/useMotionPreset';
-import { setOverlayOpen } from '@/lib/overlayState';
 import { cn, thumbSrc } from '@/lib/utils';
 
 /* ─── helpers ──────────────────────────────────────────────────────── */
@@ -450,12 +449,6 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = React.memo(({ proje
 
   useEffect(() => {
     if (!isOpen) setLightbox(null);
-  }, [isOpen]);
-
-  /* Pause the decorative canvas/blobs behind the overlay while it covers them */
-  useEffect(() => {
-    setOverlayOpen(isOpen);
-    return () => setOverlayOpen(false);
   }, [isOpen]);
 
   /* Scroll to top of content on section change */

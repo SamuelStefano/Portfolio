@@ -31,7 +31,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
       role="button"
       tabIndex={0}
       aria-label={t('projects.viewDetails')}
-      className="group bg-card border-border hover:border-primary/40 transition-all duration-200 hover-glow cursor-pointer overflow-hidden"
+      className="group bg-card border-border hover:border-primary/50 transition-colors duration-200 cursor-pointer h-full flex flex-col overflow-hidden"
       onClick={() => onProjectClick(project)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -49,7 +49,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
           <img
             src={cardSrc(project.thumbnail_url)}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover object-top"
             loading="lazy"
             decoding="async"
             onError={e => { e.currentTarget.src = project.thumbnail_url!; }}
@@ -60,32 +60,12 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
           </div>
         )}
 
-        {/* hover overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 gap-2">
-          <Text className="text-white/80 text-xs line-clamp-2">{project.description}</Text>
-          <div className="flex flex-wrap gap-1">
-            {project.stack.slice(0, 4).map((tech, i) => (
-              <span key={i} className="px-2 py-0.5 bg-primary/20 border border-primary/40 rounded text-xs text-primary font-medium font-mono">
-                {tech}
-              </span>
-            ))}
-            {project.stack.length > 4 && (
-              <span className="px-2 py-0.5 bg-primary/20 border border-primary/40 rounded text-xs text-primary font-medium">
-                +{project.stack.length - 4}
-              </span>
-            )}
-          </div>
-          <Button variant="secondary" size="sm" className="w-full mt-1">
-            <Icon icon={ExternalLink} className="mr-2" />
-            {t('projects.viewDetails')}
-          </Button>
-        </div>
       </div>
 
-      <CardContent className="p-5">
+      <CardContent className="p-5 flex flex-1 flex-col">
         <div className="flex items-center justify-between mb-3">
           <Badge variant="outline" className={cn('border-primary/30 text-primary text-xs', project.role === 'Creator' && 'border-neon-blue/50 text-neon-blue')}>
-            {project.role}
+            {t(`projects.roles.${project.role}`, { defaultValue: project.role })}
           </Badge>
           {project.project_collaborators.length > 0 && (
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -110,15 +90,15 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
           )}
         </div>
 
-        <Heading level={3} className="mb-1.5 group-hover:gradient-text transition-all duration-200 text-sm font-semibold">
+        <Heading level={3} className="mb-1.5 text-xl md:text-xl font-semibold group-hover:text-primary transition-colors">
           {project.title}
         </Heading>
 
-        <Text className="mb-3 line-clamp-2 text-xs text-muted-foreground">
+        <Text className="mb-4 line-clamp-3 text-sm text-muted-foreground">
           {project.description}
         </Text>
 
-        <div className="flex flex-wrap gap-1 mb-3">
+        <div className="flex flex-wrap gap-1 mb-4 mt-auto">
           {project.stack.slice(0, 3).map((tech, i) => (
             <Badge key={i} variant="secondary" className="text-[10px] font-mono px-1.5 py-0.5">
               {tech}
@@ -137,7 +117,7 @@ export const ProjectCard = ({ project, onProjectClick }: ProjectCardProps) => {
             variant="outline"
             size="sm"
             asChild
-            className="w-full text-xs hover:bg-primary hover:text-primary-foreground"
+            className="w-full text-xs hover:border-primary/50 hover:bg-transparent hover:text-primary"
             onClick={(e) => e.stopPropagation()}
             onKeyDown={(e) => e.stopPropagation()}
           >

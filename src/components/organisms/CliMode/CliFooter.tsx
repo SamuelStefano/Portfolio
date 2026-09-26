@@ -14,7 +14,7 @@ export const CliFooter = () => {
       <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--cli-text-dim)]">
         <div className="flex items-center gap-2">
           <span className="text-[var(--cli-green)]">$</span>
-          <span>echo &quot;{t('hero.web3Signal')}&quot;</span>
+          <span>echo &quot;{t('hero.role')}&quot;</span>
           <span className="cli-cursor" />
         </div>
         <div className="flex items-center gap-3">

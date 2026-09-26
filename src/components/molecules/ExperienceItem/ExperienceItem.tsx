@@ -54,10 +54,15 @@ export const ExperienceItem = ({
           {company}
         </Heading>
         {website && (
-          <span className="inline-flex items-center gap-1 text-xs text-muted-foreground underline-offset-2 hover:underline">
+          <a
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs text-muted-foreground underline-offset-2 hover:text-primary hover:underline"
+          >
             {new URL(website).hostname.replace(/^www\./, '')}
             <ExternalLink className="w-3 h-3" />
-          </span>
+          </a>
         )}
       </div>
 
@@ -81,7 +86,7 @@ export const ExperienceItem = ({
           <Badge
             key={i}
             variant="secondary"
-            className="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 text-xs font-mono hover:bg-primary/20 transition-colors"
+            className="px-2 py-0.5 bg-muted/40 text-muted-foreground border border-border text-xs font-mono hover:bg-muted/40"
           >
             {tech}
           </Badge>
