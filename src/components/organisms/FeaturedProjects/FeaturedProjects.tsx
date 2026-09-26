@@ -177,7 +177,7 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
               const link = primaryLink(project);
               const isRepo = link?.type === 'github' || link?.url.includes('github.com');
               return (
-                <article
+                <div
                   key={project.id}
                   role="group"
                   aria-roledescription="slide"
@@ -242,7 +242,7 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                       </a>
                     )}
                   </div>
-                </article>
+                </div>
               );
             })}
           </div>
