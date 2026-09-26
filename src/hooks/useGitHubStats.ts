@@ -1,6 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-interface GitHubStats {
+export interface GitHubContributions {
+  total: number;
+  commits: number;
+  pullRequests: number;
+  reviews: number;
+  /** First day of the calendar (a Sunday), YYYY-MM-DD */
+  start: string | null;
+  /** One count per day from `start` */
+  counts: number[];
+}
+
+export interface GitHubStats {
   totalCommits: number;
   totalRepos: number;
   totalStars: number;
@@ -8,73 +19,66 @@ interface GitHubStats {
   mergedPullRequests: number;
   linesOfCode: number;
   languages: Record<string, number>;
+  contributions: GitHubContributions | null;
   isLoading: boolean;
   error: string | null;
 }
 
+/**
+ * Shown when /api/github-stats is unreachable (local dev, GitHub outage). Deliberately at or
+ * below the last real numbers — a fallback must never overstate. No calendar: an invented
+ * heatmap would be worse than none.
+ */
+const FALLBACK: Omit<GitHubStats, 'isLoading' | 'error'> = {
+  totalCommits: 1600,
+  totalRepos: 33,
+  totalStars: 6,
+  totalForks: 1,
+  mergedPullRequests: 990,
+  linesOfCode: 360000,
+  languages: {},
+  contributions: null,
+};
+
+// One request per page load, shared by every component that reads the stats.
+let pending: Promise<GitHubStats> | null = null;
+
+const load = (): Promise<GitHubStats> => {
+  pending ??= fetch('/api/github-stats')
+    .then(async (response) => {
+      if (!response.ok) throw new Error(`GitHub stats responded ${response.status}`);
+      const data = await response.json();
+      return {
+        totalCommits: data.totalCommits || 0,
+        totalRepos: data.totalRepos || 0,
+        totalStars: data.totalStars || 0,
+        totalForks: data.totalForks || 0,
+        mergedPullRequests: data.mergedPullRequests || 0,
+        linesOfCode: data.linesOfCode || 0,
+        languages: data.languages || {},
+        contributions: data.contributions?.counts?.length ? data.contributions : null,
+        isLoading: false,
+        error: null,
+      };
+    })
+    .catch((error: unknown) => {
+      console.warn('GitHub stats unavailable, using fallback numbers:', error);
+      return { ...FALLBACK, isLoading: false, error: 'fallback' };
+    });
+  return pending;
+};
+
 export const useGitHubStats = () => {
-  const [stats, setStats] = useState<GitHubStats>({
-    totalCommits: 0,
-    totalRepos: 0,
-    totalStars: 0,
-    totalForks: 0,
-    mergedPullRequests: 0,
-    linesOfCode: 0,
-    languages: {},
-    isLoading: true,
-    error: null
-  });
+  const [stats, setStats] = useState<GitHubStats>({ ...FALLBACK, isLoading: true, error: null });
 
   useEffect(() => {
-    const fetchGitHubStats = async () => {
-      try {
-        setStats(prev => ({ ...prev, isLoading: true, error: null }));
-
-        const response = await fetch('/api/github-stats');
-
-        if (!response.ok) {
-          throw new Error(`Error fetching GitHub stats: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        setStats({
-          totalCommits: data.totalCommits || 0,
-          totalRepos: data.totalRepos || 0,
-          totalStars: data.totalStars || 0,
-          totalForks: data.totalForks || 0,
-          mergedPullRequests: data.mergedPullRequests || 0,
-          linesOfCode: data.linesOfCode || 0,
-          languages: data.languages || {},
-          isLoading: false,
-          error: null
-        });
-      } catch (error) {
-        console.error('Error fetching GitHub stats:', error);
-
-        setStats({
-          totalCommits: 2800,
-          totalRepos: 38,
-          totalStars: 5,
-          totalForks: 2,
-          mergedPullRequests: 1251,
-          linesOfCode: 420000,
-          languages: {
-            'TypeScript': 210000,
-            'JavaScript': 84000,
-            'Solidity': 42000,
-            'CSS': 38000,
-            'HTML': 25000,
-            'Rust': 13000,
-            'Python': 8000
-          },
-          isLoading: false,
-          error: 'Using estimated data (GitHub API unavailable)'
-        });
-      }
+    let alive = true;
+    load().then((result) => {
+      if (alive) setStats(result);
+    });
+    return () => {
+      alive = false;
     };
-
-    fetchGitHubStats();
   }, []);
 
   return stats;

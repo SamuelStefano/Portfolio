@@ -1,5 +1,5 @@
 import type { TFunction } from 'i18next';
-import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch, GitPullRequest } from 'lucide-react';
+import { User, GraduationCap, MapPin, Globe, Heart, Computer, Clock, Code2, Calendar, GitBranch, GitPullRequest, GitCommitHorizontal } from 'lucide-react';
 import { CountUp } from '@/components/atoms/CountUp/CountUp';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/atoms/badge/badge';
@@ -11,6 +11,7 @@ import { Text } from '@/components/atoms/Text/Text';
 import { useExperienceTime } from '@/hooks/useExperienceTime';
 import { useGitHubStats } from '@/hooks/useGitHubStats';
 import { AvailabilityCalendar } from '@/components/molecules/AvailabilityCalendar/AvailabilityCalendar';
+import { ContributionHeatmap } from '@/components/molecules/ContributionHeatmap/ContributionHeatmap';
 import { useScrollAnimations } from '@/hooks/useScrollAnimations';
 import { TECH_CATEGORIES } from '@/consts/data';
 
@@ -63,6 +64,13 @@ export const About = () => {
       numericValue: gitHubStats.isLoading ? null : gitHubStats.mergedPullRequests,
       suffix: '+',
       icon: GitPullRequest
+    },
+    {
+      label: t('about.commitsLastYear'),
+      value: gitHubStats.isLoading ? '...' : `${gitHubStats.totalCommits}+`,
+      numericValue: gitHubStats.isLoading ? null : gitHubStats.totalCommits,
+      suffix: '+',
+      icon: GitCommitHorizontal
     },
     {
       label: t('about.projectsCreated'),
@@ -192,6 +200,11 @@ export const About = () => {
                   </Card>
                 ))}
             </div>
+            {gitHubStats.contributions && (
+              <div className="animate-fade-up">
+                <ContributionHeatmap contributions={gitHubStats.contributions} />
+              </div>
+            )}
             <Card className="bg-gradient-card border-border hover-card animate-slide-right">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">

@@ -56,7 +56,7 @@ export const ProjectGrid = () => {
               {visible.map((project, i) => (
                 <div
                   key={project.id}
-                  className={`h-full [&>*]:h-full ${i < INITIAL_COUNT ? 'animate-fade-up' : ''}`}
+                  className="h-full [&>*]:h-full animate-fade-up"
                   style={{ animationDelay: `${(i % 3) * 0.1}s` }}
                 >
                   <ProjectCard project={project} onProjectClick={openProject} />

@@ -404,6 +404,20 @@
       "podium1": "Pódio da trilha Chainlink · Hackanation 2026",
       "podium2": "Vencedores no palco do TokenNation",
       "educar": "Alunos do Educar+ no evento"
+    },
+    "commitsLastYear": "Commits nos últimos 12 meses",
+    "activity": {
+      "title": "Atividade no GitHub",
+      "subtitle": "Últimos 6 meses · inclui repositórios privados",
+      "contributions": "contribuições",
+      "activeDays": "dias ativos",
+      "less": "Menos",
+      "more": "Mais",
+      "day_one": "{{formatted}} contribuição em {{date}}",
+      "day_other": "{{formatted}} contribuições em {{date}}",
+      "none": "Nenhuma contribuição em {{date}}",
+      "aria_one": "{{count}} contribuição no GitHub nos últimos 6 meses, em {{days}} dias ativos",
+      "aria_other": "{{count}} contribuições no GitHub nos últimos 6 meses, em {{days}} dias ativos"
     }
   },
   "footer": {

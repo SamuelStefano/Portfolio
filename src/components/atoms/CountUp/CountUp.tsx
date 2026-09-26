@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCountUp } from '@/hooks/useCountUp';
 
 interface CountUpProps {
@@ -13,6 +14,8 @@ export const CountUp = ({ value, suffix = '', prefix = '', duration = 1800, clas
   const ref = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const count = useCountUp(value, duration, isVisible);
+  const { i18n } = useTranslation();
+  const formatted = new Intl.NumberFormat((i18n.language || 'pt').slice(0, 2)).format(count);
 
   useEffect(() => {
     const el = ref.current;
@@ -27,7 +30,7 @@ export const CountUp = ({ value, suffix = '', prefix = '', duration = 1800, clas
 
   return (
     <span ref={ref} className={className}>
-      {prefix}{count}{suffix}
+      {prefix}{formatted}{suffix}
     </span>
   );
 };
