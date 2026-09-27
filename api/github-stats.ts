@@ -16,7 +16,9 @@ const PARTIAL_CACHE_HEADER = 'public, s-maxage=60';
 const CONTRIBUTIONS_QUERY = `
   query {
     viewer {
+      createdAt
       contributionsCollection {
+        contributionYears
         totalCommitContributions
         totalPullRequestContributions
         totalPullRequestReviewContributions
@@ -37,7 +39,9 @@ interface ContributionDay {
 interface ContributionsResponse {
   data?: {
     viewer?: {
+      createdAt?: string;
       contributionsCollection?: {
+        contributionYears?: number[];
         totalCommitContributions: number;
         totalPullRequestContributions: number;
         totalPullRequestReviewContributions: number;
@@ -57,6 +61,49 @@ const fetchWithTimeout = async (url: string, options: RequestInit, timeout = 400
     return await fetch(url, { ...options, signal: controller.signal });
   } finally {
     clearTimeout(timeoutId);
+  }
+};
+
+interface YearTotals {
+  totalCommitContributions: number;
+  totalPullRequestContributions: number;
+  totalPullRequestReviewContributions: number;
+  contributionCalendar: { totalContributions: number };
+}
+
+/** One aliased query for every year on the account: GitHub caps a collection at one year. */
+const fetchAllTime = async (headers: Record<string, string>, years: number[]) => {
+  if (years.length === 0) return null;
+  const fields = years
+    .map(
+      (year) =>
+        `y${year}: contributionsCollection(from: "${year}-01-01T00:00:00Z", to: "${year}-12-31T23:59:59Z") { totalCommitContributions totalPullRequestContributions totalPullRequestReviewContributions contributionCalendar { totalContributions } }`,
+    )
+    .join('\n');
+  try {
+    const res = await fetchWithTimeout(
+      'https://api.github.com/graphql',
+      { method: 'POST', headers, body: JSON.stringify({ query: `query { viewer { ${fields} } }` }) },
+      8000,
+    );
+    if (!res.ok) return null;
+    const body = (await res.json()) as { data?: { viewer?: Record<string, YearTotals> } };
+    const viewer = body.data?.viewer;
+    if (!viewer) return null;
+    const perYear = years
+      .map((year) => ({ year, data: viewer[`y${year}`] }))
+      .filter((y): y is { year: number; data: YearTotals } => Boolean(y.data))
+      .sort((a, b) => a.year - b.year);
+    return {
+      since: perYear[0]?.year ?? null,
+      total: perYear.reduce((n, y) => n + y.data.contributionCalendar.totalContributions, 0),
+      commits: perYear.reduce((n, y) => n + y.data.totalCommitContributions, 0),
+      pullRequests: perYear.reduce((n, y) => n + y.data.totalPullRequestContributions, 0),
+      reviews: perYear.reduce((n, y) => n + y.data.totalPullRequestReviewContributions, 0),
+      years: perYear.map((y) => ({ year: y.year, total: y.data.contributionCalendar.totalContributions })),
+    };
+  } catch {
+    return null;
   }
 };
 
@@ -83,6 +130,7 @@ const fetchContributions = async (headers: Record<string, string>) => {
       // compact calendar: first day + one count per day
       start: days[0]?.date ?? null,
       counts: days.map((day) => day.contributionCount),
+      years: collection.contributionYears ?? [],
     };
   } catch {
     return null;
@@ -166,7 +214,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
     );
 
     const totalLanguageBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
-    const complete = contributions !== null && mergedPullRequests !== null;
+    const allTime = contributions ? await fetchAllTime(headers, contributions.years) : null;
+    const complete = contributions !== null && mergedPullRequests !== null && allTime !== null;
 
     response.setHeader('Cache-Control', complete ? CACHE_HEADER : PARTIAL_CACHE_HEADER);
     return response.status(200).json({
@@ -177,7 +226,15 @@ export default async function handler(request: VercelRequest, response: VercelRe
       mergedPullRequests: mergedPullRequests ?? 0,
       linesOfCode: Math.round(totalLanguageBytes / AVERAGE_BYTES_PER_LINE),
       languages,
-      contributions,
+      contributions: contributions && {
+        total: contributions.total,
+        commits: contributions.commits,
+        pullRequests: contributions.pullRequests,
+        reviews: contributions.reviews,
+        start: contributions.start,
+        counts: contributions.counts,
+      },
+      allTime,
     });
   } catch (error) {
     console.error('Error in /api/github-stats:', error);

@@ -287,7 +287,7 @@
     "greeting": "¡Hola! Soy Samuel.",
     "bio1": "Desarrollador full-stack en Marialva (Brasil), trabajando en remoto. Empecé en soporte técnico, entré a DevFellowship como freelancer a fines de 2023 y hoy trabajo a tiempo completo en la plataforma interna de la empresa — React, TypeScript, Node.js, Supabase y PostgreSQL a diario, con IA aplicada (agentes, MCP, Claude) como parte central del flujo.",
     "bio2": "En DevFellowship construí el ecosistema completo de Module Federation — DFL Learn (super-app host), Reviews, Payments y el CI Revisor Bot con IA — además de 4 servidores MCP y el flujo de ingresos en producción, de contratos a cobro recurrente y facturación electrónica. Creé ITERA, plataforma de cursos con clase en vivo sincrónica sobre Supabase Realtime, y Deck, mi puesto de mando para agentes de IA. En hackathons: 1.er lugar en la pista Base de ETH Latam 2025 (PIX On-Chain), gané la pista Chainlink de Hackanation 2026 con AltPay y 2º lugar en la pista Scroll de DevConnect ETH 2025 (TalentDAO).",
-    "bio3": "Estoy en el último año de Análisis y Desarrollo de Sistemas en UNINGÁ — me gradúo en diciembre de 2026. Busco un equipo de producto remoto donde pueda sumar lo que ya entrego hoy y seguir creciendo.",
+    "bio3": "Estoy en el último año de Análisis y Desarrollo de Sistemas en UNINGÁ — me gradúo en diciembre de 2026. Si te gustó lo que viste aquí, escríbeme: estoy abierto a propuestas y siempre dispuesto a conversar sobre producto, IA y videojuegos.",
     "location": "Marialva, PR",
     "language": "Inglés B2",
     "schedule": "6:00 A.M - 18:00 P.M",
@@ -297,12 +297,12 @@
     "technologies": "Tecnologías",
     "linesOfCode": "Líneas de Código",
     "currentFocus": "Enfoque Actual",
-    "currentFocusDescription": "Último año de la carrera (graduación en diciembre de 2026), trabajando en un equipo de producto y especializándome en IA aplicada, full-stack moderno y Web3.",
+    "currentFocusDescription": "Último año de la carrera (me gradúo en diciembre de 2026), trabajando en un equipo de producto con IA aplicada y full-stack moderno — y con la mira en los videojuegos, mi interés a largo plazo.",
     "focusAreas": [
       "IA aplicada",
       "TypeScript",
       "Supabase / PostgreSQL",
-      "Web3"
+      "Videojuegos"
     ],
     "highlights": {
       "passion": {
@@ -415,11 +415,15 @@
       "day_other": "{{formatted}} contribuciones el {{date}}",
       "none": "Sin contribuciones el {{date}}",
       "aria_one": "{{count}} contribución en GitHub en los últimos 6 meses, en {{days}} días activos",
-      "aria_other": "{{count}} contribuciones en GitHub en los últimos 6 meses, en {{days}} días activos"
+      "aria_other": "{{count}} contribuciones en GitHub en los últimos 6 meses, en {{days}} días activos",
+      "recent": "Últimos 6 meses",
+      "allTime": "Todo el período",
+      "period": "Período",
+      "allSubtitle": "Desde {{year}} · incluye repositorios privados"
     }
   },
   "footer": {
-    "description": "Desarrollador Full-Stack · IA aplicada. Abierto a vacantes remotas.",
+    "description": "Desarrollador Full-Stack · IA aplicada. Abierto a propuestas de vacantes remotas.",
     "quickLinks": "Enlaces Rápidos",
     "social": "Redes Sociales",
     "contact": "Contacto",
@@ -598,7 +602,7 @@
     "colorScheme": "Esquema de color",
     "cliMode": "Modo CLI",
     "visualMode": "Modo Visual",
-    "openToWork": "Disponible",
+    "openToWork": "Abierto a propuestas",
     "lightMode": "Activar modo claro",
     "darkMode": "Activar modo oscuro",
     "backToTop": "Volver arriba",
@@ -989,6 +993,26 @@
     "14-s5": {
       "title": "Exports",
       "description": "Videos renderizados en el servidor, del más nuevo al más antiguo: reels 9:16 y clases en 1080p, con estado (renderizando, listo) y descarga."
+    },
+    "0-8": {
+      "title": "Canvas",
+      "description": "Todas las sesiones de agentes en un tablero, agrupadas por área (Itera, DFL, personal, infra), con estado en vivo y un panel de sesiones activas."
+    },
+    "0-9": {
+      "title": "Kanban",
+      "description": "Las mismas sesiones como tarjetas: por hacer, en curso y hecho, con el orquestador arriba, el contexto usado y quién necesita atención."
+    },
+    "0-10": {
+      "title": "Graph",
+      "description": "Un grafo de conocimiento del código generado localmente con tree-sitter: 625 nodos y 1.167 aristas de un repositorio, con búsqueda y preguntas sobre el código."
+    },
+    "0-11": {
+      "title": "Crons",
+      "description": "Prompts programados que disparan turnos autónomos en horario de Brasilia, con la línea de tiempo de las próximas 24 h."
+    },
+    "0-12": {
+      "title": "Playground",
+      "description": "Los componentes reales del Deck junto a su código: variantes, tamaños y estados, editables en vivo."
     }
   },
   "notFound": {

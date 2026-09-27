@@ -12,7 +12,7 @@ import {
   type ContributionDay,
 } from '@/lib/contributions';
 import { cn } from '@/lib/utils';
-import type { GitHubContributions } from '@/hooks/useGitHubStats';
+import type { GitHubAllTime, GitHubContributions } from '@/hooks/useGitHubStats';
 
 const WEEKS = 26;
 
@@ -26,6 +26,7 @@ const LEVEL_CLASS = [
 
 interface ContributionHeatmapProps {
   contributions: GitHubContributions;
+  allTime?: GitHubAllTime | null;
 }
 
 interface Hovered {
@@ -39,13 +40,15 @@ interface Hovered {
 const TOOLTIP_SHIFT = { start: '-12px', center: '-50%', end: 'calc(-100% + 12px)' } as const;
 
 /** Last six months of GitHub activity, drawn like GitHub's calendar; cells fade in column by column. */
-export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps) => {
+export const ContributionHeatmap = ({ contributions, allTime }: ContributionHeatmapProps) => {
   const { t, i18n } = useTranslation();
   const lang = (i18n.language || 'pt').slice(0, 2);
   const rootRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const shown = useInView(rootRef, 0.25, true);
   const [hovered, setHovered] = useState<Hovered | null>(null);
+  const [view, setView] = useState<'recent' | 'all'>('recent');
+  const showAll = view === 'all' && allTime !== null && allTime !== undefined;
 
   // on narrow screens the grid scrolls; start at the most recent week
   useEffect(() => {
@@ -121,20 +124,81 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
           </div>
           <div>
             <p className="text-sm font-semibold text-foreground">{t('about.activity.title')}</p>
-            <p className="text-xs text-muted-foreground">{t('about.activity.subtitle')}</p>
+            <p className="text-xs text-muted-foreground">
+              {showAll ? t('about.activity.allSubtitle', { year: allTime.since }) : t('about.activity.subtitle')}
+            </p>
           </div>
         </div>
         <div className="flex gap-4 text-right">
-          <div>
-            <p className="text-lg font-bold leading-none gradient-text">{fmt.number.format(summary.total)}</p>
-            <p className="mt-1 text-[11px] text-muted-foreground">{t('about.activity.contributions')}</p>
-          </div>
-          <div>
-            <p className="text-lg font-bold leading-none gradient-text">{fmt.number.format(summary.activeDays)}</p>
-            <p className="mt-1 text-[11px] text-muted-foreground">{t('about.activity.activeDays')}</p>
-          </div>
+          {showAll ? (
+            <>
+              <div>
+                <p className="text-lg font-bold leading-none gradient-text">{fmt.number.format(allTime.total)}</p>
+                <p className="mt-1 text-[11px] text-muted-foreground">{t('about.activity.contributions')}</p>
+              </div>
+              <div>
+                <p className="text-lg font-bold leading-none gradient-text">{fmt.number.format(allTime.commits)}</p>
+                <p className="mt-1 text-[11px] text-muted-foreground">commits</p>
+              </div>
+              <div>
+                <p className="text-lg font-bold leading-none gradient-text">{fmt.number.format(allTime.pullRequests)}</p>
+                <p className="mt-1 text-[11px] text-muted-foreground">pull requests</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <p className="text-lg font-bold leading-none gradient-text">{fmt.number.format(summary.total)}</p>
+                <p className="mt-1 text-[11px] text-muted-foreground">{t('about.activity.contributions')}</p>
+              </div>
+              <div>
+                <p className="text-lg font-bold leading-none gradient-text">{fmt.number.format(summary.activeDays)}</p>
+                <p className="mt-1 text-[11px] text-muted-foreground">{t('about.activity.activeDays')}</p>
+              </div>
+            </>
+          )}
         </div>
       </div>
+
+      {allTime && (
+        <div role="group" aria-label={t('about.activity.period')} className="mb-4 inline-flex rounded-lg border border-border p-0.5 text-xs">
+          {(['recent', 'all'] as const).map((option) => (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={view === option}
+              onClick={() => { setView(option); setHovered(null); }}
+              className={cn(
+                'rounded-md px-3 py-1 font-medium transition-colors',
+                view === option ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground',
+              )}
+            >
+              {option === 'recent' ? t('about.activity.recent') : t('about.activity.allTime')}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {showAll ? (
+        <ul className="space-y-2.5">
+          {allTime.years.map((y) => {
+            const max = Math.max(...allTime.years.map((x) => x.total), 1);
+            return (
+              <li key={y.year} className="flex items-center gap-3 text-xs">
+                <span className="w-10 shrink-0 font-mono text-muted-foreground">{y.year}</span>
+                <span className="relative h-3 flex-1 overflow-hidden rounded-full bg-muted/60">
+                  <span
+                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-primary/70 to-primary"
+                    style={{ width: `${Math.max(2, (y.total / max) * 100)}%` }}
+                  />
+                </span>
+                <span className="w-14 shrink-0 text-right font-medium tabular-nums text-foreground">{fmt.number.format(y.total)}</span>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+      <>
 
       <div className="mx-auto flex w-fit max-w-full gap-2">
         <div
@@ -228,6 +292,8 @@ export const ContributionHeatmap = ({ contributions }: ContributionHeatmapProps)
         ))}
         <span>{t('about.activity.more')}</span>
       </div>
+      </>
+      )}
     </div>
   );
 };

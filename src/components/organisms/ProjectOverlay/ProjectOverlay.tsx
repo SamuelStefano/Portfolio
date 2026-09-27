@@ -29,6 +29,7 @@ import {
   Network,
   Puzzle,
   Film,
+  Clock,
   type LucideIcon,
 } from 'lucide-react';
 import { Project, ProjectSection } from '@/types/project';
@@ -87,6 +88,10 @@ const SECTION_ICONS: Record<string, LucideIcon> = {
   meetings: Network,
   miniapp: Puzzle,
   exports: Film,
+  kanban: LayoutGrid,
+  graph: Network,
+  crons: Clock,
+  playground: Code2,
 };
 
 function SectionIcon({ name, className }: { name: string; className?: string }) {

@@ -198,7 +198,7 @@ export const About = () => {
             </div>
             {gitHubStats.contributions && (
               <div className="animate-fade-up">
-                <ContributionHeatmap contributions={gitHubStats.contributions} />
+                <ContributionHeatmap contributions={gitHubStats.contributions} allTime={gitHubStats.allTime} />
               </div>
             )}
             <Card className="bg-gradient-card border-border hover-card animate-slide-right">

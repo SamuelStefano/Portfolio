@@ -99,7 +99,7 @@ export const Header = () => {
               </ul>
             </div>
 
-            <div className="mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[320px] xl:max-w-[360px] hero-in hero-in-late">
+            <div className="mx-auto w-full max-w-[200px] sm:max-w-[220px] lg:max-w-[250px] xl:max-w-[270px] hero-in hero-in-late">
               <div className="relative photo-float">
                 <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-card shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.45)]">
                   <img
@@ -111,10 +111,6 @@ export const Header = () => {
                     decoding="async"
                     className="aspect-[4/5] w-full object-cover"
                   />
-                </div>
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full border border-green-500/30 bg-card px-3 py-1.5 shadow-lg whitespace-nowrap">
-                  <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs font-medium text-green-400">{t('controls.openToWork')}</span>
                 </div>
               </div>
             </div>

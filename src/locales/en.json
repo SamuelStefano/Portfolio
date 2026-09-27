@@ -287,7 +287,7 @@
     "greeting": "Hello! I'm Samuel.",
     "bio1": "Full-stack developer based in Marialva, Brazil, working remotely. I started in IT support, joined DevFellowship as a freelancer in late 2023 and now work full-time on the company's internal platform — React, TypeScript, Node.js, Supabase and PostgreSQL day to day, with applied AI (agents, MCP, Claude) at the core of the workflow.",
     "bio2": "At DevFellowship I built the complete Module Federation ecosystem — DFL Learn (super-app host), Reviews, Payments and the AI-powered CI Reviewer Bot — plus 4 MCP servers and the revenue pipeline running in production, from contracts to recurring billing and electronic invoicing. I created ITERA, a course platform with a synchronous live-class mode built on Supabase Realtime, and Deck, my command post for AI agents. In hackathons: 1st place in the Base track at ETH Latam 2025 (PIX On-Chain), won the Chainlink track at Hackanation 2026 with AltPay and 2nd place in the Scroll track at DevConnect ETH 2025 (TalentDAO).",
-    "bio3": "I am in the final year of Systems Analysis and Development at UNINGÁ — graduating in December 2026. I am looking for a remote product team where I can add what I already deliver today and keep growing.",
+    "bio3": "I am in the final year of Systems Analysis and Development at UNINGÁ — graduating in December 2026. If you liked what you saw here, reach out: I am open to proposals and always up for a talk about product, AI and games.",
     "location": "Marialva, PR",
     "language": "English B2",
     "schedule": "6:00 A.M - 18:00 P.M",
@@ -297,12 +297,12 @@
     "technologies": "Technologies",
     "linesOfCode": "Lines of Code",
     "currentFocus": "Current Focus",
-    "currentFocusDescription": "Final year of my degree (graduating December 2026), working on a product team and specializing in applied AI, modern full-stack and Web3.",
+    "currentFocusDescription": "Final year of my degree (graduating December 2026), working on a product team with applied AI and modern full-stack — and with an eye on games, my long-term interest.",
     "focusAreas": [
       "Applied AI",
       "TypeScript",
       "Supabase / PostgreSQL",
-      "Web3"
+      "Games"
     ],
     "highlights": {
       "passion": {
@@ -415,11 +415,15 @@
       "day_other": "{{formatted}} contributions on {{date}}",
       "none": "No contributions on {{date}}",
       "aria_one": "{{count}} GitHub contribution in the last 6 months, across {{days}} active days",
-      "aria_other": "{{count}} GitHub contributions in the last 6 months, across {{days}} active days"
+      "aria_other": "{{count}} GitHub contributions in the last 6 months, across {{days}} active days",
+      "recent": "Last 6 months",
+      "allTime": "All time",
+      "period": "Period",
+      "allSubtitle": "Since {{year}} · includes private repositories"
     }
   },
   "footer": {
-    "description": "Full-Stack Developer · Applied AI. Open to remote roles.",
+    "description": "Full-Stack Developer · Applied AI. Open to remote job proposals.",
     "quickLinks": "Quick Links",
     "social": "Social Media",
     "contact": "Contact",
@@ -598,7 +602,7 @@
     "colorScheme": "Color scheme",
     "cliMode": "CLI Mode",
     "visualMode": "Visual Mode",
-    "openToWork": "Open to work",
+    "openToWork": "Open to proposals",
     "lightMode": "Switch to light mode",
     "darkMode": "Switch to dark mode",
     "backToTop": "Back to top",
@@ -989,6 +993,26 @@
     "14-s5": {
       "title": "Exports",
       "description": "Videos rendered on the server, newest first: 9:16 reels and 1080p lessons, with status (rendering, ready) and download."
+    },
+    "0-8": {
+      "title": "Canvas",
+      "description": "Every agent session on one board, grouped by area (Itera, DFL, personal, infra), with live status and a panel of active sessions."
+    },
+    "0-9": {
+      "title": "Kanban",
+      "description": "The same sessions as cards: to do, in progress and done, with the orchestrator on top, context used and who needs attention."
+    },
+    "0-10": {
+      "title": "Graph",
+      "description": "A code knowledge graph built locally with tree-sitter: 625 nodes and 1,167 edges for one repository, with search and questions about the code."
+    },
+    "0-11": {
+      "title": "Crons",
+      "description": "Scheduled prompts that start autonomous turns on Brasília time, with a timeline of the next 24 hours."
+    },
+    "0-12": {
+      "title": "Playground",
+      "description": "Deck's real components next to their code: variants, sizes and states, editable live."
     }
   },
   "notFound": {

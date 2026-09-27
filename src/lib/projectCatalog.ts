@@ -387,6 +387,51 @@ const seeds: ProjectSeed[] = [
         project_images: [
           { id: '0-7-1', image_url: '/projects/Deck/Documentacao.png', order_index: 1 }
         ]
+      },
+      {
+        id: '0-8',
+        folder_name: 'canvas',
+        display_name: 'Canvas',
+        order_index: 1.1,
+        project_images: [
+          { id: '0-8-1', image_url: '/projects/Deck/canvas.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-9',
+        folder_name: 'kanban',
+        display_name: 'Kanban',
+        order_index: 1.2,
+        project_images: [
+          { id: '0-9-1', image_url: '/projects/Deck/kanban.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-10',
+        folder_name: 'graph',
+        display_name: 'Graph',
+        order_index: 1.3,
+        project_images: [
+          { id: '0-10-1', image_url: '/projects/Deck/graph.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-11',
+        folder_name: 'crons',
+        display_name: 'Crons',
+        order_index: 5.5,
+        project_images: [
+          { id: '0-11-1', image_url: '/projects/Deck/crons.png', order_index: 1 }
+        ]
+      },
+      {
+        id: '0-12',
+        folder_name: 'playground',
+        display_name: 'Playground',
+        order_index: 7.5,
+        project_images: [
+          { id: '0-12-1', image_url: '/projects/Deck/playground.png', order_index: 1 }
+        ]
       }
     ],
     image_categories: {
@@ -396,7 +441,12 @@ const seeds: ProjectSeed[] = [
       'documentos': ['/projects/Deck/Documentos.png'],
       'custos': ['/projects/Deck/Custos.png'],
       'admin': ['/projects/Deck/Admin.png'],
-      'docs': ['/projects/Deck/Documentacao.png']
+      'docs': ['/projects/Deck/Documentacao.png'],
+      'canvas': ['/projects/Deck/canvas.png'],
+      'kanban': ['/projects/Deck/kanban.png'],
+      'graph': ['/projects/Deck/graph.png'],
+      'crons': ['/projects/Deck/crons.png'],
+      'playground': ['/projects/Deck/playground.png']
     }
   },
   {
@@ -1259,7 +1309,7 @@ const seeds: ProjectSeed[] = [
     id: '13',
     title: 'CodeLibrary',
     role: 'Creator',
-    stack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Vercel'],
+    stack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Vercel', 'Figma'],
     thumbnail_url: '/projects/Codelibrary/Hero.png',
     icon_name: 'Library',
     created_at: '2025-11-21T00:00:00Z',

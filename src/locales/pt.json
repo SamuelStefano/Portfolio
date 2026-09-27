@@ -287,7 +287,7 @@
     "greeting": "Olá! Eu sou o Samuel.",
     "bio1": "Desenvolvedor full-stack em Marialva (PR), trabalhando remoto. Comecei em suporte técnico, entrei na DevFellowship como freelancer no fim de 2023 e hoje trabalho em tempo integral na plataforma interna da empresa — React, TypeScript, Node.js, Supabase e PostgreSQL no dia a dia, com IA aplicada (agentes, MCP, Claude) como parte central do fluxo.",
     "bio2": "Na DevFellowship, construí o ecossistema completo de Module Federation — DFL Learn (super-app host), Reviews, Payments e o CI Revisor Bot com IA — além de 4 servidores MCP e do fluxo de receita em produção, de contratos a cobrança recorrente e NF-e. Criei o ITERA, plataforma de cursos com aula ao vivo síncrona sobre Supabase Realtime, e o Deck, meu posto de comando para agentes de IA. Em hackathons: 1º lugar na trilha Base do ETH Latam 2025 (PIX On-Chain), vitória na trilha Chainlink do Hackanation 2026 com o AltPay e 2º lugar na trilha Scroll do DevConnect ETH 2025 (TalentDAO).",
-    "bio3": "Estou no último ano de Análise e Desenvolvimento de Sistemas na UNINGÁ — me formo em dezembro de 2026. Procuro um time de produto remoto onde eu possa somar o que já entrego hoje e continuar crescendo.",
+    "bio3": "Estou no último ano de Análise e Desenvolvimento de Sistemas na UNINGÁ — me formo em dezembro de 2026. Se você gostou do que viu por aqui, me chama: estou aberto a propostas e sempre topo trocar ideia sobre produto, IA e games.",
     "location": "Marialva, PR",
     "language": "Inglês B2",
     "schedule": "6:00 A.M - 18:00 P.M",
@@ -297,12 +297,12 @@
     "technologies": "Tecnologias",
     "linesOfCode": "Linhas de Código",
     "currentFocus": "Foco Atual",
-    "currentFocusDescription": "Último ano de ADS (formatura em dezembro de 2026), trabalhando em time de produto e me especializando em IA aplicada, full-stack moderno e Web3.",
+    "currentFocusDescription": "Último ano de ADS (formatura em dezembro de 2026), trabalhando em time de produto com IA aplicada e full-stack moderno — e de olho em games, meu interesse de longo prazo.",
     "focusAreas": [
       "IA aplicada",
       "TypeScript",
       "Supabase / PostgreSQL",
-      "Web3"
+      "Games"
     ],
     "highlights": {
       "passion": {
@@ -415,11 +415,15 @@
       "day_other": "{{formatted}} contribuições em {{date}}",
       "none": "Nenhuma contribuição em {{date}}",
       "aria_one": "{{count}} contribuição no GitHub nos últimos 6 meses, em {{days}} dias ativos",
-      "aria_other": "{{count}} contribuições no GitHub nos últimos 6 meses, em {{days}} dias ativos"
+      "aria_other": "{{count}} contribuições no GitHub nos últimos 6 meses, em {{days}} dias ativos",
+      "recent": "Últimos 6 meses",
+      "allTime": "Todo o período",
+      "period": "Período",
+      "allSubtitle": "Desde {{year}} · inclui repositórios privados"
     }
   },
   "footer": {
-    "description": "Desenvolvedor Full-Stack · IA aplicada. Aberto a vagas remotas (CLT ou PJ).",
+    "description": "Desenvolvedor Full-Stack · IA aplicada. Aberto a propostas de vagas remotas (CLT ou PJ).",
     "quickLinks": "Links Rápidos",
     "social": "Redes Sociais",
     "contact": "Contato",
@@ -989,6 +993,26 @@
     "14-s5": {
       "title": "Exports",
       "description": "Vídeos renderizados no servidor, do mais novo ao mais antigo: reels 9:16 e aulas em 1080p, com status (renderizando, pronto) e download."
+    },
+    "0-8": {
+      "title": "Canvas",
+      "description": "Todas as sessões de agente num quadro, agrupadas por área (Itera, DFL, pessoal, infra), com status ao vivo e um painel de sessões ativas."
+    },
+    "0-9": {
+      "title": "Kanban",
+      "description": "As mesmas sessões como cards: a fazer, em andamento e feito, com o orquestrador no topo, contexto usado e quem precisa de atenção."
+    },
+    "0-10": {
+      "title": "Graph",
+      "description": "Grafo de conhecimento do código gerado localmente com tree-sitter: 625 nós e 1.167 arestas de um repositório, com busca e perguntas sobre o código."
+    },
+    "0-11": {
+      "title": "Crons",
+      "description": "Prompts agendados que disparam turnos autônomos no horário de Brasília, com a linha do tempo das próximas 24 h."
+    },
+    "0-12": {
+      "title": "Playground",
+      "description": "Os componentes reais do Deck com o código ao lado: variantes, tamanhos e estados, editáveis ao vivo."
     }
   },
   "notFound": {

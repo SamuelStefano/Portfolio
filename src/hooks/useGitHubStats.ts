@@ -11,6 +11,16 @@ export interface GitHubContributions {
   counts: number[];
 }
 
+/** Totals since the account's first contribution year, one GraphQL collection per year. */
+export interface GitHubAllTime {
+  since: number | null;
+  total: number;
+  commits: number;
+  pullRequests: number;
+  reviews: number;
+  years: { year: number; total: number }[];
+}
+
 export interface GitHubStats {
   totalCommits: number;
   totalRepos: number;
@@ -20,6 +30,7 @@ export interface GitHubStats {
   linesOfCode: number;
   languages: Record<string, number>;
   contributions: GitHubContributions | null;
+  allTime: GitHubAllTime | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -38,6 +49,7 @@ const FALLBACK: Omit<GitHubStats, 'isLoading' | 'error'> = {
   linesOfCode: 360000,
   languages: {},
   contributions: null,
+  allTime: null,
 };
 
 // One request per page load, shared by every component that reads the stats.
@@ -58,6 +70,7 @@ const load = (): Promise<GitHubStats> => {
         linesOfCode: data.linesOfCode || FALLBACK.linesOfCode,
         languages: data.languages || {},
         contributions: data.contributions?.counts?.length ? data.contributions : null,
+        allTime: data.allTime?.years?.length ? data.allTime : null,
         isLoading: false,
         error: null,
       };
