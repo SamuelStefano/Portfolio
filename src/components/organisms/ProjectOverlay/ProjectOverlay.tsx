@@ -92,6 +92,13 @@ const SECTION_ICONS: Record<string, LucideIcon> = {
   graph: Network,
   crons: Clock,
   playground: Code2,
+  arvore: GitBranch,
+  roadmap: Route,
+  cronograma: Calendar,
+  dsm: LayoutGrid,
+  matrizq: LayoutGrid,
+  nucleo: Network,
+  guia: Info,
 };
 
 function SectionIcon({ name, className }: { name: string; className?: string }) {

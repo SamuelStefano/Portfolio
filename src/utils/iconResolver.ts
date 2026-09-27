@@ -12,6 +12,7 @@ import {
   Library,
   Monitor,
   TrendingUp,
+  GitBranch,
   Video,
   type LucideIcon,
 } from 'lucide-react';
@@ -32,6 +33,7 @@ const ICONS: Record<string, LucideIcon> = {
   Library,
   Monitor,
   TrendingUp,
+  GitBranch,
   Video,
 };
 

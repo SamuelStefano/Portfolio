@@ -38,7 +38,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-dosIV4BpZHhcb9IKcPJ0dLWR/u+rSz3nfB4jPAnesYM=' https://va.vercel-scripts.com; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+          "value": "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-rBVIQzTpegQdS1DJ69X5AXzG19GKSobtzfA1vl2NyRc=' https://va.vercel-scripts.com; connect-src 'self'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
         }
       ]
     }

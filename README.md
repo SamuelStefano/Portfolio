@@ -28,7 +28,7 @@
 
 <img src="docs/github-activity.png" alt="GitHub activity heatmap" width="600" />
 
-**Hackathons as a podium**, a timeline of experience, a trilingual interface (Portuguese, English, Spanish), a terminal skin, four colour schemes and a light theme — all applied before the first paint.
+**Hackathons as a podium**, a timeline of experience, a trilingual interface (Portuguese, English, Spanish), four colour schemes and a light theme — all applied before the first paint.
 
 <img src="docs/podium.png" alt="Hackathon podium" width="900" />
 
@@ -36,7 +36,7 @@
 
 | | |
 |---|---|
-| **Performance** | Initial JavaScript is 108 KB gzip (it was 221 KB). The project overlay (with framer-motion), terminal skin, snake game, award dialog and 404 page are separate chunks; cards warm the overlay chunk on hover. Each visitor downloads one locale and the others load when the browser is idle. Photos ship as WebP variants sized for where they render. |
+| **Performance** | Initial JavaScript is 108 KB gzip (it was 221 KB). The project overlay (with framer-motion), snake game, award dialog and 404 page are separate chunks; cards warm the overlay chunk on hover. Each visitor downloads one locale and the others load when the browser is idle. Photos ship as WebP variants sized for where they render. |
 | **Content model** | [`projectCatalog.ts`](src/lib/projectCatalog.ts) holds structure only (links, stack, images, status). Every sentence a visitor reads lives in [`src/locales`](src/locales), so a text exists once per language. |
 | **Security** | Strict CSP (the single inline script is allow-listed by hash), HSTS, frame and content-type headers. Tokens stay in serverless functions; CI fails if anything shaped like a key reaches `dist/`. |
 | **Accessibility** | Keyboard focus is always visible, skip link, carousel follows the WAI-ARIA pattern with a pause control, the project view is a real modal (the page behind goes inert, focus moves in and returns to where it came from), `<html lang>` follows the chosen language, reduced motion is respected everywhere. |

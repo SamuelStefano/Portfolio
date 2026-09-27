@@ -190,6 +190,80 @@ const seeds: ProjectSeed[] = [
     }
   },
   {
+    id: '17',
+    title: 'Itera Tree',
+    role: 'Creator',
+    stack: ['React', 'TypeScript', 'Vite', 'PixiJS', 'Web Workers', 'TanStack Query', 'Supabase', 'Zod', 'TailwindCSS v4', 'Vitest', 'Playwright', 'Docker', 'Dokploy'],
+    thumbnail_url: '/projects/itera-tree/arvore.png',
+    icon_name: 'GitBranch',
+    created_at: '2026-09-25T00:00:00Z',
+    updated_at: '2026-09-27T00:00:00Z',
+    project_collaborators: [
+      { id: '17-c1', name: 'Samuel Stefano', role: 'Creator', avatar_url: '/avatar-lg.webp', created_at: '2026-09-25T00:00:00Z' }
+    ],
+    project_links: [
+      { id: '17-l1', label: 'Website', title: 'App', url: 'https://tree.devfellowship.com', type: 'website', created_at: '2026-09-25T00:00:00Z' }
+    ],
+    project_sections: [
+      {
+        id: '17-s1',
+        folder_name: 'arvore',
+        display_name: 'Árvore',
+        order_index: 1,
+        project_images: [{ id: '17-s1-i1', image_url: '/projects/itera-tree/arvore.png', order_index: 1 }]
+      },
+      {
+        id: '17-s2',
+        folder_name: 'trilha',
+        display_name: 'Trilha',
+        order_index: 2,
+        project_images: [{ id: '17-s2-i1', image_url: '/projects/itera-tree/trilha.png', order_index: 1 }]
+      },
+      {
+        id: '17-s3',
+        folder_name: 'roadmap',
+        display_name: 'Roadmap',
+        order_index: 3,
+        project_images: [{ id: '17-s3-i1', image_url: '/projects/itera-tree/roadmap.png', order_index: 1 }]
+      },
+      {
+        id: '17-s4',
+        folder_name: 'cronograma',
+        display_name: 'Cronograma',
+        order_index: 4,
+        project_images: [{ id: '17-s4-i1', image_url: '/projects/itera-tree/cronograma.png', order_index: 1 }]
+      },
+      {
+        id: '17-s5',
+        folder_name: 'dsm',
+        display_name: 'DSM',
+        order_index: 5,
+        project_images: [{ id: '17-s5-i1', image_url: '/projects/itera-tree/dsm.png', order_index: 1 }]
+      },
+      {
+        id: '17-s6',
+        folder_name: 'matrizq',
+        display_name: 'Matriz Q',
+        order_index: 6,
+        project_images: [{ id: '17-s6-i1', image_url: '/projects/itera-tree/matrizq.png', order_index: 1 }]
+      },
+      {
+        id: '17-s7',
+        folder_name: 'nucleo',
+        display_name: 'Núcleo',
+        order_index: 7,
+        project_images: [{ id: '17-s7-i1', image_url: '/projects/itera-tree/nucleo.png', order_index: 1 }]
+      },
+      {
+        id: '17-s8',
+        folder_name: 'guia',
+        display_name: 'Guia',
+        order_index: 8,
+        project_images: [{ id: '17-s8-i1', image_url: '/projects/itera-tree/guia.png', order_index: 1 }]
+      }
+    ]
+  },
+  {
     id: '15',
     title: 'TradeView',
     role: 'Creator',
@@ -1401,6 +1475,7 @@ const PROJECT_META: Array<[title: string, meta: Pick<Project, 'status' | 'featur
   ['Deck', { status: 'personal', featured: true }],
   ['DFL Payments', { status: 'production', featured: true }],
   ['AltPay', { status: 'hackathon', featured: true }],
+  ['Itera Tree', { status: 'production' }],
   ['GreenLoop', { status: 'hackathon' }],
   ['TalentDAO', { status: 'hackathon' }],
   ['Valdez', { status: 'personal' }],

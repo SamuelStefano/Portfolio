@@ -18,7 +18,7 @@
 
     <!-- paint the stored theme, colour scheme and skin before React mounts (no flash);
          its sha256 is allow-listed in the CSP in vercel.json -->
-    <script>(function(){try{var d=document.documentElement,s=localStorage;if(s.getItem('portfolio-theme')==='light')d.classList.add('light');var c=s.getItem('portfolio-color');if(c&&c!=='aurora')d.setAttribute('data-color',c);d.setAttribute('data-skin',s.getItem('portfolio-skin')==='cli'?'cli':'modern')}catch(e){}})();</script>
+    <script>(function(){try{var d=document.documentElement,s=localStorage;if(s.getItem('portfolio-theme')==='light')d.classList.add('light');var c=s.getItem('portfolio-color');if(c&&c!=='aurora')d.setAttribute('data-color',c)}catch(e){}})();</script>
     <style>html{background:#030816}html.light{background:#e1e7ef}</style>
 
     <!-- Open Graph (LinkedIn, WhatsApp, Slack) -->

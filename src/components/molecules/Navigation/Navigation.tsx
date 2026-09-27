@@ -4,9 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/atoms/button/button';
 import { LanguageSelector } from '@/components/molecules/LanguageSelector/LanguageSelector';
 import { ColorSchemeSelector } from '@/components/molecules/ColorSchemeSelector/ColorSchemeSelector';
-import { SkinToggle } from '@/components/molecules/SkinToggle/SkinToggle';
 import { ThemeToggle } from '@/components/atoms/ThemeToggle/ThemeToggle';
-import { useSkin } from '@/hooks/useSkin';
 
 // same order as the sections on the page
 const NAV_ITEMS = [
@@ -29,8 +27,6 @@ const smoothScrollTo = (elementId: string) => {
 
 export const Navigation = () => {
   const { t } = useTranslation();
-  const { skin } = useSkin();
-  const isCli = skin === 'cli';
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -92,87 +88,6 @@ export const Navigation = () => {
     setIsOpen(false);
   };
 
-  if (isCli) {
-    return (
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--cli-border)] bg-[var(--cli-panel)]/90 font-mono backdrop-blur-md">
-        <div className="flex items-center justify-between h-14 sm:h-16 px-4 sm:px-6 lg:px-8">
-          <button
-            onClick={() => handleNavClick('#inicio')}
-            className="flex items-center gap-2 text-sm sm:text-[15px]"
-          >
-            <span className="text-[var(--cli-green)]">samuel@stefano</span>
-            <span className="text-[var(--cli-text-dim)]">:</span>
-            <span className="text-[var(--cli-cyan)]">~</span>
-            <span className="text-[var(--cli-text-dim)]">$</span>
-          </button>
-
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navigationItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className={`px-2.5 py-1.5 text-[13px] xl:text-sm transition-colors duration-200 ${
-                  activeSection === item.href
-                    ? 'text-[var(--cli-cyan)]'
-                    : 'text-[var(--cli-text-soft)] hover:text-[var(--cli-green)]'
-                }`}
-              >
-                <span className="text-[var(--cli-text-dim)]">./</span>{item.label}
-              </button>
-            ))}
-
-            <div className="ml-3 xl:ml-4 flex items-center gap-2">
-              <SkinToggle />
-              <ColorSchemeSelector />
-              <ThemeToggle />
-              <LanguageSelector />
-            </div>
-          </div>
-
-          <div className="flex shrink-0 items-center gap-1 lg:hidden">
-            <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
-              aria-expanded={isOpen}
-              aria-controls="mobile-nav"
-              className="p-2 text-[var(--cli-text-soft)] hover:text-[var(--cli-green)]"
-            >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
-            </Button>
-          </div>
-        </div>
-
-        {isOpen && (
-          <div id="mobile-nav" className="lg:hidden max-h-[calc(100vh-3.5rem)] overflow-y-auto border-t border-[var(--cli-border)] bg-[var(--cli-panel)]/98 backdrop-blur-md">
-            <div className="px-4 py-4 space-y-1">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`block w-full text-left px-3 py-2.5 text-sm transition-colors duration-200 ${
-                    activeSection === item.href
-                      ? 'text-[var(--cli-cyan)]'
-                      : 'text-[var(--cli-text-soft)] hover:text-[var(--cli-green)]'
-                  }`}
-                >
-                  <span className="text-[var(--cli-text-dim)]">./</span>{item.label}
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-2 border-t border-[var(--cli-border)] px-4 py-4">
-              <SkinToggle />
-              <ColorSchemeSelector />
-              <LanguageSelector />
-            </div>
-          </div>
-        )}
-      </nav>
-    );
-  }
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
       isScrolled ? 'bg-background/90 backdrop-blur-md border-border/60' : 'bg-background/0 border-transparent'
@@ -209,7 +124,6 @@ export const Navigation = () => {
           </div>
 
           <div className="hidden xl:flex items-center gap-2">
-            <SkinToggle />
             <ColorSchemeSelector />
             <ThemeToggle />
             <LanguageSelector prominent />
@@ -250,7 +164,6 @@ export const Navigation = () => {
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-2 border-t border-border/50 px-4 py-4">
-              <SkinToggle />
               <ColorSchemeSelector />
               <LanguageSelector />
             </div>

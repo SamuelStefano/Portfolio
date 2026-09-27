@@ -7,22 +7,17 @@ import { HackathonsSection } from '@/components/organisms/HackathonsSection/Hack
 import { About } from '@/components/organisms/About/About';
 import { Footer } from '@/components/organisms/Footer/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
-import { Navigation } from '@/components/molecules/Navigation/Navigation';
 import { LogButton } from '@/components/molecules/LogButton/LogButton';
 import { BackToTop } from '@/components/atoms/BackToTop/BackToTop';
 import { ProjectOverlayProvider } from '@/components/organisms/ProjectOverlay/ProjectOverlayProvider';
 import { ChunkBoundary } from '@/components/atoms/ChunkBoundary/ChunkBoundary';
-import { useSkin } from '@/hooks/useSkin';
 import { useOffscreenAnimationPause } from '@/hooks/useOffscreenAnimationPause';
 
-// Only a few visitors switch to the terminal skin or open the snake; neither ships in the main bundle.
-const CliMode = lazy(() => import('@/components/organisms/CliMode/CliMode'));
+// Only a few visitors open the snake; it does not ship in the main bundle.
 const SnakeGame = lazy(() => import('@/components/atoms/SnakeGame/SnakeGame'));
 
 const Index = () => {
   const { t } = useTranslation();
-  const { skin } = useSkin();
-  const isCli = skin === 'cli';
   const [gameOpen, setGameOpen] = useState(false);
 
   useOffscreenAnimationPause();
@@ -36,26 +31,15 @@ const Index = () => {
         {t('controls.skipToContent')}
       </a>
       <main className="min-h-screen relative">
-        {!isCli && <AnimatedBackground />}
-        {isCli ? (
-          <div className="relative z-10">
-            <Navigation />
-            <ChunkBoundary>
-              <Suspense fallback={<div className="min-h-screen" />}>
-                <CliMode />
-              </Suspense>
-            </ChunkBoundary>
-          </div>
-        ) : (
-          <div className="relative z-10">
-            <Header />
-            <ProjectGrid />
-            <TechStack />
-            <HackathonsSection />
-            <About />
-            <Footer onOpenGame={() => setGameOpen(true)} />
-          </div>
-        )}
+        <AnimatedBackground />
+        <div className="relative z-10">
+          <Header />
+          <ProjectGrid />
+          <TechStack />
+          <HackathonsSection />
+          <About />
+          <Footer onOpenGame={() => setGameOpen(true)} />
+        </div>
         <LogButton />
         <BackToTop />
         {gameOpen && (

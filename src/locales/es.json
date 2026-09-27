@@ -525,6 +525,10 @@
     "campaigns": {
       "description": "Cockpit de contenido y leads de DevFellowship: calendario de posts por unidad de negocio, cola de revisión con borradores generados por IA, publicación automática en Instagram, TikTok, LinkedIn y YouTube vía Zernio, y analytics por cuenta.",
       "longDescription": "Campaigns es el cockpit de contenido de DevFellowship y de las marcas que atiende, y soy el principal contribuidor del repositorio, junto a Tainan Fidelis y William Nunes. El flujo de posts está automatizado de punta a punta con una regla fija en el medio: quien escribe nunca es quien libera. Agentes de IA — vía el servidor MCP de la empresa — redactan borradores a partir de los temas del equipo y caen en \"esperando revisión\"; una persona lee, edita en el editor TipTap, aprueba y agenda; aprobado, el post va a Zernio y se publica a la hora en las cuentas correctas de Instagram, TikTok, LinkedIn o YouTube, incluidas secuencias de stories. El calendario muestra todo por unidad de negocio, creador y estado, y el analytics recoge métricas por cuenta y por formato con un ranking de los posts del período — sin sumar nunca redes distintas. La app también califica leads: un servidor Hono consulta la base de CNPJ de la Receita Federal en ClickHouse del lado del servidor, porque una credencial en una variable VITE_ se vuelve texto público en el bundle. No existe estado \"mock\" en ningún lugar: cualquier fallo renderiza el mismo aviso de servicio no disponible, garantizado por tests, para que nadie actúe sobre números inventados. Autenticación en dos capas — gate de borde vía Traefik y sesión Supabase compartida en el dominio .devfellowship.com."
+    },
+    "iteraTree": {
+      "description": "El editor del currículo de Itera como un árbol: cada nodo es algo que el alumno aprende a hacer, la madera dice qué debe venir antes y las hojas son las pruebas. Capability → claim → task, con ruta, roadmap, cronograma y lentes que verifican si el orden de enseñanza tiene sentido.",
+      "longDescription": "Itera Tree es donde se diseña el curso de Itera antes de convertirse en clases. Cada capability (algo que el alumno aprende a hacer) se divide en claims (lo que debe ser cierto para decir que lo sabe) y cada claim se prueba con tasks. Las dependencias forman un árbol: raíces abajo, fruto arriba.\n\nEl mismo árbol aparece en siete vistas. Árbol, Ruta, Roadmap y Cronograma muestran la estructura y cómo se reparte en los días de clase, con presupuesto de tiempo por día. DSM, Matriz Q y Núcleo son lentes de análisis: la DSM muestra si algún prerrequisito se enseña después de lo que depende de él, la Matriz Q comprueba que cada claim tenga su prueba y la lente de núcleo compara las capabilities marcadas como centrales con las que realmente sostienen el curso (alcance × intermediación).\n\nCreé la aplicación desde cero en septiembre de 2026: un núcleo en TypeScript (parser del formato .tree.md, grafo, cobertura, lentes) y una interfaz en React con canvas en PixiJS y layout en un Web Worker. Tiene edición en la propia interfaz, comparación y sala de merge entre árboles, sincronización con Itera y una guía completa en portugués."
     }
   },
   "hackathons": {
@@ -600,27 +604,12 @@
   },
   "controls": {
     "colorScheme": "Esquema de color",
-    "cliMode": "Modo CLI",
-    "visualMode": "Modo Visual",
     "openToWork": "Abierto a propuestas",
     "lightMode": "Activar modo claro",
     "darkMode": "Activar modo oscuro",
     "backToTop": "Volver arriba",
     "skipToContent": "Saltar al contenido",
     "visit": "Visitar {{name}}"
-  },
-  "cli": {
-    "role": "Rol",
-    "stack": "Stack",
-    "focus": "Enfoque",
-    "uptime": "Uptime",
-    "awards": "Premios",
-    "location": "Ubicación",
-    "roleValue": "Full-Stack @ DevFellowship",
-    "focusValue": "Micro-frontends · IA · Web3",
-    "uptimeValue": "Desde nov/2023 · Full-Stack @ DevFellowship",
-    "locationValue": "Marialva, PR · Brasil",
-    "caption": "samuel.jpg — render @ 0.92"
   },
   "game": {
     "title": "Snake.exe",
@@ -1013,6 +1002,38 @@
     "0-12": {
       "title": "Playground",
       "description": "Los componentes reales del Deck junto a su código: variantes, tamaños y estados, editables en vivo."
+    },
+    "17-s1": {
+      "title": "Árbol",
+      "description": "El curso entero como un árbol: días en el tronco, capabilities en las ramas, con tasks, minutos y el presupuesto de cada día."
+    },
+    "17-s2": {
+      "title": "Ruta",
+      "description": "El recorrido del alumno día a día, con personas (principiante, sabe lo básico, apurado) y exportación a JSON o Markdown."
+    },
+    "17-s3": {
+      "title": "Roadmap",
+      "description": "La columna del árbol en el formato de roadmap.sh: el núcleo anclado en el centro y el resto ramificándose a los lados."
+    },
+    "17-s4": {
+      "title": "Cronograma",
+      "description": "Cómo se reparte cada capability en los días, con alertas de constructo, claims débiles y días señalados."
+    },
+    "17-s5": {
+      "title": "DSM",
+      "description": "¿El orden de enseñanza es correcto? Debajo de la diagonal, el prerrequisito vino antes; encima, vino después y hay que corregirlo."
+    },
+    "17-s6": {
+      "title": "Matriz Q",
+      "description": "¿Cada claim tiene su prueba? Las filas son tasks y las columnas, claims agrupadas por capability."
+    },
+    "17-s7": {
+      "title": "Núcleo",
+      "description": "¿Las capabilities marcadas como núcleo son realmente las que sostienen el curso? Alcance × intermediación."
+    },
+    "17-s8": {
+      "title": "Guía",
+      "description": "La guía en portugués que explica cada vista, marca y atajo de la aplicación."
     }
   },
   "notFound": {

@@ -17,6 +17,7 @@ const PROJECT_KEYS: Record<string, string> = {
   'DFL-Bot Reviewer': 'ciRevisorBot',
   AltPay: 'altpay',
   CodeLibrary: 'codelibrary',
+  'Itera Tree': 'iteraTree',
 };
 
 /** Locale key under `projectDescriptions` for a project, or null when it has none. */

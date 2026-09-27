@@ -532,6 +532,10 @@
     "campaigns": {
       "description": "DevFellowship's content and lead cockpit: a post calendar per business unit, a review queue fed by AI-written drafts, automatic dispatch to Instagram, TikTok, LinkedIn and YouTube through Zernio, and per-account analytics.",
       "longDescription": "Campaigns is the content cockpit for DevFellowship and the brands it serves, and I am the main contributor to the repository, alongside Tainan Fidelis and William Nunes. The post flow is automated end to end with one fixed rule in the middle: whoever writes never clears. AI agents — through the company's MCP server — draft posts from the team's topics and land in \"awaiting review\"; a person reads, edits in the TipTap editor, approves and schedules; once approved, the post goes to Zernio and is dispatched on time to the right Instagram, TikTok, LinkedIn or YouTube accounts, story sequences included. The calendar shows everything by business unit, creator and state, and analytics collects metrics per account and per format with a ranking of the period's posts — never summing different networks. The app also qualifies leads: a Hono server queries the Receita Federal company registry in ClickHouse server-side, because a credential in a VITE_ variable becomes public text in the bundle. There is no mock state anywhere: every failure renders the same service-unavailable notice, enforced by tests, so nobody acts on invented numbers. Two-layer auth — edge gate via Traefik and a shared Supabase session on the .devfellowship.com domain."
+    },
+    "iteraTree": {
+      "description": "The editor for Itera's curriculum as a tree: every node is something the student learns to do, the wood says what must come first, and the leaves are the proofs. Capability → claim → task, with a path, roadmap, schedule and lenses that check whether the teaching order makes sense.",
+      "longDescription": "Itera Tree is where the Itera course is designed before it becomes lessons. Each capability (something the student learns to do) splits into claims (what must be true to say they can do it), and each claim is proven by tasks. The dependencies form a tree: roots at the bottom, fruit at the top.\n\nThe same tree shows up in seven views. Tree, Path, Roadmap and Schedule show the structure and how it spreads over the class days, with a time budget per day. DSM, Q-matrix and Core are analysis lenses: the DSM shows whether a prerequisite is taught after what depends on it, the Q-matrix checks that every claim has its proof, and the core lens compares the capabilities marked as central with the ones that actually hold the course up (reach × betweenness).\n\nI built the app from scratch in September 2026: a TypeScript core (the .tree.md format parser, graph, coverage, lenses) and a React interface with a PixiJS canvas and layout in a Web Worker. It has in-place editing, comparison and a merge room between trees, sync with Itera and a full guide in Portuguese."
     }
   },
   "hackathons": {
@@ -600,27 +604,12 @@
   },
   "controls": {
     "colorScheme": "Color scheme",
-    "cliMode": "CLI Mode",
-    "visualMode": "Visual Mode",
     "openToWork": "Open to proposals",
     "lightMode": "Switch to light mode",
     "darkMode": "Switch to dark mode",
     "backToTop": "Back to top",
     "skipToContent": "Skip to content",
     "visit": "Visit {{name}}"
-  },
-  "cli": {
-    "role": "Role",
-    "stack": "Stack",
-    "focus": "Focus",
-    "uptime": "Uptime",
-    "awards": "Awards",
-    "location": "Location",
-    "roleValue": "Full-Stack @ DevFellowship",
-    "focusValue": "Micro-frontends · AI · Web3",
-    "uptimeValue": "Since Nov 2023 · Full-Stack @ DevFellowship",
-    "locationValue": "Marialva, PR · Brazil",
-    "caption": "samuel.jpg — render @ 0.92"
   },
   "game": {
     "title": "Snake.exe",
@@ -1013,6 +1002,38 @@
     "0-12": {
       "title": "Playground",
       "description": "Deck's real components next to their code: variants, sizes and states, editable live."
+    },
+    "17-s1": {
+      "title": "Tree",
+      "description": "The whole course as a tree: days on the trunk, capabilities on the branches, with tasks, minutes and each day’s budget."
+    },
+    "17-s2": {
+      "title": "Path",
+      "description": "The student’s journey day by day, with personas (beginner, knows the basics, rushed) and export to JSON or Markdown."
+    },
+    "17-s3": {
+      "title": "Roadmap",
+      "description": "The spine of the tree in the roadmap.sh format: the core anchored in the centre, the rest branching out to the sides."
+    },
+    "17-s4": {
+      "title": "Schedule",
+      "description": "How each capability spreads over the days, with construct alerts, weak claims and flagged days."
+    },
+    "17-s5": {
+      "title": "DSM",
+      "description": "Is the teaching order right? Below the diagonal, the prerequisite came first; above, it came later and needs fixing."
+    },
+    "17-s6": {
+      "title": "Q-matrix",
+      "description": "Does every claim have its proof? Rows are tasks, columns are claims grouped by capability."
+    },
+    "17-s7": {
+      "title": "Core",
+      "description": "Are the capabilities marked as core really the ones holding the course up? Reach × betweenness."
+    },
+    "17-s8": {
+      "title": "Guide",
+      "description": "The Portuguese guide that explains every view, mark and shortcut in the app."
     }
   },
   "notFound": {
