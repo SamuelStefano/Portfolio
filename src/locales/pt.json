@@ -148,7 +148,7 @@
     "experienceData": [
       {
         "company": "DevFellowship",
-        "role": "Desenvolvedor Full-Stack — Plataforma Interna de Desenvolvimento",
+        "role": "Tech Lead — Plataforma Interna",
         "period": "Novembro 2023 - Presente",
         "description": "Comecei como freelancer no fim de 2023 e passei à dedicação integral em 2026. Desenvolvimento da plataforma interna — as ferramentas e o fluxo que os devs da empresa usam para construir os softwares dos clientes. Arquitetura e desenvolvimento do super-app DFL Learn, Reviews App, Payments App e CI Revisor Bot com IA. Mentoria de fellows, definição de padrões técnicos, revisões de código e participação em hackathons premiados.",
         "highlights": [
@@ -194,7 +194,7 @@
       {
         "company": "M&M Informática",
         "role": "Analista de Suporte Técnico",
-        "period": "Dezembro 2024 - Fevereiro 2026",
+        "period": "Dezembro 2024 - Janeiro 2026",
         "description": "Suporte técnico ao produto da empresa, um ERP de varejo: atendimento aos clientes, diagnóstico de incidentes de sistema e de operação de loja. Recebi treinamento no produto e ganhei familiaridade com o funcionamento de um ERP (emissão fiscal, PDV e cadastro).",
         "highlights": [
           "Atendimento direto aos clientes do ERP",
@@ -626,14 +626,15 @@
     "title": "Experiência",
     "items": {
       "dfl": {
-        "role": "Desenvolvedor Full-Stack — Plataforma Interna",
+        "role": "Tech Lead — Plataforma Interna",
         "period": "Nov 2023 – Presente",
         "description": "Entrei como freelancer no fim de 2023 e passei a tempo integral em 2026. Trabalho na plataforma interna — as ferramentas que os devs da empresa usam para entregar o software dos clientes —, além de revisar código e mentorar fellows.",
         "highlights": [
           "Micro-frontends com Module Federation: DFL Learn (host), Reviews, Payments e Flows",
           "Fluxo de receita em produção: contrato → cobrança recorrente → NF-e",
-          "Servidores MCP (work, learn, payments, plans) e back-end em Hono + Bun",
-          "Lesson Studio: editor de aulas em vídeo com gravação e exportação na nuvem"
+          "Servidores MCP (work, learn, payments, plans) que expõem a plataforma para agentes de IA",
+          "Lesson Studio: um dos dois engenheiros principais — 240+ PRs, motor de animação determinístico com paridade editor↔render",
+          "1.000+ PRs na organização e 110+ code reviews"
         ]
       },
       "revera": {
@@ -668,7 +669,7 @@
       },
       "mm": {
         "role": "Analista de Suporte Técnico",
-        "period": "Dez 2024 – Fev 2026",
+        "period": "Dez 2024 – Jan 2026",
         "description": "Suporte técnico ao produto da empresa, um ERP de varejo: atendimento aos clientes, diagnóstico de incidentes de sistema e de operação de loja. Recebi treinamento no produto e ganhei familiaridade com o funcionamento de um ERP (emissão fiscal, PDV e cadastro).",
         "highlights": [
           "Atendimento direto aos clientes do ERP",

@@ -148,7 +148,7 @@
     "experienceData": [
       {
         "company": "DevFellowship",
-        "role": "Full-Stack Developer — Internal Developer Platform",
+        "role": "Tech Lead — Internal Platform",
         "period": "November 2023 - Present",
         "description": "Started as a freelancer in late 2023 and moved to full-time in 2026. Development of the internal developer platform — the tooling and workflow the company's devs use to build client software. Architecture and development of DFL Learn super-app, Reviews App, Payments App and CI Reviewer Bot with AI. Mentoring fellows, defining technical standards, code reviews and participation in award-winning hackathons.",
         "highlights": [
@@ -194,7 +194,7 @@
       {
         "company": "M&M Informática",
         "role": "Technical Support Analyst",
-        "period": "December 2024 - February 2026",
+        "period": "December 2024 - January 2026",
         "description": "Technical support for the company's product, a retail ERP: customer support, troubleshooting system and store-operation incidents. I was trained on the product and gained familiarity with how a retail ERP works (tax invoicing, POS and records).",
         "highlights": [
           "Direct support for the ERP's customers",
@@ -626,14 +626,15 @@
     "title": "Experience",
     "items": {
       "dfl": {
-        "role": "Full-Stack Developer — Internal Platform",
+        "role": "Tech Lead — Internal Platform",
         "period": "Nov 2023 – Present",
         "description": "Joined as a freelancer in late 2023 and went full-time in 2026. I work on the internal platform — the tooling the company's developers use to ship client software — and I review code and mentor fellows.",
         "highlights": [
           "Module Federation micro-frontends: DFL Learn (host), Reviews, Payments and Flows",
           "Revenue flow in production: contract → recurring billing → e-invoicing",
-          "MCP servers (work, learn, payments, plans) and a Hono + Bun back end",
-          "Lesson Studio: video lesson editor with recording and cloud export"
+          "MCP servers (work, learn, payments, plans) that expose the platform to AI agents",
+          "Lesson Studio: one of the two core engineers — 240+ PRs, deterministic animation engine with editor↔render parity",
+          "1,000+ PRs across the organization and 110+ code reviews"
         ]
       },
       "revera": {
@@ -668,7 +669,7 @@
       },
       "mm": {
         "role": "Technical Support Analyst",
-        "period": "Dec 2024 – Feb 2026",
+        "period": "Dec 2024 – Jan 2026",
         "description": "Technical support for the company's product, a retail ERP: customer support, troubleshooting system and store-operation incidents. I was trained on the product and gained familiarity with how a retail ERP works (tax invoicing, POS and records).",
         "highlights": [
           "Direct support for the ERP's customers",

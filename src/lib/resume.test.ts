@@ -5,11 +5,11 @@ import { resumeHref } from './resume';
 
 describe('resumeHref', () => {
   it('serves the English résumé only to English readers', () => {
-    expect(resumeHref('en')).toBe('/resume-en.pdf');
-    expect(resumeHref('en-US')).toBe('/resume-en.pdf');
-    expect(resumeHref('pt')).toBe('/curriculo.pdf');
-    expect(resumeHref('es')).toBe('/curriculo.pdf');
-    expect(resumeHref(undefined)).toBe('/curriculo.pdf');
+    expect(resumeHref('en')).toBe('/cv/Samuel-Stefano-Resume-EN.pdf');
+    expect(resumeHref('en-US')).toBe('/cv/Samuel-Stefano-Resume-EN.pdf');
+    expect(resumeHref('pt')).toBe('/cv/Samuel-Stefano-Curriculo-PT.pdf');
+    expect(resumeHref('es')).toBe('/cv/Samuel-Stefano-Curriculo-PT.pdf');
+    expect(resumeHref(undefined)).toBe('/cv/Samuel-Stefano-Curriculo-PT.pdf');
   });
 
   it('points at files that exist', () => {
