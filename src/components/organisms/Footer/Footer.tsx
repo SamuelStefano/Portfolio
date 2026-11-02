@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Mail, Phone, Check, Copy, FileText, MapPin } from 'lucide-react';
+import { Mail, Phone, Check, Copy, FileText, MapPin, Package } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Heading } from '@/components/atoms/Heading/Heading';
 import { Text } from '@/components/atoms/Text/Text';
@@ -70,6 +70,12 @@ export const Footer = ({ onOpenGame }: FooterProps) => {
               <a href={PHONE_HREF} className={linkClass}>
                 <Phone className="h-4 w-4" />
                 {PHONE_LABEL}
+              </a>
+            </li>
+            <li>
+              <a href="/produtos" className={linkClass}>
+                <Package className="h-4 w-4" />
+                {t('footer.products')}
               </a>
             </li>
             <li>

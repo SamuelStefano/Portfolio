@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/produtos",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/og-image-v7.png",

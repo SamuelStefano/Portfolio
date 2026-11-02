@@ -444,7 +444,8 @@
     "responsive": "Responsive",
     "resume": "Résumé (PDF, PT)",
     "snake": "play snake",
-    "resumeNote": "PT or EN, following the site language"
+    "resumeNote": "PT or EN, following the site language",
+    "products": "Products"
   },
   "common": {
     "loading": "Loading...",
@@ -1035,6 +1036,34 @@
     "17-s8": {
       "title": "Guide",
       "description": "The Portuguese guide that explains every view, mark and shortcut in the app."
+    }
+  },
+  "products": {
+    "back": "Back to home",
+    "title": "Products",
+    "subtitle": "What I build and sell.",
+    "status": {
+      "soon": "Coming soon",
+      "tuning": "Being tuned",
+      "early": "Early access"
+    },
+    "items": {
+      "sessao": {
+        "name": "Sessão a Dois",
+        "tagline": "No more half an hour picking what to watch.",
+        "price": "Free at launch, then R$ 9.90/month per couple",
+        "cta": "Open"
+      },
+      "valdez": {
+        "name": "Valdez",
+        "tagline": "Discord bot: recording and music.",
+        "price": "Plans from R$ 10"
+      },
+      "deck": {
+        "name": "Deck",
+        "tagline": "Web cockpit for AI agents, on desktop and phone.",
+        "cta": "Request access"
+      }
     }
   },
   "notFound": {

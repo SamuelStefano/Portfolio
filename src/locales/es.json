@@ -444,7 +444,8 @@
     "responsive": "Responsivo",
     "resume": "Currículum (PDF, PT)",
     "snake": "jugar snake",
-    "resumeNote": "PT o EN según el idioma del sitio"
+    "resumeNote": "PT o EN según el idioma del sitio",
+    "products": "Productos"
   },
   "common": {
     "loading": "Cargando...",
@@ -1035,6 +1036,34 @@
     "17-s8": {
       "title": "Guía",
       "description": "La guía en portugués que explica cada vista, marca y atajo de la aplicación."
+    }
+  },
+  "products": {
+    "back": "Volver al inicio",
+    "title": "Productos",
+    "subtitle": "Lo que construyo y vendo.",
+    "status": {
+      "soon": "Próximamente",
+      "tuning": "En ajuste",
+      "early": "Acceso anticipado"
+    },
+    "items": {
+      "sessao": {
+        "name": "Sessão a Dois",
+        "tagline": "Basta de media hora eligiendo qué ver.",
+        "price": "Gratis en el lanzamiento, luego R$ 9,90/mes por pareja",
+        "cta": "Abrir"
+      },
+      "valdez": {
+        "name": "Valdez",
+        "tagline": "Bot de Discord: grabación y música.",
+        "price": "Planes desde R$ 10"
+      },
+      "deck": {
+        "name": "Deck",
+        "tagline": "Cockpit web para agentes de IA, en el escritorio y en el móvil.",
+        "cta": "Pedir acceso"
+      }
     }
   },
   "notFound": {
