@@ -31,7 +31,7 @@ export const HACKATHONS: Hackathon[] = [
   },
   {
     name: 'AltPay',
-    place: 1,
+    place: 2,
     photo: '/podium/hackanation-1.jpg',
     event: 'Hackanation 2026 · TokenNation',
     location: 'São Paulo, BR',

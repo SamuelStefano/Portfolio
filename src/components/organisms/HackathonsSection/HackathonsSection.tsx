@@ -18,12 +18,14 @@ const PLACE_STYLE: Record<Hackathon['place'], { step: string; accent: string; ri
 };
 const XL_ORDER = ['xl:order-1', 'xl:order-2', 'xl:order-3', 'xl:order-4'];
 
-// The page lists the awards by ranking; from xl up they stand as a podium: 2nd on the left,
-// the first places in the centre and tallest, the rest on the right.
+// The page lists the awards by ranking; from xl up they stand as a podium: the first place in the
+// centre and tallest, a second place on each side of it, the rest on the right.
 const RANKING = [...HACKATHONS].sort((a, b) => a.place - b.place);
+const SECONDS = RANKING.filter((h) => h.place === 2);
 const PODIUM_ORDER = [
-  ...RANKING.filter((h) => h.place === 2),
+  ...SECONDS.slice(0, 1),
   ...RANKING.filter((h) => h.place === 1),
+  ...SECONDS.slice(1),
   ...RANKING.filter((h) => h.place > 2),
 ];
 

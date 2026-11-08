@@ -16,7 +16,7 @@
     "role": "Desenvolvedor Full-Stack · IA aplicada",
     "description": "2+ anos de experiência • React, TypeScript, Node • Solidity & Web3 • Remoto • Marialva, PR",
     "bio": "Construo produtos web de ponta a ponta com React, TypeScript, Node.js e Supabase/PostgreSQL — do modelo de dados à interface. Hoje desenvolvo a plataforma interna da DevFellowship e coloco LLMs, agentes e servidores MCP em produção.",
-    "bioContinue": "Em hackathons, levo isso para Web3: vitória na trilha Chainlink do Hackanation 2026 e pódios no ETH Latam e no DevConnect 2025.",
+    "bioContinue": "Em hackathons, levo isso para Web3: 2º lugar na trilha Chainlink do Hackanation 2026 e pódios no ETH Latam e no DevConnect 2025.",
     "clickToSeeMore": "Clique para ver mais",
     "socialLinks": {
       "github": "GitHub",
@@ -287,7 +287,7 @@
     "subtitle": "Conheça um pouco mais sobre minha trajetória e paixões",
     "greeting": "Olá! Eu sou o Samuel.",
     "bio1": "Desenvolvedor full-stack em Marialva (PR), trabalhando remoto. Comecei em suporte técnico, entrei na DevFellowship como freelancer no fim de 2023 e hoje trabalho em tempo integral na plataforma interna da empresa — React, TypeScript, Node.js, Supabase e PostgreSQL no dia a dia, com IA aplicada (agentes, MCP, Claude) como parte central do fluxo.",
-    "bio2": "Na DevFellowship, construí o ecossistema completo de Module Federation — DFL Learn (super-app host), Reviews, Payments e o CI Revisor Bot com IA — além de 4 servidores MCP e do fluxo de receita em produção, de contratos a cobrança recorrente e NF-e. Criei o ITERA, plataforma de cursos com aula ao vivo síncrona e modo multijogador sobre Supabase Realtime, e o Deck, meu posto de comando para agentes de IA. Em hackathons: 1º lugar na trilha Base do ETH Latam 2025 (PIX On-Chain), vitória na trilha Chainlink do Hackanation 2026 com o AltPay e 2º lugar na trilha Scroll do DevConnect ETH 2025 (TalentDAO).",
+    "bio2": "Na DevFellowship, construí o ecossistema completo de Module Federation — DFL Learn (super-app host), Reviews, Payments e o CI Revisor Bot com IA — além de 4 servidores MCP e do fluxo de receita em produção, de contratos a cobrança recorrente e NF-e. Criei o ITERA, plataforma de cursos com aula ao vivo síncrona e modo multijogador sobre Supabase Realtime, e o Deck, meu posto de comando para agentes de IA. Em hackathons: 1º lugar na trilha Base do ETH Latam 2025 (PIX On-Chain), 2º lugar na trilha Chainlink do Hackanation 2026 com o AltPay e 2º lugar na trilha Scroll do DevConnect ETH 2025 (TalentDAO).",
     "bio3": "Estou no último ano de Análise e Desenvolvimento de Sistemas na UNINGÁ — me formo em dezembro de 2026. Se você gostou do que viu por aqui, me chama: estou aberto a propostas e sempre topo trocar ideia sobre produto, IA e games.",
     "location": "Marialva, PR",
     "language": "Inglês B2",
@@ -400,9 +400,9 @@
     },
     "educar": {
       "title": "Educar+ · sala de aula e palco",
-      "description": "Dou aula de programação para adolescentes no Instituto Educar+. Em maio de 2026 levei uma turma ao Hackanation, em São Paulo: eles apresentaram o AltPay no palco e nós vencemos a trilha Chainlink. Foi a primeira vez de muitos deles num evento de tecnologia.",
+      "description": "Dou aula de programação para adolescentes no Instituto Educar+. Em maio de 2026 levei uma turma ao Hackanation, em São Paulo: eles apresentaram o AltPay no palco e ficamos em 2º lugar na trilha Chainlink. Foi a primeira vez de muitos deles num evento de tecnologia.",
       "caption": "Turma do Educar+ no Hackanation 2026 — camisetas \"Hackeando o Futuro\"",
-      "stageCaption": "Vencedores no palco do TokenNation"
+      "stageCaption": "Premiados no palco do TokenNation"
     },
     "commitsLastYear": "Commits nos últimos 12 meses",
     "activity": {
@@ -504,8 +504,8 @@
       "longDescription": "Um CI compartilhado por todos os repositórios da DevFellowship, empacotado como composite action (DFL CI core) para cada repo adotar com poucas linhas. Cada PR dispara build, Vitest, verificação de docs, lint, checagens de arquitetura e typecheck.\n\nDepois o bot faz duas coisas: a revisão inline — analisa o diff com a API do Claude e comenta nas linhas alteradas — e um comentário de resumo que consolida o resultado na PR (por exemplo: \"Review submitted: 3 new inline comment(s), 0 file-level item(s)\"). Assim a revisão de quem lê a PR começa pelo que importa, não pelo que é mecânico."
     },
     "altpay": {
-      "description": "Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. Venceu a trilha Chainlink do hackathon (Solana + Chainlink CRE/CCIP).",
-      "longDescription": "AltPay (Uber Money) é uma plataforma de microcrédito para quem roda — motoristas de aplicativo. O motorista conecta a carteira, declara seu perfil num onboarding sem consulta a bureau (\"você declara, a gente ajusta\") e o sistema calcula um score próprio que decide aprovação, limite e juros. O crédito cai no Pix em segundos e as cobranças são geradas e acompanhadas via Woovi. A decisão de crédito roda on-chain: o score é decidido no DON via Chainlink CRE e escrito on-chain por CCIP, com o desembolso e o repagamento liquidados no programa Solana (Anchor). Atuei no front-end, no backend (Supabase Edge Functions) e na integração on-chain (Solana + Chainlink). O projeto venceu a trilha Chainlink do hackathon."
+      "description": "Microcrédito on-chain para motoristas de app: score próprio sem consulta a bureau, crédito na hora e cobranças via Pix. 2º lugar na trilha Chainlink do hackathon (Solana + Chainlink CRE/CCIP).",
+      "longDescription": "AltPay (Uber Money) é uma plataforma de microcrédito para quem roda — motoristas de aplicativo. O motorista conecta a carteira, declara seu perfil num onboarding sem consulta a bureau (\"você declara, a gente ajusta\") e o sistema calcula um score próprio que decide aprovação, limite e juros. O crédito cai no Pix em segundos e as cobranças são geradas e acompanhadas via Woovi. A decisão de crédito roda on-chain: o score é decidido no DON via Chainlink CRE e escrito on-chain por CCIP, com o desembolso e o repagamento liquidados no programa Solana (Anchor). Atuei no front-end, no backend (Supabase Edge Functions) e na integração on-chain (Solana + Chainlink). O projeto ficou em 2º lugar na trilha Chainlink do hackathon."
     },
     "valdez": {
       "description": "Bot de Discord em TypeScript que vive dentro do canal de voz: entra sozinho quando chega gente, contabiliza horas em call com ranking, grava replay dos últimos minutos e toca música do YouTube e Spotify. Roda numa VPS Hetzner com healthcheck, auto-cura e proteção contra OOM.",
@@ -538,7 +538,7 @@
   },
   "hackathons": {
     "title": "Hackathons & Eventos",
-    "subtitle": "Três hackathons Web3, pódio em todos: quatro prêmios, dois deles de primeiro lugar. Projetos construídos em poucos dias, em time e com prazo apertado.",
+    "subtitle": "Três hackathons Web3, pódio em todos: quatro prêmios, entre eles um primeiro lugar. Projetos construídos em poucos dias, em time e com prazo apertado.",
     "technologies": "Tecnologias",
     "viewProject": "Ver Projeto",
     "pixonchain": {
@@ -546,7 +546,7 @@
       "description": "Pix levado para a blockchain: a pessoa paga um Pix comum e o valor chega on-chain, na rede Base. Primeiro lugar da trilha Base no ETH Latam 2025."
     },
     "altpay": {
-      "achievement": "Vencedor · Trilha Chainlink",
+      "achievement": "2º Lugar · Trilha Chainlink",
       "description": "Solução de pagamentos PIX↔cripto onde um score de crédito é decidido on-chain. A Chainlink CRE roda a lógica de risco no DON e escreve o resultado em contratos via CCIP, enquanto Data Feeds garantem cotação confiável. Liberação de fundos verificável em Solana (Anchor/Rust) com prova de pagamento PIX. Atuei no frontend, backend e em toda a integração Chainlink e on-chain.",
       "team": "Samuel Stefano (desenvolvimento) e alunos do Educar+ (apresentação)"
     },
