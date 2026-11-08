@@ -18,6 +18,7 @@ const PROJECT_KEYS: Record<string, string> = {
   AltPay: 'altpay',
   CodeLibrary: 'codelibrary',
   'Itera Tree': 'iteraTree',
+  'Sessão a Dois': 'sessaoADois',
 };
 
 /** Locale key under `projectDescriptions` for a project, or null when it has none. */

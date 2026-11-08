@@ -402,14 +402,56 @@ const seeds: ProjectSeed[] = [
     }
   },
   {
+    id: '18',
+    title: 'Sessão a Dois',
+    role: 'Creator',
+    stack: ['React 19', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL', 'RLS', 'Vitest', 'Playwright', 'Vercel'],
+    thumbnail_url: '/projects/sessao-a-dois/capa.jpg',
+    icon_name: 'Clapperboard',
+    created_at: '2026-11-01T00:00:00Z',
+    updated_at: '2026-11-04T00:00:00Z',
+    project_collaborators: [
+      { id: '18-c1', name: 'Samuel Stefano', role: 'Creator', avatar_url: '/avatar-lg.webp', created_at: '2026-11-01T00:00:00Z' }
+    ],
+    project_links: [],
+    project_sections: [
+      {
+        id: '18-s1',
+        folder_name: 'roleta',
+        display_name: 'Roleta e catálogo',
+        order_index: 1,
+        project_images: [{ id: '18-s1-i1', image_url: '/projects/sessao-a-dois/roleta-catalogo.jpg', order_index: 1 }]
+      },
+      {
+        id: '18-s2',
+        folder_name: 'acompanhamento',
+        display_name: 'Assistindo, fila e perfil',
+        order_index: 2,
+        project_images: [{ id: '18-s2-i1', image_url: '/projects/sessao-a-dois/assistindo-fila-perfil.jpg', order_index: 1 }]
+      },
+      {
+        id: '18-s3',
+        folder_name: 'desktop',
+        display_name: 'Vistos no desktop',
+        order_index: 3,
+        project_images: [{ id: '18-s3-i1', image_url: '/projects/sessao-a-dois/vistos-desktop.jpg', order_index: 1 }]
+      }
+    ],
+    image_categories: {
+      'roleta': ['/projects/sessao-a-dois/roleta-catalogo.jpg'],
+      'acompanhamento': ['/projects/sessao-a-dois/assistindo-fila-perfil.jpg'],
+      'desktop': ['/projects/sessao-a-dois/vistos-desktop.jpg']
+    }
+  },
+  {
     id: '0',
     title: 'Deck',
     role: 'Creator',
-    stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'WebSocket', 'Claude API', 'Anthropic', 'MCP', 'tmux', 'PTY', 'Supabase', 'Infisical', 'tree-sitter', 'Vitest', 'Docker', 'Hetzner VPS', 'TailwindCSS', 'Vercel'],
-    thumbnail_url: '/projects/Deck/Sessoes.png',
+    stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'WebSocket', 'Claude API', 'Anthropic', 'MCP', 'tmux', 'PTY', 'Supabase', 'Infisical', 'tree-sitter', 'Vitest', 'Docker', 'Electron', 'Expo', 'Three.js', 'ElevenLabs', 'SQLite', 'Hetzner VPS', 'TailwindCSS', 'Vercel'],
+    thumbnail_url: '/projects/Deck/chat.jpg',
     icon_name: 'Monitor',
     created_at: '2026-06-05T00:00:00Z',
-    updated_at: '2026-07-27T00:00:00Z',
+    updated_at: '2026-11-08T00:00:00Z',
     project_collaborators: [
       {
         id: '1',
@@ -421,130 +463,61 @@ const seeds: ProjectSeed[] = [
     ],
     project_links: [],
     project_sections: [
-      {
-        id: '0-1',
-        folder_name: 'sessoes',
-        display_name: 'Sessões',
-        order_index: 1,
-        project_images: [
-          { id: '0-1-1', image_url: '/projects/Deck/Sessoes.png', order_index: 1 },
-          { id: '0-1-2', image_url: '/projects/Deck/Composer.png', order_index: 2 }
-        ]
-      },
-      {
-        id: '0-2',
-        folder_name: 'memoria',
-        display_name: 'Contatos & Memória',
-        order_index: 2,
-        project_images: [
-          { id: '0-2-1', image_url: '/projects/Deck/Contatos.png', order_index: 1 },
-          { id: '0-2-2', image_url: '/projects/Deck/Memoria.png', order_index: 2 }
-        ]
-      },
-      {
-        id: '0-3',
-        folder_name: 'skills',
-        display_name: 'Skills',
-        order_index: 3,
-        project_images: [
-          { id: '0-3-1', image_url: '/projects/Deck/Skills.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-4',
-        folder_name: 'documentos',
-        display_name: 'Documentos',
-        order_index: 4,
-        project_images: [
-          { id: '0-4-1', image_url: '/projects/Deck/Documentos.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-5',
-        folder_name: 'custos',
-        display_name: 'Custos & Tokens',
-        order_index: 5,
-        project_images: [
-          { id: '0-5-1', image_url: '/projects/Deck/Custos.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-6',
-        folder_name: 'admin',
-        display_name: 'Admin & Host',
-        order_index: 6,
-        project_images: [
-          { id: '0-6-1', image_url: '/projects/Deck/Admin.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-7',
-        folder_name: 'docs',
-        display_name: 'Documentação',
-        order_index: 7,
-        project_images: [
-          { id: '0-7-1', image_url: '/projects/Deck/Documentacao.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-8',
-        folder_name: 'canvas',
-        display_name: 'Canvas',
-        order_index: 1.1,
-        project_images: [
-          { id: '0-8-1', image_url: '/projects/Deck/canvas.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-9',
-        folder_name: 'kanban',
-        display_name: 'Kanban',
-        order_index: 1.2,
-        project_images: [
-          { id: '0-9-1', image_url: '/projects/Deck/kanban.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-10',
-        folder_name: 'graph',
-        display_name: 'Graph',
-        order_index: 1.3,
-        project_images: [
-          { id: '0-10-1', image_url: '/projects/Deck/graph.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-11',
-        folder_name: 'crons',
-        display_name: 'Crons',
-        order_index: 5.5,
-        project_images: [
-          { id: '0-11-1', image_url: '/projects/Deck/crons.png', order_index: 1 }
-        ]
-      },
-      {
-        id: '0-12',
-        folder_name: 'playground',
-        display_name: 'Playground',
-        order_index: 7.5,
-        project_images: [
-          { id: '0-12-1', image_url: '/projects/Deck/playground.png', order_index: 1 }
-        ]
-      }
+      { id: '0-13', folder_name: 'inicio', display_name: 'Início e chat', order_index: 1, project_images: [
+        { id: '0-13-1', image_url: '/projects/Deck/inicio.jpg', order_index: 1 },
+        { id: '0-13-2', image_url: '/projects/Deck/chat.jpg', order_index: 2 }
+      ] },
+      { id: '0-14', folder_name: 'base', display_name: 'Base 3D', order_index: 2, project_images: [
+        { id: '0-14-1', image_url: '/projects/Deck/base-3d.jpg', order_index: 1 }
+      ] },
+      { id: '0-8', folder_name: 'canvas', display_name: 'Canvas', order_index: 3, project_images: [
+        { id: '0-8-1', image_url: '/projects/Deck/canvas-v2.jpg', order_index: 1 }
+      ] },
+      { id: '0-15', folder_name: 'mobile', display_name: 'Celular', order_index: 4, project_images: [
+        { id: '0-15-1', image_url: '/projects/Deck/mobile.jpg', order_index: 1 }
+      ] },
+      { id: '0-16', folder_name: 'conexoes', display_name: 'Conexões', order_index: 5, project_images: [
+        { id: '0-16-1', image_url: '/projects/Deck/conexoes.jpg', order_index: 1 }
+      ] },
+      { id: '0-3', folder_name: 'skills', display_name: 'Skills', order_index: 6, project_images: [
+        { id: '0-3-1', image_url: '/projects/Deck/skills-v2.jpg', order_index: 1 }
+      ] },
+      { id: '0-11', folder_name: 'rotinas', display_name: 'Rotinas', order_index: 7, project_images: [
+        { id: '0-11-1', image_url: '/projects/Deck/rotinas.jpg', order_index: 1 }
+      ] },
+      { id: '0-10', folder_name: 'graph', display_name: 'Graph', order_index: 8, project_images: [
+        { id: '0-10-1', image_url: '/projects/Deck/graph.png', order_index: 1 }
+      ] },
+      { id: '0-12', folder_name: 'playground', display_name: 'Playground', order_index: 9, project_images: [
+        { id: '0-12-1', image_url: '/projects/Deck/playground.png', order_index: 1 }
+      ] },
+      { id: '0-4', folder_name: 'documentos', display_name: 'Documentos', order_index: 10, project_images: [
+        { id: '0-4-1', image_url: '/projects/Deck/Documentos.png', order_index: 1 }
+      ] },
+      { id: '0-5', folder_name: 'custos', display_name: 'Custos & Tokens', order_index: 11, project_images: [
+        { id: '0-5-1', image_url: '/projects/Deck/Custos.png', order_index: 1 }
+      ] },
+      { id: '0-6', folder_name: 'admin', display_name: 'Admin & Host', order_index: 12, project_images: [
+        { id: '0-6-1', image_url: '/projects/Deck/Admin.png', order_index: 1 }
+      ] },
+      { id: '0-7', folder_name: 'docs', display_name: 'Documentação', order_index: 13, project_images: [
+        { id: '0-7-1', image_url: '/projects/Deck/Documentacao.png', order_index: 1 }
+      ] }
     ],
     image_categories: {
-      'sessoes': ['/projects/Deck/Sessoes.png', '/projects/Deck/Composer.png'],
-      'memoria': ['/projects/Deck/Contatos.png', '/projects/Deck/Memoria.png'],
-      'skills': ['/projects/Deck/Skills.png'],
+      'inicio': ['/projects/Deck/inicio.jpg', '/projects/Deck/chat.jpg'],
+      'base': ['/projects/Deck/base-3d.jpg'],
+      'canvas': ['/projects/Deck/canvas-v2.jpg'],
+      'mobile': ['/projects/Deck/mobile.jpg'],
+      'conexoes': ['/projects/Deck/conexoes.jpg'],
+      'skills': ['/projects/Deck/skills-v2.jpg'],
+      'rotinas': ['/projects/Deck/rotinas.jpg'],
+      'graph': ['/projects/Deck/graph.png'],
+      'playground': ['/projects/Deck/playground.png'],
       'documentos': ['/projects/Deck/Documentos.png'],
       'custos': ['/projects/Deck/Custos.png'],
       'admin': ['/projects/Deck/Admin.png'],
-      'docs': ['/projects/Deck/Documentacao.png'],
-      'canvas': ['/projects/Deck/canvas.png'],
-      'kanban': ['/projects/Deck/kanban.png'],
-      'graph': ['/projects/Deck/graph.png'],
-      'crons': ['/projects/Deck/crons.png'],
-      'playground': ['/projects/Deck/playground.png']
+      'docs': ['/projects/Deck/Documentacao.png']
     }
   },
   {
@@ -1500,6 +1473,7 @@ const PROJECT_META: Array<[title: string, meta: Pick<Project, 'status' | 'featur
   ['DFL Payments', { status: 'production', featured: true }],
   ['AltPay', { status: 'hackathon', featured: true }],
   ['Itera Tree', { status: 'production' }],
+  ['Sessão a Dois', { status: 'personal' }],
   ['GreenLoop', { status: 'hackathon' }],
   ['TalentDAO', { status: 'hackathon' }],
   ['Valdez', { status: 'personal' }],

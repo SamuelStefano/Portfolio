@@ -472,8 +472,8 @@
       "longDescription": "ITERA é uma plataforma de cursos por assinatura construída como um ecossistema de cinco aplicações, com Supabase próprio e RLS como autoridade de autorização — não existe chave service_role em nenhum dos servidores. O player do aluno é uma SPA em Vite + React 18 com Monaco, TanStack Query, i18n PT/EN e 59 arquivos de teste entre Vitest, Playwright e Storybook. O itera-mcp é um servidor MCP Streamable-HTTP em Fastify com 21 ferramentas de autoria (Program → Unit → Lesson → Activity), onde cada escrita é validada contra o JWT do autor e barrada pelas policies de RLS. O pacote Zod @iterahq/activity-spec é a fonte única de verdade dos 11 tipos de atividade, colapsando uma divergência que existia em três lugares — o enum do banco, a união de tipos do player e a constante do MCP — de modo que uma atividade é validada de forma idêntica no servidor e no cliente. A itera-api é uma REST v1 pull-only em Express + Zod, com chave de API por tenant, paginação keyset, SSO federado por token-exchange e billing Stripe. A landing e a documentação vivem num turborepo Astro + Starlight com um pacote único de tokens de marca. O recurso mais difícil é a aula ao vivo: um único canal privado do Supabase Realtime, protegido por RLS, carrega três preocupações ao mesmo tempo — broadcast para o avanço instantâneo da turma, postgres_changes como verdade durável para quem reconecta no meio da aula, e presence para a lista de quem está na sala. Em cima disso rodam timer sincronizado por tipo de atividade com adicionar tempo, mão levantada, pódio dos três primeiros, ranking, a visão de \"quem já terminou\" limitada a quem está de fato presente, e o palco da turma: o professor puxa o trabalho em andamento de um aluno — não só a resposta concluída — e a turma acompanha o código sendo digitado ao vivo, com o professor podendo resolver a própria atividade ali na frente de todos. O login é sem senha, por código OTP ou link mágico, porque pedir senha a um adolescente na primeira aula é perder a aula. O exercício de código tem correção determinística, tolerante a espaço e acento, e o aluno pode recomeçar do código inicial ou recuperar o que estava escrevendo depois de um reload. Outra adição é o BYOC: a atividade é gerada a partir do contexto do próprio aluno, para que o exercício fale a língua de quem está resolvendo. Presença e respostas — certas e erradas — são persistidas e viram o relatório pós-aula, agregado em TypeScript e não no banco. Nada do que o aluno precisa vem de CDN pública: o Monaco e as fontes são servidos do nosso próprio domínio, porque a aula roda em rede de escola e de comunidade, onde uma CDN bloqueada é cenário realista. Essa decisão foi validada na prática: a plataforma rodou uma aula piloto ao vivo e gratuita de programação com adolescentes do Instituto Educar+.\n\nO capítulo mais recente é o modo multijogador, construído sobre a mesma base de Realtime da aula ao vivo, mas sem professor: qualquer lição liberada pode ser jogada sozinho ou em sala. Quem cria a sala vira host e chama os amigos por link ou código para uma mesa de até 15 lugares; dá para completar a mesa com bots de três níveis, determinísticos, que digitam o código de verdade em vez de só marcar a resposta. O host escolhe o tempo por exercício e decide quando a turma avança. Durante a partida, quem já respondeu pode abrir a tela de um amigo ou de um bot e acompanhar o código sendo escrito ao vivo; cada jogador tem barras de conexão medidas pelo round-trip real do canal, o Tera reage na mesa e fala com todos, e o fim é um pódio por acertos com o tempo como desempate. O host pode mandar todo mundo de volta ao saguão ou fechar a sala, e qualquer jogador pode denunciar e bloquear outro — exigência da App Store, porque as salas também abrem dentro do app iOS publicado. Em volta disso veio uma camada de jogo: tela de recompensa com XP e sequência de dias, o Tera em 3D comemorando o fim da lição, uma coleção de 49 Teras por raridade para escolher como avatar, e o modo teste, em que a primeira lição de cada unidade roda no app de verdade sem criar conta."
     },
     "deck": {
-      "description": "Posto de comando pessoal pra trabalhar com agentes de IA direto na minha VPS. Reúne chat com o agente, terminais reais multi-dispositivo, memória persistente, prompts agendados, ledger financeiro, bancada de código ao vivo, knowledge graph e administração do host numa única interface web. Criado sozinho, do zero.",
-      "longDescription": "Deck é a plataforma que eu construí — sozinho, do zero — pra ser meu posto de comando ao trabalhar com agentes de IA rodando na minha própria VPS. Em vez de ficar preso num terminal SSH, o Deck conecta o navegador direto à máquina: cada sessão abre um agente Claude com contexto isolado, e eu acompanho a execução em tempo real. O chat mostra o raciocínio, as ferramentas, a lista de tarefas do agente num tray fixo acima do composer e o gasto de cada turno em tokens, tempo e custo — inclusive de turnos feitos direto no terminal, reconstruídos do histórico. Sessões longas carregam só as mensagens recentes, com um botão que traz o histórico anterior a um /compact. Os terminais são PTYs de verdade da VPS dentro do app, com abas e estado compartilhado entre dispositivos: o mesmo terminal continua vivo se eu abrir do celular. Em volta do chat existem as áreas que cobrem a operação inteira. Contextos é a memória persistente do agente em modo leitura — arquivos markdown tipados (usuário, projeto, feedback, referência) que ele escreve sozinho e consulta entre conversas. Skills é o catálogo de habilidades que o agente carrega sob demanda. Crons são prompts agendados que disparam turnos autônomos no horário marcado, sem ninguém na frente da tela. Pontos é um ledger financeiro: o agente registra sozinho a pontuação ao terminar uma task e a rota cruza isso com a árvore de projetos e as faturas puxadas da API da DevFellowship, com valor por ponto configurável. Playground é uma bancada de código com preview ao vivo em vários runtimes — React, HTML, moldura de iPhone, SVG e um juiz de testes — e compartilhamento do snippet por link. Graph gera um knowledge graph do código com tree-sitter, 100% local. Uso é o observatório de consumo: custo estimado, tokens e turnos por sessão, mais a janela de rate-limit do plano. Admin & Host expõe saúde e inventário da VPS (CPU, RAM, load, disco, uptime, CLIs no PATH, servidores MCP, sessões tmux, plugins) com ações sensíveis atrás de confirmação e role admin no relay. Notas é um rascunho markdown com salvamento automático, e a documentação in-app explica cada parte. Arquitetura: frontend React + TypeScript + Vite na Vercel, backend Node em WebSocket na VPS Hetzner, orquestração de sessões via tmux, integração com a Claude API e com servidores MCP (Supabase, Infisical e os meus próprios), persistência em Supabase e segredos no Infisical. Tudo tem design system próprio, com primitivos e galeria viva em /ds. Pensado, projetado e implementado por mim."
+      "description": "Posto de comando pessoal para trabalhar com agentes de IA nas minhas máquinas — VPS e PCs — pelo navegador, pelo app de Windows ou pelo celular. Reúne chat com o agente, terminais reais, skills, rotinas agendadas, conexões e um andar 3D onde os agentes trabalham, numa única interface. Criado sozinho, do zero.",
+      "longDescription": "Deck é a plataforma que eu construí — sozinho, do zero — pra ser meu posto de comando ao trabalhar com agentes de IA rodando na minha própria VPS. Em vez de ficar preso num terminal SSH, o Deck conecta o navegador direto à máquina: cada sessão abre um agente Claude com contexto isolado, e eu acompanho a execução em tempo real. O chat mostra o raciocínio, as ferramentas, a lista de tarefas do agente num tray fixo acima do composer e o gasto de cada turno em tokens, tempo e custo — inclusive de turnos feitos direto no terminal, reconstruídos do histórico. Sessões longas carregam só as mensagens recentes, com um botão que traz o histórico anterior a um /compact. Os terminais são PTYs de verdade da VPS dentro do app, com abas e estado compartilhado entre dispositivos: o mesmo terminal continua vivo se eu abrir do celular. Em volta do chat existem as áreas que cobrem a operação inteira. Contextos é a memória persistente do agente em modo leitura — arquivos markdown tipados (usuário, projeto, feedback, referência) que ele escreve sozinho e consulta entre conversas. Skills é o catálogo de habilidades que o agente carrega sob demanda. Crons são prompts agendados que disparam turnos autônomos no horário marcado, sem ninguém na frente da tela. Pontos é um ledger financeiro: o agente registra sozinho a pontuação ao terminar uma task e a rota cruza isso com a árvore de projetos e as faturas puxadas da API da DevFellowship, com valor por ponto configurável. Playground é uma bancada de código com preview ao vivo em vários runtimes — React, HTML, moldura de iPhone, SVG e um juiz de testes — e compartilhamento do snippet por link. Graph gera um knowledge graph do código com tree-sitter, 100% local. Uso é o observatório de consumo: custo estimado, tokens e turnos por sessão, mais a janela de rate-limit do plano. Admin & Host expõe saúde e inventário da VPS (CPU, RAM, load, disco, uptime, CLIs no PATH, servidores MCP, sessões tmux, plugins) com ações sensíveis atrás de confirmação e role admin no relay. Notas é um rascunho markdown com salvamento automático, e a documentação in-app explica cada parte. Arquitetura: frontend React + TypeScript + Vite na Vercel, backend Node em WebSocket na VPS Hetzner, orquestração de sessões via tmux, integração com a Claude API e com servidores MCP (Supabase, Infisical e os meus próprios), persistência em Supabase e segredos no Infisical. Tudo tem design system próprio, com primitivos e galeria viva em /ds. Pensado, projetado e implementado por mim.\n\nDe setembro para novembro de 2026 o Deck deixou de ser uma página e virou uma frota. Cada máquina pareada — a VPS e meus PCs — aparece na barra lateral com suas sessões, contagem de não lidas e capacidade; quando uma máquina está cheia, o pedido entra numa fila e roda assim que abre vaga. Ganhou um app de Windows em Electron com agente nativo, instalador de um clique, bandeja e notificações, e um shell para iOS. No celular dá para conversar por voz em tempo real com ElevenLabs ou ditar pelo próprio servidor. A Base é um andar 3D em Three.js onde cada agente ocupa uma mesa por setor (entrada, build, ship, ops, missões), com resumo em linguagem simples do que cada um está fazendo, e o Arcade dá XP por PR mergeado e tarefa concluída. A tela de Conexões junta provedores, ferramentas MCP, máquinas, aparelhos e um cofre de segredos por máquina; dá para conectar o GitHub como app, usar chaves próprias de OpenRouter, Z.ai e DeepSeek, e o Grok assume as sessões quando o plano do Claude acaba. No chat entraram painéis visuais em colunas, links compartilháveis de conversa, login por QR code e o Drop privado, que entrega um segredo ou arquivo ao agente sem passar pelo histórico."
     },
     "skillEvals": {
       "description": "Desafios de código ligados aos cursos da DevFellowship: o aluno resolve no navegador, o código roda de verdade no Judge0 contra casos de teste e o resultado volta na hora. Admins criam, arquivam e acompanham os desafios.",
@@ -530,6 +530,10 @@
     "iteraTree": {
       "description": "O editor do currículo da Itera como uma árvore: cada nó é algo que o aluno passa a saber fazer, a madeira diz o que precisa vir antes, e as folhas são as provas. Capability → claim → task, com trilha, roadmap, cronograma e lentes que checam se a ordem de ensino faz sentido.",
       "longDescription": "A Itera Tree é onde o curso da Itera é desenhado antes de virar aula. Cada capability (algo que o aluno passa a saber fazer) se divide em claims (o que precisa ser verdade para dizer que ele sabe) e cada claim é provada por tasks. As dependências formam uma árvore: raízes embaixo, fruto no alto.\n\nA mesma árvore aparece em sete visões. Árvore, Trilha, Roadmap e Cronograma mostram a estrutura e como ela se espalha pelos dias de aula, com orçamento de tempo por dia. DSM, Matriz Q e Núcleo são lentes de análise: a DSM mostra se algum pré-requisito está sendo ensinado depois de quem depende dele, a Matriz Q confere se toda claim tem a sua prova, e a lente de núcleo compara as capabilities marcadas como centrais com as que de fato sustentam o curso (alcance × intermediação).\n\nCriei o app do zero em setembro de 2026: um núcleo em TypeScript (parser do formato .tree.md, grafo, cobertura, lentes) e uma interface em React com canvas em PixiJS e layout num Web Worker. Tem edição na própria interface, comparação e sala de merge entre árvores, sincronização com a Itera e um guia completo em português."
+    },
+    "sessaoADois": {
+      "description": "App que eu e minha namorada usamos para decidir o que assistir: uma roleta sorteia formato, gênero e título com dois vetos para cada um, e depois o app acompanha episódios, fila compartilhada e as notas de cada pessoa.",
+      "longDescription": "Sessão a Dois nasceu de um problema de todo casal: passar mais tempo escolhendo do que assistindo. A tela principal é uma roleta em forma de caça-níquel que sorteia formato, gênero e título, com som e confete; cada pessoa tem dois vetos, e o sorteio pode sair do catálogo inteiro, da fila ou de uma rodada montada à mão — ou, no modo sem catálogo, de opções livres digitadas na hora.\n\nO catálogo tem mais de 6 mil filmes, séries e animes com nota do IMDb, sagas e títulos relacionados, busca por nome ou sinopse e títulos próprios do casal. Depois do sorteio o app acompanha a vida real: temporada e episódio de cada série, fila compartilhada com arrastar e soltar, e a lista de vistos com uma nota de 1 a 5 de cada pessoa, além das prateleiras de largados e odiados. O perfil transforma isso em jogo, com níveis de XP, conquistas, gêneros mais vistos e um índice de sintonia que mede o quanto as notas dos dois concordam.\n\nConstruí em quatro dias de novembro de 2026, mobile-first, em React 19 com TypeScript e Vite, sobre Supabase. Os dois celulares ficam em sincronia com escrita otimista com desfazer e atualização periódica, e o app avisa quando um deploy novo deixa a aba desatualizada. Desde a primeira semana o app atende mais de um casal: cada um tem seu espaço isolado por RLS no Postgres, e a lógica de sorteio, busca, episódios e estatísticas é testada com Vitest."
     }
   },
   "hackathons": {
@@ -848,17 +852,9 @@
       "title": "Perfis e contas",
       "description": "Cada perfil do Zernio com as contas conectadas por rede — um post nasce em um perfil, mas pode sair em contas de vários"
     },
-    "0-1": {
-      "title": "Sessões",
-      "description": "Cada sessão abre um agente Claude com contexto isolado: chat em tempo real, seleção de modelo e skills ativas por mensagem"
-    },
-    "0-2": {
-      "title": "Contatos & Memória",
-      "description": "A memória persistente do agente em cards navegáveis — fatos, feedbacks e contexto de projeto que sobrevivem entre conversas"
-    },
     "0-3": {
       "title": "Skills",
-      "description": "Catálogo de skills do agente — modos de trabalho e regras que podem ser ativados por sessão"
+      "description": "Registro das 102 skills instaladas, com origem, quais agentes usam cada uma e o risco de leitura ou escrita"
     },
     "0-4": {
       "title": "Documentos",
@@ -1058,19 +1054,15 @@
     },
     "0-8": {
       "title": "Canvas",
-      "description": "Todas as sessões de agente num quadro, agrupadas por área (Itera, DFL, pessoal, infra), com status ao vivo e um painel de sessões ativas."
-    },
-    "0-9": {
-      "title": "Kanban",
-      "description": "As mesmas sessões como cards: a fazer, em andamento e feito, com o orquestrador no topo, contexto usado e quem precisa de atenção."
+      "description": "Todas as sessões num quadro com filtros de execução e área, painel de sessões, terminal ao vivo e a faixa de kanban embaixo"
     },
     "0-10": {
       "title": "Graph",
       "description": "Grafo de conhecimento do código gerado localmente com tree-sitter: 625 nós e 1.167 arestas de um repositório, com busca e perguntas sobre o código."
     },
     "0-11": {
-      "title": "Crons",
-      "description": "Prompts agendados que disparam turnos autônomos no horário de Brasília, com a linha do tempo das próximas 24 h."
+      "title": "Rotinas",
+      "description": "Prompts agendados com a próxima execução, a saúde da semana e o resultado da última rodada de cada rotina"
     },
     "0-12": {
       "title": "Playground",
@@ -1107,6 +1099,34 @@
     "17-s8": {
       "title": "Guia",
       "description": "O guia em português que explica cada visão, marca e atalho do app."
+    },
+    "18-s1": {
+      "title": "Roleta e catálogo",
+      "description": "A roleta do casal sorteia formato, gênero e título e entrega um \"ingresso para dois\" com os vetos de cada um; o catálogo tem busca e filtros, e a ficha do título guarda status, as notas dos dois, anotação e a saga"
+    },
+    "18-s2": {
+      "title": "Assistindo, fila e perfil",
+      "description": "Temporada e episódio de cada série, a fila compartilhada em ordem e o perfil com nível, XP, sintonia entre as notas e gêneros mais vistos"
+    },
+    "18-s3": {
+      "title": "Vistos no desktop",
+      "description": "A lista de vistos com filtros por nota e a avaliação de 1 a 5 de cada pessoa, no layout de desktop"
+    },
+    "0-13": {
+      "title": "Início e chat",
+      "description": "A tela inicial lista os agentes e sugere por onde começar; no chat, o agente mostra o raciocínio, as notas agrupadas, o PR que abriu e o trilho de agentes ao lado"
+    },
+    "0-14": {
+      "title": "Base 3D",
+      "description": "Andar 3D em Three.js com um setor por etapa do trabalho; cada agente ocupa uma mesa, o painel mostra quem está ocupado, travado ou esperando, e as missões ficam num quadro na parede"
+    },
+    "0-15": {
+      "title": "Celular",
+      "description": "O mesmo Deck no celular: conversa com seletor de modelo e microfone, e a gaveta lateral com agentes e conversas por estado"
+    },
+    "0-16": {
+      "title": "Conexões",
+      "description": "Provedores, ferramentas MCP, máquinas, aparelhos e chaves num só lugar, com o estado de cada conexão e quem a usa"
     }
   },
   "notFound": {

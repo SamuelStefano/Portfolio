@@ -479,8 +479,8 @@
       "longDescription": "ITERA is a subscription course platform built as a five-app ecosystem, on its own Supabase, with RLS as the authorization authority — there is no service_role key anywhere in the servers. The learner-facing player is a Vite + React 18 SPA with Monaco, TanStack Query, PT/EN i18n and 59 test files across Vitest, Playwright and Storybook. itera-mcp is a Streamable-HTTP MCP server in Fastify exposing 21 authoring tools (Program → Unit → Lesson → Activity), where every write is validated against the author's JWT and gated by RLS policies. The Zod package @iterahq/activity-spec is the single source of truth for the 11 activity kinds, collapsing a drift that used to live in three places — the database enum, the player's type union and the MCP's constant — so an activity is validated identically on the server and on the client. itera-api is a pull-only REST v1 in Express + Zod, with per-tenant API keys, keyset pagination, federated SSO via token exchange, and Stripe billing. The landing page and the documentation live in an Astro + Starlight turborepo sharing one brand-token package. The hardest feature is the live class: a single private Supabase Realtime channel, protected by RLS, carries three concerns at once — broadcast for the instant cohort-wide advance, postgres_changes as the durable truth for anyone reconnecting mid-class, and presence for the roster of who is in the room. On top of that run a per-activity synchronized timer with add-time, raise-hand, a top-three podium, a ranking, a \"who's done\" view scoped to who is actually present, and the class stage: the instructor pulls a learner's in-progress work — not just the finished answer — and the cohort watches the code being typed live, with the instructor able to solve their own activity right there in front of everyone. Login is passwordless, by OTP code or magic link, because asking a teenager for a password in their first class is losing the class. The code exercise is graded deterministically, tolerant of whitespace and accents, and the learner can restart from the starter code or recover whatever they were writing after a reload. Another addition is BYOC: the activity is generated from the learner's own context, so the exercise speaks the language of whoever is solving it. Attendance and answers — both correct and incorrect — are persisted and become the post-class report, aggregated in TypeScript rather than in the database. Nothing the learner needs comes from a public CDN: Monaco and the fonts are served from our own domain, because the class runs on school and community networks where a blocked CDN is a realistic scenario. That decision was validated in practice: the platform ran a live, free programming pilot class for teenagers at Instituto Educar+.\n\nThe newest chapter is multiplayer mode, built on the same Realtime foundation as the live class but with no instructor: any unlocked lesson can be played solo or in a room. Whoever creates the room becomes the host and invites friends by link or code to a table of up to 15 seats; empty seats can be filled with deterministic bots at three levels that actually type the code instead of just ticking the answer. The host picks the time per exercise and decides when the group moves on. During a match, anyone who has already answered can open a friend's or a bot's screen and watch the code being written live; every player has connection bars measured from the channel's real round trip, Tera reacts at the table and speaks to everyone, and the match ends on a podium ranked by correct answers with time as the tiebreak. The host can send everyone back to the lobby or close the room, and any player can report and block another — an App Store requirement, because rooms also open inside the published iOS app. Around it came a game layer: a reward screen with XP and a day streak, a 3D Tera celebrating the end of each lesson, a collection of 49 Teras by rarity to pick as an avatar, and a trial mode where the first lesson of each unit runs in the real app without an account."
     },
     "deck": {
-      "description": "A personal command center for working with AI agents directly on my VPS. It brings together agent chat, real multi-device terminals, persistent memory, scheduled prompts, a financial ledger, a live code bench, a knowledge graph and host administration in a single web interface. Built alone, from scratch.",
-      "longDescription": "Deck is the platform I built — alone, from scratch — to be my command center when working with AI agents running on my own VPS. Instead of being stuck in an SSH terminal, Deck wires the browser straight to the machine: each session opens a Claude agent with isolated context, and I watch the execution in real time. The chat surfaces the reasoning, the tools, the agent's task list in a tray pinned above the composer, and the cost of every turn in tokens, time and money — including turns run straight from the terminal, reconstructed from history. Long sessions load only recent messages, with a button that pulls in whatever came before a /compact. The terminals are real VPS PTYs inside the app, with tabs and state shared across devices: the same terminal is still alive if I open it from my phone. Around the chat sit the areas that cover the whole operation. Contexts is the agent's persistent memory in read mode — typed markdown files (user, project, feedback, reference) that it writes on its own and consults between conversations. Skills is the catalogue of abilities the agent loads on demand. Crons are scheduled prompts that fire autonomous turns at the appointed time, with nobody in front of the screen. Points is a financial ledger: the agent records its own score when it finishes a task, and the route cross-references that with the project tree and the invoices pulled from the DevFellowship API, with a configurable value per point. Playground is a code bench with live preview across several runtimes — React, HTML, an iPhone frame, SVG and a test judge — plus snippet sharing by link. Graph builds a knowledge graph of the code with tree-sitter, 100% locally. Usage is the consumption observatory: estimated cost, tokens and turns per session, plus the plan's rate-limit window. Admin & Host exposes VPS health and inventory (CPU, RAM, load, disk, uptime, CLIs on PATH, MCP servers, tmux sessions, plugins) with sensitive actions behind a confirmation and an admin role on the relay. Notes is a markdown scratchpad with autosave, and the in-app documentation explains every part. Architecture: React + TypeScript + Vite front end on Vercel, a Node WebSocket backend on a Hetzner VPS, session orchestration through tmux, integration with the Claude API and with MCP servers (Supabase, Infisical and my own), persistence in Supabase and secrets in Infisical. It all runs on its own design system, with primitives and a living gallery at /ds. Designed, architected and implemented by me."
+      "description": "A personal command center for working with AI agents on my machines — a VPS and my PCs — from the browser, a Windows app or the phone. It brings together agent chat, real terminals, skills, scheduled routines, connections and a 3D floor where the agents work, in a single interface. Built alone, from scratch.",
+      "longDescription": "Deck is the platform I built — alone, from scratch — to be my command center when working with AI agents running on my own VPS. Instead of being stuck in an SSH terminal, Deck wires the browser straight to the machine: each session opens a Claude agent with isolated context, and I watch the execution in real time. The chat surfaces the reasoning, the tools, the agent's task list in a tray pinned above the composer, and the cost of every turn in tokens, time and money — including turns run straight from the terminal, reconstructed from history. Long sessions load only recent messages, with a button that pulls in whatever came before a /compact. The terminals are real VPS PTYs inside the app, with tabs and state shared across devices: the same terminal is still alive if I open it from my phone. Around the chat sit the areas that cover the whole operation. Contexts is the agent's persistent memory in read mode — typed markdown files (user, project, feedback, reference) that it writes on its own and consults between conversations. Skills is the catalogue of abilities the agent loads on demand. Crons are scheduled prompts that fire autonomous turns at the appointed time, with nobody in front of the screen. Points is a financial ledger: the agent records its own score when it finishes a task, and the route cross-references that with the project tree and the invoices pulled from the DevFellowship API, with a configurable value per point. Playground is a code bench with live preview across several runtimes — React, HTML, an iPhone frame, SVG and a test judge — plus snippet sharing by link. Graph builds a knowledge graph of the code with tree-sitter, 100% locally. Usage is the consumption observatory: estimated cost, tokens and turns per session, plus the plan's rate-limit window. Admin & Host exposes VPS health and inventory (CPU, RAM, load, disk, uptime, CLIs on PATH, MCP servers, tmux sessions, plugins) with sensitive actions behind a confirmation and an admin role on the relay. Notes is a markdown scratchpad with autosave, and the in-app documentation explains every part. Architecture: React + TypeScript + Vite front end on Vercel, a Node WebSocket backend on a Hetzner VPS, session orchestration through tmux, integration with the Claude API and with MCP servers (Supabase, Infisical and my own), persistence in Supabase and secrets in Infisical. It all runs on its own design system, with primitives and a living gallery at /ds. Designed, architected and implemented by me.\n\nBetween September and November 2026 Deck stopped being a page and became a fleet. Every paired machine — the VPS and my PCs — shows up in the sidebar with its sessions, unread counts and capacity; when a machine is full, the request waits in a queue and runs as soon as a slot opens. It gained a Windows app in Electron with a native agent, one-click installer, tray and notifications, and an iOS shell. On the phone you can hold a real-time voice conversation through ElevenLabs or dictate through the server itself. The Base is a 3D floor in Three.js where every agent sits at a desk by sector (intake, build, ship, ops, missions), with a plain-language summary of what each one is doing, and the Arcade awards XP for merged PRs and finished tasks. The Connections screen gathers providers, MCP tools, machines, devices and a per-machine secrets vault; GitHub connects as an app, my own OpenRouter, Z.ai and DeepSeek keys work, and Grok takes over the sessions when the Claude plan runs out. The chat gained visual column panels, shareable conversation links, QR-code login and the Private Drop, which hands a secret or file to the agent without it ever entering the transcript."
     },
     "skillEvals": {
       "description": "Coding challenges tied to DevFellowship's courses: the student solves them in the browser, the code really runs on Judge0 against test cases and the result comes back at once. Admins create, archive and follow the challenges.",
@@ -537,6 +537,10 @@
     "iteraTree": {
       "description": "The editor for Itera's curriculum as a tree: every node is something the student learns to do, the wood says what must come first, and the leaves are the proofs. Capability → claim → task, with a path, roadmap, schedule and lenses that check whether the teaching order makes sense.",
       "longDescription": "Itera Tree is where the Itera course is designed before it becomes lessons. Each capability (something the student learns to do) splits into claims (what must be true to say they can do it), and each claim is proven by tasks. The dependencies form a tree: roots at the bottom, fruit at the top.\n\nThe same tree shows up in seven views. Tree, Path, Roadmap and Schedule show the structure and how it spreads over the class days, with a time budget per day. DSM, Q-matrix and Core are analysis lenses: the DSM shows whether a prerequisite is taught after what depends on it, the Q-matrix checks that every claim has its proof, and the core lens compares the capabilities marked as central with the ones that actually hold the course up (reach × betweenness).\n\nI built the app from scratch in September 2026: a TypeScript core (the .tree.md format parser, graph, coverage, lenses) and a React interface with a PixiJS canvas and layout in a Web Worker. It has in-place editing, comparison and a merge room between trees, sync with Itera and a full guide in Portuguese."
+    },
+    "sessaoADois": {
+      "description": "The app my girlfriend and I use to decide what to watch: a slot machine draws format, genre and title with two vetoes each, and then the app tracks episodes, a shared queue and each person's ratings.",
+      "longDescription": "Sessão a Dois (\"a session for two\") comes from a problem every couple has: spending more time choosing than watching. The main screen is a slot machine that draws format, genre and title, with sound and confetti; each person gets two vetoes, and the draw can come from the whole catalog, from the queue or from a hand-picked round — or, in no-catalog mode, from free-text options typed on the spot.\n\nThe catalog has more than 6,000 movies, series and anime with IMDb ratings, sagas and related titles, search by name or synopsis, and the couple's own custom titles. After the draw the app follows real life: season and episode for every series, a shared queue with drag and drop, and a watched list with a 1-to-5 rating from each person, plus shelves for dropped and hated titles. The profile turns it into a game, with XP levels, achievements, most-watched genres and a sync score that measures how much the two ratings agree.\n\nI built it in four days in November 2026, mobile-first, in React 19 with TypeScript and Vite, on Supabase. Both phones stay in sync through optimistic writes with undo and periodic refresh, and the app warns when a new deploy has left the tab out of date. Since the first week it serves more than one couple: each has its own space isolated by RLS in Postgres, and the draw, search, episode and stats logic is tested with Vitest."
     }
   },
   "hackathons": {
@@ -848,17 +852,9 @@
       "title": "Profiles and accounts",
       "description": "Every Zernio profile with its accounts connected per network — a post is created under one profile but can go out on accounts across several"
     },
-    "0-1": {
-      "title": "Sessions",
-      "description": "Each session opens a Claude agent with isolated context: real-time chat, model selection, and skills active per message"
-    },
-    "0-2": {
-      "title": "Contacts & memory",
-      "description": "The agent's persistent memory as browsable cards — facts, feedback, and project context that survive across conversations"
-    },
     "0-3": {
       "title": "Skills",
-      "description": "The agent's skill catalog — work modes and rules that can be turned on per session"
+      "description": "Registry of the 102 installed skills, with their source, which agents use each one and their read or write risk"
     },
     "0-4": {
       "title": "Documents",
@@ -1058,19 +1054,15 @@
     },
     "0-8": {
       "title": "Canvas",
-      "description": "Every agent session on one board, grouped by area (Itera, DFL, personal, infra), with live status and a panel of active sessions."
-    },
-    "0-9": {
-      "title": "Kanban",
-      "description": "The same sessions as cards: to do, in progress and done, with the orchestrator on top, context used and who needs attention."
+      "description": "Every session on one board with execution and area filters, a session panel, a live terminal and the kanban strip below"
     },
     "0-10": {
       "title": "Graph",
       "description": "A code knowledge graph built locally with tree-sitter: 625 nodes and 1,167 edges for one repository, with search and questions about the code."
     },
     "0-11": {
-      "title": "Crons",
-      "description": "Scheduled prompts that start autonomous turns on Brasília time, with a timeline of the next 24 hours."
+      "title": "Routines",
+      "description": "Scheduled prompts with the next run, the week's health and the result of each routine's last run"
     },
     "0-12": {
       "title": "Playground",
@@ -1107,6 +1099,34 @@
     "17-s8": {
       "title": "Guide",
       "description": "The Portuguese guide that explains every view, mark and shortcut in the app."
+    },
+    "18-s1": {
+      "title": "Slot machine and catalog",
+      "description": "The couple's slot machine draws format, genre and title and hands out a \"ticket for two\" with each person's vetoes; the catalog has search and filters, and the title sheet keeps status, both ratings, a note and the saga"
+    },
+    "18-s2": {
+      "title": "Watching, queue and profile",
+      "description": "Season and episode for every series, the shared queue in order, and the profile with level, XP, rating sync and most-watched genres"
+    },
+    "18-s3": {
+      "title": "Watched on desktop",
+      "description": "The watched list with rating filters and each person's 1-to-5 score, in the desktop layout"
+    },
+    "0-13": {
+      "title": "Home and chat",
+      "description": "The home lists the agents and suggests where to start; in the chat the agent shows its reasoning, grouped notes, the PR it opened and the agent rail alongside"
+    },
+    "0-14": {
+      "title": "3D Base",
+      "description": "A 3D floor in Three.js with one sector per stage of the work; every agent sits at a desk, the panel shows who is busy, stuck or waiting, and missions hang on a board on the wall"
+    },
+    "0-15": {
+      "title": "Phone",
+      "description": "The same Deck on the phone: chat with the model picker and microphone, and the side drawer with agents and conversations by state"
+    },
+    "0-16": {
+      "title": "Connections",
+      "description": "Providers, MCP tools, machines, devices and keys in one place, with the state of each connection and who uses it"
     }
   },
   "notFound": {
