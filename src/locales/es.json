@@ -8,7 +8,8 @@
     "skills": "Habilidades",
     "hackathons": "Hackathons",
     "about": "Sobre mí",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "content": "Contenido"
   },
   "hero": {
     "greeting": "Samuel Stefano",
@@ -562,6 +563,69 @@
     },
     "podiumHint": "Haz clic en un proyecto para ver detalles",
     "viewEvent": "Página del evento"
+  },
+  "content": {
+    "eyebrow": "Instagram",
+    "title": "Contenido que hago",
+    "subtitle": "Reels y carruseles sobre IA e ingeniería de software: qué cambió en la semana, qué dicen los números y qué aprendí construyendo sistemas en producción. Publicados en portugués.",
+    "stats": {
+      "posts": "piezas publicadas",
+      "views": "visualizaciones",
+      "profiles": "perfiles"
+    },
+    "metricsNote": "Números de Instagram al {{date}}.",
+    "formats": {
+      "reel": "Reel",
+      "carousel": "Carrusel"
+    },
+    "slides": "{{count}} slides",
+    "with": "con",
+    "madeFor": "hecho para",
+    "views": "{{value}} visualizaciones",
+    "likes": "{{value}} me gusta",
+    "open": "Ver",
+    "openOnInstagram": "Abrir en Instagram",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "previousSlide": "Slide anterior",
+    "nextSlide": "Siguiente slide",
+    "goToSlide": "Ir al slide {{index}}",
+    "scrollHint": "Desliza hacia el lado o usa las flechas",
+    "close": "Cerrar",
+    "items": {
+      "idempotencia": {
+        "title": "Idempotencia: por qué tu compra no se cobra dos veces",
+        "summary": "Explicativo animado sobre por qué un pago tiene que reintentar sin volver a cobrar, y las 6 capas de protección que puse en un sistema de pagos en producción."
+      },
+      "anthropic-scion": {
+        "title": "Anthropic dejó Git",
+        "summary": "Con Claude escribiendo a su lado, Anthropic pasó de 30 mil cambios por día y Git se volvió el cuello de botella. El carrusel cuenta cómo nació Scion, su reemplazo, a partir de su blog de ingeniería."
+      },
+      "ia-na-semana": {
+        "title": "IA en la semana: 8 noticias",
+        "summary": "Carrusel de videos con las 8 noticias de IA de la semana, cada una con el video original, subtítulos en portugués y la fuente en el slide."
+      },
+      "54-produtos": {
+        "title": "54 productos construidos",
+        "summary": "Los 54 productos internos de DevFellowship en pantalla y un caso real de Revera: una tienda de autopartes que cargaba 100 pedidos a mano y hoy importa la planilla en 10 segundos."
+      },
+      "gemini-argon": {
+        "title": "¿Gemini 4 Argon superó a todos?",
+        "summary": "El marcador de Google contra la prueba independiente: dónde Gemini 4 Argon le gana a GPT-6 Astra y a Claude Opus 5.5, y dónde no."
+      },
+      "sonnet-vs-opus": {
+        "title": "Sonnet 5.5 × Opus 5.5",
+        "summary": "La IA \"intermedia\" de Anthropic empató con la más cara a mitad de precio. Comparación lado a lado de las pruebas, la trampa del esfuerzo máximo y mi veredicto."
+      },
+      "gta6-detalhes": {
+        "title": "GTA 6 tiene detalles que nadie nota",
+        "summary": "Cada pelo y cada humo en GTA 6 es una decisión técnica. En software es igual: nadie ve el detalle cuando está, todos lo sienten cuando falta."
+      },
+      "gargalo-review": {
+        "title": "El cuello de botella ahora es el review",
+        "summary": "Los equipos con mucha IA mergean 98% más PRs y pasan 91% más tiempo revisando. Producir se volvió barato; verificar se volvió el cuello de botella."
+      }
+    }
   },
   "projectSections": {
     "overview": "Resumen General",

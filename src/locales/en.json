@@ -8,7 +8,8 @@
     "skills": "Skills",
     "hackathons": "Hackathons",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "content": "Content"
   },
   "hero": {
     "greeting": "Samuel Stefano",
@@ -569,6 +570,69 @@
     },
     "podiumHint": "Click a project for details",
     "viewEvent": "Event page"
+  },
+  "content": {
+    "eyebrow": "Instagram",
+    "title": "Content I make",
+    "subtitle": "Reels and carousels about AI and software engineering: what changed this week, what the numbers say, and what I learned building systems in production. Published in Portuguese.",
+    "stats": {
+      "posts": "published pieces",
+      "views": "views",
+      "profiles": "profiles"
+    },
+    "metricsNote": "Instagram numbers as of {{date}}.",
+    "formats": {
+      "reel": "Reel",
+      "carousel": "Carousel"
+    },
+    "slides": "{{count}} slides",
+    "with": "with",
+    "madeFor": "made for",
+    "views": "{{value}} views",
+    "likes": "{{value}} likes",
+    "open": "Watch",
+    "openOnInstagram": "Open on Instagram",
+    "previous": "Previous",
+    "next": "Next",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "goToSlide": "Go to slide {{index}}",
+    "scrollHint": "Swipe sideways or use the arrows",
+    "close": "Close",
+    "items": {
+      "idempotencia": {
+        "title": "Idempotency: why your purchase is not charged twice",
+        "summary": "An animated explainer on why payments must retry without charging again, and the six layers of protection I put into a payment system in production."
+      },
+      "anthropic-scion": {
+        "title": "Anthropic dropped Git",
+        "summary": "With Claude writing alongside them, Anthropic passed 30,000 changes a day and Git became the bottleneck. The carousel tells how Scion, its replacement, came to be, based on their engineering blog."
+      },
+      "ia-na-semana": {
+        "title": "AI this week: 8 stories",
+        "summary": "A video carousel with the week's 8 AI stories, each with the original footage, Portuguese subtitles and the source on the slide."
+      },
+      "54-produtos": {
+        "title": "54 products built",
+        "summary": "DevFellowship's 54 internal products on screen and a real Revera case: an auto-parts store that typed 100 orders by hand and now imports the spreadsheet in 10 seconds."
+      },
+      "gemini-argon": {
+        "title": "Did Gemini 4 Argon beat everyone?",
+        "summary": "Google's own scoreboard against the independent benchmark: where Gemini 4 Argon beats GPT-6 Astra and Claude Opus 5.5, and where it does not."
+      },
+      "sonnet-vs-opus": {
+        "title": "Sonnet 5.5 × Opus 5.5",
+        "summary": "Anthropic's \"middle\" model tied with the most expensive one at half the price. A side-by-side of the benchmarks, the catch at maximum effort, and my verdict."
+      },
+      "gta6-detalhes": {
+        "title": "GTA 6 has details nobody notices",
+        "summary": "Every strand of hair and every wisp of smoke in GTA 6 is a technical decision. Software works the same way: nobody sees the detail when it is there, everybody feels it when it is missing."
+      },
+      "gargalo-review": {
+        "title": "Review became the bottleneck",
+        "summary": "Teams heavy on AI merge 98% more PRs and spend 91% more time reviewing. Producing got cheap; verifying became the bottleneck."
+      }
+    }
   },
   "projectSections": {
     "overview": "Overview",

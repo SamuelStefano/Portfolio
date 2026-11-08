@@ -4,6 +4,7 @@ import { Header } from '@/components/organisms/Header/Header';
 import { ProjectGrid } from '@/components/organisms/ProjectGrid/ProjectGrid';
 import { TechStack } from '@/components/organisms/TechStack/TechStack';
 import { HackathonsSection } from '@/components/organisms/HackathonsSection/HackathonsSection';
+import { ContentSection } from '@/components/organisms/ContentSection/ContentSection';
 import { About } from '@/components/organisms/About/About';
 import { Footer } from '@/components/organisms/Footer/Footer';
 import { AnimatedBackground } from '@/components/atoms/AnimatedBackground/AnimatedBackground';
@@ -37,6 +38,7 @@ const Index = () => {
           <ProjectGrid />
           <TechStack />
           <HackathonsSection />
+          <ContentSection />
           <About />
           <Footer onOpenGame={() => setGameOpen(true)} />
         </div>

@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { labelKey: 'nav.skills', href: '#habilidades' },
   { labelKey: 'nav.experience', href: '#experiencia' },
   { labelKey: 'nav.hackathons', href: '#hackathons' },
+  { labelKey: 'nav.content', href: '#conteudo' },
   { labelKey: 'nav.about', href: '#sobre' },
   { labelKey: 'nav.contact', href: '#contato' },
 ];
