@@ -5,11 +5,11 @@ const seeds: ProjectSeed[] = [
     id: '11',
     title: 'ITERA',
     role: 'Creator',
-    stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'Supabase Realtime', 'PostgreSQL', 'RLS', 'Zod', 'TanStack Query', 'Fastify', 'MCP', 'Express', 'Stripe', 'Astro', 'Monaco Editor', 'Turborepo', 'Vitest', 'Playwright', 'Storybook', 'OpenTelemetry', 'TailwindCSS'],
-    thumbnail_url: '/projects/itera/aula-ao-vivo.png',
+    stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'Supabase Realtime', 'PostgreSQL', 'RLS', 'Zod', 'TanStack Query', 'Fastify', 'MCP', 'Express', 'Stripe', 'Expo', 'Astro', 'Monaco Editor', 'Turborepo', 'Vitest', 'Playwright', 'Storybook', 'OpenTelemetry', 'TailwindCSS'],
+    thumbnail_url: '/projects/itera/multiplayer-mesa.jpg',
     icon_name: 'GraduationCap',
     created_at: '2026-06-19T00:00:00Z',
-    updated_at: '2026-07-27T00:00:00Z',
+    updated_at: '2026-11-08T00:00:00Z',
     project_collaborators: [
       {
         id: '11-c1',
@@ -34,17 +34,27 @@ const seeds: ProjectSeed[] = [
     ],
     project_sections: [
       {
+        id: '11-s10',
+        folder_name: 'multiplayer',
+        display_name: 'Multijogador',
+        order_index: 1,
+        project_images: [
+          { id: '11-s10-i1', image_url: '/projects/itera/multiplayer-mesa.jpg', order_index: 1 },
+          { id: '11-s10-i2', image_url: '/projects/itera/multiplayer-ao-vivo.jpg', order_index: 2 }
+        ]
+      },
+      {
         id: '11-s1',
         folder_name: 'live',
         display_name: 'Aula ao vivo',
-        order_index: 1,
+        order_index: 2,
         project_images: [{ id: '11-s1-i1', image_url: '/projects/itera/aula-ao-vivo.png', order_index: 1 }]
       },
       {
         id: '11-s6',
         folder_name: 'sandbox',
         display_name: 'Sandbox de código',
-        order_index: 2,
+        order_index: 3,
         project_images: [
           { id: '11-s6-i1', image_url: '/projects/itera/sandbox-codigo.png', order_index: 1 },
           { id: '11-s6-i2', image_url: '/projects/itera/code-guiado.png', order_index: 2 }
@@ -54,7 +64,7 @@ const seeds: ProjectSeed[] = [
         id: '11-s7',
         folder_name: 'git',
         display_name: 'Aula de Git no terminal',
-        order_index: 3,
+        order_index: 4,
         project_images: [
           { id: '11-s7-i1', image_url: '/projects/itera/git-terminal.png', order_index: 1 },
           { id: '11-s7-i2', image_url: '/projects/itera/git-terminal-opcoes.png', order_index: 2 }
@@ -64,8 +74,9 @@ const seeds: ProjectSeed[] = [
         id: '11-s8',
         folder_name: 'canvas',
         display_name: 'Canvas de atividades',
-        order_index: 4,
+        order_index: 5,
         project_images: [
+          { id: '11-s8-i0', image_url: '/projects/itera/licao-tera.jpg', order_index: 0 },
           { id: '11-s8-i1', image_url: '/projects/itera/canvas-conceito.png', order_index: 1 },
           { id: '11-s8-i2', image_url: '/projects/itera/canvas-associacao.png', order_index: 2 },
           { id: '11-s8-i3', image_url: '/projects/itera/canvas-ordenacao.png', order_index: 3 },
@@ -73,12 +84,22 @@ const seeds: ProjectSeed[] = [
         ]
       },
       {
+        id: '11-s11',
+        folder_name: 'teras',
+        display_name: 'Coleção de Teras',
+        order_index: 6,
+        project_images: [
+          { id: '11-s11-i1', image_url: '/projects/itera/teras-avatar.jpg', order_index: 1 },
+          { id: '11-s11-i2', image_url: '/projects/itera/teras-colecao.jpg', order_index: 2 }
+        ]
+      },
+      {
         id: '11-s9',
         folder_name: 'trilha',
         display_name: 'Trilhas',
-        order_index: 5,
+        order_index: 7,
         project_images: [
-          { id: '11-s9-i1', image_url: '/projects/itera/trilha.png', order_index: 1 },
+          { id: '11-s9-i1', image_url: '/projects/itera/programa.jpg', order_index: 1 },
           { id: '11-s9-i2', image_url: '/projects/itera/catalogo.png', order_index: 2 }
         ]
       },
@@ -86,44 +107,47 @@ const seeds: ProjectSeed[] = [
         id: '11-s2',
         folder_name: 'hero',
         display_name: 'Recepção da sala',
-        order_index: 6,
+        order_index: 8,
         project_images: [{ id: '11-s2-i1', image_url: '/projects/itera/recepcao.png', order_index: 1 }]
       },
       {
         id: '11-s3',
         folder_name: 'landing',
         display_name: 'Landing',
-        order_index: 7,
-        project_images: [{ id: '11-s3-i1', image_url: '/projects/itera/landing.png', order_index: 1 }]
+        order_index: 9,
+        project_images: [{ id: '11-s3-i1', image_url: '/projects/itera/landing-v2.jpg', order_index: 1 }]
       },
       {
         id: '11-s4',
         folder_name: 'docs',
         display_name: 'Documentação',
-        order_index: 8,
+        order_index: 10,
         project_images: [{ id: '11-s4-i1', image_url: '/projects/itera/docs.png', order_index: 1 }]
       },
       {
         id: '11-s5',
         folder_name: 'login',
         display_name: 'Acesso ao app',
-        order_index: 9,
+        order_index: 11,
         project_images: [{ id: '11-s5-i1', image_url: '/projects/itera/login.png', order_index: 1 }]
       }
     ],
     image_categories: {
+      'multiplayer': ['/projects/itera/multiplayer-mesa.jpg', '/projects/itera/multiplayer-ao-vivo.jpg'],
       'live': ['/projects/itera/aula-ao-vivo.png'],
       'sandbox': ['/projects/itera/sandbox-codigo.png', '/projects/itera/code-guiado.png'],
       'git': ['/projects/itera/git-terminal.png', '/projects/itera/git-terminal-opcoes.png'],
       'canvas': [
+        '/projects/itera/licao-tera.jpg',
         '/projects/itera/canvas-conceito.png',
         '/projects/itera/canvas-associacao.png',
         '/projects/itera/canvas-ordenacao.png',
         '/projects/itera/canvas-diagrama.png'
       ],
-      'trilha': ['/projects/itera/trilha.png', '/projects/itera/catalogo.png'],
+      'teras': ['/projects/itera/teras-avatar.jpg', '/projects/itera/teras-colecao.jpg'],
+      'trilha': ['/projects/itera/programa.jpg', '/projects/itera/catalogo.png'],
       'hero': ['/projects/itera/recepcao.png'],
-      'landing': ['/projects/itera/landing.png'],
+      'landing': ['/projects/itera/landing-v2.jpg'],
       'docs': ['/projects/itera/docs.png'],
       'login': ['/projects/itera/login.png']
     }
