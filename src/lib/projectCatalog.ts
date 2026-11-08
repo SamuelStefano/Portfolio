@@ -448,7 +448,7 @@ const seeds: ProjectSeed[] = [
     title: 'Deck',
     role: 'Creator',
     stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'WebSocket', 'Claude API', 'Anthropic', 'MCP', 'tmux', 'PTY', 'Supabase', 'Infisical', 'tree-sitter', 'Vitest', 'Docker', 'Electron', 'Expo', 'Three.js', 'ElevenLabs', 'SQLite', 'Hetzner VPS', 'TailwindCSS', 'Vercel'],
-    thumbnail_url: '/projects/Deck/chat.jpg',
+    thumbnail_url: '/projects/Deck/playground.png',
     icon_name: 'Monitor',
     created_at: '2026-06-05T00:00:00Z',
     updated_at: '2026-11-08T00:00:00Z',
@@ -463,59 +463,22 @@ const seeds: ProjectSeed[] = [
     ],
     project_links: [],
     project_sections: [
-      { id: '0-13', folder_name: 'inicio', display_name: 'Início e chat', order_index: 1, project_images: [
-        { id: '0-13-1', image_url: '/projects/Deck/inicio.jpg', order_index: 1 },
-        { id: '0-13-2', image_url: '/projects/Deck/chat.jpg', order_index: 2 }
-      ] },
-      { id: '0-14', folder_name: 'base', display_name: 'Base 3D', order_index: 2, project_images: [
-        { id: '0-14-1', image_url: '/projects/Deck/base-3d.jpg', order_index: 1 }
-      ] },
-      { id: '0-8', folder_name: 'canvas', display_name: 'Canvas', order_index: 3, project_images: [
-        { id: '0-8-1', image_url: '/projects/Deck/canvas-v2.jpg', order_index: 1 }
-      ] },
-      { id: '0-15', folder_name: 'mobile', display_name: 'Celular', order_index: 4, project_images: [
-        { id: '0-15-1', image_url: '/projects/Deck/mobile.jpg', order_index: 1 }
-      ] },
-      { id: '0-16', folder_name: 'conexoes', display_name: 'Conexões', order_index: 5, project_images: [
-        { id: '0-16-1', image_url: '/projects/Deck/conexoes.jpg', order_index: 1 }
-      ] },
-      { id: '0-3', folder_name: 'skills', display_name: 'Skills', order_index: 6, project_images: [
-        { id: '0-3-1', image_url: '/projects/Deck/skills-v2.jpg', order_index: 1 }
-      ] },
-      { id: '0-11', folder_name: 'rotinas', display_name: 'Rotinas', order_index: 7, project_images: [
-        { id: '0-11-1', image_url: '/projects/Deck/rotinas.jpg', order_index: 1 }
-      ] },
-      { id: '0-10', folder_name: 'graph', display_name: 'Graph', order_index: 8, project_images: [
+      { id: '0-10', folder_name: 'graph', display_name: 'Graph', order_index: 1, project_images: [
         { id: '0-10-1', image_url: '/projects/Deck/graph.png', order_index: 1 }
       ] },
-      { id: '0-12', folder_name: 'playground', display_name: 'Playground', order_index: 9, project_images: [
+      { id: '0-12', folder_name: 'playground', display_name: 'Playground', order_index: 2, project_images: [
         { id: '0-12-1', image_url: '/projects/Deck/playground.png', order_index: 1 }
       ] },
-      { id: '0-4', folder_name: 'documentos', display_name: 'Documentos', order_index: 10, project_images: [
-        { id: '0-4-1', image_url: '/projects/Deck/Documentos.png', order_index: 1 }
-      ] },
-      { id: '0-5', folder_name: 'custos', display_name: 'Custos & Tokens', order_index: 11, project_images: [
-        { id: '0-5-1', image_url: '/projects/Deck/Custos.png', order_index: 1 }
-      ] },
-      { id: '0-6', folder_name: 'admin', display_name: 'Admin & Host', order_index: 12, project_images: [
+      { id: '0-6', folder_name: 'admin', display_name: 'Admin & Host', order_index: 3, project_images: [
         { id: '0-6-1', image_url: '/projects/Deck/Admin.png', order_index: 1 }
       ] },
-      { id: '0-7', folder_name: 'docs', display_name: 'Documentação', order_index: 13, project_images: [
+      { id: '0-7', folder_name: 'docs', display_name: 'Documentação', order_index: 4, project_images: [
         { id: '0-7-1', image_url: '/projects/Deck/Documentacao.png', order_index: 1 }
       ] }
     ],
     image_categories: {
-      'inicio': ['/projects/Deck/inicio.jpg', '/projects/Deck/chat.jpg'],
-      'base': ['/projects/Deck/base-3d.jpg'],
-      'canvas': ['/projects/Deck/canvas-v2.jpg'],
-      'mobile': ['/projects/Deck/mobile.jpg'],
-      'conexoes': ['/projects/Deck/conexoes.jpg'],
-      'skills': ['/projects/Deck/skills-v2.jpg'],
-      'rotinas': ['/projects/Deck/rotinas.jpg'],
       'graph': ['/projects/Deck/graph.png'],
       'playground': ['/projects/Deck/playground.png'],
-      'documentos': ['/projects/Deck/Documentos.png'],
-      'custos': ['/projects/Deck/Custos.png'],
       'admin': ['/projects/Deck/Admin.png'],
       'docs': ['/projects/Deck/Documentacao.png']
     }
